@@ -1,0 +1,76 @@
+1 Introduction 
+
+2 Preliminaries and General Setting 
+	2.1 Overview 
+	2.2 Definitions 
+		2.2.1 Set System Definition 
+		2.2.2 NTUmin Definition 
+		2.2.3 Set System Auctions 
+	2.3 General Set System Results 
+		2.3.1 Frugality of VCG 
+		2.3.2 Frugality of Approximation Algorithms 
+
+3 Examining the Single-Commodity Auction 
+	3.1 Overview 
+	3.2 Definitions 
+		3.2.1 Problem Definition 
+	3.3 The {1,2} Restricted Single-Commodity Auction 
+		3.3.1 Problem Definition 
+	3.4 Calculating NTUmin for the {1,2} Single-Commodity Auction 
+		3.4.1 Preliminaries 
+		3.4.2 Results 
+		3.4.3 An algorithm to choose S 
+		3.4.4 Examples 
+		3.4.5 Describing the NTUmin bids 
+		3.4.6 Computing the NTUmin bid values 
+		3.4.7 Simplifying lower bounds for NTUmin 
+	3.5 A more frugal mechanism for the {1,2} Single-Commodity Auction 
+		3.5.1 Defining the #SCALE mechanism 
+		3.5.2 Frugality results for the #SCALE mechanism 
+		3.5.3 A lower-bound on frugality with the #SCALE mechanism 
+		3.5.4 Considering NTUmax 
+	3.6 The Unrestricted Integer Single-Commodity Auction 
+		3.6.1 A lower-bound on frugality for all Scaling Mechanisms 
+	3.7 Calculating NTUmin for the unrestricted case 
+		3.7.1 A lower bound on NTUmin 
+	3.8 A more frugal Mechanism for the unrestricted case 
+		3.8.1 Defining Mechanism CS 
+		3.8.2 Frugality Results for Mechanism CS 
+		3.8.3 Considering NTUmax 
+	3.9 Conclusion and Open problems 
+
+4 Single-Commodity Combinatorial Auctions 
+	4.1 Overview 
+	4.2 Choice of Comparison 
+		4.2.1 Considering NTUmax
+		4.2.2 Other Benchmark Calculations
+	4.3 Attempting to prove frugality ratios
+		4.3.1 Considering VCG
+		4.3.2 Considering Scaling Mechanisms
+	4.4 Considering Randomized mechanisms 
+		4.4.1 A randomized quantity mechanism
+		4.4.2 Applying other mechanisms
+
+5 Shortest Paths with Multiple Edges 
+	5.1 Overview 
+	5.2 Problem Definitions 
+	5.3 Hardness results 
+		5.3.1 Shortest Path With 3 Edges
+		5.3.2 Shortest Path With 2 Edges
+	5.4 Auction Design 
+		5.4.1 Using VCG 
+	5.5 Mechanism DA 
+		5.5.1 Definition of DA 
+		5.5.2 Frugality Results for DA 
+	5.6 Mechanism DB 
+		5.6.1 Definition of DB 
+		5.6.2 Frugality Results for DB 
+	5.7 Mechanism DC 
+		5.7.1 Definition of DC 
+		5.7.2 Experimental results for DC 
+	5.8 Generalization of the problem 
+		5.8.1 Approximation algorithms
+		5.8.2 Reduction from Vertex Cover 
+		5.8.3 Reduction from Set Cover 
+		5.8.4 Inapproximability Results 
+	5.9 Conclusion and Open problems 

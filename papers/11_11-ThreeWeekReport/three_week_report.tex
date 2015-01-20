@@ -1,0 +1,242 @@
+
+% ----------------------------------------------------------------------
+%                   LATEX TEMPLATE FOR PhD THESIS
+% ----------------------------------------------------------------------
+
+% based on Harish Bhanderi's PhD/MPhil template, then Uni Cambridge
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/ThesisStyle/
+% corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme
+% and made available through OpenWetWare.org - the free biology wiki
+
+
+%: Style file for Latex
+% Most style definitions are in the external file PhDthesisPSnPDF.
+% In this template package, it can be found in ./Latex/Classes/
+% Move this to individual files
+\documentclass[twoside,9pt,a4paper]{Latex/Classes/PhDthesisPSnPDF}
+
+
+%: Macro file for Latex
+% Macros help you summarise frequently repeated Latex commands.
+% Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
+% An macro that you may use frequently is the figuremacro (see introduction.tex)
+\include{Latex/Macros/MacroFile1}
+
+
+
+%: ----------------------------------------------------------------------
+%:                  TITLE PAGE: name, degree,..
+% ----------------------------------------------------------------------
+% below is to generate the title page with crest and author name
+
+%if output to PDF then put the following in PDF header
+\ifpdf  
+    \pdfinfo { /Title  (An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles)
+               /Creator (TeX)
+               /Producer (pdfTeX)
+               /Author (Andrew Bolster abolster01@qub.ac.uk)
+               /CreationDate (D:YYYYMMDDhhmmss)  %format D:YYYYMMDDhhmmss
+               /ModDate (D:YYYYMMDDhhmm)
+               /Subject (xyz)
+               /Keywords (add, your, keywords, here) }
+    \pdfcatalog { /PageMode (/UseOutlines)
+                  /OpenAction (fitbh)  }
+\fi
+
+
+\title{An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles}
+
+
+
+% ----------------------------------------------------------------------
+% The section below defines www links/email for author and institutions
+% They will appear on the title page of the PDF and can be clicked
+\ifpdf
+  \author{\href{mailto:me@andrewbolster.info}{Andrew Bolster}}
+%  \cityofbirth{born in XYZ} % uncomment this if your university requires this
+%  % If city of birth is required, also uncomment 2 sections in PhDthesisPSnPDF
+%  % Just search for the "city" and you'll find them.
+  \collegeordept{\href{http://www.ecit.qub.ac.uk}{Institute of Electronics, Communications and Information Technology (ECIT)}}
+  \university{\href{http://www.qub.ac.uk}{Queen's University Belfast (QUB)}}
+
+  % The crest is a graphics file of the logo of your research institution.
+  % Place it in ./frontmatter/figures and specify the width
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest.png}}
+  
+% If you are not creating a PDF then use the following. The default is PDF.
+\else
+  \author{Andrew Bolster}
+%  \cityofbirth{born in XYZ}
+  \collegeordept{Institute of Electronics, Communications and Information Technology (ECIT)}
+  \university{Queen's University Belfast (QUB)}
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest.png}}
+\fi
+
+%\renewcommand{\submittedtext}{change the default text here if needed}
+\degree{Three Week Report}
+\degreedate{2011 October}
+
+
+% ----------------------------------------------------------------------
+       
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+%: --------------------------------------------------------------
+%:                  FRONT MATTER: dedications, abstract,..
+% --------------------------------------------------------------
+
+\begin{document}
+
+%\language{english}
+
+% sets line spacing
+\renewcommand\baselinestretch{1.2}
+\baselineskip=18pt plus1pt
+
+
+%: ----------------------- generate cover page ------------------------
+
+\maketitle  % command to print the title page with above variables
+
+%: ----------------------- abstract ------------------------
+
+% Your institution may have specific regulations if you need an abstract and where it is to be placed in the document. The default here is just after title.
+
+\include{frontmatter/twr_abstract}
+
+% The original template provides and abstractseparate environment, if your institution requires them to be separate. I think it's easier to print the abstract from the complete thesis by restricting printing to the relevant page.
+% \begin{abstractseparate}
+%   \input{Abstract/abstract}
+% \end{abstractseparate}
+
+%: ----------------------- contents ------------------------
+
+\setcounter{secnumdepth}{3} % organisational level that receives a numbers
+\setcounter{tocdepth}{3}    % print table of contents for level 3
+\tableofcontents            % print the table of contents
+% levels are: 0 - chapter, 1 - section, 2 - subsection, 3 - subsection
+
+%: --------------------------------------------------------------
+%:                  MAIN DOCUMENT SECTION
+% --------------------------------------------------------------
+
+% the main text starts here with the introduction, 1st chapter,...
+\mainmatter
+
+\renewcommand{\chaptername}{} % uncomment to print only "1" not "Chapter 1"
+
+
+% --------------------------------------------------------------
+%:                  REVIEW BODY: Intro, Lit summary, Lit Plan
+% --------------------------------------------------------------
+\chapter{Cursory Summary of Reviewed Literature}
+% Literature Review summaries
+\section{Currently Reviewed / Under Review Reading}
+\begin{itemize}
+  \item \citet*{Partan2006}
+  \item \citet*{Fall2003}
+  \item \citet*{Guo}
+  \item \citet*{Liu2006}
+\end{itemize}
+\section{Per-Paper General Summaries}
+\input{litreviews/Partan2006_gen}
+\input{litreviews/Fall2003_gen}
+\input{litreviews/Guo_gen}
+\chapter{Intended Areas of Subsequent Research}
+\section{General Direction}
+While it is very early to say, I believe that the area of most potential gain is
+to initially continue this level of generalist research \footnote{Within the
+spheres of (Marine) Networks and Trust Management fields}.  Beyond that, the aim
+is to study the practical operation of AUV/Marine Sensor Networks/Human
+Operators in an effort to establish reliable physical, MAC, and behavioural level metrics in current
+distributed marine networks that can be used with existing (and potentially, novel) trust
+and reputation management frameworks.
+
+Personally, I really like the idea of investigating the practical (and ethical)
+issues surrounding the integration of human operators into multi-parametric
+trust networks. This raises important questions such as 'If a fleet demonstrably
+cannot trust a human operator, should it rebel?' etc. 
+
+\section{Reading Lists}
+\emph{Each section-list set in general order of prioritisation}
+\subsection{Marine and Distributed Networks}
+\begin{itemize}
+  \item Underwater Acoustic Sensor Networks: Research Challenges
+  \cite{Akyildiz2005}
+  \item A QoS-Aware Underwater Optimisation Framework for Inter-vehicle
+  Communications using Acoustic Directional Transducers \cite{Chen}
+  \item Performance Limitations in underwater acoustic telemetry
+  \cite{Catipovic1990}
+  \item Slotted FAMA: a MAC protocol for underwater acoustic networks
+  \cite{Molins2006}
+  \item High-Rate Phase Coherent Acoustic Communications: A Review of a Decade
+  of Research and a Perspective on Future Challenges \cite{Freitag2004}
+\end{itemize}
+\subsection{Trust and Reputation Management}
+\begin{itemize}
+  \item Trust Management in Distributed Systems \cite{Li2007}
+  \item Information Theoretic Framework of Trust Modeling and Evaluation for Ad
+  Hoc Networks \cite{Liu2006}
+  \item The importance of trust between operator and AUV: Crossing the
+  human/computer language barrier \cite{Johnson2007}
+  \item Future Trust Management Frameworks for Mobile Ad Hoc Networks
+  \cite{Li2008}
+  \item Introduction to Grey System Theory \cite{Deng1989}
+\end{itemize}
+
+% --------------------------------------------------------------
+%:                  BACK MATTER: appendices, refs,..
+% --------------------------------------------------------------
+
+% the back matter: appendix and references close the thesis
+
+
+%: ----------------------- bibliography ------------------------
+
+% The section below defines how references are listed and formatted
+% The default below is 2 columns, small font, complete author names.
+% Entries are also linked back to the page number in the text and to external URL if provided in the BibTex file.
+
+% PhDbiblio-url2 = names small caps, title bold & hyperlinked, link to page 
+\begin{multicols}{2} % \begin{multicols}{ # columns}[ header text][ space]
+\begin{tiny} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+
+%\bibliographystyle{Latex/Classes/PhDbiblio-url2} % Title is link if provided
+\renewcommand{\bibname}{References} % changes the header; default: Bibliography
+
+\bibliography{library} % adjust this to fit your BibTex file
+
+\end{tiny}
+\end{multicols}
+
+% --------------------------------------------------------------
+% Various bibliography styles exit. Replace above style as desired.
+
+% in-text refs: (1) (1; 2)
+% ref list: alphabetical; author(s) in small caps; initials last name; page(s)
+%\bibliographystyle{Latex/Classes/PhDbiblio-case} % title forced lower case
+%\bibliographystyle{Latex/Classes/PhDbiblio-bold} % title as in bibtex but bold
+%\bibliographystyle{Latex/Classes/PhDbiblio-url} % bold + www link if provided
+
+%\bibliographystyle{Latex/Classes/jmb} % calls style file jmb.bst
+% in-text refs: author (year) without brackets
+% ref list: alphabetical; author(s) in normal font; last name, initials; page(s)
+
+\bibliographystyle{plainnat} % calls style file plainnat.bst
+% in-text refs: author (year) without brackets
+% (this works with package natbib)
+
+
+% --------------------------------------------------------------
+
+% according to Dresden med fac summary has to be at the end
+%\include{frontmatter/abstract}
+
+%: Declaration of originality
+\include{backmatter/declaration}
+
+
+
+\end{document}

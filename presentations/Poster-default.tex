@@ -1,0 +1,67 @@
+\documentclass[portrait,final,a3paper,fontscale=1]{baposter}
+% Packages
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+
+% Define Font
+%\usepackage{times}
+%\usepackage{helvet}
+%\usepackage{bookman}
+\usepackage{palatino}
+
+\begin{document}
+% Define colours
+\definecolor{QUBRED}{RGB}{196,18,48}
+\definecolor{QUBBROWN}{RGB}{176,118,96}
+
+% Declare images
+%\includegraphics[height=3em]{../figures/logo_ECIT_sm.png}
+
+% Text Behaviour
+\hyphenation{resolution occlusions}
+
+%%
+\begin{poster}{
+    grid=true,
+    colspacing=1em,
+    eyecatcher=true,
+    testfont={\setlength{\parindent}{0.2em}},
+    headerfont=\bf\textsc %SansSerif
+  }
+  % Eyecatcher
+  { \includegraphics[height=1em]{../figures/logo_ECIT_sm.png}}
+  % Title
+  {\bf\textsc{Title}\vspace{0.5em}}
+  % Authors
+  {\textsc{ \{abolster01 and alan.marshall\} @qub.ac.uk}}
+  % University Logo
+  { \includegraphics[height=1em]{../figures/logo_ECIT_sm.png}}
+
+  %%%%%%%%%%%%%%%%%%%
+  %%  BEGIN BOXES  %%
+  %%%%%%%%%%%%%%%%%%%
+  \headerbox{Problem}{name=problem,column=0,row=0}{
+  Waa Waa Waa, I can't do anything!
+  }
+
+  \headerbox{Contributions}{name=contributions,column=0,below=problem}{
+  I'm so awesome, awesome awesome me!
+  }
+
+  \headerbox{Results}{name=results,column=1,span=2,row=0}{
+  It's all bollocks, isn't it ted?
+  }
+\end{poster}
+\end{document}

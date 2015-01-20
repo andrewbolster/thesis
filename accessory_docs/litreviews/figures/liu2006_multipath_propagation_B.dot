@@ -1,0 +1,12 @@
+                digraph G{
+                node [shape="circle"];
+                rankdir=LR;
+                ranksep="0.0";
+                A_2 -> B_2 [label="R_1", style=dotted];
+                A_2 -> F_2 [label="R_1", style=dotted];
+                B_2 -> D_2 [label="R_2", style=dotted];
+                F_2 -> E_2 [label="R_3", style=dotted];
+                D_2 -> C_2 [label="T_4"];
+                E_2 -> C_2 [label="T_5"];
+                }
+              

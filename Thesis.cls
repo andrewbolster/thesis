@@ -145,10 +145,17 @@
 \newcommand*{\FACULTY}[1]{\def\FACNAME{#1}}
 \newcommand*{\subject}[1]{\def\subjectname{#1}}
 \newcommand*{\keywords}[1]{\def\keywordnames{#1}}
-\supervisor  {}
+
+
+%% Title information
+
+\title  {An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles}
+\authors  {Andrew Bolster}
+\date       {\today}
+\supervisor  {Prof. Alan Marshall}
 \examiner    {}
 \degree      {}
-\authors     {Antony McCabe}
+\authors     {Andrew Bolster}
 \university  {\texorpdfstring{\href{University Web Site URL Here (include http://)}
                 {University Name}}
                 {University Name}}
@@ -156,17 +163,17 @@
                 {UNIVERSITY OF LIVERPOOL}}
                 {UNIVERSITY OF LIVERPOOL}}
 \department  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://)}
-                {Department of Computer Science}}
-                {Department of Computer Science}}
+                {Department of Electrical Engineering, Electronics \& Computer Science}}
+                {Department of Electrical Engineering, Electronics \& Computer Science}}
 \DEPARTMENT  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://)}
-                {DEPARTMENT OF COMPUTER SCIENCE}}
-                {DEPARTMENT OF COMPUTER SCIENCE}}
+                {DEPARTMENT OF ELECTRICAL ENGINEERING, ELECTRONICS \& COMPUTER SCIENCE}}
+                {DEPARTMENT OF ELECTRICAL ENGINEERING, ELECTRONICS \& COMPUTER SCIENCE}}
 \group       {\texorpdfstring{\href{Research Group Web Site URL Here (include http://)}
-                {CTAG}}
-                {CTAG}}
+                {ANRG}}
+                {ANRG}}
 \GROUP       {\texorpdfstring{\href{Research Group Web Site URL Here (include http://)}
-                {CTAG}}
-                {CTAG}}
+                {ANRG}}
+                {ANRG}}
 \faculty     {\texorpdfstring{\href{Faculty Web Site URL Here (include http://)}
                 {Faculty of Science}}
                 {Faculty of Science}}
@@ -176,6 +183,8 @@
 \addresses   {}
 \subject     {}
 \keywords    {}
+\addresses  {\groupname\\\deptname\\\univname}  
+
 \renewcommand\maketitle{
   \btypeout{Title Page}
   \hypersetup{pdftitle={\@title}}
@@ -310,8 +319,6 @@
     }
 
     
-
-
 
     
     

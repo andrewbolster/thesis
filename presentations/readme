@@ -1,0 +1,7 @@
+********************************
+***** HERE BE DRAGONS !!! ******
+********************************
+You decided it would be a good idea to put speeches and presentation tex files away from the main core after development. 
+To actually build these things later, CREATE A DAMNED SYMLINK to something like 'speech.tex' and build it from the core dir.
+
+You have warned yourself, so consider yourself warned.

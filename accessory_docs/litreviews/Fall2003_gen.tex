@@ -1,0 +1,93 @@
+\section{A Delay-Tolerant Network Architecture for
+Challenged Internets \citet*{Fall2003}}
+\label{Fall2003_gen}
+\begin{itemize}
+  \item This paper deals primarily with the description of Challenged
+  network environments, but proposes a solution that is unsuitable for the
+  desired application; i.e. centralised DTN Bundle Gateway interconnects
+  between networks.
+  \item Such an implementation \emph{could} be factored into the generation of a
+  truly decentralised system.
+  \item Investigates in some detail the characteristics and difficulties of
+  Challenged Networks; summarised here.
+  \begin{itemize}
+    \item Path and Link Characteristics
+    \begin{itemize}
+      \item \emph{High-Latency, Low Data Rate}
+      \item \emph{Disconnection} caused by fault (power loss, tx failure) or
+      non-fault (motion or low-duty-cycle) sources. Motion can be predictable or
+      opportunistic.
+      \item \emph{Long Queuing Times} caused by multi-hop with unknown and
+      dynamic topology rendering source-initiated retransmission
+      extremely expensive, requiring long packet retention times to negate.
+	\end{itemize}
+    \item Network Architecture Concerns
+    \begin{itemize}
+      \item \emph{Interoperability Considerations}; individual CN's not designed
+      to a standard 'stack', and thus may fail to implement 'abstractions \ldots
+      supporting layered protocol families'.
+      \item \emph{Security}; E2E\footnote{End-to-End} security, usually requiring challenge/key
+      exchange, is undesirable due to the long latencies and delay prone nature
+      of the networks. Additionally, its a waste of data to carry it all the way
+      to the destination for authentication/access only to be denied.
+	\end{itemize}
+    \item End-System Characteristics
+    \begin{itemize}
+      \item \emph{Limited Longevity}: Message transit may outlive their
+      source-node, due to power, strategic, or environmental considerations.
+      Fall et all suggest that message reliability monitoring should be
+      delegated to a currently (and hopefully, future) operating node.
+      \item \emph{Low-Duty-Cycle Operation}: Highlighted in low-power/long-life
+      networks where nodes are regularly 'listening' and/or recording data to be
+      relayed, and periodically (but more rarely) transmit. The performance of
+      this kind of operation and network is dependant on predictable paths
+      (leading to efficient time-dependant path selection) and a-priori
+      scheduling.
+      \item \emph{Limited Resources}: Highlights the decisions to be made with
+      regards to memory resources, factoring in RTT, expected retransmissions,
+      and maintaining a store of in-transit data.
+	\end{itemize}
+  \end{itemize}
+  \item Additionally, this paper covers the potential use of Proxy or Gateway
+  agents at network interface points, E-Mail-like async messaging as
+  solutions to the above, before detailing a bundle-gateway based DTN
+  architecture based on regional and sub-regional addressing between challenged
+  networks, with QoS-like behaviour based on Postal Service conventions (return
+  receipt/delivery record/'handle with care')
+  \item On the subject of path selection this paper refers to another 2003
+  paper\cite{Alonso2003a} which should be reviewed, but is quite technical from
+  a cursory skim, so should be delayed.
+  \item Introduces the idea of Persistent and Non Persistent Gateways, and
+  discussed the effect on network reliability and architecture between these
+  nodes.
+  \item Deals with network convergence; not entirely relevant to the project at
+  hand.
+  \item Highlights the congestion difficulties of challenged networks (4.9), eg
+  'contacts may not arrive for some time in the future' and 'adopted' packets,
+  where a node is delegated custody the ensure that packets reception, which
+  cannot be deleted except under extreme conditions. Currently tackled using a
+  shared priority queue, but this introduces exploitable behaviour i.e. priority
+  inversion / head-of-line blocking.
+\end{itemize}
+
+\subsection{Questions Raised}
+\begin{itemize}
+  \item Fall et al state that the problem of \emph{Security} wastage (i.e.
+  carrying excess authentication data to a destination only to be denied) remains an open
+  problem on the Internet. I believe that within the general scope of this
+  project, such an authentication scheme would be decentralised and
+  N2N \footnote{Node-to-node} rather than E2E. This would be an example of
+  collaborative delegation, as discussed below.
+  \item On the subject of \emph{Limited Longevity}, Fall et al. suggest message
+  delivery acknowledgement be delegated to a 'surviving' node. This implies a
+  centralised approach which is counter to the project aims. One could envisage
+  a collaborative delegation system whereby a subset of nodes within a fleet
+  (i.e, the local neighbours N\{\ldots\} of node X upon X's transmission of
+  message M), such that any of N can authoritatively accept a delivery
+  acknowledgement (although personally I don't think ARQ is suitable for this
+  application due to data overheads and network disruption). Doing so would also
+  alleviate the issues raised in \emph{Limited Resources}, as once the
+  transmission has been spread to its neighbours, N can realistically drop that
+  information and assume it will makes its way across the network. This N2N
+  approach is tangentially covered in (4.5)
+\end{itemize}

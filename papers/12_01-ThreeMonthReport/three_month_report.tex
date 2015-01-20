@@ -1,0 +1,563 @@
+
+% ----------------------------------------------------------------------
+%                   LATEX TEMPLATE FOR PhD THESIS
+% ----------------------------------------------------------------------
+
+% based on Harish Bhanderi's PhD/MPhil template, then Uni Cambridge
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/ThesisStyle/
+% corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme
+% and made available through OpenWetWare.org - the free biology wiki
+
+
+%: Style file for Latex
+% Most style definitions are in the external file PhDthesisPSnPDF.
+% In this template package, it can be found in ./Latex/Classes/
+% Move this to individual files
+\documentclass[twoside,10pt,a4paper]{Latex/Classes/PhDthesisPSnPDF}
+
+
+%: Macro file for Latex
+% Macros help you summarise frequently repeated Latex commands.
+% Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
+% An macro that you may use frequently is the figuremacro (see introduction.tex)
+\include{Latex/Macros/MacroFile1}
+\ifpdf
+  \usepackage{helvet}
+\fi
+  %bugfix for mathml conversion to oolatex
+  \let\columnlines\empty
+
+%: ----------------------------------------------------------------------
+%:                  TITLE PAGE: name, degree,..
+% ----------------------------------------------------------------------
+% below is to generate the title page with crest and author name
+
+%if output to PDF then put the following in PDF header
+\ifpdf  
+    \pdfinfo { /Title  (An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles)
+               /Creator (TeX)
+               /Producer (pdfTeX)
+               /Author (Andrew Bolster abolster01@qub.ac.uk)
+               /CreationDate (D:YYYYMMDDhhmmss)  %format D:YYYYMMDDhhmmss
+               /ModDate (D:YYYYMMDDhhmm)
+               /Subject (xyz)
+               /Keywords (add, your, keywords, here) }
+    \pdfcatalog { /PageMode (/UseOutlines)
+                  /OpenAction (fitbh)  }
+\fi
+
+
+\title{An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles}
+
+
+
+% ----------------------------------------------------------------------
+% The section below defines www links/email for author and institutions
+% They will appear on the title page of the PDF and can be clicked
+\ifpdf
+  \author{\href{mailto:me@andrewbolster.info}{Andrew Bolster}}
+%  \cityofbirth{born in XYZ} % uncomment this if your university requires this
+%  % If city of birth is required, also uncomment 2 sections in PhDthesisPSnPDF
+%  % Just search for the "city" and you'll find them.
+  \collegeordept{\href{http://www.ecit.qub.ac.uk}{Institute of Electronics, Communications and Information Technology (ECIT)}}
+  \university{\href{http://www.qub.ac.uk}{Queen's University Belfast (QUB)}}
+
+  % The crest is a graphics file of the logo of your research institution.
+  % Place it in ./frontmatter/figures and specify the width
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest.png}}
+  
+% If you are not creating a PDF then use the following. The default is PDF.
+\else
+  \author{Andrew Bolster}
+%  \cityofbirth{born in XYZ}
+  \collegeordept{Institute of Electronics, Communications and Information Technology (ECIT)}
+  \university{Queen's University Belfast (QUB)}
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest}}
+\fi
+
+%\renewcommand{\submittedtext}{change the default text here if needed}
+\degree{Three Month Report}
+\degreedate{2012 January}
+
+
+% ----------------------------------------------------------------------
+       
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+%: --------------------------------------------------------------
+%:                  FRONT MATTER: dedications, abstract,..
+% --------------------------------------------------------------
+
+\begin{document}
+
+%\language{english}
+
+% sets line spacing
+\renewcommand\baselinestretch{1}
+%\baselineskip=12pt
+
+
+%: ----------------------- generate cover page ------------------------
+
+\maketitle  % command to print the title page with above variables
+
+%: ----------------------- abstract ------------------------
+
+% Your institution may have specific regulations if you need an abstract and where it is to be placed in the document. The default here is just after title.
+
+\begin{abstracts}        %this creates the heading for the abstract page
+As Autonomous underwater vehicles (AUVs) become more technically capable, and
+fiscally more economical, they are being used in a many defence, commercial and
+environmental applications. Increasingly, these applications are tending towards
+utilising  independent collective behaviour of teams or fleets of these
+platforms. With this use being increasingly independent of classical command and
+control structures, the accurate and timely establishment of mutual and
+distributed communications trust between nodes within such fleets is essential
+for the reliability and stability of such systems, and to the secure integration
+of such systems into larger management systems-of-systems. 
+
+This report aims to initially demonstrate that there is a gap in currently
+theorised and implemented technologies within the scope of distributed trust,
+theorise as to what potential avenues of research would produce such a
+distributed trust management framework (DTMF) and to demonstrate that such a
+framework is essential to the performance, longevity, and scalability of such
+technologies, specifically within the marine defence space, but also within the
+general field of autonomous vehicle operation (UxV). 
+\end{abstracts}
+
+% The original template provides and abstractseparate environment, if your institution requires them to be separate. I think it's easier to print the abstract from the complete thesis by restricting printing to the relevant page.
+% \begin{abstractseparate}
+%   \input{Abstract/abstract}
+% \end{abstractseparate}
+
+%: ----------------------- contents ------------------------
+
+\setcounter{secnumdepth}{3} % organisational level that receives a numbers
+\setcounter{tocdepth}{1}    % print table of contents for level 3
+\tableofcontents            % print the table of contents
+% levels are: 0 - chapter, 1 - section, 2 - subsection, 3 - subsection
+
+%: --------------------------------------------------------------
+%:                  MAIN DOCUMENT SECTION
+% --------------------------------------------------------------
+
+% the main text starts here with the introduction, 1st chapter,...
+\mainmatter
+
+\renewcommand{\chaptername}{} % uncomment to print only "1" not "Chapter 1"
+
+% --------------------------------------------------------------
+%:                  INTRODUCTION
+% --------------------------------------------------------------
+\chapter{Introduction} After over 20 years of theoretical and exploratory
+research into Unmanned Vehicles, the recent
+in-theatre use of Unmanned Aerial Vehicles (UAVs)\footnote{Such as the US Air
+Force's use of the Predator range of reconnaissance aircraft in Iraq, 
+Afghanistan, and Bosnia 1995-onwards 
+http://www.fas.org/irp/program/collect/predator.htm} has proven the 
+effectiveness and reliability of individual
+autonomous or semi-autonomous ordnance delivery and reconnaissance platforms.
+Meanwhile, the use of AUVs in Oceanographic Surveying has demonstrated the
+viability of semi-autonomous remotely operated vehicles (ROVs) within this 
+harsh environment. 
+	
+This has lead to significant research into applying the technologies proven in
+the skies to the marine environment. One of the primary problems of which is 
+establishing reliable communications between AUV 'nodes' or between an AUV node 
+and a remote operator \cite{Partan2006}.
+
+Research into terrestrial Mobile wireless Ad-hoc Networks (MANETs) has shown 
+that significant communicative power reductions can be made by using
+many nodes together to collaboratively 'pass' messages over short hops, instead
+of investing in high power transmissions over wide areas \cite{Royer1999}.
+Additionally, research into Delay-Tolerant Networking (DTN) introduces the
+ability for nodes to act as repeaters for other spatially and temporally
+separated nodes \cite{Fall2003}.
+
+These multiple fields of research all at least partly rely on the
+trustworthiness of each and every node within the network. I have taken this 
+trust to imply not only 'intention-trust (i.e `Is this node trying to disrupt
+the network by design') but also wellness-trust (i.e `Is this node faulty
+in some way, making it behave in a non-optimal way'). These terms were arrived 
+upon by me as there appears to me no better terminology for the perceived 
+difference.
+
+It is the intention of this project to establish a framework for establishing
+quantitative trust within a spatially and temporally distributed mobile network
+in a marine medium.
+
+% --------------------------------------------------------------
+%:                  REVIEW BODY: Intro, Lit summary, Lit Plan
+% --------------------------------------------------------------
+\chapter{Summary of Reviewed Literature}
+
+See Appendix A for Completed and Planned Reading lists for each of the 
+following sections, and Appendix B for Completed Literature Reviews .
+
+\section{Marine Operational and Communications Considerations}
+
+The Marine environment is a terrible medium in which to have high speed
+communications; RF has too high attenuation to accomplish more than a few metres
+of transmission, Acoustic has the advantage of being carried fairly well in
+terms of distance, but frequency dependant attenuation effects such as delays
+and Doppler Effects render stable high-speed communications difficult, and
+free-space optical/IR links have numerous constraints making them very unstable
+even in advantageous situations \cite{Partan2006} \cite{Chen}
+ \cite{Akyildiz2005}. While the physical reasons for these acoustic effects is
+not explained in the reviewed work, it is justified in other work
+ \cite{Catipovic1990}.
+
+This presents the general compromise between Underwater communications rate,
+stability, and range.
+
+Within a WSN or a network of AUVs, an additional concern is added, especially if
+the security of communications is a factor; the use of a centralised gateway
+node through which communications is coordinated, suggested as a solution to
+some operational situations \cite{Partan2006} \cite{Caiti}, introduces a central
+point of vulnerability to the network as a whole. Given the general defence
+context of this project, and the management framework set out in
+ \cite{Banks2010}, the concept of ``centrality/security versus resource
+constraint'' will be an important aspect to the subsequent research in this
+project.
+
+\section{Threat Modelling}
+At this point, no direct research into threat modelling has been performed, 
+beyond the tangential mentions in the more domain specific literature. 
+
+The kinds of potential attacks discussed and evaluated across the reviewed
+literature ( \cite{Liu2006} \cite{Guo}) include;
+\begin{itemize}
+  \item \textbf{Bad-mouthing:}~where a malicious node provides dishonest
+    recommendations about other nodes
+  \item \textbf{Sybil attack:}~where a malicious node uses multiple 
+    pseudonymous
+    entities to 'take blame' for bad behaviour while maintaining a good
+    reputation with the nodes real identity
+  \item \textbf{Newcomer attack:}~similar to the Sybil attack, where a 
+    malicious
+    node will periodically assume a 'fresh' identity with the network.
+  \item \textbf{Grey-hole attack:}~where a node (or collaborating collection of
+    malicious nodes) selectively drops messages to or from certain (or all)
+    nodes, implicitly reducing the apparent trustworthiness of those attacked
+    nodes, while lowering overall network throughput
+\end{itemize}
+
+\section{Trust and Reputation Management in MANET/DTN}
+
+The major learning points so far have been the theoretical establishment of
+trust \cite{Liu2006}, the practical evaluation of a current TMF (OTMF) 
+contrasted against alternative frameworks (Trust Establishment Framework 
+\cite{Buchegger2002}, and Reputation-Based Frameworks \cite{Marti2000}), 
+showing the importance of both collaborative trust establishment within a local 
+network, and experiential reputation in making a network resilient to malicious 
+or faulty nodes \cite{Li2007a}. The leads to the extension of these 
+single-metric (i.e.  the probability of a successful interaction) trust into a 
+multi-parametric TMF with the application of Grey Whitenisation and clustering 
+to detect not only \emph{if} malicious behaviour is happening, but to classify 
+\emph{what} malicious behaviour is causing interruption. \cite{Guo}.
+
+\section{Types of Trust}
+
+The subjective nature of ``trust'' is evident in the range of different usages. 
+The most common form of trust discussed is that of direct, indirect, and 
+recommendation trust, and takes is root from the network/graph theoretical 
+relationships between the nodes that are assessing, being assessed, and passing 
+on trust.
+
+In \citet{Guo}, such trusts are categorised as;
+\begin{itemize}
+    \item \emph{Direct}: Trust based on historical behaviour of node $B$ w.r.t.
+    node $A$.
+    \item \emph{Indirect}: Trust transited through third-party entities, i.e
+    $E$, $F$ w.r.t. $B$ where neither communicate with $A$
+    \item \emph{Recommendation}: a subjective trust transited through a common
+    entity; i,e Trust($B\rightarrow C$) communicated to $A$ by $C$.
+\end{itemize}
+
+These constructions only comment on the method of acquisition of a subjective 
+trust value from a third party (or in the case of 'Direct', an objective 
+estimate of future trust given observation).
+
+I would add that there is an additional level of trust-classification; that 
+being a causal separation between gains or breaks in trust records due to 
+either intentional, malicious, behaviour, or alternatively, partial or complete 
+failure in a system/sub-system on a node (either side of the trust record) 
+causing what appears to be malicious behaviour. I term these categories 
+'intention-trust' and 'wellness-trust' respectively.
+
+\chapter{Intended Direction of Subsequent Research}
+\section{Direction of Research}
+While catch-up work needs to be done in the area of Threat modelling, it's
+important to start producing something worthwhile in parallel with ongoing
+generalist research. 
+
+I will be undertaking at least one paper submission before
+differentiation\footnote{On the subject of accelerating DSL DSM algorithms;
+following on from my MEng work in that area}.
+
+Additionally, regardless of what specific area of this currently reviewed
+research is focused on, establishing a AUV/Underwater Sensor Network simulation
+framework will be essential. An investigation will be undertaken as to the
+applicability of the NS3 software package. This is discussed further below.
+
+Beyond that, the aim is to study the practical operation of AUV/Marine Sensor
+Networks/Human Operators in an effort to establish reliable physical, MAC, and 
+behavioural level metrics in current distributed marine networks that can be 
+used with existing (and potentially, novel) trust and reputation management 
+frameworks.
+
+\section{Specific Direction}
+A potential future, more esoteric, direction of research, would be to 
+investigate the practical (and ethical/legal) issues surrounding the 
+integration of human operators into multi-parametric trust networks. This 
+raises important questions such as 'If a fleet demonstrably cannot trust a 
+human operator, should it rebel?' etc.  
+
+However, the specific direction I intend to pursue is to investigate the 
+media-level
+metrics that can be used to establish trust(i.e. those characteristics found 
+within the Network, Data link, and Physical OSI Model layers, ranging from 
+Doppler Shift effects on signals, to the path that a conversation takes across 
+the network), and to integrate these metrics,
+through a parallel process of simulation and physical experimentation, into a
+practical DTMF, and to evaluate such a systems performance in both simulation 
+and real-world implementations.
+
+\section{Major Researchers/Trends within the Field}
+While the major researchers and research trends are detailed in Appendices A 
+and B, it is worth highlighting a few particular examples. 
+
+\begin{itemize}
+  \item \textbf{Prof James Kurose}: of the University of Massachusetts, 
+    Amherst, co-author of  ``Computer Networking: A Top Down Approach'', is a 
+    leader in the field of computer networks, more recently focusing on MANETs 
+    and ad-hoc network provisioning, and has covered a wide range of
+    subjects relevant to this project; most usefully, his collaboration with 
+    Partan and Levine \cite{Partan2006}
+  \item \textbf{Prof Andrea Caiti}: of Universita di Pisa, is a leading 
+    researcher in the area of Control Systems for Oceanographic applications, 
+    specifically cooperative behaviours in Underwater Sensor Networks utilising 
+    Acoustic communications \cite{Caiti} \cite{Caitia} \cite{Caiti2011}
+  \item \textbf{Prof K. J. Ray Liu}: of the University of Maryland, is an 
+    expert in the application of information and game-theoretic practices to 
+    communications and networking, having authored eight textbooks in the 
+    field, and authored/co-authored hundreds of papers in the subject.  
+    \cite{Liu2006} \cite{Sun2008}
+  \item \textbf{Kevin Fall Ph.D} is a Principal Engineer at the Intel Research 
+    laboratory in Berkeley, California, USA.  His research interests include 
+    computer networks, operations in remote and difficult environments, 
+    security, and network science. Current work focuses on Delay Tolerant 
+    Networking, building on Vint Cerf's work on IPN. \cite{Fall2003}
+\end{itemize}
+
+\section{Simulation Considerations}
+NS2 is a popular discrete-event network simulator that emerged and was developed
+by the academic community. Its spiritual successor, NS3, has emerged in a
+similar fashion with a brand new core architecture, aimed towards improving APIs for model
+integration, and has been 'operational' since mid-2008.
+
+NS3 is not directly backwards compatible with NS2, but the majority of the most 
+used models have been converted.
+
+Since I have almost-zero experience in the NS2 framework, and the integration
+systems in place for NS3 (C++/Python for both models and simulation scripts), I
+feel that it is worthwhile discarding NS2 as a framework for this project.
+Never-the-less; an investigation will be undertaken to make sure that NS3 can
+handle the task (and I can handle NS3) to implement a basic MANET with
+off-the-shelf marine physical characteristics.
+
+Regardless of simulation platform adopted, it is essential that simulation is 
+verified by physical experimentation on real platforms.
+
+\section{Publication Plans}
+From previous work with Prof Marshall and Dr McKinley, I would put together at
+least one (possibly two) papers for submission on the subjects of: Memoisation
+of Power Spectral Density (PSD) calculations for Level 2 Dynamic Spectrum Management
+(DSM) applications for DSL networks, and possibly a paper on GPU acceleration
+small-matrix solvers. 
+
+Further it is expected that some papers should be produced on the topics of:
+Integration of physical measurements into NS3 simulated environments,
+Performance analysis of different Trust Management Systems, and ideally moving
+towards a standardised protocol for integrating real-world Systems-of-systems
+into a Dynamic Trust Management Framework, although it is not expected that 
+this work will be completed in the first year.
+
+\section{Potential Field Contributions}
+The development of a robust, distributed trust management framework within the 
+domain of AUV-fleet operations would provide the ability for such fleets to 
+operate over much wider ranges of operation, for greatly extended periods of 
+time than previously safe. 
+
+The self-detection and classification of abnormal behaviour within a fleet in
+the proposed distributed manner opens up the potential of a new range of secure
+and self-learning distributed intrusion detection systems, with potential
+applications both in marine and terrestrial contexts; If a general protocol 
+could be generated for this problem, this could be applied to self-driving 
+cars, environmental survey drones, satellite communications arrays,
+Internet Certificate Authority verification, Distributed Computing 
+applications, and many more fields.
+
+\section{Project Schedule}
+\includegraphics[scale=0.9]{projectdefinition/figures/Gannt_tmr.png}
+\subsection{Detail on Selected Tasks}
+\begin{itemize}
+  \item \textbf{2:~Induction with DSTL Stakeholders} took place at DSTL Porton 
+    Down in November, where the details, intentions, and political context of 
+    the UK/FR PhD Programme were further outlaid. It also included 
+    project-centred discussion and scope-clarification with the relevant 
+    stakeholders.
+  \item \textbf{3:~IRISSCON}; took place in Dublin, Ireland, and included in 
+    depth discussion on the business and legal impacts of having data stored 
+    and acted upon in a distributed fashion with third parties.
+  \item \textbf{8:~IET UAV Conference} will take place in London, and will 
+    cover a range of topics, mostly focused on the security and safety of 
+    civilian UAV platforms and their communications, and the integration of 
+    such systems into existing technical and regulatory frameworks
+  \item \textbf{15,16:~Differentiation} will encompass a report on the progress 
+    made during the first year of the project, including a review of relevant 
+    literature, and more tightly specify the direction of continuing research.
+\end{itemize}
+
+
+% --------------------------------------------------------------
+%:                  BACK MATTER: appendices, refs,..
+% --------------------------------------------------------------
+
+% the back matter: appendix and references close the thesis
+\pagebreak
+\appendix
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\addappheadtotoc            % Add appendix header to TOC (From appendix pkg)
+\chapter{Reading Lists}
+\section{Fully Reviewed}
+See Appendix B for full reviews
+\begin{itemize}
+  \item ``A Survey of Practical Issues in Underwater Networks'' - \citet*{Partan2006}
+  \item ``A Delay-Tolerant Network Architecture for Challenged Internets'' - \citet*{Fall2003}
+  \item ``A Trust Management Framework for Detecting Malicious and Selfish
+  Behaviour in Ad-Hoc Wireless Networks using Fuzzy Sets and Grey Theory'' - \citet*{Guo}
+  \item ``Information Theoretic Framework of Trust Modeling and Evaluation for
+  Ad-Hoc Networks'' - \citet*{Liu2006}
+\end{itemize}
+
+\section{Partly Reviewed}
+These are documents that have been read but not written up yet, either due to time constraints or their contents not being applicable\footnote{Such as derivative works or exhibiting ``common knowledge''}.
+\begin{itemize}
+  \item ``Future Trust Management Frameworks for Mobile Ad-Hoc Networks''
+  - \citet*{Li2008}
+  \item ``An Entropy-based Trust Modeling and Evaluation for Wireless Sensor
+  Networks'' - \citet*{Hongjun2008}
+  \item ``A Review of Current Routing Protocols for Ad-Hoc Mobile Wireless 
+  \item ``Classification and Review of Security Schemes in Mobile Computing'' 
+    - \citet*{Kumar2010}
+  \item ``Underwater Acoustic Sensor Networks: Research Challenges''
+  - \citet*{Akyildiz2005}
+  Communications using Acoustic Directional Transducers'' - \citet*{Chen}
+  \item ``An Entropy-based Trust Modeling and Evaluation for Wireless Sensor
+    Networks'' - \citet*{Hongjun2008}
+  \item ``A Framework of Requirements for the Design and Management of 
+    Dependable Network Enabled Capability System of Systems'' 
+    - \citet*{Banks2010}
+\end{itemize}
+
+\section{Planned Reading}
+\subsection{Marine Operational and Communications Considerations}
+
+\begin{itemize}
+  \item ``The Importance of Trust Between Operator and AUV: Crossing the
+  Human/Computer Language Barrier'' - \citet*{Johnson2007}
+  \item ``Cooperative Distributed Behaviours of an AUV Network for Asset
+  Protection with Communication Constraints'' - \citet*{Caiti2011}
+  \item ``Performance Limitations in underwater acoustic telemetry''
+  - \citet*{Catipovic1990}
+  \item ``A Multimedia Cross-Layer Protocol for Underwater Acoustic Sensor
+    Networks''- \citet*{Pompili2010}
+  \item ``Secure Cooperation of Mobile Sensors in an Underwater Acoustic
+  Network'' - \citet*{Caiti}
+  \item ``Slotted FAMA: a MAC protocol for underwater acoustic networks''
+  - \citet*{Molins2006}
+\end{itemize}
+
+Potential Reading: \cite{Johnson2007} \cite{Freitag2004}
+
+\subsection{Threat Modelling}
+
+\begin{itemize}
+  \item ``Denial of Service Attacks in Wireless Networks: The Case of Jammers'' - \citet*{Pelechrinis2011}
+  \item ``Cross-Layer Based Anomaly Detection in Wireless Mesh Networks'' - \citet*{Wang2009}
+  \item ``Evaluation of Intrusion Detection Systems Under a Resource Constraint'' - \citet*{Ryu2008}
+\end{itemize}
+
+\subsection{Trust and Reputation Management in MANET/DTN}
+
+\begin{itemize}
+  \item ``Trust Management in Distributed Systems'' - \citet*{Li2007}
+  \item ``Introduction to Grey System Theory'' - \citet*{Deng1989}
+  \item ``A Game-Theoretic Analysis of Trust Management in P2P Systems'' - \citet*{Tuan2006}
+  \item ``Defense of trust management vulnerabilities in distributed networks'' - \citet*{Sun2008}
+  \item ``A Framework of Requirements for the Design and Management of
+    Dependable  Network Enabled Capability System of Systems'' - \citet*{Banks2010}
+\end{itemize}
+
+Potential Reading: \cite{Banks2010}, \cite{Fung2011}, \cite{Guan2008}, 
+ \cite{Cai2009}
+
+\ifpdf
+  \chapter{Literature Reviews}
+  \include{litreviews/Partan2006_gen}
+  \include{litreviews/Fall2003_gen}
+  \include{litreviews/Guo_gen}
+  \include{litreviews/Caiti_gen}
+  \include{litreviews/liu2006_gen}
+\fi
+
+%: ----------------------- bibliography ------------------------
+
+% The section below defines how references are listed and formatted
+% The default below is 2 columns, small font, complete author names.
+% Entries are also linked back to the page number in the text and to external URL if provided in the BibTex file.
+
+% PhDbiblio-url2 = names small caps, title bold & hyperlinked, link to page 
+\begin{multicols}{2} % \begin{multicols}{ # columns}[ header text][ space]
+\begin{tiny} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+
+\bibliographystyle{plainnat} % calls style file plainnat.bst
+%\bibliographystyle{Latex/Classes/PhDbiblio-url2} % Title is link if provided
+\renewcommand{\bibname}{References} % changes the header; default: Bibliography
+
+\bibliography{library} % adjust this to fit your BibTex file
+
+\end{tiny}
+\end{multicols}
+
+% --------------------------------------------------------------
+% Various bibliography styles exit. Replace above style as desired.
+
+% in-text refs: (1) (1; 2)
+% ref list: alphabetical; author(s) in small caps; initials last name; page(s)
+%\bibliographystyle{Latex/Classes/PhDbiblio-case} % title forced lower case
+%\bibliographystyle{Latex/Classes/PhDbiblio-bold} % title as in bibtex but bold
+%\bibliographystyle{Latex/Classes/PhDbiblio-url} % bold + www link if provided
+
+%\bibliographystyle{Latex/Classes/jmb} % calls style file jmb.bst
+% in-text refs: author (year) without brackets
+% ref list: alphabetical; author(s) in normal font; last name, initials; page(s)
+
+% in-text refs: author (year) without brackets
+% (this works with package natbib)
+
+
+% --------------------------------------------------------------
+
+% according to Dresden med fac summary has to be at the end
+%\include{frontmatter/abstract}
+
+%: Declaration of originality
+%\include{backmatter/declaration}
+
+
+
+\end{document}

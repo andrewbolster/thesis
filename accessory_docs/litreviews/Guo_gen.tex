@@ -1,0 +1,54 @@
+\section{A Trust Management Framework for Detecting Malicious and Selfish Behaviour 
+in Ad-Hoc Wireless Networks using Fuzzy Sets and Grey theory \citet*{Guo}}
+\label{Guo}
+\begin{itemize}
+  \item Provides background on TMF
+  \item References Policy Language, PKC\footnote{Public Key
+  Cryptography}, Resurrecting Duckling Model and Distributed Trust Model
+  \cite{Li2007}
+  \item Raises need for TMF to mitigate selfishness
+  \item Introduces Grey Theory From Deng Julong (Can't find any official
+  citations for this, paper appears to be stuck in  Springerlink)
+  \item Defines three types of trust relationship
+  \begin{itemize}
+    \item \emph{Direct}: Trust based on historical behaviour of node $B$ wrt
+    node $A$.
+    \item \emph{Indirect}: Trust transited through third-party entities, i.e
+    $E$, $F$ wrt $B$ where neither communicate with $A$
+    \item \emph{Recommendation}: a subjective trust transited through a common
+    entity; i,e Trust($B\rightarrow C$) communicated to $A$ by $C$.
+  \end{itemize}
+  \item Highlights some of the potential attacks on TMF and their sources
+  \cite{Sun2008}, \cite{Li2008}.
+  \item Guo proposes a TMF leveraging the curve-fitting
+  analytics of Grey Theory to allow in practical networks, multi-parametric
+  based trust quantities, and to use this data and results to assess the type
+  of selfish behaviour being exhibited by 'bad' nodes.
+  \item Classical TMF only monitor single behaviours: probability of successful
+  interactions (Bit Error Rate/Packet Loss Rate).
+  The TMF suggested by Guo incorporates signal strength, data-rate and other
+  physical factors in addition to PLR.
+  \item The application of Grey Whitenisation and clustering allows for
+  quantifiable Trustworthiness classification, i.e taking the multi-parametric
+  measurements of behaviour and condensing this to a per-node wrt calculating
+  node trust assessment.
+  \item Includes worked simulation examples of a 6 node network
+\end{itemize}
+
+\subsection{Questions Raised}
+\begin{itemize}
+  \item Stated definitions of Direct, Indirect, and Recommendation trust do not
+  suitably distinguish between Indirect/Recommendation. Hopefully after finding
+  a copy of Julong this is be made clearer.
+  \item Grey Theory seems mathematically intuitive but the fundamental question
+    is the selection of \emph{distinguishing coefficient} values \cite{Cai2009}, and
+  whether these values can be collaboratively 'learned' over time, almost like familial
+  and social trust.
+  \item Additionally, the derivation of Whitinisation functions is not at all
+  clear.
+  \item Generally: What is the implication for using this style of trust
+  assessment against human operators, remotely or in physical nodes (eg
+  mother-ships)? Will lapses in judgement be detrimentally held against an
+  operator? Can a TMF as suggested be modified to accept human frailties (and
+  should it!)?
+\end{itemize}

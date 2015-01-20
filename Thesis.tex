@@ -5,11 +5,6 @@
 % Set up the document
 \documentclass[a4paper, 11pt, twoside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
 
-% Set up the Title Page
-\input{./Chapters/title}
-
-
-
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
 \usepackage{verbatim,listings}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{array}  % Needed for the "comment" environment to make LaTeX comments
@@ -117,17 +112,19 @@
 \pagestyle{fancy}  % Return the page headers back to the "fancy" style
 
 
-\input{./Chapters/chapter1} % Introduction
+\input{./Chapters/c1-introduction} % Introduction
 
-\input{./Chapters/chapter2} 
+\input{./Chapters/c2-trust_background} % Background on Trust and its Applications to MANETs
 
-\input{./Chapters/chapter3} 
+\input{./Chapters/c3-maritime-background} % Background on Maritime Uses of Autonomous Systems and the Maritime Communications Environment
 
-\input{./Chapters/chapter4} 
+\input{./Chapters/c4-trust_in_defence} % Trust in Autonomous Systems of Systems for Maritime Defence Applications
 
-\input{./Chapters/chapter5} 
+\input{./Chapters/c5-multi_domain_trust_strategies} % Strategies for Multi-Domain Trust Assessment
 
-\input{./Chapters/chapter6} 
+\input{./Chapters/c6-physical_metrics} % Modelling and Analysis of Collaborative Node Kinematic Behaviuors in Underwater Acoustic MANETs
+
+\input{./Chapters/c7-multi_domain_trust_analysis} % Comparative Analysis of Multi-Comain Trust Assessment in Collaborative Module Networks
 
 
 

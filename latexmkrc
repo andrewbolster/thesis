@@ -2,7 +2,7 @@ $recorder = 1;
 $pdf_mode = 1;
 $bibtex_use = 2;
 $pdflatex = "pdflatex --shell-escape %O %S";
-$pdf_previewer = "start open -a preview %O %S";
+$pdf_previewer = "evince %O %S";
 
 add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
 add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');

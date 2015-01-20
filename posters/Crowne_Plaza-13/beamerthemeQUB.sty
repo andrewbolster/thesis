@@ -1,0 +1,188 @@
+\ProvidesPackage{beamerthemeQUB}  % this style was created by Thomas Deselaers an Philippe Dreuw
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectcolormodel{cmyk}
+\mode<presentation>
+
+\definecolor{qub-red}{cmyk}{.16,1.00,.87,.06}
+\definecolor{qub-brown}{cmyk}{.27,.56,.62,.07}
+
+\definecolor{qub-brand-blue}{cmyk}{.70,.02,.05,.0}
+
+\definecolor{qub-yellow}{cmyk}{0,.16,1.00,0}
+\definecolor{qub-gold}{cmyk}{0,.28,1.00,.18}
+\definecolor{qub-orange}{cmyk}{0,.53,1.00,.02}
+
+\definecolor{qub-fuscia}{cmyk}{0,1.00,.38,.03}
+\definecolor{qub-pink}{cmyk}{.15,.80,.27,0}
+\definecolor{qub-purple}{cmyk}{.37,1.00,.52,.32}
+
+\definecolor{qub-indigo}{cmyk}{.57,.45,0,0}
+\definecolor{qub-cadet-blue}{cmyk}{.60,.40,.04,0}
+\definecolor{qub-violet}{cmyk}{.98,1.00,0,0}
+
+\definecolor{qub-emerald}{cmyk}{1.00,0,.31,.07}
+\definecolor{qub-cornflower-blue}{cmyk}{.57,0,.06,.13}
+\definecolor{qub-midnight-blue}{cmyk}{1.00,.05,0,.47}
+
+\definecolor{qub-sky-blue}{cmyk}{.49,.11,0,0}
+\definecolor{qub-blue}{cmyk}{.92,.59,.5,0}
+\definecolor{qub-blue-violet}{cmyk}{1.00,.89,.34,.25}
+
+\definecolor{qub-lime-green}{cmyk}{.29,0,.99,0}
+\definecolor{qub-yellow-green}{cmyk}{.45,0,.80,.35}
+\definecolor{qub-olive-green}{cmyk}{1.00,0,.48,.60}
+
+\definecolor{qub-steel}{cmyk}{.10,0,.03,.16}
+\definecolor{qub-gray}{cmyk}{.09,0,.13,.30}
+\definecolor{qub-black}{cmyk}{1.00,.35,0,1.00}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{headline}{fg=qub-red,bg=qub-red}
+\setbeamercolor{footline}{fg=white, bg=qub-red}
+\setbeamerfont{footline}{size=\large,series=\tt}
+\setbeamercolor{separation line}{bg=qub-brown}
+\setbeamercolor{title in headline}{fg=white}
+\setbeamercolor{author in headline}{fg=white}
+\setbeamercolor{institute in headline}{fg=white}
+
+\setbeamercolor{framesubtitle}{fg=qub-steel, bg=qub-violet}
+\setbeamercolor{upper separation line foot}{fg=qub-red}
+\setbeamercolor{author in head/foot}{fg=qub-steel, bg=qub-red}
+\setbeamercolor{title in head/foot}{fg=qub-steel, bg=qub-red}
+\setbeamercolor{upper separation line foot}{fg=qub-red}
+
+
+\setbeamercolor*{normal text}{fg=qub-red, bg=qub-brown}
+\setbeamercolor*{block body}{fg=qub-violet, bg=white}
+\setbeamercolor*{block title}{fg=white,bg=qub-brown}
+\setbeamerfont{block title}{size=\huge,series=\bf}
+\setbeamercolor{upper separation line head}{fg=qub-olive-green}
+
+\setbeamercolor*{example body}{fg=qub-steel,bg=qub-brown}
+\setbeamercolor*{example text}{fg=qub-steel,bg=qub-brown}
+\setbeamercolor*{example title}{bg=white,fg=qub-gray}
+
+%\setbeamercolor{alerted text}{fg=ta3gray}
+
+%\setbeamercolor{example text}{fg=white}
+\setbeamercolor{structure}{fg=qub-violet}
+
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block begin}{
+  \vskip.75ex
+  \begin{beamercolorbox}[ht=3.5ex,dp=0.5ex,center,leftskip=-1em,colsep*=.75ex]{block title}%
+    \usebeamerfont*{block title}%
+    {\phantom{Gg}\scshape\insertblocktitle}% phantom because of baseline problem
+  \end{beamercolorbox}%
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[leftskip=1em,colsep*=.75ex,sep=0.5ex,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+  }
+  \setbeamertemplate{block end}{
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{  
+  \leavevmode
+
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.02\paperwidth}
+          \includegraphics[width=3\linewidth]{../../figures/logo_QUB_V_w}
+      \end{column}
+      \begin{column}{.6\paperwidth}
+        \vskip11ex
+        \raggedleft
+        \usebeamercolor{title in headline}{\color{fg}\textsc{\LARGE{\inserttitle}}\\[1ex]}
+        \usebeamercolor{institute in headline}{\color{fg}\textsc{\large{\insertinstitute}}\\[1ex]}     
+        \usebeamercolor{author in headline}{\color{fg}\textsc{\huge{\insertauthor}}\\[1ex]}
+      \end{column}
+      \begin{column}{.3\paperwidth}
+        \vskip8ex
+        \begin{minipage}{\linewidth}
+          \centering
+          \hspace*{4ex}
+          \raisebox{-0.5\height}{\includegraphics[width=.4\linewidth]{../../figures/logo_ECIT}}
+          \hspace*{4ex}
+          \raisebox{-0.5\height}{\includegraphics[width=.3\linewidth]{../../figures/logo_DSTL}}
+          \hspace*{4ex}
+          \raisebox{-0.5\height}{\includegraphics[width=.15\linewidth]{../../figures/logo_DGA_trimmed}}
+        \end{minipage}
+      \end{column}
+      \begin{column}{.01\paperwidth}
+      \end{column}
+    \end{columns}
+    \vskip2ex
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+}
+
+%  \setbeamertemplate{headline}{  
+%    \leavevmode
+%    \begin{beamercolorbox}[sep=0.5cm,wd=.8\paperwidth]{headline}
+%      \usebeamercolor{title in headline}{\raggedleft\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
+%      \usebeamercolor{author in headline}{\raggedleft\color{fg}\large{\insertauthor}\\[1ex]}
+%      \usebeamercolor{institute in headline}{\raggedleft\color{fg}\large{\insertinstitute}\\[1ex]}     
+%    \end{beamercolorbox}%
+%    \begin{beamercolorbox}[wd=.2\paperwidth]{logo in headline}
+%      \centering
+%      \LARGE{LOGO}
+%    \end{beamercolorbox}  
+
+
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+  
+  \leavevmode%
+  \begin{beamercolorbox}[ht=4ex,leftskip=1em,rightskip=1em]{author in head/foot}%
+    \texttt{http://www.ecit.qub.ac.uk/Research/DigitalCommunications/}
+    \hfill
+    \emph{A UK/Fr Joint Project funded by DSTL/DGA with assistance from QUB, CMRE, and UPMC}
+    \hfill
+    \texttt{<abolster01/a.marshall>@qub.ac.uk}
+    \vskip1ex
+  \end{beamercolorbox}
+  \vskip0pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a grid to help align images ... and it looks nice with this color scheme
+%\beamertemplategridbackground[1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<all>
+
+% adapt height of imtemize rectangles
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{itemize item}{\raisebox{0.12ex}{$\blacktriangleright$}\hskip0.1em}
+\setbeamertemplate{itemize subitem}{\raisebox{0.12ex}{$\triangleright$}\hskip0.1em}
+% or define your own template using \defbeamertemplate{itemize item}, see beameruserguide.pdf
+
+% equal font sizes for all levels
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-master: "poster-surf"
+%%% End: 

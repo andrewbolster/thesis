@@ -1,0 +1,249 @@
+
+
+% ----------------------------------------------------------------------
+%                   LATEX TEMPLATE FOR PhD THESIS
+% ----------------------------------------------------------------------
+
+% based on Harish Bhanderi's PhD/MPhil template, then Uni Cambridge
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/ThesisStyle/
+% corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme
+% and made available through OpenWetWare.org - the free biology wiki
+
+%: Style file for Latex
+% Most style definitions are in the external file PhDthesisPSnPDF.
+% In this template package, it can be found in ./Latex/Classes/
+\documentclass[oneside,11pt,a4paper]{Latex/Classes/PhDthesisPSnPDF}
+
+%: Macro file for Latex
+% Macros help you summarise frequently repeated Latex commands.
+% Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
+% An macro that you may use frequently is the figuremacro (see introduction.tex)
+\include{Latex/Macros/MacroFile1}
+
+
+%: ----------------------------------------------------------------------
+%:                  TITLE PAGE: name, degree,..
+% ----------------------------------------------------------------------
+% below is to generate the title page with crest and author name
+
+%if output to PDF then put the following in PDF header
+\ifpdf  
+    \pdfinfo { /Title  (An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles)
+               /Creator (TeX)
+               /Producer (pdfTeX)
+               /Author (Andrew Bolster abolster01@qub.ac.uk)
+               /CreationDate (D:YYYYMMDDhhmmss)  %format D:YYYYMMDDhhmmss
+               /ModDate (D:YYYYMMDDhhmm)
+               /Subject (xyz)
+               /Keywords (add, your, keywords, here) }
+    \pdfcatalog { /PageMode (/UseOutlines)
+                  /OpenAction (fitbh)  }
+\fi
+
+
+\title{An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles}
+
+
+
+% ----------------------------------------------------------------------
+% The section below defines www links/email for author and institutions
+% They will appear on the title page of the PDF and can be clicked
+\ifpdf
+  \author{\href{mailto:me@andrewbolster.info}{Andrew Bolster}}
+%  \cityofbirth{born in XYZ} % uncomment this if your university requires this
+%  % If city of birth is required, also uncomment 2 sections in PhDthesisPSnPDF
+%  % Just search for the "city" and you'll find them.
+  \collegeordept{\href{http://www.ecit.qub.ac.uk}{Institute of Electronics, Communications and Information Technology (ECIT)}}
+  \university{\href{http://www.qub.ac.uk}{Queen's University Belfast (QUB)}}
+
+  % The crest is a graphics file of the logo of your research institution.
+  % Place it in ./frontmatter/figures and specify the width
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest.png}}
+  
+% If you are not creating a PDF then use the following. The default is PDF.
+\else
+  \author{Andrew Bolster}
+%  \cityofbirth{born in XYZ}
+  \collegeordept{Institute of Electronics, Communications and Information Technology (ECIT)}
+  \university{Queen's University Belfast (QUB)}
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest.png}}
+\fi
+%\renewcommand{\submittedtext}{change the default text here if needed}
+\degree{Initial Speech to ECIT/RS on research progress}
+\degreedate{2011 November}
+
+
+% ----------------------------------------------------------------------
+       
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+%: --------------------------------------------------------------
+%:                  FRONT MATTER: dedications, abstract,..
+% --------------------------------------------------------------
+
+\begin{document}
+\maketitle  % command to print the title page with above variables
+\begin{doublespace}
+\section{Document Preamble}
+This document is intended to be verbally presented, as such its tone is
+informal.
+Subsection headings and \textbf{emboldened} are not intended to be spoken and
+indicate slide transitions.
+\section{Introduction}
+\subsection{Title Slide} 
+Good afternoon ladies and gentlemen, its an honour to be
+invited to present our project here, and I hope you find it both intriguing and
+enjoyable.
+
+\section{AUVs}
+\subsection{AUV Definition}
+The general area of research selected is the
+commercial, defence, and environmental use of groups of
+Autonomous Underwater Vehicles, described as fleets. In this context, these 
+groups could be numbered in the maximum of 10 or 12 individuals, acting more as 
+a team than a 'swarm'.
+
+\subsection{Predators} After over 20 years of exploratory research into 
+Unmanned Vehicles on, above, and below sea level, the recent use of Unmanned 
+Aerial Vehicles such as the USAF's Predator range, has proven the effectiveness 
+of autonomous or semi-autonomous ordnance delivery and reconnaissance 
+platforms, and this success has opened the field of research to a wider range
+of applications.
+
+\subsubsection{Predators + AUV}  One area of particular interest to the research
+community has been the transfer of ideas and technologies proven in the skies to
+the marine environment.
+
+\subsection{AUV Examples}  Bringing these type of technologies into the Naval
+space has led to applications such minefield detection and monitoring, submarine tracking,
+long range reconnaissance, deep-sea surveying, and much more. 
+
+\subsection{La Spezia} Earlier this year,
+successful trials were performed by NATO Underwater Research Centre at La Spezia
+in Northern Italy investigating the collective performance of AUV's in port-protection in a
+counter-terrorism operational context.
+
+\subsubsection{(Blank)} The major focus of academic research into autonomous
+robotic collectives in marine environments has been the development of
+individual and pre-defined group behaviour patterns within a fleet and how
+those individuals and teams communicate. However, the project introduced here
+addresses an important and emerging area; the incorporation of communications
+'trust' to improve the operational effectiveness and reliability of such fleets.
+
+\section{Trust and Reputation Management}
+\subsection{Trust}  The question of trust is an important one; in this case it 
+is a numerical assessment of the expected behaviour of a network node, an AUV 
+in this case.
+
+\subsubsection{Fleet Network}  Taking and example where a fleet of AUVs operate 
+autonomously over an extended period, independently from any 'mother-ship'.
+This fleet may need to occasionally communicate with friendly ships or relay 
+bouy's to return data for analysis or simply to notify remote operators of
+their status.  This raises the question of ``How do we assess the 
+trustworthiness of these unknown entities such as the relay bouys or 'friendly' 
+ships.
+
+\subsection{Internal Network}
+Additionally, the fleet will have significant internal communications between
+individual AUVs, but in the marine environment, the energy cost of 
+communication is high. Additionally, nodes may not always be within range of 
+each other, so end-to-end communication can be impossible.
+
+\subsubsection{Summary} If individuals can collaboratively predict
+the probability that a given node will 'succeed or fail' in a given task, be that relaying a message
+or providing useful data, this makes the total network much more robust and
+secure. This collaborative behaviour requirement leads to the two basic trust
+mechanisms; direct and indirect recommendations. 
+
+\subsection{Example}
+Direct trust comes from observation of one node by another, and indirect trust 
+comes from a third entity, known to both.
+
+These different trust assessments can also be propagated along
+multiple chains of trust. These can be collected to generate trustworthiness
+values across the local network.
+
+\subsection{Summary Again}
+This raises some important questions;
+how does node, say node A, assess the trust of another entity, node B, that it 
+hasn't inteacted with before?  What about if it receives a trust recommendation 
+for node B from a node, node X, that it doesn't have any experience of? Given 
+the multiple physical mediums used for communications, and their generally poor 
+quality, how can you tell the difference between actual bad behaviour, and a 
+poor communications channel?
+
+\subsubsection{Loner}  Further, due to the extended mission times of such
+fleets, and their planned isolation, they necessarily become vulnerable to 
+attacks to compromise their mission.  This raises the question of reliably 
+maintaining secure audit records, and returns us to the biggest question of 
+assuring the identity of the members and associates of a fleet in a distributed 
+fashion so that there is no single point of weakness.
+
+\subsubsection{Healthy fleet}  Authentication should be
+fairly simple; keep a record of some identifying factor, like an encryption 
+key, and don't talk to anyone else. But in a practical sense, number and types 
+of nodes in the fleet can change over time; with broken units 'dropping off' 
+\textbf{(Dead Battery)-(fleet 4)} and fresh or specialised units being rolled 
+out in-theatre \textbf{(fleet 6)} to join a particular fleet.
+
+\subsubsection{Evil fleet}  This leaves them vulnerable to Evil twin style 
+attacks.
+
+\subsection{Blank}
+It is these challenges that are the basis of our proposed research. To
+date there has been little or no vulnerability analysis of fleets of AUVs.
+
+\subsection{MANETS}  The threats experienced in AUV fleets are similar to those 
+experiences by mobile ad-hoc networks, usually abbreviated as MANETs. A key 
+initial area will be to investigate existing MANET threat models and attempt to 
+adapt them for AUV operations. 
+
+\subsubsection{Network Again} Assuming that existing trust structures in MANETs
+could be applied to AUV operations, the metrics used to classify trust would 
+have to be completly re-evaluated due to the unique communications environment.  
+Normally, the types of metrics assessed involve packet loss rates, packet 
+delay, and communications throughput, but additional physical layer metrics 
+such as Received Signal Strength,and more behavioural metrics such as expected 
+distance and deviations from expected motion paths, are being investigated to 
+complement these MAC layer metrics.
+
+The significant objects of work can be summarised as: 
+\begin{itemize}
+	\item\textbf{(DC1)}  1. An assessment of vulnerabilities to a fleet of AUVs
+	during typical operations with an aim to develop a suitable threat model
+	\item\textbf{(DC2)}  2. Identification of marine-specific metrics 
+  suitable to discriminate between legitimate and suspicious AUV behaviour.
+	\item\textbf{(DC3)}  3. Development of a distributed trust management framework
+	incorporating reputation analysis schemes throughout a fleet of AUVs
+	\item\textbf{(DC4)}  4. And finally to explore and assess the feasibility of
+	the framework for use across a range of operational tasks with an aim to integrate
+  into existing defence frameworks such as the MOD Architecture Framework aka	
+  MODAF or the French AGATE
+\end{itemize}
+
+\subsection{Pools}  While the majority of the work is expected to be
+theoretical development and simulation of threat models, the facilities afforded
+by my co-supervisor, Professor Fontaine's robotics group (CRIIF, Centre de
+Robotique Integree d'ile de France) at UPMC (Universite Pierre et Marie Curie)
+in France, and his access to NURC in La Spezia will provide access to real AUV 
+systems for testing.
+
+\subsubsection{Defence Feedback}  In terms of outcomes of this research; this
+work would allow AUVs to operate over a much wider
+range of operations for much longer periods of time, in a much more secure and
+reliable state.
+
+The self-detection and classification of abnormal behaviour within a fleet in
+the proposed distributed manner opens up the potential of a new range of secure
+and self-learning distributed intrusion detection systems, with potential
+applications both below and above the seas. If a general protocol could be
+generated for this problem, this could be applied to self-driving cars,
+environmental survey drones, satellite communications arrays,
+internet Certificate Authority verification, and many more fields. But that
+might have to be someone elses project to finish!
+
+\section{Cheers}  Thank you for your time, and I'd be happy to answer any questions
+you might have.\end{doublespace}
+\end{document}

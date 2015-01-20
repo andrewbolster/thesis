@@ -1,0 +1,289 @@
+
+
+% ----------------------------------------------------------------------
+%                   LATEX TEMPLATE FOR PhD THESIS
+% ----------------------------------------------------------------------
+
+% based on Harish Bhanderi's PhD/MPhil template, then Uni Cambridge
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/ThesisStyle/
+% corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme
+% and made available through OpenWetWare.org - the free biology wiki
+
+%: Style file for Latex
+% Most style definitions are in the external file PhDthesisPSnPDF.
+% In this template package, it can be found in ./Latex/Classes/
+\documentclass[oneside,9pt,a4paper]{Latex/Classes/PhDthesisPSnPDF}
+
+%: Macro file for Latex
+% Macros help you summarise frequently repeated Latex commands.
+% Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
+% An macro that you may use frequently is the figuremacro (see introduction.tex)
+\include{Latex/Macros/MacroFile1}
+
+
+
+%: ----------------------------------------------------------------------
+%:                  TITLE PAGE: name, degree,..
+% ----------------------------------------------------------------------
+% below is to generate the title page with crest and author name
+
+%if output to PDF then put the following in PDF header
+\ifpdf  
+    \pdfinfo { /Title  (An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles)
+               /Creator (TeX)
+               /Producer (pdfTeX)
+               /Author (Andrew Bolster abolster01@qub.ac.uk)
+               /CreationDate (D:YYYYMMDDhhmmss)  %format D:YYYYMMDDhhmmss
+               /ModDate (D:YYYYMMDDhhmm)
+               /Subject (xyz)
+               /Keywords (add, your, keywords, here) }
+    \pdfcatalog { /PageMode (/UseOutlines)
+                  /OpenAction (fitbh)  }
+\fi
+
+
+\title{An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles}
+
+
+
+% ----------------------------------------------------------------------
+% The section below defines www links/email for author and institutions
+% They will appear on the title page of the PDF and can be clicked
+\ifpdf
+  \author{\href{mailto:me@andrewbolster.info}{Andrew Bolster}}
+%  \cityofbirth{born in XYZ} % uncomment this if your university requires this
+%  % If city of birth is required, also uncomment 2 sections in PhDthesisPSnPDF
+%  % Just search for the "city" and you'll find them.
+  \collegeordept{\href{http://www.ecit.qub.ac.uk}{Institute of Electronics, Communications and Information Technology (ECIT)}}
+  \university{\href{http://www.qub.ac.uk}{Queen's University Belfast (QUB)}}
+
+  % The crest is a graphics file of the logo of your research institution.
+  % Place it in ./frontmatter/figures and specify the width
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest.png}}
+  
+% If you are not creating a PDF then use the following. The default is PDF.
+\else
+  \author{Andrew Bolster}
+%  \cityofbirth{born in XYZ}
+  \collegeordept{Institute of Electronics, Communications and Information Technology (ECIT)}
+  \university{Queen's University Belfast (QUB)}
+  \crest{\includegraphics[width=4cm]{frontmatter/figures/crest.png}}
+\fi
+%\renewcommand{\submittedtext}{change the default text here if needed}
+\degree{Initial Speech to DSTL/DGA proposing research}
+\degreedate{2011 June}
+
+
+% ----------------------------------------------------------------------
+       
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+%: --------------------------------------------------------------
+%:                  FRONT MATTER: dedications, abstract,..
+% --------------------------------------------------------------
+
+\begin{document}
+\maketitle  % command to print the title page with above variables
+\section{Introduction}
+\subsection{Title Slide} 
+Good afternoon ladies and gentlemen, its an honour to be
+invited to present our proposal here, and I hope you find it both intriguing and
+enjoyable.
+
+\section{AUVs}
+\subsection{AUV Definition}
+The general area of research selected is the
+commercial, defence, and environmental use of independent groups of Autonomous Underwater
+Vehicles, hereafter described as fleets.
+
+\subsection{Predators} After over 20 years of theoretical and exploratory
+research into Unmanned Vehicles on, above, and below sea level, the recent  in theatre use of
+UAVs such as the USAF's Predator range, has proven the effectiveness of
+autonomous or semi-autonomous delivery and reconnaissance platforms, and this
+success has opened the field of research to a much wider range of possibilities.
+
+\subsection{Predators + AUV}  One area of particular interest to the research community
+has been the movement of ideas and technologies proven in the skies to the
+marine environment.
+
+\subsection{UAV Examples}  Of particular interest to the research community has research
+into swarming behaviours of small reconnaissance drones, analogous to flocks of
+birds; human-guided operation, where by a remotely operated drone is flanked by
+a team of automated drones; and the use of task 'checkpointing' where by
+automated drones perform a particular task or series of tasks, and then notify a
+remote operator to take over manual control for specific roles.
+
+\subsection{AUV Examples}  Bringing these type of technologies into the Naval space has
+led to applications such minefield detection and monitoring, submarine tracking,
+long range reconnaissance, deep-sea surveying, and much more. Earlier this year,
+successful trials were performed by NURC at La Spezia in Northern Italy
+investigating the collective performance of AUV's in a port-protection in a
+counter-terrorism operational context.
+
+The major foci of academic research into the use of autonomous robotics in a
+marine environment have been the development of individual and collaborative
+behaviour patterns within a fleet. However, the research proposed here addresses
+an important and emerging area; the incorporation of 'trust' to improve the
+operational effectiveness and reliability of such fleets.
+
+\section{Trust and Reputation Management}
+\subsection{Trust}  The question of trust is an important one; it is the quantitative
+assessment of the expected behaviour of a network node, in this case an
+individual AUV. This internal trust is generally robust and indeed secured the
+node network further where by each node is sharing trust information about the
+other nodes. This leads to the two basic trust mechanisms; direct and indirect
+recommendations. For instance, Nicola, you can communicate directly with (Person
+B), and (Person B) can communicate directly with (Person C), and as such, A can
+establish a direct trust record of B, and B of C. If Nicola wants to query B as
+to the trustworthiness of C, B can respond with a normalised trustworthiness of
+C. This is an indirect trust recommendation. Further, implied reputation can be
+garnered by association, so for instance I know Nicola you went to Strathclyde,
+and I have friends at Strathclyde who tell me its brilliant, I can therefore
+imply some reputation from that. In the reverse, you may have knowledge of
+Queen's, or of Professors Marshall or Fontaine, and by my association with them
+that may imply some qualatative reputatation of me.
+
+This raises an important question; how does one assess the trust of a
+fleet-foreign entity of which no fleet-member has experience of?
+
+\subsection{fleet Network 1}  Taking the example of independent task-oriented operation,
+whereby fleets of AUVs operate autonomously over extended periods, independently
+from any persistent 'mother-ship', this fleet may need to occasionally
+communicate with friendly ships or relay bouy's to return data for analysis or
+simply to notify task-commanders to their status. This raises the point just
+stated of how do we assess the trustworthiness of these extra-fleet entities
+such as the relay bouys or 'friendly' ships.
+
+Additionally, the fleet will have significant internal communications between
+individual AUVs. In the case of above-sea-level UAV communication systems, this
+would simply be over free-space radio, but the marine environment creates
+significant challenges to even localised communications, due to factors such as
+low channel bandwidth, scattering, and long propagation delays.
+
+As such, multiple technologies must be applied to enable underwater
+communications, including free-space optical and acoustic transmission systems,
+while radio is reserved for surface applications. These conditions make it very
+difficult to assess the real trustworthiness of an entity when it is unclear if
+its abnormal behaviour is due to these effects, or due to actual bad behaviour.
+
+\subsection{Loner}  Further, due to the extended mission times of such fleets, and their
+planned isolation from classical command and control structures, they
+necessarily become vulnerable to attacks to subvert their objective; or to
+obtain or otherwise compromise the information they intend to report.
+
+\subsection{Healthy fleet 5}  Additionally, the size of the fleet can be variable over
+time; with defective or otherwise incapacitated units 'dropping off' (Dead
+Battery)-(fleet 4) and fresh or specialised units being rolled out in-theatre
+(fleet 6) to join a particular fleet. This presents two major vulnerabilities;
+enemy emulation of a friendly mother-ship, or of a fleet individual.
+
+\subsection{Evil fleet}  These factors taken together present two key challenges for a
+fleet; the ability to assess trust of a 'friendly' vessel, and to collectively
+detect potentially abnormal behaviour of a fleet-member.
+
+It is these challenges that are the driving force of the proposed research. To
+date there has been little or no vulnerability analysis of fleets of AUVs. This
+proposal will initially seek to identify a range of threat models for fleets of
+autonomous AUVs; representative of real-mission events, for instance; passive
+eave's-dropping of communications; fleet infiltration using cloned AUVs or
+surface vessels; or partial fleet destruction to compromise mission
+capabilities.
+
+\subsection{MANETS}  These threats have similarities to those experiences by wireless
+mobile ad-hoc and peer-to-peer networks, usually summarised as MANETs. Therefore
+a key initial area will be to investigate the applicability of existing research
+in those areas to the stated problem context. This would include research into
+existing modelling techniques as well as any protocols and behaviours used to
+counter these threats in the MANET space.
+
+Any discussion of trust within this context leads to the need for a distributed
+trust and reputation management framework, using past experience to gauge the
+expected behaviour of a node in a distributed network. Most of these systems,
+such as Objective Trust Management Framework or OTMF, \subsection{OTMF Def}  use only
+one physical or protocol measurement to make these trustworthiness decisions,
+but recent work has applied multi-parametric classification techniques such as
+Grey Theory \subsection{Grey Def}  to not only detect abnormal behaviour but also to
+classify what type of attack is being attempted.
+
+\subsection{Network Again}  Due to the previously stated marine effects on transmission,
+even assuming that existing trust structures could be deemed applicable to AUV
+operations, the metric-sets applied would have to be completely re-approached to
+take account of the unique communications environment
+
+A plan of work will be developed, including close feedback structures with
+DSTL/DGA, that will involve analysis of the threats and vulnerabilities to such
+fleets, followed by the development of suitable metric-sets and a trust
+framework for a fleet.
+
+\subsection{Pools}  While the majority of the work will be theoretical development and
+simulation of threat models, the facilities afforded by Professor Fontaine's
+CIIRF group at UPMC in France will provide access to real AUV systems. This
+experience is essential to determining real-world performance of different
+metric-sets, and to evaluate the practicality of such schemes.
+
+The significant objects of work can be summarised as:\subsection{DC1}  1. An assessment
+of vulnerabilities to a fleet of AUVs during typical operations with an aim to
+develop a suitable threat model \subsection{DC2}  2. Identification of metrics and
+authentication schemes suitable to discriminate between legitimate and
+suspicious AUV behaviour.\subsection{DC3}  3. Development of a distributed trust
+management framework incorporating reputation analysis schemes throughout a
+fleet of AUVs \subsection{DC4}  4. And finally to explore and assess the feasibility of
+the framework for use across a range of operational tasks with an aim to
+integrate into existing frameworks such as MODAF/AGATE.
+
+
+\section{Project Structure}  
+\subsection{Team}
+Both supervisors have extensive experience in defence
+research, including naval research, and within this research area, have complementary
+experience; Professor Marshall has been involved in the assessment, development
+and implementation of reliable and secure wireless networks for over 12 years,
+and Professor Fontaine is an established expert in the field of AUVs, including
+involvement with a number of NATO initiatives in this area, and has ties to
+research organisations such as the NATO Undersea Research Centre that can
+provide essential practical resources to this project.
+
+Both supervisors have extensive experience in the management of PhD students,
+both independently and within industry and other organisations, and through
+regular communication and progress updates between myself and these supervisors,
+I am confident that should any problems arise, corrective action can and will be
+suggested by them.
+
+\subsection{Project Monitoring}  Beyond the internal monitoring of project development,
+it is felt that it is essential to ensure that DSTL and DGA are involved in the
+ongoing progress. This is projected to take the form of annual or semi-annual
+progress reports, detailing not only the progress made, but whether this
+progress is in line with development objectives, and to ensure that the findings
+and direction of research is in line with expected stakeholder goals.
+
+Considering the potential exploitation of the project, both supervisors have
+experience in defence sponsored research and are aware of the relevant issues.
+Additionally both have extensive track records in international publication.
+Further, their associated institutions are already very well acquainted with
+commercialising research. For example, Prof Marshall has founded a successful
+wireless network security start-up which was spun-out from Queen's University.
+Queen's was also named the UK Entrepreneur University of the year for 2009.
+Professor Fontaine's involvement with NATO will also lead to further development
+of the resultant techniques and findings from this research, potentially leading
+to project-input to the forthcoming FP8 EU research call.
+
+\subsection{Defence Context}  The interest to defence for this project is clear; within
+DSTL's already stated  areas of strategic importance, this research falls into
+at least four areas; namely Certification of Autonomous Systems; Shallow Oceanic
+Zone and Coastal Environment; Security and Vulnerability; aswell as Human
+Operator Control of Unmanned Vehicles.
+
+\subsection{Defence Feedback}  If successful, this work would provide the ability for a
+fleet of AUVs to operate over a much wider range of operations for much longer
+periods of time, in a much more secure and reliable state.
+
+The self-detection and classification of abnormal behaviour within a fleet in
+the proposed distributed manner opens up the potential of a new range of secure
+and self-learning distributed systems, with potential applications both below
+and above the seas.
+
+\section{Cheers}  Thank you for your time, and I'd be happy to answer any questions
+you might have.
+\end{document}

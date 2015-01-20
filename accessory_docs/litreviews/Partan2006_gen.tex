@@ -1,0 +1,53 @@
+\section{A Survey of Practical Issues in Underwater Networks
+ \citet*{Partan2006}}
+\label{Partan2006_gen}
+\begin{itemize}
+  \item Predominantly Medium Access Control (MAC) considerations of marine
+  networks, technological, and economical.
+  \item Classifies (marine) networks into 4 (or 5, counting null network)
+  regimens; 
+  \begin{itemize}
+    \item Null Networks (Nodes too distant and immobile for communication)
+    \item Disruption Tolerant Networks (DTN, sparse but sufficiently
+    mobile networks)
+    \item Unpartitioned, multi-hop networks (overlapping chains of TDMA/CDMA 
+    clusters with MACA or S-FAMA \cite{Molins2006})
+    \item Single-Hop TDMA networks (fully connected network coverage, with
+    limited contention)
+    \item Dense Single-Hop Network (ok for CSMA, not much else, bandwidth
+    contention)
+  \end{itemize}
+  \item Summarises marine channel characterise, generally summed up as 'bad'
+  \begin{itemize}
+    \item \textbf{Acoustic}: Experiences Propagation Delays and
+    Doppler Effects\footnote{Speed of sound in water is 1500m/s (depth
+    variant)}, as well as limited bandwidth due to frequency dependant
+    attenuation. Additionally, high \acro{BER} due to Phase and Amplitude
+    variations, requiring \acro{FEC}. See \cite{Catipovic1990}
+    \item \textbf{RF}: Poor but possible (122 kHZ, 6-10m, 1-8kbits/sec
+    )
+    \item \textbf{Optical}: Very poor but possible in \textit{extremely} clear
+    environments (490-500 nm, \textless 100m, several Mbits/s)
+    \item \textbf{IR}: potential to use OTS IrDA TX/RX for low cost,
+    short range links (1-2m, 57.6kbits/s)
+  \end{itemize}
+  \item Includes several Operational Examples (4.1, 5.1, 5.2, 5.5) that will be
+  useful later.
+  \item Introduces LBL\footnote{Long Baseline, an acoustic positioning method
+  conceptually similar to GPS} localisation and potential contention between
+  Navigational and data comms (5.2)
+  \item Introduces a variety of DTN packet exchange techniques for mobile
+  networks (5.3,5.4)
+\end{itemize}
+
+\subsection{Questions Raised}
+\begin{itemize}
+  \item It is not explained or justified what causes the indicated phase and
+  amplitude variations that lead to high \acro{BER}. Possibly covered in
+  \cite{Catipovic1990}.
+  \item In one operational example (MCM, 4.1), a central gateway buoy was used
+  as a uplink service and hub for a star-network of AUVs. Depending on how
+  DSTL/DGA want to pursue this, this demonstrates a necessary compromise
+  between centrality for power and communications economy, and decentralised security and
+  reliability.
+\end{itemize}

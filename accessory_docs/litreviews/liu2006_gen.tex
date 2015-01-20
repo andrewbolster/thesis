@@ -1,0 +1,243 @@
+\section{Information theoretic framework of trust modeling and evaluation for
+ad hoc networks \citet*{Liu2006}}
+\label{Liu2006_gen}
+\begin{itemize}
+  \item This paper develops an information theoretic understanding of single and
+    multi-path trust modelling, providing a solid grounding in the mathematical
+    concept of trust from axiomatic foundations.
+  \item As this is the first Journal paper read, it's taken a while to get my
+    head around it. As such, the review is separated by chapter.
+  \item 
+    \begin{enumerate}
+      \item \emph{Introduction}
+        \begin{itemize}
+          \item Highlights the levels of challenges within the field, particularly
+            the axiomatic \emph{Trust Definition} (Reputation of entity, Trust-Of-Opinion,
+            Probability of Action), the generation of \emph{Trust Metrics}
+            (linguistic applications such as PGP, PolicyMaker, DTM, TPL, SPKI/SDSI, or
+            numerical solutions, demonstrated in
+            \cite{Abdul-Rahman1997}
+            %\cite{Jøsang1999}
+            \cite{Theodorakopoulos2004}\cite{Maurer1996})
+            and the generation of \emph{Quantative Trust Models}
+            (\emph{Subjective Logics} from linguistics, \emph{Fuzzy Logic}, or
+            \emph{Bayesian modeling})
+          \item From \cite{Gambetta2000}, states that ``Trust is a level of likelihood with which an
+            agent will perform a particular action before such action can be monitored
+            and in a context in which it affects our own actions''
+          \item Leads on to propose that trust is a measure of uncertainty, and as
+            such, can be measured by entropy.
+          \item Aim to develop a distributed scheme to build, maintain, and update
+            trust records in ad hoc networks, where trust records are used to assist
+            dynamic route selection and to perform malicious node detection.
+          \item Aim to highlight potential attack vectors, including presenting a new
+            strategy.
+        \end{itemize}
+      \item \emph{Basic Axioms}\label{liu2006_basicaxioms}
+        \begin{enumerate}
+          \item \label{Axiom1} \emph{Axiom 1} \textbf{Uncertainty is a Measure of Trust} : ``Let \(T\{S:A,a\}\)
+            denote the trust value for relationship \(\{S:A,a\}\)\footnote{\(S\mapsto subject,
+            A\mapsto Agent, a\mapsto Action\)} and \(P\{S:A,a\}\) denote the
+            probability that the agent will perform the action from the subjects point
+            of view''. From information theory; entropy is the nature measure of
+            uncertainty, and that leads to an entropy-based trust value.  
+
+            \begin{equation}
+              T\{S:A,a\} =\begin{array}{cc} 
+                1 - H(p), & \mbox{for } 0.5\leq p \leq 1 \\
+                H(p) - 1, & \mbox{for } 0\leq p \le 0.5 \\  	  
+              \end{array}
+              \label{liu2006_entropy_based_trust_value-equ}
+            \end{equation}
+
+            Where \(H(p) = -p \log_2(p) - (1-p)\log_2(1-p)\) and \(p\mapsto
+            P\{S:A,a\}\)
+
+            \begin{wrapfigure}{R}{0.45\textwidth}
+              \input{litreviews/figures/liu2006_2_Entropy-fn}
+              \caption{Plot of equ (\protect
+              \ref{liu2006_entropy_based_trust_value-equ}), demonstrating Entropy Based
+              Trust}
+            \end{wrapfigure}
+          \item \label{Axiom2} \emph{Axiom 2} \textbf{Concatenation Propagation of Trust does not increase Trust} :
+            From information theory; information cannot be increased through
+            propagation. Mathematically summarised in
+            \equref{liu2006_concatenation_propagation-equ};
+            \begin{equation}
+              |T_{AC}| \leq \min(|R_{AB}|,|T_{BC}|)
+              \label{liu2006_concatenation_propagation-equ}
+            \end{equation}
+            Where 
+            \begin{equation}
+              \begin{array}{l} T_{AC}\mapsto T\{A:C, action\},\\
+                R_{AB}\mapsto T\{A:B, recommend\},\\ 
+                T_{BC}\mapsto T\{B:C, action\}
+              \end{array}
+            \end{equation}
+
+            Or Graphically in \figref{liu2006_concatenation_propagation-dot}.
+            \begin{figure}[c!]
+              \input{litreviews/figures/liu2006_concatenation_propagation.dot.tex}
+              \caption{Graph of three node network showing Concatenation Propagation of
+              Trust}
+              \label{liu2006_concatenation_propagation-dot}
+            \end{figure}
+          \item \label{Axiom3} \emph{Axiom 3} \textbf{Multipath Propagation of Trust does not reduce Trust} :
+            Multipath recommendations will not increase the uncertainty of a
+            resultant trust metric. In a simple network, the establishment of
+            trust between node \(A\) and node \(C\) can be through either a
+            single concatenation (see
+            \figref{liu2006_multipath_concatenation-dots_A}) or through two
+            paths (see \figref{liu2006_multipath_concatenation-dots_B})
+
+            Letting \(T_{A_1C_1}=T\{A_1 : C_1, action\}\), \(T_{A_2C_2}=T\{A_2:C_2,
+            action\}\), \(R_{2_B}=R_{2_D}\), and \(T_{2_B}=T_{2_D}\) the constraint on multipath uncertainty can be shown in
+            \equref{liu2006_multipath_concatenation-equ}.
+
+            \begin{equation}
+              \begin{array}{l}
+                T_{A_2C_2} \geq T_{A_1C_1} \geq 0, \mbox{ for } R_1 > 0 \mbox{ and
+                } T_{2} \geq 0 \\
+                T_{A_2C_2} \leq T_{A_1C_1} \leq 0, \mbox{ for } R_1 > 0 \mbox{ and
+                } T_{2} \leq 0
+              \end{array}
+              \label{liu2006_multipath_concatenation-equ}.
+            \end{equation}
+            \begin{figure}[H!]
+              \subfloat[Single Recommendation Path]{
+              \label{liu2006_multipath_concatenation-dots_A}
+              \input{litreviews/figures/liu2006_multipath_concatenation_A.dot.tex}
+              }
+              \subfloat[Multipath Recommendation]{
+              \label{liu2006_multipath_concatenation-dots_B}
+              \input{litreviews/figures/liu2006_multipath_concatenation_B.dot.tex}
+              }
+              \caption{Combining  multiple recommendation paths}
+              \label{liu2006_multipath_concatenation-dots}
+            \end{figure}
+          \item \label{Axiom4} \emph{Axiom 4} \textbf{Trust based on multiple
+            recommendations from a single source should not be higher than that
+            from independent sources}: The counterpart to Axiom 3 (\ref{Axiom3}), which
+            sets a lower limit on multi-path recommendation, this states that
+            the ``trust built on \ldots correlated recommendations [from a
+            single source] should not be higher than the trust built upon
+            recommendations from independent sources''.
+            Letting \(T_{A_1C_1}=T\{A_1 : C_1, action\}\), \(T_{A_2C_2}=T\{A_2:C_2,
+            action\} \), the constraint on multipath uncertainty is shown in
+            \equref{liu2006_multipath_propagation-equ}.
+
+            \begin{equation}
+              \begin{array}{l}
+                T_{A_2C_2} \geq T_{A_1C_1} \geq 0, \mbox{ if } T_{A_1C_1} \geq 0 \\
+                T_{A_2C_2} \leq T_{A_1C_1} \leq 0, \mbox{ if } T_{A_1C_1} < 0
+              \end{array}
+              \label{liu2006_multipath_propagation-equ}.
+            \end{equation}
+
+            \begin{figure}[H!]
+              \subfloat[Recommendation from single correlated source]{
+              \label{liu2006_multipath_propagation-dots_A}
+              \input{litreviews/figures/liu2006_multipath_propagation_A.dot.tex}
+              }
+              \subfloat[Recommendation from independent sources]{
+              \label{liu2006_multipath_propagation-dots_B}
+              \input{litreviews/figures/liu2006_multipath_propagation_B.dot.tex}
+              }
+              \caption{Single entity providing multiple recommendation paths}
+              \label{liu2006_multipath_propagation-dots}
+            \end{figure}
+        \end{enumerate}
+      \item \emph{Trust Models}
+      Identifies, derives, and proves that Entropy and Probability based trust
+      models satisfy the stated axioms. Summarising based on
+      \figref{liu2006_multipath_concatenation-dots} and
+      \figref{liu2006_multipath_propagation-dots}.
+      \begin{enumerate}
+        \item \emph{Entropy-Based}:
+        \begin{itemize}
+          \item Single-Chain Trust (as in
+            \figref{liu2006_multipath_concatenation-dots_A})
+            \begin{equation}
+              T_{ABC}=R_{AB}T_{BC}
+            \end{equation}
+          \item Multiple Paths (as in
+            \figref{liu2006_multipath_concatenation-dots_B}), use maximal ratio
+            combination.
+            \begin{equation}
+              T\{A:C,action\}= w_1(R_{AB}T_{BC})+w_2(R_{AD}T_{DC})
+            \end{equation}
+            Where
+            \begin{equation}
+              w_1=\frac{R_{AB}}{R_{AB}+R_{AD}}
+              \mbox{ and } w_2=\frac{R_{AD}}{R_{AB}+R_{AD}}
+            \end{equation}
+          \item Independent Paths (as in
+            \figref{liu2006_multipath_propagation-dots_B}),
+            % TODO Need to read \cite{Hongjun2008} first
+        \end{itemize}
+      \end{enumerate}
+
+
+
+
+      \item \emph{Trust Establishment Based On Observation}
+      \begin{itemize}
+        \item Presents two approaches; using a minimum variance unbiased estimation for $\theta$ = $P{A:X,a}_{i+1}$\footnote{The probability that a requested action will be performed the next time it is ordered} and one to estimate $Pr(V(N+1)=1|n(N)=k)$. 
+        \begin{equation}
+          \hat{\theta}=\frac{k}{N}
+        \end{equation}
+        This simple version does not require knowledge of the distribution of $\theta$, but does not represent the uncertainty of the trust of $A$ (i.e where $N$ is very small).
+        \item The second approach (derived from Bayesian Probability Theory) presents a much more representative observation for very small cases (i.e k=2,N=3, $\theta$=1/2)
+        \begin{equation}
+          Pr(V(N+1)=1|n(N)=k) = \frac{k+1}{N+2}
+        \end{equation}
+        \item This is expanded to include a time series analysis of historical data (i.e integrating a 'remembering factor' $\beta$) 
+        \begin{equation}
+          Pr(V(N+1)=1|n(N)=k)=\frac{1+ \sum_{j=1}^I \beta^{t_c-t_j} k_j}{2+ \sum_{j=1}^I \beta^{t_c-t_j} N_j}
+        \end{equation}
+        where $t_c$ is the current time, $t_j$ is the timecode of the $j$th
+        observation. $beta$ should be selected with knowledge of the expected
+        speed of behaviour change. 
+      \end{itemize}
+      \item \emph{Security In Ad Hoc Network Routing}
+          %TODO could be useful later to go into more detail
+          The paper then goes on to detail proposed schemes for Sending, and Responding to TRRs\footnote{Trust Recommendation Requests}, the detail of which is not massively relevant at this stage.
+          Also details a scheme for updating internal trust records based on three 'databases', namely the 'trust record', 'recommendation buffer' and 'observation buffer'.
+
+          \emph{The Trust Record} for node $A$ contains entries in the format $\{\text{subject, agent, action, T, P, }t_{est}\}$, where the subject field is always $A$, and as such represents $A$'s trust of the nodes around it based \emph{solely} on direct interaction.
+
+          \emph{The Recommendation Buffer} has the same format as the Trust Record, but is based on other nodes interactions with agents, i.e the $\text{subject}$ field is the node reporting the recommendation to $A$. 
+
+          \emph{The Observation Buffer} simply buffers observations until they can be processed and the Trust Record can be updated.
+
+      \item \emph{Simulations}
+        Demonstrates:
+        \begin{itemize}
+          \item The proposed scheme can identify malicious nodes, highlighting that this identification is not in the form of tight clusters due in part that the simulated malicious nodes had a range of behaviours, and more importantly, that \emph{relatively slight} changes in the trust records mean that the malicious nodes are interacted with much less that 'good' nodes, so those 'good' nodes have less 'bad' experiences (which is naturally desirable).
+          \item Selectively Malicious behaviour can 'taint' the trust (of recommendation, not action) between otherwise good nodes, but not nearly to an extent as to whitewash the malicious behaviour of the nodes. Interestingly, the 'swarm' adapts to this coordinated attack (i.e the malicious nodes performed grey-hole attacks on 50\% of the swarm) so as to maintain overall throughput.
+          \item The proposed scheme is adaptive to changing behaviour; i.e. Malicious 'infection' of otherwise good nodes over time.
+          \item Both the Probability and Entropy based models perform very
+            similarly, maintaining a average packer drop ratio around 40\% of the baseline, even before malicious node detection has 'activated' (i.e. sufficiently clustered malicious nodes within the trust-space)
+        \end{itemize}
+        \emph{Implementation Notes}: Nodes move randomly within a 1km sq area using the random waypoint model with random pausing; packet arrival time is modeled as a Poisson Process; system simulated as an 802.11 DCF MAC layer with Dynamic Source Routing.
+      \item \emph{Discussion And Conclusion}
+      The proposed system is robust against bad-mouthing attacks, as;
+      \begin{enumerate}
+        \item Recommendation trust is only established through good recommendations
+        \item Only recommendations from trusted entities propagate across the network
+        \item The Fundamental Axioms\ref{liu2006_basicaxioms} limit the recommendation power of entities with low recommendation trust
+      \end{enumerate}
+      On the subject of overhead and mobility;
+      \begin{itemize}
+        \item Nodal distance of propagation of TRRs $\varpropto P_p$\footnote{$P_p$ represents the probability of establishing a trust propagation path between two defined nodes}, but exponential effect on communications overhead as more nodes must process and pass on the requests/responses. TRR's given TTL/Max Transit values moderate this.
+        \item Mobility requires higher overheads due to the recurring need for local recommenders within the dynamic system; as a node moves around and between locales, trust must be established within the new local network. Further, mobile nodes are more likely to be 'well known' to the network and thus are more straight forward to attain recommendations for.\footnote{i.e if $A$ is a requester, $X_s$ is a stationary target, and $X_m$ is a mobile target, $P_p(X_m)>P_p(X_s)$}. On the other hand, high node mobility can hinder malicious node detection, as fast moving 'honest' nodes exhibit a high packet drop rate, leading to higher false alarm rates within packet-forwarding trust.
+      \end{itemize}
+      
+
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Questions Raised}
+\begin{itemize}
+  \item In Section [V-A] (Obtaining Trust Recommendations) There appears to be an information leak towards a malicious attacker, where upon the malicious node ($X$) sending a Trust Recommendation Request (TRR) does not receive responses from certain nodes within $Z$, it can assume that those nodes trust of $X$ is less than some boundary. The question is whether this could be used as an attack monitoring vector, so as to behave in a way that is malicious, but can stop if $Z$ are overly suspicious of $X$
+\end{itemize}

@@ -1,0 +1,7 @@
+digraph G {
+  node [shape="circle"];
+  rankdir=LR;
+  ranksep="0.0";
+  A -> B [label="R_{AB}", style=dotted];
+  B -> C [label="T_{BC}"];
+}

@@ -1,0 +1,34 @@
+%        File: litreview.tex
+%     Created: Tue Jun 12 09:00 AM 2012 B
+% Last Change: Tue Jun 12 09:00 AM 2012 B
+%
+\documentclass[a4paper]{report}
+\begin{document}
+
+\section{An Overview on Behaviour based methods for AUV Control \cite{Carreras2000}}
+\subsection{Biblio}
+Carreras, Batlle, Ridao, and Roberts
+An Overview on Behaviour based methods for auv control
+Girona, Spain
+\subsection{What is this work about?}
+A review and analysis of four AUV behaviour based reactionary control architectures, presenting four control architectures; Scheme, Subsumption, PDL, and Action Selection Dynamics, i.e. cooperative (schema, PDL) and competitive (Sub, ASD)
+\subsection{What are the main findings of this work?}
+Competitive models are often easier to design as only one behaviour is resident at a time, however this leads to 'jaunty' and often sub-optimal results, as in this case where authors say the resultant pats for both competitive models are non-optimal
+\subsection{What gap in our understanding does this work fill?}
+I had no idea about any of these modelling schemes, but it was surprising to find that competitive models as described are less optimal.
+Additionally goes some way to describing major behaviours, i.e. 'GoTo', 'Obstacle Avoidance', 'Avoid Trapping' (don't run over ones own path), target-following, target-tracking, and bottom-following.
+\subsection{What research tradition/approach/method is used?}
+Simulation with MatLab/Simulink with a dynamic model from Fossen 1995 based on the GARBI ROV.
+Four simulations in a simulated bumpy marine environment with three goal points. Three behaviours are integrated together for each model; Obstacle avoid, Avoid trapping, and Go To (directed at the goal points)
+\subsection{How is this work connected to the wider research field?}
+Quite an old work, late 90's development of ROV's did not consider collaborative inter-vector behaviours.
+\subsection{How is this work relevant to your assignment?}
+Contextual: Establishment of body of knowledge about the usual behaviours of AUVs. From a control perspective, this is just 'interesting'. Will also be useful in generating simulation framework.
+\subsection{What are the limitations of this work?}
+Doesn't explain why the stated 'non-optimal' paths (Fig 10, 14) are non-optimal\ldots I would have said that the larger sweeping paths across a wider area satisfy the three stated behaviours much better than the twisty coiled behaviours (Fig 9, 12), will approach Wasif about this.
+\subsection{Useful snippit?}
+\begin{math}
+  A = (M_{RB}+M_A)^{-1}(T+G-D(V)V-(C_{RB}(V)+C_A(V))V)
+\end{math}
+
+\end{document}

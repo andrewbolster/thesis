@@ -1,0 +1,451 @@
+% $Header: /Users/joseph/Library/texmf/tex/latex/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass[10pt]{beamer}
+
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\title[DSTL Visit]{An Investigation into Trust and Reputation Frameworks for Autonomous Underwater Vehicles}
+
+\subtitle
+{Research Update and Plan Detail}
+
+\author[Andrew Bolster] % (optional, use only with lots of authors)
+{Andrew Bolster}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[ECIT] % (optional, but mostly needed)
+{
+  \inst{1}%
+  Institute of Electronics, Communication, and Information Technology\\
+  Queen's University Belfast 
+  }
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[ECIT November '12]
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+\pgfdeclareimage[height=1cm]{university-logo}{../figures/logo_ECIT_sm.png}
+\logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution: 
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+\section{Research Restatement}
+
+\subsection{Problem Introduction}
+
+\begin{frame}{Problem Introduction}{Application of Trust Engineering to Behaviour}
+  Current Context of work: Use of physical behaviours to assess trust without wasting communications time / energy.
+
+  Motivations
+  \begin{itemize}
+    \item Direct Secure communications are expensive and time consuming
+    \item Centralised security mediation is a single point of failure
+    \item Timing technology has reached a point at which accurate (secure) localisation within a trusted fleet is relativly simple (CSACs)
+  \end{itemize}
+\end{frame}
+
+\section{Current Status}
+
+\subsection{Theoretical Showcase}
+\begin{frame}{Theory}{Trust Actions in Fleets}
+  Trust could be required for:
+  \begin{itemize}
+    \item Alien\footnote{In this sense, Alien does not necessarily imply unauthorized, but simply that it has not interacted with the fleet previously} Node joining Secure Fleet
+    \item Known node (re)joining Fleet
+    \item bi-directional Fleet authentication with USV
+    \item Node 'disappearance'
+  \end{itemize}
+  It is also expected that a trust metric for a particular fleet should be stable outside these activities
+\end{frame}
+
+\begin{frame}{Theory}{Qualities of a composite Trust Metric}
+  A composite Trust metric (consisting of a weighted collection of individual metric observations over time) must hold the following qualities
+  \begin{itemize}
+    \item Associativity - Fleet will settle to same value given same weightings regardless of initial configuration
+    \item Reflexitivity - Fleet Trust should be stable to temporary additions/subtractions: 
+      \begin{equation}\begin{cases}
+        T_0=T(Fleet)\\
+        T_1=T(Fleet-x)\neq T_0\\
+        T_2=T((Fleet-x)+x)=T_0
+      \end{cases}\end{equation}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Theory}{Qualities of a composite Trust Metric}
+  A composite trust metric {\bf may} also:
+  \begin{itemize}
+    \item exhibit distributivity - in the case where a fleet is temporarily minus a fleet member, it may be the case that the difference in trust behaviours is observable enough to allow a rogue entity to sufficiently emulate the missing member to fool the fleet into trusting it's behaviour
+    \item indicate/identify technical failure - in the case where a trust metric is impacted by some technical fault, it may be possible to not only recogise the difference between a technical trust failure and a rogue operation, but to identify the node and even the subsystem that is failing
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Theory}{Qualities of a composite Trust Metric}
+  All in all, a composite metric should follow the properties of a vectorized binomial opinion aka beta distribution in subjective logics.
+  
+  This would incorporate belief, uncertainty, expectation, and allow the a-priori establishment of trust within a formal system.
+\end{frame}
+
+\begin{frame}{Theory}{Qualities of a single Trust metric}
+  A single observational trust metric should be:
+  \begin{itemize}
+    \item Atomic - one measurement for one factor, so as to allow for accurate and causitive statistical analysis
+    \item Orthogonal to others - Again, metrics should not indirectly measure the same physical factors
+  \end{itemize}
+\end{frame}
+
+\subsection{Simulation Showcase}
+
+\begin{frame}{Simulation}{Components}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  Bespoke Simulation framework consisting of three modules:
+  \begin{itemize}
+  \item
+    \texttt{Aietes} - Ancient King of Ephyra in the Illiad
+  \item
+    \texttt{Bounos} - Recieved the kingdom of Ephyra from Aietes
+  \item
+    \texttt{Ephyra} - An ancient kingdom near modern day Parga in Greece
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Simulation}{Components}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{itemize}
+    \item \texttt{Aietes} : the original base behavioural simulator, performing agent-based modeling of the motions of AUV's within an environment
+    \item \texttt{Bounos} : a collection of data processing and collation functions
+    \item \texttt{Ephyra} : a global visualisation (and later, control) system for both Aietes and Bounos
+  \end{itemize}
+  These in total currently consist of nearly 2600 lines of python runtime code, including animation and GUI navigation capabilities.
+
+\end{frame}
+
+\begin{frame}{Simulation}{Flexibility}
+  \begin{itemize}
+    \item Arbitrary node configurations (both in terms of physical and communications capabilities)
+    \item Generically Based on the REMUS 100 configuration and physical model
+    \item Support for runtime and a-postori statistical analysis with numpy/scipy/pandas
+    \item Componentized Behaviour network, with a 3-rule flocking base
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Simulation}{Behaviours}
+  Flocking: 
+  \begin{equation}
+    v_{t+1}=v_t+\sum_{\forall b \in B}{b_v(p_t,v_t) \cdot b_f}
+  \end{equation}
+  where: 
+  $b_v(p_t,v_t)$ is the individual force vector exerted by a given behaviour, and 
+  $b_f$ is the user-controlled weight of that behaviour
+
+  Cruising Behaviour
+  \begin{equation}
+    p_{t+1}=p_t + 
+    \begin{cases}
+      v_{t+1} & v_{t+1}\leq v_{cruising}\\
+      \frac{v_{t+1}} {|v_{t+1}|} \cdot \frac{1}{e^{-(|v_{t+1}|-v_{cruising})}} & v_{t+1}>v_{cruising}
+    \end{cases}
+  \end{equation}
+\end{frame}
+
+\begin{frame}{Simulation}{Utility Forces}
+  \begin{itemize}
+    \item Attraction to a point
+  \begin{equation}
+      F_{A}(p,p_A,d_{\infty})=\widehat{(p-p_A)}\cdot\frac{|p-p_A|}{d_{\infty}} 
+  \end{equation}
+    \item Repulsion from a point
+  \begin{equation}
+      F_{R}(p,p_R,d_{\infty})=\widehat{(p_R-p)}\cdot\frac{d_{\infty}}{|p-p_R|}
+  \end{equation}
+\item in both cases, the $d_\infty$ variable is set to be a limiting distance i.e. objects within the radius $d_\infty$ produce attractive factor $>1$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Simulation}{Clustering}
+  The urge to attract to the center of gravity of the fleet
+  \begin{equation}
+    F_{j,C}= F_A\left(p_j, \frac{1}{N}\sum\limits_{\forall i \ne j}^N{p_i}, d_{collision}\right)
+  \end{equation}
+\end{frame}
+
+\begin{frame}{Simulation}{Collision Avoidance}
+  The urge to avoid local collisions
+  \begin{equation}
+    F_{j,H}= \sum\limits_{\forall i \ne j}^N F_R\left(p_j, p_i, d_{collision}) \big| d_{collision}>\|p_i-p_j\|\right)
+  \end{equation}
+\end{frame}
+\begin{frame}{Simulation}{Common Heading}
+  The urge to maintain a globally average heading
+  \begin{equation}
+    F_{j,CA}= \frac{1}{N}\cdot\left(\sum\limits_{\forall i \ne j}^N \hat{v_i}\right) 
+  \end{equation}
+\end{frame}
+
+\begin{frame}{Simulation}{Actually Go Somewhere}
+  The urge to head towards a goal / waypoint
+  \begin{equation}
+    F_{j,W}= F_A(p_j,p_w,\frac{d_{\phi}}{2}
+  \end{equation}
+  where $d_{\phi}$ the satisfaction distance of a waypoint, i.e. the success distance from a positional waypoint
+\end{frame}
+
+\begin{frame}{Simulation}{Current Limitations}
+  \begin{itemize}
+    \item The configuration of Aietes is quite delicate and complex and needs an overhaul
+    \item Aietes doesn't make it easy to extract the {\bf causes} of decisions after they are made due to its agent-based nature
+    \item Application of vector-weights (see next slide) has been more fraught than expected
+  \end{itemize}
+  All three of these are being quickly solved in parallel development with Bounos
+\end{frame}
+
+\begin{frame}{Simulation}{Aside: Vector Weighting}
+  One proposed method of securing a fleets behaviour is to apply a vector rather than scalar relation to it's behaviour weights, i.e.
+
+  Different Nodes behave differently within the fleet; prefer different limiting distancs, weight repulsion more than attraction, etc.
+  
+  This would drastically increase the complexity of any observer deriving these values.
+\end{frame}
+
+\begin{frame}{Analysis}{Welcome to Ephyra}
+  Ephyra is used to process the simulated path files and perform a-postori analysis of the fleets behaviour, in the same way an observer would.\footnote{i.e. these analyses are not subject to the same 'fudging factors' that are applied to the simulated nodes obeservations of eachother}
+  \begin{itemize}
+    \item A wireframe sphere representing the gravity of the fleet (colured based on the standard deviation from the centre of the fleet) can be overlaid
+    \item Weighted Vectors can also be overlaid showing individual node headings
+    \item The LHS panel also shows the time series responses of a selection of metrics
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Analysis}{Metrics}
+  The current defaults for this metric displays are:
+  \begin{itemize}
+    \item Positional Standard Deviation from the Fleet CoG
+    \item Average Inter-Node distances
+    \item Standard Deviation of headings from fleet average
+    \item Average Speed of the fleet (based on average heading)
+    \item Min, Mean, and Max speeds of nodes within the fleet
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Analysis}{Overview}
+  \includegraphics[width=11cm]{overview.png}
+\end{frame}
+\begin{frame}{Analysis}{Dynamic Trail}
+  \includegraphics[width=11cm]{dynamic_tail.png}
+\end{frame}
+
+\begin{frame}{Analysis}{Current Status}
+  Demo: If Remote Desktop is working\ldots
+\end{frame}
+
+\section{Planned Results/Contribution}
+
+\subsection{Main Experiments}
+
+\begin{frame}{Proposed Experiments}{Within Next Six Months}
+    Establish Behaviour Trust metric within perfect network\footnote{No communications loss, perfect realtime knowledge of locations and headings of nodes}:
+      \begin{enumerate}
+        \item Assess observability of behaviour factors in Normal Mission Profiles (port protection, shadowing, minesweeping, survey)
+        \item Assess behaviour of principal observable components with NMP with selective node failures (total, instant failures)
+        \item As above with fresh authorised nodes being introduced
+        \item As above with alien nodes being introduced (non authenticated, but normal behaviour)
+        \item As above with rogue nodes introduced (bad behaviour; eg falling behind, pushing ahead, false-heading, etc)
+      \end{enumerate}
+\end{frame}
+\begin{frame}{Proposed Experiments}{Within Next Six Months}
+    \begin{enumerate}
+      \item Same situations but with non-fleet static and dynamic obstacles
+      \item Same situations but with communications-based information
+      \item Same situations with communications based information and information warfare (i.e. lying)
+    \end{enumerate}
+    This proposed metric will be assessed for resiliance, and accuracy  at each stage and should be publishable, at least in the journal of the Marine Technology Society, if not IEEE Trans. Comms
+\end{frame}
+\begin{frame}{Proposed Experiments}{Follow up}
+  This will provide a bed upon which to build a transactional protocol for marine trust that could be integrated with communications trust systems (i.e. those that use communications artefacts as their base metrics)
+\end{frame}
+
+\subsection{Research Viability and Contribution}
+
+\begin{frame}{Reliability Basis}{Communications}
+  The communications segments will use the SUNSET framework, which has been heavily verified. 
+
+  The use of SUNSET as a communicative and control layer also allow for easy implementation of any developed framework onto hardware availabile at CMRE and other facilties.
+\end{frame}
+
+\begin{frame}{Expected outcomes}{Work Packages}
+  \begin{itemize}
+    \item Compound Metric definition for behavioural trust in any communications environment.
+    \item Identification schema for fleets/nodes based on behaviour factors
+
+  \end{itemize}
+\end{frame}
+
+\section*{Summary}
+
+\begin{frame}{Summary}
+
+  % Keep the summary *very short*.
+  \begin{itemize}
+  \item
+    \alert{Behaviour} of a fleet of \alert{flocking} individuals is more interesting that I thought
+  \item
+    The biggest blocker so far is lack of \alert{practical data}
+  \item
+    This isn't guaranteed to work, but if it provably can't work, \alert{that's still very positive}
+  \end{itemize}
+  
+  % The following outlook is optional.
+  \vskip0pt plus.5fill
+  \begin{itemize}
+  \item
+    Outlook / Immediate Action points
+    \begin{itemize}
+    \item
+      Generation of stable behavioural vectors \alert{is not solved}
+    \item
+      Real-Time interaction with simulations \alert{is not solved}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+% All of the following is optional and typically not needed. 
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{For Further Reading}
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{For Further Reading}
+    
+  \begin{thebibliography}{10}
+    
+  \beamertemplatearticlebibitems
+
+  \bibitem{sunset2012}
+    Chiara Petrioli and Roberto Petroccia,
+    \newblock {\em SUNSET: Simulation, Emulation and Real-life Testing of Underwater Wireless Sensor Networks,}
+    \newblock Proceedings of IEEE UComms 2012, (Sestri Levante, Italy), IEEE Computer Society.
+ 
+   \bibitem{konate2011}
+    Karim Konate and Abdourahime Gaye,
+    \newblock{\em Attacks Analysis in Mobile Ad Hoc Networks: Modeling and Simulation}.
+    \newblock 2011 Second International Conference on Intelligent Systems, Modelling and Simulation
+
+  \bibitem{caiti2011}
+    Andrea Caiti 
+    \newblock{\em Cooperative distributed behaviours of an AUV network for asset protection with communication constraints}
+    \newblock OCEANS, 2011 IEEE-Spain
+
+  \bibitem{jia2007}
+    Qiuling Jia, Guangwen Li
+    \newblock {\em Formation Control and Obstacle Avoidance Algorithm of Multiple Autonomous Underwater Vehicles(AUVs) Based on Potential Function and Behavior Rules.} 
+    \newblock 2007 IEEE International Conference on Automation and Logistics
+
+ \end{thebibliography}
+\end{frame}
+
+\end{document}
+
+

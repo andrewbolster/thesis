@@ -10,3 +10,4 @@ if [[ "$tex_exit" -gt "0" ]]; then
   echo "Exiting with status $tex_exit"
   exit $tex_exit 
 fi
+git add ./Thesis.pdf ./Thesis-Last.pdf

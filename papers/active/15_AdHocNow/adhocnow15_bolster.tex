@@ -1,0 +1,152 @@
+
+%%%%%%%%%%%%%%%%%%%%%%% file adhocnow15_bolster.tex %%%%%%%%%%%%%%%
+%[Ad Hoc Now 2015](http://www.netmode.ntua.gr/adhocnow2015/index.html)
+%
+%# Dates
+%* Deadline: 7/2/15
+%* Acceptance: 7/3/15
+%* Due: 28/3/15
+%* Dates: 29/6/15-2/7/15
+%
+%# Topics of Interest
+%* Access Control 
+%* Ad Hoc Networks of Autonomous Intelligent Systems 
+%* Algorithmic Issues
+%* Analytic Methods and Modeling for Performance Evaluation 
+%* Ad Hoc Network Applications and Architectures 
+%* Delay-Tolerant Networking
+%* Distributed Algorithms for Ad Hoc Networks 
+%* Energy Efficiency 
+%* Geometric Graphs
+%* Location Discovery and Management 
+%* Mobility Handling and Utilization 
+%* Wireless Mesh Networks
+%* Big Data Inspired Data Sensing
+%* Mobile Ad Hoc Computing Platforms
+%* Systems and Testbeds 
+%* Mobile Social Networking 
+%* Quality-of-Service 
+%* Routing Protocols (Unicast, Multicast, etc.) 
+%* Secure Services and Protocols 
+%* Sensor Networks 
+%* Self-Configuration 
+%* Service Discovery 
+%* Timing Synchronization 
+%* Vehicular Networks 
+%* Wireless Internet
+%* Processing and Networking Technologies Complexity and Computational Issues
+%* Prototype systems and real-world deployment experiences
+%
+%# Proposed Area of Focus
+%Re-present Bellas Chap 4 work with extensions to explain and explore differences between Ad Hoc and Marine.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[runningheads,a4paper]{llncs}
+
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+
+\usepackage{url}
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+\begin{document}
+
+\mainmatter  % start of an individual contribution
+
+% first the title is needed
+\title{Trust Framework Operation in Autonomous Marine Communications Environments}
+
+% a short form should be given in case it is too long for the running head
+\titlerunning{Trust Framework Operation in Marine Communications Environments}
+
+% the name(s) of the author(s) follow(s) next
+%
+% NB: Chinese authors should write their first names(s) in front of
+% their surnames. This ensures that the names appear correctly in
+% the running heads and the author index.
+%
+\author{Andrew Bolster%
+\thanks{Please note that the LNCS Editorial assumes that all authors have used
+the western naming convention, with given names preceding surnames. This determines
+the structure of the names in the running heads and the author index.}
+, Alan Marshall, Ji Guo}
+%
+\authorrunning{Trust Framework Operation in Marine Communications Environments}
+% (feature abused for this document to repeat the title also on left hand pages)
+
+% the affiliations are given next; don't give your e-mail address
+% unless you accept that it will be published
+\institute{Advanced Networks Research Group, \\Department of Electrical Engineering \& Electronics,\\
+University of Liverpool, UK\\
+\url{{andrew.bolster,alan.marshall}@liv.ac.uk}\\
+\url{http://www.anrg.liv.ac.uk/}}
+
+\toctitle{Lecture Notes in Computer Science}
+\tocauthor{Authors' Instructions}
+\maketitle
+
+
+\begin{abstract}
+  This paper presents an overview of trust assessment within classical ad-hoc networking environments (Terrestrial MANET) and presents a comparative study on the operation and performance of such trust frameworks between the terrestrial and underwater communications environments.
+\keywords{ad-hoc, MANET, trust, marine, underwater}
+\end{abstract}
+
+
+\section{Introduction}
+
+Trust Management Frameworks (TMFs) provide information regarding the estimated future states and operations of nodes within networks. They are used to optimize the performance of a system of systems (i.e. collections of autonomous, semi-autonomous, and/or human systems) in the face of malicious, selfish, or defective behavior by one or more nodes within such a system. 
+Previous research has established the potential advantages of implementing distributed TMFs in mobile ad-hoc networks (MANETs)
+
+\subsubsection*{Acknowledgments.} The heading should be treated as a
+subsubsection heading and should not be assigned a number.
+
+\section{The References Section}\label{references}
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+% 
+% \begin{thebibliography}{4}
+% 
+% \bibitem{jour} Smith, T.F., Waterman, M.S.: Identification of Common Molecular
+% Subsequences. J. Mol. Biol. 147, 195--197 (1981)
+% 
+% \bibitem{lncschap} May, P., Ehrlich, H.C., Steinke, T.: ZIB Structure Prediction Pipeline:
+% Composing a Complex Biological Workflow through Web Services. In: Nagel,
+% W.E., Walter, W.V., Lehner, W. (eds.) Euro-Par 2006. LNCS, vol. 4128,
+% pp. 1148--1158. Springer, Heidelberg (2006)
+% 
+% \bibitem{book} Foster, I., Kesselman, C.: The Grid: Blueprint for a New Computing
+% Infrastructure. Morgan Kaufmann, San Francisco (1999)
+% 
+% \bibitem{proceeding1} Czajkowski, K., Fitzgerald, S., Foster, I., Kesselman, C.: Grid
+% Information Services for Distributed Resource Sharing. In: 10th IEEE
+% International Symposium on High Performance Distributed Computing, pp.
+% 181--184. IEEE Press, New York (2001)
+% 
+% \bibitem{proceeding2} Foster, I., Kesselman, C., Nick, J., Tuecke, S.: The Physiology of the
+% Grid: an Open Grid Services Architecture for Distributed Systems
+% Integration. Technical report, Global Grid Forum (2002)
+% 
+% \bibitem{url} National Center for Biotechnology Information, \url{http://www.ncbi.nlm.nih.gov}
+% 
+% \end{thebibliography}
+
+
+\begin{itemize}
+\settowidth{\leftmargin}{{\Large$\square$}}\advance\leftmargin\labelsep
+\itemsep8pt\relax
+\renewcommand\labelitemi{{\lower1.5pt\hbox{\Large$\square$}}}
+
+\item The final \LaTeX{} source files
+\item A final PDF file
+\item A copyright form, signed by one author on behalf of all of the
+authors of the paper.
+\item A readme giving the name and email address of the
+corresponding author.
+\end{itemize}
+\end{document}

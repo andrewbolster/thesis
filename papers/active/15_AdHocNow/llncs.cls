@@ -1,0 +1,1 @@
+../../templates/lncs/llncs.cls

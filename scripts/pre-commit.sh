@@ -6,6 +6,7 @@ else
 fi
 latexmk Thesis.tex
 tex_exit="$?"
+latexmk -c
 if [[ "$tex_exit" -gt "0" ]]; then
   echo "Exiting with status $tex_exit"
   exit $tex_exit 

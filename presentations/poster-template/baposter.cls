@@ -1,1 +1,0 @@
-/home/andrewbolster/src/thesis/texmf/tex/latex/baposter/baposter.cls

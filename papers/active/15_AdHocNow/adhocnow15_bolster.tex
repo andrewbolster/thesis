@@ -318,7 +318,7 @@ Therefore, before we can fairly assess the trust operation of a Underwater MANET
 
 Specifically, we sought to define a methodology for establishing a near-optimal operation point. This was done in two parts; optimisation for network level queuing, optimisation for physical layout scaling.
 
-\begin{table}[h]
+\begin{table}[H]
   \caption{Comparison of system model constraints as applied between Terrestrial and Marine communications} \label{tab:sysconstraints}
   \begin{center}
     \setlength{\tabcolsep}{8pt}
@@ -331,10 +331,10 @@ Specifically, we sought to define a methodology for establishing a near-optimal 
       Transmission Range & $km$ & 0.25 & 1.5 \\
       Number of Nodes & & 6 & 6 \\
       Comms Medium & & RF(802.11) & Acoustic\\
-      MAC Type & & CSMA/CA & CSMA/CA\\
       Propagation Speed& $m/s$ & $3\times10^8$ & 1490\\
       Center Frequency& $Hz$ & $2.6\times10^9$ & $10^3$ \\
       Bandwidth& $Hz$ & $22\times10^6$ & $10^3$\\
+      MAC Type & & CSMA/CA & CSMA/CA\\
       Routing Protocol & & DSDV & FBR \\
       Mobility & & Various & Various \\
       Max Speed & $ms^{-1}$ & 5 & 1.25 \\
@@ -355,9 +355,11 @@ Specifically, we sought to define a methodology for establishing a near-optimal 
 
 In this section we characterise the simulated communications environment, establishing an optimal packet emission rate for comparison against \cite{Guo11}. 
 
-This is pretty much summarised in\ref{fig:throughput_performance_static} and \ref{fig:prod_breakdown} 
+In order to establish this 'saturation point', a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bps, up to 0.07 pps (672 bps)
 
-\begin{figure}[h]
+From \ref{fig:throughput_performance_static} and \ref{fig:prod_breakdown_static}, it is clear that the threshold curve, expressed as the \emph{Successfully Received Packets} line, exhibits a saturation point between 0.025 and 0.03 bps. Particularly in \ref{fig:prod_breakdown_static}, the precipitous drop in packet delivery probability beyond 0.025 pps, indicating that this would be a safe operational zone.
+
+\begin{figure}[th!]
   \centering
   \includegraphics[width=0.6\textwidth]{img/throughput_performance_static.pdf}
   \caption{Varying packet emission rate demonstrates maximal throughput at 0.025 packets per second, equivalent to $\approx$240 bps}
@@ -365,26 +367,41 @@ This is pretty much summarised in\ref{fig:throughput_performance_static} and \re
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[width=0.6\textwidth]{img/prod_breakdown_static.pdf}
   \caption{Varying packet emission rate demonstrates a saturation point at 0.025 packets per second}
-  \label{fig:prod_breakdown}
+  \label{fig:prod_breakdown_static}
 \end{figure}
 
 
 \subsection{Establishing Scale Factors in Physical Distribution}
 
 In this section we characterise the simulated communications environment, establishing an optimal node-separation scaling for comparison against \cite{Guo11}
-This is pretty much summed up below.
-\begin{figure}[h]
+
+This is pretty much summarised in and \ref{fig:prod_breakdown_range} 
+Varying average node separation shows that while direct throughput isn't significantly affected until, collision rates are \ref{fig:throughput_performance_range}. However, this collision rate is well within the tolerances of the MAC layer, as shown in \ref{fig:prod_breakdown_range}.
+
+\begin{figure}[th!]
   \centering
   \includegraphics[width=0.6\textwidth]{img/throughput_performance_range.pdf}
-  \caption{Varying average node separation shows that while direct throughput isn't affected, collision rates are. However, this collision rate is well within the tolerances of the MAC layer}
-  \label{fig:throughput_performance}
+  \caption{Comparison of Medium Access Collisions, Throughput, and Enqueued packets against varying application packet emission rates. Scaling ratio of 3 indicated that the average distance between nodes has been tripled.}
+  \label{fig:throughput_performance_range}
 \end{figure}
 
-It may be worth going back to the range scaling experiments to effectively do a ``square'' study; establishing the breakdown points for each scale, but that's for after this.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.6\textwidth]{img/prod_breakdown_range.pdf}
+  \caption{Graph of probability of timely reception across a range of node scaling.}
+  \label{fig:prod_breakdown_range}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.6\textwidth]{img/delay_range.pdf}
+  \caption{Varying average node separation shows that while direct throughput isn't affected, collision rates are. However, this collision rate is well within the tolerances of the MAC layer}
+  \label{fig:delay_range}
+\end{figure}
 
 
 \subsubsection*{Acknowledgments.} The heading should be treated as a

@@ -129,16 +129,16 @@ As such, the application of Trust methods developed in the terrestrial MANET spa
 The paper is laid out as follows.
 In section \ref{sec:trustandtmfs} we discuss Trust and Trust Management Frameworks, defining our terminology and reviewing the justifications for the use and development of Trust Management Frameworks.
 In section \ref{sec:marineacousticnetworks}, we review selected features of the underwater communications channel, highlighting particular challenges and differentials against terrestrial equivalents.
-In section \ref{guoreview} we review the results presented in \cite{Guo11}, including a critique of the use of Fuzzy Sets and Gray Theory and a discussion on differences in experimental configuration when transitioning from terrestrial radio to the marine space.
-In section \ref{sec:initialsystemcharacterisation} we establish the initial parameters for simulation and set out a series of experiments to establish commonality between trust establishment in Terrestrial and Marine networks, characterising the communications and physical configuration with respect to the application and channel characteristics.
+In section \ref{sec:initialsystemcharacterisation}, we review the results presented in \cite{Guo11}, including a critique of the use of Fuzzy Sets and Gray Theory and a discussion on differences in experimental configuration when transitioning from terrestrial radio to the marine space. 
+We establish the initial parameters for simulation and set out a series of experiments to establish commonality between trust establishment in terrestrial and marine networks, characterising the communications and physical configuration with respect to the application and channel characteristics.
 In section \ref{sec:trustresultsanddiscussion}, we present our findings in trust establishment in this optimal network, pointing out the differences in metric selection and their impact on trust assessment stability.
 
 The contributions to the field of this paper are:
 \todo{Needs to be converted to prose}
 \begin{itemize}
-  \item A Trust Management Framework applicable to Underwater MANETs.
-  \item A study on the comparative operation and performance between Terrestrial and Underwater MANETs.
-  \item A review of metric suitability for Trust Management Frameworks in Marine Environments, informing future metric selection for experimenters and theorists.
+  \item A Trust Management Framework applicable to Underwater MANETs and why Grey Theory Analysis is particularly suited to this application.
+  \item A study on the comparative operation and performance between terrestrial and underwater MANETs.
+  \item A review of metric suitability for Trust Management Frameworks in marine environments, informing future metric selection for experimenters and theorists.
 \end{itemize}
 
 \section{Trust and Trust Management Frameworks}\label{sec:trustandtmfs}
@@ -181,7 +181,7 @@ Taking some examples;
     OTMF however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
 
   \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but, along with many more TMFs surveyed in \cite{Cho2011}, falls under the same limitation of focusing on single metric observation (PLR).
-  \item \emph{CONFIDANCE}; \todo{Add \cite{Buchegger2002} in here if there's space, or find something more recent built on it}
+  \item \emph{CONFIDANCE}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, generating a posterior probability distribution of node behaviours
 \end{itemize}
 
 These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker knows the metric in advance.
@@ -220,7 +220,14 @@ These weighted $[\theta,\phi]$ values are then condensed into a single trust val
   \label{eq:trustvalue}
   T_k^t = \frac{1}{1+\frac{(\phi_k^t)^2}{(\theta_k^t)^2}}
 \end{equation}
-\todo{Rewrite and extend to praise/critique Guo}For applications involving low fidelity, temporally sparse metrics with unknown statistical distributions, GRA is a more stable comparative analysis, providing an interval of potential trust values rather than fuzzy-logic or the Bayesian-Beta distributions found in current TMFs \cite{Liu2006}.
+
+There are situations where the observed metrics will include significant noise and those observations themselves occur at irregular, sparse, intervals.
+In such cases, conventional approaches such as Bayesian Beta and fuzzy logic on their own do not produce trust values that fairly reflect the underlying metrics, as they require a-prioi normalisation against a known or expected distribution to scale and classify resultant trust values to a stable assessment range (usually $[0,1]$) \cite{Liu2006}.
+In scenarios with variable, sparse, noisy metrics, estimating the distribution is difficult to accomplish off-line in advance.
+
+Grey Theory counters this by performing cohort based normalisation at runtime. 
+This creates a more stable contextual assessment of trust, providing an ``extent'' of potential trust values with respect to other observed nodes in that interval rather, while still maintaining the ability to reduce trust values down to a stable assessment range.
+, than fuzzy-logic or the Bayesian-Beta distributions found in current TMFs
 
 GRA, combined with a fuzzy whiteization model \todo{Explain}\eqref{eq:whitenization}, and a topology-aware weighting scheme \eqref{eq:networkeffects} provide capability to both detect the existence of a malicious agent within the network, and to classify what trust metrics that attacker is manipulating, identifying the style of attack taking place.
 
@@ -333,7 +340,7 @@ Simulations were conducted using a Python based agent simulation framework based
 Given the differences in delay and propagation between RF and marine networks, it is natural that the same application rates (e.g. packet emission rates or throughput) cannot be maintained under such different constraints.
 Therefore, before we can fairly assess the trust operation of a Underwater MANET, we first establish it's operational characteristics.
 
-We define a methodology for establishing an comparative operating point in the marine environment that can account for the differences in communications environment while maintaining a comperable trust operation.
+We define a methodology for establishing an comparative operating point in the marine environment that can account for the differences in communications environment while maintaining a comparable trust operation.
 This was done in two parts; optimisation for Communications Rate, optimisation for Physical Distribution.
 
 \begin{table}[h]
@@ -402,8 +409,8 @@ From Table \ref{tab:sysconstraints}, the operating transmission range of acousti
 
 A reasonable range around this is to scale from 100$m$ apart on average to 1000$m$.
 
-Varying average node separation shows that while direct throughput isn't significantly affected until, collision rates are \ref{fig:throughput_performance_range}.
-This collision rate is well within the tolerances of the MAC layer, as shown in \ref{fig:prod_breakdown_range}, where even with a rising collision rate, packets are being reliably received.
+Varying average node separation shows that while direct throughput isn't significantly affected until, collision rates are Fig.~\ref{fig:throughput_performance_range}.
+This collision rate is well within the tolerances of the MAC layer, as shown in Fig.~\ref{fig:prod_breakdown_range}, where even with a rising collision rate, packets are being reliably received.
 
 \begin{figure}[H]
   \centering
@@ -420,7 +427,7 @@ This collision rate is well within the tolerances of the MAC layer, as shown in 
 \end{figure}
 
 However, when end-to-end delay is investigated, it's clear from Fig.~\ref{fig:delay_range} that the network is becoming severely impaired approaching the 600$m$ mark, with delays rising to more than 25 minutes above 700$m$.
-This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes 
+This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes. \todo{Should look at RTS/RX Ratio} 
 
 \begin{figure}[H]
   \centering
@@ -435,7 +442,6 @@ This is due to reduced channel availability due to collisions, which are then du
       \hyphenpenalty 100000
       \input{./input/range_delay_table.tex}
   \end{center}
-  \inline{Fix ideal prop time to include packet in the air time}
 \end{table}
 
 

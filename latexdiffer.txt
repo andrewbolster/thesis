@@ -1,0 +1,1 @@
+git show last_am:papers/active/15_AdHocNow/adhocnow15_bolster.tex > head.tex; latexdiff head.tex adhocnow15_bolster.tex > diff.tex; rm head.tex; latexmk -f diff.tex; go diff.pdf    

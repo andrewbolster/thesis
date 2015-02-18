@@ -4,4 +4,44 @@
 \label{Chapter\thechapter}
 \lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
+\section{Trust}
 
+In human trust relationships it is recognised that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
+For the purposes of this work we define two perspectives on trust for autonomous systems: Design and Operational. These are summarised as follows:
+
+\begin{itemize}
+  \item \emph{Design Trust}; When an autonomous system is under development a level of Trust is established in it through the manner in which it has been designed and tested.
+    This is the same as conventional systems.
+    The difference with systems that have high-levels of autonomy is that they are designed to behave adaptively to dynamic environments that are difficult to fully predict prior to operational deployment.
+    For example, in a navigation system it is difficult to predict the dynamic environment it will need to adapt to.
+    So Trust needs to be developed that the design and test of such systems are sufficient to predict that operation will be, if not optimal, at least satisfactory.
+
+  \item \emph{Operational Trust}; Trust at runtime or in-situ that both the individual nodes within a system are operating as expected\footnote{Operational Trust is functionally derived from, but distinct from Design Trust}; and that the interfaces between the operator and the system are as expected.
+    This latter aspect covers issues such as physical/wireless links and interpretation of data at each end of such a communication link.
+\end{itemize}
+
+In addition to the two perspectives of trust identified, it is necessary to define and classify Operational Trust into two distinct but related sections, which we define as being:
+\begin{itemize}
+  \item \emph{Hard Trust} or technical trust, being the quantitative measurement and communication of the expectation of an actor performing a certain task, based on historic performance and through consensus building within a networked system.
+    Can be thought of as a de-risking strategy to measure and monitor the ability of a system, or another actor within a system, to perform a task unsupervised.
+  \item \emph{Soft Trust} or common trust, being the qualitative assessment of the ability of an actor to perform a task or operation consistently and reliably based on social or experiential factors.
+    This is the ‘natural’ form of trust and is the main motivational driver for the human-factors trust discussion.
+    Can be rephrased as the level of confidence an operator has in an actor to perform a task unsupervised.
+\end{itemize} 
+
+It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an activity by a system.
+For the purposes of this work, we are concerned with the analytical establishment of hard trust within a topologically dynamic network of autonomous actors.
+
+\section{Trust in MANETs}
+
+\subsection{Design Considerations}
+
+There are five topics that are important to address in any MANETs trust model \cite{Kamvar2003}:
+
+\begin{enumerate}
+  \item The trust model should be without infrastructure. Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a trusted third party (TTP). There is no public key infrastructure (PKI), where some center nodes monitor the network, and publish illegal nodes periodically. In a MANET, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
+  \item The trust model should be anonymous because of the anonymity of mobile nodes in MANETs.
+  \item The trust model should be robust. That is, it can be robust to all kinds of unfriendly attacks and the network itself should not be susceptible to attacks by unfriendly nodes. Moreover, in the presence of malicious nodes, they attempt to subvert the model in order to get the unfairly good trust value.
+  \item The trust model should have minimal control overhead in accordance with computation, storage, and complexity.
+  \item The trust model should be self-organized. MANETs are characterized to have dynamic, random, rapidly changing and multi-hop topologies composed of relatively bandwidth-constrained
+\end{enumerate}

@@ -45,3 +45,42 @@ There are five topics that are important to address in any MANETs trust model \c
   \item The trust model should have minimal control overhead in accordance with computation, storage, and complexity.
   \item The trust model should be self-organized. MANETs are characterized to have dynamic, random, rapidly changing and multi-hop topologies composed of relatively bandwidth-constrained
 \end{enumerate}
+
+Trust is the level of confidence one agent has in another to perform a given action on request or in a certain context. Trust in the autonomous or semi-autonomous realm is the ability of a system to establish and maintain confidence in itself or another systems' operations. 
+Managing this trust can be used to predict and reason on the future interactions between entities in a system, such as an autonomous mobile ad-hoc network (MANET).
+
+The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities or using Public Key Infrastructures (PKI).
+Therefore, a distributed, collaborative system must be applied to these networks.
+Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
+
+\subsection{Current Trust Management Frameworks}
+
+Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
+Taking some examples;
+
+\begin{itemize}
+  \item \emph{The Objective Trust Management Framework} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
+    OTMF however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
+  \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (PLR)\cite{Cho2011}.
+  \item \emph{CONFIDANT}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, similar to OTMF. They also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter.
+  \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network.
+\end{itemize}
+
+OTMF, CONFIDANT, and Fuzzy Trust-Based Filtering can be generalised as single-value probabilistic estimation, based around a Bayesian idea of taking a binary input state and generating an idealised Beta Distribution (\ref{eq:beta}) of the future states of that input generated through an expectation value based on interactions (\ref{eq:beta_e}).
+\begin{align}
+  \label{eq:beta}
+  \text{beta}(p|\alpha,\beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1},\text{ where } 0 \leq p \leq 1; \alpha,\beta > 0\\
+  \label{eq:beta_e}
+  E(p) = \frac{\alpha}{\alpha + \beta}
+\end{align}
+
+Where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
+
+These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker knows the metric in advance.
+
+The objective of operating a TMF is to increase the confidence in, and efficiency of, a system by reducing the amount of undetectable negative operations an attacker can perform.
+In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
+In turn, this causes a super-linearly negative effect in the efficiency of the network as the TMF is assumed to have reduced the possible set of attacks when in fact it has only made it more advantageous to attack a different aspect of the networks operation.
+An example of such a behaviour would be the case in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing the over all throughput of one or more virtual network routes.
+Such behaviour would not be detected by the TMF.
+

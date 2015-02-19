@@ -84,3 +84,33 @@ In turn, this causes a super-linearly negative effect in the efficiency of the n
 An example of such a behaviour would be the case in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing the over all throughput of one or more virtual network routes.
 Such behaviour would not be detected by the TMF.
 
+
+%Some groups use a reverse notation for trust, whereby $T_{1,0}$ would represent the trustworthiness of $n_1$ according to $n_0$; however, given the subjective nature of trustworthiness, it is more relatable to describe $T_{1,0}$ as ``The Trustworthiness of $n_1$ from the perspective of $n_0$. rather than an absolute statement on $n_1$'s trustworthiness.
+
+
+Table~\ref{tab:uncertainty} provides a qualitative summary of the differences in use and application between Fuzzy, Probabilistic and Grey Systems of managing uncertainty.
+
+
+\begin{table}[h]
+  \caption{Comparison between selected methods of characterising uncertainty, adapted from \cite{Guo11} \cite{Liu2006} \cite{Ng1994} \cite{Wang2006} }
+  \label{tab:uncertainty}
+  \begin{center}
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{l|ccc}
+      \toprule
+        & Fuzzy Math & Bayesian Estimation & Grey Systems \\
+      \midrule
+      Objects & Cognitive Uncertainty & Distribution Refinement & Poor Information \\
+      Set Style & Fuzzy Sets & Cantor Sets & Grey Hazy Sets \\
+%      Methodology & Discerning Affiliation & Probability Distribution & Information Coverage \\
+      Processes & Marginal Sampling & Frequency Distribution & Sequence Generation \\
+      Requirement & Known Membership & Beta Distribution & Any Distribution \\
+      Emphasis & Extension & Intension & Intension \\
+%      Objective & Cognitive Expression & Stabilisation & Realism \\
+      Characteristics & Experience & Large Samples & Small Samples\\
+     \bottomrule
+    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+  \end{center}
+\end{table}
+

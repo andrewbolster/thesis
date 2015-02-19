@@ -5,3 +5,15 @@
 \lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
 
+Thus, the multi-path channel transfer function can be described by 
+
+\begin{align}
+  \label{eq:acomultipath}
+  H(d,f) =\sum_{p=0}^{P-1} h(p) = \sum_{p=0}^{P-1} \Gamma_p / \sqrt{A(d_p,f)}e^{-j 2 \pi f \tau_p} \\
+  \text{where } \tau_p = d_p/c, c \approx 1500 ms^{-1} \notag
+\end{align}
+
+where $d=d_0$ is the minimal path length between the transmitter and receiver, $d_p,p=\{1,\dots P-1\}$ are the secondary path lengths, $\Gamma_p$ models additional losses incurred on each path such as reflection losses at the surface interface, and $\tau_p = d_p/c$ is the delay time ($c \approx 1500 ms^{-1}$ is the nominal speed of sound underwater).
+
+
+

@@ -5,6 +5,40 @@
 \lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
 
+The key challenges of underwater acoustic communications are centred around the impact of slow and differential propagation of energy (RF, Optical, Acoustic) through water, and it's interfaces with the seabed / air.
+The resultant challenges include; long delays due to propagation, significant inter-symbol interference and Doppler spreading, fast and slow fading due to environmental effects (aquatic flora/fauna; surface weather), carrier-frequency dependent signal attenuation, multipath caused by the medium interfaces at the surface and seabed, variations in propagation speed due to depth dependant effects (salinity, temperature, pressure, gaseous concentrations and bubbling), and subsequent refractive spreading and lensing due to that same propagation variation\cite{Partan2006}.
+
+The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear and $dB$ forms respectively is given by
+
+\begin{equation}
+  \label{eq:acoattenuation}
+  A_{\text{aco}}(d,f) = A_0d^ka(f)^d
+\end{equation}
+\begin{equation}
+  \label{eq:acoattenuationdb}
+  10 \log A_{\text{aco}}(d,f)/A_0 = k \cdot 10 \log d + d \cdot 10 \log a(f)
+\end{equation}
+
+where $A_0$ is a unit-normalising constant, $k$ is a spreading factor (commonly taken as 1.5), and $a(f)$ is the absorption coefficient, expressed empirically using Thorp's formula \eqref{eq:thorp} from \cite{Stojanovic2007}
+
+\begin{equation}
+  \label{eq:thorp}
+  10 \log a(f) = 0.11 \cdot \frac{f^2}{1+f^2} + 44\cdot\frac{f^2}{4100+f^2}+ 2.75\times10^{-4} f^2 + 0.003
+\end{equation}
+
+This combination of refractive lensing and the multipath nature of the medium result in supposedly ``line of sight'' propagation being extremely unreliable for estimating distances to targets, as the first arriving beam has as the very least bent in the medium, and commonly has bounced between the surface/seabed before arriving at a receiver, creating secondary paths that are sometimes many times longer than the first arrival path, generating symbol spreading over orders of seconds depending on the ranges and depths involved.
+Further, this affect is usually anisotropic with different depths between transmitter and receiver, meaning that any variation in depth across a channel, greatly impacts the characteristics of that channel.
+
+Comparing \eqref{eq:acoattenuation} with the RF Free-Space Path Loss model \eqref{eq:fspl}, the impact of range on signal power is exponential underwater, rather than quadratic in RF space ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$).
+While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
+
+\begin{equation}
+  \label{eq:fspl}
+  A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2
+  \text{where }c\approx 3\times10^8ms^{-1}
+\end{equation}
+
+
 Thus, the multi-path channel transfer function can be described by 
 
 \begin{align}

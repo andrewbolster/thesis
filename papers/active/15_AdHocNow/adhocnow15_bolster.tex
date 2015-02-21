@@ -70,10 +70,10 @@
 \mainmatter  % start of an individual contribution
 
 % first the title is needed
-\title{Trust Framework for Autonomous Marine Communications Environments}
+\title{A Trust Framework for Autonomous Marine Communications Environments}
 
 % a short form should be given in case it is too long for the running head
-\titlerunning{Trust Framework for Autonomous Marine Communications Environments}
+\titlerunning{A Trust Framework for Autonomous Marine Communications Environments}
 
 % the name(s) of the author(s) follow(s) next
 %
@@ -83,7 +83,7 @@
 %
 \author{Andrew Bolster, Alan Marshall}
 %
-\authorrunning{Trust Framework for Autonomous Marine Communications Environments}
+\authorrunning{A Trust Framework for Autonomous Marine Communications Environments}
 % (feature abused for this document to repeat the title also on left hand pages)
 
 % the affiliations are given next; don't give your e-mail address
@@ -190,7 +190,7 @@ $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.
 The $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$.
 This trust value minimises the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc}.
 
-MTFM combines this GRA with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whiteization model\eqref{eq:whitenization}. There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
+MTFM combines this GRA with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whitenization model\eqref{eq:whitenization}. There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
 Where an observing node, $n_i$, assesses the trust of another, target, node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
 In the Recommendation case, a node $n_k$, which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.
 The Indirect case, similar to the Recommendation case, the recommender $n_k$, does not have a direct link with the observer $n_i$ but $n_k$ has a Direct link with the target node, $n_j$.
@@ -320,7 +320,7 @@ However, it was recognised in Section~\ref{sec:marineacousticnetworks} that the 
 As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility.
 For instance, in Fig.~\ref{fig:throughput_static}, where all nodes are static, we do not see significant drops in saturation rates until we approach 800m, nearly double our initial estimate. 
-However, in Figs. ~\ref{fig:throughput_all_mobile}, where all the nodes are randomly walking, the saturation point collapses from 0.025pps at 300m to 0.015pps at 400m.
+However, in Fig. ~\ref{fig:throughput_all_mobile}, where all the nodes are randomly walking, the saturation point collapses from 0.025pps at 300m to 0.015pps at 400m.
 These results indicate that the best area to continue operating in for a range of node separations is at 0.015pps, and that a reasonable position scaling is from 100m to 300m, beyond which communication becomes increasingly unstable, especially in terms of end to end delay (not shown) 
 %
 \begin{figure}[h]
@@ -502,7 +502,7 @@ As such, a hybrid system could be implemented, that used OTMF as a 'trigger' to 
 We have demonstrated that existing MANET Trust Management Frameworks cannot be directly applied to the contentious and dynamic underwater medium.
 We presented a comparison between trust establishment in Terrestrial MANET and in the underwater space, demonstrating that in order to have any reasonable expectation of performance, throughput and delay responses must be characterised before implementing trust in such environments. 
 We demonstrated initial, unfiltered Grey Trust assessment using all available metrics (transmitted and received throughput, delay, received signal strength, transmitted power, and packet loss rate), as well as the application of multiple weighting vectors to iteratively emphasise different aspects of trust operation to expose and identify misbehaviour on the network.
-However, with significant delays (order from seconds to hours), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical MANET TMF deployment environments require.
+However, with significant delays (order from seconds to hours), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical MANET TMF deployment environments.
 We show that, without significant adaptation, single metric probabilistic estimation based TMFs are ineffective in such an environment.
 We have shown that existing frameworks are overly optimistic about the nature and stability of the communications channel, and can overlook characteristics of the channel that are useful for assessing the behaviour of nodes in the network. 
 This indicates that there is a good case, particularly within constrained MANETs such as this, for multi-vector, and even multi-domain trust assessment, where metrics about the communications network and topology would be brought together with information about the physical behaviours and operations of nodes to assess trust.
@@ -513,9 +513,6 @@ Future work will investigate the stability of GRA under multi-node collusion, th
 
 \section{The References Section}\label{references}
 
-%\bibliographystyle{apalike}
-%\bibliographystyle{unsrt} 
-%\bibliographystyle{amsplain} % UNCOMMENT BEFORE PUB!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 \bibliographystyle{splncs03}
 \bibliography{refs}
 % 

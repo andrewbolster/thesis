@@ -58,7 +58,7 @@
 \usepackage{subcaption}
 
 % Added to enhance todo lists, possibly need deleted pre pub
-\usepackage{todonotes}
+%\usepackage{todonotes}
 \usepackage{hyperref}
 
 \usepackage{url}
@@ -81,9 +81,7 @@
 % their surnames. This ensures that the names appear correctly in
 % the running heads and the author index.
 %
-\author{Andrew Bolster%
-%\thanks{Please note that the LNCS Editorial assumes that all authors have used the western naming convention, with given names preceding surnames. This determines the structure of the names in the running heads and the author index.}
-, Alan Marshall}
+\author{Andrew Bolster, Alan Marshall}
 %
 \authorrunning{Trust Framework for Autonomous Marine Communications Environments}
 % (feature abused for this document to repeat the title also on left hand pages)
@@ -124,7 +122,7 @@ As such, the use of trust methods developed in the terrestrial MANET space must 
 The paper is laid out as follows.
 In Section \ref{sec:trustandtmfs} we discuss Trust and Trust Management Frameworks, defining our terminology and reviewing the justifications for the use and development of Trust Management Frameworks in marine acoustic networks.
 In Section \ref{sec:marineacousticnetworks}, we review selected features of the underwater communications channel, highlighting particular challenges and differentials against terrestrial equivalents.
-In Section \ref{sec:initialsystemcharacterisation}, we establish an experimental configuration for the marine space, and review the scenarios and results presented in \cite{Guo11}.
+In Section \ref{sec:initialsystemcharacterization}, we establish an experimental configuration for the marine space, and review the scenarios and results presented in \cite{Guo11}.
 In Section \ref{sec:trustresultsanddiscussion}, we present our findings in trust establishment and malicious behaviour detection, comparing with current TMFs such as OTMF and Beta.
 
 The contributions of this paper are: A Trust Management Framework applicable to Underwater MANETs, a study on the comparative operation and performance between terrestrial and underwater MANETs using TMFs, and a review of metric suitability for Trust Management Frameworks in marine environments, informing future metric selection for experimenters and theorists.
@@ -133,7 +131,6 @@ The contributions of this paper are: A Trust Management Framework applicable to 
 
 \subsection{Trust in MANETs}\label{sec:trustinmanets}
 
-%In human trust relationships it is recognised that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
 Trust is the level of confidence one agent has in another to perform an action. 
 The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities (CA) or Public Key Infrastructure (PKI).
 Distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
@@ -162,7 +159,7 @@ In scenarios with variable, sparse, noisy metrics, estimating the distribution i
 
 \subsection{Grey Theory and MTFM}
 
-Grey Theory performs cohort based normalisation of metrics at runtime. 
+Grey Theory performs cohort based normalization of metrics at runtime. 
 This creates a more stable contextual assessment of trust, providing a ``grade'' of trust compared to other observed nodes in that interval, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
 This presents a stark difference between the Grey and Probabilistic approaches.
 Grey assessments are relative in both fairly and unfairly operating networks.
@@ -193,7 +190,7 @@ $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.
 The $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$.
 This trust value minimises the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc}.
 
-MTFM combines this GRA with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whiteisation model\eqref{eq:whitenization}. There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
+MTFM combines this GRA with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whiteization model\eqref{eq:whitenization}. There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
 Where an observing node, $n_i$, assesses the trust of another, target, node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
 In the Recommendation case, a node $n_k$, which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.
 The Indirect case, similar to the Recommendation case, the recommender $n_k$, does not have a direct link with the observer $n_i$ but $n_k$ has a Direct link with the target node, $n_j$.
@@ -251,12 +248,12 @@ These pressures simultaneously present opportunities and incentives for maliciou
 These multiple aspects of potential incentives, trust, and fairness do not directly fall under the scope of single metric trusts discussed above, and this context indicates that a multi-metric approach may be more appropriate.
 
 
-\section{Initial System Model Characterisation}\label{sec:initialsystemcharacterisation}
+\section{Initial System Model Characterization}\label{sec:initialsystemcharacterization}
 
 \subsection{Mobility, Topology, and Communications}
 
 Four mobility scenarios were used in \cite{Guo11} to explore trust behaviour; all nodes static, a central node $n_1$ performing a random walk with other nodes remaining static, all nodes but the central node ($n_1$) randomly walking, and all nodes randomly walking. From these we select the all static and all mobile cases for presentation.
-The reasoning for this is that giving the malicious node special privilege or capabilities will skew the results of trust assessment, as the behaviours between the static and mobile nodes will be significantly different regardless of malice.
+The reason for this is that giving a malicious node special privilege or capabilities will skew the results of trust assessment, as the behaviours of the static and mobile nodes will be significantly different regardless of malice.
 
 The six nodes are placed as in \cite{Guo11}, as per Fig.~\ref{fig:s1_layout}, with each node on average 100m from each other, as per \cite{Guo11}.
 The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively.
@@ -272,7 +269,6 @@ In all of the scenarios, each link from $n_i \rightarrow n_j$ periodically sent 
 %
 Guo demonstrated that when compared against OTMF and Beta trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes behaviour than packet delivery probability. 
 By weighting the metrics used in MTFM, it was shown that the trust assessments could be used to identify the style of misbehaviour being performed within the network and by who.
-
 We present a corollary method to investigate and apply this work to the Marine MANET field.
 
 \subsection{Simulation Background}
@@ -303,7 +299,6 @@ Therefore, we characterise an operational zone of performance within which the n
       Max Speed & $ms^{-1}$ & 5 & 1.5 \\
       Max Data Rate & $bps$ & $5\times10^6$ & $\approx 240$ \\
       Packet Size & bits & 4096 &  9600 \\
-      Destination Selection & & Random & Random\\
       Single Transmission Duration & $s$ & 10 & 32 \\
       Single Transmission Size & bits & $10^7$ & $9600$ \\
       \bottomrule
@@ -347,7 +342,7 @@ These results indicate that the best area to continue operating in for a range o
 %
 \section{Trust}\label{sec:trustresultsanddiscussion}
 
-Having established a safe operating range for comparison, at 300m separation with an emission rate of 0.015pps, we proceed to repeat the static and mobile scenarios presented in \cite{Guo11}. We select an assessment period of 10 mins within a 5 hour mission to scale in comparison to the relative bitrates experienced (1Mbps vs $\approx15$bps).
+Having established a safe operating range for comparison, at 300m separation and an emission rate of 0.015pps, we repeat the static and mobile scenarios presented in \cite{Guo11}. We select an assessment period of 10 mins for a 5 hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
 
 Metrics used for Grey assessment are transmitted and received throughput and power, delay, and packet loss rate as calculated by aborted, unacknowledged, transmissions.
 Compared to \cite{Guo11}, this metric set lacks a data rate quantity as the network is not dynamically adjusting bandwidth.
@@ -357,12 +352,12 @@ The particular factors under discussion are the relative performance of MTFM aga
 We establish a similar result set by initially tracking the resultant trust values established by MTFM in the pair of mobility scenarios, shown in Fig.\ref{fig:trust_mobility}.
 For simplicity, we are primarily concerned with the observational trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 We are also concerned with the opinions of $n_1$ provided to $n_0$ by other nodes, where $[T_{1,2},T_{1,3}]$ and $[T_{1,4},T_{1,5}]$ denote the sets of recommendation and indirect trust assessment respectively.
-We also include a set  aggregate assessments; $T_{1,\text{Avg}}$, the flat average of direct trust assessments of $n_1$, $T_{1,\text{Net}}$, an aggregate that weights assessments according to the network topology from \eqref{eq:networkeffects}, without the whitenisation factor $f_s$, and $T_{1,\text{MTFM}}$, the final MTFM trust assessment value based on both network topology and whitenisation from \eqref{eq:whitenization}.
+We also include aggregate assessments; $T_{1,\text{Avg}}$, the flat average of direct trust assessments of $n_1$, $T_{1,\text{Net}}$, that weights assessments according to the network topology from \eqref{eq:networkeffects}, without the whitenization factor $f_s$, and $T_{1,\text{MTFM}}$, the final MTFM trust assessment value based on both network topology and whitenization from \eqref{eq:whitenization}.
 
 The variability in assessment is loosely tied to the mobility; in the static case (Fig.~\ref{fig:trust_static}), we see that the nodes close to $n_1$ ($[n_0,n_2,n_3]$) have reasonably consistent distributions, and as the range increases out to $[n_4,n_5]$, this variability increases.
 In the full mobility case, shown in Fig.~\ref{fig:trust_all_mobile}, this subjective variability is greatly increased. 
 As the topology is highly dynamic, delays due to re-establishing routes can be very large, perturbing the trust value.
-The aggregate trust values using topology information ($iT_{1,\text{Net}},T_{1,\text{MTFM}}$) display a greatly decreased variation than those of the individual subjective observations in both cases.
+The aggregate trust values using topology information ($iT_{1,\text{Net}},T_{1,\text{MTFM}}$) display a decreased variation than those of the individual subjective observations in both cases.
 %
 \begin{figure}[h]
 \begin{subfigure}{.5\textwidth}
@@ -462,7 +457,7 @@ In the mobile case (Fig.~\ref{fig:all_mobile_badmouthing}) we observe a similar 
 A significant factor of trust assessment in such a constrained environment is that there may be long periods where two edge nodes (for instance, $n0 \to n_5$) may not interact at all. 
 This can be due to a range of factors beyond potential malicious behaviour including simple random scheduling coincidence, and intermediate or neighbouring nodes collectively causing long back-off or contention periods.
 This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
-One potential solution to this would be to move from a stepping-window of trust periods to a continuous trust log, updated on packet reception rather than waiting for a reasonable number of packets to arrive.
+One potential solution to this would be to move from a stepping-window of trust periods to a continuous trust log, updated on packet reception rather than waiting for a number of packets to arrive.
 
 In comparison to \cite{Guo11}, these results are qualitatively similar, however in this case the weighted deltas are significantly less clear than in the comparable terrestrial space, where Guo shows the same type of malicious behaviour and demonstrates a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval.
 
@@ -484,8 +479,8 @@ The same experiments were also performed utilising OTMF and Beta assessment as w
     \caption{Selective Power Control scenario}
     \label{fig:all_mobile_badmouthing_beta}
   \end{subfigure}
-  \label{fig:otmf_beta_comparison}
 \caption{$T_{1,0}$ for Beta, OTMF and MTFM assessment values for fair and selfish behaviours in the fully mobile scenario}
+\label{fig:otmf_beta_comparison}
 \end{figure}
 %
 The use of Forward Beam Routing and a CSMA/CA MAC scheme from AUVNetSim\cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance, and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and times out in route discovery rather than transmission.
@@ -500,7 +495,7 @@ This relative versus absolute difference is particularly clear when comparing mo
 In this case, particularly since the method of attack was not directly related to PLR, OTMF and Beta have not registered significant activity in the correct behaviour.
 
 While the MTFM value does not display any immediate difference between the two behaviours, we have shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
-Another difference is that computationally, MTFM is significantly more intensive than the relatively simple Beta / OTMF algorithm, and the repeated metric matrix re-weighting required for real time behaviour detection is an area that requires optimisation. 
+Another difference is that computationally, MTFM is significantly more intensive than the relatively simple Beta / OTMF algorithm, and the repeated metric matrix re-weighting required for real time behaviour detection is an area that requires optimization. 
 As such, a hybrid system could be implemented, that used OTMF as a 'trigger' to detect potentially selfish or malicious behaviour, and allow MTMF weight matrix execution to be triggered at less regular intervals.
 
 \section{Conclusions and Future Work}
@@ -510,43 +505,18 @@ We demonstrated initial, unfiltered Grey Trust assessment using all available me
 However, with significant delays (order from seconds to hours), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical MANET TMF deployment environments require.
 We show that, without significant adaptation, single metric probabilistic estimation based TMFs are ineffective in such an environment.
 We have shown that existing frameworks are overly optimistic about the nature and stability of the communications channel, and can overlook characteristics of the channel that are useful for assessing the behaviour of nodes in the network. 
-This indicates that there is a good case, particularly within constrained MANETs such as this, for multi-vector, and even multi-domain trust assessment, metrics about the communications network and topology would be brought together with information about the physical behaviours and operations of nodes to assess trust.
+This indicates that there is a good case, particularly within constrained MANETs such as this, for multi-vector, and even multi-domain trust assessment, where metrics about the communications network and topology would be brought together with information about the physical behaviours and operations of nodes to assess trust.
 
 Future work will investigate the stability of GRA under multi-node collusion, the development of real-time outlier detection and filtering for metrics (e.g differentiating between a very long delay that was an 'accident' and a malicious router), and the introduction of physical metrics and sensing capabilities into the trust management context.
 
-\subsubsection*{Acknowledgments.} The Authors would like to thanks the UK/FR DSTL PhD Programme for their support during this project.
+\subsubsection*{Acknowledgments.} The Authors would like to thank the DSTL/DGA UK/FR PhD Programme for their support during this project.
 
 \section{The References Section}\label{references}
 
 %\bibliographystyle{apalike}
-\bibliographystyle{amsplain} % UNCOMMENT BEFORE PUB!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-%\bibliographystyle{unsrt} % UNCOMMENT BEFORE PUB!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+%\bibliographystyle{unsrt} 
+%\bibliographystyle{amsplain} % UNCOMMENT BEFORE PUB!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+\bibliographystyle{splncs03}
 \bibliography{refs}
 % 
-% \begin{thebibliography}{4}
-% 
-% \bibitem{jour} Smith, T.F., Waterman, M.S.: Identification of Common Molecular
-% Subsequences. J. Mol. Biol. 147, 195--197 (1981)
-% 
-% \bibitem{lncschap} May, P., Ehrlich, H.C., Steinke, T.: ZIB Structure Prediction Pipeline:
-% Composing a Complex Biological Workflow through Web Services. In: Nagel,
-% W.E., Walter, W.V., Lehner, W. (eds.) Euro-Par 2006. LNCS, vol. 4128,
-% pp. 1148--1158. Springer, Heidelberg (2006)
-% 
-% \bibitem{book} Foster, I., Kesselman, C.: The Grid: Blueprint for a New Computing
-% Infrastructure. Morgan Kaufmann, San Francisco (1999)
-% 
-% \bibitem{proceeding1} Czajkowski, K., Fitzgerald, S., Foster, I., Kesselman, C.: Grid
-% Information Services for Distributed Resource Sharing. In: 10th IEEE
-% International Symposium on High Performance Distributed Computing, pp.
-% 181--184. IEEE Press, New York (2001)
-% 
-% \bibitem{proceeding2} Foster, I., Kesselman, C., Nick, J., Tuecke, S.: The Physiology of the
-% Grid: an Open Grid Services Architecture for Distributed Systems
-% Integration. Technical report, Global Grid Forum (2002)
-% 
-% \bibitem{url} National Center for Biotechnology Information, \url{http://www.ncbi.nlm.nih.gov}
-% 
-% \end{thebibliography}
-
 \end{document}

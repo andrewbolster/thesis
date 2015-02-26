@@ -1,0 +1,297 @@
+
+
+\RequirePackage{snapshot}
+\documentclass[runningheads,a4paper]{llncs}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{float}
+
+% Added to fix Table input
+\usepackage{booktabs}
+\usepackage{subcaption}
+
+% Added to enhance todo lists, possibly need deleted pre pub
+\usepackage{todonotes}
+\usepackage{hyperref}
+
+\usepackage{url}
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+
+\begin{document}
+
+
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{img/throughput_sep_lines_static.pdf}
+  \caption{All Nodes Static}
+  \label{fig:throughput_static}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{img/throughput_sep_lines_single_mobile.pdf}
+  \caption{$n_1$ Random Walk}
+  \label{fig:throughput_single_mobile}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+  \includegraphics[width=.9\linewidth]{img/throughput_sep_lines_allbut1.pdf}
+  \caption{All nodes but $n_1$ Random Walk}
+  \label{fig:throughput_allbut1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+  \includegraphics[width=.9\linewidth]{img/throughput_sep_lines_all_mobile.pdf}
+  \caption{All Nodes Mobile}
+  \label{fig:throughput_all_mobile}
+\end{subfigure}
+\caption{Throughput Characteristics for varying node separations across increasing packet emission rates}
+\label{fig:scenario_throughputs_plain}
+\end{figure}
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+    \centering
+  \includegraphics[width=.9\linewidth]{img/2d_ratio_static.pdf}
+  \caption{All Nodes Static}
+  \label{fig:2d_throughput_static}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{img/2d_ratio_single_mobile.pdf}
+  \caption{$n_1$ Random Walk}
+  \label{fig:2d_throughput_single_mobile}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+  \includegraphics[width=.9\linewidth]{img/2d_ratio_allbut1.pdf}
+  \caption{All nodes but $n_1$ Random Walk}
+  \label{fig:2d_throughput_allbut1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+  \includegraphics[width=.9\linewidth]{img/2d_ratio_all_mobile.pdf}
+  \caption{All Nodes Mobile}
+  \label{fig:2d_throughput_all_mobile}
+\end{subfigure}
+\caption{Throughput/Delay Characteristics for varying node separations across increasing packet emission rates}
+\label{fig:scenario_throughputratios_2d}
+\end{figure}
+
+
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_static.pdf}
+  \caption{All Nodes Static}
+  \label{fig:trust_static}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile.pdf}
+  \caption{All Nodes Randomly Walking}
+  \label{fig:trust_all_mobile}
+\end{subfigure}
+\caption{MTFM Trust assessments for varying mobility options in the fair case}
+\label{fig:trust_mobility}
+\end{figure}
+
+
+\begin{figure}
+%\begin{subfigure}{0.32\textwidth}
+%  \centering
+%  \includegraphics[width=.95\linewidth]{img/trust_bella_static_even_BadMouthingPowerControl.pdf}
+%  \caption{Evenly Weighted}
+%  \label{fig:static_badmouthing_even}
+%\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_static_emph_ADelay_BadMouthingPowerControl.pdf}
+  \caption{Delay}
+  \label{fig:static_badmouthing_delay}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_static_emph_ARXP_BadMouthingPowerControl.pdf}
+  \caption{RX Power}
+  \label{fig:static_badmouthing_rxp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_static_emph_ATXP_BadMouthingPowerControl.pdf}
+  \caption{TX Power}
+  \label{fig:static_badmouthing_txp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_static_emph_RXThroughput_BadMouthingPowerControl.pdf}
+  \caption{RX Throughput}
+  \label{fig:static_badmouthing_rxthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_static_emph_TXThroughput_BadMouthingPowerControl.pdf}
+  \caption{TX Throughput}
+  \label{fig:static_badmouthing_txthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_static_emph_PLR_BadMouthingPowerControl.pdf}
+  \caption{PLR}
+  \label{fig:static_badmouthing_plr}
+\end{subfigure}
+\caption{$T_{1,0}$ in the All Static case for the Bad Mouthing Power Control behaviour, emphasising a different metric in turn, also showing the mean and $\pm \sigma$ of the fair assessment}
+\label{fig:static_badmouthing}
+\end{figure}
+
+
+
+\begin{figure}
+%\begin{subfigure}{0.32\textwidth}
+%  \centering
+%  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_even_BadMouthingPowerControl.pdf}
+%  \caption{Evenly Weighted}
+%  \label{fig:single_mobile_badmouthing_even}
+%\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_emph_ADelay_BadMouthingPowerControl.pdf}
+  \caption{Delay}
+  \label{fig:single_mobile_badmouthing_delay}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_emph_ARXP_BadMouthingPowerControl.pdf}
+  \caption{RX Power}
+  \label{fig:single_mobile_badmouthing_rxp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_emph_ATXP_BadMouthingPowerControl.pdf}
+  \caption{TX Power}
+  \label{fig:single_mobile_badmouthing_txp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}
+  \caption{RX Throughput}
+  \label{fig:single_mobile_badmouthing_rxthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}
+  \caption{TX Throughput}
+  \label{fig:single_mobile_badmouthing_txthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_emph_PLR_BadMouthingPowerControl.pdf}
+  \caption{PLR}
+  \label{fig:single_mobile_badmouthing_plr}
+\end{subfigure}
+\caption{$T_{1,0}$ in the Single Mobile case for the Bad Mouthing Power Control behaviour}
+\label{fig:single_mobile_badmouthing}
+\end{figure}
+
+\begin{figure}
+%\begin{subfigure}{0.32\textwidth}
+%  \centering
+%  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_even_BadMouthingPowerControl.pdf}
+%  \caption{Evenly Weighted}
+%  \label{fig:allbut1_mobile_badmouthing_even}
+%\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_emph_ADelay_BadMouthingPowerControl.pdf}
+  \caption{Delay}
+  \label{fig:allbut1_mobile_badmouthing_delay}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_emph_ARXP_BadMouthingPowerControl.pdf}
+  \caption{RX Power}
+  \label{fig:allbut1_mobile_badmouthing_rxp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_emph_ATXP_BadMouthingPowerControl.pdf}
+  \caption{TX Power}
+  \label{fig:allbut1_mobile_badmouthing_txp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}
+  \caption{RX Throughput}
+  \label{fig:allbut1_mobile_badmouthing_rxthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}
+  \caption{TX Throughput}
+  \label{fig:allbut1_mobile_badmouthing_txthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_emph_PLR_BadMouthingPowerControl.pdf}
+  \caption{PLR}
+  \label{fig:allbut1_mobile_badmouthing_plr}
+\end{subfigure}
+\caption{$T_{1,0}$ in the All-but-$n_1$ Mobile case for the Bad Mouthing Power Control behaviour}
+\label{fig:allbut1_mobile_badmouthing}
+\end{figure}
+
+\begin{figure}
+%\begin{subfigure}{0.32\textwidth}
+%  \centering
+%  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_even_BadMouthingPowerControl.pdf}
+%  \caption{Evenly Weighted}
+%  \label{fig:all_mobile_badmouthing_even}
+%\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl.pdf}
+  \caption{Delay}
+  \label{fig:all_mobile_badmouthing_delay}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl.pdf}
+  \caption{RX Power}
+  \label{fig:all_mobile_badmouthing_rxp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl.pdf}
+  \caption{TX Power}
+  \label{fig:all_mobile_badmouthing_txp}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}
+  \caption{RX Throughput}
+  \label{fig:all_mobile_badmouthing_rxthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}
+  \caption{TX Throughput}
+  \label{fig:all_mobile_badmouthing_txthroughput}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl.pdf}
+  \caption{PLR}
+  \label{fig:all_mobile_badmouthing_plr}
+\end{subfigure}
+\caption{$T_{1,0}$ in the All Mobile case for the Bad Mouthing Power Control behaviour}
+\label{fig:all_mobile_badmouthing}
+\end{figure}
+
+\end{document}

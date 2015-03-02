@@ -4,4 +4,113 @@
 \label{Chapter\thechapter}
 \lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
+\section{Trust}
+
+In human trust relationships it is recognised that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
+For the purposes of this work we define two perspectives on trust for autonomous systems: Design and Operational. These are summarised as follows:
+
+\begin{itemize}
+  \item \emph{Design Trust}; When an autonomous system is under development a level of Trust is established in it through the manner in which it has been designed and tested.
+    This is the same as conventional systems.
+    The difference with systems that have high-levels of autonomy is that they are designed to behave adaptively to dynamic environments that are difficult to fully predict prior to operational deployment.
+    For example, in a navigation system it is difficult to predict the dynamic environment it will need to adapt to.
+    So Trust needs to be developed that the design and test of such systems are sufficient to predict that operation will be, if not optimal, at least satisfactory.
+
+  \item \emph{Operational Trust}; Trust at runtime or in-situ that both the individual nodes within a system are operating as expected\footnote{Operational Trust is functionally derived from, but distinct from Design Trust}; and that the interfaces between the operator and the system are as expected.
+    This latter aspect covers issues such as physical/wireless links and interpretation of data at each end of such a communication link.
+\end{itemize}
+
+In addition to the two perspectives of trust identified, it is necessary to define and classify Operational Trust into two distinct but related sections, which we define as being:
+\begin{itemize}
+  \item \emph{Hard Trust} or technical trust, being the quantitative measurement and communication of the expectation of an actor performing a certain task, based on historic performance and through consensus building within a networked system.
+    Can be thought of as a de-risking strategy to measure and monitor the ability of a system, or another actor within a system, to perform a task unsupervised.
+  \item \emph{Soft Trust} or common trust, being the qualitative assessment of the ability of an actor to perform a task or operation consistently and reliably based on social or experiential factors.
+    This is the ‘natural’ form of trust and is the main motivational driver for the human-factors trust discussion.
+    Can be rephrased as the level of confidence an operator has in an actor to perform a task unsupervised.
+\end{itemize} 
+
+It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an activity by a system.
+For the purposes of this work, we are concerned with the analytical establishment of hard trust within a topologically dynamic network of autonomous actors.
+
+\section{Trust in MANETs}
+
+\subsection{Design Considerations}
+
+There are five topics that are important to address in any MANETs trust model \cite{Kamvar2003}:
+
+\begin{enumerate}
+  \item The trust model should be without infrastructure. Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a trusted third party (TTP). There is no public key infrastructure (PKI), where some center nodes monitor the network, and publish illegal nodes periodically. In a MANET, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
+  \item The trust model should be anonymous because of the anonymity of mobile nodes in MANETs.
+  \item The trust model should be robust. That is, it can be robust to all kinds of unfriendly attacks and the network itself should not be susceptible to attacks by unfriendly nodes. Moreover, in the presence of malicious nodes, they attempt to subvert the model in order to get the unfairly good trust value.
+  \item The trust model should have minimal control overhead in accordance with computation, storage, and complexity.
+  \item The trust model should be self-organized. MANETs are characterized to have dynamic, random, rapidly changing and multi-hop topologies composed of relatively bandwidth-constrained
+\end{enumerate}
+
+Trust is the level of confidence one agent has in another to perform a given action on request or in a certain context. Trust in the autonomous or semi-autonomous realm is the ability of a system to establish and maintain confidence in itself or another systems' operations. 
+Managing this trust can be used to predict and reason on the future interactions between entities in a system, such as an autonomous mobile ad-hoc network (MANET).
+
+The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities or using Public Key Infrastructures (PKI).
+Therefore, a distributed, collaborative system must be applied to these networks.
+Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
+
+\subsection{Current Trust Management Frameworks}
+
+Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
+Taking some examples;
+
+\begin{itemize}
+  \item \emph{The Objective Trust Management Framework} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
+    OTMF however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
+  \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (PLR)\cite{Cho2011}.
+  \item \emph{CONFIDANT}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, similar to OTMF. They also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter.
+  \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network.
+\end{itemize}
+
+OTMF, CONFIDANT, and Fuzzy Trust-Based Filtering can be generalised as single-value probabilistic estimation, based around a Bayesian idea of taking a binary input state and generating an idealised Beta Distribution (\ref{eq:beta}) of the future states of that input generated through an expectation value based on interactions (\ref{eq:beta_e}).
+\begin{align}
+  \label{eq:beta}
+  \text{beta}(p|\alpha,\beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1},\text{ where } 0 \leq p \leq 1; \alpha,\beta > 0\\
+  \label{eq:beta_e}
+  E(p) = \frac{\alpha}{\alpha + \beta}
+\end{align}
+
+Where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
+
+These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker knows the metric in advance.
+
+The objective of operating a TMF is to increase the confidence in, and efficiency of, a system by reducing the amount of undetectable negative operations an attacker can perform.
+In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
+In turn, this causes a super-linearly negative effect in the efficiency of the network as the TMF is assumed to have reduced the possible set of attacks when in fact it has only made it more advantageous to attack a different aspect of the networks operation.
+An example of such a behaviour would be the case in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing the over all throughput of one or more virtual network routes.
+Such behaviour would not be detected by the TMF.
+
+
+%Some groups use a reverse notation for trust, whereby $T_{1,0}$ would represent the trustworthiness of $n_1$ according to $n_0$; however, given the subjective nature of trustworthiness, it is more relatable to describe $T_{1,0}$ as ``The Trustworthiness of $n_1$ from the perspective of $n_0$. rather than an absolute statement on $n_1$'s trustworthiness.
+
+
+Table~\ref{tab:uncertainty} provides a qualitative summary of the differences in use and application between Fuzzy, Probabilistic and Grey Systems of managing uncertainty.
+
+
+\begin{table}[h]
+  \caption{Comparison between selected methods of characterising uncertainty, adapted from \cite{Guo11} \cite{Liu2006} \cite{Ng1994} \cite{Wang2006} }
+  \label{tab:uncertainty}
+  \begin{center}
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{l|ccc}
+      \toprule
+        & Fuzzy Math & Bayesian Estimation & Grey Systems \\
+      \midrule
+      Objects & Cognitive Uncertainty & Distribution Refinement & Poor Information \\
+      Set Style & Fuzzy Sets & Cantor Sets & Grey Hazy Sets \\
+%      Methodology & Discerning Affiliation & Probability Distribution & Information Coverage \\
+      Processes & Marginal Sampling & Frequency Distribution & Sequence Generation \\
+      Requirement & Known Membership & Beta Distribution & Any Distribution \\
+      Emphasis & Extension & Intension & Intension \\
+%      Objective & Cognitive Expression & Stabilisation & Realism \\
+      Characteristics & Experience & Large Samples & Small Samples\\
+     \bottomrule
+    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+  \end{center}
+\end{table}
 

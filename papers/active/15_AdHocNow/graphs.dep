@@ -1,0 +1,133 @@
+\RequireVersions{
+  *{application}{TeX}     {1990/03/25 v3.x}
+  *{format} {LaTeX2e}     {2014/05/01 v2.e}
+  *{package}{snapshot}    {2002/03/05 v1.14}
+  *{class}  {llncs}       {2013/09/27 v2.18}
+  *{class}  {article}     {2007/10/19 v1.4h}
+  *{file}   {size10.clo}  {2007/10/19 v1.4h}
+  *{package}{multicol}    {2014/04/23 v1.8e}
+  *{package}{aliascnt}    {2009/09/08 v1.3}
+  *{package}{remreset}    {0000/00/00 v0.0}
+  *{package}{amssymb}     {2013/01/14 v3.01}
+  *{package}{amsfonts}    {2013/01/14 v3.01}
+  *{package}{amsmath}     {2013/01/14 v2.14}
+  *{package}{amstext}     {2000/06/29 v2.01}
+  *{package}{amsgen}      {1999/11/30 v2.0}
+  *{package}{amsbsy}      {1999/11/29 v1.2d}
+  *{package}{amsopn}      {1999/12/14 v2.01}
+  *{package}{graphicx}    {2014/04/25 v1.0g}
+  *{package}{keyval}      {2014/05/08 v1.15}
+  *{package}{graphics}    {2009/02/05 v1.0o}
+  *{package}{trig}        {1999/03/16 v1.09}
+  *{file}   {graphics.cfg}{2010/04/23 v1.9}
+  *{file}   {pdftex.def}  {2011/05/27 v0.06d}
+  *{package}{infwarerr}   {2010/04/08 v1.3}
+  *{package}{ltxcmds}     {2011/11/09 v1.22}
+  *{package}{float}       {2001/11/08 v1.3d}
+  *{package}{booktabs}    {2005/04/14 v1.61803}
+  *{package}{subcaption}  {2013/02/03 v1.1-62}
+  *{package}{caption}     {2013/05/02 v3.3-89}
+  *{package}{caption3}    {2013/05/02 v1.6-88}
+  *{package}{todonotes}   {2012/07/25 v0.0}
+  *{package}{ifthen}      {2001/05/26 v1.1c}
+  *{package}{xkeyval}     {2014/05/25 v2.7}
+  *{file}   {xkeyval.tex} {2014/05/25 v2.7}
+  *{package}{xcolor}      {2007/01/21 v2.11}
+  *{file}   {color.cfg}   {2007/01/18 v1.5}
+  *{package}{tikz}        {2013/12/13 v3.0.0}
+  *{package}{pgf}         {2013/12/18 v3.0.0}
+  *{package}{pgfrcs}      {2013/12/20 v3.0.0}
+  *{package}{everyshi}    {2001/05/15 v3.00}
+  *{file}   {pgfrcs.code.tex}{0000/00/00 v0.0}
+  *{package}{pgfcore}     {2010/04/11 v3.0.0}
+  *{package}{pgfsys}      {2013/11/30 v3.0.0}
+  *{file}   {pgfsys.code.tex}{0000/00/00 v0.0}
+  *{file}   {pgfsyssoftpath.code.tex}{2013/09/09 v1.9)}
+  *{file}   {pgfsysprotocol.code.tex}{2006/10/16 v1.4)}
+  *{file}   {pgfcore.code.tex}{0000/00/00 v0.0}
+  *{package}{pgfcomp-version-0-65}{2007/07/03 v3.0.0}
+  *{package}{pgfcomp-version-1-18}{2007/07/23 v3.0.0}
+  *{package}{pgffor}      {2013/12/13 v3.0.0}
+  *{package}{pgfkeys}     {0000/00/00 v0.0}
+  *{file}   {pgfkeys.code.tex}{0000/00/00 v0.0}
+  *{package}{pgfmath}     {0000/00/00 v0.0}
+  *{file}   {pgfmath.code.tex}{0000/00/00 v0.0}
+  *{file}   {pgffor.code.tex}{0000/00/00 v0.0}
+  *{file}   {tikz.code.tex}{0000/00/00 v0.0}
+  *{package}{calc}        {2007/08/22 v4.3}
+  *{package}{hyperref}    {2012/11/06 v6.83m}
+  *{package}{hobsub-hyperref}{2012/05/28 v1.13}
+  *{package}{hobsub-generic}{2012/05/28 v1.13}
+  *{package}{hobsub}      {2012/05/28 v1.13}
+  *{package}{ifluatex}    {2010/03/01 v1.3}
+  *{package}{ifvtex}      {2010/03/01 v1.5}
+  *{package}{intcalc}     {2007/09/27 v1.1}
+  *{package}{ifpdf}       {2011/01/30 v2.3}
+  *{package}{etexcmds}    {2011/02/16 v1.5}
+  *{package}{kvsetkeys}   {2012/04/25 v1.16}
+  *{package}{kvdefinekeys}{2011/04/07 v1.3}
+  *{package}{pdftexcmds}  {2011/11/29 v0.20}
+  *{package}{pdfescape}   {2011/11/25 v1.13}
+  *{package}{bigintcalc}  {2012/04/08 v1.3}
+  *{package}{bitset}      {2011/01/30 v1.1}
+  *{package}{uniquecounter}{2011/01/30 v1.2}
+  *{package}{letltxmacro} {2010/09/02 v1.4}
+  *{package}{hopatch}     {2012/05/28 v1.2}
+  *{package}{xcolor-patch}{2011/01/30 v0.0}
+  *{package}{atveryend}   {2011/06/30 v1.8}
+  *{package}{atbegshi}    {2011/10/05 v1.16}
+  *{package}{refcount}    {2011/10/16 v3.4}
+  *{package}{hycolor}     {2011/01/30 v1.7}
+  *{package}{ifxetex}     {2010/09/12 v0.6}
+  *{package}{auxhook}     {2011/03/04 v1.3}
+  *{package}{kvoptions}   {2011/06/30 v3.11}
+  *{file}   {pd1enc.def}  {2012/11/06 v6.83m}
+  *{file}   {hyperref.cfg}{2002/06/06 v1.2}
+  *{package}{url}         {2013/09/16 v3.4}
+  *{file}   {hpdftex.def} {2012/11/06 v6.83m}
+  *{package}{rerunfilecheck}{2011/04/15 v1.7}
+  *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
+  *{package}{epstopdf-base}{2010/02/09 v2.5}
+  *{package}{grfext}      {2010/08/19 v1.1}
+  *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
+  *{package}{nameref}     {2012/10/27 v2.43}
+  *{package}{gettitlestring}{2010/12/03 v1.4}
+  *{file}   {graphs.out}  {0000/00/00 v0.0}
+  *{file}   {graphs.out}  {0000/00/00 v0.0}
+  *{file}   {img/throughput_sep_lines_static.pdf}{0000/00/00 v0.0}
+  *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{file}   {img/throughput_sep_lines_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {img/throughput_sep_lines_allbut1.pdf}{0000/00/00 v0.0}
+  *{file}   {img/throughput_sep_lines_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {img/2d_ratio_static.pdf}{0000/00/00 v0.0}
+  *{file}   {img/2d_ratio_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {img/2d_ratio_allbut1.pdf}{0000/00/00 v0.0}
+  *{file}   {img/2d_ratio_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_emph_ATXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_emph_RXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_emph_TXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_single_mobile_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_single_mobile_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_single_mobile_emph_ATXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_single_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_single_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_single_mobile_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_allbut1_mobile_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_allbut1_mobile_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_allbut1_mobile_emph_ATXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_allbut1_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_allbut1_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_allbut1_mobile_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+}

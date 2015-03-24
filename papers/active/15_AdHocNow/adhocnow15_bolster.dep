@@ -28,33 +28,6 @@
   *{package}{subcaption}  {2013/02/03 v1.1-62}
   *{package}{caption}     {2013/05/02 v3.3-89}
   *{package}{caption3}    {2013/05/02 v1.6-88}
-  *{package}{todonotes}   {2012/07/25 v0.0}
-  *{package}{ifthen}      {2001/05/26 v1.1c}
-  *{package}{xkeyval}     {2014/05/25 v2.7}
-  *{file}   {xkeyval.tex} {2014/05/25 v2.7}
-  *{package}{xcolor}      {2007/01/21 v2.11}
-  *{file}   {color.cfg}   {2007/01/18 v1.5}
-  *{package}{tikz}        {2013/12/13 v3.0.0}
-  *{package}{pgf}         {2013/12/18 v3.0.0}
-  *{package}{pgfrcs}      {2013/12/20 v3.0.0}
-  *{package}{everyshi}    {2001/05/15 v3.00}
-  *{file}   {pgfrcs.code.tex}{0000/00/00 v0.0}
-  *{package}{pgfcore}     {2010/04/11 v3.0.0}
-  *{package}{pgfsys}      {2013/11/30 v3.0.0}
-  *{file}   {pgfsys.code.tex}{0000/00/00 v0.0}
-  *{file}   {pgfsyssoftpath.code.tex}{2013/09/09 v1.9)}
-  *{file}   {pgfsysprotocol.code.tex}{2006/10/16 v1.4)}
-  *{file}   {pgfcore.code.tex}{0000/00/00 v0.0}
-  *{package}{pgfcomp-version-0-65}{2007/07/03 v3.0.0}
-  *{package}{pgfcomp-version-1-18}{2007/07/23 v3.0.0}
-  *{package}{pgffor}      {2013/12/13 v3.0.0}
-  *{package}{pgfkeys}     {0000/00/00 v0.0}
-  *{file}   {pgfkeys.code.tex}{0000/00/00 v0.0}
-  *{package}{pgfmath}     {0000/00/00 v0.0}
-  *{file}   {pgfmath.code.tex}{0000/00/00 v0.0}
-  *{file}   {pgffor.code.tex}{0000/00/00 v0.0}
-  *{file}   {tikz.code.tex}{0000/00/00 v0.0}
-  *{package}{calc}        {2007/08/22 v4.3}
   *{package}{hyperref}    {2012/11/06 v6.83m}
   *{package}{hobsub-hyperref}{2012/05/28 v1.13}
   *{package}{hobsub-generic}{2012/05/28 v1.13}

@@ -515,5 +515,154 @@ Future work will investigate the stability of GRA under multi-node collusion, th
 
 \bibliographystyle{splncs03}
 \bibliography{refs}
+
+\pagebreak
+
+\section{Review Response: Rejected}
+
+\subsection{Summary}
+
+
+\subsubsection{What is the contribution of this paper?}
+
+This work presents a Trust Management Framework (TMF) for underwater autonomous networks. The authors claim that the existing trust methods in the terrestrial MANETs must be re-appraised for the challenging underwater communications channel. 
+
+The paper describes a Trust Management Framework (TMF) for underwater networks. The authors justify the importance of defining such a trust management framework and define specific metrics for assessing nodes trust. The work is a follow-up of a previous work of one of the authors, adapting the ideas to the underwater scenario. The authors describe an application of the method to static as well as mobile networks. The application to malicious behavior is limited to the case of selfish power control.
+
+The paper compares simulated performance of an arbitrary chosen trust management framework in a standard wireless model and in the underwater environment.
+The main result is confirming a rather obvious observation that due to different physical characteristic the particular trust management framework would perform poorly in marine environment.
+
+In this paper, authors demonstrate the need for a different approach towards metric selection and trust-timing in Underwater Autonomous Networks, and a performance comparison with a selection of current Trust Management Framework (TMF) assessment processes.
+
+\subsubsection{What are the main reasons to accept this paper?}
+
+It is interesting to explore and develop the trust management framework in underwater communications environments. The authors conduct comprehensive analysis on the impacts to network operations resulting from the hostile underwater environments. Besides, they have carried out extensive simulations.
+
+Well written.
+
+\subsubsection{What are the main reasons to reject this paper?}
+
+The novelty of this work is very limited. The authors claim that they have proposed a new Trust Management Framework, however, I cannot find it. The authors have reviewed the method (MTFM[4]) presented by Guo et.al. and compared MTFM with Beta and OTMF in the simulation part. Nevertheless, it is not clear that which method is presented by this work.
+
+Although some of the figures in the paper show that MTFM might be used to identify a deviation of the network behavior from an expected one (mainly Figure 4), it is not clear to which extent this approach can be used in a real setting.
+
+It is not clear to me, for example, the application of the approach to a mobile setting (addressed in the paper). Although in Fig. 3(b) the aggregate trust values display a decreased variation in comparison to the individual observations, it still seems that the network does not have a close enough perception of the state of node n1. It is not clear either the difference between the fair scenario and the scenario with selective power control in Fig. 6. The authors should state more clearly to which extent mobility can be evaluated with the approach.
+
+In the case of malicious behavior, a simpler case was addressed (Selfish Power Control) due to the harsh characteristic of the environment (second paragraph, Section 5.1). Is the use of MTFM viable when we consider high variability, such as when nodes do power adaptation as a response to variations in packet loss rate? 
+
+The authors should review the use of semicolon in the text. For example, the authors should use colon instead of semicolon in the last paragraph of page 4 (third line, before "Direct") and in the first paragraph of Section 3 (fourth line, after "include"). Many other such cases happen in the text.
+
+The authors cite reference \cite{Guo11} using only the name of the first author. For example, in the first paragraph of page 4 ("Guo[4] demonstrated …"). The authors should use "Guo et al.".
+
+Very limited results in a well studied area.
+
+Limited impact on the area and the audience. Limited contribution to the area.
+
+The main contribution of the paper is that authors demonstrate that existing MANET Trust Management Frameworks cannot be directly applied to the contentious and dynamic underwater medium. 
+
+Considering the different characteristics between conventional MANETs and Underwater networks, the level of contribution is very limited.
+
+To my perspective, the reader expects something new in papers included in this conference. 
+
+\subsubsection{Reasons for your recommendation and suggestions}
+
+Based on the comments from all reviewers, I suggest to reject this paper.
+
+Generalize results.
+
+Authors should have include in comparison a wider class of trust management frameworks and focus wider applicable theoretical results instead in depth analysis of a particular (and mostly artificial) setup.
+
+
+\subsection{Chair}
+\subsubsection{What is the contribution of this paper?}
+
+This work presents a Trust Management Framework (TMF) for underwater autonomous networks. The authors claim that the existing trust methods in the terrestrial MANETs must be re-appraised for the challenging underwater communications channel. 
+
+\subsubsection{What are the main reasons to accept this paper?}
+
+It is interesting to explore and develop the trust management framework in underwater communications environments. The authors conduct comprehensive analysis on the impacts to network operations resulting from the hostile underwater environments. Besides, they have carried out extensive simulations.
+
+\subsubsection{What are the main reasons to reject this paper?}
+
+The novelty of this work is very limited. The authors claim that they have proposed a new Trust Management Framework, however, I cannot find it. The authors have reviewed the method (MTFM[4]) presented by Guo et.al. and compared MTFM with Beta and OTMF in the simulation part. Nevertheless, it is not clear that which method is presented by this work.
+
+\subsubsection{Reasons for your recommendation and suggestions}
+
+Based on the comments from all reviewers, I suggest to reject this paper.
+
+\subsection{A}
+
+The work is interesting, about adaption of a trust framework to the context of underwater communications. It is an application/evaluation of existing work to the underwater environment.
+
+The paper contains a detailed analysis.
+
+
+\subsection{B}
+\subsubsection{What is the contribution of this paper?}
+
+The paper describes a Trust Management Framework (TMF) for underwater networks. The authors justify the importance of defining such a trust management framework and define specific metrics for assessing nodes trust. The work is a follow-up of a previous work of one of the authors, adapting the ideas to the underwater scenario. The authors describe an application of the method to static as well as mobile networks. The application to malicious behavior is limited to the case of selfish power control.
+
+
+\subsubsection{What are the main reasons to accept this paper?}
+
+Management of communication in an underwater scenario is much more difficult than in a terrestrial environment. The use of a trust management framework might be an approach (among others) to detect nodes malfunctioning. Additionally, the presented approach is a tool to help understand the behavior of underwater networks.
+
+
+\subsubsection{What are the main reasons to reject this paper?}
+
+
+\subsubsection{Reasons for your recommendation and suggestions}
+
+Although some of the figures in the paper show that MTFM might be used to identify a deviation of the network behavior from an expected one (mainly Figure 4), it is not clear to which extent this approach can be used in a real setting.
+
+It is not clear to me, for example, the application of the approach to a mobile setting (addressed in the paper). Although in Fig. 3(b) the aggregate trust values display a decreased variation in comparison to the individual observations, it still seems that the network does not have a close enough perception of the state of node n1. It is not clear either the difference between the fair scenario and the scenario with selective power control in Fig. 6. The authors should state more clearly to which extent mobility can be evaluated with the approach.
+
+In the case of malicious behavior, a simpler case was addressed (Selfish Power Control) due to the harsh characteristic of the environment (second paragraph, Section 5.1). Is the use of MTFM viable when we consider high variability, such as when nodes do power adaptation as a response to variations in packet loss rate? 
+
+The authors should review the use of semicolon in the text. For example, the authors should use colon instead of semicolon in the last paragraph of page 4 (third line, before "Direct") and in the first paragraph of Section 3 (fourth line, after "include"). Many other such cases happen in the text.
+
+The authors cite reference \cite{Guo11} using only the name of the first author. For example, in the first paragraph of page 4 ("Guo[4] demonstrated …"). The authors should use "Guo et al.".
+
+
+\subsection{C}
+
+\subsubsection{What is the contribution of this paper?}
+
+The paper compares simulated performance of an arbitrary chosen trust management framework in a standard wireless model and in the underwater environment.
+The main result is confirming a rather obvious observation that due to different physical characteristic the particular trust management framework would perform poorly in marine environment.
+
+\subsubsection{What are the main reasons to accept this paper?}
+
+Well written.
+
+\subsubsection{What are the main reasons to reject this paper?}
+
+Very limited results in a well studied area.
+
+\subsubsection{Reasons for your recommendation and suggestions}
+
+Limited impact on the area and the audience. Limited contribution to the area.
+Authors should have include in comparison a wider class of trust management frameworks and focus wider applicable theoretical results instead in depth analysis of a particular (and mostly artificial) setup.
+
+\subsubsection{If accepted, which changes would you recommend?}
+
+Generalize results.
+
+
+\subsection{C}
+
+\subsubsection{What is the contribution of this paper?}
+
+In this paper, authors demonstrate the need for a different approach towards metric selection and trust-timing in Underwater Autonomous Networks, and a performance comparison with a selection of current Trust Management Framework (TMF) assessment processes.
+
+
+\subsubsection{What are the main reasons to reject this paper?}
+
+The main contribution of the paper is that authors demonstrate that existing MANET Trust Management Frameworks cannot be directly applied to the contentious and dynamic underwater medium. 
+
+Considering the different characteristics between conventional MANETs and Underwater networks, the level of contribution is very limited.
+
+To my perspective, the reader expects something new in papers included in this conference. 
+
 % 
 \end{document}

@@ -230,8 +230,8 @@
 % http://www.ctan.org/tex-archive/macros/latex/required/tools/
 
 
-%\usepackage{mdwmath}
-%\usepackage{mdwtab}
+\usepackage{mdwmath}
+\usepackage{mdwtab}
 % Also highly recommended is Mark Wooding's extremely powerful MDW tools,
 % especially mdwmath.sty and mdwtab.sty which are used to format equations
 % and tables, respectively. The MDWtools set is already installed on most
@@ -255,7 +255,7 @@
 
 
 % *** SUBFIGURE PACKAGES ***
-%\usepackage[tight,footnotesize]{subfigure}
+\usepackage[tight,footnotesize]{subfigure}
 % subfigure.sty was written by Steven Douglas Cochran. This package makes it
 % easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
 % work, it is a good idea to load it with the tight package option to reduce
@@ -267,8 +267,8 @@
 
 
 
-%\usepackage[caption=false]{caption}
-%\usepackage[font=footnotesize]{subfig}
+\usepackage[caption=false]{caption}
+\usepackage[font=footnotesize]{subfig}
 % subfig.sty, also written by Steven Douglas Cochran, is the modern
 % replacement for subfigure.sty. However, subfig.sty requires and
 % automatically loads Axel Sommerfeldt's caption.sty which will override
@@ -416,7 +416,7 @@ Email: alan.marshall@liv.ac.uk}
 \begin{abstract}
 %\boldmath
 This paper presents a methodology for establishing continuous trust based on sparse and asynchronous trust metric observations across multiple domains of measurement.
-Using Grey System Theory, Sequence Buffer operations and we show that by performing per-domain filtering \todo{is there a better phrase for 'filling in the gaps'} while performing cross-domain vector whitenization, a more stable and practical trust assessment is produced. 
+Using Grey Sequence Buffer Operations and Grey Generator Filters, we show that by performing per-domain filtering \todo{is there a better phrase for 'filling in the gaps'} while performing cross-domain vector whitenization, a more stable and practical trust assessment is produced. 
 
 We test this methodology within the context of an Underwater Autonomous Network.
 \end{abstract}
@@ -446,21 +446,30 @@ We test this methodology within the context of an Underwater Autonomous Network.
 
 \section{Introduction}
 % no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
-I wish you the best of success.
+Many trust systems operate on the basis of establishing closed system models based on noisy or perturbed information inputs, sourced by decentralised agents or nodes, with an aim to collaboratively establishing additional information about the expected states and behaviours of other agents within a system.\todo{Need to say somewhere that 'agent' and 'node' are used interchangeably in this document}
+As such, trust systems can be described as fundamentally uncertain, particularly in the areas or reputation establishment and trust chaining.\cite{someone}.
+Adding to this state the highly dynamic features of many aspects of trust theory applications (Ad Hoc Networks, Online Markets, etc.), we can generalise the sources of incomplete information from a single nodes perspective as being part of 4 cases.
 
-\subsection{Subsection Heading Here}
-Subsection text here.
+\begin{itemize}
+  \item Information on the system's boundary is incomplete
+  \item Information about the range of system behaviours is incomplete
+  \item Information about the structure of the system is incomplete or out of date
+  \item Information about observed parameters (metrics) is incomplete or out of date.
+\end{itemize}
 
+These cases of incompleteness of information are closely mirrored by those for which grey theory was originally posited as a form of system modeling, putting information incompleteness at the centre of the assessment. 
+While some work \cite{Guo11} has been done to apply grey theory to a trust context, it has not been fully explored.
+Guo applies grey analysis to generate a ``trust vector'' from the grey whitenisation of independent or near-independent metrics. 
+In this paper we demonstrate a methodology that applies Grey Sequence operations and Grey Generators (conceptually analogous to Sequential Bayesian Filtering``) to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\section{Trust as an incomplete system characteristic}
 
-\section{Trust in Networks}
+While application specific trust management frameworks are often based on a very limited space of available metrics, the problem of establishing trust in dynamical systems such as social, economic or autonomous systems have the opportunity to tap in to a wide range of potential metric spaces. 
+Taking the example of Mobile Ad-Hoc Networks (MANET), the variable most applied to the assessment of trust is the packet error rate, or more generally, the number of successful and unsuccessful interactions between two agents within a system.
+However, a wealth of other information is available within this example; for instance the delay in communications from one node to another; the total throughput of particular network links; and in the case of wireless networks, the strength of received signals.
+Looking beyond the communications domain, within such a MANET, information is also usually available regarding the physical domain of a network; the relative positioning and motions of nodes within a network can also be used to inform the generation of trust assessments.
 
 \section{Grey System Theory}
 
@@ -471,10 +480,10 @@ Taking $a$ and $b$ as the lower and upper bounds of the grey interval respective
 The ``field'' of $\oplus$ is the value space $[a,b]$.
 There are several classifications of grey numbers based on the relationships between these bounds.\todo{don't think classification is the right word here}
 
-Black and White numbers are the extremes of this classification; such that $\overset\bullet\oplus \in [-\infty, +\infty]$ and $\overset\circ\oplus \in [x, x] | x \in \mathbb{R}$ or $\oplus(x)$
-It is clear that white numbers such as $\overset\circ\oplus$ have a field of zero while black numbers have an infinite field.
+Black and White numbers are the extremes of this classification; such that $\dot\oplus \in [-\infty, +\infty]$ and $\mathring\oplus \in [x, x] | x \in \mathbb{R}$ or $\oplus(x)$
+It is clear that white numbers such as $\mathring\oplus$ have a field of zero while black numbers have an infinite field.
 
-Grey numbers may represent partial knowledge about a system or metric, and as such can represent half-open concepts, by only defining a single bound; for example $\underline\oplus = \oplus(\underline x ) \in [x, +\infty]$ and $\overline\oplus = \oplus(\overline x) \in [-\infty, x]$
+Grey numbers may represent partial knowledge about a system or metric, and as such can represent half-open concepts, by only defining a single bound; for example $\underline\oplus = \oplus(\underline x ) \in [x, +\infty]$ and $\overline\oplus = \oplus(\overline x) \in [-\infty, x]$.
 
 Primary operations within this number system are as follows;
 
@@ -495,7 +504,26 @@ Primary operations within this number system are as follows;
 \end{subequations}
 
 where $k$ is a scalar quantity.
+  
+\subsection{Whitenisation and the Grey Core}
 
+The characterisation of grey numbers is based on the encapsulation of information in a grey system in terms of the grey numbers core ($\hat\oplus$) and it's degree of greyness ($g^\circ$).
+If the distribution of a grey number field is unknown and continuous, $\hat\oplus = \frac{a + b}{2}$.
+
+Non-essential grey numbers are those that can be represented by a white number obtained either through experience or particular method. \cite{Liu2011}
+This white hissed value is represented by $\tilde\oplus$ or $\oplus(x)$ to represent grey numbers with $x$ as their whitenisation.
+In some cases depending on the context of application, particular gray numbers may temporarily have no reasonable whitenisation value (for instance, a black number). Such numbers are said to be Essential grey numbers.
+
+\subsection{Grey Sequence Buffers and Generators}
+
+\todo{eqs of sequence buffers and partial derivs}
+
+Given a fully populated value space, sequence buffer operations are used to provide abstractions over the dataspace.
+These abstractions can be \emph{weakening} or \emph{strengthening}.
+In the weakening case, these operations perform a level of smoothing on the volatility of a given input space, and strengthening buffers serve to highlight and 
+
+A powerful tool in grey system theory is the use of grey incidence factors, comparing the ``likeness'' of one value against a cohort of values.
+This usefulness applies particularly well in the case of multi-agent trust networks, where the aim is to detect and identify malicious or maladaptive behaviour, rather than an absolute assessment of ``trustworthiness''.
 
 \subsection{Grey Trust}
 
@@ -520,13 +548,13 @@ where $a_{k,j}^t$ is the value of a observed metric $x_j$ for a given node $k$ a
 \subsection{PROSE: Whats the point}
 
 Grey System Theory, by it's own authors admission, hasn't taken root in it's originally intended area of system modelling \cite{Liu11}.
-However, given it's tentative application to MANET trust, taking a Grey approach on a per metric benefit has qualatative benefits that require investigation; the algebraic approach to uncertainty and the application of ``essential and non essential greyness'', whitenization, and particularly grey buffer sequencing allow for the opportunity to generate continuous trust assessments from multiple domains asynchronously;
+However, given it's tentative application to MANET trust, taking a Grey approach on a per metric benefit has qualitative benefits that require investigation; the algebraic approach to uncertainty and the application of ``essential and non essential greyness'', whiteisation, and particularly grey buffer sequencing allow for the opportunity to generate continuous trust assessments from multiple domains asynchronously;
 
-For a given metric set $X$ such that $X = {x_1,\dots,x_M}$ representing the $M$ different types of measurement generated by an observer. If these metrics are not synchronised, for instance if they are interrupt driven such as communications-based observations, generating more abstract measurements requires inherant assumptions about ``how to accumulate the data while you wait''. For instance, in \cite{Bolster2015}, we demonstrated a periodic trust assessment framework for autonomous marine environments, in such an environment, to establish useful, generalised, data, it was necessary to wait for a relatively long time to accumulate enough data to make assessments.
+For a given metric set $X$ such that $X = {x_1,\dots,x_M}$ representing the $M$ different types of measurement generated by an observer. If these metrics are not synchronised, for instance if they are interrupt driven such as communications-based observations, generating more abstract measurements requires inherent assumptions about ``how to accumulate the data while you wait''. For instance, in \cite{Bolster2015}, we demonstrated a periodic trust assessment framework for autonomous marine environments, in such an environment, to establish useful, generalised, data, it was necessary to wait for a relatively long time to accumulate enough data to make assessments.
 However, this left many 'smells'; data was being left in-buffer for a long time before being used to make decisions, and by the time the data was collated and processed, it could be wildly different from the reality. Further, while some periods could be extremely sparse or even empty, others could be extremely busy with many records having to be averaged down to provide a 'single period' response. 
-Therefore, the implemenation of a suitable sequence buffer version of the framework would be beneficial.
+Therefore, the implementation of a suitable sequence buffer version of the framework would be beneficial.
 
-Such a sequence buffer framework would involve a tracking predictor that would provide best-guess estimates of an interpolated value for a metric between value updates, and a back-propogation algorithm to retroactively update historical assessments of that metrics so as to better inform any abstracted trust value predictor.
+Such a sequence buffer framework would involve a tracking predictor that would provide best-guess estimates of an interpolated value for a metric between value updates, and a back-propagation algorithm to retroactively update historical assessments of that metrics so as to better inform any abstracted trust value predictor.
 
 I had initially thought that such a back-propogator would be a total mess as I'd imagined that significant-model-breaking would potetially indicate untrustworthy behaviour, but this is stupid since the per-metric-model has the least information of anyone and is simply there to provide better intermediate values and has no / limited direct impact on the overall trust behaviour. 
 

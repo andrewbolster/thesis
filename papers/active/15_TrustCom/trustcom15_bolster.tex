@@ -64,7 +64,7 @@
 % draft mode.
 %
 \RequirePackage{snapshot}
-\documentclass[conference]{IEEEtran}
+\documentclass[conference,draftclsnofoot]{IEEEtran}
 % Add the compsoc option for Computer Society conferences.
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
@@ -487,14 +487,18 @@ Taking some examples;
   \item \emph{CONFIDANT}\cite{Buchegger2002} presented an approach using a probabilistic estimation of PLR, similar to OTMF, also introducing a topology weighting scheme that also weighted trust assessments based on historical experience of the reporter.
   \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presents the use of Fuzzy Inference to adapt to malicious recommenders using conditional similarity to classify performance with overlapping Fuzzy Set Membership, filtering assessments across a network.
 \end{itemize}
-
-These TMFs can be generalised as single-value probabilistic estimation, based around using a binary input state and generating an probabilistic estimation of the future states of that input. This expectation value is $\text{beta}(p|\alpha,\beta) \to E(p) = \frac{\alpha}{\alpha+\beta}$ where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
+These TMFs can be generalised as single-value probabilistic estimation, based around using a binary input state and generating an probabilistic estimation of the future states of that input. 
 
 These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that metric.
 In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
 In turn, this causes a super-linearly negative effect in the efficiency of the network, as the TMF is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
 An example of such a situation would be in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
 Such behaviour would not be detected by the TMF.
+
+\subsection{OTFM and Beta Trust Assessment}
+This expectation value is $\text{beta}(p|\alpha,\beta) \to E(p) = \frac{\alpha}{\alpha+\beta}$ where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
+
+
 
 There are also situations where the observed metrics will include significant noise and occur at irregular, sparse, intervals.
 Conventional approaches such as probabilistic estimation do not produce trust values that reflect the underlying reality and context of the metrics available, as they require a-priori assumption that the trust value under exploration has an expected distribution, that distribution is mono-modal, and the input metrics are binary.
@@ -556,6 +560,8 @@ These relationships give us node sets, $N_R$ and $N_I$ containing the nodes that
   f_3(x)&= x\notag
 \end{align}
 %
+
+
 \section{Marine Acoustic Networks}\label{sec:marineacousticnetworks}
 
 The key challenges of underwater acoustic communications are centred around the impact of slow and differential propagation of energy (RF, Optical, Acoustic) through water, and it's interfaces with the seabed / air.
@@ -607,7 +613,7 @@ In all of the scenarios, each link from $n_i \rightarrow n_j$ periodically sent 
   \centering
   \includegraphics[width=0.3\textwidth]{img/s1_layout}
   \caption{Initial layout with nodes spaced an average of 100m apart}
-  \label{fig:s1_layout}
+  \label{fig:s1_layout}\todo{CULL: Not sure if this is necessary}
 \end{figure}
 %
 Guo demonstrated that when compared against OTMF and Beta trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes behaviour than packet delivery probability. 
@@ -669,9 +675,8 @@ These results indicate that the best area to continue operating in for a range o
 %
 \begin{figure}[h]
   \centering
-  \subfloat[Static]{\includegraphics[width=\linewidth]{img/throughput_sep_lines_static} \label{fig:throughput_static}}
-  \newline
-  \subfloat[Mobile]{\includegraphics[width=\linewidth]{img/throughput_sep_lines_all_mobile} \label{fig:throughput_all_mobile}}
+  \subfloat[Static]{\includegraphics[width=0.5\linewidth]{img/throughput_sep_lines_static} \label{fig:throughput_static}}
+  \subfloat[Mobile]{\includegraphics[width=0.5\linewidth]{img/throughput_sep_lines_all_mobile} \label{fig:throughput_all_mobile}}
 \caption{Throughput Characteristics for varying node separations across increasing packet emission rates}
 \label{fig:scenario_throughputs_plain}
 \end{figure}
@@ -708,16 +713,42 @@ The aggregate trust values using topology information ($T_{1,\text{Net}},T_{1,\t
 %
 %Footnote for fig:trust_all_mobile
 \footnotetext{Box plots centres indicate the median, bounds indicate the 25\%-75\% range, and whiskers represent the points within $\pm2\sigma$}
-\subsection{Comparison under malicious behaviour}
-%
-Guo introduces a range of malicious actors, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
+
+\subsection{Comparison to OTMF and Beta}
+
+Guo et al. introduce a range of malicious behaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
 
 Given that the established links are already heavily constrained, heavy handed attacks such as introducing selective PLR and adding to the already extreme and hugely variable delays would severely impact the general performance of the network beyond the scope of simple selfishness, effectively triggering saturation collapses in regions that the network should be stable.
-Therefore, we select a Selfish Power Control behaviour, where $n_1$ increases it's transmission power by 20\% for all nodes \emph{except} communications with $n_0$.
-\todo{Need to reference the bare differences first, this is totally upside down, the MTFM /OTMF could come *before* the weight}
-Without comparing against any other known quantity; the difference between the trust assessments between ``fair'' and ``selfish'' behaviour is still appreciably affected.
+Therefore, we select a Malicious Power Control behaviour, where $n_1$ increases it's transmission power by 20\% for all nodes \emph{except} communications with $n_0$.
 
-As per \cite{Guo11}, parallel simulations were performed where there was no malicious behaviour, the ``fair'' scenario. 
+As per \cite{Guo11}, parallel simulations were performed where there was no malicious behaviour, the ``fair'' scenario utilising OTMF and Beta assessment as well as MTFM, providing like-for-like comparison of assessment.
+Without comparing against any other known quantity; the difference between the MTFM trust assessments under ``fair'' and ``malicious'' behaviour is still appreciably affected.
+%
+\begin{figure}[h]
+  \subfloat[Fair Scenario]{\includegraphics[width=.5\linewidth]{img/trust_beta_otmf_fair} \label{fig:all_mobile_fair_beta}}
+  \subfloat[Selective Power Control Scenario]{\includegraphics[width=.5\linewidth]{img/trust_beta_otmf_selfish} \label{fig:all_mobile_badmouthing_beta}}
+\caption{$T_{1,0}$ for Beta, OTMF and MTFM assessment values for fair and selfish behaviours in the fully mobile scenario (mean of MTFM also shown)}
+\label{fig:otmf_beta_comparison}
+\end{figure}
+%
+The use of Forward Beam Routing and a CSMA/CA MAC scheme from AUVNetSim\cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance, and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and times out in route discovery rather than transmission.
+As such, confirmed packet losses are extremely rare and in a delaying network like this, it is difficult to set a differentiating time-out between packets that are in the network but queued, and packets that are actually ``lost''.
+This renders OTMF and Beta assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
+The single metric TMFs used in Terrestrial MANETs require regular and constant streams of positive and negative validation to shape and adjust their evaluations, which for a network with significant delays such as this, is not practical.
+
+Fig.~\ref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of MTFM compared to OTMF and Beta assessment functions on the same data for the fair and selfish behaviours respectively.
+It is important to note a distinction between the expectations of MTFM compared to other TMFs; MTFM is primarily concerned with the identification of differences in the behaviours of nodes in a network, and is relative rather than absolute.
+That is to say that under MTFM, agents are compared against the worst current performances across metrics of other nodes and graded against them, rather than the absolute (objective) approach taken by many TMFs.
+This relative versus absolute difference is particularly clear when comparing mobility models. 
+In this case, particularly since the method of attack was not directly related to PLR, OTMF and Beta have not registered significant activity in the correct behaviour.
+
+While the MTFM value does not display any immediate difference between the two behaviours, we have shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
+Another difference is that computationally, MTFM is significantly more intensive than the relatively simple Beta / OTMF algorithm, and the repeated metric matrix re-weighting required for real time behaviour detection is an area that requires optimization. 
+As such, a hybrid system could be implemented, that used OTMF as a 'trigger' to detect potentially selfish or malicious behaviour, and allow MTMF weight matrix execution to be triggered at less regular intervals.
+
+\subsection{Comparison under dynamic metric weighting}
+%
+
 We apply a sequence of metric vectors that preferentially weight each metric during \eqref{eq:metric_weighting} to each of the two simulation runs.
 For an arbitrary metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, we form an initial weighting vector $H'=[h_i...h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$. We then scale that vector $H'$ such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 Using this process we can extract and highlight the primary aspects of an attack by comparing against the deviation from the 'fairness' set; 
@@ -777,33 +808,6 @@ Through the same regression as above, we find that this intuition is validated i
 \end{equation}
 
 In comparison to \cite{Guo11}, these results are qualitatively similar, however in this case the weighted deltas are significantly less clear than in the comparable terrestrial space, where Guo shows the same type of malicious behaviour and demonstrates a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval.
-
-\subsection{Comparison to OTMF and Beta}
-
-The same experiments were also performed utilising OTMF and Beta assessment as well as MTFM, providing like-for-like comparison of assessment at runtime.
-%
-\begin{figure}[h]
-  \subfloat[Fair Scenario]{\includegraphics[width=.95\linewidth]{img/trust_beta_otmf_fair} \label{fig:all_mobile_fair_beta}}
-  \newline
-  \subfloat[Selective Power Control Scenario]{\includegraphics[width=.95\linewidth]{img/trust_beta_otmf_selfish} \label{fig:all_mobile_badmouthing_beta}}
-\caption{$T_{1,0}$ for Beta, OTMF and MTFM assessment values for fair and selfish behaviours in the fully mobile scenario}
-\label{fig:otmf_beta_comparison}\todo{Add Means and possibly filtering to mtfm}
-\end{figure}
-%
-The use of Forward Beam Routing and a CSMA/CA MAC scheme from AUVNetSim\cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance, and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and times out in route discovery rather than transmission.
-As such, confirmed packet losses are extremely rare and in a delaying network like this, it is difficult to set a differentiating time-out between packets that are in the network but queued, and packets that are actually ``lost''.
-This renders OTMF and Beta assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
-The single metric TMFs used in Terrestrial MANETs require regular and constant streams of positive and negative validation to shape and adjust their evaluations, which for a network with significant delays such as this, is not practical.
-
-Fig.~\ref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of MTFM compared to OTMF and Beta assessment functions on the same data for the fair and selfish behaviours respectively.
-It is important to note a distinction between the expectations of MTFM compared to other TMFs; MTFM is primarily concerned with the identification of differences in the behaviours of nodes in a network, and is relative rather than absolute.
-That is to say that under MTFM, agents are compared against the worst current performances across metrics of other nodes and graded against them, rather than the absolute (objective) approach taken by many TMFs.
-This relative versus absolute difference is particularly clear when comparing mobility models. 
-In this case, particularly since the method of attack was not directly related to PLR, OTMF and Beta have not registered significant activity in the correct behaviour.
-
-While the MTFM value does not display any immediate difference between the two behaviours, we have shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
-Another difference is that computationally, MTFM is significantly more intensive than the relatively simple Beta / OTMF algorithm, and the repeated metric matrix re-weighting required for real time behaviour detection is an area that requires optimization. 
-As such, a hybrid system could be implemented, that used OTMF as a 'trigger' to detect potentially selfish or malicious behaviour, and allow MTMF weight matrix execution to be triggered at less regular intervals.
 
 \section{Conclusions and Future Work}
 We have demonstrated that existing MANET Trust Management Frameworks cannot be directly applied to the contentious and dynamic underwater medium.

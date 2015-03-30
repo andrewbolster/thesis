@@ -364,7 +364,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Applicability of Trust Management Frameworks in Underwater Autonomous Networks \\ {\large DRAFT for 9pg submission to TrustCom 31 Mar}}
+\title{Applicability of Single and Multi-Metric Trust Management Frameworks in Underwater Autonomous Networks \\ {\large DRAFT for 8pg submission to TrustCom 31 Mar}}
 
 
 % author names and affiliations
@@ -416,7 +416,7 @@ Email: alan.marshall@liv.ac.uk}
 
 \begin{abstract}
 %\boldmath
-In this paper, we demonstrate the need for a different approach towards metric selection and trust-timing in Underwater Autonomous Networks and a performance comparison with a selection of current Trust Management Framework assessment processes.
+In this paper, we demonstrate the need for a different approach towards metric selection and trust-timing in Underwater Autonomous Networks (UAN) and a performance comparison with a selection of current Trust Management Framework (TMF) assessment processes. We investigate the operation of a selection of traditional MANET TMFs in this environment, highlighting the challenges in this, and demonstrating that a multi-metric approach to Trust greatly enhances the usefulness of Trust in these environments.
 
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
@@ -467,7 +467,7 @@ The paper is laid out as follows.
 In Section \ref{sec:trustandtmfs} we discuss Trust and Trust Management Frameworks, defining our terminology and reviewing the justifications for the use and development of Trust Management Frameworks in marine acoustic networks.
 In Section \ref{sec:marineacousticnetworks}, we review selected features of the underwater communications channel, highlighting particular challenges and differentials against terrestrial equivalents.
 In Section \ref{sec:initialsystemcharacterization}, we establish an experimental configuration for the marine space, and review the scenarios and results presented in \cite{Guo11}.
-In Section \ref{sec:trustresultsanddiscussion}, we present our findings in trust establishment and malicious behaviour detection, comparing with current TMFs such as OTMF and Beta.
+In Section \ref{sec:trustresultsanddiscussion}, we present our findings in trust establishment and malicious behaviour detection, comparing with other current TMFs such as OTMF and Beta, and analyse in particular analyse the useful of this muli-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks.
 
 The contributions of this paper are a study on the comparative operation and performance between terrestrial and underwater MANETs using TMFs, and a review of metric suitability for Trust Management Frameworks in marine environments, informing future metric selection for experimenters and theorists.
 
@@ -714,6 +714,8 @@ Guo introduces a range of malicious actors, including modification of the packet
 
 Given that the established links are already heavily constrained, heavy handed attacks such as introducing selective PLR and adding to the already extreme and hugely variable delays would severely impact the general performance of the network beyond the scope of simple selfishness, effectively triggering saturation collapses in regions that the network should be stable.
 Therefore, we select a Selfish Power Control behaviour, where $n_1$ increases it's transmission power by 20\% for all nodes \emph{except} communications with $n_0$.
+\todo{Need to reference the bare differences first, this is totally upside down, the MTFM /OTMF could come *before* the weight}
+Without comparing against any other known quantity; the difference between the trust assessments between ``fair'' and ``selfish'' behaviour is still appreciably affected.
 
 As per \cite{Guo11}, parallel simulations were performed where there was no malicious behaviour, the ``fair'' scenario. 
 We apply a sequence of metric vectors that preferentially weight each metric during \eqref{eq:metric_weighting} to each of the two simulation runs.
@@ -753,8 +755,28 @@ This can be due to a range of factors beyond potential malicious behaviour inclu
 This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
 One potential solution to this would be to move from a stepping-window of trust periods to a continuous trust log, updated on packet reception rather than waiting for a number of packets to arrive.
 
-In comparison to \cite{Guo11}, these results are qualitatively similar, however in this case the weighted deltas are significantly less clear than in the comparable terrestrial space, where Guo shows the same type of malicious behaviour and demonstrates a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval.
+For a more quantative assessment of the viability of this multi-metric trust assessment method, we take the qualatative analysis above and apply a Random Forest regression to quantify the relative importance of the selected metrics on relative detectability of malicious behaviour. 
+The target function for this regression is given in \eqref{eq:regression_target}, and encapsulates the relative difference between the fair and malicious behaviour curves as demonstrated in Figs.~\ref{fig:static_badmouthing} and ~\ref{fig:all_mobile_badmouthing}.
+Visually, this is the total area between the $T_{MTFM}$ in the Selfish case that is outside the standard deviation of $T_{MTFM}$ of the Fair case.
 
+Applying this target function to 729 different metric weight vectors emphasis combinations ($H$) and applying the regression demonstrates that while PLR is the primary factor in differentiating the fair and malicious behaviours ($R=0.75, p\approx10^{-100}$), the recorded transmission strength is also significant ($R=-0.54, p\approx10^{-50}$) but it's inverse relationship is potentially masking the average.\todo{this is a terrible sentence}
+\todo{``While it is not feasible to perform this breadth of calculations at run time to detect and classify unknown or unexpected behaviours, a more nuaced multi-dimensional optimisation approach could be applied, providing additional resiliace to attack''}
+
+
+\todo{Introduce the fucking behaviour!}
+A selfish behaviour where the node preferentially selectes nodes to communicate with based on proximity is a more subtle ``attack'' on the network when compared to the outright flooding of the malicious behaviour.
+However, it still impacts the efficiency and utility of the network by creating artificial asymmetries in the networks information distribution.
+Applying the same approach to this behaviour, we find that the ensemble MTFM results appear similar to the malicious case, but OTMF and Beta don't appear to differentiate between fair and selfish scenarios at all.
+This is natural as these TMFs do not take protocol or application level behaviour into account in their assessment of fairness.
+Through the same regression as above, we find that this intuition is validated in feature extraction, with observed transmission power dominating ($R=0.88, p<10^{-100}$) followed by PLR ($R=-0.45, p\approx10^{-35}$) and throughput ($R=-0.33, p\approz10^{-20}$)
+
+
+\begin{equation}
+  Y(H) = \int \! T_{mal}(H) - (T_{gd}(H)\pm\sigma_{T_{gd}(H)})\, \mathrm{d}H.
+  \label{eq:regression_target}
+\end{equation}
+
+In comparison to \cite{Guo11}, these results are qualitatively similar, however in this case the weighted deltas are significantly less clear than in the comparable terrestrial space, where Guo shows the same type of malicious behaviour and demonstrates a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval.
 
 \subsection{Comparison to OTMF and Beta}
 

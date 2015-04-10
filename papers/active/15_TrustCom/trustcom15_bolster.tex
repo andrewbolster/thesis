@@ -484,8 +484,8 @@ Various models and algorithms for describing trust and developing trust manageme
 Taking some examples;
 
 \begin{itemize}
-  \item \emph{The Objective Trust Management Framework} takes a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
-    OTMF however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
+  \item \emph{Hermes Trust Establisment Framework} takes a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
+  \item \emph{Objective Trust Management Frameowkr} builds upon Hermes and distributes node observations across the network\cite{Li2008}, however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
   \item \emph{Trust-based Secure Routing}\cite{Moe2008a} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of next-hop network, reducing the efficacy of Byzantine attacks such as black-hole routing.
   \item \emph{CONFIDANT}\cite{Buchegger2002} presented an approach using a probabilistic estimation of PLR, similar to OTMF, also introducing a topology aware weighting scheme and also weighting trust assessments based on historical experience of the reporter.
   \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presents the use of Fuzzy Inference to adapt to malicious recommenders using conditional similarity to classify performance with overlapping Fuzzy Set Membership, filtering assessments across a network.
@@ -498,11 +498,27 @@ In turn, this causes a super-linearly negative effect in the efficiency of the n
 An example of such a situation would be in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
 Such behaviour would not be detected by the TMF.
 
-\subsection{OTMF and Beta Trust Assessment}
-\todo{Introdution to OTMF}
-This expectation value is $\text{beta}(p|\alpha,\beta) \to E(p) = \frac{\alpha}{\alpha+\beta}$ where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
+\subsection{Hermes Trust Assessment, and OTMF}
 
+As stated, the Objective Trust Management Framework (OTMF) presented by Li et al.\cite{Li2008} is based on the Hermes trust establishment framework\cite{Zouridaki2005} which uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
 
+\begin{equation}
+  p(B|O)  = \frac{p(O|B) \times p(B)}{\rho}
+  \label{eq:otmf_pbo}
+\end{equation}
+
+Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
+Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function, and therefore the evaluation of this trust assessment is based around the expection value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
+
+OTMF also introduces a secondary measurement of the confidence factor of the trust assessment $t$ as \eqref{eq:otmf_c} and brings these measurements together to give a combined value of ``trustworthiness''($T$) in \eqref{eq:otmf_trust}.
+
+\begin{align}
+  t_i &\to E(\text{beta}(p|\alpha,\beta)) = \frac{\alpha_i}{\alpha_i+\beta_i} \label{eq:otmf_t}\\
+  c_i &= 1 - \sqrt{\frac{12\alpha_i\beta_i}{(\alpha_i+\beta_i)^2(\alpha_i+\beta_i+1)}} \label{eq:otmf_c}\\
+  T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{2} + \frac{(c_i-1)^2}{9}}}{\sqrt{\frac{1}{2}+\frac{1}{9}}} \label{eq:otmf_trust}
+\end{align}
+
+On top of this per-node assessment methodology, OTMF overlays a observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ be representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment.\todo{Not sure if it's suitable for in here but I have serious concerns about the derivations of the 'malicious reporter' test: $m$ is not defined anywhere other than being a "deviation threshold" which means nothing. Also OTMF does not weight based on direct or secondary reporting}
 
 There are also situations where the observed metrics will include significant noise and occur at irregular, sparse, intervals.
 Conventional approaches such as probabilistic estimation do not produce trust values that reflect the underlying reality and context of the metrics available, as they require a-priori assumption that the trust value under exploration has an expected distribution, that distribution is mono-modal, and the input metrics are binary.

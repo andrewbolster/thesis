@@ -371,13 +371,13 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Andrew Bolster}
-\IEEEauthorblockA{Department of Electical Engineering and Electronics\\
+\IEEEauthorblockA{Department of Electrical Engineering and Electronics\\
 University of Liverpool\\
 Liverpool, UK\\
 Email: bolster@liv.ac.uk}
 \and
 \IEEEauthorblockN{Alan Marshall}
-\IEEEauthorblockA{Department of Electical Engineering and Electronics\\
+\IEEEauthorblockA{Department of Electrical Engineering and Electronics\\
 University of Liverpool\\
 Liverpool, UK\\
 Email: alan.marshall@liv.ac.uk}
@@ -417,7 +417,7 @@ Email: alan.marshall@liv.ac.uk}
 \begin{abstract}
 %\boldmath
 In this paper, we demonstrate the need for multi-metric trust assessment in Underwater Autonomous Networks (UAN) and a performance comparison against a selection of current single metric Trust Management Framework (TMF) assessment processes. 
-We investigate the operation of a selection of traditional MANET TMFs in this environment, highlighting the challenges in this, and demonstrating that a multi-metric approach to Trust greatly enhances the usefulness of Trust in these environments.
+We investigate the operation of a selection of traditional MANET TMFs (Hermes, OTMF) in this environment, highlighting the challenges in this, and demonstrating that a multi-metric approach to Trust greatly enhances the usefulness of Trust in these environments.
 
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
@@ -484,13 +484,14 @@ Various models and algorithms for describing trust and developing trust manageme
 Taking some examples;
 
 \begin{itemize}
-  \item \emph{Hermes Trust Establisment Framework} takes a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
-  \item \emph{Objective Trust Management Frameowkr} builds upon Hermes and distributes node observations across the network\cite{Li2008}, however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
+  \item \emph{Hermes Trust Establishment Framework} takes a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
+  \item \emph{Objective Trust Management Framework} builds upon Hermes and distributes node observations across the network\cite{Li2008}, however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
   \item \emph{Trust-based Secure Routing}\cite{Moe2008a} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of next-hop network, reducing the efficacy of Byzantine attacks such as black-hole routing.
   \item \emph{CONFIDANT}\cite{Buchegger2002} presented an approach using a probabilistic estimation of PLR, similar to OTMF, also introducing a topology aware weighting scheme and also weighting trust assessments based on historical experience of the reporter.
   \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presents the use of Fuzzy Inference to adapt to malicious recommenders using conditional similarity to classify performance with overlapping Fuzzy Set Membership, filtering assessments across a network.
 \end{itemize}
-These TMFs can be generalised as single-value probabilistic estimation, based around using a binary input state and generating an probabilistic estimation of the future states of that input. 
+
+These TMFs can be generalised as single-value probabilistic or fuzzy estimation, based around using a binary input state (success or failure of packet delivery) and generating an probabilistic estimation of the future states of that input. 
 
 These single metric TMFs provide malicious actors with a significant advantage if their activity does not impact that metric.
 In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
@@ -508,7 +509,7 @@ As stated, the Objective Trust Management Framework (OTMF) presented by Li et al
 \end{equation}
 
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
-Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function, and therefore the evaluation of this trust assessment is based around the expection value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
+Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
 
 OTMF also introduces a secondary measurement of the confidence factor of the trust assessment $t$ as \eqref{eq:otmf_c} and brings these measurements together to give a combined value of ``trustworthiness''($T$) in \eqref{eq:otmf_trust}.
 
@@ -518,7 +519,7 @@ OTMF also introduces a secondary measurement of the confidence factor of the tru
   T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{2} + \frac{(c_i-1)^2}{9}}}{\sqrt{\frac{1}{2}+\frac{1}{9}}} \label{eq:otmf_trust}
 \end{align}
 
-On top of this per-node assessment methodology, OTMF overlays a observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ be representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment.\todo{Not sure if it's suitable for in here but I have serious concerns about the derivations of the 'malicious reporter' test: $m$ is not defined anywhere other than being a "deviation threshold" which means nothing. Also OTMF does not weight based on direct or secondary reporting}
+On top of this per-node assessment methodology, OTMF overlays a observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ be representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment.\todo{Not sure if it's suitable for in here but I have serious concerns about the derivations of the 'malicious reporter' test in OTMF: $m$ is not defined anywhere other than being a "deviation threshold" which means nothing. Also OTMF does not weight based on direct or secondary reporting}
 
 There are also situations where the observed metrics will include significant noise and occur at irregular, sparse, intervals.
 Conventional approaches such as probabilistic estimation do not produce trust values that reflect the underlying reality and context of the metrics available, as they require a-priori assumption that the trust value under exploration has an expected distribution, that distribution is mono-modal, and the input metrics are binary.
@@ -554,7 +555,7 @@ Weighting can be applied before generating a scalar value \eqref{eq:metric_weigh
 %
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in the basic case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$ to treat all metrics evenly.
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
-To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$.\todo{Cite LMS reduction from Guo}
+To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$\cite{Hong2010}
 
 MTFM combines this GRA with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whitenization model\eqref{eq:whitenization}. There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
 Where an observing node, $n_i$, assesses the trust of another, target, node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
@@ -595,7 +596,7 @@ The attenuation that occurs in an underwater acoustic channel over a distance $d
   10 \log A_{\text{aco}}(d,f)/A_0 = k \cdot 10 \log d + d \cdot 10 \log a(f)
 \end{equation}
 %
-where $A_0$ is a unit-normalising constant, $k$ is a spreading factor (commonly taken as 1.5\todo{cite}), and $a(f)$ is the absorption coefficient, expressed empirically using Thorp's formula \eqref{eq:thorp} from \cite{Stojanovic2007}
+where $A_0$ is a unit-normalising constant, $k$ is a spreading factor (commonly taken as 1.5 \cite{Stojanovic2011}), and $a(f)$ is the absorption coefficient, expressed empirically using Thorp's formula \eqref{eq:thorp} from \cite{Brekhovskikh1991}
 %
 \begin{equation}
   \label{eq:thorp}
@@ -614,10 +615,10 @@ While both frequency dependant factors are quadratic, approximating the factors 
 
 \subsection{Trust in Marine Networks}\label{sec:trust_in_marine}
 
-With demand for smaller, more decentralised marine survey and monitoring systems, and a drive towards lower per-unit cost, TMFs are expected to be increasingly applied to the marine space, as the benefits they present are significant \todo{cite}.
-Beyond the constraints of the communications environment, knock on pressures are emerging in battery capacity, on-board processing, and locomotion.. \todo{rephrase}
-These pressures simultaneously present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance
-These multiple aspects of potential incentives, trust, and fairness do not directly fall under the scope of single metric trusts discussed above, and this context indicates that a multi-metric approach may be more appropriate.
+With demand for smaller, more decentralised marine survey and monitoring systems, and a drive towards lower per-unit cost, pressures on battery capacity, locomotive power efficiency, data processing and storage are increasing.
+These pressures simultaneously present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance.
+As such, TMFs are expected to be increasingly applied to the marine space, as the benefits and efficiencies they present are significant \cite{Pavan2015}.
+These multiple aspects of potential incentives, trust, and fairness do not directly fall under the scope of single metric trusts discussed above (OTMF etc.), and this indicates that a multi-metric approach may be more appropriate to capture and monitor the realities of the marine operating environment.
 
 
 \section{Initial System Model Characterization}\label{sec:initialsystemcharacterization}
@@ -628,7 +629,7 @@ Four mobility scenarios were used in \cite{Guo11} to explore trust behaviour; al
 The reason for this is that giving a malicious node special privilege or capabilities will skew the results of trust assessment, as the behaviours of the static and mobile nodes will be significantly different regardless of misbehaviour.
 
 The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout}, with each node on average 100m from each other, as per \cite{Guo11}.
-The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies\todo{Possibly cite Guo paper on team sizes or find an alternative}, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively.
+The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies\todo{Possibly cite Guo paper on team sizes or find an alternative, but would require tangential discussion of team scaling, which there isn't room for}, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively.
 
 In all of the scenarios, each link from $n_i \rightarrow n_j$ periodically sent 10 second bursts of Constant Bit Rate (CBR) style traffic.
 %
@@ -639,7 +640,7 @@ In all of the scenarios, each link from $n_i \rightarrow n_j$ periodically sent 
   \label{fig:s1_layout}\todo{CULL: Not sure if this is necessary}
 \end{figure}
 %
-Guo et al. demonstrated that when compared against OTMF and Beta trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes behaviour than packet delivery probability. 
+Guo et al. demonstrated that when compared against OTMF and Beta trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes behaviour than packet delivery probability alone. 
 By weighting the metrics used in MTFM, it was shown that the trust assessments could be used to identify the style of misbehaviour being performed within the network and by who.
 We present a corollary method to investigate and apply this work to the Marine MANET field.
 
@@ -813,16 +814,19 @@ This can be due to a range of factors beyond potential malicious behaviour inclu
 This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
 One potential solution to this would be to move from a stepping-window of trust periods to a continuous trust log, updated on packet reception rather than waiting for a number of packets to arrive.\todo{Possibly move this section}
 
-For a more quantative assessment of the viability of this multi-metric trust assessment method, we take the qualatative analysis above and apply a Random Forest regression \todo{cite} to quantify the relative importance of the selected metrics on relative detectability of malicious behaviour. 
+For a more quantitative assessment of the viability of this multi-metric trust assessment method, we take the qualitative analysis above and apply a Random Forest regression \todo{cite} to quantify the relative importance of the selected metrics on relative detectability of malicious behaviour. 
 The target function for this regression is given in \eqref{eq:regression_target}, and captures the relative difference between the fair and misbehaviour curves as demonstrated in Figs.~\ref{fig:static_badmouthing} and ~\ref{fig:all_mobile_badmouthing}.
 Visually, this is the total area between the $T_{MTFM}$ in the misbehaving case that is outside the standard deviation of $T_{MTFM}$ of the fair case.
 
 Applying this target function to 729 different metric weight vectors emphasis combinations ($H$) and applying the regression demonstrates that while PLR is the primary factor in differentiating the fair and malicious behaviours ($R=0.75, p\approx10^{-100}$), the recorded transmission strength is also significant ($R=-0.54, p\approx10^{-50}$).
-\todo{``While it is not feasible to perform this breadth of calculations at run time to detect and classify unknown or unexpected behaviours, a more nuaced multi-dimensional optimisation approach could be applied, providing additional resiliace to attack''}
+\todo{``While it is not feasible to perform this breadth of calculations at run time to detect and classify unknown or unexpected behaviours, a more nuanced multi-dimensional optimisation approach could be applied, providing additional resilience to attack''}
 
 The selfish behaviour where the node preferentially select nodes to communicate with based on proximity is a more subtle attack on the network when compared to the outright power-flooding of the malicious behaviour.
 However, it still impacts the efficiency and utility of the network by creating artificial asymmetries in the networks information distribution.
-Applying the same approach to this behaviour, we find that the ensemble MTFM results appear similar to the malicious case, but OTMF and Beta don't appear to differentiate between fair and selfish scenarios at all.\todo{need to add graphics for this}
+Applying the same approach to this behaviour, we find that the ensemble MTFM results appear similar to the malicious case, but OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+
+\todo{need to add graphics for this}
+
 This is natural as these TMFs do not take protocol or application level behaviour into account in their assessment of fairness.
 Through the same regression as above, we find that this intuition is validated in feature extraction, with observed transmission power dominating ($R=0.88, p<10^{-100}$) followed by PLR ($R=-0.45, p\approx10^{-35}$) and throughput ($R=-0.33, p\approx10^{-20}$)
 

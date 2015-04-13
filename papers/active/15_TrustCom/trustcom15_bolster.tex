@@ -814,7 +814,7 @@ This can be due to a range of factors beyond potential malicious behaviour inclu
 This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
 One potential solution to this would be to move from a stepping-window of trust periods to a continuous trust log, updated on packet reception rather than waiting for a number of packets to arrive.\todo{Possibly move this section}
 
-For a more quantitative assessment of the viability of this multi-metric trust assessment method, we take the qualitative analysis above and apply a Random Forest regression \todo{cite} to quantify the relative importance of the selected metrics on relative detectability of malicious behaviour. 
+For a more quantitative assessment of the viability of this multi-metric trust assessment method, we take the qualitative analysis above and apply a Random Forest regression\cite{Breiman2001} to quantify the relative importance of the selected metrics on relative detectability of malicious behaviour. 
 The target function for this regression is given in \eqref{eq:regression_target}, and captures the relative difference between the fair and misbehaviour curves as demonstrated in Figs.~\ref{fig:static_badmouthing} and ~\ref{fig:all_mobile_badmouthing}.
 Visually, this is the total area between the $T_{MTFM}$ in the misbehaving case that is outside the standard deviation of $T_{MTFM}$ of the fair case.
 
@@ -825,7 +825,13 @@ The selfish behaviour where the node preferentially select nodes to communicate 
 However, it still impacts the efficiency and utility of the network by creating artificial asymmetries in the networks information distribution.
 Applying the same approach to this behaviour, we find that the ensemble MTFM results appear similar to the malicious case, but OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
 
-\todo{need to add graphics for this}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{img/MaliciousSelfishMetricFactors}\label{fig:malselfactors}
+  \caption{Random Forest Factor Analysis of Malcious and Selfish behaviours when compared against the baseline}
+\end{figure}
+O
+
 
 This is natural as these TMFs do not take protocol or application level behaviour into account in their assessment of fairness.
 Through the same regression as above, we find that this intuition is validated in feature extraction, with observed transmission power dominating ($R=0.88, p<10^{-100}$) followed by PLR ($R=-0.45, p\approx10^{-35}$) and throughput ($R=-0.33, p\approx10^{-20}$)

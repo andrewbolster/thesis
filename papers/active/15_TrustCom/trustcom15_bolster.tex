@@ -622,7 +622,7 @@ The attenuation that occurs in an underwater acoustic channel over a distance $d
   10 \log A_{\text{aco}}(d,f)/A_0 = k \cdot 10 \log d + d \cdot 10 \log a(f)
 \end{equation}
 %
-where $A_0$ is a unit-normalising constant, $k$ is a spreading factor (commonly taken as 1.5 i \cite{Stojanovic2011}), and $a(f)$ is the absorption coefficient, approximated empirically using Thorp's formula \eqref{eq:thorp} from \cite{Brekhovskikh1991}
+where $A_0$ is a unit-normalising constant, $k$ is a spreading factor (commonly taken as 1.5  \cite{Stojanovic2007}), and $a(f)$ is the absorption coefficient, approximated empirically using Thorp's formula \eqref{eq:thorp} from \cite{Brekhovskikh1991}
 %
 \begin{equation}
   \label{eq:thorp}
@@ -631,12 +631,15 @@ where $A_0$ is a unit-normalising constant, $k$ is a spreading factor (commonly 
 %
 Refractive lensing and the multipath nature of the medium result in line of sight propagation being extremely unreliable for estimating distances to targets.
 The first arriving beam has as the very least curved in the medium, and commonly has reflected off the surface/seabed before arriving at a receiver, creating secondary paths that are sometimes many times longer than the first arrival path, generating symbol spreading over orders of seconds depending on the ranges and depths involved.
-Extensive Forward Error Correction coding is used on such channels to minimise packet losses.
+Forward Error Correction coding is used on such channels to minimise packet losses.
 
 Comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model $(A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2)$, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
 While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
 
+
+
 \section{System Model Characterization}\label{sec:initialsystemcharacterization}
+
 
 \subsection{Mobility, Topology, and Communications}
 
@@ -661,7 +664,7 @@ Further, collaborations with NATOs Centre for Maritime Research and Experimentat
 
 \subsection{Simulation Background}
 
-Simulations were conducted using a Python based simulation framework, SimPy\cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim\cite{Miquel2008}, with transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
+Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
 
 Given the differences in delay and propagation between RF and marine networks, it is natural that the same application rates (e.g. packet emission rates or throughput) and node separations should not be assumed to be equally viable.
 Therefore, we first characterise an operational zone of performance within which the network can operate stably.
@@ -699,56 +702,55 @@ Therefore, we first characterise an operational zone of performance within which
 
 \subsection{Scaling Considerations between Terrestrial and Underwater Environments}
 
-In this section we characterise the simulated communications environment, establishing an optimal packet emission rate for comparison against \cite{Guo11}.
-
 We establish a appropriate safe operating zone for marine communications by looking at the communications rate and physical distribution factors across the two selected mobility scenarios.
-In scaling the physical distribution of the nodes, we also scale the environment in which the nodes are restricted to, which has a significant impact on the number of potential runtime topologies, with nodes getting increasingly isolated as the environment space increases.
-This leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
 From Table~\ref{tab:sysconstraints}, the operating transmission range of this model of acoustic communications is $\approx 6$ times further than that of 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case.
 However, it was recognised in Section~\ref{sec:marineacousticnetworks} that the relationship between attenuation and distance is exponential underwater, so this would represent an upper bound of performance, where nodes begin approximately 400m apart. 
 
-An exploratory simulation was run to establish this bound.
+Exploratory simulations were run to establish this bound.
 As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
-This throughput degradation is tightly coupled with the mobility.
+This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
 For instance, where all nodes are static, we do not see significant drops in saturation rates until we approach 800m, nearly double our initial estimate. 
-Where all the nodes are randomly walking, the saturation point collapses from 0.025pps at 300m to 0.015pps at 400m.
+Where all the nodes are randomly walking the saturation point collapses from 0.025pps at 300m to 0.015pps at 400m.
 Our results indicated that the best area to continue operating in for a range of node separations is at 0.015pps, and that a reasonable position scaling is from 100m to 300m on average, beyond which communication becomes increasingly unstable, especially in terms of end to end delay.
+These results are similar to work performed in \cite{Miquel2008}.
 
 
 \subsection{Selected Misbehaviours}
 
 Guo et al. introduce a range of malicious behaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
 
-Given that the established links are already heavily constrained, heavy handed attacks such as introducing selective PLR and adding to the already extreme and hugely variable delays would severely impact the general performance of the network beyond the scope of simple selfishness, effectively triggering saturation collapses in regions that the network should be stable.
-Therefore, we select two misbehaviours to investigate; 
+Given that the established links are already heavily constrained, heavy handed attacks such as introducing selective PLR and adding to the already extreme and hugely variable delays would severely impact the general performance of the network beyond the scope of simple selfishness.
+These direct malicious behaviours effectively trigger saturation collapses in regions that the network should be stable..
+
+Therefore, we select two more subtle misbehaviours to investigate; 
 \begin{enumerate}
-  \item Malicious Power Control (MPC) behaviour, where $n_1$ increases it's transmission power by 20\% for all nodes \emph{except} communications with $n_0$ in order to make $n_0$ appear ``bad'' to the rest of the team,
-  \item Selfish Target Selection (STS) behaviour, where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce $n_1$'s power consumption.
+  \item Malicious Power Control (MPC), where $n_1$ increases it's transmission power by 20\% for all nodes \emph{except} communications with $n_0$ in order to make $n_0$ appear ``bad'' to the rest of the team,
+  \item Selfish Target Selection (STS), where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce $n_1$'s power consumption.
 \end{enumerate}
 
 
 \section{Simulation Results and Discussion}\label{sec:trustresultsanddiscussion}
 
-Having established a safe operating range for comparison, at 300m average separation and an emission rate of 0.015pps, we repeat the static and mobile scenarios presented in \cite{Guo11}. 
+Having established a safe operating range for comparison at 300m average separation and an emission rate of 0.015pps, we repeat the static and mobile scenarios presented in \cite{Guo11}. 
 We select an assessment period of 10 mins for a 5 hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
 
 Metrics used for Grey assessment are transmitted and received throughput and power, delay, and packet loss rate as calculated by aborted and unacknowledged, transmissions.
 Compared to \cite{Guo11}, this metric set lacks a data rate quantity as the network is not dynamically adjusting bandwidth.
-In context of Grey Relational Coefficient generation \eqref{eq:grc}, the best sequence $g$ was selected using the lowest PLR, delay, and powers, and the highest throughputs, with the worst sequence, $b$ the inverse of these metrics, reflecting the observations made in Section~\ref{sec:trust_in_marine}.
+In context of Grey Relational Coefficient generation \eqref{eq:grc}, the best sequence $g$ was selected using the lowest PLR, delay, and powers, and the highest throughputs, and the worst sequence, $b$ the inverse of these metrics, reflecting the observations made in Section~\ref{sec:trust_in_marine}.
 
 The particular factors under discussion are the relative performance of MTFM against OTMF and Beta with respect to statistical stability across mobilities and in responsiveness to changing network behaviour. 
-We establish a similar result set by initially tracking the resultant trust values established by MTFM in the pair of mobility scenarios, shown in Fig.\ref{fig:trust_mobility}.
-As per Guo et al. we are primarily concerned with the observational trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
+We establish a similar result set by initially tracking the resultant trust values established by MTFM in the pair of mobility scenarios, shown in Fig.~\ref{fig:trust_mobility}.
+As per Guo et al. we are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 We are also concerned with the opinions of $n_1$ provided to $n_0$ by other nodes, where $[T_{1,2},T_{1,3}]$ and $[T_{1,4},T_{1,5}]$ denote the sets of recommendation and indirect trust assessment respectively.
 
-We also include aggregate assessments; $T_{1,\text{Avg}}$, the unweighted mean of direct trust assessments of $n_1$ from all nodes and $T_{1,\text{MTFM}}$, the final MTFM trust assessment value based on both network topology and whitenisation from \eqref{eq:whitenization}.\todo{It's possible this paragraph is surplus to requirements and the relevant sections of the boxplot could be removed to simplify things}
+We also include aggregate assessments; $T_{1,\text{Avg}}$, the unweighted mean of direct trust assessments of $n_1$ from all nodes and $T_{1,\text{MTFM}}$, the final MTFM trust assessment value based on both network topology and whitenisation from \eqref{eq:whitenization}.
 
-The variability in assessment is coupled to mobility; in the static case (Fig.~\ref{fig:trust_static}), we see that the nodes close to $n_1$ ($[n_0,n_2,n_3]$) have reasonably consistent distributions, and as the range increases out to $[n_4,n_5]$, this variability increases.
+The variability in assessment is coupled to mobility; in the static case (Fig.~\ref{fig:trust_static}), we see that the nodes exhibit relatively consistent distributions.
 In the full mobility case, shown in Fig.~\ref{fig:trust_all_mobile}, this subjective variability is greatly increased. 
 As the topology is highly dynamic, delays due to re-establishing routes can be very large, perturbing the trust value.
 The aggregate trust values using topology information ($T_{1,\text{MTFM}}$) display a decreased variation than those of the individual subjective observations in all cases.
 
-In comparison to \cite{Guo11}, these results are qualitatively similar, however in this case the weighted deltas are significantly less clear than in the comparable terrestrial space, where Guo et al. show the same type of malicious behaviour and demonstrates a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval.
+
 \begin{figure}[h]
   \centering
   \subfloat[Fair Static]{\includegraphics[width=0.5\linewidth]{img/trust_bella_static_fair} \label{fig:trust_static}}
@@ -765,8 +767,10 @@ In comparison to \cite{Guo11}, these results are qualitatively similar, however 
 \todo{MAYBE CULL}
 %
 
-\subsection{Comparison to Hermes and OTFM}
+\subsection{Comparison between MTFM, Hermes and OTFM}
 As per \cite{Guo11}, parallel simulations were performed where there was no malicious behaviour, the ``fair'' scenario utilising OTMF and Hermes assessment as well as MTFM, providing like-for-like comparison of assessment.
+
+In the interests of brevity, we present results from the mobile-scenario only as we are primarily concerned with the establishment of trust in mobile networks
 %
 \begin{figure}[h]
   \subfloat[Fair Scenario]{\includegraphics[width=.5\linewidth]{img/trust_beta_otmf_fair} \label{fig:all_mobile_fair_beta}}
@@ -778,8 +782,8 @@ As per \cite{Guo11}, parallel simulations were performed where there was no mali
 \label{fig:otmf_beta_comparison}
 \end{figure}
 %
-The use of Forward Beam Routing and a CSMA/CA MAC scheme from AUVNetSim\cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance, and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out in route discovery rather than transmission.
-As such, confirmed packet losses are relatively rare and in a delaying network like this, it is difficult to set a differentiating time-out between packets that are in the network but queued, and packets that are actually ``lost''.
+The use of Forward Beam Routing and a CSMA/CA MAC scheme from AUVNetSim \cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission.
+As such, confirmed packet losses are relatively rare and in a delaying network like this, it is difficult to set a differentiating time out between packets that are in the network but queued, and packets that are actually ``lost''.
 This renders OTMF and Hermes assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
 
 The single metric TMFs used in conventional MANETs require regular and constant streams of positive and negative validation to shape and adjust their evaluations, which for a network with significant delays such as this, is not practical.
@@ -793,30 +797,26 @@ This relative versus absolute difference is particularly clear when comparing mo
 For simplicity of discussion, we are primarily concerned with the fully-mobile scenario.
 In these cases, particularly since the method of attack was not directly related to PLR, OTMF and Hermes have not registered significant activity in the appropriate behaviours when comparing against the fair scenario.
 Without comparing against any other known quantity; the difference between the MTFM trust assessments under ``fair'' and ``malicious'' behaviour is affected, if only slightly, particularly in looking at the average values returned.
+
+The selfish behaviour where the node preferentially select nodes to communicate with based on proximity is a more subtle attack on the network when compared to the outright power-flooding of the malicious behaviour.
+Applying the same approach to this behaviour, we find that the ensemble MTFM results appear similar to the malicious case, but OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+
 On their own, neither OTMF, Hermes, or unbiased MTFM appear to be appropriate in detecting or identifying malicious behaviour in this environment.
 
 
 \subsection{Metric Weighting}
 %
 
-We apply a sequence of simple vectors that preferentially weight each metric during \eqref{eq:metric_weighting} to each of the three simulation runs.
-For an arbitrary metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, we form an initial weighting vector $H'=[h_i...h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$. We then scale that vector $H'$ such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
+We apply a sequence of vectors that preferentially weight each metric during \eqref{eq:metric_weighting} to each of the three simulation runs.
+For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, we form an initial weighting vector $H'=[h_i...h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$. We then scale that vector $H'$ such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 Using this process we can extract and highlight the primary aspects of an attack by comparing against the deviation from the ``fair'' result set. 
 
 \begin{figure}[h]
   \centering
-  \subfloat[Delay]{\includegraphics[width=.45\linewidth]{img/trust_bella_static_emph_ADelay_BadMouthingPowerControl} \label{fig:static_badmouthing_delay}}
-  \subfloat[TX Power]{\includegraphics[width=.45\linewidth]{img/trust_bella_static_emph_ATXP_BadMouthingPowerControl}\label{fig:static_badmouthing_txp}}
+  \subfloat[Delay]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_delay}}
+  \subfloat[PLR]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_plr}}
   \newline
-  \subfloat[RX Throughput]{\includegraphics[width=.45\linewidth]{img/trust_bella_static_emph_RXThroughput_BadMouthingPowerControl} \label{fig:static_badmouthing_rxthroughput}}
-  \subfloat[TX Throughput]{\includegraphics[width=.45\linewidth]{img/trust_bella_static_emph_TXThroughput_BadMouthingPowerControl} \label{fig:static_badmouthing_txthroughput}}
-\caption{$T_{1,MTFM}$ in the All Static case for the Malicious Power Control behaviour, emphasising selected metrics and showing the mean and $\pm \sigma$ of $T_{1,MTFM}$ in the same 'fair' scenario}
-\label{fig:static_badmouthing}
-\end{figure}\todo{You were just about to add the selfish graphs in here when you lost the will to live}
-
-\begin{figure}[h]
-  \centering
-  \subfloat[RX Power]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_delay}}
+  \subfloat[RX Power]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxp}}
   \subfloat[TX Power]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_txp}}
   \newline
   \subfloat[RX Throughput]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxthroughput}}
@@ -825,33 +825,48 @@ Using this process we can extract and highlight the primary aspects of an attack
 \label{fig:all_mobile_badmouthing}
 \end{figure}
 %
-From Fig.~\ref{fig:static_badmouthing} we can see that the malicious node is consistently outside the $\pm\sigma$ envelope of the fair node it's being compared to, particularly TX Power, with smaller impacts on RX/TX Throughput, as would be expected for a power related behaviour. 
-However, the impact on delay is minimal to insignificant, occasionally breaching the envelope for a short period. 
-This was to be expected in a contention-based medium access network operating close to its saturation point; it can be observed that the delay deviance appears to increase as simulation time progresses. 
-This indicates that the variation in delay could be caused not by a malicious behaviour but simple congestion.
-In the mobile case (Fig.~\ref{fig:all_mobile_badmouthing}) we observe a similar pattern, however it should be noted that the deviation envelope is greatly increased compared to the static case due to the underlying variations in topology and configuration in this scenario.
+\begin{figure}[h]
+  \centering
+  \subfloat[Delay]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} \label{fig:all_mobile_selfish_delay}}
+  \subfloat[PLR]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}\label{fig:all_mobile_selfish_plr}}
+  \newline
+  \subfloat[RX Power]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxp}}
+  \subfloat[TX Power]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection}\label{fig:all_mobile_selfish_txp}}
+  \newline
+  \subfloat[RX Throughput]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxthroughput}}
+  \subfloat[TX Throughput]{\includegraphics[width=.45\linewidth]{img/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_txthroughput}}
+\caption{$T_{1,MTFM}$ in the All Mobile case for the Selfish Target Selection behaviour}
+\label{fig:all_mobile_selfish}
+\end{figure}
 
-A significant factor of trust assessment in such a constrained environment is that there may be long periods where two edge nodes (for instance, $n_0 \to n_5$) may not interact at all. 
-This can be due to a range of factors beyond potential malicious behaviour including simple random scheduling coincidence and intermediate or neighbouring nodes collectively causing long back-off or contention periods.
-This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
-One potential solution to this would be to move from a stepping-window of trust periods to a continuous trust log, updated on packet reception rather than waiting for a number of packets to arrive.\todo{Possibly move this section}
+From Fig.~\ref{fig:all_mobile_badmouthing} we can see that the malicious node is consistently outside the $\pm\sigma$ envelopes of the fair node it's being compared to, particularly PLR, with smaller impacts on delay, received power and transmitted throughput. 
+However, the impact on received throughput is minimal to insignificant compared to the size of the detection enveolpe, occasionally breaching the envelope for a short period. 
+In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) we observe much less impact in PLR and delay, with greatly increased impact on transmission power.
+In comparison to \cite{Guo11}, these results are qualitatively similar, however in this case the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space, where Guo et al. show the similar types of behaviour but demonstrates a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval.
 
-\subsection{Weight Significance Analysis for Differentiation of Behaviours}
 
-For a more quantitative assessment of the viability of this multi-metric trust assessment method, we take the qualitative analysis above and apply a Random Forest regression\cite{Breiman2001} to quantify the relative importance of the selected metrics on relative detectability of malicious behaviour. 
-The target function for this regression is given in \eqref{eq:regression_target}, and captures the relative difference between the fair and misbehaviour curves as demonstrated in Figs.~\ref{fig:static_badmouthing} and ~\ref{fig:all_mobile_badmouthing}.
-Visually, this is the total area between the $T_{MTFM}$ in the misbehaving case that is outside the standard deviation of $T_{MTFM}$ of the fair case.
+\subsection{Weight Significance Analysis for Behaviour Classification}
 
-Applying this target function to 729 different metric weight vectors emphasis combinations ($H$) and applying the regression demonstrates that while PLR is the primary factor in differentiating the fair and malicious behaviours ($R=0.75, p\approx10^{-100}$), the recorded transmission strength is also significant ($R=-0.54, p\approx10^{-50}$).
-\todo{``While it is not feasible to perform this breadth of calculations at run time to detect and classify unknown or unexpected behaviours, a more nuanced multi-dimensional optimisation approach could be applied, providing additional resilience to attack''}
+For a more quantitative assessment of the viability of multi-metric trust assessment methods, we take the qualitative analysis above and apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
+Random Forest accomplishes this by generating a large number of random regression trees and, based on incoming data, prune these trees to match the training values.
+From this training process we can extract the relative importance of each input feature (metric) in terms of how important it is to differentiate between the fair case and a given misbehaviour.
+The target function for this regression \eqref{eq:regression_target} that captures the relative difference between the fair and misbehaviour curves as demonstrated in Figs.~\ref{fig:all_mobile_badmouthing} and ~\ref{fig:all_mobile_selfish} is the area between the $T_{MTFM}$ in the misbehaving case that is outside the standard deviation of $T_{MTFM}$ of the fair case.
 
-The selfish behaviour where the node preferentially select nodes to communicate with based on proximity is a more subtle attack on the network when compared to the outright power-flooding of the malicious behaviour.
-However, it still impacts the efficiency and utility of the network by creating artificial asymmetries in the networks information distribution.
-Applying the same approach to this behaviour, we find that the ensemble MTFM results appear similar to the malicious case, but OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+Our intention is to establish the metrics that not only differentiate both misbehaviours from the fair case, but also what metrics differentiate the two misbehaviours from eachother.
+
+Applying this target function to 729 different metric weight vector emphasis combinations ($H$) and applying the regression reveals that each of the three combinations (i.e. comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and PLR, with delay, received power and transmitted throughput playing a lesser role.
+Practically this means that in order to accuratly distinguish between these scenarios, these primary metrics should be higher-weighted in the generation of $T_{1,MTFM}$ in \eqref{eq:grc}.
+
+It may initially appear odd that the received throughput significance is close between all three couples, a correlation analysis shows that in the selfish case; the received throughput is positively correlated with successful classification against the fair case ($R=0.71, p\approx10^{-100}$), while the opposite is the case for the selfish behaviour ($R=-0.69, p\approx10^{-100}$).
 
 \begin{figure}
   \centering
   \includegraphics[width=0.95\linewidth]{img/MaliciousSelfishMetricFactors}\label{fig:malselfactors}
+  \caption{Random Forest Factor Analysis of Malicious and Selfish behaviours when compared against the baseline}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{img/MaliciousSelfishMetricFactorsRad}\label{fig:malselfactorsrad}
   \caption{Random Forest Factor Analysis of Malicious and Selfish behaviours when compared against the baseline}
 \end{figure}
 
@@ -867,8 +882,13 @@ Through the same regression as above, we find that this intuition is validated i
 We have demonstrated that existing MANET Trust Management Frameworks are not directly suitable to the contentious and dynamic underwater medium.
 We presented a comparison between trust establishment in MANETs in the underwater space, demonstrating that in order to have any reasonable expectation of performance, throughput and delay responses must be characterised before implementing trust in such environments. 
 While the MTFM value does not display any immediate difference between the two behaviours, we have shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
-Another difference is that computationally, MTFM is significantly more intensive than the relatively simple Hermes / OTMF algorithms, and the repeated metric matrix re-weighting required for real time behaviour detection is an area that requires optimization. 
 
+A significant factor of trust assessment in such a constrained environment is that there may be long periods where two edge nodes (for instance, $n_0 \to n_5$) may not interact at all. 
+This can be due to a range of factors beyond potential malicious behaviour including simple random scheduling coincidence and intermediate or neighbouring nodes collectively causing long back-off or contention periods.
+This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
+One potential solution to this would be to move from a stepping-window of trust periods to a continuous trust log, updated on packet reception rather than waiting regular periods for packets to be analysed.
+
+Another difference is that computationally, MTFM is significantly more intensive than the relatively simple Hermes / OTMF algorithms, and the repeated metric re-weighting required for real time behaviour detection is an area that requires optimization. 
 As such, a hybrid system could be implemented, that used OTMF as a 'trigger' to detect potentially selfish or malicious behaviour, and allow MTMF weight matrix execution to be triggered at less regular intervals.
 We demonstrated initial, unfiltered Grey Trust assessment using all available metrics (transmitted and received throughput, delay, received signal strength, transmitted power, and packet loss rate), as well as the application of multiple weighting vectors to iteratively emphasise different aspects of trust operation to expose and identify misbehaviour on the network.
 

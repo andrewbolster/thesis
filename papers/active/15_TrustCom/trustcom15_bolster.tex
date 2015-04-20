@@ -849,8 +849,9 @@ In comparison to \cite{Guo11}, these results are qualitatively similar, however 
 
 For a more quantitative assessment of the viability of multi-metric trust assessment methods, we take the qualitative analysis above and apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
 Random Forest accomplishes this by generating a large number of random regression trees and, based on incoming data, prune these trees to match the training values.
-From this training process we can extract the relative importance of each input feature (metric) in terms of how important it is to differentiate between the fair case and a given misbehaviour.
 The target function for this regression \eqref{eq:regression_target} that captures the relative difference between the fair and misbehaviour curves as demonstrated in Figs.~\ref{fig:all_mobile_badmouthing} and ~\ref{fig:all_mobile_selfish} is the area between the $T_{MTFM}$ in the misbehaving case that is outside the standard deviation of $T_{MTFM}$ of the fair case.
+From this training process we can extract the relative importance of each input feature (metric) in terms of how good it is to differentiate between the fair case and a given misbehaviour.
+Additionally we perform a cross correlation analysis to establish the correlations between given metric emphasis and the areas outside the detection envelope.
 
 Our intention is to establish the metrics that not only differentiate both misbehaviours from the fair case, but also what metrics differentiate the two misbehaviours from eachother.
 
@@ -858,6 +859,7 @@ Applying this target function to 729 different metric weight vector emphasis com
 Practically this means that in order to accuratly distinguish between these scenarios, these primary metrics should be higher-weighted in the generation of $T_{1,MTFM}$ in \eqref{eq:grc}.
 
 It may initially appear odd that the received throughput significance is close between all three couples, a correlation analysis shows that in the selfish case; the received throughput is positively correlated with successful classification against the fair case ($R=0.71, p\approx10^{-100}$), while the opposite is the case for the selfish behaviour ($R=-0.69, p\approx10^{-100}$).
+In the selfish behaviour, it's natural that Transmitted power is selected as a defining characteristic ($R=0.88, p<10^{-100}$, 
 
 \begin{figure}
   \centering
@@ -871,7 +873,6 @@ It may initially appear odd that the received throughput significance is close b
 \end{figure}
 
 This is natural as these TMFs do not take protocol or application level behaviour into account in their assessment of fairness.
-Through the same regression as above, we find that this intuition is validated in feature extraction, with observed transmission power dominating ($R=0.88, p<10^{-100}$) followed by PLR ($R=-0.45, p\approx10^{-35}$) and throughput ($R=-0.33, p\approx10^{-20}$)
 
 \begin{equation}
   Y(H) = \int \! T_{mal}(H) - (T_{gd}(H)\pm\sigma_{T_{gd}(H)})\, \mathrm{d}H.
@@ -892,7 +893,7 @@ Another difference is that computationally, MTFM is significantly more intensive
 As such, a hybrid system could be implemented, that used OTMF as a 'trigger' to detect potentially selfish or malicious behaviour, and allow MTMF weight matrix execution to be triggered at less regular intervals.
 We demonstrated initial, unfiltered Grey Trust assessment using all available metrics (transmitted and received throughput, delay, received signal strength, transmitted power, and packet loss rate), as well as the application of multiple weighting vectors to iteratively emphasise different aspects of trust operation to expose and identify misbehaviour on the network.
 
-However, with significant delays (order from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical MANET TMF deployment environments.
+With significant delays (order from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical MANET TMF deployment environments.
 We show that, without significant adaptation, single metric probabilistic estimation based TMFs are ineffective in such an environment.
 We have shown that existing frameworks are overly optimistic about the nature and stability of the communications channel, and can overlook characteristics of the channel that are useful for assessing the behaviour of nodes in the network. 
 This indicates that there is a good case, particularly within constrained MANETs such as this, for multi-vector, and even multi-domain trust assessment, where metrics about the communications network and topology would be brought together with information about the physical behaviours and operations of nodes to assess trust.

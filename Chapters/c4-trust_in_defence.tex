@@ -1,10 +1,13 @@
+% !TeX spellcheck = en_GB
+\def\ChapterTitle{Trust in Autonomous Systems of Systems for Maritime Defence Applications}
 
-
-\chapter{Trust in Autonomous Systems of Systems for Maritime Defence Applications} 
+\ifx\ifthesis\undefined
+\input{chapter_standalone_preamble.tex}
+\else
+\chapter{\ChapterTitle}
 \label{Chapter\thechapter}
-\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} 
-
-\subsection{Trust in Marine Networks}\label{sec:trust_in_marine}
+\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
+\fi
 
 With demand for smaller, more decentralised marine survey and monitoring systems, and a drive towards lower per-unit cost, TMFs are going to be increasingly applied to the marine space, as the benefits they present are significant.
 Beyond the constraints of the communications environment, knock on pressures are applying in battery capacity, on-board processing, and locomotion.

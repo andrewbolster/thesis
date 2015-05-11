@@ -1,8 +1,13 @@
+% !TeX spellcheck = en_GB
+\def\ChapterTitle{Modelling and Analysis of Collaborative Node Kinematic Behaviuors in Underwater Acoustic MANETs}
 
-
-\chapter{Modelling and Analysis of Collaborative Node Kinematic Behaviuors in Underwater Acoustic MANETs} % Write in your own chapter title
+\ifx\ifthesis\undefined
+\input{chapter_standalone_preamble.tex}
+\else
+\chapter{\ChapterTitle}
 \label{Chapter\thechapter}
 \lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
+\fi
 
 
 
@@ -17,7 +22,7 @@ Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in pa
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{img/throughput_performance_static.pdf}
+  \includegraphics[width=0.6\textwidth]{throughput_performance_static.pdf}
   \caption{Varying packet emission rate demonstrates maximal throughput at 0.025 packets per second, equivalent to $\approx$240 bps}
   \label{fig:throughput_performance_static}
 \end{figure}
@@ -25,7 +30,7 @@ Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in pa
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{img/prod_breakdown_static.pdf}
+  \includegraphics[width=0.6\textwidth]{prod_breakdown_static.pdf}
   \caption{Varying packet emission rate demonstrates a saturation point at 0.025 packets per second}
   \label{fig:prod_breakdown_static}
 \end{figure}
@@ -42,14 +47,14 @@ This collision rate is well within the tolerances of the MAC layer, as shown in 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{img/throughput_performance_range.pdf}
+  \includegraphics[width=0.6\textwidth]{throughput_performance_range.pdf}
   \caption{Comparison of Medium Acquisition Collisions, Throughput, and Enqueued packets against varying application packet emission rates.}
   \label{fig:throughput_performance_range}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{img/prod_breakdown_range.pdf}
+  \includegraphics[width=0.6\textwidth]{prod_breakdown_range.pdf}
   \caption{Probability of Timely Reception across a range of node scaling.}
   \label{fig:prod_breakdown_range}
 \end{figure}
@@ -63,14 +68,14 @@ This is due to reduced channel availability due to collisions, which are then du
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{img/delay_range.pdf}
+  \includegraphics[width=0.6\textwidth]{delay_range.pdf}
   \caption{End to End Delay under varying node-separations}
   \label{fig:delay_range}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{img/rts_range.pdf}
+  \includegraphics[width=0.6\textwidth]{rts_range.pdf}
   \caption{RTS/Data ratio for varying node-separations}
   \label{fig:rts_range}
 \end{figure}
@@ -79,8 +84,21 @@ This is due to reduced channel availability due to collisions, which are then du
 \begin{table}[H]
   \caption{Tabular view of data from Figs~\ref{fig:prod_breakdown_range}, \ref{fig:delay_range}, and \ref{fig:rts_range}} \label{tab:rangedelay}
   \begin{center}
-      \hyphenpenalty 100000
-      \input{./input/range_delay_table.tex}
+    \hyphenpenalty 100000
+	\begin{tabular}{
+			*{2}{@{\hspace{1em}}r@{\hspace{1em}}}
+			*{3}{@{\hspace{1em}}p{0.1\textwidth} @{\hspace{1em}}}  }
+		\toprule
+		Separation(m) &  Delay(s) &  Probability of Arrival &  RTS/Data Ratio &  Ideal Delivery Time(s) \\
+		\midrule
+		100 &     60.32 &                    0.99 &            1.80 &                    1.03 \\
+		200 &    419.95 &                    0.97 &            2.02 &                    1.10 \\
+		300 &   1205.66 &                    0.89 &            2.41 &                    1.17 \\
+		400 &   1288.20 &                    0.91 &            2.26 &                    1.25 \\
+		500 &   1868.20 &                    0.87 &            2.41 &                    1.32 \\
+		600 &   2191.07 &                    0.85 &            2.42 &                    1.39 \\
+		\bottomrule
+	\end{tabular}
   \end{center}
 \end{table}
 
@@ -90,25 +108,25 @@ This is due to reduced channel availability due to collisions, which are then du
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{img/trust_bella_static_selfish.pdf}
+  \includegraphics[width=.95\linewidth]{trust_bella_static_selfish.pdf}
   \caption{All Nodes Static}
   \label{fig:selfish_trust_static}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{img/trust_bella_single_mobile_selfish.pdf}
+  \includegraphics[width=.95\linewidth]{trust_bella_single_mobile_selfish.pdf}
   \caption{$n_1$ Randomly Walking}
   \label{fig:selfish_trust_single}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \centering
-  \includegraphics[width=.95\linewidth]{img/trust_bella_allbut1_mobile_selfish.pdf}
+  \includegraphics[width=.95\linewidth]{trust_bella_allbut1_mobile_selfish.pdf}
   \caption{All Nodes but $n_1$ Randomly Walking}
   \label{fig:selfish_trust_allbut1}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \centering
-  \includegraphics[width=.95\linewidth]{img/trust_bella_all_mobile_selfish.pdf}
+  \includegraphics[width=.95\linewidth]{trust_bella_all_mobile_selfish.pdf}
   \caption{All Nodes Randomly Walking}
   \label{fig:selfish_trust_all_mobile}
 \end{subfigure}
@@ -121,25 +139,25 @@ This is due to reduced channel availability due to collisions, which are then du
 \begin{figure}
 \begin{subfigure}{\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{img/beta_trust_bella_static_joint.pdf}
+  \includegraphics[width=.95\linewidth]{beta_trust_bella_static_joint.pdf}
   \caption{All Nodes Static}
   \label{fig:beta_trust_static}
 \end{subfigure}
 \begin{subfigure}{\textwidth}
   \centering
-  \includegraphics[width=.95\linewidth]{img/beta_trust_bella_single_mobile_joint.pdf}
+  \includegraphics[width=.95\linewidth]{beta_trust_bella_single_mobile_joint.pdf}
   \caption{$n_1$ Randomly Walking}
   \label{fig:beta_trust_single}
 \end{subfigure}
 \begin{subfigure}{\textwidth}
 \centering
-  \includegraphics[width=.95\linewidth]{img/beta_trust_bella_allbut1_mobile_joint.pdf}
+  \includegraphics[width=.95\linewidth]{beta_trust_bella_allbut1_mobile_joint.pdf}
   \caption{All Nodes but $n_1$ Randomly Walking}
   \label{fig:beta_trust_allbut1}
 \end{subfigure}
 \begin{subfigure}{\textwidth}
 \centering
-  \includegraphics[width=.95\linewidth]{img/beta_trust_bella_all_mobile_joint.pdf}
+  \includegraphics[width=.95\linewidth]{beta_trust_bella_all_mobile_joint.pdf}
   \caption{All Nodes Randomly Walking}
   \label{fig:beta_trust_all_mobile}
 \end{subfigure}

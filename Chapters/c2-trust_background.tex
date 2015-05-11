@@ -1,12 +1,17 @@
 
+\def\ChapterTitle{Background on Trust and its Applications to MANETs} % Write in your own chapter title
 
-\chapter{Background on Trust and its Applications to MANETs} % Write in your own chapter title
-\label{Chapter\thechapter}
-\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
+\ifx\ifthesis\undefined
+	\input{chapter_standalone_preamble.tex}
+\else
+	\chapter{\ChapterTitle}
+	\label{Chapter\thechapter}
+	\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
+\fi
 
 \section{Trust}
 
-In human trust relationships it is recognised that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
+In human trust relationships it is recognized that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
 For the purposes of this work we define two perspectives on trust for autonomous systems: Design and Operational. These are summarised as follows:
 
 \begin{itemize}
@@ -14,7 +19,7 @@ For the purposes of this work we define two perspectives on trust for autonomous
     This is the same as conventional systems.
     The difference with systems that have high-levels of autonomy is that they are designed to behave adaptively to dynamic environments that are difficult to fully predict prior to operational deployment.
     For example, in a navigation system it is difficult to predict the dynamic environment it will need to adapt to.
-    So Trust needs to be developed that the design and test of such systems are sufficient to predict that operation will be, if not optimal, at least satisfactory.
+    So Trust needs to be developed that th:e design and test of such systems are sufficient to predict that operation will be, if not optimal, at least satisfactory.
 
   \item \emph{Operational Trust}; Trust at runtime or in-situ that both the individual nodes within a system are operating as expected\footnote{Operational Trust is functionally derived from, but distinct from Design Trust}; and that the interfaces between the operator and the system are as expected.
     This latter aspect covers issues such as physical/wireless links and interpretation of data at each end of such a communication link.
@@ -317,3 +322,8 @@ I had initially thought that such a back-propogator would be a total mess as I'd
 
 This backpropogation will probably be a pain to implement as it'd require a retroactive reassessment of trust and could get really messy if it was interrupt driven, but it's better not to prematurly optimise.
 
+
+\ifx\ifthesis\undefined
+	\input{chapter_standalone_postscript.tex}
+\else
+\fi

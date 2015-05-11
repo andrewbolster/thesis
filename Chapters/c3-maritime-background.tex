@@ -1,9 +1,13 @@
+% !TeX spellcheck = en_GB
+\def\ChapterTitle{Maritime Communications Environment and Use of Autonomous Systems}
 
-
-\chapter{Background on Maritime Uses of Autonomous Systems and the Maritime Communications Environment} 
+\ifx\ifthesis\undefined
+\input{chapter_standalone_preamble.tex}
+\else
+\chapter{\ChapterTitle}
 \label{Chapter\thechapter}
 \lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
-
+\fi
 
 The key challenges of underwater acoustic communications are centred around the impact of slow and differential propagation of energy (RF, Optical, Acoustic) through water, and it's interfaces with the seabed / air.
 The resultant challenges include; long delays due to propagation, significant inter-symbol interference and Doppler spreading, fast and slow fading due to environmental effects (aquatic flora/fauna; surface weather), carrier-frequency dependent signal attenuation, multipath caused by the medium interfaces at the surface and seabed, variations in propagation speed due to depth dependant effects (salinity, temperature, pressure, gaseous concentrations and bubbling), and subsequent refractive spreading and lensing due to that same propagation variation\cite{Partan2006}.

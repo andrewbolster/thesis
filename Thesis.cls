@@ -108,7 +108,8 @@
 \setcounter{dbltopnumber}{9}
 \usepackage{graphicx}
 \usepackage{epstopdf}
-\usepackage[scriptsize]{subfigure}
+%\usepackage[scriptsize]{subfigure} %obsolete
+\usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{listings}

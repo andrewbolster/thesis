@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper,twoside,draft]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\title{PAP Report 2015\\
+\large 
+An Investigation into Trust and Reputation Frameworks for \\
+Collaborative Teams of Autonomous Underwater Vehicles }
+
+\author{Andrew Bolster, \\
+		Supervised by \\
+		Prof. Alan Marshall and Prof. Simon Maskell}
+\date{May 19, 2015}
+
+
+\begin{document}
+	\maketitle
+	\section{Overview}
+	\begin{itemize}
+		\item \textbf{Started:} October 2011 @ Queen's University Belfast
+		\item \textbf{Transferred:} October 2013 @ University of Liverpool
+		\item \textbf{Target Submission:} November 2015
+	\end{itemize}
+	
+	The project is focused developing a multi-vector trust management framework (TMF) for collaborative operation of autonomous systems.
+	
+	Specifically, this project is looking at the relationships between physical behaviour and communications behaviour within teams of autonomous underwater vehicles (AUVs) for uses related to mine counter measures and port protection for defence, as well as persistent survey behaviour for environmental and petrochemical applications.
+	
+	This work is undertaken as part of The UK-France joint PhD Programme which is jointly managed by Direction Générale de l?Armement (DGA) and Defence Science and Technology Laboratory. It was agreed at the 2010 Anglo-French Summit as one of the ten priorities in 2011 for the Anglo French Defence Research Group (AFDRG).
+	In 2011, five PhDs were funded (two from the UK and three from France), In 2012, the programme grew to nine PhDs (five from the UK and four from France). In 2013 a further ten PhDs were funded (five from the UK and five from France). These PhDs are currently investigating a variety of topics including meta-materials, synthetic biology, sensors, vehicle armour, and human and social sciences as well as this project?s work in autonomous underwater vehicles.
+	
+	\section{Summary of Current Outputs}
+	Since the launch of the project, the majority of time has been spent developing a bespoke simulation framework based on Python, developing a variety of ?normal?, ?abnormal? and ?malicious physical behaviours, as well as developing a range of analytical techniques to detect and identify these behaviours to an extremely high degree of statistical accuracy, i.e.in a Monte Carlo style random repeat experiment, the classifier is correct and confident a significant percentage of experimental runs.
+	
+	Major outputs and research interactions of the project are: 
+	\begin{itemize}
+		\item Attendance at UComms 2012 (Sestri Levante, Italy)
+		\item Poster Presentations in 2012 (Kassam, Oxford) and 2013 (Heathrow, London)
+		\item Summer Research Placement with DSTL (Software Systems and Dependability for Autonomous Teams)(2013, Portsdown West, Portsmouth)
+		\item Short Paper Presentation to the Association for the Advancement of Artificial Intelligence (AAAI) on ?A Multi Vector Trust Framework for Autonomous Systems? (2014, Stanford, CA)
+		\item Technical Report for the UK/US/CAN/AUS/NZ Technical Cooperation Programme ((2014). Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations. The Technical Cooperation Program, Technical Report TR-C3I-06-2014) (June 13 ? April 14)
+		\item DSTL CDE Collaboration with NPL and Plextek Ltd. on ?Precision Timing and Navigation, Challenge 1: Resilient Time and Location Estimation for Networked Assets? (CDE 33135) (Oct 13-May 14)
+	\end{itemize}
+	
+	\section{Field Background}
+	\subsection{What is 'Trust'?}
+	?Trust? is a word that gets used a lot in many different ways. Mirriam Webster?s Dictionary defines trust as ?assured reliance on the character, ability, strength, or truth of someone or something?.
+	
+	This rather far reaching definition is very attractive to distributed network design as this ?trustworthiness?  can be used to inform autonomous actors, or nodes, to the ?best? courses and paths to action, making them more efficient and resilient in their operation.
+	Within this context, we define trust as ?The Expectation of an actor performing a certain task or range of tasks within a certain confidence or probability?. 
+	
+	In the real world use-case of deployable autonomous systems for survey or other application, this trust can take on two real forms;
+	Design Trust, where there is an expectation that a system of systems will perform as specified or designed in operation, and
+	Operational Trust, that is that the individual systems within a larger system will and are performing as designed in the field. It is this area with which we are particularly concerned.
+	
+	\subsection{Trust Management Frameworks (TMFs)}
+	
+	This desire for operational trust in mobile ad hoc networks has lead to the development of several Trust Management Frameworks (TMFs), where such frameworks provide information regarding the estimated future states and operations of nodes within such a network. 
+	As such, the operation of such frameworks has been summarised as ?collecting the information necessary to establish a trust relationship and dynamically monitoring and adjusting the existing trust relationship?\cite{Li2007}?
+	
+	Almost all of the work currently applied to establishing trust in mobile ad hoc networks (MANETs) relies either on shared key exchanges with a centralised trust repository (PKI) or with exclusive assessment based on communications behaviour alone, and in that case the vast majority only measure one value (eg packet forward likelihood). 
+	Within MANETs, the requirement for distributed trust comes from the decentralised and dynamic communication paths used; if a node moves or an environment changes, the network topology can completely change with paths containing potentially malicious nodes that can disrupt, modify, or reject communications coming from or going to a given node. 
+	The motivation for that application of TMFs to MANETs is that by taking historical performance information into accounts, malicious or inefficient actors can be at least detected and routed isolated, preventing further compromise to the distributed network.
+	
+	These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker knows the metric in advance. The objective of operating a TMF is to increase the confidence in, and efficiency of, a system by reducing the amount of undetectable negative operations an attacker can perform.
+	This space of potential attacks can be described as the ?Threat Surface?. In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker. In turn, this causes a super-linearly negative effect in the efficiency of the network. 
+	
+	The TMF is assumed to have reduced the threat surface when in fact it has simply made it more advantageous to attack a different part of it.
+	\cite{Huang2010a}? also raised the need for a more expanded view of trust but did so with a domain-partitioning approach rather than combining trust assessments from multiple domains within networks. 
+	
+	\subsection{Multi-Parametric Trust Management Frameworks}
+	Guo developed a form of vectorised trust that allowed the combination and cross-correlation of a range of communications observations (Packet error rate, Noise characteristics, Delay, Throughput, etc) not only as a combined singular value in the form of a Grey Interval, but also presented the ability to use this vectorised trust assessment to not just detect but also identify malicious or abnormal behaviours through weight assessment perturbations \cite{Guo11}.
+	
+	 \begin{figure}
+	 	\includegraphics[width=\textwidth]{./}
+	 	\caption{}
+	 \end{figure}
+	
+	
+	\bibliographystyle{amsplain}
+	\bibliography{PAP15}
+	
+	
+\end{document}

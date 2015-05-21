@@ -49,6 +49,8 @@ Major outputs and research interactions of the project are:
 	\item Short Paper Presentation to the Association for the Advancement of Artificial Intelligence (AAAI) on ``A Multi Vector Trust Framework for Autonomous Systems'' (2014, Stanford, CA)
 	\item Technical Report for the UK/US/CAN/AUS/NZ Technical Cooperation Programme ((2014). Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations. The Technical Cooperation Program, Technical Report TR-C3I-06-2014) (June 13 - April 14)
 	\item DSTL CDE Collaboration with NPL and Plextek Ltd. on ``Precision Timing and Navigation, Challenge 1: Resilient Time and Location Estimation for Networked Assets'' (CDE 33135) (Oct 13-May 14)
+	\item Rejected submission to AdHocNow15 
+	\item ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks'' submitted to TrustCom15 (Decision Pending)
 \end{itemize}
 	
 \section{Field Background}
@@ -160,6 +162,114 @@ With this chart it's shown that the Slowcoach behaviour manifests itself in the 
 
 With our current analysis we can do so with an average 96\% positive identification rate with a 1\% false positive rate, i.e.  instances where a Slowcoach is confidently detected as a Shadow and visa versa. (It should be noted that in this analysis, there were no cases where the malicious behaviour (Shadow) was misdetected as the purely abnormal/faulty behaviour (Slow Coach).
 
+\subsection{Communications Behaviours}
+
+The major amount of recent work has been concerned with the development and testing of simulated acoustic communications channels. Supposedly feature-complete implementations such as \cite{Miquel2008} were found to be incomplete and not totally tested, and this put back development by several months. 
+
+However, we were able to incorporate our experiences under the DSTL/NPL/Plextek collaboration project (CDE 33135) to reimplement and improve both the routing and physical modelling used in the AUVNetSim framework. These implementations were validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
+
+Then, having implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{Guo11}, Hermes\cite{Zouridake2005}, and Optimal Trust Management Framework(OTMF)\cite{Li2008}, exploratory simulations were run to establish a comparable operation range for the simulated marine context.
+
+\begin{table}[h]
+	\caption{Comparison of system model constraints as applied between Terrestrial and Marine communications} \label{tab:sysconstraints}
+	\begin{center}
+		\setlength{\tabcolsep}{8pt}
+		\begin{tabular}{lccc}
+			\toprule
+			Parameter & Unit & Terrestrial & Marine \\
+			\midrule
+			Simulated Duration & $s$ & 300 & 18000\\
+			Trust Sampling Period & $s$ & 1 & 600 \\
+			Simulated Area & $km^2$ & 0.7 & 0.7-4 \\
+			Transmission Range & $km$ & 0.25 & 1.5 \\
+			Physical Layer & & RF(802.11) & Acoustic\\
+			Propagation Speed& $m/s$ & $3\times10^8$ & 1490\\
+			Center Frequency& $Hz$ & $2.6\times10^9$ & $2 \times 10^4$ \\
+			Bandwidth& $Hz$ & $22\times10^6$ & $1\times10^4$\\
+			MAC Type & & CSMA/DCF & CSMA/CA\\
+			Routing Protocol & & DSDV & FBR \\
+			Max Speed & $ms^{-1}$ & 5 & 1.5 \\
+			Max Data Rate & $bps$ & $5\times10^6$ & $\approx 240$ \\
+			Packet Size & bits & 4096 &  9600 \\
+			Single Transmission Duration & $s$ & 10 & 32 \\
+			Single Transmission Size & bits & $10^7$ & $9600$ \\
+			\bottomrule
+		\end{tabular}
+		\setlength{\tabcolsep}{6pt}
+	\end{center}
+\end{table}
+
+Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
+
+\begin{figure}[h!]
+	\missingfigure{}
+	\caption{Surface Plot showing performance gradient across varying packet emission rates and node separations}
+\end{figure}
+
+As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
+This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
+For instance, where all nodes are static, we do not see significant drops in saturation rates until node separation approaches 800m, nearly double the initial estimate. 
+When all nodes are randomly walking the saturation point collapses from 0.025pps at 300m to 0.015pps at 400m.
+Our results indicate that the best area to continue operating in for a range of node separations is at 0.015pps, and that a reasonable position scaling is from 100m to 300m, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
+These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
+
+Guo et al. introduced a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
+
+Given that the established links are already heavily constrained, attacks such as introducing selective packet dropping or artificially adding to the already extreme and hugely variable delays would severely impact the general performance of the network beyond the scope of simple selfishness.
+These direct malicious behaviours effectively trigger saturation collapses in operating regions of the network that should be stable.
+
+Therefore, we select two more subtle misbehaviours to investigate; 
+\begin{enumerate}
+	\item Malicious Power Control (MPC), where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.
+	\item Selfish Target Selection (STS), where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
+\end{enumerate}
+
+\begin{figure}[h]
+	\subfloat[Delay]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_selfish_delay}}
+	\subfloat[PLR]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_selfish_plr}}
+	\subfloat[RX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxp}}
+	\newline
+	\subfloat[TX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_selfish_txp}}
+	\subfloat[RX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxthroughput}}
+	\subfloat[TX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_txthroughput}}
+	\caption{$T_{1,MTFM}$ in the All Mobile case for the MPC behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
+	\label{fig:all_mobile_selfish}
+\end{figure}
+
+\begin{figure}[h]
+	\subfloat[Delay]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} \label{fig:all_mobile_selfish_delay}}
+	\subfloat[PLR]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}\label{fig:all_mobile_selfish_plr}}
+	\subfloat[RX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxp}}
+	\newline
+	\subfloat[TX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection}\label{fig:all_mobile_selfish_txp}}
+	\subfloat[RX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxthroughput}}
+	\subfloat[TX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_txthroughput}}
+	\caption{$T_{1,MTFM}$ in the All Mobile case for the STS behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
+	\label{fig:all_mobile_selfish}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.65\linewidth]{MaliciousSelfishMetricFactors}
+	\caption{Random Forest Factor Analysis of Malicious (MPC), Selfish (STS) and Fair behaviours compared against each-other}
+	\label{fig:malselfactors}
+\end{figure}
+
+\begin{table}[h]
+	\caption{Correlation Coefficients between metric weights and behaviour detection targets} \label{tab:correlations}
+	\begin{center}
+		\begin{tabular}{lcccccc}
+			\toprule
+			Correlation      & Delay & $P_{RX}$ & $P_{TX}$ & $T^P_{RX}$ & $T^P_{TX}$ & PLR \\
+			\midrule
+			Fair / MPC       & 0.199 &  0.159   & -0.416  &  0.708   & -0.238   & -0.401\\
+			Fair / STS       & 0.179 &  -0.009  &  0.724  & -0.697   & -0.145   & -0.052\\
+			MPC / STS        & 0.058 &  -0.134  &  0.146  & -0.768   &  0.052   &  0.146\\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+\end{table}
+
 \section{Changes to Assumptions}
 
 
@@ -213,22 +323,12 @@ Likewise, our work with Plextek and NPL on collaborative positioning using high 
 
 \subsection{Behaviour Detection}
 
-Current work is concentrated on the improvement of the analysis of behaviours, with the intention of submission for publication of a paper on the threat detection methodology over the summer conference season. Potential conferences suitable for this publication are: (Submission deadlines in parenthesis)
+Current work is concentrated on the improvement of the analysis of behaviours, with the intention of submission for publication of a paper on the threat detection methodology. This was intended to be completed last year but has fallen by the way-side in favour of the communications comparison work package.
 
-ASON 2014 : Seventh International Workshop on Autonomous Self-Organizing Networks (Aug 14)
 
-AHUC 2014 : The Fourth International Workshop on Ad Hoc and Ubiquitous Computing (Aug 14)
-
-ICCAR 2015 : WASET International Conference on Control, Automation and Robotics (Dec 14)
-
-\subsection{MANET/Marine comparison}
-Est: Sept 14
-
-In parallel with completing the analysis of the behaviour and the behaviour classifier, a more formal comparison of the differences between the classical terrestrial MANET space and the Marine operating environment will be undertaken.
 \subsection{Multi-Domain Trust Assessment}
-Est: Nov 14
 
-Following on from this work, it is intended to focus on the cross domain implementation of trust, which is, combining communicative and behavioural trust assessments. 
+All remaining focus is on the cross domain implementation of trust, which is, combining communicative and behavioural trust assessments. 
 
 This body of work has two main areas; analytical and critical. 
 
@@ -240,16 +340,11 @@ Ideally this work will go on as a Journal paper into potentially IEEE Transactio
 
 \subsection{Reactionary/Perturbative Trust}
 
-Est: Feb 14
-
-After the development and analysis of multi-vector trust, it is intended that some time be spent investigating reactionary behaviours, both communicative and physical, to allow a distributed, sparsely connected, decentralised team of nodes to dynamically ``interrogate'' or ``test'' the trustworthiness of nodes within the team. 
-
-Aim is for conference submission to SASO15:Self-Adaptive and Self-Organizing Systems, or SEAMS15: Software Engineering for Adaptive and Self-Managing Systems (both unconfirmed)
+It was hoped that some time be spent investigating reactionary behaviours, both communicative and physical, to allow a distributed, sparsely connected, decentralised team of nodes to dynamically ``interrogate'' or ``test'' the trustworthiness of nodes within the team. Given the compressed timeframe, this is unlikely.
 
 \section{Proposed Thesis Chapter Titles}
-\begin{itemize}
-	\item Abstract, Acknowledgements, Introduction, 
-	\item Background Information on Trust and it's applications to MANETs
+\begin{enumerate} 
+	\item Background Information on Trust and its applications to MANETs
 	\begin{itemize}
 		\item Discussion on abstract analysis of trust networks
 		\item Discussion on the threat surface of Mobile Ad Hoc Networks and how that has been protected so far
@@ -259,11 +354,9 @@ Aim is for conference submission to SASO15:Self-Adaptive and Self-Organizing Sys
 	\begin{itemize}
 		\item Discussion of current and future approaches to areas where autonomous systems can be used mainly focused on Mine counter measures, Hydrography and Patrol Capabilities (MHPC)
 		\item Discussion of the contextual human factors around integrating autonomous systems into existing human-based solutions.
+		\item Predominantly following on from work already accomplished under ``Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations'', including development of representative malicious and abnormal behaviours
 	\end{itemize}
-	\item Trust in Autonomous Systems of Systems for Maritime Defence Applications
-	\begin{itemize}
-		\item 	Predominantly following on from work already accomplished under ?Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations?, including development of representative malicious and abnormal behaviours
-	\end{itemize}
+	\framebreak
 	\item Strategies for Multi-Domain Trust Assessment
 	\begin{itemize}
 		\item Analytical establishment of Multi-Domain Trust, from an information theoretic standpoint.
@@ -275,12 +368,7 @@ Aim is for conference submission to SASO15:Self-Adaptive and Self-Organizing Sys
 	\end{itemize}
 	\item Comparative Analysis of Multi-Domain Trust Assessment in Collaborative Mobile Networks
 	\item Investigation into the relative performance characteristics of multi-domain combination strategies in an exemplary context (AUV teams) against existing single and multi metric TMFs
-	\item Reactionary Behaviours to increase decentralised trust in isolated environments
-	\begin{itemize}
-		\item How can nodes interrogate each other, both communicatively and physically, to test or establish trust beyond the reach of an agreed authority
-	\end{itemize}
-	\item Conclusions, Bibliography
-\end{itemize}
+\end{enumerate}
 
 \bibliographystyle{amsplain}
 \bibliography{PAP15}

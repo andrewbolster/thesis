@@ -1,14 +1,24 @@
 % !TeX spellcheck = en_GB
-\documentclass[10pt,a4paper,draft]{article}
+\documentclass[10pt,a4paper]{article}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\graphicspath{{../../Figures/}{./figures/}}
 
 \usepackage{todonotes}
 \usepackage{longtable}
 \usepackage{chngpage}
+\usepackage{booktabs}
+\usepackage[
+backend=biber,
+natbib=true,
+style=authoryear,
+sorting=none]{biblatex}
+\addbibresource{PAP15.bib}
+\usepackage{hyperref}
+\usepackage[caption=false,font=footnotesize]{subfig}
 
 
 \title{PAP Report 2015\\
@@ -17,7 +27,7 @@ An Investigation into Trust and Reputation Frameworks for \\
 Collaborative Teams of Autonomous Underwater Vehicles }
 
 \author{Andrew Bolster, \\
-		Supervised by \\
+		\large Supervised by \\
 		Prof. Alan Marshall and Prof. Simon Maskell}
 \date{May 19, 2015}
 
@@ -46,11 +56,11 @@ Major outputs and research interactions of the project are:
 	\item Attendance at UComms 2012 (Sestri Levante, Italy)
 	\item Poster Presentations in 2012 (Kassam, Oxford) and 2013 (Heathrow, London)
 	\item Summer Research Placement with DSTL (Software Systems and Dependability for Autonomous Teams)(2013, Portsdown West, Portsmouth)
-	\item Short Paper Presentation to the Association for the Advancement of Artificial Intelligence (AAAI) on ``A Multi Vector Trust Framework for Autonomous Systems'' (2014, Stanford, CA)
-	\item Technical Report for the UK/US/CAN/AUS/NZ Technical Cooperation Programme ((2014). Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations. The Technical Cooperation Program, Technical Report TR-C3I-06-2014) (June 13 - April 14)
+	\item Short Paper Presentation to the Association for the Advancement of Artificial Intelligence (AAAI) on ``A Multi Vector Trust Framework for Autonomous Systems'' (2014, Stanford, CA)\cite{Bolster2014}
+	\item Technical Report for the UK/US/CAN/AUS/NZ Technical Cooperation Programme ((2014). Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations. The Technical Cooperation Program, Technical Report TR-C3I-06-2014) (June 13 - April 14)\cite{Bolster2014a}
 	\item DSTL CDE Collaboration with NPL and Plextek Ltd. on ``Precision Timing and Navigation, Challenge 1: Resilient Time and Location Estimation for Networked Assets'' (CDE 33135) (Oct 13-May 14)
 	\item Rejected submission to AdHocNow15 
-	\item ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks'' submitted to TrustCom15 (Decision Pending)
+	\item ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks'' submitted to TrustCom15 (Pending)
 \end{itemize}
 	
 \section{Field Background}
@@ -61,15 +71,17 @@ This rather far reaching definition is very attractive to distributed network de
 Within this context, we define trust as ``The Expectation of an actor performing a certain task or range of tasks within a certain confidence or probability''. 
 	
 In the real world use-case of deployable autonomous systems for survey or other application, this trust can take on two real forms;
-Design Trust, where there is an expectation that a system of systems will perform as specified or designed in operation, and
-Operational Trust, that is that the individual systems within a larger system will and are performing as designed in the field. It is this area with which we are particularly concerned.
+\begin{itemize}
+	\item Design Trust, where there is an expectation that a system of systems will perform as specified or designed in operation, and
+	\item Operational Trust, that is that the individual systems within a larger system will and are performing as designed in the field. It is this area with which we are particularly concerned.
+\end{itemize}
 	
 \subsection{Trust Management Frameworks (TMFs)}
 	
-This desire for operational trust in mobile ad hoc networks has lead to the development of several Trust Management Frameworks (TMFs), where such frameworks provide information regarding the estimated future states and operations of nodes within such a network. 
+This desire for operational trust in mobile ad-hoc networks has lead to the development of several Trust Management Frameworks (TMFs), where such frameworks provide information regarding the estimated future states and operations of nodes within such a network. 
 As such, the operation of such frameworks has been summarised as ``collecting the information necessary to establish a trust relationship and dynamically monitoring and adjusting the existing trust relationship'' \cite{Li2007}.
 	
-Almost all of the work currently applied to establishing trust in mobile ad hoc networks (MANETs) relies either on shared key exchanges with a centralised trust repository (PKI) or with exclusive assessment based on communications behaviour alone, and in that case the vast majority only measure one value (eg packet forward likelihood). 
+Almost all of the work currently applied to establishing trust in mobile ad-hoc networks (MANETs) relies either on shared key exchanges with a centralised trust repository (PKI) or with exclusive assessment based on communications behaviour alone, and in that case the vast majority only measure one value (eg packet forward likelihood). 
 Within MANETs, the requirement for distributed trust comes from the decentralised and dynamic communication paths used; if a node moves or an environment changes, the network topology can completely change with paths containing potentially malicious nodes that can disrupt, modify, or reject communications coming from or going to a given node. 
 The motivation for that application of TMFs to MANETs is that by taking historical performance information into accounts, malicious or inefficient actors can be at least detected and routed isolated, preventing further compromise to the distributed network.
 	
@@ -123,6 +135,20 @@ Our approach to this has been to develop an agent based simulation platform buil
 
 This interaction in the physical world opens up a range of metrics that can be used for trust assessment, in an effort to further restrict undetected malicious behaviour on the exposed threat surface of a network.
 
+In summary, the novelties of the work accomplished so far are:
+\begin{itemize}
+	\item Fused Trust Assessment using Physical Behaviour in collaborative mobile autonomous networks (CMAN)
+	\item Analytical comparison of Marine and Terrestrial Communicative trust environments
+	\item Exploration and Demonstration of the advantages of multiple metric trust over single metric trust (in communications)
+	\item Defined protocol for quantitative assessment of Metric suitability through comparative regression analysis
+\end{itemize}
+
+Novelties remaining to be produced prior to submission:
+\begin{itemize}
+	\item Definition of asynchronous trust assessment with back-propogation (required to deal with both multi-domain and time delay factors in reporting)
+	\item Demonstration of advantage between single domain (MTFM) and multi domain trust.
+\end{itemize}
+
 \section{Current Progress and Results}
 
 \subsection{Physical Behaviours}
@@ -151,7 +177,7 @@ Initially we've only directly considered Shadow and Slow Coach behaviours, as th
 In a simple port protection scenario, where nodes are patrolling around a series of waypoints around an area, We can demonstrate this detective and selective power through a series of  graphs that clearly justify the abstraction of such metrics into a trust value.
 
 \begin{figure}[h!]
-	\missingfigure{}
+	\missingfigure{Behaviour Deviation Trust Curves}
 	\caption{Charts showing deviation activation curves for three different simulated behaviours, with a fuzed trust value in the bottom row.}
 \end{figure}
 
@@ -168,7 +194,7 @@ The major amount of recent work has been concerned with the development and test
 
 However, we were able to incorporate our experiences under the DSTL/NPL/Plextek collaboration project (CDE 33135) to reimplement and improve both the routing and physical modelling used in the AUVNetSim framework. These implementations were validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
 
-Then, having implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{Guo11}, Hermes\cite{Zouridake2005}, and Optimal Trust Management Framework(OTMF)\cite{Li2008}, exploratory simulations were run to establish a comparable operation range for the simulated marine context.
+Then, having implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{Guo11}, Hermes\cite{Zouridaki2009}, and Optimal Trust Management Framework(OTMF)\cite{Li2008}, exploratory simulations were run to establish a comparable operation range for the simulated marine context.
 
 \begin{table}[h]
 	\caption{Comparison of system model constraints as applied between Terrestrial and Marine communications} \label{tab:sysconstraints}
@@ -202,7 +228,7 @@ Then, having implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{
 Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
 
 \begin{figure}[h!]
-	\missingfigure{}
+	\missingfigure{Surface / 3D Plots of performance space for PER / Node Sep}
 	\caption{Surface Plot showing performance gradient across varying packet emission rates and node separations}
 \end{figure}
 
@@ -225,25 +251,27 @@ Therefore, we select two more subtle misbehaviours to investigate;
 \end{enumerate}
 
 \begin{figure}[h]
-	\subfloat[Delay]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_selfish_delay}}
-	\subfloat[PLR]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_selfish_plr}}
-	\subfloat[RX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxp}}
+	\subfloat[Delay]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_selfish_delay}}
+	\subfloat[PLR]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_selfish_plr}}
 	\newline
-	\subfloat[TX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_selfish_txp}}
-	\subfloat[RX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxthroughput}}
-	\subfloat[TX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_txthroughput}}
+	\subfloat[RX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxp}}
+	\subfloat[TX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_selfish_txp}}
+	\newline
+	\subfloat[RX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxthroughput}}
+	\subfloat[TX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_txthroughput}}
 	\caption{$T_{1,MTFM}$ in the All Mobile case for the MPC behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
 	\label{fig:all_mobile_selfish}
 \end{figure}
 
 \begin{figure}[h]
-	\subfloat[Delay]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} \label{fig:all_mobile_selfish_delay}}
-	\subfloat[PLR]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}\label{fig:all_mobile_selfish_plr}}
-	\subfloat[RX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxp}}
+	\subfloat[Delay]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} \label{fig:all_mobile_selfish_delay}}
+	\subfloat[PLR]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}\label{fig:all_mobile_selfish_plr}}
 	\newline
-	\subfloat[TX Power]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection}\label{fig:all_mobile_selfish_txp}}
-	\subfloat[RX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxthroughput}}
-	\subfloat[TX Throughput]{\includegraphics[width=.3\linewidth]{trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_txthroughput}}
+	\subfloat[RX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxp}}
+	\subfloat[TX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection}\label{fig:all_mobile_selfish_txp}}
+	\newline
+	\subfloat[RX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxthroughput}}
+	\subfloat[TX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_txthroughput}}
 	\caption{$T_{1,MTFM}$ in the All Mobile case for the STS behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
 	\label{fig:all_mobile_selfish}
 \end{figure}
@@ -307,7 +335,7 @@ Likewise, our work with Plextek and NPL on collaborative positioning using high 
 	
 	\hline  Acoustic Comms is terrible and curved &  This assumption was validated and expanded upon, with the generation of a simplified ``Bellhop'' simulation model generated to reasonably estimate the time of flight characteristics (but not ISI) of acoustic comms using ray tracing.\newline
 	
-	Current bitrates for <500m ranges are around the 100kbps scale, providing an upper limit on comms bandwidth for inter-node collaboration\\ 
+	Current bitrates for $<$500m ranges are around the 100kbps scale, providing an upper limit on comms bandwidth for inter-node collaboration\\ 
 	
 	\hline  AUV operations will be mostly isolated &  Currently this is not the case, with AUV MHPC operations mainly based on either shore-based teams or Hunt/Sandown class based surface vessels in close proximity to operational area.\newline
 	
@@ -336,7 +364,7 @@ Initially, It is expected that this work will be largely analytical, maintaining
 
 This will require the completion of the implementation of existing communications TMF's for comparative assessment, including but not limited to Beta Expectation Values \cite{Li2007a}, Objective Trust Management Framework\cite{Li2008}, and Multi Parameter Trust Framework \cite{Guo11}
 
-Ideally this work will go on as a Journal paper into potentially IEEE Transactions on Communications, Dependable and Secure Computing, or Intelligent Systems
+Ideally this work will go on as a Journal paper into potentially IEEE Comms, Dependable and Secure Computing, or Intelligent Systems Trans.
 
 \subsection{Reactionary/Perturbative Trust}
 
@@ -356,7 +384,6 @@ It was hoped that some time be spent investigating reactionary behaviours, both 
 		\item Discussion of the contextual human factors around integrating autonomous systems into existing human-based solutions.
 		\item Predominantly following on from work already accomplished under ``Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations'', including development of representative malicious and abnormal behaviours
 	\end{itemize}
-	\framebreak
 	\item Strategies for Multi-Domain Trust Assessment
 	\begin{itemize}
 		\item Analytical establishment of Multi-Domain Trust, from an information theoretic standpoint.
@@ -370,8 +397,8 @@ It was hoped that some time be spent investigating reactionary behaviours, both 
 	\item Investigation into the relative performance characteristics of multi-domain combination strategies in an exemplary context (AUV teams) against existing single and multi metric TMFs
 \end{enumerate}
 
-\bibliographystyle{amsplain}
-\bibliography{PAP15}
+
+\printbibliography
 	
 	
 \end{document}

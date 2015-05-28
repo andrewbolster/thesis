@@ -11,10 +11,12 @@
 \usepackage{longtable}
 \usepackage{chngpage}
 \usepackage{booktabs}
+\usepackage{float}
+
 \usepackage[
 backend=biber,
 natbib=true,
-style=authoryear,
+style=ieee,
 sorting=none]{biblatex}
 \addbibresource{PAP15.bib}
 \usepackage{hyperref}
@@ -42,7 +44,7 @@ Collaborative Teams of Autonomous Underwater Vehicles }
 	\item \textbf{Target Submission:} November 2015
 \end{itemize}
 	
-The project is focused developing a multi-vector trust management framework (TMF) for collaborative operation of autonomous systems.
+The project is focused developing a multi-vector trust management framework (TMF) for collaborative mobile autonomous networks (CMANs).
 	
 Specifically, this project is looking at the relationships between physical behaviour and communications behaviour within teams of autonomous underwater vehicles (AUVs) for uses related to mine counter measures and port protection for defence, as well as persistent survey behaviour for environmental and petrochemical applications.
 	
@@ -122,6 +124,8 @@ However, this still ignores the usefulness of physical behaviours in the develop
 
 The aims of this project are to extend this ``vectorised'' methodology to not only combine individual trust metrics (observations) into trust vectors, but to combine such vectorised assessments of trust across ``domains'' (i.e. combining trust assessments based on observations in the communications domain with trust assessments based on observations in the physical domain).
 
+The use of metrics from other domains is particularly relevant in CMANs where several autonomous systems interact and affect each-others behaviour, making classical constraint based testing or monitoring inappropriate.
+
 In single metric trust, such as the use of packet loss rate in other TMFs, this only detects a relatively small area of the potential attack space.
 Combining several domain specific metrics, in this case in communication, provides not only the capability to detect a much wider range of attack types, but also to discriminate between them, potentially disclosing of the tactics of an attacker.
 
@@ -176,13 +180,13 @@ Along with metric selection, we also arrived at a few sample 'Misbehaviours' cov
 	\item \textbf{The Spin Doctor}, likewise is operating correctly but it's Inertial Navigation System is damaged and consistently bears left/right by some level.
 \end{itemize}
 
-Of these ``Seven CMAN Sins'' ($S^7$) \todo{Holy shit can I actually get away with that?}, initially we've only directly considered Shadow and Slow Coach behaviours, as this presents a useful side effect of trust based on physical behaviour; the ability for a network to self-test it's health by discerning the difference between broken and malicious behaviour.
+Of these ``Seven CMAN Sins'' ($S^7$), initially we've only directly considered Shadow and Slow Coach behaviours, as this presents a useful side effect of trust based on physical behaviour; the ability for a network to self-test it's health by discerning the difference between broken and malicious behaviour.
 
-In a simple port protection scenario, where nodes are patrolling around a series of waypoints around an area, We can demonstrate this detective and selective power through a series of  graphs that clearly justify the abstraction of such metrics into a trust value.
+In a simple port protection scenario, where nodes are patrolling around a series of waypoints around an area, we can demonstrate this detective and selective power through a series of  graphs that clearly justify the abstraction of such metrics into a trust value.
 
 \begin{figure}[h!]
 	\includegraphics[width=0.95\textwidth]{Bad_Alfa_Fusion}
-	\caption{Charts showing deviation activation curves for three different simulated behaviours, with a fuzed trust value in the bottom row.}
+	\caption{Charts showing deviation activation curves for three different simulated behaviours, with a fused trust value in the bottom row.}
 \end{figure}
 
 
@@ -190,7 +194,24 @@ Each vertical of this chart shows a different behaviour; with the baseline waypo
 
 With this chart it's shown that the Slowcoach behaviour manifests itself in the Speed metric. more so than the Shadow behaviour. Using this information we can build a trust weight vector to discriminate between these two ostensibly similar behaviours.
 
-With our current analysis we can do so with an average 96\% positive identification rate with a 1\% false positive rate, i.e.  instances where a Slowcoach is confidently detected as a Shadow and visa versa. (It should be noted that in this analysis, there were no cases where the malicious behaviour (Shadow) was misdetected as the purely abnormal/faulty behaviour (Slow Coach).
+With our current analysis we can do so with an average 96\% positive identification rate with a 2\% false positive rate, e.g.  instances where a Slowcoach is confidently detected as a Shadow and visa versa. It should be noted that in this analysis, there were no cases where the malicious behaviour (Shadow) was misdirected as the purely abnormal/faulty behaviour (Slow Coach).
+
+\begin{table}[h]
+	\caption{Identification results from 384 simulated runs (i.e. ++ indicating correct and confident identification, and -+ meaning an incorrect confident identification )} \label{tab:beh_results}
+	\begin{center}
+		\setlength{\tabcolsep}{8pt}
+		\begin{tabular}{l|cc|cc}
+			\toprule
+			& \multicolumn{2}{c}{Correct} & \multicolumn{2}{c}{Incorrect}\\
+			Scenario & ++ & +- & -+ & -- \\ 
+			\midrule
+			Shadow   &  124  &  4  &  0  & 0 \\
+			SlowCoach   & 111   &  5  &  3  & 9 \\
+			Waypoint   &  NA  &  NA  &  8  & 120 \\ \bottomrule
+		\end{tabular}
+		\setlength{\tabcolsep}{6pt}
+	\end{center}
+\end{table}
 
 \subsection{Communications Behaviours}
 
@@ -231,10 +252,23 @@ Then, having implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{
 
 Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
 
-\begin{figure}[h!]
-	\missingfigure{Surface / 3D Plots of performance space for PER / Node Sep}
-	\caption{Surface Plot showing performance gradient across varying packet emission rates and node separations}
-\end{figure}
+\begin{figure*}[h]
+	\subfloat[All Static]{\includegraphics[width=.25\linewidth]{2d_ratio_static} \label{fig:2d_ratio_static}}
+	\subfloat[One Mobile]{\includegraphics[width=.25\linewidth]{2d_ratio_single_mobile} \label{fig:2d_ratio_single_mobil}}
+	\subfloat[All but One Mobile]{\includegraphics[width=.25\linewidth]{2d_ratio_allbut1} \label{fig:2d_ratio_allbut1}}
+	\subfloat[All Mobile]{\includegraphics[width=.25\linewidth]{2d_ratio_all} \label{fig:2d_ratio_all_mobile}}
+	\caption{Performance exploration (bits per second per second of delay) of a range of packet emission rates and node separations shows that a 300m/0.015 PPS environment is a safe operating area for all scenarios}
+	\label{fig:2d_ratios}
+\end{figure*}
+
+\begin{figure*}[h]
+	\subfloat[All Static]{\includegraphics[width=.25\linewidth]{3d_ratio_static} \label{fig:3d_ratio_static}}
+	\subfloat[One Mobile]{\includegraphics[width=.25\linewidth]{3d_ratio_single_mobile} \label{fig:3d_ratio_single_mobil}}
+	\subfloat[All but One Mobile]{\includegraphics[width=.25\linewidth]{3d_ratio_allbut1} \label{fig:3d_ratio_allbut1}}
+	\subfloat[All Mobile]{\includegraphics[width=.25\linewidth]{3d_ratio_all} \label{fig:3d_ratio_all_mobile}}
+	\caption{3D versions of Fig.~\protect\ref{fig:2d_ratios}}
+	\label{fig:3d_ratios}
+\end{figure*}
 
 As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
@@ -254,7 +288,31 @@ Therefore, we select two more subtle misbehaviours to investigate;
 	\item Selfish Target Selection (STS), where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
 \end{enumerate}
 
-\begin{figure}[h]
+As per \cite{Guo11}, ``fair'' scenarios were also performed with no malicious behaviour, applying OTMF and Hermes assessment as well as MTFM, providing like-for-like comparison of assessment.
+For simplicity of presentation, we only consider the fully-mobile scenario, as we are concerned with the establishment of trust in mobile networks
+
+\begin{figure*}[t]
+	\subfloat[Fair Scenario]{\includegraphics[width=.33\linewidth]{trust_beta_otmf_fair} \label{fig:all_mobile_fair_beta}}
+	\subfloat[Malicious Power Control Scenario]{\includegraphics[width=.33\linewidth]{trust_beta_otmf_malicious} \label{fig:all_mobile_badmouthing_beta}}
+	\subfloat[Selfish Target Selection Scenario]{\includegraphics[width=.33\linewidth]{trust_beta_otmf_selfish} \label{fig:all_mobile_selfish_beta}}
+	\caption{$T_{1,0}$ for Hermes, OTMF and MTFM assessment values for fair and malicious behaviours in the fully mobile scenario (mean of MTFM also shown)}
+	\label{fig:otmf_beta_comparison}
+\end{figure*}
+
+Fig.~\ref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of MTFM compared to OTMF and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
+It is important to note a distinction between the expectations of MTFM compared to other TMFs; MTFM is primarily concerned with the identification of differences in the behaviours of nodes in a network, and is relative rather than absolute.
+That is to say that under MTFM, nodes are compared against the worst current performances across metrics of other observed nodes and graded against them, rather than the absolute (objective) approach taken by many TMFs.
+In these cases, particularly since the methods of attack were not directly related to PLR, OTMF and Hermes have not registered significant activity in either misbehaviour when compared to the fair scenario.
+The difference between the MTFM trust assessments under ``fair'' and ``malicious'' behaviour is lowered by $\approx 10\%$ in both cases, in terms of the mean values returned.
+At run time, similar results could be attained by an exponentially weighted moving average filter (EWMA).
+
+On their own, neither OTMF, Hermes, or unbiased MTFM appear to be effective in detecting or identifying malicious behaviour in this environment, in fact OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+
+However, with MTFM we can apply a sequence of vectors that preferentially weight each metric in Eq. \eqref{eq:metric_weighting} to each of the three simulation runs.
+For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, we form an initial weighting vector $H'=[h_i...h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$. We then scale that vector $H'$ such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
+Using this process we can extract and highlight the primary aspects of an attack by comparing against the deviation from the ``fair'' result set. 
+
+\begin{figure}[h!]
 	\subfloat[Delay]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_selfish_delay}}
 	\subfloat[PLR]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_selfish_plr}}
 	\newline
@@ -264,10 +322,10 @@ Therefore, we select two more subtle misbehaviours to investigate;
 	\subfloat[RX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxthroughput}}
 	\subfloat[TX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_txthroughput}}
 	\caption{$T_{1,MTFM}$ in the All Mobile case for the MPC behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
-	\label{fig:all_mobile_selfish}
+	\label{fig:all_mobile_badmouthing}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\subfloat[Delay]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} \label{fig:all_mobile_selfish_delay}}
 	\subfloat[PLR]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}\label{fig:all_mobile_selfish_plr}}
 	\newline
@@ -280,7 +338,25 @@ Therefore, we select two more subtle misbehaviours to investigate;
 	\label{fig:all_mobile_selfish}
 \end{figure}
 
-\begin{figure}[h!]
+
+From Fig.~\ref{fig:all_mobile_badmouthing} we can see that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
+This is particularly true for PLR, with smaller impacts on delay, received power and transmitted throughput. 
+However, this weighted delta in received throughput is minimal to insignificant compared to the width of the detection envelope, occasionally breaching the envelope for a short period. 
+
+In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) we observe much lower weighted delta in PLR and delay, with greatly increased impact on transmission power.
+In comparison to \cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
+Guo et al. show similar types of behaviour but report a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval (Fig.~\ref{fig:all_mobile_selfish_txp}.)
+
+
+Applying this target regression to 729 different metric weight vector emphasis combinations reveals that each of the three combinations (i.e. comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and PLR, with delay, received power and transmitted throughput playing a lesser role.
+Practically this means that in order to accurately distinguish between these scenarios, these primary metrics should be higher-weighted in the generation of $T_{1,MTFM}$ in \eqref{eq:networkeffects}.
+
+It may initially appear odd that the relative significance of the received throughput is similar between all three scenario combinations, however a correlation analysis shows that in the MPC attack; the received throughput is positively correlated with successful classification against the fair case ($R=+0.71, p\approx10^{-100}$), while the inverse is the case for the STS attack ($R=-0.70, p\approx10^{-100}$).
+It is expected that Transmitted power should be the defining characteristic of STS ($R=+0.72, p<10^{-100}$) as the node is acting fairly from a protocol perspective but is acting unfairly at a higher (incentive) level; it is performing fairly in terms of it's communications with other nodes, however it is preferring to communicate with nodes that it can expend less energy communicating with.
+A summary of these correlations is shown in Table.~\ref{tab:correlations}.
+
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.65\linewidth]{MaliciousSelfishMetricFactors}
 	\caption{Random Forest Factor Analysis of Malicious (MPC), Selfish (STS) and Fair behaviours compared against each-other}
@@ -308,6 +384,9 @@ From these results we are able to conclude several things;
 \begin{itemize}
 	\item Current MANET trust assessment methods are not immediately applicable to the marine environment.
 	\item While PLR has some behaviour discriminating performance, it is unmatched compared to other metrics.
+	\item In terms of communications metrics, in this case 
+	\item Behavioural metrics, like communications metrics, can be used to detect and characterise abnormal behaviours.
+	
 \end{itemize}
 
 

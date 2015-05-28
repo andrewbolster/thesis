@@ -20,6 +20,7 @@ sorting=none]{biblatex}
 \usepackage{hyperref}
 \usepackage[caption=false,font=footnotesize]{subfig}
 
+\graphicspath{{../../Figures/}{./figures/}}
 
 \title{PAP Report 2015\\
 \large 
@@ -29,7 +30,7 @@ Collaborative Teams of Autonomous Underwater Vehicles }
 \author{Andrew Bolster, \\
 		\large Supervised by \\
 		Prof. Alan Marshall and Prof. Simon Maskell}
-\date{May 19, 2015}
+\date{\today}
 
 
 \begin{document}
@@ -59,8 +60,8 @@ Major outputs and research interactions of the project are:
 	\item Short Paper Presentation to the Association for the Advancement of Artificial Intelligence (AAAI) on ``A Multi Vector Trust Framework for Autonomous Systems'' (2014, Stanford, CA)\cite{Bolster2014}
 	\item Technical Report for the UK/US/CAN/AUS/NZ Technical Cooperation Programme ((2014). Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations. The Technical Cooperation Program, Technical Report TR-C3I-06-2014) (June 13 - April 14)\cite{Bolster2014a}
 	\item DSTL CDE Collaboration with NPL and Plextek Ltd. on ``Precision Timing and Navigation, Challenge 1: Resilient Time and Location Estimation for Networked Assets'' (CDE 33135) (Oct 13-May 14)
-	\item Rejected submission to AdHocNow15 
-	\item ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks'' submitted to TrustCom15 (Pending)
+	\item Rejected submission to The 14th International Conference on Ad Hoc Networks and Wireless (AdHocNow)
+	\item ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks'' submitted to The 14th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (IEEE TrustCom-15)  (Pending)
 \end{itemize}
 	
 \section{Field Background}
@@ -95,7 +96,8 @@ The TMF is assumed to have reduced the threat surface when in fact it has simply
 Guo developed a form of vectorised trust that allowed the combination and cross-correlation of a range of communications observations (Packet error rate, Noise characteristics, Delay, Throughput, etc) not only as a combined singular value in the form of a Grey Interval, but also presented the ability to use this vectorised trust assessment to not just detect but also identify malicious or abnormal behaviours through weight assessment perturbations \cite{Guo11}.
 	
 \begin{figure}[h!]
-	\missingfigure{Bellas Graphs demonstrating weighted delta}
+	\centering
+	\includegraphics[width=0.8\textwidth]{bellas_weight_variation}
 	\caption{Example of weight-based attack classification taken from (Guo, Marshall \& Zhou 2011)}
 \end{figure}
 
@@ -126,7 +128,9 @@ Combining several domain specific metrics, in this case in communication, provid
 Our hope is that by using multiple domains together, we can provide a higher level, strategic point of view on an attacker or attackers, enabling the generation of preventative and reactive strategies to defend against them. This would leave even the most knowledgeable attacker with no option but to behave properly to avoid detections, eliminating any potential reward they could achieve without detection.
 
 \begin{figure}[h!]
-	\missingfigure{Bellas Graphs demonstrating weighted delta}
+	\centering
+	\includegraphics[width=0.9\linewidth]{threat_surface_sum}
+
 	\caption{With the addition of further metrics, the threat surface available to an attacker is greatly reduced}
 \end{figure}
 
@@ -137,13 +141,13 @@ This interaction in the physical world opens up a range of metrics that can be u
 
 In summary, the novelties of the work accomplished so far are:
 \begin{itemize}
-	\item Fused Trust Assessment using Physical Behaviour in collaborative mobile autonomous networks (CMAN)
-	\item Analytical comparison of Marine and Terrestrial Communicative trust environments
+	\item A fused Trust Assessment using Physical Behaviour in collaborative mobile autonomous networks (CMAN)
+	\item A analytical comparison of Marine and Terrestrial Communicative trust environments
 	\item Exploration and Demonstration of the advantages of multiple metric trust over single metric trust (in communications)
-	\item Defined protocol for quantitative assessment of Metric suitability through comparative regression analysis
+	\item A defined protocol for quantitative assessment of Metric suitability through comparative regression analysis
 \end{itemize}
 
-Novelties remaining to be produced prior to submission:
+Additional novelties to be investigated prior to submission:
 \begin{itemize}
 	\item Definition of asynchronous trust assessment with back-propogation (required to deal with both multi-domain and time delay factors in reporting)
 	\item Demonstration of advantage between single domain (MTFM) and multi domain trust.
@@ -158,7 +162,7 @@ These were;
 \begin{itemize}
 	\item The Inter Node Heading Deviation (INHD), i.e. the deviation in heading from a local group average,
 	\item The Inter Node Distance Deviation (INDD), i.e. the deviation of a given node's position with respect to the average node spacing across the rest of the local group,
-	\item And The Node's Absolute Speed.
+	\item and, The Node's Absolute Speed.
 \end{itemize}
 
 Along with metric selection, we also arrived at a few sample 'Misbehaviours' covering both malicious and non-malicious non-optimal behaviours which were simulated in the framework. These were:
@@ -172,12 +176,12 @@ Along with metric selection, we also arrived at a few sample 'Misbehaviours' cov
 	\item \textbf{The Spin Doctor}, likewise is operating correctly but it's Inertial Navigation System is damaged and consistently bears left/right by some level.
 \end{itemize}
 
-Initially we've only directly considered Shadow and Slow Coach behaviours, as this presents a useful side effect of trust based on physical behaviour; the ability for a network to self-test it's health by discerning the difference between broken and malicious behaviour.
+Of these ``Seven CMAN Sins'' ($S^7$) \todo{Holy shit can I actually get away with that?}, initially we've only directly considered Shadow and Slow Coach behaviours, as this presents a useful side effect of trust based on physical behaviour; the ability for a network to self-test it's health by discerning the difference between broken and malicious behaviour.
 
 In a simple port protection scenario, where nodes are patrolling around a series of waypoints around an area, We can demonstrate this detective and selective power through a series of  graphs that clearly justify the abstraction of such metrics into a trust value.
 
 \begin{figure}[h!]
-	\missingfigure{Behaviour Deviation Trust Curves}
+	\includegraphics[width=0.95\textwidth]{Bad_Alfa_Fusion}
 	\caption{Charts showing deviation activation curves for three different simulated behaviours, with a fuzed trust value in the bottom row.}
 \end{figure}
 
@@ -276,7 +280,7 @@ Therefore, we select two more subtle misbehaviours to investigate;
 	\label{fig:all_mobile_selfish}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.65\linewidth]{MaliciousSelfishMetricFactors}
 	\caption{Random Forest Factor Analysis of Malicious (MPC), Selfish (STS) and Fair behaviours compared against each-other}
@@ -297,6 +301,16 @@ Therefore, we select two more subtle misbehaviours to investigate;
 		\end{tabular}
 	\end{center}
 \end{table}
+
+\subsection{Discussion of Current Results}
+
+From these results we are able to conclude several things;
+\begin{itemize}
+	\item Current MANET trust assessment methods are not immediately applicable to the marine environment.
+	\item While PLR has some behaviour discriminating performance, it is unmatched compared to other metrics.
+\end{itemize}
+
+
 
 \section{Changes to Assumptions}
 
@@ -372,29 +386,37 @@ It was hoped that some time be spent investigating reactionary behaviours, both 
 
 \section{Proposed Thesis Chapter Titles}
 \begin{enumerate} 
-	\item Background Information on Trust and its applications to MANETs
+	\item Trust and its applications to MANETs
 	\begin{itemize}
-		\item Discussion on abstract analysis of trust networks
-		\item Discussion on the threat surface of Mobile Ad Hoc Networks and how that has been protected so far
+		\item Discussion on abstract analysis of MANETS, trust networks and trust frameworks
 		\item Introduction to Trust Management Frameworks and their benefits
+		\item Discussion on the threat surface of Mobile Ad Hoc Networks and how that has been protected so far
 	\end{itemize}
-	\item Background Information on Maritime Uses of Autonomous Systems
+	\item Maritime Uses of Autonomous Systems
 	\begin{itemize}
+		\item Review of the Underwater Communications Environment
 		\item Discussion of current and future approaches to areas where autonomous systems can be used mainly focused on Mine counter measures, Hydrography and Patrol Capabilities (MHPC)
-		\item Discussion of the contextual human factors around integrating autonomous systems into existing human-based solutions.
-		\item Predominantly following on from work already accomplished under ``Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations'', including development of representative malicious and abnormal behaviours
+		\item (Minor) Discussion of the contextual human factors around integrating autonomous systems into existing human-based solutions.
 	\end{itemize}
 	\item Strategies for Multi-Domain Trust Assessment
 	\begin{itemize}
+		\item Information Theory approach to single and multiple trust metrics including Bayesian and Grey backgrounds.
 		\item Analytical establishment of Multi-Domain Trust, from an information theoretic standpoint.
 	\end{itemize}
-	\item Modelling and Analysis of Collaborative Node Kinematic Behaviours in Underwater Acoustic MANETS
+	\item Trust from Collaborative Node Kinematic Behaviours in Underwater Acoustic MANETS
 	\begin{itemize}
 		\item Touching on the development of the simulation platform but focused on the mobility and assessment of mobility between nodes, including identification of suitable motive metrics and analyses of these motions to establish intent or abnormality
 		\item Passing mention of work done in Drift analysis with NPL/Plextek as supporting evidence
 	\end{itemize}
-	\item Comparative Analysis of Multi-Domain Trust Assessment in Collaborative Mobile Networks
-	\item Investigation into the relative performance characteristics of multi-domain combination strategies in an exemplary context (AUV teams) against existing single and multi metric TMFs
+	\item Multi-Metric Trust Assessment of Communications in Collaborative Mobile Networks
+	\begin{itemize}
+		\item Primarily focused on work submitted to INFOCOM
+	\end{itemize}
+	\item Performance analysis of Multi-Domain Trust Assessment in Marine context
+	\begin{itemize}
+		\item Comparative assessment of multi-domain attack and defense operational performance
+	\end{itemize}
+	\item Conclusions and Future Work
 \end{enumerate}
 
 

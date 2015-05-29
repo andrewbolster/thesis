@@ -12,12 +12,15 @@
 \usepackage{chngpage}
 \usepackage{booktabs}
 \usepackage{float}
+\usepackage{cleveref}
 
 \usepackage[
 backend=biber,
 natbib=true,
-style=ieee,
+%style=numeric,
+style=draft,
 sorting=none]{biblatex}
+
 \addbibresource{PAP15.bib}
 \usepackage{hyperref}
 \usepackage[caption=false,font=footnotesize]{subfig}
@@ -48,11 +51,11 @@ The project is focused developing a multi-vector trust management framework (TMF
 	
 Specifically, this project is looking at the relationships between physical behaviour and communications behaviour within teams of autonomous underwater vehicles (AUVs) for uses related to mine counter measures and port protection for defence, as well as persistent survey behaviour for environmental and petrochemical applications.
 	
-This work is undertaken as part of The UK-France joint PhD Programme which is jointly managed by Direction Générale de l'Armement (DGA) and Defence Science and Technology Laboratory. It was agreed at the 2010 Anglo-French Summit as one of the ten priorities in 2011 for the Anglo French Defence Research Group (AFDRG).
+This work is undertaken as part of The UK-Fr PhD Programme which is jointly managed by Direction Générale de l'Armement (DGA) and Defence Science and Technology Laboratory (DSTL). It was agreed at the 2010 Anglo-French Summit as one of the ten priorities in 2011 for the Anglo French Defence Research Group (AFDRG).
 In 2011, five PhDs were funded (two from the UK and three from France), In 2012, the programme grew to nine PhDs (five from the UK and four from France). In 2013 a further ten PhDs were funded (five from the UK and five from France). These PhDs are currently investigating a variety of topics including meta-materials, synthetic biology, sensors, vehicle armour, and human and social sciences as well as this project's work in autonomous underwater vehicles.
 	
 \section{Summary of Current Outputs}
-Since the launch of the project, the majority of time has been spent developing a bespoke simulation framework based on Python, developing a variety of ``normal'', ``abnormal'' and ``malicious'' physical behaviours, as well as developing a range of analytical techniques to detect and identify these behaviours to an extremely high degree of statistical accuracy, i.e.in a Monte Carlo style random repeat experiment, the classifier is correct and confident a significant percentage of experimental runs.
+Since the launch of the project, the majority of time has been spent developing a bespoke simulation framework based on Python, developing a variety of ``normal'', ``abnormal'' and ``malicious'' physical and communicative behaviours, as well as developing a range of analytical techniques to detect and identify these behaviours to an extremely high degree of statistical accuracy.
 	
 Major outputs and research interactions of the project are: 
 \begin{itemize}
@@ -70,13 +73,13 @@ Major outputs and research interactions of the project are:
 \subsection{What is 'Trust'?}
 ``Trust'' is a word that gets used a lot in many different ways. Mirriam Webster's Dictionary defines trust as ``assured reliance on the character, ability, strength, or truth of someone or something''.
 	
-This rather far reaching definition is very attractive to distributed network design as this ``trustworthiness''  can be used to inform autonomous actors, or nodes, to the ``best'' courses and paths to action, making them more efficient and resilient in their operation.
-Within this context, we define trust as ``The Expectation of an actor performing a certain task or range of tasks within a certain confidence or probability''. 
+This rather broad definition is very attractive to distributed network design as this ``trustworthiness''  can be used to inform autonomous actors to the ``best'' courses and paths to action, making them more efficient and resilient in their operation.
+Within this context, we define trust as ``The expectation of an actor performing a certain task or range of tasks within a certain confidence or probability''. 
 	
-In the real world use-case of deployable autonomous systems for survey or other application, this trust can take on two real forms;
+In the real world use-case of deployable autonomous systems this trust can take on two real forms; \cite{Bolster2014a}
 \begin{itemize}
 	\item Design Trust, where there is an expectation that a system of systems will perform as specified or designed in operation, and
-	\item Operational Trust, that is that the individual systems within a larger system will and are performing as designed in the field. It is this area with which we are particularly concerned.
+	\item Operational Trust that the individual systems within a larger system will and are performing as designed in the field. It is this area with which we are particularly concerned.
 \end{itemize}
 	
 \subsection{Trust Management Frameworks (TMFs)}
@@ -84,18 +87,18 @@ In the real world use-case of deployable autonomous systems for survey or other 
 This desire for operational trust in mobile ad-hoc networks has lead to the development of several Trust Management Frameworks (TMFs), where such frameworks provide information regarding the estimated future states and operations of nodes within such a network. 
 As such, the operation of such frameworks has been summarised as ``collecting the information necessary to establish a trust relationship and dynamically monitoring and adjusting the existing trust relationship'' \cite{Li2007}.
 	
-Almost all of the work currently applied to establishing trust in mobile ad-hoc networks (MANETs) relies either on shared key exchanges with a centralised trust repository (PKI) or with exclusive assessment based on communications behaviour alone, and in that case the vast majority only measure one value (eg packet forward likelihood). 
+Almost all of the work currently applied to establishing trust in mobile ad-hoc networks (MANETs) relies either on shared key exchanges with a centralised trust repository (PKI) or with exclusive assessment based on communications behaviour alone, and in that case the vast majority only measure one value e.g. packet loss rate (PLR). 
 Within MANETs, the requirement for distributed trust comes from the decentralised and dynamic communication paths used; if a node moves or an environment changes, the network topology can completely change with paths containing potentially malicious nodes that can disrupt, modify, or reject communications coming from or going to a given node. 
 The motivation for that application of TMFs to MANETs is that by taking historical performance information into accounts, malicious or inefficient actors can be at least detected and routed isolated, preventing further compromise to the distributed network.
 	
 These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker knows the metric in advance. The objective of operating a TMF is to increase the confidence in, and efficiency of, a system by reducing the amount of undetectable negative operations an attacker can perform.
-This space of potential attacks can be described as the ``Threat Surface''. In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker. In turn, this causes a super-linearly negative effect in the efficiency of the network. 
+This space of potential attacks can be described as the ``Threat Surface''. In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker. In turn, this causes a highly detrimental effect in the efficiency of the network. 
 	
 The TMF is assumed to have reduced the threat surface when in fact it has simply made it more advantageous to attack a different part of it.
 \cite{Huang2010a} also raised the need for a more expanded view of trust but did so with a domain-partitioning approach rather than combining trust assessments from multiple domains within networks. 
 	
 \subsection{Multi-Parametric Trust Management Frameworks}
-Guo developed a form of vectorised trust that allowed the combination and cross-correlation of a range of communications observations (Packet error rate, Noise characteristics, Delay, Throughput, etc) not only as a combined singular value in the form of a Grey Interval, but also presented the ability to use this vectorised trust assessment to not just detect but also identify malicious or abnormal behaviours through weight assessment perturbations \cite{Guo11}.
+Guo developed a form of vectorised trust that allowed the combination and cross-correlation of a range of communications observations (Packet loss rate, power and noise characteristics, Delay, Throughput, etc) not only as a combined singular value in the form of a Grey Interval, but also presented the ability to use this vectorised trust assessment to detect and identify malicious or abnormal behaviours through weight assessment perturbations \cite{Guo11}.
 	
 \begin{figure}[h!]
 	\centering
@@ -115,7 +118,16 @@ The trust vector is given as
 \end{align}
 %
 where $a_{k,j}^t$ is the value of a observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the '``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, e.g. $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g. higher throughput is always better). 
-	
+
+\begin{equation}
+\label{eq:metric_weighting}
+[\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
+\end{equation}
+
+Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
+$\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
+To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in~\eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
+
 For applications involving low fidelity, temporally sparse metrics with unknown statistical distributions, this Grey Relational Analysis is a more stable comparative analysis, providing an interval of potential trust values rather than fuzzy-logic or the Bayesian-Beta distributions found in current TMFs \cite{Liu2006}.
 
 However, this still ignores the usefulness of physical behaviours in the development of trust assessments, which became the basis for this project.
@@ -126,7 +138,7 @@ The aims of this project are to extend this ``vectorised'' methodology to not on
 
 The use of metrics from other domains is particularly relevant in CMANs where several autonomous systems interact and affect each-others behaviour, making classical constraint based testing or monitoring inappropriate.
 
-In single metric trust, such as the use of packet loss rate in other TMFs, this only detects a relatively small area of the potential attack space.
+In single metric trust, such as the use of packet loss rate in Hermes\cite{Zouridaki2009}, and Optimal Trust Management Framework(OTMF)\cite{Li2008}, this only monitors a relatively small area of the potential attack space.
 Combining several domain specific metrics, in this case in communication, provides not only the capability to detect a much wider range of attack types, but also to discriminate between them, potentially disclosing of the tactics of an attacker.
 
 Our hope is that by using multiple domains together, we can provide a higher level, strategic point of view on an attacker or attackers, enabling the generation of preventative and reactive strategies to defend against them. This would leave even the most knowledgeable attacker with no option but to behave properly to avoid detections, eliminating any potential reward they could achieve without detection.
@@ -138,16 +150,16 @@ Our hope is that by using multiple domains together, we can provide a higher lev
 	\caption{With the addition of further metrics, the threat surface available to an attacker is greatly reduced}
 \end{figure}
 
-Our main goal in this project has been to investigate if the methodologies that Guo applied to communications, can equally be applied to physical behaviour. 
-Our approach to this has been to develop an agent based simulation platform built in Python, emulating both the physical and communicative environments for teams of flocking nodes performing some task, such as mine counter measure survey, port protection, mother-ship protection and others.
+Our main goal in this project has been to investigate if the methodologies that Guo applied to communications in the conventional, terrestrial, MANET space, can equally be applied to physical as well as communications behaviour in te Underwater CMAN environment. 
+Our approach to this has been to develop an agent based simulation platform built in Python, emulating both the physical and communicative environments for teams of collaborating nodes performing some task, such as mine countermeasure (MCM) survey, port protection, mothership protection and others.
 
 This interaction in the physical world opens up a range of metrics that can be used for trust assessment, in an effort to further restrict undetected malicious behaviour on the exposed threat surface of a network.
 
 In summary, the novelties of the work accomplished so far are:
 \begin{itemize}
 	\item A fused Trust Assessment using Physical Behaviour in collaborative mobile autonomous networks (CMAN)
-	\item A analytical comparison of Marine and Terrestrial Communicative trust environments
-	\item Exploration and Demonstration of the advantages of multiple metric trust over single metric trust (in communications)
+	\item An analytical comparison of Marine and Terrestrial Communicative trust environments
+	\item Exploration and Demonstration of the advantages of multiple metric trust over single metric trust (in underwater acoustic communications)
 	\item A defined protocol for quantitative assessment of Metric suitability through comparative regression analysis
 \end{itemize}
 
@@ -161,7 +173,7 @@ Additional novelties to be investigated prior to submission:
 
 \subsection{Physical Behaviours}
 
-Through collaboration NATO's Centre for Maritime Research and Experimentation based in Italy, and the UK's Defence Science and Technology Laboratory, we settled on a range of observable metrics based on the position and attitudes of other nodes in the group.
+Through collaboration NATO's Centre for Maritime Research and Experimentation (CMRE) based in Italy, and the UK's Defence Science and Technology Laboratory (DSTL), we arrived upon a range of observable metrics based on the positions and attitudes of other nodes in the group.
 These were;
 \begin{itemize}
 	\item The Inter Node Heading Deviation (INHD), i.e. the deviation in heading from a local group average,
@@ -169,30 +181,31 @@ These were;
 	\item and, The Node's Absolute Speed.
 \end{itemize}
 
-Along with metric selection, we also arrived at a few sample 'Misbehaviours' covering both malicious and non-malicious non-optimal behaviours which were simulated in the framework. These were:
+Along with metric selection, we also arrived at a collection of both malicious and non-malicious misbehaviours which were simulated in the framework. These were:
 \begin{itemize}
 	\item \textbf{The Shadow}, where a node is following the fleet without appropriate mission knowledge such as the waypoints in a patrol path, modeling an 'infected' or masquerading node in the fleet
 	\item \textbf{The Spy}, where a node consistently or intermittently rises to the top of the fleet, potentially surfacing to relay mission information to an unauthorised third party via a back-channel communications channel such as RF
-	\item \textbf{The Sloth}, where a node is selfishly conserving energy by not making complete patrol paths or consistently taking a minimal path around the tolerances of the waypoint path
+	\item \textbf{The Sloth}, where a node is selfishly conserving energy by not making complete patrol paths, consistently taking a minimal path around the tolerances of the waypoint path or some other selfish behaviour.
 	\item \textbf{The Stalker}, where a node in a multi-node system preferentially 'tails' a given node above others
 	\item \textbf{The Scoundrel}, where a node falsely reports it's position or velocity with the intention to corrupt any collaborative positioning system
 	\item \textbf{The Slow Coach}, where a node is operating correctly but has a defect in it's power train causing reduced maneuverability, i.e. a runtime defect in an otherwise good node
 	\item \textbf{The Spin Doctor}, likewise is operating correctly but it's Inertial Navigation System is damaged and consistently bears left/right by some level.
 \end{itemize}
 
-Of these ``Seven CMAN Sins'' ($S^7$), initially we've only directly considered Shadow and Slow Coach behaviours, as this presents a useful side effect of trust based on physical behaviour; the ability for a network to self-test it's health by discerning the difference between broken and malicious behaviour.
+Of these ``Seven CMAN Sins'' ($S^7$), we've directly considered Shadow and Slow Coach behaviours, as this pairing presents a useful side effect of trust based on physical behaviour; the ability for a network to self-test its health by discerning the difference between broken and malicious behaviour.
 
-In a simple port protection scenario, where nodes are patrolling around a series of waypoints around an area, we can demonstrate this detective and selective power through a series of  graphs that clearly justify the abstraction of such metrics into a trust value.
+In a simple port protection scenario where nodes are patrolling around a series of waypoints around an area we can demonstrate this detective and selective power.
 
 \begin{figure}[h!]
+	\label{fig:bad_alfa_fusion}
 	\includegraphics[width=0.95\textwidth]{Bad_Alfa_Fusion}
 	\caption{Charts showing deviation activation curves for three different simulated behaviours, with a fused trust value in the bottom row.}
 \end{figure}
 
 
-Each vertical of this chart shows a different behaviour; with the baseline waypointing behaviour in the middle, flanked on the left by the malicious ``Shadow'' behaviour and on the right by the benign but sub-optimal ``Slowcoach'' behaviour. The per-node metrics as described are shown in the horizontal, with Internode Heading Deviation at the top, followed by Absolute Speed and Distance Deviation in the middle and finally a combined trust 'vectorised' (dis)trust assessment in the bottom, based on a decaying windowed average of instantaneous trust assessments across observation types.
+Each vertical of Fig.~\ref{fig:bad_alfa_fusion} shows a different behaviour; with the baseline waypointing behaviour in the middle, flanked on the left by the malicious ``Shadow'' behaviour and on the right by the benign but sub-optimal ``Slowcoach'' behaviour. The per-node metrics as described are shown in the horizontal, with Internode Heading Deviation at the top, followed by Absolute Speed and Distance Deviation in the middle and finally a combined trust 'vectorised' (dis)trust assessment in the bottom, based on a decaying windowed average of instantaneous trust assessments across observation types.
 
-With this chart it's shown that the Slowcoach behaviour manifests itself in the Speed metric. more so than the Shadow behaviour. Using this information we can build a trust weight vector to discriminate between these two ostensibly similar behaviours.
+With figure chart it's shown that the Slowcoach behaviour manifests itself in the Speed metric more so than the Shadow behaviour. Using this information we can build a trust weight vector to discriminate between these two ostensibly similar behaviours.
 
 With our current analysis we can do so with an average 96\% positive identification rate with a 2\% false positive rate, e.g.  instances where a Slowcoach is confidently detected as a Shadow and visa versa. It should be noted that in this analysis, there were no cases where the malicious behaviour (Shadow) was misdirected as the purely abnormal/faulty behaviour (Slow Coach).
 
@@ -215,11 +228,11 @@ With our current analysis we can do so with an average 96\% positive identificat
 
 \subsection{Communications Behaviours}
 
-The major amount of recent work has been concerned with the development and testing of simulated acoustic communications channels. Supposedly feature-complete implementations such as \cite{Miquel2008} were found to be incomplete and not totally tested, and this put back development by several months. 
+The major amount of recent work has been concerned with the development and testing of simulated acoustic communications channels. Supposedly feature-complete implementations such as \cite{Miquel2008} were found to be incomplete and not totally tested, and this put back progress by several months. 
 
 However, we were able to incorporate our experiences under the DSTL/NPL/Plextek collaboration project (CDE 33135) to reimplement and improve both the routing and physical modelling used in the AUVNetSim framework. These implementations were validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
 
-Then, having implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{Guo11}, Hermes\cite{Zouridaki2009}, and Optimal Trust Management Framework(OTMF)\cite{Li2008}, exploratory simulations were run to establish a comparable operation range for the simulated marine context.
+Having then implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{Guo11}, Hermes\cite{Zouridaki2009}, and Optimal Trust Management Framework(OTMF)\cite{Li2008}, exploratory simulations were run to establish a comparable operation range for the simulated underwater context.
 
 \begin{table}[h]
 	\caption{Comparison of system model constraints as applied between Terrestrial and Marine communications} \label{tab:sysconstraints}
@@ -250,14 +263,14 @@ Then, having implemented Multi-parameter Trust Framework for MANETS (MTFM)\cite{
 	\end{center}
 \end{table}
 
-Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
+Given the differences in delay and propagation between RF and marine networks, (Table~\ref{tab:sysconstraints}) it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
 
 \begin{figure*}[h]
 	\subfloat[All Static]{\includegraphics[width=.25\linewidth]{2d_ratio_static} \label{fig:2d_ratio_static}}
 	\subfloat[One Mobile]{\includegraphics[width=.25\linewidth]{2d_ratio_single_mobile} \label{fig:2d_ratio_single_mobil}}
 	\subfloat[All but One Mobile]{\includegraphics[width=.25\linewidth]{2d_ratio_allbut1} \label{fig:2d_ratio_allbut1}}
 	\subfloat[All Mobile]{\includegraphics[width=.25\linewidth]{2d_ratio_all} \label{fig:2d_ratio_all_mobile}}
-	\caption{Performance exploration (bits per second per second of delay) of a range of packet emission rates and node separations shows that a 300m/0.015 PPS environment is a safe operating area for all scenarios}
+	\caption{Performance exploration of a range of packet emission rates and node separations}
 	\label{fig:2d_ratios}
 \end{figure*}
 
@@ -270,26 +283,26 @@ Given the differences in delay and propagation between RF and marine networks, i
 	\label{fig:3d_ratios}
 \end{figure*}
 
+To establish a safe operating zone in terms of packet rate and node separation, four mobility scenarios were implemented on a six-node CMAN and repeatedly simulated to assess the total network throughput and end-to-end delay characteristics of the networks as a whole. These results are summarised in ~\Cref{fig:2d_ratios fig:3d_ratios}, showing the throughput-delay ratio across the packet rate - node separation parameter space. 
+
 As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
 For instance, where all nodes are static, we do not see significant drops in saturation rates until node separation approaches 800m, nearly double the initial estimate. 
 When all nodes are randomly walking the saturation point collapses from 0.025pps at 300m to 0.015pps at 400m.
+
 Our results indicate that the best area to continue operating in for a range of node separations is at 0.015pps, and that a reasonable position scaling is from 100m to 300m, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
 These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
 
 Guo et al. introduced a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
 
-Given that the established links are already heavily constrained, attacks such as introducing selective packet dropping or artificially adding to the already extreme and hugely variable delays would severely impact the general performance of the network beyond the scope of simple selfishness.
-These direct malicious behaviours effectively trigger saturation collapses in operating regions of the network that should be stable.
-
-Therefore, we select two more subtle misbehaviours to investigate; 
+Building upon and extending these misbehaviours, we develop two comparative misbehaviours to initially investigate; 
 \begin{enumerate}
 	\item Malicious Power Control (MPC), where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.
 	\item Selfish Target Selection (STS), where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
 \end{enumerate}
 
 As per \cite{Guo11}, ``fair'' scenarios were also performed with no malicious behaviour, applying OTMF and Hermes assessment as well as MTFM, providing like-for-like comparison of assessment.
-For simplicity of presentation, we only consider the fully-mobile scenario, as we are concerned with the establishment of trust in mobile networks
+For simplicity of presentation, we only discuss the results from the fully-mobile scenario, as we are concerned with the establishment of trust in mobile networks
 
 \begin{figure*}[t]
 	\subfloat[Fair Scenario]{\includegraphics[width=.33\linewidth]{trust_beta_otmf_fair} \label{fig:all_mobile_fair_beta}}
@@ -306,9 +319,9 @@ In these cases, particularly since the methods of attack were not directly relat
 The difference between the MTFM trust assessments under ``fair'' and ``malicious'' behaviour is lowered by $\approx 10\%$ in both cases, in terms of the mean values returned.
 At run time, similar results could be attained by an exponentially weighted moving average filter (EWMA).
 
-On their own, neither OTMF, Hermes, or unbiased MTFM appear to be effective in detecting or identifying malicious behaviour in this environment, in fact OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+On their own, neither OTMF, Hermes, nor unbiased MTFM are effective in detecting or identifying malicious behaviour in this environment, in fact OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
 
-However, with MTFM we can apply a sequence of vectors that preferentially weight each metric in Eq. \eqref{eq:metric_weighting} to each of the three simulation runs.
+However, with MTFM we can apply a sequence of vectors that preferentially weight each metric in Eq.~\eqref{eq:metric_weighting} to each of the three simulation runs.
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, we form an initial weighting vector $H'=[h_i...h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$. We then scale that vector $H'$ such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 Using this process we can extract and highlight the primary aspects of an attack by comparing against the deviation from the ``fair'' result set. 
 
@@ -339,21 +352,22 @@ Using this process we can extract and highlight the primary aspects of an attack
 \end{figure}
 
 
-From Fig.~\ref{fig:all_mobile_badmouthing} we can see that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
+In the malicious case (MPC) (Fig.~\ref{fig:all_mobile_badmouthing}) we can see that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
 This is particularly true for PLR, with smaller impacts on delay, received power and transmitted throughput. 
 However, this weighted delta in received throughput is minimal to insignificant compared to the width of the detection envelope, occasionally breaching the envelope for a short period. 
 
-In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) we observe much lower weighted delta in PLR and delay, with greatly increased impact on transmission power.
+In the selfish case (STS) (Fig.~\ref{fig:all_mobile_selfish}) we observe much lower weighted delta in PLR and delay, with greatly increased impact on transmission power.
 In comparison to \cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
 Guo et al. show similar types of behaviour but report a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in TX Power of $\approx$ 0.3 for an inconsistent interval (Fig.~\ref{fig:all_mobile_selfish_txp}.)
 
+To further investigate the relative importance of metric selection and weighting, we apply a random forest regression methodology. In this process, 729 different weighting vectors, variably emphasising all combinates of metrics and varibly weighting different metrics within each vector, are applied to the results set. As above, the area between the resultant weighted MTFM assessment outlying the equivalent fair case is selected as the target of the regression, i.e. we are interested in the metrics that provide the largest deviation between behaviours, allowing us to select and identify them.
 
-Applying this target regression to 729 different metric weight vector emphasis combinations reveals that each of the three combinations (i.e. comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and PLR, with delay, received power and transmitted throughput playing a lesser role.
-Practically this means that in order to accurately distinguish between these scenarios, these primary metrics should be higher-weighted in the generation of $T_{1,MTFM}$ in \eqref{eq:networkeffects}.
+Applying this target regression reveals that each of the three combinations (i.e. comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and PLR, with delay, received power and transmitted throughput playing a lesser role (Fig.~\ref{fig:malselfactors}))
+Practically this means that in order to accurately distinguish between these scenarios, these primary metrics should be higher-weighted in the generation of $T_{1,MTFM}$ in \eqref{eq:metric_weighting}.
 
-It may initially appear odd that the relative significance of the received throughput is similar between all three scenario combinations, however a correlation analysis shows that in the MPC attack; the received throughput is positively correlated with successful classification against the fair case ($R=+0.71, p\approx10^{-100}$), while the inverse is the case for the STS attack ($R=-0.70, p\approx10^{-100}$).
+It may initially appear odd that the relative significance of the received throughput is similar between all three scenario combinations, however a correlation analysis (Table.~\ref{tab:correlations})shows that in the MPC attack; the received throughput is positively correlated with successful classification against the fair case ($R=+0.71, p\approx10^{-100}$), while the inverse is the case for the STS attack ($R=-0.70, p\approx10^{-100}$).
 It is expected that Transmitted power should be the defining characteristic of STS ($R=+0.72, p<10^{-100}$) as the node is acting fairly from a protocol perspective but is acting unfairly at a higher (incentive) level; it is performing fairly in terms of it's communications with other nodes, however it is preferring to communicate with nodes that it can expend less energy communicating with.
-A summary of these correlations is shown in Table.~\ref{tab:correlations}.
+
 
 
 \begin{figure}[H]
@@ -383,8 +397,7 @@ A summary of these correlations is shown in Table.~\ref{tab:correlations}.
 From these results we are able to conclude several things;
 \begin{itemize}
 	\item Current MANET trust assessment methods are not immediately applicable to the marine environment.
-	\item While PLR has some behaviour discriminating performance, it is unmatched compared to other metrics.
-	\item In terms of communications metrics, in this case 
+	\item While PLR has some behaviour discriminating performance, it is unmatched compared to other metrics, and it is much more effective to use several metrics together in the noisy and sparse communications environment.
 	\item Behavioural metrics, like communications metrics, can be used to detect and characterise abnormal behaviours.
 	
 \end{itemize}
@@ -451,11 +464,7 @@ Current work is concentrated on the improvement of the analysis of behaviours, w
 
 All remaining focus is on the cross domain implementation of trust, which is, combining communicative and behavioural trust assessments. 
 
-This body of work has two main areas; analytical and critical. 
-
 Initially, It is expected that this work will be largely analytical, maintaining context-free analysis for multi-domain trust but utilising AUV MANETs as an exemplar implementation for critical assessment of proposed cross-domain combination strategies.
-
-This will require the completion of the implementation of existing communications TMF's for comparative assessment, including but not limited to Beta Expectation Values \cite{Li2007a}, Objective Trust Management Framework\cite{Li2008}, and Multi Parameter Trust Framework \cite{Guo11}
 
 Ideally this work will go on as a Journal paper into potentially IEEE Comms, Dependable and Secure Computing, or Intelligent Systems Trans.
 

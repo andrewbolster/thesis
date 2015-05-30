@@ -12,18 +12,18 @@
 \usepackage{chngpage}
 \usepackage{booktabs}
 \usepackage{float}
-\usepackage{cleveref}
 
 \usepackage[
 backend=biber,
 natbib=true,
-%style=numeric,
-style=draft,
+style=numeric,
+%style=draft,
 sorting=none]{biblatex}
 
 \addbibresource{PAP15.bib}
 \usepackage{hyperref}
 \usepackage[caption=false,font=footnotesize]{subfig}
+
 
 \graphicspath{{../../Figures/}{./figures/}}
 
@@ -35,7 +35,7 @@ Collaborative Teams of Autonomous Underwater Vehicles }
 \author{Andrew Bolster, \\
 		\large Supervised by \\
 		Prof. Alan Marshall and Prof. Simon Maskell}
-\date{\today}
+\date{May 29, 2015}
 
 
 \begin{document}
@@ -110,23 +110,22 @@ Guo\cite{Guo11} demonstrated the ability of Grey Relational Analysis (GRA)\cite{
 
 In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 The trust vector is given as
-%
-\begin{align}
-\label{eq:grc}
-\theta_{k,j}^t = \frac{\min_k|a_{k,j}^t - g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|}{|a_{k,j}^t-g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|} \\
-\phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
+
+\begin{align}\label{eq:grc}
+	\theta_{k,j}^t = \frac{\min_k|a_{k,j}^t - g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|}{|a_{k,j}^t-g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|} \\
+	\phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
 \end{align}
-%
+
 where $a_{k,j}^t$ is the value of a observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the '``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, e.g. $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g. higher throughput is always better). 
 
 \begin{equation}
-\label{eq:metric_weighting}
-[\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
+	[\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
+	\label{eq:metric_weighting}
 \end{equation}
 
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
-To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in~\eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
+To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
 
 For applications involving low fidelity, temporally sparse metrics with unknown statistical distributions, this Grey Relational Analysis is a more stable comparative analysis, providing an interval of potential trust values rather than fuzzy-logic or the Bayesian-Beta distributions found in current TMFs \cite{Liu2006}.
 
@@ -283,7 +282,7 @@ Given the differences in delay and propagation between RF and marine networks, (
 	\label{fig:3d_ratios}
 \end{figure*}
 
-To establish a safe operating zone in terms of packet rate and node separation, four mobility scenarios were implemented on a six-node CMAN and repeatedly simulated to assess the total network throughput and end-to-end delay characteristics of the networks as a whole. These results are summarised in ~\Cref{fig:2d_ratios fig:3d_ratios}, showing the throughput-delay ratio across the packet rate - node separation parameter space. 
+To establish a safe operating zone in terms of packet rate and node separation, four mobility scenarios were implemented on a six-node CMAN and repeatedly simulated to assess the total network throughput and end-to-end delay characteristics of the networks as a whole. These results are summarised in Figs ~\ref{fig:2d_ratios} and ~\ref{fig:3d_ratios}, showing the throughput-delay ratio across the packet rate - node separation parameter space. 
 
 As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
@@ -321,19 +320,19 @@ At run time, similar results could be attained by an exponentially weighted movi
 
 On their own, neither OTMF, Hermes, nor unbiased MTFM are effective in detecting or identifying malicious behaviour in this environment, in fact OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
 
-However, with MTFM we can apply a sequence of vectors that preferentially weight each metric in Eq.~\eqref{eq:metric_weighting} to each of the three simulation runs.
+However, with MTFM we can apply a sequence of vectors that preferentially weight each metric in ~\eqref{eq:metric_weighting} to each of the three simulation runs.
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, we form an initial weighting vector $H'=[h_i...h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$. We then scale that vector $H'$ such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 Using this process we can extract and highlight the primary aspects of an attack by comparing against the deviation from the ``fair'' result set. 
 
 \begin{figure}[h!]
-	\subfloat[Delay]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_selfish_delay}}
-	\subfloat[PLR]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_selfish_plr}}
+	\subfloat[Delay]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_delay}}
+	\subfloat[PLR]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_plr}}
 	\newline
-	\subfloat[RX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxp}}
-	\subfloat[TX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_selfish_txp}}
+	\subfloat[RX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxp}}
+	\subfloat[TX Power]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_txp}}
 	\newline
-	\subfloat[RX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_rxthroughput}}
-	\subfloat[TX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_selfish_txthroughput}}
+	\subfloat[RX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxthroughput}}
+	\subfloat[TX Throughput]{\includegraphics[width=.5\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_txthroughput}}
 	\caption{$T_{1,MTFM}$ in the All Mobile case for the MPC behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
 	\label{fig:all_mobile_badmouthing}
 \end{figure}

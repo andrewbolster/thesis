@@ -453,8 +453,8 @@ As mobile ad-hoc networks (MANETs) grow beyond the terrestrial arena, their oper
 One area of application is the underwater marine environment, where extreme challenges to communications present themselves (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multi-path distortion, etc.).
 In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper autonomous underwater vehicles (AUVs). 
 These increasingly decentralised applications present unique threats against trust management \cite{Caiti2011}.
-In underwater environments, communications is both sparce and noisy.
-Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, and with much greater error (noise) than is experienced in terrestrial RF MANETS.
+In underwater environments, communications is both sparse and noisy.
+Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF MANETS.
 As such, the use of trust methods developed in the terrestrial MANET space must be re-appraised for application within the underwater context \cite{Pavan2015}.
 
 Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes within networks.
@@ -464,7 +464,7 @@ Previous research has established the advantages of implementing TMFs in 802.11 
 Most current TMFs use a single type of observed action to derive trust values, typically successfully delivered or forwarded packets. 
 These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
 
-Recent work has demonstrated that the use of a number of metrics to form a ``vector'' of trust.
+Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust.
 The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo11}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust.
 This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust.
 To date this work has been limited to terrestrial, RF based networks. 
@@ -477,6 +477,7 @@ In Section \ref{sec:trustresultsanddiscussion} we present our findings in trust 
 
 The contributions of this paper are a study on the comparative operation and performance of TMFs in marine acoustic networks, and a review of metric suitability for TMFs in marine environments, informing future metric selection for experimenters and theorists.
 We also show that single metric trust systems are not directly suitable for the marine context in terms of the different threat and cost scenario in that environment.
+Finally, we demonstrate a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks.
 
 
 
@@ -550,7 +551,6 @@ Grey assessments are relative in both fairly and unfairly operating networks.
 All nodes will receive mid-range trust assessments if there are no malicious actors as there is nothing ``bad'' to compare against, and variations in assessment will be primarily driven by topological and environmental factors.
 Guo et al. \cite{Guo11} demonstrated the ability of grey relational analysis (GRA) \cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc. into a grey relational coefficient (GRC), or a ``trust vector'' in this instance.
 
-In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 The grey relational vector is given as
 %
 \begin{align}
@@ -600,6 +600,8 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
   f_3(x)&= x\notag
 \end{align}
 %
+In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
+
 Guo et al. demonstrated that when compared against OTMF and Hermes trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
 
 By weighting the metrics used in MTFM it was shown that the trust assessments could be used to identify the style of misbehaviour being performed within the network, and by whom.
@@ -639,15 +641,13 @@ While both frequency dependant factors are quadratic, approximating the factors 
 
 \subsection{Mobility, Topology, and Communications}
 
-Four mobility scenarios were used in \cite{Guo11} to explore trust behaviour; all nodes static, a central node $n_1$ performing a random walk with other nodes remaining static, all nodes but the central node ($n_1$) randomly walking, and all nodes randomly walking. 
-In all scenarios, each link from $n_i \rightarrow n_j$ periodically sent 10 second bursts of Constant Bit Rate (CBR) traffic.
-From these we select the all static and all mobile cases for initial discussion.
-The reason for this is that in the other cases, the node targeted for misbehaviour ($n_1$) is already behaving significantly differently compared to the remainder of the network regardless of misbehaviour.
+We apply two mobility patterns for investigation; all nodes static and all nodes mobile.
+The reason for this is that in other mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
 
 The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average 100m from each other as per \cite{Guo11}.
 The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively. 
-\cite{Guo11} also demonstrated the optimal number of nodes in a MANET subgroup to be between 6 and 8 for stable trust assessment. 
-Further, collaborations with NATOs Centre for Maritime Research and Experimentation (CMRE) in La Spezia, and DSTLs Naval Systems Group inform that this is a practical team-size for environmental and defence applications.
+
+Collaborations with NATOs Centre for Maritime Research and Experimentation (CMRE) in La Spezia, and DSTLs Naval Systems Group inform that this is a practical team-size for environmental and defence applications.
 
 %
 \begin{figure}[h]
@@ -713,13 +713,14 @@ These results are similar to work performed in \cite{Miquel2008}, and are expect
 
 \subsection{Selected Misbehaviours}
 
-Guo et al. introduce a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
-As per Guo et al. we are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 
-Given that the established links are already heavily constrained, attacks such as introducing selective packet dropping or artificially adding to the already extreme and hugely variable delays would severely impact the general performance of the network beyond the scope of simple selfishness.
+We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
+
+Guo et al. introduce a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
+Given that the established links are already heavily constrained, such attacks would severely impact the general performance of the network beyond the scope of simple selfishness.
 These direct malicious behaviours effectively trigger saturation collapses in operating regions of the network that should be stable.
 
-Therefore, we select two more subtle misbehaviours to investigate; 
+Therefore, we apply two more subtle misbehaviours to investigate; 
 \begin{enumerate}
   \item Malicious Power Control (MPC), where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.
   \item Selfish Target Selection (STS), where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
@@ -728,8 +729,8 @@ Therefore, we select two more subtle misbehaviours to investigate;
 
 \section{Simulation Results and Discussion}\label{sec:trustresultsanddiscussion}
 
-Having established a safe operating range for comparison at 300m average separation and an emission rate of 0.015pps, we repeat the static and mobile scenarios presented in \cite{Guo11}. 
-We select an assessment period of 10 mins for a 5 hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
+Having established a safe operating range for comparison at 300m average separation and an emission rate of 0.015pps, we perform each of the three selected behaviours (Fair, MPC, STS) in both the static and mobile scenarios. 
+We select a trust assessment period of 10 mins for a 5 hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
 
 The six metrics used for grey assessment are; transmitted and received throughput and power, delay, and packet loss rate (PLR) as calculated by aborted and unacknowledged, transmissions.
 Compared to \cite{Guo11}, this metric set lacks a data rate quantity as the network is not dynamically adjusting bandwidth.
@@ -828,7 +829,7 @@ Using this process we can extract and highlight the primary aspects of an attack
 
 From Fig.~\ref{fig:all_mobile_badmouthing} we can see that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
 This is particularly true for PLR, with smaller impacts on delay, received power and transmitted throughput. 
-However, this weighted delta in received throughput is minimal to insignificant compared to the width of the detection envelope, occasionally breaching the envelope for a short period. 
+This weighted delta in received throughput is minimal to insignificant compared to the width of the detection envelope, occasionally breaching the envelope for a short period. 
 
 In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) we observe much lower weighted delta in PLR and delay, with greatly increased impact on transmission power.
 In comparison to \cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
@@ -842,7 +843,6 @@ Random Forest accomplishes this by generating a large number of random regressio
 The target function for this regression was the area between the target behaviours weighted $T_{MTFM}$ curve and the $\pm\sigma$ envelope of the base behaviour as shaded in Figs.~\ref{fig:all_mobile_badmouthing} and ~\ref{fig:all_mobile_selfish}.
 From this training process we can extract the relative importance of each input feature (metric) in terms of how good it is to differentiate between the fair case and a given misbehaviour.
 Additionally we perform a cross correlation analysis to establish the correlations between given metric weighting emphasis and the output of the target function.
-
 Our intention is to establish the metrics that not only differentiate both misbehaviours from the fair case, but also what metrics differentiate the two misbehaviours from each other.
 
 Applying this target regression to 729 different metric weight vector emphasis combinations reveals that each of the three combinations (i.e. comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and PLR, with delay, received power and transmitted throughput playing a lesser role.
@@ -876,6 +876,10 @@ Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_
   \end{center}
 \end{table}
 
+As such this presents the open opportunity to develop a heuristic weight search scheme to detect malicious behaviour without the comparison to the fair scenario.
+This would be accomplished by assessing the impact of differential metric weighting on the mean trust assessment rather than comparing co-weighted valuations across scenarios.
+
+
 \section{Conclusions and Future Work}
 We have demonstrated that existing MANET Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
 We presented a comparison between trust establishment in MANETs in a simulated underwater environment, demonstrating that in order to have any reasonable expectation of performance, throughput and delay responses must be characterised before implementing trust in such environments. 
@@ -893,10 +897,7 @@ Also, a significant factor of trust assessment in such a constrained environment
 This can be due to a range of factors beyond malicious behaviour, including simple random scheduling coincidence and intermediate or neighbouring nodes collectively causing long back-off or contention periods.
 This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
 One solution to this would be to move from a stepping-window of trust observations to a continuous trust log, updated on packet reception rather than waiting regular periods for packets to be analysed.
-Future work will investigate the stability of GRA under multi-node collusion, the development of real-time outlier detection, investigating the impact of 3D space on trust-team topologies, and the introduction of physical behavioural metrics into the trust assessment context.
-
-
-
+Future work will investigate the improvement of weight-based detection algorithms, the stability of GRA under multi-node collusion, the development of real-time outlier detection, and the introduction of physical behavioural metrics into the trust assessment context.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -988,7 +989,6 @@ Future work will investigate the stability of GRA under multi-node collusion, th
 \section*{Acknowledgement}
 
  The Authors would like to thank the DSTL/DGA UK/FR PhD Programme for their support during this project, as well as NATO CMRE for their advice and assistance.
- \pagebreak
 
 
 % trigger a \newpage just before the given reference

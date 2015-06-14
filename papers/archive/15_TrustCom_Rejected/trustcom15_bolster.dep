@@ -1,0 +1,65 @@
+\RequireVersions{
+  *{application}{TeX}     {1990/03/25 v3.x}
+  *{format} {LaTeX2e}     {2014/05/01 v2.e}
+  *{package}{snapshot}    {2002/03/05 v1.14}
+  *{class}  {IEEEtran}    {2012/11/21 v1.8c}
+  *{file}   {ot1ptm.fd}   {2001/06/04 v1/ptm.}
+  *{package}{ifpdf}       {2011/01/30 v2.3}
+  *{package}{graphicx}    {2014/04/25 v1.0g}
+  *{package}{keyval}      {2014/05/08 v1.15}
+  *{package}{graphics}    {2009/02/05 v1.0o}
+  *{package}{trig}        {1999/03/16 v1.09}
+  *{file}   {graphics.cfg}{2010/04/23 v1.9}
+  *{file}   {pdftex.def}  {2011/05/27 v0.06d}
+  *{package}{infwarerr}   {2010/04/08 v1.3}
+  *{package}{ltxcmds}     {2011/11/09 v1.22}
+  *{package}{amsmath}     {2013/01/14 v2.14}
+  *{package}{amstext}     {2000/06/29 v2.01}
+  *{package}{amsgen}      {1999/11/30 v2.0}
+  *{package}{amsbsy}      {1999/11/29 v1.2d}
+  *{package}{amsopn}      {1999/12/14 v2.01}
+  *{package}{amssymb}     {2013/01/14 v3.01}
+  *{package}{amsfonts}    {2013/01/14 v3.01}
+  *{package}{mdwmath}     {1996/04/11 v1.1}
+  *{package}{mdwtab}      {1998/04/28 v1.9}
+  *{package}{subfig}      {2005/06/28 v1.3}
+  *{package}{caption3}    {2013/05/02 v1.6-88}
+  *{package}{url}         {2013/09/16 v3.4}
+  *{package}{booktabs}    {2005/04/14 v1.61803}
+  *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
+  *{package}{pdftexcmds}  {2011/11/29 v0.20}
+  *{package}{ifluatex}    {2010/03/01 v1.3}
+  *{package}{epstopdf-base}{2010/02/09 v2.5}
+  *{package}{grfext}      {2010/08/19 v1.1}
+  *{package}{kvdefinekeys}{2011/04/07 v1.3}
+  *{package}{kvoptions}   {2011/06/30 v3.11}
+  *{package}{kvsetkeys}   {2012/04/25 v1.16}
+  *{package}{etexcmds}    {2011/02/16 v1.5}
+  *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
+  *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{file}   {img/s1_layout.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_fair.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_malicious.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_malicious.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_beta_otmf_fair.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_beta_otmf_malicious.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_beta_otmf_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_PLR_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
+  *{file}   {img/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
+  *{file}   {img/MaliciousSelfishMetricFactors.png}{0000/00/00 v0.0}
+  *{file}   {trustcom15_bolster.bbl}{0000/00/00 v0.0}
+}

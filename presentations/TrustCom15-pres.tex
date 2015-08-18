@@ -127,17 +127,18 @@ University of Liverpool \\
 
   \begin{itemize}
   \item
-    Methods developed for establishing Communications Trust in the MANET space increasingly applied to other arenas such as the  underwater realm.
+    Trust Methods in the MANET space applied to other arenas (e.g. underwater acoustics).
   \item
-    These Trust Management Frameworks (TMFs) must be reassessed with respect to the sparse, noisy and contested marine communications environment.
+    These Trust Management Frameworks (TMFs) require reassessment to work the sparse, noisy and contested marine communications environment.
   \item 
-    Most MANET TMFs rely on one\footnotemark type of observation (metric); recent work (MTFM \cite{Guo11}) introduces the use of multiple types of continuous metrics for assessment.
+    Most rely on one\footnotemark type of observation (metric)
+  \item Recent work (MTFM \cite{Guo11}) introduces the use of multiple types of continuous metrics for assessment.
   \item 
     How do these Single and Multi-Metric Frameworks perform in the challenging marine communications environment?
   \item
     What metrics are suitable for use underwater?
   \end{itemize}
-  \footnotetext{Packet Loss Rate (PLR) or other binary success observation}
+  \footnotetext{Packet Loss Rate (PLR) or other binary interaction success observation}
 \end{frame}
 
 
@@ -160,16 +161,16 @@ University of Liverpool \\
     \item \emph{Hermes} \cite{Zouridaki2005} - Bayesian estimation based on PLR; encapsulates both ``Trust'' and ``Confidence'')
     \item \emph{OTMF} \cite{Li2008} - Collaborative Assessments of Bayesian Trust, PLR.
     \item \emph{TSR} \cite{Moe2008a} - Builds HMM into Dynamic Source Routing (DSR), Session Loss Rate.
-    \item \emph{CONFIDANT} \cite{Buchegger2002} - Probablistic PLR assessment, includes some topology and reputational weighting.
+    \item \emph{CONFIDANT} \cite{Buchegger2002} - Probabilistic PLR assessment, includes some topology and reputational weighting.
     \item \emph{Fuzzy Trust-Based Filtering} \cite{Luo2008} - Fuzzy classification on the \emph{nature} of packet delivery (eg. ``late'', ``unreliable'', ``unknown'', etc.)
   \end{itemize}
-  Most can be generalised as single-value estimations of PLR/Successful Routes, with the incorporation of some \emph{meta}-observations eg Topology
+  Most can be generalised as single-value estimations of PLR/Successful Routes, with the incorporation of some \emph{meta}-observations e.g. Topology
   \framebreak
   \begin{itemize}
   \item
-    Single Metric TMFs present opportunities for malicious actors to undermine the operation of a network if their attack does not directly impact packet delivery. 
+    Single Metric TMFs present opportunities for malicious actors to undermine the operation of a network. 
   \item 
-    Not an issue in networks where Comms. is the primary operating concern, but is significant in resource constrained environments (eg power, mobility, channel occupancy, physical location)
+    Not an issue in networks where Comms. is the primary operating concern, but is significant in resource constrained environments (e.g. power, mobility, channel occupancy, physical location)
   \end{itemize}
 
 \end{frame}
@@ -206,7 +207,7 @@ Where  $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$
 \end{frame}
 
 \begin{frame}{Multi-Metric Compared to Single in MANETs}
-  Guo et al.\cite{Guo11} demonstrated that MTFM operates favourably in 802.11 based terrestrial MANETs against OTMF and Hermes, and can accurately detect, identify, \& characterise misbehaviours within a group of six nodes, with $n_0$ as the primary observer and $n_1$ as the misbehavor.
+  Guo et al.\cite{Guo11} demonstrated that MTFM operates favourably in 802.11 based terrestrial MANETs against OTMF and Hermes, and can accurately detect, identify, \& characterise misbehaviours within a group of six nodes, with $n_0$ as the primary observer and $n_1$ as the misbehaver.
 
   \begin{figure}[h]
     \begin{center}
@@ -222,13 +223,13 @@ Where  $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$
 \begin{frame}[allowframebreaks]{Communications Channel Considerations}
   Key Characteristics of the Marine Acoustic Channel \cite{Urick1983,Partan2006,Stojanovic2007,Stefanov2011}:
   \begin{itemize}
-    \item Slow propogation ($~1400ms^{-1}$) incurring long delays
+    \item Slow propagation ($~1400ms^{-1}$) incurring long delays
     \item Inter-symbol interference
     \item Doppler Spreading
-    \item Non-Linear propocation due to refraction
+    \item Non-Linear propagation due to refraction
     \item Fast \& Slow fades from environmental factors (flora/fauna/surface and seabed conditions)
     \item Freq. dependant attenuation
-    \item Sigificant destructive multipath effects
+    \item Significant destructive multipath effects
   \end{itemize}
   
   \framebreak
@@ -331,7 +332,7 @@ Key Observations:
 %\begin{frame}{Multi-Metric Operation - Key Observations}
   %
   \begin{itemize}
-    \item Mobility greatly increases variation in instantenously observed trust
+    \item Mobility greatly increases variation in instantaneously observed trust
     \item $T_{MTFM}$ remains more stable in both mobility cases when compared to either single-node assessments or $T_{Avg}$
     \item Raw $T_{MTGM}$ isn't perfect; in Fig~\ref{fig:trust_all_mobile_mal} demonstrates huge variability in Direct assessment ($T_{1,0}$) that isn't reflected in $T_{MTFM}$. Partially expected in this directed attack.
     \item Larger general variability in observations in ``Fair'' case compared to misbehaviours

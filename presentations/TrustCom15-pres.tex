@@ -42,10 +42,13 @@ sorting=none]{biblatex}
 \usepackage{booktabs}
 \usepackage{colortbl}
 \usepackage{hyperref}
-\usepackage{todonotes}
+\usepackage[textsize=tiny]{todonotes}
+\presetkeys{todonotes}{inline}{}
 
+\interdisplaylinepenalty=2500
+\hyphenpenalty=10000
 
-\usepackage[caption=false,font=scriptsize]{subfig}
+\usepackage[caption=false,font=scriptsize,justification=centerlast]{subfig}
 \usepackage[english]{babel}
 \addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
 
@@ -306,14 +309,7 @@ Where  $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$
 
 \end{frame}
 
-\subsection{Main Results}
-
-\begin{frame}{Principal Aims}
-\begin{itemize}
-  \item Operation of MTFM in the Marine Environment
-  \item 
-\end{itemize}
-\end{frame}
+\subsection{MTFM Operation}
 
 \begin{frame}[allowframebreaks]{Multi-Metric Operation}
   \setcounter{subfigure}{0}% Reset subfigure counter
@@ -341,6 +337,8 @@ Key Observations:
     \item Larger general variability in observations in ``Fair'' case compared to misbehaviours
   \end{itemize}
 \end{frame}
+
+\subsection{Single vs Multi}{Blind Comparison of Single/Multi-metric TMFs}
 
 \begin{frame}[allowframebreaks,t]{Blind Comparison of Single/Multi-metric TMFs}
   \vspace{-24pt}%
@@ -371,17 +369,145 @@ Key Observations:
 
   Key Observations:
   \begin{itemize}
-    \item 
+    \item Neither misbehaviour, while impacting network fairness, directly affects PLR
+    \item MTFM's Cohort Comparison means in the fair case, 0.5 is expected
+    \item In OTMF/Hermes, $T~1$ is expected
+    \item Neither OTMF, Hermes or Blind MTFM are particularly effective
+    \item MTFM indicates $~10\%$ selectivity between Fair and Either Misbehaviour
   \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Metric Significance Assessment}
+\subsection{Metric Weighting}
+\begin{frame}{Metric Weighting}
+  From \ref{eq:grc}, metric emphasise can be adjusted, highlighting misbehaviour in particular metric areas
+  \begin{align}
+    [\theta_k^t, \phi_k^t]& = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]\\
+    T_k^t &= ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}
+    \label{<++>}
+  \end{align}
 \end{frame}
 
-\subsection{Current Work}{Current Work and Paths to Proof/Implementation}
+\begin{frame}{Malicious Power Control - Weighted Emphasis}
+  \vspace{-24pt}%
+\setcounter{subfigure}{0}% Reset subfigure counter
+  \begin{figure}[h]
+    \centering
+    \subfloat[Delay Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_delay}}
+    \subfloat[PLR Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_plr}}
+    \subfloat[RX Power Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxp}}
+    \newline
+    \subfloat[TX Power Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_txp}}
+    \subfloat[RX Throughput Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxthroughput}}
+    \subfloat[TX Throughput Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_txthroughput}}
+    \caption{$T_{1,MTFM}$ in the All Mobile case for the Malicious Power Control behaviour, including dashed $\pm\sigma$ envelope about the fair scenario\hyperlink{fig:badmouth_emph_closeup}{\beamergotobutton{Closeup}}}
+    \label{fig:all_mobile_badmouthing}
+  \end{figure}
+\end{frame}
 
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{Selfish Target Selection - Weighted Emphasis}
+  \vspace{-24pt}%
+\setcounter{subfigure}{0}% Reset subfigure counter
+  \begin{figure}[h]
+  \centering
+  \subfloat[Delay Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} \label{fig:all_mobile_selfish_delay}}
+  \subfloat[PLR Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}\label{fig:all_mobile_selfish_plr}}
+  \subfloat[RX Power Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxp}}
+  \newline
+  \subfloat[TX Power Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection}\label{fig:all_mobile_selfish_txp}}
+  \subfloat[RX Throughput Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxthroughput}}
+  \subfloat[TX Throughput Emphasised]{\includegraphics[width=.33\linewidth]{img/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_txthroughput}}
+\caption{$T_{1,MTFM}$ in the All Mobile case for the Selfish Target Selection behaviour, including dashed $\pm\sigma$ envelope about the fair scenario\hyperlink{fig:selfish_emph_closeup}{\beamergotobutton{Closeup}}}
+ 
+\label{fig:all_mobile_selfish}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Metric Weighting}
+  Key Observations:
+  \begin{itemize}
+    \item In MPC case:
+      \begin{itemize}
+        \item Consistently outside $\pm\sigma$ in all but $P_{TX}$, particularly PLR
+        \item Less so in Delay, $P_{RX}$ and $T_{TX}$
+      \end{itemize}
+    \item In STS case:
+      \begin{itemize}
+        \item Less overall impact, except when $P_{TX}$
+      \end{itemize}
+
+    \item In General:
+      \begin{itemize}
+        \item Qualatatively similar to similar experiments performed in \cite{Guo11} in RF Terrestrial MANET
+        \item Lower differences between misbehaviour/fair cases
+        \item Less consistent deviations
+        \item More useful than OTMF/Hermes but still not perfect
+      \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+
+\subsection{Metric Significance}
+\begin{frame}[allowframebreaks]{Regression of Metric Significance}
+  \begin{itemize}
+    \item Distributed Random Forest Regression \cite{Breiman2001} 
+    \item 729 Metric Weight Vectors ($H$), 512 random trees
+    \item 16 Random starts of each of the 3 scenarios for 6 nodes for 6 hour ``missions''
+    \item Targeting area of $\pm\sigma$ deviation $\int abs(T_m - \overline T_f) - \sigma_{T_f}$
+    \item Regression identifies the significance of metrics in classifying between the three possible behaviours
+  \end{itemize}
+
+  \framebreak
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.95\linewidth]{img/MaliciousSelfishMetricFactors}
+    \label{fig:malselfactors}
+  \end{figure}
+  \vspace{-30pt}%
+  \begin{table}[h]
+    \begin{center}
+      \small
+      \bgroup
+      \def\arraystretch{1.2}%  1 is the default, change whatever you need
+      \setlength\tabcolsep{4pt}% 6pt standard
+      \begin{tabular}{l|CCCCCC}
+        \toprule
+        Correlation      & Delay & $P_{RX}$ & $P_{TX}$ & $T^P_{RX}$ & $T^P_{TX}$ & PLR \\
+        \midrule
+        Fair / MPC       & 0.199 &  0.159   & -0.416  &  0.708   & -0.238   & -0.401\\
+        Fair / STS       & 0.179 &  -0.009  &  0.724  & -0.697   & -0.145   & -0.052\\
+        MPC / STS        & 0.058 &  -0.134  &  0.146  & -0.768   &  0.052   &  0.146\\
+        \bottomrule
+      \end{tabular}
+      \egroup
+    \end{center}
+  \end{table}
+
+  \framebreak
+
+  Key Observations:
+  \begin{itemize}
+    \item PLR not necessarily the most important metric
+    \item Combination of Significance and Correlations demonstrate selectivity opportunity
+    \item MTFM has capability to finely discriminate between similar misbehaviours
+    \item PLR impact is minimal in STS, would not be detected by OTMF/Hermes even in less sparse/harsh environment
+    \item Identifying this classification ``comb'' is computationally intensive and grows exponentially with number of metrics involved for brute force regression
+  \end{itemize}
+\end{frame}
+
+\subsection{Current Work}
+
+\begin{frame}{Current Work and Paths to Proof/Implementation}
+  \begin{itemize}
+    \item Include Physical Observations in Metric Set
+      \begin{itemize}
+        \item Assess benefits / drawbacks of domain separation / joining
+        \item Assess complexity vs selectivity of derived classifications
+      \end{itemize}
+    \item Perform / Initiate practical trials in collaborations with NATO CMRE
+  \end{itemize}
 \end{frame}
 
 
@@ -392,12 +518,10 @@ Key Observations:
 
   % Keep the summary *very short*.
   \begin{itemize}
-  \item
-    The \alert{first main message} of your talk in one or two lines.
-  \item
-    The \alert{second main message} of your talk in one or two lines.
-  \item
-    Perhaps a \alert{third message}, but not more than that.
+    \item Trust Underwater is \alert{Hard}, but it's mostly the environments' fault
+    \item Single-Metric Trust is \alert{unstable} in such an environment
+    \item Multi-Metric Trust works and can \alert{discriminate between behaviours}
+    \item \alert{Not all metrics} are equally useful
   \end{itemize}
   
   % The following outlook is optional.
@@ -407,9 +531,11 @@ Key Observations:
     Outlook
     \begin{itemize}
     \item
-      Something you haven't solved.
+      Extending to include Physical Metrics
     \item
-      Something else you haven't solved.
+      Developing runtime heuristics to improve complexity
+    \item 
+      Perform untrained classification performance on real data      
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -424,6 +550,7 @@ Key Observations:
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Grey Trust Equs}
+\todo{Add backlinks}
   \begin{align}
     \label{eq:networkeffects}
     T_{i,j}^{MTFM}=&\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}\\ \notag
@@ -449,6 +576,7 @@ Key Observations:
 
 \begin{frame}[allowframebreaks]{Comms Scaling Graphs}
 
+\setcounter{subfigure}{0}% Reset subfigure counter
   \begin{figure}[h]
     \centering
     \subfloat[][All Nodes Static]{\includegraphics[width=0.35\linewidth]{2d_ratio_static.pdf}}
@@ -500,6 +628,7 @@ Key Observations:
 \begin{figure}[h]
   \subfloat[Fair Static]{\includegraphics[width=1.0\linewidth]{trust_bella_static_fair} \label{fig:trust_static}}
 \end{figure}
+\todo{Add backlinks}
 \end{frame}
 \begin{frame}{MTFM Operation Detail}
 \begin{figure}[h]
@@ -524,6 +653,74 @@ Key Observations:
 \begin{frame}{MTFM Operation Detail}
 \begin{figure}[h]
   \subfloat[Selfish Mobile]{\includegraphics[width=1.0\linewidth]{trust_bella_all_mobile_selfish}  \label{fig:trust_all_mobile_sel}}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{MTFM Malicious Power Control Detail}
+\setcounter{subfigure}{0}% Reset subfigure counter
+\label{fig:badmouth_emph_closeup}%
+\begin{figure}[h]
+  \subfloat[Delay Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_delay}}
+\end{figure}
+\todo{Add backlinks}
+\end{frame}
+\begin{frame}{MTFM Malicious Power Control Detail}
+\begin{figure}[h]
+  \subfloat[PLR Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_plr}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Malicious Power Control Detail}
+\begin{figure}[h]
+  \subfloat[RX Power Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxp}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Malicious Power Control Detail}
+\begin{figure}[h]
+  \subfloat[TX Power Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl}\label{fig:all_mobile_badmouthing_txp}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Malicious Power Control Detail}
+\begin{figure}[h]
+  \subfloat[RX Throughput Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_rxthroughput}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Malicious Power Control Detail}
+\begin{figure}[h]
+  \subfloat[TX Throughput Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} \label{fig:all_mobile_badmouthing_txthroughput}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Selfish Target Selection Detail}
+\setcounter{subfigure}{0}% Reset subfigure counter
+\label{fig:selfish_emph_closeup}%
+\begin{figure}[h]
+  \subfloat[Delay Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} \label{fig:all_mobile_selfish_delay}}
+\end{figure}
+\todo{Add backlinks}
+\end{frame}
+\begin{frame}{MTFM Selfish Target Selection Detail}
+\begin{figure}[h]
+  \subfloat[PLR Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}\label{fig:all_mobile_selfish_plr}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Selfish Target Selection Detail}
+\begin{figure}[h]
+  \subfloat[RX Power Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxp}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Selfish Target Selection Detail}
+\begin{figure}[h]
+  \subfloat[TX Power Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection}\label{fig:all_mobile_selfish_txp}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Selfish Target Selection Detail}
+\begin{figure}[h]
+  \subfloat[RX Throughput Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_rxthroughput}}
+\end{figure}
+\end{frame}
+\begin{frame}{MTFM Selfish Target Selection Detail}
+\begin{figure}[h]
+  \subfloat[TX Throughput Emphasised]{\includegraphics[width=\linewidth]{img/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} \label{fig:all_mobile_selfish_txthroughput}}
 \end{figure}
 \end{frame}
 

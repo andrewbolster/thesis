@@ -29,6 +29,7 @@
 
 \usepackage[
 backend=biber,
+autocite=superscript,
 natbib=true,
 style=numeric,
 sorting=none]{biblatex}
@@ -129,16 +130,16 @@ University of Liverpool \\
   \item
     Trust Methods in the MANET space applied to other arenas (e.g. underwater acoustics).
   \item
-    These Trust Management Frameworks (TMFs) require reassessment to work the sparse, noisy and contested marine communications environment.
+    Trust Management Frameworks (TMFs) require reassessment to work in the harsh marine communications environment.
   \item 
-    Most rely on one\footnotemark type of observation (metric)
-  \item Recent work (MTFM \cite{Guo11}) introduces the use of multiple types of continuous metrics for assessment.
+    Most rely on one type of observation (metric)
+  \item 
+    Recent work\autocite{Guo11} introduces the use of multiple types of continuous metrics for assessment.
   \item 
     How do these Single and Multi-Metric Frameworks perform in the challenging marine communications environment?
   \item
     What metrics are suitable for use underwater?
   \end{itemize}
-  \footnotetext{Packet Loss Rate (PLR) or other binary interaction success observation}
 \end{frame}
 
 
@@ -150,7 +151,7 @@ University of Liverpool \\
     \item 
       TMFs provide information to assist the estimation of future states and actions of nodes within networks.
     \item
-      Centralised methods (CA/TTP/PKI) unsuitable for dynamic decentralised networks\cite{Caiti2011}.
+      Centralised methods (CA/TTP/PKI) unsuitable for dynamic decentralised networks\autocite{Caiti2011}.
     \item 
       Need to detect, identify, \& mitigate threats in a distributed fashion.
   \end{itemize}
@@ -158,11 +159,11 @@ University of Liverpool \\
 
 \begin{frame}[allowframebreaks]{Single-Metric TMFs}
   \begin{itemize}
-    \item \emph{Hermes} \cite{Zouridaki2005} - Bayesian estimation based on PLR; encapsulates both ``Trust'' and ``Confidence'')
-    \item \emph{OTMF} \cite{Li2008} - Collaborative Assessments of Bayesian Trust, PLR.
-    \item \emph{TSR} \cite{Moe2008a} - Builds HMM into Dynamic Source Routing (DSR), Session Loss Rate.
-    \item \emph{CONFIDANT} \cite{Buchegger2002} - Probabilistic PLR assessment, includes some topology and reputational weighting.
-    \item \emph{Fuzzy Trust-Based Filtering} \cite{Luo2008} - Fuzzy classification on the \emph{nature} of packet delivery (eg. ``late'', ``unreliable'', ``unknown'', etc.)
+    \item \emph{Hermes} \autocite{Zouridaki2005} - Bayesian estimation based on PLR; encapsulates both ``Trust'' and ``Confidence'')
+    \item \emph{OTMF} \autocite{Li2008} - Collaborative Assessments of Bayesian Trust, PLR.
+    \item \emph{TSR} \autocite{Moe2008a} - Builds HMM into Dynamic Source Routing (DSR), Session Loss Rate.
+    \item \emph{CONFIDANT} \autocite{Buchegger2002} - Probabilistic PLR assessment, includes some topology and reputational weighting.
+    \item \emph{Fuzzy Trust-Based Filtering} \autocite{Luo2008} - Fuzzy classification on the \emph{nature} of packet delivery (eg. ``late'', ``unreliable'', ``unknown'', etc.)
   \end{itemize}
   Most can be generalised as single-value estimations of PLR/Successful Routes, with the incorporation of some \emph{meta}-observations e.g. Topology
   \framebreak
@@ -177,7 +178,7 @@ University of Liverpool \\
 
 \begin{frame}[allowframebreaks]{Multi-Metric TMF}
   \begin{itemize} 
-    \item \emph{Multi-metric Trust For MANETS (MTFM)} \cite{Guo11} - Uses additional metrics such as Power, Throughput, Delay, etc. in addition to PLR to assess trust, as well as incorporating topological and metric weighting.
+    \item \emph{Multi-metric Trust For MANETS (MTFM)} \autocite{Guo11} - Uses additional metrics such as Power, Throughput, Delay, etc. in addition to PLR to assess trust, as well as incorporating topological and metric weighting.
     \item Use of multiple metrics allows classification of behaviours through dynamic metric weighting.
     \item Use of Grey Relational Grading to provide dynamic runtime normalisation, assessing \emph{comparative} trust within a cohort of actors.
   \end{itemize}
@@ -207,13 +208,13 @@ Where  $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$
 \end{frame}
 
 \begin{frame}{Multi-Metric Compared to Single in MANETs}
-  Guo et al.\cite{Guo11} demonstrated that MTFM operates favourably in 802.11 based terrestrial MANETs against OTMF and Hermes, and can accurately detect, identify, \& characterise misbehaviours within a group of six nodes, with $n_0$ as the primary observer and $n_1$ as the misbehaver.
+  Guo et al.\autocite{Guo11} demonstrated that MTFM operates favourably in 802.11 based terrestrial MANETs against OTMF and Hermes, and can accurately detect, identify, \& characterise misbehaviours within a group of six nodes, with $n_0$ as the primary observer and $n_1$ as the misbehaver.
 
   \begin{figure}[h]
     \begin{center}
       \includegraphics[width=0.6\textwidth]{s1_layout}
     \end{center}
-    \caption{Initial Node Layouts in \cite{Guo11}}
+    \caption{Initial Node Layouts in \autocite{Guo11}}
     \label{fig:node_layout}
   \end{figure}
   \end{frame}
@@ -221,7 +222,7 @@ Where  $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$
 \subsection{Challenges to Trust in Underwater Networks}
 
 \begin{frame}[allowframebreaks]{Communications Channel Considerations}
-  Key Characteristics of the Marine Acoustic Channel \cite{Urick1983,Partan2006,Stojanovic2007,Stefanov2011}:
+  Key Characteristics of the Marine Acoustic Channel \autocite{Urick1983,Partan2006,Stojanovic2007,Stefanov2011}:
   \begin{itemize}
     \item Slow propagation ($~1400ms^{-1}$) incurring long delays
     \item Inter-symbol interference
@@ -241,7 +242,7 @@ Where  $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$
     10 \log A_{\text{aco}}(d,f)/A_0 = k \cdot 10 \log d + d \cdot 10 \log a(f)
   \end{equation}
   %
-  where $A_0$ is a normalising constant, $k$ is a spreading factor (commonly taken as 1.5  \cite{Stojanovic2007}), and $a(f)$ is the absorption coefficient, approximated using Thorp's formula \cite{Stefanov2011}
+  where $A_0$ is a normalising constant, $k$ is a spreading factor (commonly taken as 1.5  \autocite{Stojanovic2007}), and $a(f)$ is the absorption coefficient, approximated using Thorp's formula \autocite{Stefanov2011}
   %
   \begin{equation}
     \label{eq:thorp}
@@ -293,9 +294,9 @@ Where  $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$
 
 \begin{frame}{Scale Considerations}
   \begin{itemize}
-    \item Simulations based on SimPy \cite{Mueller2003SimPy}, Network stack using AUVNetSim \cite{Miquel2008} and channel constraints based on Stojaovic and Stefanov \cite{Stojanovic2007,Stefanov2011}\hyperlink{tab:sysconstraints}{\beamergotobutton{Details}}
+    \item Simulations based on SimPy \autocite{Mueller2003SimPy}, Network stack using AUVNetSim \autocite{Miquel2008} and channel constraints based on Stojaovic and Stefanov \autocite{Stojanovic2007,Stefanov2011}\hyperlink{tab:sysconstraints}{\beamergotobutton{Details}}
     \item Established a safe operating zone in terms of communications rate and node distances to optimise for delay/throughput at 0.015pps and avg. init. range 300m \hyperlink{eq:networkeffects}{\beamergotobutton{Details}}
-    \item Six per-link communications metrics: TX/RX Throughput/Power, Delay and PLR, lacking the 802.11 Data Rate metric from \cite{Guo11}  
+    \item Six per-link communications metrics: TX/RX Throughput/Power, Delay and PLR, lacking the 802.11 Data Rate metric from \autocite{Guo11}  
     
   \end{itemize}
 
@@ -439,7 +440,7 @@ Key Observations:
 
     \item In General:
       \begin{itemize}
-        \item Qualatatively similar to similar experiments performed in \cite{Guo11} in RF Terrestrial MANET
+        \item Qualatatively similar to similar experiments performed in \autocite{Guo11} in RF Terrestrial MANET
         \item Lower differences between misbehaviour/fair cases
         \item Less consistent deviations
         \item More useful than OTMF/Hermes but still not perfect
@@ -452,7 +453,7 @@ Key Observations:
 \subsection{Metric Significance}
 \begin{frame}[allowframebreaks]{Regression of Metric Significance}
   \begin{itemize}
-    \item Distributed Random Forest Regression \cite{Breiman2001} 
+    \item Distributed Random Forest Regression \autocite{Breiman2001} 
     \item 729 Metric Weight Vectors ($H$), 512 random trees
     \item 16 Random starts of each of the 3 scenarios for 6 nodes for 6 hour ``missions''
     \item Targeting area of $\pm\sigma$ deviation $\int abs(T_m - \overline T_f) - \sigma_{T_f}$

@@ -1,4 +1,9 @@
 #!/bin/bash
+cd Chapters
+latexmk -interaction=nonstopmode -pdf c?-*.tex
+git add c?-*.pdf
+cd ../
+
 if [[ -f "Thesis.pdf" ]]; then
   mv Thesis.pdf Thesis-Last.pdf
 else

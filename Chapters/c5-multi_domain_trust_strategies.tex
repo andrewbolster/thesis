@@ -8,3 +8,10 @@
 	\label{Chapter\thechapter}
 	\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 \fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifx\ifthesis\undefined
+	\input{chapter_standalone_postscript.tex}
+\else
+\fi

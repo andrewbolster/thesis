@@ -109,6 +109,7 @@
   *{package}{relsize}     {2013/03/29 v4.1}
   *{package}{float}       {2001/11/08 v1.3d}
   *{package}{epigraph}    {2009/09/02 v1.5c}
+  *{package}{setspace}    {2011/12/19 v6.7a}
   *{package}{nameref}     {2012/10/27 v2.43}
   *{package}{gettitlestring}{2010/12/03 v1.4}
   *{file}   {c7-multi_domain_trust_analysis.out}{0000/00/00 v0.0}

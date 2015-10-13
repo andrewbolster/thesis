@@ -111,6 +111,7 @@
 %\usepackage[scriptsize]{subfigure} %obsolete
 \usepackage{subcaption}
 \usepackage{booktabs}
+\renewcommand{\arraystretch}{1.3}
 \usepackage{rotating}
 \usepackage{listings}
 \usepackage{lstpatch}

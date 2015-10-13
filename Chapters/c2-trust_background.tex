@@ -2,34 +2,300 @@
 \def\ChapterTitle{Background on Trust and its Applications to MANETs} % Write in your own chapter title
 
 \ifx\ifthesis\undefined
-	\input{chapter_standalone_preamble.tex}
+\input{chapter_standalone_preamble.tex}
 \else
-	\chapter{\ChapterTitle}
-	\label{Chapter\thechapter}
-	\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
+\chapter{\ChapterTitle}
+\label{Chapter\thechapter}
+\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 \fi
 
-\section{Trust}
+\section{Trust Definitions and Perspectives}
+
+For a term that is so common in every-day speech, Trust is a challenging discussion area, particularly given the wealth of proposed definitions (Table~\ref{tab:trust_definitions})\todo{More of these in the bookmarks list}. Beyond these dry, vague, and often ``fuzzy'' definitions, there is a significant ontological conflict between the subjective and objective perspectives of trust; is ``trust'' an attribute of the actor performing a given action, or of the observer of such an action? Or indeed is trust itself an action upon a relationship between actors? Is it qualitative or quantitative? These questions have challenged philosophers, psychologists and social scientists for decades.
+
+In human trust relationships it is recognized that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
+
+These perspectives of trust are, for the most part, quite natural and are formed during the earliest stages of linguistic integration. Indeed, this leads to recognisable deviations in the experiential concept of ``trust'' across cultures with differing linguistic histories. This has led to a wealth of work in the social sciences (as well as management schools across the world) in to how to develop, understand, and repair trust across cultural boundaries.\cite{Okumura2011} \todo{Get more citations for this paragraph, need background on multicultural definitions rather than second hand}
+
+\begin{table}\centering
+  \begin{tabular}{@{}p{8cm}p{3cm}@{}}\toprule
+    Definition & Source \\ \midrule
+    Assured reliance on the character, ability, strength, or truth of someone or something. & Merriam-Webster\\
+    Firm belief in the reliability, truth, or ability of someone or something & OED\\
+    The willingness of a party to be vulnerable to the actions of another party based on the expectation that the other will perform a articular action important to the trustor, irrespective of the ability to monitor or control that other party & \cite{Mayer1995} \\\bottomrule
+  \end{tabular}
+  \caption{Definitions of Trust}
+  \label{tab:trust_definitions}
+\end{table}
+
+\subsection{Modeling and Properties of Trust Relationships}
+
+Mayer et al \cite{Mayer1995} proposed a model of trust that encapsulates generalised factors of perceived trustworthiness such as ``Ability'' and ``Integrity'' while also accommodating a subjective trustworthiness and risk-taking potentiality on the part of the trustor. This formulation of trust allows a wider discussion of the characteristics of trust relationships, both between individuals and within networks or communities.
+
+\missingfigure{Fig 1 from \cite{Mayer1995}, preferably in TikZ}
+
+\subsubsection{Characteristics of Trust Relationships}
+
+There are five commonly considered characteristics or attributes of Trust relationships in general, but not all relationships exhibit them and they are not assumed to be a complete specification of Trust:
+
+\begin{itemize}
+  \item \emph{Multi-Party} - One-to-one; one-to-many; many-to-one; many-to-many. Trust is not an absolute characteristic of an lone individual. Trust may include multi-agent abstractions (one-to-many), such as a preferential trust/distrust towards a group exhibiting a particular attribute, e.g. members of the armed forces / police services. Likewise, there can be trustor/trustee attributes that can generalise relationships between collectives (many-to-many), e.g. Jets and Sharks \todo{if I can get away with citing Sodenheim I'd be very happy}
+  \item \emph{Evidential} - Trust must be based on some form of evidence-based observation or assessment, such as historical success rates of performing a certain action, or second-hand observations of trust from a third party.
+  \item \emph{Transitive} - Trust assessments can be shared (i.e. recommendations), where this second order trust assessment incorporates both the observed trustworthiness of the trustee, as well as the trustworthiness of the intermediate trustor. In some models this is further extended to include out-of-network intermediate trustors that have some other defined authority, e.g. PKI Certificate Authority
+  \item \emph{Directional Asymmetry} - The majority of relationships are bi-directional but are asymmetric, i.e. between two entities who ``trust'' each other, there are two individual trust relationships that may have very different ``values'' or extents.
+  \item \emph{Contextual} - Trust can be variable and loosely coupled between contexts with respect to the action being assessed or the environment within which the trustee is operating, e.g. Doctors are trusted to perform medical procedures but that trust may not improve their success at correctly wiring an electrical plug. However there are plenty of counter-examples to this, as from \cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
+
+\end{itemize}
+
+\section{Trust in MANETs}
+
+
+\subsection{Design Considerations}
+
+Trust is the level of confidence one agent has in another to perform a given action on request or in a certain context. Trust in the autonomous or semi-autonomous realm is the ability of a system to establish and maintain confidence in itself or another systems' operations. 
+Managing this trust can be used to predict and reason on the future interactions between entities in a system, such as an autonomous mobile ad-hoc network (MANET).
+
+The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities or using Public Key Infrastructures (PKI).
+Therefore, a distributed, collaborative system must be applied to these networks.
+Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
+
+As mobile ad-hoc networks (MANETs) grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
+
+Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes within networks.
+This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes.
+Previous research has established the advantages of implementing TMFs in 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
+
+There are five topics that are important to address in any MANETs trust model \cite{Kamvar2003}:
+
+\begin{enumerate}
+  \item The trust model should be without infrastructure. Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a trusted third party (TTP). There is no public key infrastructure (PKI), where some center nodes monitor the network, and publish illegal nodes periodically. In a MANET, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
+  \item The trust model should be anonymous because of the anonymity of mobile nodes in MANETs.
+  \item The trust model should be robust. That is, it can be robust to all kinds of unfriendly attacks and the network itself should not be susceptible to attacks by unfriendly nodes. Moreover, in the presence of malicious nodes, they may attempt to subvert the model in order to get the unfairly good trust value.
+  \item The trust model should have minimal control overhead in accordance with computation, storage, and complexity.
+  \item The trust model should be self-organized. MANETs are characterized to have dynamic, random, rapidly changing and multi-hop topologies composed of relatively bandwidth-constrained
+\end{enumerate}
+
+
+Most current TMFs use a single type of observed action to derive trust values, i.e. successfully forwarded packets. These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
+
+Recent work has demonstrated use of a number of metrics to form a ``vector'' of trust.
+The Multi-parameter Trust Framework for MANETs (MTFM)\cite{Guo11}, uses a range of physical metrics beyond packet delivery/loss rate (PLR) to form a vector of trust.
+This vectorized trust allows a system to detect and identify the tactics being used to undermine or subvert trust.
+To date this work has been limited to terrestrial, RF based networks, however as autonomous underwater vehicles (AUVs) become more capable, and economical, they are being used in many applications requiring trust.
+These applications are using the collective behaviour of teams or fleets of these AUVs to accomplish tasks \cite{Caiti2011}.
+With this use being increasingly isolated from stable communications networks, the establishment of trust between nodes is essential for the reliability and stability of such teams.
+As such, the use of trust methods developed in the terrestrial MANET space must be re-appraised for application within the challenging underwater communications channel.
+
+Distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
+Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
+
+These TMFs can be generalised as single-value probabilistic estimation, based around using a binary input state and generating an probabilistic estimation of the future states of that input. This expectation value is $\text{beta}(p|\alpha,\beta) \to E(p) = \frac{\alpha}{\alpha+\beta}$ where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
+
+There are also situations where the observed metrics will include significant noise and occur at irregular, sparse, intervals.
+Conventional approaches such as probabilistic estimation do not produce trust values that reflect the underlying reality and context of the metrics available, as they require a-priori assumption that the trust value under exploration has an expected distribution, that distribution is mono-modal, and the input metrics are binary.
+In scenarios with variable, sparse, noisy metrics, estimating the distribution is difficult to accomplish a-priori.
+
+
+\subsection{Current Trust Management Frameworks}
+
+Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
+Taking some examples;
+
+\begin{itemize}
+  \item \emph{The Objective Trust Management Framework} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
+    OTMF however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
+  \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (PLR)\cite{Cho2011}.
+  \item \emph{CONFIDANT}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, similar to OTMF. They also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter.
+  \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network.
+\end{itemize}
+
+OTMF, CONFIDANT, and Fuzzy Trust-Based Filtering can be generalised as single-value probabilistic estimation, based around a Bayesian idea of taking a binary input state and generating an idealised Beta Distribution (\ref{eq:beta}) of the future states of that input generated through an expectation value based on interactions (\ref{eq:beta_e}).
+\begin{align}
+  \label{eq:beta}
+  \text{beta}(p|\alpha,\beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1},\text{ where } 0 \leq p \leq 1; \alpha,\beta > 0\\
+  \label{eq:beta_e}
+  E(p) = \frac{\alpha}{\alpha + \beta}
+\end{align}
+
+Where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
+
+These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker is aware of the observed metric in advance.
+
+The objective of operating a TMF is to increase the confidence in, and efficiency of, a system by reducing the amount of undetectable negative operations an attacker can perform.
+In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
+In turn, this causes a super-linearly negative effect in the efficiency of the network as the TMF is assumed to have reduced the possible set of attacks when in fact it has only made it more advantageous to attack a different aspect of the networks operation.
+An example of such a behaviour would be the case in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing the over all throughput of one or more virtual network routes.
+Such behaviour would not be detected by the TMF.
+
+\subsection{Trust as an incomplete system characteristic}
+
+Many trust systems operate on the basis of establishing closed system models based on noisy or perturbed information inputs, sourced by decentralised agents or nodes, with an aim to collaboratively establishing additional information about the expected states and behaviours of other agents within a system.\todo{Need to say somewhere that 'agent' and 'node' are used interchangeably in this document}
+As such, trust systems can be described as fundamentally uncertain, particularly in the areas or reputation establishment and trust chaining.\cite{someone}.
+Adding to this state the highly dynamic features of many aspects of trust theory applications (Ad Hoc Networks, Online Markets, etc.), we can generalise the sources of incomplete information from a single nodes perspective as being part of 4 cases.
+
+\begin{itemize}
+  \item Information on the system's boundary is incomplete
+  \item Information about the range of system behaviours is incomplete
+  \item Information about the structure of the system is incomplete or out of date
+  \item Information about observed parameters (metrics) is incomplete or out of date.
+\end{itemize}
+
+These cases of incompleteness of information are closely mirrored by those for which grey theory was originally posited as a form of system modeling, putting information incompleteness at the centre of the assessment. 
+While some work \cite{Guo11} has been done to apply grey theory to a trust context, it has not been fully explored.
+Guo applies grey analysis to generate a ``trust vector'' from the grey whitenisation of independent or near-independent metrics. 
+In this paper we demonstrate a methodology that applies Grey Sequence operations and Grey Generators (conceptually analogous to Sequential Bayesian Filtering``) to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
+
+
+While application specific trust management frameworks are often based on a very limited space of available metrics, the problem of establishing trust in dynamical systems such as social, economic or autonomous systems have the opportunity to tap in to a wide range of potential metric spaces. 
+Taking the example of Mobile Ad-Hoc Networks (MANET), the variable most applied to the assessment of trust is the packet error rate, or more generally, the number of successful and unsuccessful interactions between two agents within a system.
+However, a wealth of other information is available within this example; for instance the delay in communications from one node to another; the total throughput of particular network links; and in the case of wireless networks, the strength of received signals.
+Looking beyond the communications domain, within such a MANET, information is also usually available regarding the physical domain of a network; the relative positioning and motions of nodes within a network can also be used to inform the generation of trust assessments.
+
+
+%Some groups use a reverse notation for trust, whereby $T_{1,0}$ would represent the trustworthiness of $n_1$ according to $n_0$; however, given the subjective nature of trustworthiness, it is more relatable to describe $T_{1,0}$ as ``The Trustworthiness of $n_1$ from the perspective of $n_0$. rather than an absolute statement on $n_1$'s trustworthiness.
+
+
+Table~\ref{tab:uncertainty} provides a qualitative summary of the differences in use and application between Fuzzy, Probabilistic and Grey Systems of managing uncertainty.
+
+
+\begin{table}[h]
+  \hyphenpenalty=10000
+  \begin{tabularx}{\textwidth}{l|XXX}
+    \toprule
+    & Fuzzy Math & Bayesian Estimation & Grey Systems \\
+    \midrule
+    Objects & Cognitive Uncertainty & Distribution Refinement & Poor Information \\
+    Set Style & Fuzzy Sets & Cantor Sets & Grey Hazy Sets \\
+    %      Methodology & Discerning Affiliation & Probability Distribution & Information Coverage \\
+    Processes & Marginal Sampling & Frequency Distribution & Sequence Generation \\
+    Requirement & Known Membership & Beta Distribution & Any Distribution \\
+    Emphasis & Extension & Intension & Intension \\
+    %      Objective & Cognitive Expression & Stabilisation & Realism \\
+    Characteristics & Experience & Large Samples & Small Samples\\
+    \bottomrule
+  \end{tabularx}
+  \caption{Comparison between selected methods of characterising uncertainty, adapted from \cite{Guo11} \cite{Liu2006} \cite{Ng1994} \cite{Wang2006} }
+  \label{tab:uncertainty}
+\end{table}
+
+
+\section{Current TMFs}
+\subsection{Single Metric Trust Frameworks}
+\todo{Expand background detail on more frameworks}
+
+The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
+
+\begin{equation}
+  p(B|O)  = \frac{p(O|B) \times p(B)}{\rho}
+  \label{eq:otmf_pbo}
+\end{equation}
+
+Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
+Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
+
+A secondary measurement of the confidence factor of the trust assessment $t$ is generated as \eqref{eq:otmf_c} and these measurements are combined to form a ``trustworthiness'' value $T$ \eqref{eq:otmf_trust}.
+
+\begin{align}
+  t_i &\to E\lbrack\text{beta}(p|\alpha,\beta)\rbrack = \frac{\alpha_i}{\alpha_i+\beta_i} \label{eq:otmf_t}\\[5pt]
+  c_i &= 1 - \sqrt{\frac{12\alpha_i\beta_i}{(\alpha_i+\beta_i)^2(\alpha_i+\beta_i+1)}} \label{eq:otmf_c}\\[5pt]
+  T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{x^2} + \frac{(c_i-1)^2}{y^2}}}{\sqrt{\frac{1}{x^2}+\frac{1}{y^2}}} \label{eq:otmf_trust}
+\end{align}
+
+In \eqref{eq:otmf_trust}, $x$ and $y$ are constants, used weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$), and from \cite{Zouridaki2005}, are taken as $x=\sqrt{2},y=\sqrt{9}$.
+
+Upon this per-node assessment methodology, OTMF overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
+
+
+\subsection{Multi-Metric Trust Frameworks}\label{sec:multimetrictrust}
+
+Given the potential incentives to a selfish attacker and potential threats to trust and fairness in sparse, noisy, and constrained environments, single metric trusts discussed above do not suitably cover the exposed threat surface. 
+This indicates that a multi-metric approach may be more appropriate to capture and monitor the realities of an environment such as those experienced by UANs.
+
+Grey Theory performs cohort based normalization of metrics at runtime, providing a ``grade'' of trust compared to other observed nodes in that interval, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
+This presents a stark difference between the Grey and Probabilistic approaches.
+Grey assessments are relative in both fairly and unfairly operating networks.
+All nodes will receive mid-range trust assessments if there are no malicious actors as there is nothing ``bad'' to compare against, and variations in assessment will be primarily driven by topological and environmental factors.
+Guo et al. \cite{Guo11} demonstrated the ability of grey relational analysis (GRA) \cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc. into a grey relational coefficient (GRC), or a ``trust vector'' in this instance.
+
+The grey relational vector is given as
+%
+\begin{align}
+  \label{eq:grc}
+  \theta_{k,j}^t = \frac{\min_k|a_{k,j}^t - g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|}{|a_{k,j}^t-g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|} \\
+  \phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
+\end{align}
+%
+where $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the ``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, i.e. $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g. higher throughput is presumed to be always better). 
+
+Weighting can be applied before generating a scalar value \eqref{eq:metric_weighting} allowing the detection and classification of misbehaviours.
+
+%
+\begin{equation}
+  \label{eq:metric_weighting}
+  [\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
+\end{equation}
+%
+Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
+$\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
+To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
+MTFM combines this GRA with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}. 
+
+There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
+Where an observing node $n_i$ assesses the trust of another target node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
+In the Recommendation case, a node $n_k$ which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.
+In the Indirect case, similar to the Recommendation case, the recommender $n_k$ does not have a direct link with the observer $n_i$ but $n_k$ has a Direct link with the target node, $n_j$.
+These relationships give node sets, $N_R$ and $N_I$ containing the nodes that have recommendation or indirect, relationships to the observing node respectively.
+%
+\begin{align}
+  \label{eq:networkeffects}
+  T_{i,j}^{MTFM}=&\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}\\ \notag
+  +&\frac{1}{2} \frac{2|N_R| }{2|N_R| + |N_I|}\sum_{n \in N_R} \max_s\{f_s(T_{i,n})\} T_{i,n}\\ \notag
+  +&\frac{1}{2} \frac{|N_I| }{2|N_R| + |N_I|}\sum_{n \in N_I} \max_s\{f_s(T_{i,n})\} T_{i,n} 
+\end{align}
+
+Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s = [ f_1,f_2, f_3]$ given as:
+
+\begin{align}
+  \label{eq:whitenization}
+  f_1(x)&= -x+1\notag\\
+  f_2(x)&= 
+  \begin{cases}
+    2x & \text{if }x\leq 0.5\\
+    -2x+2 & \text{if }x>0.5
+  \end{cases}\\
+  f_3(x)&= x\notag
+\end{align}
+%
+In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
+
+Guo et al. demonstrated that when compared against OTMF and Hermes trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
+
+
+\section{Trust in Operation of Autonomous Vehicles}
 
 \subsection{Introduction}
 
-The aim of the chapter is to explore where trust is likely to impact on an indicative system (of systems) that contains autonomous elements.
+The aim of the section is to explore where trust is likely to impact on an indicative system (of systems) that contains autonomous elements.
 To assist with scoping this, an indicative scenario is selected from the Maritime domain.  This scenario centres on autonomous Mine Counter  Measures and/or Hydrography, Capability (MCM/MHC) operations, incorporating Human Factors, Command and Control (C2) concerns, and Vehicle to vehicle (V2V) distributed communication, from the perspective of trusted and semi-trusted operation. 
 
-
-In human trust relationships it is recognized that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
 For the purposes of this work we define two perspectives on trust for autonomous systems: Design and Operational. These are summarised as follows:
 
-\begin{itemize}
-  \item \emph{Design Trust}; When an autonomous system is under development a level of Trust is established in it through the manner in which it has been designed and tested.
-    This is the same as conventional systems.
-    The difference with systems that have high-levels of autonomy is that they are designed to behave adaptively to dynamic environments that are difficult to fully predict prior to operational deployment.
-    For example, in a navigation system it is difficult to predict the dynamic environment it will need to adapt to.
-    So Trust needs to be developed that th:e design and test of such systems are sufficient to predict that operation will be, if not optimal, at least satisfactory.
-
-  \item \emph{Operational Trust}; Trust at runtime or in-situ that both the individual nodes within a system are operating as expected\footnote{Operational Trust is functionally derived from, but distinct from Design Trust}; and that the interfaces between the operator and the system are as expected.
+\begin{table}
+  \begin{tabularx}{\textwidth}{p{3cm}X}\toprule
+  \emph{Design Trust} & When an autonomous system is under development a level of Trust is established in it through the manner in which it has been designed and tested.
+    This is the same as conventional systems.\par
+    Given that systems that have high-levels of autonomy are designed to behave adaptively to dynamic environments, it is challenging to fully predict such non-deterministic behaviours prior to operational deployment.
+    For example, in a navigation system it is difficult to predict the dynamic environment it will need to adapt to.\par
+    Trust needs to be developed that the design and test of such systems are sufficient to predict that operation will be, if not optimal, at least satisfactory.
+    \\
+  \emph{Operational Trust} & Trust at runtime or in-situ that both the individual nodes within a system are operating as expected and that the interfaces between the operator and the system are as expected. \par
     This latter aspect covers issues such as physical/wireless links and interpretation of data at each end of such a communication link.
-\end{itemize}
+    Operational Trust is functionally derived from, but distinct from Design Trust.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{Trust Perspectives with respect to autonomous systems}
+  \label{tab:trust_perspectives}
+\end{table}
 
 In addition to the two perspectives of trust identified, it is necessary to define and classify Operational Trust into two distinct but related sections, which we define as being:
 \begin{itemize}
@@ -64,9 +330,9 @@ In order to constrain the scope of this project, a single operational scenario w
 This scenario will be a minimal MCM operation in a littoral area.
 In field assets will consist of:
 \begin{itemize}
-	\item Two squads consisting of Three UUV’s, (tacitly modelled on the in-service REMUS 100 UUV), and a USV providing acoustic-RF relay capabilities per-squad
-	\item	an UAV providing BLOS Comms
-	\item	A remote human operator (MCMV / PJHQ / etc)
+  \item Two squads consisting of Three UUV’s, (tacitly modelled on the in-service REMUS 100 UUV), and a USV providing acoustic-RF relay capabilities per-squad
+  \item	an UAV providing BLOS Comms
+  \item	A remote human operator (MCMV / PJHQ / etc)
 \end{itemize}
 
 \missingfigure{Indicitive Future MCM Scenario}
@@ -77,84 +343,74 @@ Clearly, this paper has a limited scope and does not attempt to cover every aspe
 \section{Trust Perspectives}
 
 In Human trust relationships it can be seen that there can be several perspectives of Trust for example organizational, sociological, interpersonal, psychological and neurological\cite{Lee2004}.
-For the purposes of this work we can define two perspectives: Design and Operational.
-These are summarised as follows:
-\begin{itemize}
-	\item Design Trust.
-	When an autonomous system is under development a level of Trust is established in it through the manner in which it has been designed and tested.
-	This is the same as conventional systems.
-	The difference with systems that have high-levels of autonomy is that they are designed to behave adaptively to dynamic environments that are difficult to fully predict prior to operational deployment.
-	For example, in a navigation system it is difficult to predict the dynamic environment it will need to adapt to.
-	So Trust needs to be developed that the design and test of such systems are sufficient to predict that operational solutions will be, if not optimal, at least satisfactory.
-	\item Operational Trust.
-	Effectively, there are two aspects to this: trust that a system is operating as expected (which is inevitably tied in with, but distinct from) Design Trust; and trust that the interfaces between the operator and the system are as expected.
-	This latter aspect covers issues such as physical links and interpretation of data.
-\end{itemize}
-
-Examples of roles that interact with a system from both of these trust perspectives are provided in Table 1 and Table 2 below.
+We have already defined two trust perspectives when considering the design and operation of autonomous systems (Table \ref{tab:trust_perspectives}). 
+Examples of roles that interact with a system from both of these trust perspectives are provided in Tables \ref{tab:design_perspectives} and \ref{tab:operational_perspectives}.
 
 \begin{table}[H]
-	\label{tab:design_perspectives}
-	\caption{Examples of Roles that require a Design Perspective of Trust in Autonomous Systems. }
-	\begin{tabular}{|l|p{1.5in}|p{1.5in}|p{1.5in}|}
-		\hline  & \multicolumn{3}{c}{\textbf{Role}}\\
-		\hline  & \textbf{Designer} & \textbf{Acquirer} & \textbf{Disposer} \\
-		\hline  \textbf{Definition} & Responsible for developing the system & Responsible for acquisition of the system & Responsible for the disposal of a system. \\ 
-		\hline  \textbf{Level} & Organisation & Organisation & Organisation \\ 
-		\hline  \textbf{Perspective} 
-		& The designer of an Autonomous System develops trust through the application of known and trusted tools to well understood problems (e.g. a well-defined requirement set) using competent and trusted staff. \par The trust perspective therefore could be regarded as the \textbf{Design perspective}. 
-		& The Acquirer of a System develops trust through prior experience of the vendor and similar products.  For any given product this is supplemented by the examination of engineering evidence provided by the Designer Organisation. \par Although there will be several trust aspects to the role, for the purposes of this paper this role can be seen as having a \textbf{Design perspective} since the Acquisition process needs to develop trust that the systems it is buying will be designed to be trustworthy in operation.  
-		& System disposal does not necessarily indicate destruction.
-		Where assets are passed to 3rd parties (e.g. though sale) the disposer must be confident that the autonomous behaviour can be reduced (where necessary) to a known and acceptable level.\par This perspective is therefore part of the \textbf{Design perspective} since there will be trust that (possibly advanced) behaviours can be prevented from being passed unwittingly to second user organisations; particularly since they may use the systems in a different context. \\ 
-		\hline 
-	\end{tabular} 
+  \begin{tabular}{|l|p{1.5in}|p{1.5in}|p{1.5in}|}
+    \hline  & \multicolumn{3}{c}{\textbf{Role}}\\
+    \hline  & \textbf{Designer} & \textbf{Acquirer} & \textbf{Disposer} \\
+    \hline  \textbf{Definition} & Responsible for developing the system & Responsible for acquisition of the system & Responsible for the disposal of a system. \\ 
+    \hline  \textbf{Level} & Organisation & Organisation & Organisation \\ 
+    \hline  \textbf{Perspective} 
+    & The designer of an Autonomous System develops trust through the application of known and trusted tools to well understood problems (e.g. a well-defined requirement set) using competent and trusted staff. \par 
+    The trust perspective therefore could be regarded as the \textbf{Design perspective}. 
+    & The Acquirer of a System develops trust through prior experience of the vendor and similar products.  For any given product this is supplemented by the examination of engineering evidence provided by the Designer Organisation. \par
+    Although there will be several trust aspects to the role, for the purposes of this paper this role can be seen as having a \textbf{Design perspective} since the Acquisition process needs to develop trust that the systems it is buying will be designed to be trustworthy in operation.  
+    & System disposal does not necessarily indicate destruction.
+    Where assets are passed to 3rd parties (e.g. though sale) the disposer must be confident that the autonomous behaviour can be reduced (where necessary) to a known and acceptable level.\par 
+    This perspective is therefore part of the \textbf{Design perspective} since there will be trust that (possibly advanced) behaviours can be prevented from being passed unwittingly to second user organisations; particularly since they may use the systems in a different context. \\ 
+    \hline 
+  \end{tabular} 
+  \caption{Examples of Roles that require a Design Perspective of Trust in Autonomous Systems. }
+  \label{tab:design_perspectives}
 \end{table}
 \begin{table}[H]
-	\label{tab:operational_perspectives}
-	\caption{Examples of Roles that require a Operational Perspective of Trust in Autonomous Systems. }
-	\begin{tabular}{|l|p{1.5in}|p{1.5in}|p{1.5in}|}
-		\hline  & \multicolumn{3}{c}{\textbf{Role}}\\
-		\hline  & \textbf{Commander} & \textbf{Operator} & \textbf{User} \\
-		\hline  \textbf{Definition} & Responsible for the system tactical activity (e.g. mission / activity setting) & Responsible for the ongoing control of the system when deployed on a particular mission / activity & An end user of the capabilities provided by the system. \\ 
-		\hline  \textbf{Level} & Person & Person & Person/System/Org. \\ 
-		\hline  \textbf{Perspective} 
-		& The Commander places trust in the acquisition process to provide reliable assets.
-		However, their trust perspective is \textbf{operational}.
-		
-		& An operator develops initial trust in a system through training and experience of similar systems.
-		When interacting with a deployed system, the ongoing trust is maintained through correct and understandable system behaviour.
-		This can be regarded as \textbf{Operational Trust }
-		& A user of a System’s capability may not have any knowledge of the System itself but will need to develop trust in ability to provide trustworthy services.
-		Again, this may be regarded as a form of \textbf{Operational Trust} \\ 
-		\hline 
-	\end{tabular} 
+  \begin{tabular}{|l|p{1.5in}|p{1.5in}|p{1.5in}|}
+    \hline  & \multicolumn{3}{c}{\textbf{Role}}\\
+    \hline  & \textbf{Commander} & \textbf{Operator} & \textbf{User} \\
+    \hline  \textbf{Definition} & Responsible for the system tactical activity (e.g. mission / activity setting) & Responsible for the ongoing control of the system when deployed on a particular mission / activity & An end user of the capabilities provided by the system. \\ 
+    \hline  \textbf{Level} & Person & Person & Person/System/Org. \\ 
+    \hline  \textbf{Perspective} 
+    & The Commander places trust in the acquisition process to provide reliable assets.
+    However, their trust perspective is \textbf{operational}.
+
+    & An operator develops initial trust in a system through training and experience of similar systems.
+    When interacting with a deployed system, the ongoing trust is maintained through correct and understandable system behaviour.
+    This can be regarded as \textbf{Operational Trust }
+    & A user of a System’s capability may not have any knowledge of the System itself but will need to develop trust in ability to provide trustworthy services.
+    Again, this may be regarded as a form of \textbf{Operational Trust} \\ 
+    \hline 
+  \end{tabular} 
+  \caption{Examples of Roles that require a Operational Perspective of Trust in Autonomous Systems. }
+  \label{tab:operational_perspectives}
 \end{table}
 
 \subsection{Design Trust}
 
 Five aspects of Design Trust have been identified:
 \begin{enumerate}
-	\item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
-	This includes engaging with dynamic systems of systems environments where an autonomous system may cooperate with a system not envisaged at design time. \textit{How can systems that are required to demonstrate that they meet their requirement be specified flexibly enough to permit adaptive behaviours}?
-	
-	\item \textbf{Security}: Any unmanned system has the potential to be used for illegitimate purposes by unscrupulous 3rd parties who could exploit security vulnerabilities to gain control of the system or sub-systems.
-	Any system that has the potential to cause harm from such actions must have security designed in from the start to ensure that the system can be trusted to be resilient from cyber attack.
-	Current accreditation schemes rely on a security assessment of a known architecture and there are mutual accreditation recognition schemes that could be encoded in dynamic discovery handshake protocols.
-	This would produce a secure network assured through the accreditation of its component systems.  For example, the Multinational Security Accreditation Board (MSAB) deals with Combined Communications Electronics Board (CCEB) and NATO Accreditations to provide security assurance of internationally connected networks.
-	Encoding such agreements into secure handshakes could enable dynamic accreditation of autonomous systems cooperating in a coalition environment.
-	It is not known whether these have been demonstrated, so the question is: \textit{Can autonomous systems be designed to understand the security situation when interfacing with known or unknown systems?}
-	
-	\item \textbf{Verification and Validation of a Flexible Specification}: Following on from the description of a flexible specification, establish that the AS conforms and performs in accordance to the specification.  This has direct implication for the trust in the resultant system.
-	How can systems demonstrate that they will behave acceptably when the environment is unknown?
-	\item \textbf{Trust Modelling and Metrics}: This could be argued as part of the Verification and Validation of the system.
-	However, models are increasingly being embedded into system design as a reference.
-	Thus it is useful to consider this element separately.\textit{ How can trust be modelled sufficiently to span the space of most potential behaviours to help ensure that systems will be trusted when moved into operational environments?
-		Can this be measured to allow comparison and minimum requirements set?}
-	
-	\item \textbf{Certification}: The certification requirements placed on specific systems will vary depending on domain and national approaches to certification.
-	However, the common element in the requirement for certification is that a certified system is deemed as sufficiently trustworthy for use within its context of certification.
-	Additionally Certification also relies on the predictability of a system.
-	Because the aim of autonomous systems is to deal effectively with uncertain environments, \textit{can they (autonomous systems) be certified without being demonstrated in the environment within which they will adapt new behaviour?}
+  \item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
+    This includes engaging with dynamic systems of systems environments where an autonomous system may cooperate with a system not envisaged at design time. \textit{How can systems that are required to demonstrate that they meet their requirement be specified flexibly enough to permit adaptive behaviours}?
+
+  \item \textbf{Security}: Any unmanned system has the potential to be used for illegitimate purposes by unscrupulous 3rd parties who could exploit security vulnerabilities to gain control of the system or sub-systems.
+    Any system that has the potential to cause harm from such actions must have security designed in from the start to ensure that the system can be trusted to be resilient from cyber attack.
+    Current accreditation schemes rely on a security assessment of a known architecture and there are mutual accreditation recognition schemes that could be encoded in dynamic discovery handshake protocols.
+    This would produce a secure network assured through the accreditation of its component systems.  For example, the Multinational Security Accreditation Board (MSAB) deals with Combined Communications Electronics Board (CCEB) and NATO Accreditations to provide security assurance of internationally connected networks.
+    Encoding such agreements into secure handshakes could enable dynamic accreditation of autonomous systems cooperating in a coalition environment.
+    It is not known whether these have been demonstrated, so the question is: \textit{Can autonomous systems be designed to understand the security situation when interfacing with known or unknown systems?}
+
+  \item \textbf{Verification and Validation of a Flexible Specification}: Following on from the description of a flexible specification, establish that the AS conforms and performs in accordance to the specification.  This has direct implication for the trust in the resultant system.
+    How can systems demonstrate that they will behave acceptably when the environment is unknown?
+  \item \textbf{Trust Modelling and Metrics}: This could be argued as part of the Verification and Validation of the system.
+    However, models are increasingly being embedded into system design as a reference.
+    Thus it is useful to consider this element separately.\textit{ How can trust be modelled sufficiently to span the space of most potential behaviours to help ensure that systems will be trusted when moved into operational environments?
+    Can this be measured to allow comparison and minimum requirements set?}
+
+  \item \textbf{Certification}: The certification requirements placed on specific systems will vary depending on domain and national approaches to certification.
+    However, the common element in the requirement for certification is that a certified system is deemed as sufficiently trustworthy for use within its context of certification.
+    Additionally Certification also relies on the predictability of a system.
+    Because the aim of autonomous systems is to deal effectively with uncertain environments, \textit{can they (autonomous systems) be certified without being demonstrated in the environment within which they will adapt new behaviour?}
 \end{enumerate}
 
 Clearly existing military and commercial standards can play a significant role in demonstrating the trustworthiness of any systems’ design.
@@ -166,9 +422,9 @@ The following sub section briefly outlines existing Standards for reference.
 
 There are three main organisations that are developing or have developed assurance standards for Unmanned Systems;
 \begin{itemize}
-	\item NATO Standardization Office (NSO)
-	\item Society of Automotive Engineers (SAE)
-	\item American Society of Testing and Materials (ASTM)
+  \item NATO Standardization Office (NSO)
+  \item Society of Automotive Engineers (SAE)
+  \item American Society of Testing and Materials (ASTM)
 \end{itemize}
 
 \paragraph{NATO Standardization Office}
@@ -181,17 +437,17 @@ This VSM could be mounted on the remote system, utilising a 4586 compliant Data 
 This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations \cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ‘direct control’ or ‘Operator-in-the-loop’, especially in the case of BLOS systems, and that in increasingly autonomous systems, operation is done as ‘Human Supervisory Control’ (HSC), or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware. 
 
 \begin{table}
-	\label{tab:levels_of_interoperability}
-	\caption{Levels of Interoperability for STANAG 4586 Compliant UCS}
-	\begin{tabularx}{\textwidth}{|l|X|}
-		\hline  LOI &  \\ 
-		\hline  1 &  Indirect receipt/transmission of UAV related payload data\\ 
-		\hline  2 &  Direct receipt of Intelligence, Surveillance and Reconnaissance (ISR) data where “direct” covers reception of UAV payload data by the UCS when it has direct communication with the UAV\\ 
-		\hline  3 &  Control and monitoring of the UAV payload in addition to direct receipt of ISR/other data\\ 
-		\hline  4 &  Control and monitoring of the UAV, less launch and recovery\\
-		\hline  5 &  Launch and Recovery in addition to LOI 4\\ 
-		\hline 
-	\end{tabularx}
+  \label{tab:levels_of_interoperability}
+  \caption{Levels of Interoperability for STANAG 4586 Compliant UCS}
+  \begin{tabularx}{\textwidth}{|l|X|}
+    \hline  LOI &  \\ 
+    \hline  1 &  Indirect receipt/transmission of UAV related payload data\\ 
+    \hline  2 &  Direct receipt of Intelligence, Surveillance and Reconnaissance (ISR) data where “direct” covers reception of UAV payload data by the UCS when it has direct communication with the UAV\\ 
+    \hline  3 &  Control and monitoring of the UAV payload in addition to direct receipt of ISR/other data\\ 
+    \hline  4 &  Control and monitoring of the UAV, less launch and recovery\\
+    \hline  5 &  Launch and Recovery in addition to LOI 4\\ 
+    \hline 
+  \end{tabularx}
 \end{table}
 
 
@@ -288,284 +544,28 @@ In terms of the human factors challenges raised by Cummings, they are often cont
 This is a key part of the ‘soft-trust’ theory, where the operators and commanders need to be able to implicitly and explicitly trust the operation of a remote system with limited feed-back bandwidth, high latency, or long-term operation such that direct remote operation is infeasible or undesirable.
 To be able to trust that systems’ ability to continue on a course, survey an area, notify on detection of an anomaly, etc.is going to be the corner stone of any autonomous systems justification in the future.
 
-\section{Trust and Reputation in Autonomous Collaborative Systems}
-
-In addition to the two perspectives of trust identified thus far, and for the purposes of this investigation, it is necessary to define and classify Operational Trust into two distinct but related sections, which we define as being
-
-\begin{itemize}
-	\item Hard Trust or technical trust, being the quantative measurement and communication of the expectation of an actor performing a certain task, based on historic performance and through consensus building within a networked system.
-	Can be thought of as a de-risking strategy to measure the ability of a system to perform a task unsupervised.
-	
-	\item Soft Trust or common trust, being the qualitative assessment of the ability of an actor to perform a task or operation consistently and reliably based on social or experiential factors.
-	This is the ‘natural’ form of trust and is the main motivational driver for the human-factors trust discussion.
-	Can be rephrased as the level of confidence in an actor to perform a task unsupervised.
-\end{itemize}
-
-It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical appraisal of an activity by a system.
-The difficulty with human supervisory controlled autonomous systems is that there is a need for both a hard and soft trust perspective, and that this interface can often create fundamental misunderstandings.
-
-
 \section{Levels of Trust}
 Trust relationships operate as part of a system architecture, and can quite often get confused.
 As such, we constrain the focal domain as per \cite{Liu2006} into six constructs.
 Sun\cite{Sun2008} suggests that within these there are two overarching forms of trust:
 \begin{itemize}
-	\item Behavioural: That one entity voluntarily depends on another entity in a specific situation
-	\item Intentional: That one entity would be willing to depend on another entity
+  \item Behavioural: That one entity voluntarily depends on another entity in a specific situation
+  \item Intentional: That one entity would be willing to depend on another entity
 \end{itemize}
 
 These concepts closely mirror the authors definitions of ‘Hard’ and ‘Soft’ trust respectively, one (Behavioural) being an invested dependency given certain parameters being satisfied, mirroring Hard Trust, and the other (Intentional) being the ‘capacity for belief’ in another entity, analogous to Soft Trust.
 It is suggested that these overarching forms are supported by and indeed are drawn from four major constructs within social and networked environments:
 \begin{itemize}
-	\item Trusting Belief: the subjective belief within a system that the other trusted components are willing and able to act in each-others’ best interests
-	\item Dispositional Trust: a general expectation of trustworthiness over time 
-	\item Situational Decision Trust: in-situ risk assessment where the benefits of trust outweigh the negative outcomes of trust
-	\item System Trust: the assurance that formal impersonal or procedural structures are in place to ensure successful operation.
+  \item Trusting Belief: the subjective belief within a system that the other trusted components are willing and able to act in each-others’ best interests
+  \item Dispositional Trust: a general expectation of trustworthiness over time 
+  \item Situational Decision Trust: in-situ risk assessment where the benefits of trust outweigh the negative outcomes of trust
+  \item System Trust: the assurance that formal impersonal or procedural structures are in place to ensure successful operation.
 \end{itemize}
 
 While Sun argues that only System Trust and Behavioural Trust are relevant to trusted networking applications.
 However, it is arguable that in any network where the operation of that network is not the only concern, or where that network has to interact with any operator, then all of these factors come into play.
 Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation Process’, or a trust assessment, while the other trust constructs deal with the interactions between trust and decision making against an internal assessment of network trustworthiness.
 
-
-\section{Trust in MANETs}
-
-As mobile ad-hoc networks (MANETs) grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
-
-Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes within networks.
-This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes.
-Previous research has established the advantages of implementing TMFs in 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
-
-Most current TMFs use a single type of observed action to derive trust values, i.e. successfully forwarded packets. These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
-
-Recent work has demonstrated use of a number of metrics to form a ``vector'' of trust.
-The Multi-parameter Trust Framework for MANETs (MTFM)\cite{Guo11}, uses a range of physical metrics beyond packet delivery/loss rate (PLR) to form a vector of trust.
-This vectorized trust allows a system to detect and identify the tactics being used to undermine or subvert trust.
-To date this work has been limited to terrestrial, RF based networks, however as autonomous underwater vehicles (AUVs) become more capable, and economical, they are being used in many applications requiring trust.
-These applications are using the collective behaviour of teams or fleets of these AUVs to accomplish tasks \cite{Caiti2011}.
-With this use being increasingly isolated from stable communications networks, the establishment of trust between nodes is essential for the reliability and stability of such teams.
-As such, the use of trust methods developed in the terrestrial MANET space must be re-appraised for application within the challenging underwater communications channel.
-
-The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities (CA) or Public Key Infrastructure (PKI).
-Distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
-Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
-Taking some examples;
-
-\begin{itemize}
-  \item \emph{The Objective Trust Management Framework} takes a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
-    OTMF however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
-  \item \emph{Trust-based Secure Routing}\cite{Moe2008a} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of next-hop network, reducing the efficacy of Byzantine attacks such as black-hole routing.
-  \item \emph{CONFIDANT}\cite{Buchegger2002} presented an approach using a probabilistic estimation of PLR, similar to OTMF, also introducing a topology weighting scheme that also weighted trust assessments based on historical experience of the reporter.
-  \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presents the use of Fuzzy Inference to adapt to malicious recommenders using conditional similarity to classify performance with overlapping Fuzzy Set Membership, filtering assessments across a network.
-\end{itemize}
-
-These TMFs can be generalised as single-value probabilistic estimation, based around using a binary input state and generating an probabilistic estimation of the future states of that input. This expectation value is $\text{beta}(p|\alpha,\beta) \to E(p) = \frac{\alpha}{\alpha+\beta}$ where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
-
-These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that metric.
-In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
-In turn, this causes a super-linearly negative effect in the efficiency of the network, as the TMF is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
-An example of such a situation would be in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
-Such behaviour would not be detected by the TMF.
-
-There are also situations where the observed metrics will include significant noise and occur at irregular, sparse, intervals.
-Conventional approaches such as probabilistic estimation do not produce trust values that reflect the underlying reality and context of the metrics available, as they require a-priori assumption that the trust value under exploration has an expected distribution, that distribution is mono-modal, and the input metrics are binary.
-In scenarios with variable, sparse, noisy metrics, estimating the distribution is difficult to accomplish a-priori.
-
-
-\subsection{Design Considerations}
-
-There are five topics that are important to address in any MANETs trust model \cite{Kamvar2003}:
-
-\begin{enumerate}
-  \item The trust model should be without infrastructure. Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a trusted third party (TTP). There is no public key infrastructure (PKI), where some center nodes monitor the network, and publish illegal nodes periodically. In a MANET, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
-  \item The trust model should be anonymous because of the anonymity of mobile nodes in MANETs.
-  \item The trust model should be robust. That is, it can be robust to all kinds of unfriendly attacks and the network itself should not be susceptible to attacks by unfriendly nodes. Moreover, in the presence of malicious nodes, they attempt to subvert the model in order to get the unfairly good trust value.
-  \item The trust model should have minimal control overhead in accordance with computation, storage, and complexity.
-  \item The trust model should be self-organized. MANETs are characterized to have dynamic, random, rapidly changing and multi-hop topologies composed of relatively bandwidth-constrained
-\end{enumerate}
-
-Trust is the level of confidence one agent has in another to perform a given action on request or in a certain context. Trust in the autonomous or semi-autonomous realm is the ability of a system to establish and maintain confidence in itself or another systems' operations. 
-Managing this trust can be used to predict and reason on the future interactions between entities in a system, such as an autonomous mobile ad-hoc network (MANET).
-
-The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities or using Public Key Infrastructures (PKI).
-Therefore, a distributed, collaborative system must be applied to these networks.
-Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
-
-\subsection{Current Trust Management Frameworks}
-
-Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
-Taking some examples;
-
-\begin{itemize}
-  \item \emph{The Objective Trust Management Framework} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
-    OTMF however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
-  \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (PLR)\cite{Cho2011}.
-  \item \emph{CONFIDANT}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, similar to OTMF. They also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter.
-  \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network.
-\end{itemize}
-
-OTMF, CONFIDANT, and Fuzzy Trust-Based Filtering can be generalised as single-value probabilistic estimation, based around a Bayesian idea of taking a binary input state and generating an idealised Beta Distribution (\ref{eq:beta}) of the future states of that input generated through an expectation value based on interactions (\ref{eq:beta_e}).
-\begin{align}
-  \label{eq:beta}
-  \text{beta}(p|\alpha,\beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1},\text{ where } 0 \leq p \leq 1; \alpha,\beta > 0\\
-  \label{eq:beta_e}
-  E(p) = \frac{\alpha}{\alpha + \beta}
-\end{align}
-
-Where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
-
-These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker knows the metric in advance.
-
-The objective of operating a TMF is to increase the confidence in, and efficiency of, a system by reducing the amount of undetectable negative operations an attacker can perform.
-In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
-In turn, this causes a super-linearly negative effect in the efficiency of the network as the TMF is assumed to have reduced the possible set of attacks when in fact it has only made it more advantageous to attack a different aspect of the networks operation.
-An example of such a behaviour would be the case in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing the over all throughput of one or more virtual network routes.
-Such behaviour would not be detected by the TMF.
-
-Many trust systems operate on the basis of establishing closed system models based on noisy or perturbed information inputs, sourced by decentralised agents or nodes, with an aim to collaboratively establishing additional information about the expected states and behaviours of other agents within a system.\todo{Need to say somewhere that 'agent' and 'node' are used interchangeably in this document}
-As such, trust systems can be described as fundamentally uncertain, particularly in the areas or reputation establishment and trust chaining.\cite{someone}.
-Adding to this state the highly dynamic features of many aspects of trust theory applications (Ad Hoc Networks, Online Markets, etc.), we can generalise the sources of incomplete information from a single nodes perspective as being part of 4 cases.
-
-\begin{itemize}
-  \item Information on the system's boundary is incomplete
-  \item Information about the range of system behaviours is incomplete
-  \item Information about the structure of the system is incomplete or out of date
-  \item Information about observed parameters (metrics) is incomplete or out of date.
-\end{itemize}
-
-These cases of incompleteness of information are closely mirrored by those for which grey theory was originally posited as a form of system modeling, putting information incompleteness at the centre of the assessment. 
-While some work \cite{Guo11} has been done to apply grey theory to a trust context, it has not been fully explored.
-Guo applies grey analysis to generate a ``trust vector'' from the grey whitenisation of independent or near-independent metrics. 
-In this paper we demonstrate a methodology that applies Grey Sequence operations and Grey Generators (conceptually analogous to Sequential Bayesian Filtering``) to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
-
-\subsection{Trust as an incomplete system characteristic}
-
-While application specific trust management frameworks are often based on a very limited space of available metrics, the problem of establishing trust in dynamical systems such as social, economic or autonomous systems have the opportunity to tap in to a wide range of potential metric spaces. 
-Taking the example of Mobile Ad-Hoc Networks (MANET), the variable most applied to the assessment of trust is the packet error rate, or more generally, the number of successful and unsuccessful interactions between two agents within a system.
-However, a wealth of other information is available within this example; for instance the delay in communications from one node to another; the total throughput of particular network links; and in the case of wireless networks, the strength of received signals.
-Looking beyond the communications domain, within such a MANET, information is also usually available regarding the physical domain of a network; the relative positioning and motions of nodes within a network can also be used to inform the generation of trust assessments.
-
-
-%Some groups use a reverse notation for trust, whereby $T_{1,0}$ would represent the trustworthiness of $n_1$ according to $n_0$; however, given the subjective nature of trustworthiness, it is more relatable to describe $T_{1,0}$ as ``The Trustworthiness of $n_1$ from the perspective of $n_0$. rather than an absolute statement on $n_1$'s trustworthiness.
-
-
-Table~\ref{tab:uncertainty} provides a qualitative summary of the differences in use and application between Fuzzy, Probabilistic and Grey Systems of managing uncertainty.
-
-
-\begin{table}[h]
-  \caption{Comparison between selected methods of characterising uncertainty, adapted from \cite{Guo11} \cite{Liu2006} \cite{Ng1994} \cite{Wang2006} }
-  \label{tab:uncertainty}
-  \begin{center}
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{l|ccc}
-      \toprule
-        & Fuzzy Math & Bayesian Estimation & Grey Systems \\
-      \midrule
-      Objects & Cognitive Uncertainty & Distribution Refinement & Poor Information \\
-      Set Style & Fuzzy Sets & Cantor Sets & Grey Hazy Sets \\
-%      Methodology & Discerning Affiliation & Probability Distribution & Information Coverage \\
-      Processes & Marginal Sampling & Frequency Distribution & Sequence Generation \\
-      Requirement & Known Membership & Beta Distribution & Any Distribution \\
-      Emphasis & Extension & Intension & Intension \\
-%      Objective & Cognitive Expression & Stabilisation & Realism \\
-      Characteristics & Experience & Large Samples & Small Samples\\
-     \bottomrule
-    \end{tabular}
-    \setlength{\tabcolsep}{6pt}
-  \end{center}
-\end{table}
-
-
-\section{Current TMFs})
-\subsection{Single Metric Trust Frameworks}
-\todo{Expand background detail on more frameworks}
-
-The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
-
-\begin{equation}
-p(B|O)  = \frac{p(O|B) \times p(B)}{\rho}
-\label{eq:otmf_pbo}
-\end{equation}
-
-Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
-Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
-
-A secondary measurement of the confidence factor of the trust assessment $t$ is generated as \eqref{eq:otmf_c} and these measurements are combined to form a ``trustworthiness'' value $T$ \eqref{eq:otmf_trust}.
-
-\begin{align}
-t_i &\to E\lbrack\text{beta}(p|\alpha,\beta)\rbrack = \frac{\alpha_i}{\alpha_i+\beta_i} \label{eq:otmf_t}\\[5pt]
-c_i &= 1 - \sqrt{\frac{12\alpha_i\beta_i}{(\alpha_i+\beta_i)^2(\alpha_i+\beta_i+1)}} \label{eq:otmf_c}\\[5pt]
-T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{x^2} + \frac{(c_i-1)^2}{y^2}}}{\sqrt{\frac{1}{x^2}+\frac{1}{y^2}}} \label{eq:otmf_trust}
-\end{align}
-
-In \eqref{eq:otmf_trust}, $x$ and $y$ are constants, used weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$), and from \cite{Zouridaki2005}, are taken as $x=\sqrt{2},y=\sqrt{9}$.
-
-Upon this per-node assessment methodology, OTMF overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
-
-
-\subsection{Multi-Metric Trust Frameworks}\label{sec:multimetrictrust}
-
-Given the potential incentives to a selfish attacker and potential threats to trust and fairness in sparse, noisy, and constrained environments, single metric trusts discussed above do not suitably cover the exposed threat surface. 
-This indicates that a multi-metric approach may be more appropriate to capture and monitor the realities of an environment such as those experienced by UANs.
-
-Grey Theory performs cohort based normalization of metrics at runtime, providing a ``grade'' of trust compared to other observed nodes in that interval, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
-This presents a stark difference between the Grey and Probabilistic approaches.
-Grey assessments are relative in both fairly and unfairly operating networks.
-All nodes will receive mid-range trust assessments if there are no malicious actors as there is nothing ``bad'' to compare against, and variations in assessment will be primarily driven by topological and environmental factors.
-Guo et al. \cite{Guo11} demonstrated the ability of grey relational analysis (GRA) \cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc. into a grey relational coefficient (GRC), or a ``trust vector'' in this instance.
-
-The grey relational vector is given as
-%
-\begin{align}
-\label{eq:grc}
-\theta_{k,j}^t = \frac{\min_k|a_{k,j}^t - g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|}{|a_{k,j}^t-g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|} \\
-\phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
-\end{align}
-%
-where $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the ``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, i.e. $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g. higher throughput is presumed to be always better). 
-
-Weighting can be applied before generating a scalar value \eqref{eq:metric_weighting} allowing the detection and classification of misbehaviours.
-
-%
-\begin{equation}
-\label{eq:metric_weighting}
-[\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
-\end{equation}
-%
-Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
-$\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
-To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
-MTFM combines this GRA with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}. 
-
-There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
-Where an observing node $n_i$ assesses the trust of another target node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
-In the Recommendation case, a node $n_k$ which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.
-In the Indirect case, similar to the Recommendation case, the recommender $n_k$ does not have a direct link with the observer $n_i$ but $n_k$ has a Direct link with the target node, $n_j$.
-These relationships give node sets, $N_R$ and $N_I$ containing the nodes that have recommendation or indirect, relationships to the observing node respectively.
-%
-\begin{align}
-\label{eq:networkeffects}
-T_{i,j}^{MTFM}=&\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}\\ \notag
-+&\frac{1}{2} \frac{2|N_R| }{2|N_R| + |N_I|}\sum_{n \in N_R} \max_s\{f_s(T_{i,n})\} T_{i,n}\\ \notag
-+&\frac{1}{2} \frac{|N_I| }{2|N_R| + |N_I|}\sum_{n \in N_I} \max_s\{f_s(T_{i,n})\} T_{i,n} 
-\end{align}
-
-Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s = [ f_1,f_2, f_3]$ given as:
-
-\begin{align}
-\label{eq:whitenization}
-f_1(x)&= -x+1\notag\\
-f_2(x)&= 
-\begin{cases}
-2x & \text{if }x\leq 0.5\\
--2x+2 & \text{if }x>0.5
-\end{cases}\\
-f_3(x)&= x\notag
-\end{align}
-%
-In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
-
-Guo et al. demonstrated that when compared against OTMF and Hermes trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
 
 \section{Grey System Theory and Grey Trust Assessment}
 
@@ -584,23 +584,23 @@ Grey numbers may represent partial knowledge about a system or metric, and as su
 Primary operations within this number system are as follows;
 
 \begin{subequations}
-\begin{align}
-  \oplus_1 + \oplus_2      &\in [a_1+a_2,b_1+b_2] \label{eq:grey_add}\\
-           -\oplus         &\in [-b,-a] \label{eq:grey_neg} \\
-  \oplus_1 - \oplus_2      &= \oplus_1+(-\oplus) \label{eq:grey_sub}\\
-  \oplus_1 \times \oplus_2 &\in \begin{aligned}[t]
-    &[\min(a_1 a_2, a_1 b_2, b_1 a_2, b_2 a_2), \\
-    & \max(a_1 a_2, a_1 b_2, b_1 a_2, b_2 a_2)]
-  \end{aligned} \label{grey_mult}\\
-  \oplus^{-1} &\in [b^{-1}, a^{-1}] \label{eq:grey_inv}\\
-  \oplus_1 / \oplus_2 & = \oplus_1 \times \oplus_2^{-1} \label{grey_mult} \\
-  \oplus \times k &\in [ka,kb] \label{eq:grey_times_scalar}\\
-  \oplus^k &\in [a^k, b^k] \label{eq:grey_exp}
-\end{align}
+  \begin{align}
+    \oplus_1 + \oplus_2      &\in [a_1+a_2,b_1+b_2] \label{eq:grey_add}\\
+    -\oplus         &\in [-b,-a] \label{eq:grey_neg} \\
+    \oplus_1 - \oplus_2      &= \oplus_1+(-\oplus) \label{eq:grey_sub}\\
+    \oplus_1 \times \oplus_2 &\in \begin{aligned}[t]
+      &[\min(a_1 a_2, a_1 b_2, b_1 a_2, b_2 a_2), \\
+      & \max(a_1 a_2, a_1 b_2, b_1 a_2, b_2 a_2)]
+    \end{aligned} \label{grey_mult}\\
+    \oplus^{-1} &\in [b^{-1}, a^{-1}] \label{eq:grey_inv}\\
+    \oplus_1 / \oplus_2 & = \oplus_1 \times \oplus_2^{-1} \label{grey_mult} \\
+    \oplus \times k &\in [ka,kb] \label{eq:grey_times_scalar}\\
+    \oplus^k &\in [a^k, b^k] \label{eq:grey_exp}
+  \end{align}
 \end{subequations}
 
 where $k$ is a scalar quantity.
-  
+
 \subsection{Whitenisation and the Grey Core}
 
 The characterisation of grey numbers is based on the encapsulation of information in a grey system in terms of the grey numbers core ($\hat\oplus$) and it's degree of greyness ($g^\circ$).
@@ -624,13 +624,13 @@ This usefulness applies particularly well in the case of multi-agent trust netwo
 \subsection{Grey Trust}
 
 Grey Theory performs cohort based normalization of metrics at runtime. 
-This creates a more stable contextual assessment of trust, providing a ``grade'' of trust compared to other observed nodes in that interval, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
-Grey assessments are relative in both fairly and unfairly operating networks.
-Nodes will receive mid-range trust assessments if there are no malicious actors as there is no-one else ``bad'' to compare against.
+This creates a more stable contextual assessment of trust, providing a ``grade'' of trust compared to other observed entities in that interval, while maintaining the ability to reduce trust values to a stable assessment range for decision support without requiring every environment entered into to be characterised.
+Grey assessments are relative in both fairly and unfairly operating cohorts.
+Entities will receive mid-range trust assessments if there are no malicious actors as there is no-one else ``bad'' to compare against.
 
 Guo\cite{Guo11} demonstrated the ability of Grey Relational Analysis (GRA)\cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc. into a Grey Relational Coefficient, or a ``trust vector''.
 
-In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
+In \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 The trust vector is given as
 %
 \begin{align}
@@ -664,7 +664,7 @@ These relationships give us node sets, $N_R$ and $N_I$ containing the nodes that
   T_{i,j}^{MTFM}=\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}+&\frac{1}{2} \frac{2|N_R| }{2|N_R| + |N_I|}\sum_{n \in N_R} \max_s\{f_s(T_{i,n})\} T_{i,n}\\ \notag
   +&\frac{1}{2} \frac{|N_I| }{2|N_R| + |N_I|}\sum_{n \in N_I} \max_s\{f_s(T_{i,n})\} T_{i,n} 
 \end{align}
- Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s = [ f_1,f_2, f_3]$ given as:
+Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s = [ f_1,f_2, f_3]$ given as:
 \begin{align}
   \label{eq:whitenization}
   f_1(x)&= -x+1\notag\\
@@ -694,6 +694,6 @@ This backpropogation will probably be a pain to implement as it'd require a retr
 
 
 \ifx\ifthesis\undefined
-	\input{chapter_standalone_postscript.tex}
+\input{chapter_standalone_postscript.tex}
 \else
 \fi

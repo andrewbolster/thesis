@@ -188,16 +188,16 @@ Alan Marshall\\
 \begin{abstract}
 
 With the increasing application of autonomous, mobile, cyber-physical systems, Trust Management Frameworks (TMFs) are being used to improve the efficiency, security, and reliability of decentralized and distributed autonomous systems. 
-In such systems, subtle misbehaviors can significantly impact the operation and performance of the system as a whole. 
+In such systems, subtle misbehaviours can significantly impact the operation and performance of the system as a whole. 
 Techniques have been developed for high-speed, uncontended environments such as terrestrial 802.11 MANETs. 
-However, these do not perform well in sparse / harsh environments such as those found in Underwater Acoustic Networks (UANs), where network nodes experience significant and variable delays, comparatively low data rates, large contention periods, and considerable multi-path artifacts. 
+However, these do not perform well in sparse / harsh environments such as those found in Underwater Acoustic Networks (UANs), where network nodes experience significant and variable delays, comparatively low data rates, large contention periods, and considerable multi-path artefacts. 
 
-In such sparse networks, trust establishment based on statistical observations of success/failure events become unstable and ineffective in detecting or identifying misbehaviors. 
-Additionally, these methodologies focus solely on the communications actions of entities and do not incorporate availabile information from other domains, such as the physical domain. 
-In this paper we demonstrate the use and operation of a multi-domain trust management framework (MD-TMF) for collaborative mobile autonomous networks (CMANs), using UANs as an exemplar application. 
+In such sparse networks, trust establishment based on statistical observations of success/failure events become unstable and ineffective in detecting or identifying misbehaviours. 
+Additionally, these methodologies focus solely on the communications activities of entities and do not incorporate available information from other domains, such as the physical domain. 
 
-In this paper we demonstrate a methodology that applies Grey Sequence operations and Grey Generators (conceptually analogous to Sequential Bayesian Filtering) to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
-We also present a machine learning methodology for assessing the relative and collective performance of varying metric sets and subsets in detection and differentiation of a range of communications and physical misbehaviors. \textit{Possibly overreaching}
+In this paper we demonstrate the use and operation of a multi-domain trust management framework (MD-TMF) using UANs as an exemplar application. 
+We demonstrate a methodology that applies Grey Sequence operations and Grey Generators (conceptually analogous to Sequential Bayesian Filtering) to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
+We also present a machine learning methodology for assessing the relative and collective performance of varying metric sets and subsets in detection and differentiation of a range of communications and physical misbehaviours. \textit{Possibly overreaching}
 
 
 \end{abstract}
@@ -219,25 +219,17 @@ We also present a machine learning methodology for assessing the relative and co
 \keywords{MANET, Underwater, Simulation, Trust}
 
 \section{Introduction}
-With the increasing application of autonomy in cyber-physical systems, Trust Management Frameworks (TMFs) are increasingly being applied to assist the efficiency, security, and reliability of decentralised and distributed autonomous systems, from highway-bound autonomous vehicles to aerial battlefield drones. 
+With the increasing integration of autonomy into modern cyber-physical systems, Trust Management Frameworks (TMFs) are being applied to safeguard the efficiency, security, and reliability of decentralised and distributed autonomous systems, from highway-bound autonomous vehicles to aerial battlefield drones. 
 Classical applications of trust management in Mobile Ad-Hoc Networks (MANETs) have focused solely on observations from the communications domain to make trust assessments. 
-However, these methods are not as effective in applications exhibiting sparse, delayed, or otherwise challenged communications environments\cite{Pavan2015}. MD-TMF expands this paradigm to include relevant physical factors and movements to increase the threat area covered the trust framework. An example area of application is the underwater marine environment, where extreme challenges to communications present themselves (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multi-path distortion, etc.).
-In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper autonomous underwater vehicles (AUVs). These increasingly decentralised applications present unique threats against trust management. In underwater environments, communications is both sparse and noisy.
+However, these methods are not as effective in applications exhibiting sparse, delayed, or otherwise challenged communications environments\cite{Pavan2015}. MD-TMF expands the trust management field to include relevant physical factors and movements to increase the threat area protected by the trust framework. An example area of application is the underwater marine environment, where extreme challenges to communications are present (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multi-path distortion, etc.).
+In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller,  cheaper, almost disposable autonomous underwater vehicles (AUVs). These increasingly decentralised applications present unique threats against trust management. 
+
+In underwater environments, communications is both sparse and noisy.
 Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF MANETS.
 
 Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes within networks. This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes. Previous research has established the advantages of implementing TMFs in 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}. Most current TMFs use a single type of observed action to derive trust values, typically successfully delivered or forwarded packets. These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
 
 Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust. The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo11}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust. This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust. The authors have previously applied this method to the marine space, comparing against a selection of existing communications TMFs \cite{Bolster2015b} showing that MTFM is more effective at detecting misbehaviours in sparse environments. This paper continues and extends that work to encompass physical as well as communications observations in the establishment of trust and the detection and classification of misbehaviours across both physical and communications domains. 
-
-This paper is laid out as follows; in section 2 we discuss Trust and TMFs, defining out terminology and reviewing the justifications for the use and development of TMFs in harsh environments such as UANs.
-In section 3 we review selected features of the underwater communications channel, highlighting particular challenges against terrestrial equivalents. 
-In section 4 we review the findings of \cite{Bolster2015b} and establish experimental parameters and simulated behaviours under assessment. 
-In section 5 we present our analysis pipeline for assessing misbehaviour using MTFM, and intermediate results of the independent detection of physical and communications misbehaviours using single-domain observations. 
-In section 6 we demonstrate results from multi-domain MTFM and discuss the significance of these findings in terms of detection and classification of cross-domain misbehaviour sets.
-
-\section{Trust Management Frameworks}
-
-\subsection{Trust in Networked Systems}
 
 \begin{figure}[h!]
 	\centering
@@ -245,7 +237,28 @@ In section 6 we demonstrate results from multi-domain MTFM and discuss the signi
 	
 	\caption{With the addition of further metrics, the threat surface available to an attacker is greatly reduced}
 \end{figure}
-\textit{Insert Generic Discussion of Trust Here: quarter pg}
+
+This paper is laid out as follows; in section 2 we discuss Trust and TMFs, defining out terminology and reviewing the justifications for the use and development of TMFs in harsh environments such as UANs.
+In section 3 we review selected features of the underwater communications channel, highlighting particular challenges against terrestrial equivalents. 
+In section 4 we review the findings of \cite{Bolster2015} and establish experimental parameters and simulated behaviours under assessment. 
+In section 5 we present our analysis pipeline for assessing misbehaviour using MTFM, and intermediate results of the independent detection of physical and communications misbehaviours using single-domain observations. 
+In section 6 we demonstrate results from multi-domain MTFM and discuss the significance of these findings in terms of detection and classification of cross-domain misbehaviour sets.
+
+\section{Trust Management Frameworks}
+
+\subsection{Trust in Connected Systems}
+
+For a term that is so common in every-day speech, Trust is a challenging discussion area, particularly given the wealth of proposed definitions (Table~\ref{tab:trust_definitions}). Beyond these often ``fuzzy'' definitions, there is a significant ontological conflict between the subjective and objective perspectives of trust; is ``trust'' an attribute of the actor performing a given action, or of the observer of such an action? Or indeed is trust itself an action upon a relationship between actors? Is it qualitative or quantitative? These questions have challenged philosophers, psychologists and social scientists for decades.
+
+In human trust relationships it is recognized that there can be several domains of Trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
+
+In the context of trust between and among collectives of autonomous systems, it is the quantifiable assessment of the expected reliability of an entity to perform a given task on request by another entity. This trust assessment can be targeted towards the reliability of a single task or as a general indicator of ``trustworthiness'' of a range of activities.
+
+In many systems, this ``trust'' is analogous to ``security'', and are often conflated, however in this case we are not necessarily concerned with the security of a system so much as it's runtime reliability in operation. 
+
+Within networked systems, the aspect of operation that needs to be protected from malicious operation or failure states is usually bandwidth and congestion, i.e. optimising the network to maximum energy/time efficiency for transiting information.
+In this respect, the Router Information Protocols (RIP) can be considered very basic Trust Management Frameworks, such that they optimise routing structures within a network based on (binary) link availability.\cite{RFC2453}.
+
 
 \subsection{Trust in Conventional MANETs}
 The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities (CA) or Public Key Infrastructure (PKI). 
@@ -255,9 +268,10 @@ Various models and algorithms for describing trust and developing trust manageme
 \textit{Hermes Trust Establishment Framework} uses a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
 \textit{Objective Trust Management Framework} (OTMF) builds upon Hermes and distributes node observations across the network \cite{Li2008}, however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}. 
 \textit{Trust-based Secure Routing} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of sub-networks, reducing the efficacy of Byzantine attacks such as black-hole routing  \cite{Moe2008a}. 
-\textit{CONFIDANT} presented an approach using a probabilistic estimation of PLR, similar to OTMF, also introducing a topology aware weighting scheme and also weighting trust assessments based on historical experience of the reporter \cite{Buchegger2002}. Fuzzy Trust-Based Filtering uses Fuzzy Inference to adapt to malicious recommenders using conditional similarity to classify performance with overlapping fuzzy set membership, filtering assessments across a network \cite{Luo2008}. 
+\textit{CONFIDANT} presented an approach using a probabilistic estimation of PLR, similar to OTMF, also introducing a topology aware weighting scheme and also weighting trust assessments based on historical experience of the reporter \cite{Buchegger2002}. Fuzzy Trust-Based Filtering uses Fuzzy Inference to adapt to malicious recommenders using conditional similarity to classify performance with overlapping fuzzy set membership, filtering assessments across a network \cite{Luo2008}.
+\textit{Multi-parameter Trust Framework for MANETs (MTFM)} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust\cite{Guo11}.
 
-These TMFs can be generalised as single-value estimation based on a binary input state (success or failure of packet delivery) and generating a probabilistic estimation of the future states of that input. These single metric TMFs provide malicious actors with a significant advantage if their activity does not impact that metric.In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker. This causes a significant negative effect on the efficiency of the network, as the TMF is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
+These TMFs (excluding MTFM) can be generalised as single-value estimation based on a binary input state (success or failure of packet delivery) and generating a probabilistic estimation of the future states of that input. These single metric TMFs provide malicious actors with a significant advantage if their activity does not impact that metric.In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker. This causes a significant negative effect on the efficiency of the network, as the TMF is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
 An example of such a situation would be in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets. Such behaviour would not be detected by the TMF.
 
 As an example; The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
@@ -284,6 +298,7 @@ Upon this per-node assessment methodology, OTMF overlays an observation distribu
 
 
 \textit{Multi-Parameter Trust Framework for MANETS} (MTFM) extends this single-parameter approach, applying Grey Relational Analysis \cite{Zuo1995} to provide cohort based normalization of a range of disparate metrics at runtime, providing a “grade” of trust compared to other observed nodes, while maintaining the ability to reduce trust valued down to a stable assessment range for decision support without requiring a-priori environmental or metric characterisation. This presents a stark difference between the previously discussed probabilistic approaches. Grey assessments are relative in both fairly and unfairly operating networks. All nodes will receive mid-range trust assessments if there are no malicious actors as there is nothing ``bad'' to compare against, and variations in assessment will be primarily driven by topological and environmental factors.
+
 Guo et al. \cite{Guo11} demonstrated the ability of grey relational analysis (GRA) \cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc. into a grey relational coefficient (GRC), or a ``trust vector'' in this instance.
 
 The grey relational vector is given as
@@ -343,7 +358,7 @@ It has been demonstrated that MTFM is a strong candidate for trust assessment in
 
 \subsection{Multi-Metric Single Domain Trust in Harsh Environments}
 
-It has been demonstrated that classical, single metric, MANET Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium, however MTFM shows promise in it's multi-metric normalisation approach when compared to the performance of OTMF and Hermes in the same scenarios \cite{Bolster2015b}.
+It has been demonstrated that classical, single metric, MANET Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium, however MTFM shows promise in it's multi-metric normalisation approach when compared to the performance of OTMF and Hermes in the same scenarios \cite{Bolster2015}.
 In a simulated underwater environment, MTFM was able to discriminate between communications behaviours using communications metrics by exploring the metric space by weight variation, allowing the detection and classification of the malicious behaviours.
 With significant delays (from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical MANET TMF deployment environments. 
 Without significant adaptation, single metric probabilistic estimation based TMFs are ineffective in such an environment.
@@ -351,13 +366,10 @@ Existing frameworks are overly optimistic about the nature and stability of the 
 This indicates that there is a good case, particularly within constrained MANETs as this for multi-domain trust assessment, where metrics about the communications network and topology are be brought together with information about the physical behaviours and operations of nodes to assess trust.
 
 
-
-
 \section{Marine Acoustic Communications}
 
 The key challenges of underwater acoustic communications are centred around the impact of slow and differential propagation of energy (RF, Optical, Acoustic) through water, and its interfaces with the seabed / air.
 The resultant challenges include; long propagation delays, significant inter-symbol interference and Doppler spreading, fast and slow fading due to environmental effects (aquatic flora/fauna, surface weather), carrier-frequency dependent signal attenuation, multi-path caused by reflective medium interfaces, variations in propagation speed due to depth dependant effects (salinity, temperature, and pressure), and subsequent refractive spreading and lensing due to that same propagation variation \cite{Partan2006}.
-
 
 The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear power is given as $A_{\text{aco}}(d,f) = A_0d^ka(f)^d$ and in $dB$ form as;
 %
@@ -384,7 +396,6 @@ While both frequency dependant factors are quadratic, approximating the factors 
 
 \section{Analysis, Design and Per-Domain Results}
 
-
 \subsection{Simulation and Scenario Generation}
 To investigate the operation of a fully mobile network of six nodes, each kinematically modelled on the REMUS 100 \cite{Milgram2001} in the marine environment, simulations were conducted using a Python based framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, using transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
 
@@ -405,13 +416,13 @@ From these simulations, we attain the per-node recorded positions, ($P_i = [x,y,
 \begin{table}[h]
 	\caption{Comparison of system model constraints as applied between Terrestrial and Marine communications} \label{tab:sysconstraints}
 	\begin{center}
-		\setlength{\tabcolsep}{8pt}
+		\setlength{\tabcolsep}{2pt}
 		\begin{tabular}{lccc}
 			\hline
 			Parameter & Unit & Terrestrial & Marine \\
 			\hline
 			Simulated Duration & $s$ & 300 & 18000\\
-			Initial Node Separation & $100m$ & $300m$\\
+			Initial Separation & $m$ & 100 & 300\\
 			Trust Sampling Period & $s$ & 1 & 600 \\
 			Simulated Area & $km^2$ & 0.7 & 0.7-4 \\
 			Transmission Range & $km$ & 0.25 & 1.5 \\
@@ -424,8 +435,8 @@ From these simulations, we attain the per-node recorded positions, ($P_i = [x,y,
 			Max Speed & $ms^{-1}$ & 5 & 1.5 \\
 			Max Data Rate & $bps$ & $5\times10^6$ & $\approx 240$ \\
 			Packet Size & bits & 4096 &  9600 \\
-			Single Transmission Duration & $s$ & 10 & 32 \\
-			Single Transmission Size & bits & $10^7$ & $9600$ \\
+			Single Message Duration & $s$ & 10 & 32 \\
+			Single Message Size & bits & $10^7$ & $9600$ \\
 			\hline
 		\end{tabular}
 		\setlength{\tabcolsep}{6pt}
@@ -514,7 +525,8 @@ Initially we analyse the per-domain metrics/weight assessments/behaviours before
 			\hline
 		\end{tabular}
 	\end{center}
-\end{table}\textit{THIS IS OUT OF DATE}
+\end{table}
+%\textit{THIS IS OUT OF DATE}
 
 Centre behaviour is the “fair” case that everything else is being compared against, and is thus, zero, left are comms behaviours, right are physical behaviours. I’m working on better ways to present this but basically, each behaviour has a ‘signature’ that’s fairly clear that maximises the ‘outlier’ state. In reality, this is maximisation problem, so now that the ‘brute force’ case has been worked, there’s ample opportunity for putting together a greedy algo to work through these cases in much closer to real time. Depending on how successful my experiments are this weekend, I may slip that into this, or may leave for AAMAS in Nov> 
 
@@ -525,7 +537,7 @@ In this paper we demonstrate that in harsh environments, multi-domain trust asse
 The extension of the methodologies of MTFM into the marine space are already demonstrated, however including information from physical observations of actors in a network enables the detection and identification of a much wider range of behaviours.
 We also demonstrate a method for assessing trust metrics in harsh environments in terms of their relative significance, and a method for establishing classification signatures for misbehaviours.
 
-It is to be noted that this presented method is significantly more computationally intensive than the relatively simple Hermes / OTMF algorithms communications only algorithms, and is exponential in complexity as metrics are added. The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization. More work needs to be done to characterise how worthwhile this approach is compared to a separate synthesis approach where by MTFM-style trust is generated and assessed on a per-domain basis and subsequently fuzed.\textit{This could be just enough to squeeze it in?!}
+It is to be noted that this presented method is significantly more computationally intensive than the relatively simple Hermes / OTMF algorithms communications only algorithms, and is exponential in complexity as metrics and/or domains are added. The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization. More work needs to be done to characterise how worthwhile this approach is compared to a separate synthesis approach where by MTFM-style trust is generated and assessed on a per-domain basis and subsequently fuzed.\textit{This could be just enough to squeeze it in?!}
 
 
 \section{Introduction}

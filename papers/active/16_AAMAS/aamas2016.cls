@@ -602,7 +602,7 @@
 
 \if@ll
   \NeedsTeXFormat{LaTeX2e}
-  \ProvidesClass{aamas2015} [2009/24/07 - V1.9 - based on acmproc.cls V1.3 <Nov. 30 '99>]
+  \ProvidesClass{aamas2016} [2009/24/07 - V1.9 - based on acmproc.cls V1.3 <Nov. 30 '99>]
   \RequirePackage{latexsym}% QUERY: are these two really needed?
   \let\dooptions\ProcessOptions
 \else

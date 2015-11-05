@@ -187,8 +187,7 @@ Alan Marshall\\
 
 \begin{abstract}
 
-With the increasing application of autonomous, mobile, cyber-physical systems, Trust Management Frameworks (TMFs) are being used to improve the efficiency, security, and reliability of decentralized and distributed autonomous systems. 
-In such systems, subtle misbehaviours can significantly impact the operation and performance of the system as a whole. 
+Trust Management Frameworks (TMFs) are being used to improve the efficiency, security, and reliability of decentralized and distributed autonomous systems. 
 Techniques have been developed for high-speed, uncontended environments such as terrestrial 802.11 MANETs. 
 However, these do not perform well in sparse / harsh environments such as those found in Underwater Acoustic Networks (UANs), where network nodes experience significant and variable delays, comparatively low data rates, large contention periods, and considerable multi-path artefacts.\cite{Bolster2015} 
 
@@ -197,7 +196,7 @@ Additionally, these methodologies focus solely on the communications activities 
 
 In this paper we demonstrate the use and operation of a multi-domain trust management framework (MD-TMF) using UANs as an exemplar application. 
 We demonstrate a methodology that applies Grey Sequence operations and Grey Generators (conceptually analogous to Sequential Bayesian Filtering) to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
-We also present a machine learning methodology for assessing the relative and collective performance of varying metric sets and subsets in detection and differentiation of a range of communications and physical misbehaviours. \textit{Possibly overreaching}
+We also present a machine learning methodology for assessing the relative and collective performance of varying metric sets and subsets in detection and differentiation of a range of communications and physical misbehaviours.
 
 
 \end{abstract}
@@ -222,10 +221,12 @@ We also present a machine learning methodology for assessing the relative and co
 With the increasing integration of autonomy into modern cyber-physical systems, Trust Management Frameworks (TMFs) are being applied to safeguard the efficiency, security, and reliability of decentralised and distributed autonomous systems, from highway-bound autonomous vehicles to aerial battlefield drones. 
 Classical applications of trust management in Mobile Ad-Hoc Networks (MANETs) have focused solely on observations from the communications domain to make trust assessments. 
 However, these methods are not as effective in applications exhibiting sparse, delayed, or otherwise challenged communications environments\cite{Pavan2015}. 
-In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller,  cheaper, almost disposable autonomous underwater vehicles (AUVs). These increasingly decentralised applications present unique threats against trust management. 
 
-In underwater environments, communications is both sparse and noisy.
+In the majority of Trusted MANET implementations, a free space RF communications protocol such as 802.11 is used.
+By their nature, such implementations rely on relatively high bandwidth, low noise, low latency, high channel occupancy with minimal contention.
+In contrast; in underwater environments, communications is both sparse, delayful, and noisy.
 Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF MANETS.
+In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller,  cheaper, almost disposable autonomous underwater vehicles (AUVs). These increasingly decentralised applications present unique threats against trust management. 
 
 Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes within networks. This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes. Previous research has established the advantages of implementing TMFs in 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}. Most current TMFs use a single type of observed action to derive trust values, typically successfully delivered or forwarded packets. These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
 
@@ -233,7 +234,7 @@ Recent work has demonstrated the use of a number of metrics to form a ``vector''
 An example area of application is the underwater marine environment, where extreme challenges to communications are present (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multi-path distortion, etc.).
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\linewidth]{threat_surface_sum}
+	\includegraphics[width=\linewidth]{threat_surface_sum}
 	
 	\caption{With the addition of further metrics, the threat surface available to an attacker is greatly reduced}
 \end{figure}

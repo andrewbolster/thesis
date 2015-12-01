@@ -48,9 +48,6 @@
   *{package}{epstopdf-base}{2010/02/09 v2.5}
   *{package}{grfext}      {2010/08/19 v1.1}
   *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
-  *{package}{subcaption}  {2013/02/03 v1.1-62}
-  *{package}{caption}     {2013/05/02 v3.3-89}
-  *{package}{caption3}    {2013/05/02 v1.6-88}
   *{package}{rotating}    {2009/03/28 v2.16a}
   *{package}{ifthen}      {2014/09/29 v1.1c}
   *{package}{listings}    {2014/09/06 v1.5e}
@@ -58,6 +55,9 @@
   *{package}{lstmisc}     {2014/09/06 v1.5e}
   *{file}   {listings.cfg}{2014/09/06 v1.5e}
   *{package}{lstpatch}    {0000/00/00 v0.0}
+  *{package}{subcaption}  {2013/02/03 v1.1-62}
+  *{package}{caption}     {2013/05/02 v3.3-89}
+  *{package}{caption3}    {2013/05/02 v1.6-88}
   *{package}{natbib}      {2010/09/13 v8.31b}
   *{package}{verbatim}    {2014/10/28 v1.5q}
   *{package}{array}       {2014/10/28 v2.4c}

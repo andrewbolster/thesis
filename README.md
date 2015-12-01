@@ -8,6 +8,13 @@ PhD Thesis Progress, based on the University of Liverpools Thesis template, foun
 * texlive-science
 * latexmk
 
+# Extra special requirements for web stuff
+
+* texlive-luatex
+* texlive-xetex
+* texlive-generic-extra
+* [make4ht](https://github.com/michal-h21/make4ht)
+
 # Pre commit Notes
 Includes a pre-commit hook that moves Thesis.pdf to Thesis-Last.pdf, builds Thesis.tex using latexmk and **if that build is successful** allows the commit to continue. 
 

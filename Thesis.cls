@@ -110,6 +110,7 @@
 \usepackage{epstopdf}
 %\usepackage[scriptsize]{subfigure} %obsolete
 \usepackage{subcaption}
+\captionsetup{compatibility=false}
 \usepackage{booktabs}
 \renewcommand{\arraystretch}{1.3}
 \usepackage{rotating}

@@ -1,0 +1,19 @@
+local mkutils = require "mkutils"
+local outdir = "html/"
+if mode == "publish" then
+  outdir = "~/Dropbox/Public/thesishtml/"
+end
+
+if mode == "draft" or mode == "publish" then
+  Make:htlatex {}
+else
+  Make:add("bibtex", "bibtex ${input}")
+  Make:htlatex {}
+  Make:bibtex {}
+  Make:htlatex {}
+  Make:htlatex {}
+end
+Make:match(".*$", function(file, par)
+  mkutils.copy(file, outdir .. file)
+  return false, "Copy html to destination "..outdir
+end)

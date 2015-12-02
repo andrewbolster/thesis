@@ -110,3 +110,13 @@ sympy-plots-for-*.tex/
 
 # vim
 *.swp
+
+# Make4ht junk files
+Thesis*.png
+Thesis*.html
+Thesis*.svg
+Thesis*.idv
+Thesis*.css
+Thesis*.4*
+Thesis*.tmp
+Thesis*.lg

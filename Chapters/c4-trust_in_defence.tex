@@ -38,14 +38,14 @@ In this section we characterise the simulated communications environment, establ
 
 In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bps, up to 0.07 pps (672 bps)
 
-From Figs.~\ref{fig:throughput_performance_static} and ~\ref{fig:prod_breakdown_static}, it is clear that the threshold curve, expressed as the \emph{Successfully Received Packets} line, exhibits a saturation point between 0.025 and 0.03 pps.
+From Figs.~\ref{fig:throughput_performance_static} and~\ref{fig:prod_breakdown_static}, it is clear that the threshold curve, expressed as the \emph{Successfully Received Packets} line, exhibits a saturation point between 0.025 and 0.03 pps.
 Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in packet delivery probability beyond 0.025 pps, indicating that this is a strong candidate value for an upper-limit to the safe operating zone in terms of packet emission in the small static case.
 
 \begin{figure}[H]
 	\centering
 	%\missingfigure{throughput_performance_static}
 	\caption{Varying packet emission rate demonstrates maximal throughput at 0.025 packets per second, equivalent to $\approx$240 bps}
-	\label{fig:3d}
+	\label{fig:throughput_performance_static}
 \end{figure}
 
 
@@ -61,7 +61,7 @@ Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in pa
 \subsection{Establishing Scale Factors in Physical Distribution}
 
 In this section we characterise the effect of node-separation scaling on communications operation for comparison against \cite{Guo11}. This is particularly important considering the significant scale factor differences between not only the speed of propagation in the medium, but simply the range of operation. 
-From Table \ref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
+From Table~\ref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
 
 A reasonable range around this is to scale from 100$m$ apart on average to 800$m$.
 
@@ -107,12 +107,13 @@ This is due to reduced channel availability due to collisions, which are then du
 
 
 \begin{table}[H]
-	\caption{Tabular view of data from Figs~\ref{fig:prod_breakdown_range}, \ref{fig:delay_range}, and \ref{fig:rts_range}} \label{tab:rangedelay}
+	\caption{Tabular view of data from Figs~\ref{fig:prod_breakdown_range},~\ref{fig:delay_range}, and~\ref{fig:rts_range}} \label{tab:rangedelay}
 	\begin{center}
 		\hyphenpenalty 100000
 		\begin{tabular}{
 				*{2}{@{\hspace{1em}}r@{\hspace{1em}}}
-				*{3}{@{\hspace{1em}}p{0.1\textwidth} @{\hspace{1em}}}  }
+				*{3}{@{\hspace{1em}}p{0.1\textwidth} @{\hspace{1em}}}
+      }
 			\toprule
 			Separation(m) &  Delay(s) &  Probability of Arrival &  RTS/Data Ratio &  Ideal Delivery Time(s) \\
 			\midrule

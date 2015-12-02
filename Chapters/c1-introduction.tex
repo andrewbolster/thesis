@@ -6,46 +6,48 @@
 \else
 \chapter{\ChapterTitle}
 \label{Chapter\thechapter}
-\lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
+\lhead{Chapter \thechapter.
+\emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 \fi
 
-\section{Mobile Ad-hoc Networks (MANETs)}
+\section{Mobile Ad-hoc Networks (\acrshort{manet}s)}
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of a broadcast/receiver or server/client has given way to an increasing use of decentralised, ad-hoc networks that not only accommodate but take advantage of user mobility.
 
-Wether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Bhargavi2015}, MANET theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research\cite{Jubin1987}, to being an integral part of modern practical communications.
+Wether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Bhargavi2015}, \gls{manet} theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research\cite{Jubin1987}, to being an integral part of modern practical communications.
 
-Minimally, a MANET consists of of a collection of mobile physical entities (nodes) with some form of communications, processing/data collection, and power systems. 
-Similarly in terms of communications capability, while in many cases MANET nodes incorporate bi-directional transceivers to send and receive data, this bi-directionality is also not a limiting factor on inclusion within the MANET field, particularly in the area of Wireless Sensor Networks\cite{something}.
-Nor is the capability or mix of communications technologies used; omnidirectional, static, or steerable communications antennae, utilising a range of technologies such as WiFi, Bluetooth, GSM, UMTS, Optical or Acoustics. 
-A core characteristic of the design of MANETs is the inclusion and integration of heterogeneous node collections, i.e where different nodes or groups of nodes in a network have difference capabilities, whether this be in terms of propulsion, sensor apparatus, communications capability, etc.
+Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) with some form of communications, processing/data collection, and power systems.
+Similarly in terms of communications capability, while in many cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data, this bi-directionality is also not a limiting factor on inclusion within the \gls{manet} field, particularly in the area of Wireless Sensor Networks\cite{Akyildiz2002}.
+Nor is the capability or mix of communications technologies used; omnidirectional, static, or steerable communications antennae, utilising a range of technologies such as WiFi, Bluetooth, GSM, UMTS, Optical or Acoustics.
+A core characteristic of the design of \gls{manet}s is the inclusion and integration of heterogeneous node collections, i.e where different nodes or groups of nodes in a network have difference capabilities, whether this be in terms of propulsion, sensor apparatus, communications capability, etc.
 
-These networks may be totally independent with no external connections, include independent per-node communications backhauls (e.g. Cellular Modems in mobile phones as part of a Bluetooth Personal Area Network(PAN)), or include static nodes that provide infrastructure based backhaul. 
-However, this multiplicity of variations and options presents several challenges to users and operators; the physical topology of MANETs can vary wildly over short periods of time. 
-A particular challenge to MANET operation as a result of its decentralised nature is that since any node may operate as a routing / gateway node with responsibility for transiting data from once sector of the network to another (given certain capability requirements), if/when that node moves to a different region, nodes that had previously used that node as a path must reestablish their logical routing tables. 
+These networks may be totally independent with no external connections, include independent per-node communications backhauls (e.g.
+Cellular Modems in mobile phones as part of a Bluetooth Personal Area Network(PAN)), or include static nodes that provide infrastructure based backhaul.
+However, this multiplicity of variations and options presents several challenges to users and operators; the physical topology of \gls{manet}s can vary wildly over short periods of time.
+A particular challenge to \gls{manet} operation as a result of its decentralised nature is that since any node may operate as a routing / gateway node with responsibility for transiting data from once sector of the network to another (given certain capability requirements), if/when that node moves to a different region, nodes that had previously used that node as a path must reestablish their logical routing tables.
 
-The characteristics of MANETs as defined by Corson et al.\ are paraphrased in Table~\ref{tab:manet_characteristics}.
+The characteristics of \gls{manet}s as defined by Corson et al.\ are paraphrased in Table~\ref{tab:manet_characteristics}.
 
 \begin{table}
   \hyphenpenalty=10000
   \begin{tabularx}{\textwidth}{p{2cm}X}\toprule
-    Dynamic Topologies & Nodes are free to move arbitrarily; thus, the typically multihop network topology may change randomly and rapidly at unpredictable times, and may consist of both bidirectional and unidirectional links. \\
-    Bandwidth Constrained, Varied Capacity & Wireless links will continue to have significantly lower capacity than their hardwired counterparts. In addition, the realized throughput of wireless communications, after accounting for the effects of multiple access, fading, noise, and interference conditions, etc., is often much less than a radio's maximum transmission rate. \par
+    Dynamic Topologies & Nodes are free to move arbitrarily; thus, the typically multihop network topology may change randomly and rapidly at unpredictable times, and may consist of both bidirectional and unidirectional links.
+\\
+    Bandwidth Constrained, Varied Capacity & Wireless links will continue to have significantly lower capacity than their hardwired counterparts.
+In addition, the realized throughput of wireless communications, after accounting for the effects of multiple access, fading, noise, and interference conditions, etc., is often much less than a radio's maximum transmission rate.
+\par
 One effect of the relatively low to moderate link capacities is that congestion is typically the norm rather than the exception, i.e.\  aggregate application demand will likely approach or exceed network capacity frequently.\\
-    Energy Constrained Operation &  Some or all of the nodes in a MANET may rely on batteries or other exhaustible means for their energy. For these nodes, the most important system design criteria for optimization may be energy conservation.\\
-    Limited physical security & Mobile wireless networks are generally more prone to physical security threats than are fixed cable nets.  The increased possibility of eavesdropping, spoofing, and denial-of-service attacks should be carefully considered.\par
-Existing link security techniques are often applied within wireless networks to reduce security threats. 
-As a benefit, the decentralized nature of network control in MANETs provides additional robustness against the single points of failure of more centralized approaches.\\
+    Energy Constrained Operation &  Some or all of the nodes in a \gls{manet} may rely on batteries or other exhaustible means for their energy.
+For these nodes, the most important system design criteria for optimization may be energy conservation.\\
+    Limited physical security & Mobile wireless networks are generally more prone to physical security threats than are fixed cable nets.
+The increased possibility of eavesdropping, spoofing, and denial-of-service attacks should be carefully considered.\par
+Existing link security techniques are often applied within wireless networks to reduce security threats.
+As a benefit, the decentralized nature of network control in \gls{manet}s provides additional robustness against the single points of failure of more centralized approaches.\\
 
 \end{tabularx}
-\caption{Summary of Characteristics of MANETs\cite{Corson1999}}
+\caption[Summary of Characteristics of \gls{manet}s]{Summary of Characteristics of \gls{manet}s\cite{Corson1999}}
 \label{tab:manet_characteristics}
 \end{table}
-
-
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifx\ifthesis\undefined

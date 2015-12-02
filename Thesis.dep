@@ -24,19 +24,20 @@
   *{package}{graphics}    {2014/10/28 v1.0p}
   *{package}{trig}        {1999/03/16 v1.09}
   *{file}   {graphics.cfg}{2010/04/23 v1.9}
-  *{file}   {dvips.def}   {2014/10/14 v3.0j}
+  *{file}   {pdftex.def}  {2011/05/27 v0.06d}
+  *{package}{infwarerr}   {2010/04/08 v1.3}
+  *{package}{ltxcmds}     {2011/11/09 v1.22}
   *{package}{epstopdf}    {2010/02/09 v2.5}
   *{package}{epstopdf-base}{2010/02/09 v2.5}
-  *{package}{infwarerr}   {2010/04/08 v1.3}
   *{package}{grfext}      {2010/08/19 v1.1}
   *{package}{kvdefinekeys}{2011/04/07 v1.3}
-  *{package}{ltxcmds}     {2011/11/09 v1.22}
   *{package}{kvoptions}   {2011/06/30 v3.11}
   *{package}{kvsetkeys}   {2012/04/25 v1.16}
   *{package}{etexcmds}    {2011/02/16 v1.5}
   *{package}{ifluatex}    {2010/03/01 v1.3}
   *{package}{pdftexcmds}  {2011/11/29 v0.20}
   *{package}{ifpdf}       {2011/01/30 v2.3}
+  *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
   *{package}{subcaption}  {2015/09/15 v1.1-100}
   *{package}{booktabs}    {2005/04/14 v1.61803}
   *{package}{rotating}    {2009/03/28 v2.16a}
@@ -69,8 +70,8 @@
   *{file}   {hyperref.cfg}{2002/06/06 v1.2}
   *{file}   {puenc.def}   {2012/11/06 v6.83m}
   *{package}{url}         {2013/09/16 v3.4}
-  *{file}   {htex4ht.def} {2012/11/06 v6.83m}
-  *{package}{tex4ht}      {0000/00/00 v0.0}
+  *{file}   {hpdftex.def} {2012/11/06 v6.83m}
+  *{package}{rerunfilecheck}{2011/04/15 v1.7}
   *{package}{longtable}   {2014/10/28 v4.11}
   *{package}{natbib}      {2010/09/13 v8.31b}
   *{package}{verbatim}    {2014/10/28 v1.5q}
@@ -79,9 +80,6 @@
   *{package}{calc}        {2014/10/28 v4.3}
   *{package}{color}       {1999/02/16 v0.0}
   *{file}   {color.cfg}   {2007/01/18 v1.5}
-  *{file}   {color.cfg}   {2007/01/18 v1.5}
-  *{file}   {dvipsnam.def}{2014/10/14 v3.0j}
-  *{file}   {dvipsnam.def}{2014/10/14 v3.0j}
   *{package}{psfrag}      {1998/04/11 v3.04}
   *{package}{epsf}        {0000/00/00 v0.0}
   *{package}{tabularx}    {2014/10/28 v2.10}
@@ -90,9 +88,7 @@
   *{package}{todonotes}   {2012/07/25 v0.0}
   *{package}{xkeyval}     {2014/12/03 v2.7a}
   *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
-  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
   *{package}{xcolor}      {2007/01/21 v2.11}
-  *{file}   {color.cfg}   {2007/01/18 v1.5}
   *{file}   {color.cfg}   {2007/01/18 v1.5}
   *{package}{tikz}        {2015/08/07 v3.0.1a}
   *{package}{pgf}         {2015/08/07 v3.0.1a}
@@ -102,32 +98,9 @@
   *{package}{pgfcore}     {2010/04/11 v3.0.1a}
   *{package}{pgfsys}      {2014/07/09 v3.0.1a}
   *{file}   {pgfsys.code.tex}{0000/00/00 v0.0}
-  *{file}   {pgf.cfg}     {2008/05/14 v1.7)}
-  *{file}   {pgfsys-tex4ht.def}{2013/08/06 v1.25)}
-  *{file}   {pgfsys-common-svg.def}{2013/08/28 v1.24)}
   *{file}   {pgfsyssoftpath.code.tex}{2013/09/09 v1.9)}
-  *{file}   {pgfsyssoftpath.code.tex}{2013/09/09 v1.9)}
-  *{file}   {pgfsysprotocol.code.tex}{2006/10/16 v1.4)}
   *{file}   {pgfsysprotocol.code.tex}{2006/10/16 v1.4)}
   *{file}   {pgfcore.code.tex}{0000/00/00 v0.0}
-  *{file}   {pgfcorepoints.code.tex}{2013/10/07 v1.27)}
-  *{file}   {pgfcorepathconstruct.code.tex}{2013/10/07 v1.29)}
-  *{file}   {pgfcorepathusage.code.tex}{2014/11/02 v1.24)}
-  *{file}   {pgfcorescopes.code.tex}{2015/05/08 v1.46)}
-  *{file}   {pgfcoregraphicstate.code.tex}{2014/11/02 v1.12)}
-  *{file}   {pgfcoretransformations.code.tex}{2015/08/07 v1.20)}
-  *{file}   {pgfcorequick.code.tex}{2008/10/09 v1.3)}
-  *{file}   {pgfcoreobjects.code.tex}{2006/10/11 v1.2)}
-  *{file}   {pgfcorepathprocessing.code.tex}{2013/09/09 v1.9)}
-  *{file}   {pgfcorearrows.code.tex}{2015/05/14 v1.43)}
-  *{file}   {pgfcoreshade.code.tex}{2013/07/15 v1.15)}
-  *{file}   {pgfcoreimage.code.tex}{2013/07/15 v1.18)}
-  *{file}   {pgfcoreexternal.code.tex}{2014/07/09 v1.21)}
-  *{file}   {pgfcorelayers.code.tex}{2013/07/18 v1.7)}
-  *{file}   {pgfcoretransparency.code.tex}{2013/09/30 v1.5)}
-  *{file}   {pgfcorepatterns.code.tex}{2013/11/07 v1.5)}
-  *{file}   {pgfmoduleshapes.code.tex}{2014/03/21 v1.35)}
-  *{file}   {pgfmoduleplot.code.tex}{2015/08/03 v1.13)}
   *{package}{pgfcomp-version-0-65}{2007/07/03 v3.0.1a}
   *{package}{pgfcomp-version-1-18}{2007/07/23 v3.0.1a}
   *{package}{pgffor}      {2013/12/13 v3.0.1a}
@@ -137,90 +110,96 @@
   *{file}   {pgfmath.code.tex}{0000/00/00 v0.0}
   *{file}   {pgffor.code.tex}{0000/00/00 v0.0}
   *{file}   {tikz.code.tex}{0000/00/00 v0.0}
-  *{file}   {pgflibraryplothandlers.code.tex}{2013/08/31 v3.0.1a}
-  *{file}   {pgfmodulematrix.code.tex}{2013/09/17 v1.8)}
-  *{file}   {tikzlibrarytopaths.code.tex}{2008/06/17 v3.0.1a}
-  *{file}   {tikzlibrarypositioning.code.tex}{2008/10/06 v3.0.1a}
   *{package}{enumerate}   {2015/07/23 v3.00}
   *{package}{algorithm2e} {2013/01/06 v5.00}
   *{package}{relsize}     {2013/03/29 v4.1}
   *{package}{float}       {2001/11/08 v1.3d}
   *{package}{epigraph}    {2009/09/02 v1.5c}
-  *{file}   {tikzlibraryshapes.geometric.code.tex}{2008/01/09 v3.0.1a}
-  *{file}   {pgflibraryshapes.geometric.code.tex}{2008/06/26 v3.0.1a}
-  *{file}   {tikzlibraryarrows.code.tex}{2008/01/09 v3.0.1a}
-  *{file}   {pgflibraryarrows.code.tex}{2013/09/23 v3.0.1a}
-  *{package}{tools}       {0000/00/00 v0.0}
-  *{file}   {umsa.fd}     {2013/01/14 v3.01}
-  *{file}   {umsa.fd}     {2013/01/14 v3.01}
-  *{file}   {umsb.fd}     {2013/01/14 v3.01}
-  *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{package}{glossaries}  {2015/11/22 v4.19}
+  *{package}{mfirstuc}    {2015/09/09 v2.0}
+  *{package}{etoolbox}    {2015/08/02 v2.2a}
+  *{package}{textcase}    {2004/10/07 v0.07}
+  *{package}{xfor}        {2009/02/05 v1.05}
+  *{package}{datatool-base}{2015/07/11 v2.23}
+  *{package}{substr}      {2009/10/20 v1.2}
+  *{package}{datatool-fp} {2015/07/11 v2.23}
+  *{package}{fp}          {1995/04/02 v0.0}
+  *{package}{defpattern}  {1994/10/12 v0.0}
+  *{package}{fp-basic}    {1996/05/13 v0.0}
+  *{package}{fp-addons}   {1995/03/15 v0.0}
+  *{package}{fp-snap}     {1995/04/05 v0.0}
+  *{package}{fp-exp}      {1995/04/03 v0.0}
+  *{package}{fp-trigo}    {1995/04/14 v0.0}
+  *{package}{fp-pas}      {1994/08/29 v0.0}
+  *{package}{fp-random}   {1995/02/23 v0.0}
+  *{package}{fp-eqn}      {1995/04/03 v0.0}
+  *{package}{fp-upn}      {1996/10/21 v0.0}
+  *{package}{fp-eval}     {1995/04/03 v0.0}
+  *{package}{glossaries-compatible-307}{2015/11/22 v4.19}
+  *{package}{glossary-hypernav}{2015/11/22 v4.19}
+  *{package}{glossary-list}{2015/11/22 v4.19}
+  *{package}{glossary-long}{2015/11/22 v4.19}
+  *{package}{glossary-super}{2015/11/22 v4.19}
+  *{package}{supertabular}{2004/02/20 v4.1e}
+  *{package}{glossary-tree}{2015/11/22 v4.19}
+  *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
+  *{package}{ltcaption}   {2013/06/09 v1.4-94}
+  *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
   *{package}{nameref}     {2012/10/27 v2.43}
   *{package}{gettitlestring}{2010/12/03 v1.4}
-  *{package}{ltcaption}   {2013/06/09 v1.4-94}
+  *{file}   {Thesis.out}  {0000/00/00 v0.0}
+  *{file}   {Thesis.out}  {0000/00/00 v0.0}
+  *{file}   {Thesis.glsdefs}{0000/00/00 v0.0}
   *{file}   {./Chapters/defs.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
-  *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
+  *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{file}   {Thesis.gls}  {0000/00/00 v0.0}
   *{file}   {./Chapters/preface.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/abstract.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c1-introduction.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c2-trust_background.tex}{0000/00/00 v0.0}
-  *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
+  *{file}   {./Figures/mayer1995-fig1.png}{0000/00/00 v0.0}
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Chapters/c3-maritime-background.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c4-trust_in_defence.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/prod_breakdown_range.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/prod_breakdown_range.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/c5-multi_domain_trust_strategies.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c6-physical_metrics.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_fair.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_fair.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_static_malicious.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_malicious.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_malicious.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_malicious.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_beta_otmf_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_beta_otmf_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_beta_otmf_malicious.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_beta_otmf_malicious.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_beta_otmf_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_beta_otmf_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_PLR_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_PLR_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/MaliciousSelfishMetricFactors.png}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/c7-multi_domain_trust_analysis.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/full_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
 }

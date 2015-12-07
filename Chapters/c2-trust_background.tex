@@ -7,11 +7,11 @@
 \lhead{Chapter \thechapter.
 \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 \fi
-In this chapter we explore the current literature and research around the concepts, theory, and application around Trust and Trust Management, specifically leaning towards the applications of Trust within Autonomous \acrshortpl{manet}.
+In this chapter we explore the current literature and research around the concepts, theory, and application around Trust and Trust Management, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
 
 In the first section, the generic operations and background to Autonomy and ``Trusted Operation'' from a user/operators perspective is investigated. 
 In the second section, the abstract quantity of ``Trust'' is explored.
-In the third section, current use and applications of Trusted operation of \acrshortpl{manet} is explored, including current \acrfullpl{tmf}.
+In the third section, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
 
 
 \section{Trust Definitions and Perspectives}
@@ -25,7 +25,7 @@ These domains of trust are, from a human perspective, quite natural and are form
 This leads to recognisable deviations in the experiential concept of ``trust'' across cultures with differing linguistic histories.
 This has led to a wealth of work in the social sciences (as well as management schools across the world) in to how to develop, understand, and repair trust across cultural boundaries.\cite{Okumura2011} \todo{Get more citations for this paragraph, need background on multicultural definitions rather than second hand}
 
-As such it is important to explore the following areas of Trust definition before approaching the application of Trust towards Autonomous Systems and finally to \acrshort{manet}s:
+As such it is important to explore the following areas of Trust definition before approaching the application of Trust towards Autonomous Systems and finally to \gls{manet}s:
 
 \begin{enumerate}
   \item Definitions of Trust
@@ -107,8 +107,19 @@ There are five commonly considered characteristics or attributes of Trust relati
 \label{sec:trust_topologies}
 Beyond the attributes or characteristics of an individual trust relationship, within any multi party sparsely connected network or community, topological context is useful in both establishing trust and in disseminating observations for collaborative assessment.
 
-\missingfigure{Trust Topologies, Direct, Indirect, Recommender, etc.
-We've done it a dozen times before, may as well make a new graphic}
+Within sparsly connected networks, there are three primary types of relationship, minimally demonstrated in Fig.~\ref{fig:trust_topology_relationships};
+
+\begin{itemize}
+  \item \emph{Direct} - Whereby two nodes have a zero-hop communications link between them ($A,B,C$ in the given figure)
+  \item \emph{Indirect} - Where two nodes have a $n>1$ hop communications link ($E,D$ from $A$ or $C$s perspective in the given figure)
+  \item \emph{Recommendation} -  Where three nodes are fully connected so as to enable the exchange of direct opinions and form composite opinions based on the target and reporter (i.e.\ $A$ may have both its own Direct assessment of $C$, as well as it's knowledge of $B$s Direct assessment of $C$)
+\end{itemize}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{trust_topology_relationships}
+  \caption{Trust Topologies, Direct, Indirect, Recommender, etc. from the perspective of Node A}
+  \label{fig:trust_topology_relationships}
+\end{figure}
 
 
 \subsection{Levels of Trust}
@@ -119,7 +130,8 @@ Sun\cite{Sun2008} suggests that within these there are two overarching forms of 
   \item Behavioural: That one entity voluntarily depends on another entity in a specific situation
   \item Intentional: That one entity would be willing to depend on another entity
 \end{itemize}
-These concepts closely mirror the previous definitions of ‘Hard’ and ‘Soft’ trust respectively, one (Behavioural) being an invested dependency given certain parameters being satisfied, mirroring Hard Trust, and the other (Intentional) being the ‘capacity for belief’ in another entity, analogous to Soft Trust.
+These concepts closely mirror the previous definitions of ‘Hard’ and ‘Soft’ trust respectively.
+Behavioural Trust can be considered an invested dependency given certain parameters being satisfied, mirroring Hard Trust, and Intentional Trust can be considered as the ‘capacity for belief’ in another entity, analogous to Soft Trust.
 It is suggested that these overarching forms are supported by and indeed are drawn from four major constructs within social and networked environments:
 \begin{itemize}
   \item Trusting Belief: the subjective belief within a system that the other trusted components are willing and able to act in each-others’ best interests
@@ -135,7 +147,7 @@ Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation P
 
 \subsection{Introduction}
 
-The aim of the section is to explore where trust is likely to impact \acrfull{sos} that contain autonomous elements incorporating Human Factors, Command and Control considerations, and \acrfull{v2v} distributed communication, from the perspective of trusted and semi-trusted operation.
+The aim of the section is to explore where trust is likely to impact \gls{sos} that contain autonomous elements incorporating Human Factors, Command and Control considerations, and \gls{v2v} distributed communication, from the perspective of trusted and semi-trusted operation.
 
 This is a subject area with a great deal of complexity and touches on a wide range of research areas, so it will be discussed in four parts; 
  
@@ -150,7 +162,7 @@ This is a subject area with a great deal of complexity and touches on a wide ran
 Autonomy, like trust, is a nebulous, ill defined term across research, defense and commercial circles.
 In the most general case, Autonomy is explained as the allocation of functionality between a system and an operator tasked with performing a given task; where a system is more``autonomous'', more of the sensing, planning, decision and action operations are performed by the system. (See Table~\ref{tab:autonomy_definitions} for a review of current definitions of autonomy and autonomous systems)
 
-While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, recent advances in the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \acrshortpl{uav} to global networks of collaborating machines such as Google and beyond.
+While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, recent advances in the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Google and beyond.
 
 
 \begin{table}\centering
@@ -161,7 +173,7 @@ While Autonomy is largely taken to be a robotics term based in the case of one h
     \ldots should be able to carry out its actions and to refine or modify the task and its own behaviour according to the current goal and execution context of its task & \citet{Alami1998}\\
     Autonomy refers to systems capable of operating in the real-world environment without any for of external control for extended periods of time & \citet{Bekey2005}\\
     \ldots a system situated within and a part of an environment that senses that environment and acts on it, over time, in pursuit of its own agenda and so as to effect with it senses in the future. \ldots Exercises control over its own actions & \citet{Franklin1997} \\
-    An unmanned systems own ability of sensing, perceiving, analyzing, communicating, planning, devision-making, and acting, to achieve goals as assigned by its human operator(s) through designed \acrshort{hri}. \ldots The condition or quality of being self-governing & \citet{Huang2004}\\
+    An unmanned systems own ability of sensing, perceiving, analyzing, communicating, planning, devision-making, and acting, to achieve goals as assigned by its human operator(s) through designed \gls{hri}. \ldots The condition or quality of being self-governing & \citet{Huang2004}\\
     \ldots that the robot can operate self-contained, under all reasonable conditions without requiring recourse to the human operator. Autonomy means that a robot can adapt to change in its environment \ldots or itself \ldots and continue to reach a goal. & \citet{Murphy2000}\\
     \ldots it should learn what it can to compensate for partial or incorrect prior knowledge & \citet{Russell2009} \\
     Autonomy refers to a robot's ability to accommodate variations in its environment. Different robots exhibit different degrees of autonomy; the degree of autonomy is often measured by relating the degree at which the environment can be varied to the mean time between failures and other factors indicative of the robots performance. & \citet{Thrun2004}\\
@@ -173,7 +185,7 @@ While Autonomy is largely taken to be a robotics term based in the case of one h
   \caption[Levels of Decision Making Automation]{Levels of Decision Making Automation (\citet{Sheridan1978})}
   \label{tab:autonomy_levels_sheridan}
   \begin{tabularx}{\textwidth}{p{1cm} X}\toprule
-    \acrshort{loa} & Description \\ \midrule
+    \gls{loa} & Description \\ \midrule
     1&    The computer offers no assistance; the human must make all decisions and actions\\
     2&    The computer offers no assistance; the human must make all decisions and actions\\
     3&    The computer offers a complete set of decision/action alternatives, or\\
@@ -191,7 +203,7 @@ While Autonomy is largely taken to be a robotics term based in the case of one h
   \caption[Levels of Automation]{Levels of Automation (\citet{Endsley1999})}
   \label{tab:autonomy_levels_endsley}
   \begin{tabularx}{\textwidth}{p{3cm} X}\toprule
-    \acrshort{loa} & Description \\ \midrule
+    \gls{loa} & Description \\ \midrule
     Manual Control &
     The human monitors, generates options, selects options (makes decisions), and physically carries out options.\\
     Action Support &
@@ -309,7 +321,7 @@ Examples of roles that interact with a system from both of these trust perspecti
 
 \subsection{Design Trust}
 
-Five aspects of Design Trust have been identified:
+Five aspects of Design Trust have been identified: \todo{by whom}
 \begin{enumerate}
   \item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
     This includes engaging with dynamic systems of systems environments where an autonomous system may cooperate with a system not envisaged at design time.
@@ -349,21 +361,21 @@ There are three main organisations that are developing or have developed assuran
 
 \subsubsection{NATO Standardization Office}
 
-Faced with the growing adoption of similar but disparate \acrshort{uav} systems within NATO territories and coalition nations, STANAG 4586\cite{STANAG4586} was promulgated in 2005 and defined a logistic and interoperability framework to provide commonality in the command and comtrol architecture and implementations of \acrshort{uav}/Ground station communications.
+Faced with the growing adoption of similar but disparate \gls{uav} systems within NATO territories and coalition nations, STANAG 4586\cite{STANAG4586} was promulgated in 2005 and defined a logistic and interoperability framework to provide commonality in the command and comtrol architecture and implementations of \gls{uav}/Ground station communications.
 
 This included a particularly interesting development in the form of "Vehicle Specific Module" (VSM) interoperability, whereby existing systems could be grandfathered into 4586 compliance by the addition of a VSM to operate as a protocol translator.
 This VSM could be mounted on the remote system, utilising a 4586 compliant Data Link Interface (DLI), or mounted on the UCS utilising a proprietary DLI to the remote system.
-4586 described five \acrshort{loi} for compliant \acrshort{uav} systems, shown in Table~\ref{tab:levels_of_interoperability}.
-This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations \cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ‘direct control’ or ‘Operator-in-the-loop’, especially in the case of \acrfull{blos} systems, and that in increasingly autonomous systems, operation is done as \acrfull{hsc}, or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware.
+4586 described five \gls{loi} for compliant \gls{uav} systems, shown in Table~\ref{tab:levels_of_interoperability}.
+This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations \cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ‘direct control’ or ‘Operator-in-the-loop’, especially in the case of \gls{blos} systems, and that in increasingly autonomous systems, operation is done as \gls{hsc}, or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware.
 
 \begin{table}
   \begin{tabularx}{\textwidth}{|l|X|}
     \hline  LOI &  \\ 
-    \hline  1 &  Indirect receipt/transmission of \acrshort{uav} related payload data\\ 
-    \hline  2 &  Direct receipt of \acrshort{isr} data where “direct” covers reception of \acrshort{uav} payload data by the UCS when it has direct communication with the \acrshort{uav}\\ 
-    \hline  3 &  Control and monitoring of the \acrshort{uav} payload in addition to direct receipt of \acrshort{isr}/other data\\ 
-    \hline  4 &  Control and monitoring of the \acrshort{uav}, less launch and recovery\\
-    \hline  5 &  Launch and Recovery in addition to \acrshort{loi} 4\\ 
+    \hline  1 &  Indirect receipt/transmission of \gls{uav} related payload data\\ 
+    \hline  2 &  Direct receipt of \gls{isr} data where “direct” covers reception of \gls{uav} payload data by the UCS when it has direct communication with the \gls{uav}\\ 
+    \hline  3 &  Control and monitoring of the \gls{uav} payload in addition to direct receipt of \gls{isr}/other data\\ 
+    \hline  4 &  Control and monitoring of the \gls{uav}, less launch and recovery\\
+    \hline  5 &  Launch and Recovery in addition to \gls{loi} 4\\ 
     \hline 
   \end{tabularx}
   \caption{Levels of Interoperability for STANAG 4586 Compliant UCS}
@@ -376,29 +388,34 @@ Further, 4586 predominantly deals with a one-to-one mapping between operators an
 
 \subsubsection{Society of Automotive Engineers (SAE)}
 
-The AS-4 steering group is responsible for the development and maintenance of the \acrfull{jaus} standards, which provide several service sets for Inter-System cooperation and interoperability, either in the form of a specified design language (JSIDL\footnote{\acrshort{jaus} Service Interface Definition Language}) or as a direct framework implementation, such as the \acrshort{jaus} Mobility, Mission Spooling, Environment Sensing, or Manipulator Service Sets\footnote{SAE AS6009, AS 6062, AS 6060, and AS 6057 respectively}.
+The AS-4 steering group is responsible for the development and maintenance of the \gls{jaus} standards, which provide several service sets for Inter-System cooperation and interoperability, either in the form of a specified design language (JSIDL\footnote{\gls{jaus} Service Interface Definition Language}) or as a direct framework implementation, such as the \gls{jaus} Mobility, Mission Spooling, Environment Sensing, or Manipulator Service Sets\footnote{SAE AS6009, AS 6062, AS 6060, and AS 6057 respectively}.
 This provides a stack-like interoperability model akin to the OSI inter-networking standard, providing logical connections between common levels across devices regardless of how subordinate layers are implemented.
-Importantly, \acrshort{jaus} service models are open-sourced under the BSD-license, and a development toolkit is available for anyone to develop \acrshort{jaus}-compatible communications and control protocols\cite{JTS}.
+Importantly, \gls{jaus} service models are open-sourced under the BSD-license, and a development toolkit is available for anyone to develop \gls{jaus}-compatible communications and control protocols\cite{JTS}.
 
-It is also important to note that \acrshort{jaus} is part funded, and heavily utilised by, US Army and Marine Robotic Systems Joint Project Office (RS-JPO), which manage the development, testing, and fielding of unmanned (ground) systems for those respective forces.
-This includes now legacy M160 mine clearance platform and the highly popular (both with forces and their in-field operators) iRobot Packbot inspection and \acrfull{eod} family of robotic platforms.
+It is also important to note that \gls{jaus} is part funded, and heavily utilised by, US Army and Marine Robotic Systems Joint Project Office (RS-JPO), which manage the development, testing, and fielding of unmanned (ground) systems for those respective forces.
+This includes now legacy M160 mine clearance platform and the highly popular (both with forces and their in-field operators) iRobot Packbot inspection and \gls{eod} family of robotic platforms.
 
 \subsubsection{American Society of Testing and Materials (ASTM)}
 
-The ASTM F38 committee has developed a LoS, single-asset-single-operator stove-piped framework for Unmanned Air Systems that is too constrained in scope for applicability to a more heterogeneous operating environment\cite{AmericanSocietyofTestingandMaterials2007}.
-However, the F41 Committee, focused on Unmanned Maritime Vehicle Systems (UMVS) has collectively developed a range of interoperable standards, covering Communications, Autonomy and Control, Sensor Data Formats, and Mission Payload Interfacing.
+The ASTM F38 committee has developed a \gls{los}, single-asset-single-operator stove-piped framework for Unmanned Air Systems that is too constrained in scope for applicability to a more heterogeneous operating environment\cite{AmericanSocietyofTestingandMaterials2007}.
+However, the F41 Committee, focused on \glspl{umvs} has collectively developed a range of interoperable standards, covering Communications, Autonomy and Control, Sensor Data Formats, and Mission Payload Interfacing.
 Of particular interest is the Autonomy and Control standard \cite{AmericanSocietyofTestingandMaterials2006}, which highlighted a requirement on the vehicle system to be able to recognise an authorised client, be that a human operator or an additional collaborating vehicle.
 Further, the standard states that the responsibility of the safety and integrity of any payload remains with the vehicle.
 This standard was withdrawn in 2015 due to ASTM regulations requiring standards to be updated within 8 years of approval, and has no direct replacement within ASTM, but stands as a useful guiding perspective on autonomy standards within industry.
 
-\missingfigure{ASTM F41 UMVS Architecture}
+\begin{figure}
+  \includegraphics[width=\textwidth]{astmf41arch}
+  \caption{ASTM F41 UMVS Architecture  (with relevant substandards in parenthesis)}
+  \label{fig:astmf41arch}
+\end{figure}
+
 
 \subsection{Human Factors related to Operational Trust}
 
 This work is considering autonomous systems as entities of wider systems, we refer to these here as \glspl{acs}.
 As described earlier, Operational Trust has two main aspects, trust in the system to behave as expected and trust in the interfaces between systems (human/machine and machine/machine).
 Of all of the interfaces in an Autonomous Collaborative System, the most problematic is that arguably that between the System of Autonomous Systems (SoAS) and the human operator / team of operators.
-Cummings identified the main challenges to Human Supervisory Control (HSC), summarised below:\cite{Cummings2010}
+Cummings identified the main challenges to \gls{hsc}, summarised below:\cite{Cummings2010}
 
 \subsubsection{Information Overload}
 Operator efficiency exhibits an optimum at moderate levels of cognitive engagement, above which cognitive ability is overloaded and performance drops (Otherwise known as the Yerkes-Dodson Law).
@@ -410,15 +427,15 @@ Automation is well tailored to consistent levels of activity.
 This is quite simply not the case many domains.
 Particularly in defence and military applications, activity is characterised by long periods of ``routine'' punctuated by high intensity, usually unpredictable, activity.
 At those interfaces between ``calm'' and ``storm'', where real time situational awareness is imperative, temporary Information Overload is highly probable.
-Adaptive Automation enables autonomous systems to increase their \acrfull{loa} based on specific events in the task environment, changes in operator performance or task loading, or physiological methods.
-It is taken as given that for routine operations, and increased \acrshort{loa} reduces operator workload, and vice versa.
-However, this relationship is highly task dependent and can create severe problems in cases of \acrshort{loa} being greater, or indeed lesser, than is required.
-In the cases of overly-high \acrshort{loa}, operator skill is degraded, situational awareness is reduced as the operator is not as engaged, and the automated system may not be able to handle unexpected events, requiring the operator to take over, which, given the previous points, is a difficult prospect.
-Alternatively, in sub-optimal \acrshort{loa}, Information Overload can result in the case of high intensity situations, but also the system can fall foul of overly-sensitive human cognitive biases, false positive pattern detection, boredom, and complacency in the case where less is going on.
+Adaptive Automation enables autonomous systems to increase their \gls{loa} based on specific events in the task environment, changes in operator performance or task loading, or physiological methods.
+It is taken as given that for routine operations, and increased \gls{loa} reduces operator workload, and vice versa.
+However, this relationship is highly task dependent and can create severe problems in cases of \gls{loa} being greater, or indeed lesser, than is required.
+In the cases of overly-high \gls{loa}, operator skill is degraded, situational awareness is reduced as the operator is not as engaged, and the automated system may not be able to handle unexpected events, requiring the operator to take over, which, given the previous points, is a difficult prospect.
+Alternatively, in sub-optimal \gls{loa}, Information Overload can result in the case of high intensity situations, but also the system can fall foul of overly-sensitive human cognitive biases, false positive pattern detection, boredom, and complacency in the case where less is going on.
 Therefore, as a corollary to Information Overload challenges, there is a need to define the interrelationship between levels of situational activity (or risk) and appropriate levels of automation.
-\textit{Under what circumstances can AA be used to change the \acrshort{loa} of a system?
-Does the autonomous system or the human decide to change \acrshort{loa}\@? 
-What \acrshort{loa}s are appropriate for what circumstances?}
+\textit{Under what circumstances can AA be used to change the \gls{loa} of a system?
+Does the autonomous system or the human decide to change \gls{loa}\@? 
+What \gls{loa}s are appropriate for what circumstances?}
 
 \subsubsection{Distributed Decision Making}
 In a modern, non-hierarchical, often distributed or cellular military management system (Network Centric Warfare doctrine for example), tools are increasingly being used to mitigate information asymmetry within command and control.
@@ -462,12 +479,10 @@ This is a key part of the ``soft trust'' perspective, where the operators and co
 To be able to trust that systems’ ability to continue on a course, survey an area, notify on detection of an anomaly, etc.is going to be the corner stone of any autonomous systems justification in the future.
 
 \subsection{Conclusions}
-With demand for smaller, more decentralised marine survey and monitoring systems, and a drive towards lower per-unit cost, TMFs are going to be increasingly applied to the marine space, as the benefits they present are significant.
-Beyond the constraints of the communications environment, knock on pressures are applying in battery capacity, on-board processing, and locomotion.
-These pressures simultaneously present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance.
-These multiple aspects of potential incentives, trust, and fairness do not directly fall under the scope of single metric trusts discussed above, and this context indicates that a multi-metric approach may be more appropriate.
 
-However, the implications of trust in autonomy beyond securing communications and data are an area in need of further research (BAE Systems, 2013. Maritime Autonomy Final Report - Combined Response,)\todo{Need to check security status of this source}
+\todo{ReDo this later}
+
+The implications of trust in autonomy beyond securing communications and data are an area in need of further research (BAE Systems, 2013. Maritime Autonomy Final Report - Combined Response,)\todo{Need to check security status of this source}
 Of particular concern is the verification of autonomous behaviours.
 Technology Readiness Level deficiencies were identified in the Maritime Capability Contribution of Unmanned Systems (MCCUS) Osprey Phase 1 report(Clark, H. et al., 2012. Maritime Capability Contribution of Unmanned Systems,)\todo{Need to check security status of this source}, with a particular focus on failsafe behaviour.
 The addition of increased on-board autonomy in MUxS, properly understood and verified, would greatly improve this future capability, similar to recent developments in the UAS arena\cite{Cummings2010}.
@@ -476,27 +491,19 @@ There are opportunities for increased decentralisation and in-field collaboratio
 In order for these new distributed structures to be relied upon to provide operational performance, reliability and to maintain in-field situational awareness, vulnerabilities to disruption, interruption, and subversion need to be understood and minimised.
 
 
-\section{Trust in \acrshortpl{manet}}
+
+\section{Trust in \glspl{manet}}
 
 \subsection{Trust Model Design Considerations}
-Trust is the level of confidence one agent has in another to perform a given action on request or in a certain context.
+
+From the previous sections, we define Trust as ``the level of confidence one agent has in another to perform a given action on request or in a certain context''.
 Trust in the autonomous or semi-autonomous realm is the ability of a system to establish and maintain confidence in itself or another systems' operations.
-Managing this trust can be used to predict and reason on the future interactions between entities in a system, such as an autonomous mobile ad-hoc network (\gls{manet}).
-
-The distributed and dynamic nature of \acrshortpl{manet} mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities or using Public Key Infrastructures (PKI).\todo{possibly worthwhile doing more background on the operation of these}
-Therefore, a distributed, collaborative system must be applied to these networks.
-Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
-
-As mobile ad-hoc networks (\gls{manet}s) grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
-
-Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes within networks.
-This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes.
-Previous research has established the advantages of implementing TMFs in 802.11 based \acrshortpl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
 There are five topics that are important to address in any \gls{manet}s trust model \cite{Kamvar2003}:
+%
 \begin{itemize}
   \item The trust model should be without infrastructure.
     Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a trusted third party (TTP).
-    There is no public key infrastructure (PKI), where some center nodes monitor the network, and publish illegal nodes periodically.
+    There is no \gls{pki}, where some center nodes monitor the network, and publish illegal nodes periodically.
     In a \gls{manet}, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
   \item The trust model should be anonymous because of the anonymity of mobile nodes in \gls{manet}s.
   \item The trust model should be robust.
@@ -504,43 +511,57 @@ There are five topics that are important to address in any \gls{manet}s trust mo
     Moreover, in the presence of malicious nodes, they may attempt to subvert the model in order to get the unfairly good trust value.
   \item The trust model should have minimal control overhead in accordance with computation, storage, and complexity.
   \item The trust model should be self-organized.
-    \acrshortpl{manet} are characterized to have dynamic, random, rapidly changing and multi-hop topologies composed of variably bandwidth-constrained links
+    \glspl{manet} are characterized to have dynamic, random, rapidly changing and multi-hop topologies composed of variably bandwidth-constrained links
 \end{itemize}
-\section{Current Trust Management Frameworks}
+%
+
+\subsection{Attacks on \glspl{manet}}
+
+
+
+\subsection{Trust Management Frameworks}
+
 Distributed trust management frameworks for \gls{manet}s aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
 Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
 Taking some examples;
+%
 \begin{itemize}
-  \item \emph{Hermes Trust Establishment Framework} takes a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
+  \item \emph{Hermes Trust Establishment Framework} takes a Bayesian Beta function to model per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
   \item \emph{The Objective Trust Management Framework} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
-    \acrshort{otmf} however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
-  \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (PLR)\cite{Cho2011}.
-  \item \emph{CONFIDANT}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, similar to \acrshort{otmf}.
+    \gls{otmf} however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
+  \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (\gls{plr})\cite{Cho2011}.
+  \item \emph{CONFIDANT}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, similar to \gls{otmf}.
     They also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter.
   \item \emph{Fuzzy Trust-Based Filtering}; \cite{Luo2008} presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network.
-  \item \emph{Multi-parameter Trust Framework for \glspl{manet} (\acrshort{mtfm})} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust\cite{Guo11}
+  \item \emph{\gls{mtfm}} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust\cite{Guo11}
 \end{itemize}
+%
+
 \subsection{Single Metric Trust Frameworks}
+
 \todo{Expand background detail on more frameworks}
 The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
-
+%
 \begin{equation}
   p(B|O)  = \frac{p(O|B) \times p(B)}{\rho}
   \label{eq:otmf_pbo}
 \end{equation}
+%
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
+
 Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
 
 A secondary measurement of the confidence factor of the trust assessment $t$ is generated as \eqref{eq:otmf_c} and these measurements are combined to form a ``trustworthiness'' value $T$ \eqref{eq:otmf_trust}.
-
+%
 \begin{align}
   t_i &\to E\lbrack\text{beta}(p|\alpha,\beta)\rbrack = \frac{\alpha_i}{\alpha_i+\beta_i} \label{eq:otmf_t}\\[5pt]
   c_i &= 1 - \sqrt{\frac{12\alpha_i\beta_i}{(\alpha_i+\beta_i)^2(\alpha_i+\beta_i+1)}} \label{eq:otmf_c}\\[5pt]
   T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{x^2} + \frac{(c_i-1)^2}{y^2}}}{\sqrt{\frac{1}{x^2}+\frac{1}{y^2}}} \label{eq:otmf_trust}
 \end{align}
+%
 In \eqref{eq:otmf_trust}, $x$ and $y$ are constants, used weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$), and from \cite{Zouridaki2005}, are taken as $x=\sqrt{2},y=\sqrt{9}$.
 
-Upon this per-node assessment methodology, \acrshort{otmf} overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
+Upon this per-node assessment methodology, \gls{otmf} overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
 
 \todo{Want at least CONFIDANT and Fuzzy in here for contrast}
 To date this work has been mostly limited to terrestrial, RF based networks.
@@ -548,13 +569,15 @@ There are also situations where the observed metrics will include significant no
 Conventional approaches such as probabilistic estimation do not produce trust values that reflect the underlying reality and context of the metrics available, as they require a-priori assumption that the trust value under exploration has an expected distribution, that distribution is mono-modal, and the input metrics are binary.
 In scenarios with variable, sparse, noisy metrics, estimating the distribution is difficult to accomplish a-priori.
 
-Hermes, \acrshort{otmf}, CONFIDANT, and Fuzzy Trust-Based Filtering can be generalised as single-value probabilistic estimation, based on a Bayesian idea of taking a binary input state and generating an idealised Beta Distribution (\ref{eq:beta}) of the future states of that input generated through an expectation value based on interactions (\ref{eq:beta_e}).
+Hermes, \gls{otmf}, CONFIDANT, and Fuzzy Trust-Based Filtering can be generalised as single-value probabilistic estimation, based on a Bayesian idea of taking a binary input state and generating an idealised Beta Distribution (\ref{eq:beta}) of the future states of that input generated through an expectation value based on interactions (\ref{eq:beta_e}).
+%
 \begin{align}
   \label{eq:beta}
   \text{beta}(p|\alpha,\beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1},\text{where } 0 \leq p \leq 1; \alpha,\beta > 0\\
   \label{eq:beta_e}
   E(p) = \frac{\alpha}{\alpha + \beta}
 \end{align}
+%
 Where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
 
 These single metric TMFs provide malicious actors with a significant advantage if their activity is undetectable by that one assessed metric, especially if the attacker is aware of the observed metric in advance.
@@ -569,7 +592,7 @@ Such behaviour would not be detected by the TMF.
 Given the potential incentives to a selfish attacker and potential threats to trust and fairness in sparse, noisy, and constrained environments, single metric trusts discussed above do not suitably cover the exposed threat surface.\todo{Probably best to just send a reference forward to the Marine Comms chapter}
 A multi-metric approach may be more appropriate to capture and monitor the realities of harsh and sparse communications environments.
 
-\acrshort{mtfm}\cite{Guo11} uses Grey Theory\cite{Zuo1995} to perform cohort based normalization of metrics at runtime, providing a ``grey relational grade'' of trust compared to other observed nodes in that interval for individual metrics, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
+\gls{mtfm}\cite{Guo11} uses Grey Theory\cite{Zuo1995} to perform cohort based normalization of metrics at runtime, providing a ``grey relational grade'' of trust compared to other observed nodes in that interval for individual metrics, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
 This presents a stark difference between the Grey and Probabilistic approaches.
 Grey assessments are relative in both fairly and unfairly operating networks.
 All nodes will receive mid-range trust assessments if there are no malicious actors as there is nothing ``bad'' to compare against, and variations in assessment will be primarily driven by topological and environmental factors.
@@ -596,7 +619,7 @@ Weighting can be applied before generating a scalar value \eqref{eq:metric_weigh
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
 To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
-\acrshort{mtfm} combines this GRA with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}.
+\gls{mtfm} combines this GRA with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}.
 
 There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect, repeating those discussed in section~\ref{sec:trust_topologies}.\todo{This is currently half empty}
 Where an observing node $n_i$ assesses the trust of another target node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
@@ -606,7 +629,7 @@ These relationships give node sets, $N_R$ and $N_I$ containing the nodes that ha
 %
 \begin{align}
   \label{eq:networkeffects}
-  T_{i,j}^{\acrshort{mtfm}}=&\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}\\ \notag
+  T_{i,j}^{\gls{mtfm}}=&\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}\\ \notag
   +&\frac{1}{2} \frac{2|N_R| }{2|N_R| + |N_I|}\sum_{n \in N_R} \max_s\{f_s(T_{i,n})\} T_{i,n}\\ \notag
   +&\frac{1}{2} \frac{|N_I| }{2|N_R| + |N_I|}\sum_{n \in N_I} \max_s\{f_s(T_{i,n})\} T_{i,n} 
 \end{align}
@@ -624,7 +647,7 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 %
 In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 
-Guo et al.\ demonstrated that when compared against \acrshort{otmf} and Hermes trust assessment, \acrshort{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
+Guo et al.\ demonstrated that when compared against \gls{otmf} and Hermes trust assessment, \gls{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
 \section{Conclusion}
 As mobile ad-hoc networks (\gls{manet}s) grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments to ensure their continued security, reliability, and performance.
 With demand for smaller, more decentralised \gls{manet} systems in a range of domains and applications, as well as a drive towards lower per-unit cost in all areas, TMFs are going to be increasingly applied to resource constrained applications, as the benefits and efficiencies they present are significant.
@@ -634,7 +657,7 @@ These multiple aspects of potential incentives, trust, and fairness do not direc
 These increasingly decentralised applications present unique threats against trust management \cite{Caiti2011}.
 
 One area of application is the underwater marine environment, where extreme challenges to communications present themselves (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multipath distortion, etc.).
-In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper \acrfull{auv} platforms.
+In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper \gls{auv} platforms.
 In underwater environments, communications is both sparse and noisy.
 Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \gls{manet}S.
 

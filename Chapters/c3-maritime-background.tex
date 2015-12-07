@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
- \def\ChapterTitle{Maritime Communications and Use of Autonomous Systems}
+ \def\ChapterTitle{Maritime Communications and Grey Theory}
  
  \ifx\ifthesis\undefined
  \input{chapter_standalone_preamble.tex}
@@ -16,6 +16,63 @@
  The key challenges of underwater acoustic communications are centred around the impact of slow and differential propagation of energy (RF, Optical, Acoustic) through water, and it's interfaces with the seabed / air.
  The resultant challenges include; long delays due to propagation, significant inter-symbol interference and Doppler spreading, fast and slow fading due to environmental effects (aquatic flora/fauna; surface weather), carrier-frequency dependent signal attenuation, multipath caused by the medium interfaces at the surface and seabed, variations in propagation speed due to depth dependant effects (salinity, temperature, pressure, gaseous concentrations and bubbling), and subsequent refractive spreading and lensing due to that same propagation variation\cite{Partan2006}.
  
+ \subsection{Mechanics of Acoustic Transmission}
+
+ Unlike in RF energy energy transfer (where photons move through space to transmit energy from one place to another), acoustic wages are the result of mechanical pertubation of a medium where localised compressions and extensions pass energy across a medium through that mediums elastic properties.
+ These ``compression waves'' propogate away from its source, and the rate of this propogation is the sound speed, velocity or $c$, measured in $ms^{-1}$.
+ Acoustic pressure is usually measured in \emph{Pascals} ($Pa/\mu Pa$). 
+ This is not to be confused with the fluid velocity corresponding to the instantenous motion of particles in the medium.
+
+ Hydrophones, like their more common microphone equivalent in air, are fundamentally pressure sensors.
+ In the underwater environment, the dynamic range (difference between instantaneous high and low pressure values) may be extremely high, often more than 10 orders of magnitude higher. 
+ As such, logarithmic notation is justified.\todo{Best to discuss notation here}
+
+ Useful acoustic signals are generally maintained vibrations rather than instantenous pulses.
+ They are characterised by their frequency $f$ expressed in Hertz ($Hz$) or by their Period ($T$, related to frequency by $T=1/f$)
+ In commonly used underwater acostics, used frequencies range from $\approx 10Hz-100kHz$ depending on application.\cite{Stojanovic2007}.
+
+ As with all waves, the relationship between frequency, period and the wavelength is given as in \eqref{eq:wavelength}. 
+ As such the generally used upper and lower bounds of wavelength in most applications is from $1.5 m @ 10Hz$ to $0.015m @ 100kHz$.
+
+ This wide range of frequencies and wavelengths allow for a diverse set of constraining factors; (Paraphrased from \cite{lurton2010}).
+
+ \begin{itemize}
+   \item \emph{Attenuation} in water; limiting the maxiumu usable range, which increases very rapibly with freqency
+   \item \emph{Dimensions} of soud source; which increase at lower $f$ for a given transmission power
+   \item \emph{Spatial Selectivity} of sources and receivers as $f$ increases, due to similarly increasing directivity of energy propogation.
+   \item \emph{Acoustic Reponse} of target surfaces (analogous to receiver gain in RF networks.
+ \end{itemize}
+ 
+ \begin{equation}
+  \lambda = cT = \frac{c}{f}
+  \label{eq:wavelength}
+ \end{equation}
+
+
+ \subsection{Velocity and density}
+
+ Air has a baseline density of approximatly $1.3 kg m^{-3}$, and the speed of sound is typically static around $340 ms^{-1}$ 
+ In sea water, acostic wave velocity is close to $c=1500ms^{-1}$ (generally between $1450ms^{-1}$ and $1550ms^{-1}$ depending on temperature, pressure, salinity etc.)
+ Similarly variable is sea water denisty, which is nominally around $\rho = 1030kg m^{-3}$
+
+ While the sea/air surface is (ideally) a simple refractive interface, the interface between open seawater and marine sediment is gradiated, with density ranges between $1200 - 2000 kg m_{3}$. 
+ This results in refractive and reflective velocities in the sediment interface ranging from $1500-2000 ms^{-1}$.\cite{lurton2010} 
+
+ For comparison, the speed of light in air/water is $2.99 \times 10^8 ms^{-1}$ and $2.249 \times 10^{8} ms^{-1}$.\todo{this might be better as a table}
+
+ \subsection{Intensity and Power} 
+
+ The energy of an acoustic wave is encapsulated into its kinetic and potential parts; where its kinetic energy corrsponds to the active motion energy of the particles in the medium, and the potential energy corresponding to the elastic potential of the medium in displacement/compression.
+
+ The acoustic intensity ($I$) is the energy flux mean value per unit of surface and time \eqref{eq:acoustic_intensity} in Watts/$m^2$ where $p_0$ is the plane wave amplitude (pressure) and $P_{rms} = p_0/\sqrt{2}$
+
+ \begin{equation}
+  I = \frac{p_0^2}{2\rho c} = \frac{p_{rms}^2}{\rho c}
+  \label{eq:acoustic_intensity}
+ \end{equation}
+
+ \subsection{Attenuation}
+
  The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear and $dB$ forms respectively is given by
  
  \begin{equation}
@@ -54,7 +111,12 @@
  
  where $d=d_0$ is the minimal path length between the transmitter and receiver, $d_p,p=\{1,\dots P-1\}$ are the secondary path lengths, $\Gamma_p$ models additional losses incurred on each path such as reflection losses at the surface interface, and $\tau_p = d_p/c$ is the delay time ($c \approx 1500 ms^{-1}$ is the nominal speed of sound underwater).
  
- \missingfigure{Non-Linear Marine Propogation Figures from Ghia}
+\begin{figure}
+  \includegraphics{ghia_sound_prop_curve}
+  \caption{Non-Linear Marine Propogation Figures from Ghia}
+  \todo[inline]{Vectorise and Label}
+  \label{fig:ghia_sound_prop_curve}
+\end{figure}
  
  Comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model $A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2$, the impact of range on signal power is exponential underwater, rather than quadratic in RF space ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$).
  While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$

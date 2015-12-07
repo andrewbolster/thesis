@@ -25,5 +25,3 @@ if [[ "$tex_exit" -gt "0" ]]; then
   exit $tex_exit 
 fi
 git add ./Thesis.pdf ./Thesis-Last.pdf
-
-git commit --amend -a --no-verify

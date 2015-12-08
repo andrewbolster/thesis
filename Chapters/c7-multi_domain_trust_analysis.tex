@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
-\def\ChapterTitle{Comparative Analysis of Multi-Domain Trust Assessment in Collaborative Marine MANETs}
+\def\ChapterTitle{Comparative Analysis of Multi-Domain Trust Assessment in Collaborative Marine \gls{manet}s}
 
 \ifx\ifthesis\undefined
 \input{chapter_standalone_preamble.tex}
@@ -13,7 +13,7 @@
 
 
 
-In this chapter we demonstrate the use and operation of a multi-domain trust management framework (MD-TMF) in collaborative marine MANETS
+In this chapter we demonstrate the use and operation of a multi-domain trust management framework (MD-TMF) in collaborative marine \gls{manet}S
 We demonstrate a methodology that applies Grey Sequence operations and Grey Generators (conceptually analogous to Sequential Bayesian Filtering) to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
 We present a methodology for assessing the performance of varying metric sets in detection and differentiation of a range of communications and physical misbehaviours, demonstrating that by utilising information from multiple domains, trust assessment can be more accurate in identifying misbehaviour than in single-domain assessment.
 
@@ -101,7 +101,7 @@ Using this approach we can explore the results of these simulations, condensing 
 First we discuss the results of the Random Forest regression assessment; in Figs~\ref{fig:comms_feature_extraction} and ~\ref{fig:phys_feature_extraction}, we show the resultant feature extraction signatures for Comms-only and Physical-only metric selections, and Fig~\ref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
 
 It is also interesting to note that in both single-domain cases, there are clear 'signatures' in misbehaviours that don't directly target that domain ($P_{RX}$ in the Physical Shadow and Slowcoach behaviours in Fig~\ref{fig:comms_feature_extraction} and $INDD$ in the Selfish Target Selection behaviour in Fig~\ref{fig:phys_feature_extraction}).
-This inter-domain activity is to be expected in MANETs in general, where the physical reality of the network (i.e. distance between nodes) directly impacts the behaviour of the logical communications network (i.e. delay between nodes), and is as we will see a useful characteristic for differentiating potential misbehaviours.
+This inter-domain activity is to be expected in \gls{manet}s in general, where the physical reality of the network (i.e. distance between nodes) directly impacts the behaviour of the logical communications network (i.e. delay between nodes), and is as we will see a useful characteristic for differentiating potential misbehaviours.
 
 
 

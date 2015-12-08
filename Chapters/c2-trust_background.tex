@@ -491,7 +491,6 @@ There are opportunities for increased decentralisation and in-field collaboratio
 In order for these new distributed structures to be relied upon to provide operational performance, reliability and to maintain in-field situational awareness, vulnerabilities to disruption, interruption, and subversion need to be understood and minimised.
 
 
-
 \section{Trust in \glspl{manet}}
 
 \subsection{Trust Model Design Considerations}
@@ -519,15 +518,25 @@ There are five topics that are important to address in any \gls{manet}s trust mo
 
 
 
-\subsection{Trust Management Frameworks}
+\subsection{Trust Management Frameworks}\label{sec:c2_tmfs}
 
 Distributed trust management frameworks for \gls{manet}s aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
+
+This predictive behaviour attempts to solve four important problems (paraphrased from \cite{Sun2008}):
+\begin{itemize}
+  \item \emph{Decision support} - For example; making informed routing table decisions based on past successes/failures.
+  \item \emph{Adaptability} - Ongoing prediciction of the networks future trust states directly detemines the risk faced by the network. Internalised knowledge of the expected risk can aid in selecting appropriate measures/ countermeasures such as automatically varying the level of authentication required for network activities.
+  \item \emph{Misbehaviour Detection} - Trust evaluation leads to a the natural policy that highly variable or low-trust nodes within a network should be subject to higher scrutiny; triggering this response indicates that a node is damaged or misbehaving.
+  \item \emph{Abstraction of Collective security characteristics} - Through per-node trust evaluation, the generalised trustworthiness of a set or subset of nodes can be derived to encapsulate the ``health'' of the network as a whole.
+\end{itemize}
+
+
 Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
 Taking some examples;
 %
 \begin{itemize}
   \item \emph{Hermes Trust Establishment Framework} takes a Bayesian Beta function to model per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
-  \item \emph{The Objective Trust Management Framework} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
+  \item \emph{\acrfull{otmf}} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
     \gls{otmf} however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
   \item \emph{Trust-based Secure Routing \cite{Moe2008a}} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (\gls{plr})\cite{Cho2011}.
   \item \emph{CONFIDANT}; \cite{Buchegger2002} presented an approach using a probabilistic estimation of normal observations, similar to \gls{otmf}.

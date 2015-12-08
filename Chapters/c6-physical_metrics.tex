@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
-\def\ChapterTitle{Modelling and Analysis of Collaborative Node Kinematic Behaviours in Underwater Acoustic MANETs}
+\def\ChapterTitle{Modelling and Analysis of Collaborative Node Kinematic Behaviours in Underwater Acoustic \gls{manet}s}
 
 \ifx\ifthesis\undefined
 \input{chapter_standalone_preamble.tex}
@@ -9,275 +9,10 @@
 \lhead{Chapter \thechapter. \emph{Modelling of Node Behaviours}} % Write in your own chapter title to set the page header
 \fi
 
-
-
-
 \section{Introduction}\label{sec:introduction}
-% no \IEEEPARstart
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-
-As mobile ad-hoc networks (MANETs) grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments to ensure their continued security, reliability, and performance.
-
-One area of application is the underwater marine environment, where extreme challenges to communications present themselves (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multi-path distortion, etc.).
-In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper autonomous underwater vehicles (AUVs). 
-These increasingly decentralised applications present unique threats against trust management \cite{Caiti2011}.
-In underwater environments, communications is both sparse and noisy.
-Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF MANETS.
-As such, the use of trust methods developed in the terrestrial MANET space must be re-appraised for application within the underwater context \cite{Pavan2015}.
-
-Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes within networks.
-This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes.
-Previous research has established the advantages of implementing TMFs in 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
-
-Most current TMFs use a single type of observed action to derive trust values, typically successfully delivered or forwarded packets. 
-These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
-
-Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust.
-The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo11}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust.
-This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust.
-To date this work has been limited to terrestrial, RF based networks. 
-
-The paper is laid out as follows.
-In Section \ref{sec:trustandtmfs} we discuss Trust and TMFs, defining our terminology and reviewing the justifications for the use and development of TMFs for marine acoustic networks (MANs)
-In Section \ref{sec:marineacousticnetworks} we review selected features of the underwater communications channel, highlighting particular challenges against terrestrial equivalents.
-In Section \ref{sec:initialsystemcharacterization} we establish an experimental configuration for the marine space, and review the scenarios and results presented in \cite{Guo11}.
-In Section \ref{sec:trustresultsanddiscussion} we present our findings in trust establishment and malicious behaviour detection, comparing with other current TMFs (Hermes and OTMF) and analyse the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks.
-
-The contributions of this paper are a study on the comparative operation and performance of TMFs in marine acoustic networks, and a review of metric suitability for TMFs in marine environments, informing future metric selection for experimenters and theorists.
-We also show that single metric trust systems are not directly suitable for the marine context in terms of the different threat and cost scenario in that environment.
-Finally, we demonstrate a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks.
 
 
 
-\section{Trust and Trust Management Frameworks}\label{sec:trustandtmfs}
-
-
-\subsection{Trust in Conventional MANETs}\label{sec:trustinmanets}
-
-The distributed and dynamic nature of MANETs mean that it is difficult to maintain a trusted third party (TTP) or evidence based trust system such as Certificate Authorities (CA) or Public Key Infrastructure (PKI).
-Distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively police behaviour.
-Various models and algorithms for describing trust and developing trust management in distributed systems, P2P communities or wireless networks have been considered.
-\emph{Hermes Trust Establishment Framework} takes a Bayesian Beta function to model per-link Packet Loss Rate (PLR) over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
-\emph{Objective Trust Management Framework} (OTMF) builds upon Hermes and distributes node observations across the network \cite{Li2008}, however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
-\emph{Trust-based Secure Routing} demonstrated an extension to Dynamic Source Routing (DSR), incorporating a Hidden Markov Model of sub-networks, reducing the efficacy of Byzantine attacks such as black-hole routing  \cite{Moe2008a}.
-\emph{CONFIDANT} presented an approach using a probabilistic estimation of PLR, similar to OTMF, also introducing a topology aware weighting scheme and also weighting trust assessments based on historical experience of the reporter \cite{Buchegger2002}.
-\emph{Fuzzy Trust-Based Filtering} uses Fuzzy Inference to adapt to malicious recommenders using conditional similarity to classify performance with overlapping fuzzy set membership, filtering assessments across a network \cite{Luo2008}. 
-
-These TMFs can be generalised as single-value estimation based on a binary input state (success or failure of packet delivery) and generating a probabilistic estimation of the future states of that input. 
-
-These single metric TMFs provide malicious actors with a significant advantage if their activity does not impact that metric.
-In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
-This causes a significant negative effect on the efficiency of the network, as the TMF is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
-An example of such a situation would be in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
-Such behaviour would not be detected by the TMF.
-
-For the purposes of this work, we select Hermes trust establishment and OTMF as indicative single-metric TMFs to compare against MTFM, as Hermes captures the core operation of a pure single metric assessment methodology and OTMF provides a comparison that combines assessments from across nodes to develop trust opinions.
-
-
-\subsection{Trust in Marine Networks}\label{sec:trust_in_marine}
-
-With demand for smaller, more decentralised marine survey and monitoring systems, and a drive towards lower per-unit cost, pressures on battery capacity, locomotive power efficiency, data processing and storage are increasing.
-These pressures simultaneously present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance.
-
-Within UANs observable metrics include significant noise and may occur at irregular and sparse intervals.
-Conventional approaches such as probabilistic estimation do not produce trust values that reflect the underlying reality and context of the metrics available, as they require a-priori assumption that the trust value under exploration has an expected distribution, that distribution is mono-modal, and the input metrics are binary.
-In scenarios with variable, sparse, noisy metrics, estimating the distribution is difficult to accomplish a-priori.
-
-\subsection{Single Metric Trust Frameworks}
-
-The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
-
-\begin{equation}
-	p(B|O)  = \frac{p(O|B) \times p(B)}{\rho}
-	\label{eq:otmf_pbo}
-\end{equation}
-
-Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
-Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
-
-A secondary measurement of the confidence factor of the trust assessment $t$ is generated as \eqref{eq:otmf_c} and these measurements are combined to form a ``trustworthiness'' value $T$ \eqref{eq:otmf_trust}.
-
-\begin{align}
-	t_i &\to E\lbrack\text{beta}(p|\alpha,\beta)\rbrack = \frac{\alpha_i}{\alpha_i+\beta_i} \label{eq:otmf_t}\\[5pt]
-	c_i &= 1 - \sqrt{\frac{12\alpha_i\beta_i}{(\alpha_i+\beta_i)^2(\alpha_i+\beta_i+1)}} \label{eq:otmf_c}\\[5pt]
-	T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{x^2} + \frac{(c_i-1)^2}{y^2}}}{\sqrt{\frac{1}{x^2}+\frac{1}{y^2}}} \label{eq:otmf_trust}
-\end{align}
-
-In \eqref{eq:otmf_trust}, $x$ and $y$ are constants, used weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$), and from \cite{Zouridaki2005}, are taken as $x=\sqrt{2},y=\sqrt{9}$.
-
-Upon this per-node assessment methodology, OTMF overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
-
-
-\subsection{Multi-Metric Trust Frameworks}\label{sec:multimetrictrust}
-
-Given the potential incentives to a selfish attacker and potential threats to trust and fairness in sparse, noisy, and constrained environments, single metric trusts discussed above do not suitably cover the exposed threat surface. 
-This indicates that a multi-metric approach may be more appropriate to capture and monitor the realities of an environment such as those experienced by UANs.
-
-Grey Theory performs cohort based normalization of metrics at runtime, providing a ``grade'' of trust compared to other observed nodes in that interval, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
-This presents a stark difference between the Grey and Probabilistic approaches.
-Grey assessments are relative in both fairly and unfairly operating networks.
-All nodes will receive mid-range trust assessments if there are no malicious actors as there is nothing ``bad'' to compare against, and variations in assessment will be primarily driven by topological and environmental factors.
-Guo et al. \cite{Guo11} demonstrated the ability of grey relational analysis (GRA) \cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc. into a grey relational coefficient (GRC), or a ``trust vector'' in this instance.
-
-The grey relational vector is given as
-%
-\begin{align}
-	\label{eq:grc}
-	\theta_{k,j}^t = \frac{\min_k|a_{k,j}^t - g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|}{|a_{k,j}^t-g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|} \\
-	\phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
-\end{align}
-%
-where $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the ``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, i.e. $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g. higher throughput is presumed to be always better). 
-
-Weighting can be applied before generating a scalar value \eqref{eq:metric_weighting} allowing the detection and classification of misbehaviours.
-
-%
-\begin{equation}
-	\label{eq:metric_weighting}
-	[\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
-\end{equation}
-%
-Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
-$\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
-To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
-MTFM combines this GRA with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}. 
-
-There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
-Where an observing node $n_i$ assesses the trust of another target node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
-In the Recommendation case, a node $n_k$ which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.
-In the Indirect case, similar to the Recommendation case, the recommender $n_k$ does not have a direct link with the observer $n_i$ but $n_k$ has a Direct link with the target node, $n_j$.
-These relationships give node sets, $N_R$ and $N_I$ containing the nodes that have recommendation or indirect, relationships to the observing node respectively.
-%
-\begin{align}
-	\label{eq:networkeffects}
-	T_{i,j}^{MTFM}=&\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}\\ \notag
-	+&\frac{1}{2} \frac{2|N_R| }{2|N_R| + |N_I|}\sum_{n \in N_R} \max_s\{f_s(T_{i,n})\} T_{i,n}\\ \notag
-	+&\frac{1}{2} \frac{|N_I| }{2|N_R| + |N_I|}\sum_{n \in N_I} \max_s\{f_s(T_{i,n})\} T_{i,n} 
-\end{align}
-
-Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s = [ f_1,f_2, f_3]$ given as:
-
-\begin{align}
-	\label{eq:whitenization}
-	f_1(x)&= -x+1\notag\\
-	f_2(x)&= 
-	\begin{cases}
-		2x & \text{if }x\leq 0.5\\
-		-2x+2 & \text{if }x>0.5
-	\end{cases}\\
-	f_3(x)&= x\notag
-\end{align}
-%
-In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
-
-Guo et al. demonstrated that when compared against OTMF and Hermes trust assessment, MTFM provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
-
-By weighting the metrics used in MTFM it was shown that the trust assessments could be used to identify the style of misbehaviour being performed within the network, and by whom.
-We present a corollary method to investigate and apply this work to the Marine MANET field.
-
-
-\section{Marine Acoustic Communications}\label{sec:marineacousticnetworks}
-
-The key challenges of underwater acoustic communications are centred around the impact of slow and differential propagation of energy (RF, Optical, Acoustic) through water, and its interfaces with the seabed / air.
-The resultant challenges include; long propagation delays, significant inter-symbol interference and Doppler spreading, fast and slow fading due to environmental effects (aquatic flora/fauna, surface weather), carrier-frequency dependent signal attenuation, multi-path caused by reflective medium interfaces, variations in propagation speed due to depth dependant effects (salinity, temperature, and pressure), and subsequent refractive spreading and lensing due to that same propagation variation \cite{Partan2006}.
-
-The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear power is given as $A_{\text{aco}}(d,f) = A_0d^ka(f)^d$ and in $dB$ form as;
-%
-\begin{equation}
-	\label{eq:acoattenuationdb}
-	10 \log A_{\text{aco}}(d,f)/A_0 = k \cdot 10 \log d + d \cdot 10 \log a(f)
-\end{equation}
-%
-where $A_0$ is a normalising constant, $k$ is a spreading factor (commonly taken as 1.5  \cite{Stojanovic2007}), and $a(f)$ is the absorption coefficient, approximated using Thorp's formula \cite{Stefanov2011}
-%
-\begin{equation}
-	\label{eq:thorp}
-	10 \log a(f) = \frac{0.11 \cdot f^2}{1+f^2} + \frac{44\cdot f^2}{4100+f^2}+ 2.75\times10^{-4} f^2 + 0.003
-\end{equation}
-%
-Refractive lensing and the multi-path nature of the medium result in line of sight propagation being extremely unreliable for estimating distances to targets.
-The first arriving acoustic signal has as the very least curved in the medium, and commonly has reflected off the surface/seabed before arriving at a receiver, creating secondary paths that are sometimes many times longer than the first arrival path, generating symbol spreading over orders of seconds depending on the ranges and depths involved.
-Forward Error Correction coding is used on such channels to minimise packet losses.
-
-Comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model $(A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2)$, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
-While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
-
-
-
-\section{System Model Characterization}\label{sec:initialsystemcharacterization}
-
-
-\subsection{Mobility, Topology, and Communications}
-
-We apply two mobility patterns for investigation; all nodes static and all nodes mobile.
-The reason for this is that in other mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
-
-The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average 100m from each other as per \cite{Guo11}.
-The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively. 
-
-Collaborations with NATOs Centre for Maritime Research and Experimentation (CMRE) in La Spezia, and DSTLs Naval Systems Group inform that this is a practical team-size for environmental and defence applications.
-
-%
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=.45\textwidth]{s1_layout}
-	\caption{Initial layout with nodes spaced an average of 100m apart}
-	\label{fig:s1_layout}
-\end{figure}
-%
-
-\subsection{Simulation Background}
-
-Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
-
-Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
-Therefore, we first characterise a zone of performance within which the network have stable operation.
-%
-\begin{table}[h]
-	\caption{Comparison of system model constraints as applied between Terrestrial and Marine communications} \label{tab:sysconstraints}
-	\begin{center}
-		\setlength{\tabcolsep}{8pt}
-		\begin{tabular}{lccc}
-			\toprule
-			Parameter & Unit & Terrestrial & Marine \\
-			\midrule
-			Simulated Duration & $s$ & 300 & 18000\\
-			Trust Sampling Period & $s$ & 1 & 600 \\
-			Simulated Area & $km^2$ & 0.7 & 0.7-4 \\
-			Transmission Range & $km$ & 0.25 & 1.5 \\
-			Physical Layer & & RF(802.11) & Acoustic\\
-			Propagation Speed& $m/s$ & $3\times10^8$ & 1490\\
-			Center Frequency& $Hz$ & $2.6\times10^9$ & $2 \times 10^4$ \\
-			Bandwidth& $Hz$ & $22\times10^6$ & $1\times10^4$\\
-			MAC Type & & CSMA/DCF & CSMA/CA\\
-			Routing Protocol & & DSDV & FBR \\
-			Max Speed & $ms^{-1}$ & 5 & 1.5 \\
-			Max Data Rate & $bps$ & $5\times10^6$ & $\approx 240$ \\
-			Packet Size & bits & 4096 &  9600 \\
-			Single Transmission Duration & $s$ & 10 & 32 \\
-			Single Transmission Size & bits & $10^7$ & $9600$ \\
-			\bottomrule
-		\end{tabular}
-		\setlength{\tabcolsep}{6pt}
-	\end{center}
-\end{table}
-%
-
-
-\subsection{Scaling Considerations between Terrestrial and Underwater Environments}
-
-We establish an appropriate safe operating zone for marine communications by looking at the communications rate and physical distribution factors across the two selected mobility scenarios.
-From Table~\ref{tab:sysconstraints}, the operating transmission range of this model of acoustic communications is $\approx 6$ times further than that of 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case.
-However, it was recognised in Section~\ref{sec:marineacousticnetworks} that underwater, the relationship between attenuation and distance is exponential, so this would represent an upper bound of performance, where nodes are approximately 400m apart. 
-
-Exploratory simulations were run to further constrain this bound.
-As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
-This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
-For instance, where all nodes are static, we do not see significant drops in saturation rates until node separation approaches 800m, nearly double the initial estimate. 
-When all nodes are randomly walking the saturation point collapses from 0.025pps at 300m to 0.015pps at 400m.
-Our results indicate that the best area to continue operating in for a range of node separations is at 0.015pps, and that a reasonable position scaling is from 100m to 300m, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
-These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
 
 
 \subsection{Selected Misbehaviours}
@@ -390,7 +125,7 @@ For simplicity of presentation, we only consider the fully-mobile scenario, as w
 The use of Forward Beam Routing and a CSMA/CA MAC scheme from AUVNetSim \cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission.
 As such, confirmed packet losses are relatively rare and in a delaying network like this, it is difficult to set a differentiating time out between packets that are in the network but queued, and packets that are actually ``lost''.
 
-The single metric TMFs used in conventional MANETs require regular and constant input to shape and adjust their evaluations, which for a network with significant and irregular delays such as this, is not practical.
+The single metric TMFs used in conventional \gls{manet}s require regular and constant input to shape and adjust their evaluations, which for a network with significant and irregular delays such as this, is not practical.
 This renders OTMF and Hermes assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
 
 Fig.~\ref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of MTFM compared to OTMF and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
@@ -541,17 +276,17 @@ This would be accomplished by assessing the impact of differential metric weight
 
 
 \section{Conclusions and Future Work}
-We have demonstrated that existing MANET Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
-We presented a comparison between trust establishment in MANETs in a simulated underwater environment, demonstrating that in order to have any reasonable expectation of performance, throughput and delay responses must be characterised before implementing trust in such environments. 
+We have demonstrated that existing \gls{manet} Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
+We presented a comparison between trust establishment in \gls{manet}s in a simulated underwater environment, demonstrating that in order to have any reasonable expectation of performance, throughput and delay responses must be characterised before implementing trust in such environments. 
 While the MTFM value does not display any immediate difference between the two behaviours, we have shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
 Another difference is that MTFM is significantly more computationally intensive than the relatively simple Hermes / OTMF algorthms.
 The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization.
 We demonstrated initial, unfiltered Grey Trust assessment using all available metrics (transmitted and received throughput, delay, received signal strength, transmitted power, and packet loss rate), as well as the application of multiple weighting vectors to iteratively emphasise different aspects of trust operation to expose and identify misbehaviour on the network.
-With significant delays (from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical MANET TMF deployment environments.
+With significant delays (from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical \gls{manet} TMF deployment environments.
 
 We show that, without significant adaptation, single metric probabilistic estimation based TMFs are ineffective in such an environment.
 We have shown that existing frameworks are overly optimistic about the nature and stability of the communications channel, and can overlook characteristics that are useful for assessing the behaviour of nodes in the network. 
-This indicates that there is a good case, particularly within constrained MANETs as this, for multi-vector, and even multi-domain trust assessment, where metrics about the communications network and topology would be brought together with information about the physical behaviours and operations of nodes to assess trust.
+This indicates that there is a good case, particularly within constrained \gls{manet}s as this, for multi-vector, and even multi-domain trust assessment, where metrics about the communications network and topology would be brought together with information about the physical behaviours and operations of nodes to assess trust.
 
 Also, a significant factor of trust assessment in such a constrained environment, is that there may be long periods where two edge nodes (for instance, $n_0 \to n_5$) may not interact at all. 
 This can be due to a range of factors beyond malicious behaviour, including simple random scheduling coincidence and intermediate or neighbouring nodes collectively causing long back-off or contention periods.

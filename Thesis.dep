@@ -168,6 +168,9 @@
   *{file}   {./Figures/ghia_sound_prop_curve.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/c4-trust_in_defence.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/throughput_performance_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/prod_breakdown_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/throughput_performance_range.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/prod_breakdown_range.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/delay_range.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/rts_range.pdf}{0000/00/00 v0.0}

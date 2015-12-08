@@ -137,6 +137,7 @@ Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in pa
 \begin{figure}[H]
 	\centering
 	%\missingfigure{throughput_performance_static}
+	\includegraphics[width=0.8\textwidth]{throughput_performance_static}
 	\caption{Varying packet emission rate demonstrates maximal throughput at 0.025 packets per second, equivalent to $\approx$240 bps}
 	\label{fig:throughput_performance_static}
 \end{figure}
@@ -145,6 +146,7 @@ Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in pa
 \begin{figure}[H]
 	\centering
 	%\missingfigure{prod_breakdown_static}
+	\includegraphics[width=0.8\textwidth]{prod_breakdown_static}
 	\caption{Varying packet emission rate demonstrates a saturation point at 0.025 packets per second}
 	\label{fig:prod_breakdown_static}
 \end{figure}
@@ -164,13 +166,14 @@ This collision rate is well within the tolerances of the MAC layer, as shown in 
 \begin{figure}[H]
 	\centering
 	%\missingfigure[width=0.6\textwidth]{throughput_performance_range}
+	\includegraphics[width=0.8\textwidth]{throughput_performance_range}
 	\caption{Comparison of Medium Acquisition Collisions, Throughput, and Enqueued packets against varying application packet emission rates.}
 	\label{fig:throughput_performance_range}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{prod_breakdown_range}
+	\includegraphics[width=0.8\textwidth]{prod_breakdown_range}
 	\caption{Probability of Timely Reception across a range of node scaling.}
 	\label{fig:prod_breakdown_range}
 \end{figure}
@@ -178,14 +181,14 @@ This collision rate is well within the tolerances of the MAC layer, as shown in 
 However, when end-to-end delay is investigated, it's clear from Fig.~\ref{fig:delay_range} that the network is becoming severely impaired approaching the 600$m$ mark, with delays rising to more than 25 minutes above 700$m$.
 This is also demonstrated by the increasing RTS/Data ratio shown in Fig.~\ref{fig:rts_range}.
 
-According to Xu \cite{Xu2002}, the RTS/CTS handshake cannot function well as interference protection at node separations beyond 0.56 times the transmission range. 
-This is also demonstrated in  Fig.~\ref{fig:rts_range}, where above $1500m \times 0.56 = 840m$, 
+According to Xu, the RTS/CTS handshake cannot function well as interference protection at node separations beyond 0.56 times the transmission range \cite{Xu2002}.
+This is also demonstrated in~\autoref{fig:rts_range}, where as node separation increases towards $1500m \times 0.56 = 840m$, handshake overheads begin to dominate channel access.\todo{redo these graphs with wider separations ~ 1000m}
 This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes. 
 
 \begin{figure}[H]
 	\centering
 	%\missingfigure{delay range}
-	\includegraphics[width=0.6\textwidth]{delay_range}
+	\includegraphics[width=0.8\textwidth]{delay_range}
 	\caption{End to End Delay under varying node-separations}
 	\label{fig:delay_range}
 \end{figure}
@@ -193,7 +196,7 @@ This is due to reduced channel availability due to collisions, which are then du
 \begin{figure}[H]
 	\centering
 	%\missingfigure{rts range}
-  \includegraphics[width=0.6\textwidth]{rts_range}
+  \includegraphics[width=0.8\textwidth]{rts_range}
 	\caption{RTS/Data ratio for varying node-separations}
 	\label{fig:rts_range}
 \end{figure}

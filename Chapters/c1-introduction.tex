@@ -16,7 +16,7 @@ With the explosive growth in the use of mobile telephony and the increasing mini
 
 Wether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Bhargavi2015},\todo{Inappropriate Citation} \gls{manet} theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research\cite{Jubin1987}, to being an integral part of modern practical communications.
 
-Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) with some form of communications, processing/data collection, and power systems.
+Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) with some form of communications, processing/data collection, and power systems.\todo{rephrase this paragraph}
 Similarly in terms of communications capability, while in many cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data, this bi-directionality is also not a limiting factor on inclusion within the \gls{manet} field, particularly in the area of Wireless Sensor Networks \cite{Akyildiz2002}.
 Nor is the capability or mix of communications technologies used; omnidirectional, static, or steerable communications antennae, utilising a range of technologies such as WiFi, Bluetooth, GSM, UMTS, Optical or Acoustics.
 A core characteristic of the design of \glspl{manet} is the inclusion and integration of heterogeneous node collections, i.e where different nodes or groups of nodes in a network have difference capabilities, whether this be in terms of propulsion, sensor apparatus, communications capability, etc.
@@ -31,6 +31,8 @@ The characteristics of \gls{manet}s as defined by Corson et al.\ are paraphrased
 
 \begin{table}
   \hyphenpenalty=10000
+\caption[Summary of Characteristics of \gls{manet}s]{Summary of Characteristics of \gls{manet}s\cite{Corson1999}}
+\label{tab:manet_characteristics}
   \begin{tabularx}{\textwidth}{p{2cm}X}\toprule
     Dynamic Topologies & Nodes are free to move arbitrarily; thus, the typically multihop network topology may change randomly and rapidly at unpredictable times, and may consist of both bidirectional and unidirectional links.
 \\
@@ -43,13 +45,11 @@ For these nodes, the most important system design criteria for optimization may 
     Limited physical security & Mobile wireless networks are generally more prone to physical security threats than are fixed cable nets.
 The increased possibility of eavesdropping, spoofing, and denial-of-service attacks should be carefully considered.\par
 Existing link security techniques are often applied within wireless networks to reduce security threats.
-As a benefit, the decentralized nature of network control in \gls{manet}s provides additional robustness against the single points of failure of more centralized approaches.\\
-
+As a benefit, the decentralized nature of network control in \gls{manet}s provides additional robustness against the single points of failure of more centralized approaches.\\\bottomrule
 \end{tabularx}
-\caption[Summary of Characteristics of \gls{manet}s]{Summary of Characteristics of \gls{manet}s\cite{Corson1999}}
-\label{tab:manet_characteristics}
 \end{table}
 
+\todo{Sparsity / Density of MANETS}
 \section{\glspl{manet} in Harsh Environments}
 
 As mobile ad-hoc networks (\gls{manet}s) grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
@@ -57,19 +57,24 @@ As mobile ad-hoc networks (\gls{manet}s) grow beyond the terrestrial arena, thei
 The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain a trusted \gls{ttp} or evidence based trust system such as Certificate Authorities or using \gls{pki}.\todo{possibly worthwhile doing more background on the operation of these}
 Therefore, a distributed, collaborative system must be applied to these networks.
 Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
+As such, \glspl{tmf} can be used to predict and reason on the future interactions between entities in a system.
 
-As such, \glspl{tmf} can be used to predict and reason on the future interactions between entities in a system, such as an autonomous mobile ad-hoc network (\gls{manet}).
-\glspl{tmf} provide information to assist the estimation of future states and actions of nodes within networks.
+\glspl{tmf} provide information to assist the estimation of future states and actions of nodes within \glspl{manet}.
 This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes.
 Previous research has established the advantages of implementing TMFs in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
 
 \section{Systems Approach to Trust and Trust Engineering}
+\todo{Trust as Assurance}
 
 \section{Trust operation against Capable Attackers}
 
 
+\section{Contributions}
+
+
 
 \section{Conclusion}
+\subsection{Layout}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifx\ifthesis\undefined

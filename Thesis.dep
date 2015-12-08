@@ -169,6 +169,8 @@
   *{file}   {./Chapters/c4-trust_in_defence.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/prod_breakdown_range.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/delay_range.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/rts_range.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/c5-multi_domain_trust_strategies.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c6-physical_metrics.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
@@ -193,7 +195,6 @@
   *{file}   {./Figures/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/MaliciousSelfishMetricFactors.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/c7-multi_domain_trust_analysis.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
@@ -204,5 +205,8 @@
   *{file}   {./Figures/best_full_run_Shadow.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_comms_run_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Appendices/AppendixA.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
 }

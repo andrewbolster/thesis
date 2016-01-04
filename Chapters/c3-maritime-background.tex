@@ -124,25 +124,26 @@ The Ainslie \& McColm model is more complex, and incorporates the acidity of the
   \label{fig:ainslie}
 \end{figure}
 %
+\begin{figure}
+  \begin{align}
+    10 \log a(f)=& A_1P_1\frac{t_1f^2}{t_1^2+f^2} + A_2P_2\frac{t_2f^2}{t_2^2+f^2} + A_3P_3f^2\\\notag
+    \text{Where }&\\\notag
+    A_1=&1.03\times 10^{-8} + 2.36\times 10^{-10} \cdot T -5.22 \times 10^{-12}\cdot T^2\\\notag
+    A_2=&5.62\times 10^{-8} + 7.52\times 10^{-10} \cdot T\\\notag
+    A_3=&\left(55.9 - 2.39\cdot T + 4.77\times 10^{-2}\cdot T^2 - 3.48 \times 10^{-4}\cdot T^3\right) \times 10 ^{-15}\\\notag
+    t_1=&1.32\times 10^3\left(T+273.1\right)e^{\frac{-1700}{T+273.1}}\\\notag
+    t_2=&1.55\times 10^7\left(T+273.1\right)e^{\frac{-3052}{T+273.1}}\\\notag
+    P_1=&1\\\notag
+    P_2=&\-10.3\times 10^{-4}\cdot P + 3.7\times 10^{-7}\cdot P^2\\\notag
+    P_3=&\-3.84\times 10^{-4}\cdot P + 7.57\times 10^{-8}\cdot P^2\notag
+    \label{eq:fisher}
+  \end{align}
+  \caption{Fisher-Simmons Absorption Model}
+  \label{fig:fisher}
+\end{figure}
+%
 The Fisher-Simmons model (\autoref{eq:fisher})is significantly more complex, taking into account the effects of boric acid concentrations and dissolved magnesium sulphate. While there are several limitations on this model in terms of its being fixed at a salinity of 35 ppt and a pH of 8, as this model incorporates depth, temperature, distance and frequency, it is very attractive for research directed at high variability environments.\todo{Possibly need to switch this with the Francois Garrison model which, depending on your source, is the refined version (or vise versa}
 
- \begin{figure}
-   \begin{align}
-     10 \log a(f)=& A_1P_1\frac{t_1f^2}{t_1^2+f^2} + A_2P_2\frac{t_2f^2}{t_2^2+f^2} + A_3P_3f^2\\\notag
-     \text{Where }&\\
-     A_1=&1.03\times 10^{-8} + 2.36\times 10^{-10} \cdot T -5.22 \times 10^{-12}\cdot T^2\\\notag
-     A_2=&5.62\times 10^{-8} + 7.52\times 10^{-10} \cdot T\\\notag
-     A_3=&\left(55.9 - 2.39\cdot T + 4.77\times 10^{-2}\cdot T^2 - 3.48 \times 10^{-4}\cdot T^3\right) \times 10 ^{-15}\\\notag
-     t_1=&1.32\times 10^3\left(T+273.1\right)e^{\frac{-1700}{T+273.1}}\\\notag
-     t_2=&1.55\times 10^7\left(T+273.1\right)e^{\frac{-3052}{T+273.1}}\\\notag
-     P_1=&1\\\notag
-     P_2=&\-10.3\times 10^{-4}\cdot P + 3.7\times 10^{-7}\cdot P^2\\\notag
-     P_3=&\-3.84\times 10^{-4}\cdot P + 7.57\times 10^{-8}\cdot P^2\\\notag
-     \label{eq:fisher}
-   \end{align}
-   \caption{Fisher-Simmons Absorption Model}
-   \label{fig:fisher}
- \end{figure}
 
 
  \subsection{Ambient Noise Model}
@@ -241,9 +242,9 @@ Primary operations within this number system are as follows;
     \oplus_1 \times \oplus_2 &\in \begin{aligned}[t]
       &[\min(a_1 a_2, a_1 b_2, b_1 a_2, b_2 a_2), \\
       & \max(a_1 a_2, a_1 b_2, b_1 a_2, b_2 a_2)]
-    \end{aligned} \label{grey_mult}\\
+    \end{aligned} \label{eq:grey_mult}\\
     \oplus^{-1} &\in [b^{-1}, a^{-1}] \label{eq:grey_inv}\\
-    \oplus_1 / \oplus_2 & = \oplus_1 \times \oplus_2^{-1} \label{grey_mult} \\
+    \oplus_1 / \oplus_2 & = \oplus_1 \times \oplus_2^{-1} \label{eq:grey_div} \\
     \oplus \times k &\in [ka,kb] \label{eq:grey_times_scalar}\\
     \oplus^k &\in [a^k, b^k] \label{eq:grey_exp}
   \end{align}
@@ -254,9 +255,8 @@ where $k$ is a scalar quantity.
 The characterisation of grey numbers is based on the encapsulation of information in a grey system in terms of the grey numbers core ($\hat\oplus$) and it's degree of greyness ($g^\circ$).
 If the distribution of a grey number field is unknown and continuous, $\hat\oplus = \frac{a + b}{2}$.
 
-Non-essential grey numbers are those that can be represented by a white number obtained either through experience or particular method.
-\cite{Liu2011}
-This white hissed value is represented by $\tilde\oplus$ or $\oplus(x)$ to represent grey numbers with $x$ as their whitenisation.
+Non-essential grey numbers are those that can be represented by a white number obtained either through experience or particular method. \cite{Liu2011}
+This white value is represented by $\tilde\oplus$ or $\oplus(x)$ to represent grey numbers with $x$ as their whitenisation.
 In some cases depending on the context of application, particular gray numbers may temporarily have no reasonable whitenisation value (for instance, a black number).
 Such numbers are said to be Essential grey numbers.
 

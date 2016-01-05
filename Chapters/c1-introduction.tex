@@ -14,17 +14,17 @@
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of a broadcast/receiver or server/client has given way to an increasing use of decentralised, ad-hoc networks that not only accommodate but take advantage of network mobility.
 
-Wether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Bhargavi2015},\todo{Inappropriate Citation Possibly use Akyilidiz} \gls{manet} theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research \cite{Jubin1987}, to being an integral part of modern practical communications.
+Whether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Nicholson2008}\cite{Selvakennedy2007}, \gls{manet} theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research \cite{Jubin1987}, to being an integral part of modern practical communications.
 
-Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) that communicate cooperatively to collect, distribute, disseminate, and collate data and/or infulence across an area.
+Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) that communicate cooperatively to collect, distribute, disseminate, and collate data and/or influence across an area.
 In many cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data, however this bi-directionality is not a requirement, for example in the area of Wireless Sensor Networks \cite{Akyildiz2002}.
 \glspl{manet} may utilise omnidirectional, static, or steerable communications antennae, and a selection of protocols such as WiFi, Bluetooth, GSM, UMTS, Optical or Acoustics, and may incorporate a range of mobilities across nodes, from static devices, terrestrial and marine surface platforms, and aerial and underwater platforms
 A core characteristic of the design of \glspl{manet} is the inclusion and integration of heterogeneous node collections, i.e where different nodes or groups of nodes in a network may have different capabilities in terms of propulsion, sensor apparatus, communications capability, etc.
 
 \glspl{manet} may be totally independent with no external connections; include independent per-node communications backhauls (e.g. Cellular Modems in mobile phones as part of a Bluetooth Personal Area Network(PAN)), or include static nodes that provide infrastructure based backhaul.
 However, this multiplicity of variations and options presents several challenges to users and operators; the physical topology of \glspl{manet} can vary wildly over short periods of time.
-A particular challenge to \gls{manet} operation is that given any node may operate as a routing / gateway node, if/when that node moves to a different region, network segments that had previously used that node as a path must renegotiate / reestablish their routes.
-These situations, if not appropriatly managed, lead to opportunities for subversion and selfishness.
+A particular challenge to \gls{manet} operation is that given any node may operate as a routing / gateway node, if/when that node moves to a different region, network segments that had previously used that node as a path must renegotiate / re-establish their routes.
+These situations, if not appropriately managed, lead to opportunities for subversion and selfishness.
 
 The characteristics of \gls{manet}s as defined by Corson et al.\ are paraphrased in Table~\ref{tab:manet_characteristics}.
 
@@ -54,7 +54,7 @@ As a benefit, the decentralized nature of network control in \glspl{manet} provi
 
 As \acrfullpl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
 
-The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain a trusted \gls{ttp} or evidence based trust system such as Certificate Authorities or using \gls{pki}.\todo{more background on the operation of TTP/CA/PKI}
+The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain a \gls{ttp} or evidence based trust system such as Certificate Authorities or using \gls{pki}.\todo{more background on the operation of TTP/CA/PKI?}
 Therefore, a distributed, collaborative system must be applied to these networks.
 Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
 As such, \glspl{tmf} can be used to predict and reason on the future interactions between entities in a system.
@@ -64,13 +64,13 @@ This information is used to optimize the performance of a network against malici
 Previous research has established the advantages of implementing \glspl{tmf} in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
 
 \section{Systems Approach to Trust and Trust Engineering}
+
 \todo{Trust as Assurance}
 
-\section{Trust operation against Capable Attackers}
+\section{Trust Operation Against Capable Attackers}
 
 
 \section{Contributions}
-
 
 
 \section{Conclusion}

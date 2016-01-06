@@ -12,11 +12,7 @@
 \section{Introduction}\label{sec:introduction}
 
 
-
-
-
 \subsection{Selected Misbehaviours}
-
 
 We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 
@@ -24,34 +20,34 @@ Guo et al. introduce a range of misbehaviours, including modification of the pac
 Given that the established links are already heavily constrained, such attacks would severely impact the general performance of the network beyond the scope of simple selfishness.
 These direct malicious behaviours effectively trigger saturation collapses in operating regions of the network that should be stable.
 
-Therefore, we apply two more subtle misbehaviours to investigate; 
+Therefore, two more subtle misbehaviours to investigate are; 
 \begin{enumerate}
-	\item Malicious Power Control (MPC), where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.
-	\item Selfish Target Selection (STS), where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
+	\item \acrfull{mpc}, where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.
+	\item \acrfull{sts}, where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
 \end{enumerate}
 
 
 \section{Simulation Results and Discussion}\label{sec:trustresultsanddiscussion}
 
-Having established a safe operating range for comparison at 300m average separation and an emission rate of 0.015pps, we perform each of the three selected behaviours (Fair, MPC, STS) in both the static and mobile scenarios. 
-We select a trust assessment period of 10 mins for a 5 hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
+Having established a safe operating range for comparison at 300m average separation and an emission rate of 0.015pps, each of the three selected behaviours (Fair, \gls{mpc}, \gls{sts}) are performed in both the static and mobile scenarios. 
+We select a trust assessment period of 10 mins for a five hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
 
-The six metrics used for grey assessment are; transmitted and received throughput and power, delay, and packet loss rate (PLR) as calculated by aborted and unacknowledged, transmissions.
+The six metrics used for grey assessment are; transmitted and received throughput and power, delay, and \gls{plr} as calculated by aborted and unacknowledged, transmissions.
 Compared to \cite{Guo11}, this metric set lacks a data rate quantity as the network is not dynamically adjusting bandwidth.
-In context of GRC generation \eqref{eq:grc}, the best sequence $g$ was selected using the lowest PLR, delay, and powers, and the highest throughputs, and the worst sequence, $b$ the inverse of these metrics, reflecting the observations made in Section~\ref{sec:trust_in_marine}.
+In context of \gls{grc} generation \eqref{eq:grc}, the best sequence $g$ was selected using the lowest PLR, delay, and powers, and the highest throughputs, and the worst sequence, $b$ the inverse of these metrics, reflecting the observations made in Section~\ref{sec:trust_in_marine}.
 
-The particular factors under discussion are the relative performance of MTFM against OTMF and Beta with respect to statistical stability across mobilities and in responsiveness to changing network behaviour. 
-We establish a similar result set by initially tracking the resultant trust values established by MTFM in the pair of mobility scenarios, shown in Fig.~\ref{fig:trust_mobility}.
+The particular factors under discussion are the relative performance of \gls{mtfm} against \gls{otmf} and Beta with respect to statistical stability across mobilities and in responsiveness to changing network behaviour. 
+We establish a similar result set by initially tracking the resultant trust values established by \gls{mtfm} in the pair of mobility scenarios, shown in Fig.~\ref{fig:trust_mobility}.
 We are also concerned with the opinions of $n_1$ provided to $n_0$ by other nodes, where $[T_{1,2},T_{1,3}]$ and $[T_{1,4},T_{1,5}]$ denote the sets of recommendation and indirect trust assessment respectively.
 
-We also include aggregate assessments; $T_{1,\text{Avg}}$, the unweighted mean of direct trust assessments of $n_1$ from all nodes and $T_{1,\text{MTFM}}$, the final MTFM trust assessment value based on both network topology and whitenization from \eqref{eq:whitenization}.
+We also include aggregate assessments; $T_{1,\text{Avg}}$, the unweighted mean of direct trust assessments of $n_1$ from all nodes and $T_{1,\text{MTFM}}$, the final \gls{mtfm} trust assessment value based on both network topology and whitenization from \eqref{eq:whitenization}.
 
-The variability in assessment is coupled to mobility; in the static case (Fig.~\ref{fig:trust_static}), we see that the nodes exhibit relatively consistent distributions.
+The variability in assessment is coupled to mobility; in the static case (Fig.~\ref{fig:trust_static}), the nodes exhibit relatively consistent distributions.
 In the full mobility case, shown in Fig.~\ref{fig:trust_all_mobile}, this subjective variability is greatly increased. 
 As the topology is highly dynamic, delays due to re-establishing routes can be very large, perturbing the trust value.
 The $T_{1,\text{MTFM}}$ displays a significantly reduced variation than those of the individual subjective observations in all cases, even when compared to the unweighted average, $T_{1,\text{Avg}}$.
 This demonstrates $T_{MTFM}$'s value as an aggregating trust assessment in such sparse and noisy environments.
-Further, in Fig.~\ref{fig:trust_all_mobile_mal} we observe a much higher variability in assessment in $T_0$, correctly indicating that there is something wrong with the relationship between $n_0$ and $n_1$.
+Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in assessment is observed in $T_0$, correctly indicating that there is something wrong with the relationship between $n_0$ and $n_1$.
 
 \begin{figure}[h]
 	\centering
@@ -87,14 +83,14 @@ Further, in Fig.~\ref{fig:trust_all_mobile_mal} we observe a much higher variabi
 	\includegraphics[width=\linewidth]{trust_bella_all_mobile_selfish}  \label{fig:trust_all_mobile_sel}
 	\end{subfigure}%
 
-	\caption{MTFM Trust assessments of $n_1$ ($T_{1,X}$), showing Direct, Recommender and Indirect relationships, as well as the Aggregate trust assessments from combining these} 
+	\caption{\gls{mtfm} Trust assessments of $n_1$ ($T_{1,X}$), showing Direct, Recommender and Indirect relationships, as well as the Aggregate trust assessments from combining these} 
 	\label{fig:trust_mobility}
 \end{figure}
 %
 
-\subsection{Comparison between MTFM, Hermes and OTFM}
-As per \cite{Guo11}, ``fair'' scenarios were also performed with no malicious behaviour, applying OTMF and Hermes assessment as well as MTFM, providing like-for-like comparison of assessment.
-For simplicity of presentation, we only consider the fully-mobile scenario, as we are concerned with the establishment of trust in mobile networks
+\subsection{Comparison between \gls{mtfm}, Hermes and \gls{otmf}}
+As per \cite{Guo11}, ``fair'' scenarios were also performed with no malicious behaviour, applying \gls{otmf} and Hermes assessment as well as \gls{mtfm}, providing like-for-like comparison of assessment.
+For simplicity of presentation, only the fully-mobile scenario is considered, as we are concerned with the establishment of trust in mobile networks.\todo{In the thesis, we're concerned about a lot more than just the all mobile results}
 
 \begin{figure*}[t]
   \centering
@@ -118,33 +114,33 @@ For simplicity of presentation, we only consider the fully-mobile scenario, as w
     \label{fig:all_mobile_selfish_beta}
   \end{subfigure}
 \end{tabular}
-  \caption{$T_{1,0}$ for Hermes, OTMF and MTFM assessment values for fair and malicious behaviours in the fully mobile scenario (mean of MTFM also shown)}
+  \caption{$T_{1,0}$ for Hermes, \gls{otmf} and \gls{mtfm} assessment values for fair and malicious behaviours in the fully mobile scenario (mean of \gls{mtfm} also shown)}
   \label{fig:otmf_beta_comparison}
 \end{figure*}
 %
 The use of Forward Beam Routing and a CSMA/CA MAC scheme from AUVNetSim \cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission.
 As such, confirmed packet losses are relatively rare and in a delaying network like this, it is difficult to set a differentiating time out between packets that are in the network but queued, and packets that are actually ``lost''.
 
-The single metric TMFs used in conventional \gls{manet}s require regular and constant input to shape and adjust their evaluations, which for a network with significant and irregular delays such as this, is not practical.
-This renders OTMF and Hermes assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
+The single metric \glspl{tmf} used in conventional \gls{manet}s require regular and constant input to shape and adjust their evaluations, which for a network with significant and irregular delays such as this, is not practical.
+This renders \gls{otmf} and Hermes assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
 
-Fig.~\ref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of MTFM compared to OTMF and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
-It is important to note a distinction between the expectations of MTFM compared to other TMFs; MTFM is primarily concerned with the identification of differences in the behaviours of nodes in a network, and is relative rather than absolute.
-That is to say that under MTFM, nodes are compared against the worst current performances across metrics of other observed nodes and graded against them, rather than the absolute (objective) approach taken by many TMFs.
-In these cases, particularly since the methods of attack were not directly related to PLR, OTMF and Hermes have not registered significant activity in either misbehaviour when compared to the fair scenario.
-The difference between the MTFM trust assessments under ``fair'' and ``malicious'' behaviour is lowered by $\approx 10\%$ in both cases, in terms of the mean values returned.
+Fig.~\ref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of \gls{mtfm} compared to \gls{otmf} and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
+It is important to note a distinction between the expectations of \gls{mtfm} compared to other \glspl{tmf}; \gls{mtfm} is primarily concerned with the identification of differences in the behaviours of nodes in a network, and is relative rather than absolute.
+That is to say that under \gls{mtfm}, nodes are compared against the worst current performances across metrics of other observed nodes and graded against them, rather than the absolute (objective) approach taken by many \glspl{tmf}.
+In these cases, particularly since the methods of attack were not directly related to \gls{plr}, \gls{otmf} and Hermes have not registered significant activity in either misbehaviour when compared to the fair scenario.
+The difference between the \gls{mtfm} trust assessments under ``fair'' and ``malicious'' behaviour is lowered by $\approx 10\%$ in both cases, in terms of the mean values returned.
 At run time, similar results could be attained by an exponentially weighted moving average filter (EWMA).
 
-On their own, neither OTMF, Hermes, or unbiased MTFM appear to be effective in detecting or identifying malicious behaviour in this environment, in fact OTMF and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+On their own, neither \gls{otmf}, Hermes, or unbiased \gls{mtfm} appear to be effective in detecting or identifying malicious behaviour in this environment, in fact \gls{otmf} and Hermes don't appear to differentiate between fair and selfish scenarios at all.
 
 
 \subsection{Metric Weighting}
 %
 
 We apply a sequence of vectors that preferentially weight each metric in Eq. \eqref{eq:metric_weighting} to each of the three simulation runs.
-For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, we form an initial weighting vector $H'=[h_i\dots h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$.
+For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, forming an initial weighting vector $H'=[h_i\dots h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$.
 We then scale that vector $H'$ such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
-Using this process we can extract and highlight the primary aspects of an attack by comparing against the deviation from the ``fair'' result set. 
+Using this process the primary aspects of an attack can be extracted and highlighted by comparing against the deviation from the ``fair'' result set. 
 
 \begin{figure}[h]
 	\centering
@@ -222,22 +218,22 @@ Using this process we can extract and highlight the primary aspects of an attack
   \label{fig:all_mobile_selfish}
 \end{figure}
 
-From Fig.~\ref{fig:all_mobile_badmouthing} we can see that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
-This is particularly true for PLR, with smaller impacts on delay, received power and transmitted throughput. 
+Fig.~\ref{fig:all_mobile_badmouthing} shows that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
+This is particularly true for \gls{plr}, with smaller impacts on delay, received power and transmitted throughput. 
 This weighted delta in received throughput is minimal to insignificant compared to the width of the detection envelope, occasionally breaching the envelope for a short period. 
 
-In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) we observe much lower weighted delta in PLR and delay, with greatly increased impact on transmission power.
+In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) a much lower weighted delta in \gls{plr} and delay is observed, with greatly increased impact on transmission power.
 In comparison to \cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
 Guo et al.\ show similar types of behaviour but report a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in $P_{TX}$ in selfish behaviour (Fig.~\ref{fig:all_mobile_selfish_txp}) of $\approx$ 0.3 for an inconsistent interval.
 
 
 \subsection{Weight Significance Analysis for Behaviour Classification}
 
-For a more quantitative assessment of the viability of multi-metric trust assessment methods, we take the qualitative analysis above and apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
+For a more quantitative assessment of the viability of multi-metric trust assessment methods, taking the qualitative analysis above and apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
 Random Forest accomplishes this by generating a large number of random regression trees and prune these trees to fit incoming data.
 The target function for this regression was the area between the target behaviours weighted $T_{MTFM}$ curve and the $\pm\sigma$ envelope of the base behaviour as shaded in Figs.~\ref{fig:all_mobile_badmouthing} and~\ref{fig:all_mobile_selfish}.
-From this training process we can extract the relative importance of each input feature (metric) in terms of how good it is to differentiate between the fair case and a given misbehaviour.
-Additionally we perform a cross correlation analysis to establish the correlations between given metric weighting emphasis and the output of the target function.
+From this training process, the relative importance of each input feature (metric) can be inferred in terms of how good it is to differentiate between the fair case and a given misbehaviour.
+Additionally a cross correlation analysis is performed to establish the correlations between given metric weighting emphasis and the output of the target function.
 Our intention is to establish the metrics that not only differentiate both misbehaviours from the fair case, but also what metrics differentiate the two misbehaviours from each other.
 
 Applying this target regression to 729 different metric weight vector emphasis combinations reveals that each of the three combinations (i.e.\ comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and PLR, with delay, received power and transmitted throughput playing a lesser role.
@@ -247,12 +243,12 @@ It may initially appear odd that the relative significance of the received throu
 It is expected that Transmitted power should be the defining characteristic of STS ($R=+0.72, p<10^{-100}$) as the node is acting fairly from a protocol perspective but is acting unfairly at a higher (incentive) level; it is performing fairly in terms of it's communications with other nodes, however it is preferring to communicate with nodes that it can expend less energy communicating with.
 A summary of these correlations is shown in Table.~\ref{tab:correlations}.
 
-Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_plr}, and~\ref{fig:all_mobile_selfish_plr}, while it is possible that in a cleaner, less sparse, and less noisy environment, OTMF would be able to detect the MPC behaviour, from Fig.~\ref{fig:malselfactors} we see that PLR plays almost no part at all in detecting the STS behaviour, and so OTMF would not detect the attack.
+Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_plr}, and~\ref{fig:all_mobile_selfish_plr}, while it is possible that in a cleaner, less sparse, and less noisy environment, \gls{otmf} would be able to detect the \gls{mpc} behaviour, Fig.~\ref{fig:malselfactors} shows that \gls{plr} plays almost no part at all in detecting the \gls{sts} behaviour, and so \gls{otmf} would not detect the attack.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.95\linewidth]{MaliciousSelfishMetricFactors}
-	\caption{Random Forest Factor Analysis of Malicious (MPC), Selfish (STS) and Fair behaviours compared against eachother}
+	\caption{Random Forest Factor Analysis of Malicious (\gls{mpc}, Selfish (\gls{sts}) and Fair behaviours compared against each-other}
 	\label{fig:malselfactors}
 \end{figure}
 
@@ -278,19 +274,19 @@ This would be accomplished by assessing the impact of differential metric weight
 \section{Conclusions and Future Work}
 We have demonstrated that existing \gls{manet} Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
 We presented a comparison between trust establishment in \gls{manet}s in a simulated underwater environment, demonstrating that in order to have any reasonable expectation of performance, throughput and delay responses must be characterised before implementing trust in such environments. 
-While the MTFM value does not display any immediate difference between the two behaviours, we have shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
-Another difference is that MTFM is significantly more computationally intensive than the relatively simple Hermes / OTMF algorthms.
+While the \gls{mtfm} value does not display any immediate difference between the two behaviours, it has been shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
+Another difference is that \gls{mtfm} is significantly more computationally intensive than the relatively simple Hermes / \gls{otmf} algorthms.
 The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization.
 We demonstrated initial, unfiltered Grey Trust assessment using all available metrics (transmitted and received throughput, delay, received signal strength, transmitted power, and packet loss rate), as well as the application of multiple weighting vectors to iteratively emphasise different aspects of trust operation to expose and identify misbehaviour on the network.
-With significant delays (from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical \gls{manet} TMF deployment environments.
+With significant delays (from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical \gls{manet} \gls{tmf} deployment environments.
 
-We show that, without significant adaptation, single metric probabilistic estimation based TMFs are ineffective in such an environment.
+We show that, without significant adaptation, single metric probabilistic estimation based \glspl{tmf} are ineffective in such an environment.
 We have shown that existing frameworks are overly optimistic about the nature and stability of the communications channel, and can overlook characteristics that are useful for assessing the behaviour of nodes in the network. 
 This indicates that there is a good case, particularly within constrained \gls{manet}Ìs as this, for multi-vector, and even multi-domain trust assessment, where metrics about the communications network and topology would be brought together with information about the physical behaviours and operations of nodes to assess trust.
 
 Also, a significant factor of trust assessment in such a constrained environment, is that there may be long periods where two edge nodes (for instance, $n_0 \to n_5$) may not interact at all. 
 This can be due to a range of factors beyond malicious behaviour, including simple random scheduling coincidence and intermediate or neighbouring nodes collectively causing long back-off or contention periods.
-This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the TMF will not detect it (especially if the node itself is behaving disruptively).
+This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the \gls{tmf} will not detect it (especially if the node itself is behaving disruptively).
 One solution to this would be to move from a stepping-window of trust observations to a continuous trust log, updated on packet reception rather than waiting regular periods for packets to be analysed.
 Future work will investigate the improvement of weight-based detection algorithms, the stability of GRA under multi-node collusion, the development of real-time outlier detection, and the introduction of physical behavioural metrics into the trust assessment context.
 

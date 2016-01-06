@@ -12,47 +12,55 @@
 
 \section{Introduction}
 
-In this chapter, we demonstrate the need for multi-metric trust assessment in \gls{uan}.
+In this chapter, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
 
 In underwater environments, communications is both sparse and noisy.
-Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
-In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper \glspl{auv}.\todo{this makes no sense}
+Therefore the observations about the communications processes that are used to generate trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
+
+In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper \glspl{auv}.
 As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the underwater context \cite{Pavan2015}.
 Many \glspl{uan} use \gls{manet} architectures, however the marine environment presents new challenges for trust management frameworks that have been developed for use in conventional (i.e. Terrestrial RF) \glspl{manet}.
 Previous research has established the advantages of implementing TMFs in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
 
 To date this work has been limited to terrestrial, RF based networks. 
 
-We investigate the operation of a selection of traditional \gls{manet} \glspl{tmf} in this environment.
-We characterise these challenges and present results that demonstrate a multi-metric approach to Trust greatly enhances the effectiveness of TMFs in these environments.
+The operation of a selection of traditional \gls{manet} \glspl{tmf} in this environment is investigated.
+These challenges are characterised and results are presented that demonstrate a multi-metric approach to Trust greatly enhances the effectiveness of TMFs in these environments.
 
-In Section \ref{sec:initialsystemcharacterization} we establish an experimental configuration for the marine space, and review the scenarios and results presented in \cite{Guo11}.
-In Section \ref{sec:trustresultsanddiscussion} we present our findings in trust establishment and malicious behaviour detection, comparing with other current \glspl{tmf} (Hermes and \gls{otmf}) and analyse the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks.
+In Section \ref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in \cite{Guo11} are reviewed for comparison.
+In Section \ref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented and comparing with other current \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed.
 
-The contributions of this chapter are a study on the comparative operation and performance of TMFs in marine acoustic networks, and a review of metric suitability for TMFs in marine environments, informing future metric selection for experimenters and theorists.
-We also show that single metric trust systems are not directly suitable for the marine context in terms of the different threat and cost scenario in that environment.
-Finally, we demonstrate a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks.
-
+The contributions of this chapter are a study on the comparative operation and performance of \glspl{tmf} in marine acoustic networks, and a review of metric suitability for \glspl{tmf} in marine environments, informing future metric selection for experimenters and theorists.
+It is shown that single metric trust systems are not directly suitable for the marine context in terms of the different threat and cost scenario in that environment.
+Finally, a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks is demonstrated.
 
 Key parts of this chapter were presented at TrustCom-BigDataSE-ISPA 2015 as ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks.''\cite{Bolster2015}
 
-These single metric TMFs provide malicious actors with a significant advantage if their activity does not impact that metric.
+These single metric \glspl{tmf} provide malicious actors with a significant advantage if their activity does not impact that metric.
 In the case where the attacker can subvert the \gls{tmf}, the metric under assessment by that \gls{tmf} does not cover the threat mounted by the attacker.
 This causes a significant negative effect on the efficiency of the network, as the TMF is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
 An example of such a situation would be in a \gls{tmf} focused on \gls{plr} where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
 Such behaviour would not be detected by the \gls{tmf}.
 
-For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:c2_tmfs}, we select Hermes trust establishment, \gls{otmf} and \gls{mtfm} as indicative single and multi metrics frameworks for comparison, as Hermes captures the core operation of a pure single metric assessment methodology and OTMF provides a comparison that combines assessments from across nodes to develop trust opinions.
+For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:c2_tmfs}, select Hermes trust establishment, \gls{otmf} and \gls{mtfm} are selected as indicative single and multi metrics frameworks for comparison, as Hermes captures the core operation of a pure single metric assessment methodology and \gls{otmf} provides a comparison that combines assessments from across nodes to develop trust opinions.
 
 From the discussion on the nature of the communications environment in~\autoref{sec:trust_in_marine}, it's clear that before assessing communications metrics a simulated underwater environment, appropriate scaling factors must be found that are realistic from an application perspective but are also comperable in some form to the \gls{manet} case.
 
-
-\section{System Model Characterization}\label{sec:initialsystemcharacterization}
+\section{Modelling of \gls{uan} network)\label{sec:initialsystemcharacterization}}
 
 
 \subsection{Mobility, Topology, and Communications}
 
-We apply two mobility patterns for investigation; all nodes static and all nodes mobile.
+Four mobility patterns are investigated:
+\begin{enumerate}
+	\item All Nodes Static
+	\item Malicious node mobile
+	\item Malicious node mobile, all other nodes static
+	\item All nodes mobile
+\end{enumerate}
+
+For this case, the mobility model used is a random walk on the nodes modeled kinematic response, i.e. the node periodically picks a spherically normalised random direction in the XY plane
+
 The reason for this is that in other mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
 \todo{expand this section to include discussion and results of single mobility models}
 
@@ -76,7 +84,7 @@ Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems
 Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007}, \cite{Stefanov2011} and \cite{Sehgal2010}\todo{it would be worth while going through this verification explicitly as an appendix}
 
 Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
-Therefore, we first characterise a zone of performance within which the network have stable operation.
+Therefore, a zone of performance is characterised within which the network has stable operation.
 %
 \begin{table}[h]
 	\caption{Comparison of system model constraints as applied between Terrestrial and Marine communications} \label{tab:sysconstraints}
@@ -118,7 +126,7 @@ However, it was recognised in Section~\ref{sec:marineacousticnetworks} that unde
 Exploratory simulations were run to further constrain this bound.
 As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
-For instance, where all nodes are static, we do not see significant drops in saturation rates until node separation approaches 800m, nearly double the initial estimate. 
+For instance, where all nodes are static, significant drops in saturation rates are not seen until node separation approaches 800m, nearly double the initial estimate. 
 When all nodes are randomly walking the saturation point collapses from $0.025pps$ at $300m$ to $0.015pps$ at $400m$.
 Our results indicate that the best area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $100m$ to $300m$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
 These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
@@ -127,7 +135,7 @@ These results are similar to work performed in \cite{Miquel2008}, and are expect
 
 \section{Establishing Scale Factors in Communications Rate}
 
-In this section we characterise the simulated communications environment, establishing an optimal packet emission rate for comparison against \cite{Guo11}.
+In this section the simulated communications environment is characterised to establish an optimal packet emission rate for comparison against \cite{Guo11}.
 
 In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bps, up to 0.07 pps (672 bps)
 
@@ -155,7 +163,7 @@ Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in pa
 
 \subsection{Establishing Scale Factors in Physical Distribution}
 
-In this section we characterise the effect of node-separation scaling on communications operation for comparison against \cite{Guo11}. This is particularly important considering the significant scale factor differences between not only the speed of propagation in the medium, but simply the range of operation. 
+In this section the effect of node-separation scaling on communications operation is characterised for comparison against \cite{Guo11}. This is particularly important considering the significant scale factor differences between not only the speed of propagation in the medium, but simply the range of operation. 
 From Table~\ref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
 
 A reasonable range around this is to scale from 100$m$ apart on average to 800$m$.
@@ -166,15 +174,15 @@ This collision rate is well within the tolerances of the MAC layer, as shown in 
 \begin{figure}[H]
 	\centering
 	%\missingfigure[width=0.6\textwidth]{throughput_performance_range}
-	\includegraphics[width=0.8\textwidth]{throughput_performance_range}
-	\caption{Comparison of Medium Acquisition Collisions, Throughput, and Enqueued packets against varying application packet emission rates.}
+	\includegraphics[width=0.8\textwidth]{throughput_performance_bella_all_mobile}
+	\caption{Medium Acquisition Collisions, Throughput, and Enqueued packets against varying application packet emission rates for full mobility model}
 	\label{fig:throughput_performance_range}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{prod_breakdown_range}
-	\caption{Probability of Timely Reception across a range of node scaling.}
+	\includegraphics[width=0.8\textwidth]{prod_breakdown_bella_all_mobile}
+	\caption{Probability of Timely Reception Varying Node Separation for full mobility model}
 	\label{fig:prod_breakdown_range}
 \end{figure}
 
@@ -196,7 +204,7 @@ This is due to reduced channel availability due to collisions, which are then du
 \begin{figure}[H]
 	\centering
 	%\missingfigure{rts range}
-  \includegraphics[width=0.8\textwidth]{rts_range}
+  \includegraphics[width=0.8\textwidth]{rts_ratio_bella_static}
 	\caption{RTS/Data ratio for varying node-separations}
 	\label{fig:rts_range}
 \end{figure}

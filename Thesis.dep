@@ -164,16 +164,17 @@
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Figures/trust_topology_relationships.png}{0000/00/00 v0.0}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/threat_surface_sum.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/c3-maritime-background.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/ghia_sound_prop_curve.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/c4-trust_in_defence.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/throughput_performance_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/prod_breakdown_static.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/throughput_performance_range.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/prod_breakdown_range.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/prod_breakdown_bella_all_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/delay_range.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/rts_range.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/rts_ratio_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/c5-multi_domain_trust_strategies.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c6-physical_metrics.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
@@ -211,5 +212,7 @@
   *{file}   {./Appendices/AppendixA.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {./Appendices/appendixB.tex}{0000/00/00 v0.0}
+  *{file}   {./Appendices/appendixC.tex}{0000/00/00 v0.0}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
 }

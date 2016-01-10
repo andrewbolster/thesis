@@ -133,6 +133,10 @@
 \pdfstringdefDisableCommands{
    \let\\\space
 }
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc,fit}
+
 \newcommand*{\supervisor}[1]{\def\supname{#1}}
 \newcommand*{\examiner}[1]{\def\examname{#1}}
 \newcommand*{\degree}[1]{\def\degreename{#1}}
@@ -159,9 +163,9 @@
 \examiner    {}
 \degree      {}
 \authors     {Andrew Bolster}
-\university  {\texorpdfstring{\href{University Web Site URL Here (include http://)}
-                {University Name}}
-                {University Name}}
+\university  {\texorpdfstring{\href{http://liv.ac.uk}
+                {University of Liverpool}}
+                {University of Liverpool}}
 \UNIVERSITY  {\texorpdfstring{\href{University Web Site URL Here (include http://)}
                 {UNIVERSITY OF LIVERPOOL}}
                 {UNIVERSITY OF LIVERPOOL}}
@@ -188,6 +192,20 @@
 \keywords    {}
 \addresses  {\groupname\\\deptname\\\univname}  
 
+\hypersetup{
+	bookmarks=true,         % show bookmarks bar?
+	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar=true,        % show Acrobat’s toolbar?
+	pdfmenubar=true,        % show Acrobat’s menu?
+	pdffitwindow=false,     % window fit to page when opened
+	pdfstartview={FitH},    % fits the width of the page to the window
+	pdfnewwindow=true,      % links in new window
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
+	citecolor=green,        % color of links to bibliography
+	filecolor=red,      % color of file links
+	urlcolor=blue           % color of external links
+}
 \renewcommand\maketitle{
   \btypeout{Title Page}
   \hypersetup{pdftitle={\@title}}

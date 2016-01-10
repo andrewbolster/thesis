@@ -28,12 +28,26 @@
 
 
 % SETUP
-\hypersetup{urlcolor=blue, colorlinks=false}  % Colours hyperlinks in blue, but this can be distracting if there are many links. 
+
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \graphicspath{{./Figures/}{../../Dropbox/Thesis_Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 
 % \SpecialCoor
 \def\subsum{\mathit{\Sigma}}
+
+% TikZ stuff
+
+\tikzset{
+block/.style = {draw, fill=white, rectangle, minimum height=3em, minimum width=3em, text width=8em, text centered},
+tmp/.style  = {coordinate}, 
+sum/.style= {draw, fill=white, circle, node distance=1cm},
+input/.style = {coordinate},
+output/.style= {coordinate},
+pinstyle/.style = {pin edge={to-,thin,black}
+}
+}
+
+
 
 
 

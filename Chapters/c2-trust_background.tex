@@ -48,6 +48,10 @@ As such it is important to explore the following areas of trust definitions, the
 Mayer et al \cite{Mayer1995} proposed a model of trust that encapsulates generalised factors of perceived trustworthiness of a \textit{trustee} in interpersonal relationships (Table~\ref{tab:trust_factors}), accommodating a subjective trustworthiness and risk-taking potentiality on the part of the \textit{trustor}.
 This formulation of trust allowed a wider discussion of the characteristics of trust relationships, both between individuals and within networks or communities.\todo{possibly expand this}
 
+As shown in \autoref{fig:mayer_trust_model}, Mayer primarily focuses on the Trustor's perspective and processes with respect to a give trust-based relationship.
+Three primary factors of perceived trustworthiness; based on previous outcomes, are assessed and synthesised along with the Trustor's own interanalised propensity to Trust with respect to the different factors observed, to generate a given trust value. 
+This trust value is incorporated with the risk / reward as assessed by the trustor to conclude what level of risk taking (Trust) can be assumed in the relationship between this trustor and a given trustee.
+
 \begin{table}\centering
   \caption[Factors of Trust]{Factors of Trust\cite{Mayer1995}}
   \label{tab:trust_factors}
@@ -60,12 +64,39 @@ This formulation of trust allowed a wider discussion of the characteristics of t
   \end{tabularx}
 \end{table}
 
-\begin{figure}
-  \includegraphics[width=\textwidth]{mayer1995-fig1}
-  \caption[Model of Trust]{Model of Trust \cite{Mayer1995}}
+\begin{figure}[!htb]
+  \centering
+  \begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
+    \node [block] (ability) {Ability};
+    \node [block, below of = ability] (benevolence) {Benevolence};
+    \node [block, below of = benevolence] (integrity) {Integrity};
+    %\draw[red,thick,dotted] ($(ability.north west)+(-0.3,0.6)$)  rectangle ($(integrity.south east)+(0.3,-0.6)$);
+    \node (percievedFactors) [draw=red, fit= (ability) (benevolence) (integrity), inner sep=0.2cm, dashed, ultra thick, fill opacity=0.2] {};
+    \node [yshift=5ex, red, text width=8em, text centered] at (percievedFactors.north) {Factors of Perceived Trustworthiness};
+
+    \node [block, right=1.5cm and 1.5cm of percievedFactors] (trust) {Trust};
+
+    \node [block, above=2.5cm of trust, xshift=-6em] (trustorsPropensity) {Trustor's Propensity};
+    \node [block, right=of trust] (riskTaking) {Risk Taking in Relationship};
+    \node [block, above=of trust, xshift=5em] (percievedRisk) {Perceived Risk};
+    \node [block, right=of riskTaking] (outcomes) {Outcomes};
+
+    \draw [->] (ability) --coordinate[near start](mAb)  (trust);
+    \draw [->] (benevolence) -- coordinate[midway](mBe) (trust);
+    \draw [->] (integrity) -- coordinate[near end](mIn) (trust);
+    \draw [->] (trustorsPropensity.south) to[bend right=10] (mAb);
+    \draw [->] (trustorsPropensity.south) to (mBe);
+    \draw [->] (trustorsPropensity.south) to[bend left=5] (mIn);
+    \draw [->] (trustorsPropensity.south) to[bend left=10] (trust);
+    \draw [->] (trust) -- coordinate[midway](mT) (riskTaking);
+    \draw [->] (percievedRisk) -- (mT);
+    \draw [->] (riskTaking) |- (outcomes);
+    \draw [->] (outcomes.south) --++ (0cm,-4cm) -| (percievedFactors.south);
+
+  \end{tikzpicture}
+  \caption[Model of Trust]{Model of Trust taken from \cite{Mayer1995}, modelling the }
   \label{fig:mayer_trust_model}
 \end{figure}
-\todo{ReDo Mayer Model and highlight who performs what action blocks (Trustor/ee)}
 
 Lee and See \cite{Lee2004} extended and synthesised Mayer et al's approach to personal and interpersonal trust towards a generalised concept of trust for human and autonomic/autonomous systems with the following alternative contextual definitions (including their approximate mappings to Mayer et al's approach
 
@@ -101,7 +132,7 @@ Sun argues that only System Trust and Behavioural Trust are relevant to trusted 
 However, it is arguable that in any network where the operation of that network is not the only concern, or where that network has to interact with any operator, then all of these factors come into play.
 Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation Process’, or a trust assessment, while the other trust constructs deal with the interactions between trust and decision making against an internal assessment of network trustworthiness.
 
-\subsection{Notations of Trust}
+\subsection{Taxonomy and Notations of Trust}
 
 \todo[inline]{Liu and Wang do lots on this\cite{Liu2010} as well as discussion regarding the entropic/probabilistic models of trust. This may be too much to throw in, might inject it later}
 
@@ -153,7 +184,7 @@ Within sparsly connected networks, there are three primary types of relationship
 
 In \cite{Liu2010}, Liu and Wang identify four types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, and Sybil/Newcomer attacks. 
 
-The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e. attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort. In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted or un-trusted.
+The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e. attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort. In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted or untrusted.
 
 
 
@@ -164,17 +195,9 @@ The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e. att
 
 The aim of the section is to explore where trust is likely to impact \gls{sos} that contain autonomous elements incorporating Human Factors, Command and Control considerations, and \gls{v2v} distributed communication, from the perspective of trusted and semi-trusted operation.
 
-This is a subject area with a great deal of complexity and touches on a wide range of research areas, so it will be discussed in four parts; 
- 
-\begin{enumerate}
-  \item Autonomy and Levels of Autonomy
-  \item Trust as a Design Consideration for the Development of Autonomous Systems
-  \item Operator / Organisational Factors relating to the Operation of Highly Autonomous Systems
-\end{enumerate}
+\todo[inline]{Expand introduction and plan the rest of the section}
 
 \subsection{Autonomy and Levels of Autonomy}
-
-
 
 Autonomy, like trust, is a nebulous, ill -defined term across research, defense and commercial circles, and like trust, it has its origins in human experience and interactions. 
 
@@ -337,8 +360,8 @@ There are three main organisations that are developing or have developed assuran
 
 Faced with the growing adoption of similar but disparate \gls{uav} systems within NATO territories and coalition nations, STANAG 4586\cite{STANAG4586} was promulgated in 2005 and defined a logistic and interoperability framework to provide commonality in the command and comtrol architecture and implementations of \gls{uav}/Ground station communications.
 
-This included a particularly interesting development in the form of "Vehicle Specific Module" (VSM) interoperability, whereby existing systems could be grandfathered into STANAG 4586 compliance by the addition of a VSM to operate as a protocol translator.
-This VSM could be mounted on the remote system, utilising a compliant Data Link Interface (DLI), or mounted on the UCS utilising a proprietary DLI to the remote system.
+This included a particularly interesting development in the form of "Society of Automotive Engineers" (\gls{vsm}) interoperability, whereby existing systems could be grandfathered into STANAG 4586 compliance by the addition of a \gls{vsm} to operate as a protocol translator.
+This \gls{vsm} could be mounted on the remote system, utilising a compliant Data Link Interface (DLI), or mounted on the UCS utilising a proprietary DLI to the remote system.
 The standard describes five \gls{loi} for compliant \gls{uav} systems, shown in Table~\ref{tab:levels_of_interoperability}.
 This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations \cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ‘direct control’ or ‘Operator-in-the-loop’, especially in the case of \gls{blos} systems, and that in increasingly autonomous systems, operation is done as \gls{hsc}, or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware.
 
@@ -352,13 +375,13 @@ This structure has been criticised as being short sighted and at odds with the r
     \hline  5 &  Launch and Recovery in addition to \gls{loi} 4\\ 
     \hline 
   \end{tabularx}
-  \caption[\gls{loi} for STANAG 4586 Compliant UCS]{Levels of Interoperability for STANAG 4586 Compliant UCS \cite{STANAG4596}}
+  \caption[\gls{loi} for STANAG 4586 Compliant UCS]{Levels of Interoperability for STANAG 4586 Compliant UCS \cite{STANAG4586}}
   \label{tab:levels_of_interoperability}
 \end{table}
 
 Further, the standard predominantly deals with a one-to-one mapping between operators and nodes, when this is quite against the current state of the art; greater focus is being made in collective and collaborative assignment and having a single operating agent managing a group of autonomous nodes in-field, and handing off vehicle management responsibilities to the individual nodes.
 
-\subsubsection{Society of Automotive Engineers (SAE)}
+\subsubsection{\gls{sae}}
 
 The AS-4 steering group is responsible for the development and maintenance of the \gls{jaus} standards, which provide several service sets for Inter-System cooperation and interoperability, either in the form of a specified design language (JSIDL\footnote{\gls{jaus} Service Interface Definition Language}) or as a direct framework implementation, such as the \gls{jaus} Mobility, Mission Spooling, Environment Sensing, or Manipulator Service Sets\footnote{SAE AS6009, AS 6062, AS 6060, and AS 6057 respectively}.
 This provides a stack-like interoperability model akin to the OSI inter-networking standard, providing logical connections between common levels across devices regardless of how subordinate layers are implemented.
@@ -367,17 +390,17 @@ Importantly, \gls{jaus} service models are open-sourced under the BSD-license, a
 It is also important to note that \gls{jaus} is part funded, and heavily utilised by, US Army and Marine Robotic Systems Joint Project Office (RS-JPO), which manage the development, testing, and fielding of unmanned (ground) systems for those respective forces.
 This includes now legacy M160 mine clearance platform and the highly popular (both with forces and their in-field operators) iRobot Packbot inspection and \gls{eod} family of robotic platforms.\todo{Needs references}
 
-\subsubsection{American Society of Testing and Materials (ASTM)}
+\subsubsection{\gls{astm}}
 
-The ASTM F38 committee has developed a \gls{los}, single-asset-single-operator stove-piped framework for Unmanned Air Systems that is too constrained in scope for applicability to a more heterogeneous operating environment\cite{AmericanSocietyofTestingandMaterials2007}.
+The \gls{astm} F38 committee has developed a \gls{los}, single-asset-single-operator stove-piped framework for Unmanned Air Systems that is too constrained in scope for applicability to a more heterogeneous operating environment\cite{AmericanSocietyofTestingandMaterials2007}.
 However, the F41 Committee, focused on \glspl{umvs} has collectively developed a range of interoperable standards, covering Communications, Autonomy and Control, Sensor Data Formats, and Mission Payload Interfacing.
 Of particular interest is the Autonomy and Control standard \cite{AmericanSocietyofTestingandMaterials2006}, which highlighted a requirement on the vehicle system to be able to recognise an authorised client, be that a human operator or an additional collaborating vehicle.
 Further, the standard states that the responsibility of the safety and integrity of any payload remains with the vehicle.
-This standard was withdrawn in 2015 due to ASTM regulations requiring standards to be updated within 8 years of approval, and has no direct replacement within ASTM, but stands as a useful guiding perspective on autonomy standards within industry.
+This standard was withdrawn in 2015 due to \gls{astm} regulations requiring standards to be updated within 8 years of approval, and has no direct replacement within \gls{astm}, but stands as a useful guiding perspective on autonomy standards within industry.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{astmf41arch}
-  \caption{ASTM F41 UMVS Architecture  (with relevant substandards in parenthesis)}
+  \caption{\gls{astm} F41 \gls{umvs} Architecture  (with relevant substandards in parenthesis)}
   \label{fig:astmf41arch}
 \end{figure}
 

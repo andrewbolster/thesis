@@ -113,14 +113,14 @@
   *{package}{relsize}     {2013/03/29 v4.1}
   *{package}{float}       {2001/11/08 v1.3d}
   *{package}{epigraph}    {2009/09/02 v1.5c}
-  *{package}{glossaries}  {2015/11/22 v4.19}
-  *{package}{mfirstuc}    {2015/09/09 v2.0}
+  *{package}{glossaries}  {2015/11/30 v4.20}
+  *{package}{mfirstuc}    {2015/12/17 v2.02}
   *{package}{etoolbox}    {2015/08/02 v2.2a}
   *{package}{textcase}    {2004/10/07 v0.07}
   *{package}{xfor}        {2009/02/05 v1.05}
-  *{package}{datatool-base}{2015/07/11 v2.23}
+  *{package}{datatool-base}{2016/01/18 v2.25}
   *{package}{substr}      {2009/10/20 v1.2}
-  *{package}{datatool-fp} {2015/07/11 v2.23}
+  *{package}{datatool-fp} {2016/01/18 v2.25}
   *{package}{fp}          {1995/04/02 v0.0}
   *{package}{defpattern}  {1994/10/12 v0.0}
   *{package}{fp-basic}    {1996/05/13 v0.0}
@@ -133,13 +133,13 @@
   *{package}{fp-eqn}      {1995/04/03 v0.0}
   *{package}{fp-upn}      {1996/10/21 v0.0}
   *{package}{fp-eval}     {1995/04/03 v0.0}
-  *{package}{glossaries-compatible-307}{2015/11/22 v4.19}
-  *{package}{glossary-hypernav}{2015/11/22 v4.19}
-  *{package}{glossary-list}{2015/11/22 v4.19}
-  *{package}{glossary-long}{2015/11/22 v4.19}
-  *{package}{glossary-super}{2015/11/22 v4.19}
+  *{package}{glossaries-compatible-307}{2015/11/30 v4.20}
+  *{package}{glossary-hypernav}{2015/11/30 v4.20}
+  *{package}{glossary-list}{2015/11/30 v4.20}
+  *{package}{glossary-long}{2015/11/30 v4.20}
+  *{package}{glossary-super}{2015/11/30 v4.20}
   *{package}{supertabular}{2004/02/20 v4.1e}
-  *{package}{glossary-tree}{2015/11/22 v4.19}
+  *{package}{glossary-tree}{2015/11/30 v4.20}
   *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
   *{package}{ltcaption}   {2013/06/09 v1.4-94}
   *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
@@ -159,7 +159,6 @@
   *{file}   {./Chapters/c1-introduction.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c2-trust_background.tex}{0000/00/00 v0.0}
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
-  *{file}   {./Figures/trust_topology_relationships.png}{0000/00/00 v0.0}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
   *{file}   {./Figures/threat_surface_sum.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/c3-maritime-background.tex}{0000/00/00 v0.0}

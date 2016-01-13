@@ -171,7 +171,125 @@ Within sparsly connected networks, there are three primary types of relationship
 \todo{Separate Figure for each relationship}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{trust_topology_relationships}
+  \centering
+  \begin{subfigure}[t]{0.40\textwidth}
+    \hfill
+    \begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
+      \node [sum, preaction={fill=red!20}] (a) {A};
+      \node [sum, below left =of a] (b) {B};
+      \node [sum, below right =of a] (c) {C};
+      \node [sum, below left =of c] (d) {D};
+      \node [sum, above right =of c] (e) {E};
+      \node [sum, below right =of c] (f) {F};
+
+
+      \graph {
+      (a) -- (b);
+      (a) -- (c);
+      (b) -- (c);
+      (b) -- (d);
+      (c) -- (d);
+      (c) -- (e);
+      (c) -- (f);
+      };
+
+      \begin{pgfinterruptboundingbox}
+        \coordinate (A) at (a);
+        \cercle {A} {2.25cm} {216} {160}{ 1.50} {red, opacity=0.5, dashed};
+      \end{pgfinterruptboundingbox}
+
+    \end{tikzpicture}
+    \caption{Sample topology showing logical connections between nodes (Range of $A$ shown in red dashed line)}
+    \hfill
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.25\textwidth}
+    \begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
+      \node [sum, preaction={fill=red!20}] (a) {A};
+      \node [sum, below left =of a] (b) {B};
+      \node [sum, below right =of a] (c) {C};
+      \node [sum, below left =of c] (d) {D};
+      \node [sum, above right =of c] (e) {E};
+      \node [sum, below right =of c] (f) {F};
+
+
+      \graph[edges={opacity=0.4}] {
+      (a) -- (b);
+      (a) -- (c);
+      (b) -- (c);
+      (b) -- (d);
+      (c) -- (d);
+      (c) -- (e);
+      (c) -- (f);
+      };
+
+      \draw[->, blue, dashed] (a) to[bend right] (b);
+      \draw[->, purple, dashed] (a) to[bend left] (c);
+
+    \end{tikzpicture}
+    \caption{Direct Relationships, the two possible trust assessments from $A$ to its connected neighbours, $B,C$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.25\textwidth}
+    \begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
+      \node [sum, preaction={fill=red!20}] (a) {A};
+      \node [sum, below left =of a] (b) {B};
+      \node [sum, below right =of a] (c) {C};
+      \node [sum, below left =of c] (d) {D};
+      \node [sum, above right =of c] (e) {E};
+      \node [sum, below right =of c] (f) {F};
+
+
+      \graph[edges={opacity=0.4}] {
+      (a) -- (b);
+      (a) -- (c);
+      (b) -- (c);
+      (b) -- (d);
+      (c) -- (d);
+      (c) -- (e);
+      (c) -- (f);
+      };
+
+      \draw[->, blue, dashed] (a) to[bend right] (c.west) to [bend right](d.north east);
+      \draw[->, purple, dashed] (a) to[bend left] (b.east) to [bend left](d.north west);
+      \draw[->, teal, dashed] (a) to[bend left] (c.north east) to [bend left](e.west);
+      \draw[->, magenta, dashed] (a) to[bend left] (c.north) to [bend left](f.north);
+    \end{tikzpicture}
+    \caption{Indirect Relationships, showing the four possible trust assessments from $A$ or the three disconnected leaf nodes, $D,E,F$}
+
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.25\textwidth}
+    \begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
+      \node [sum, preaction={fill=red!20}] (a) {A};
+      \node [sum, below left =of a] (b) {B};
+      \node [sum, below right =of a] (c) {C};
+      \node [sum, below left =of c] (d) {D};
+      \node [sum, above right =of c] (e) {E};
+      \node [sum, below right =of c] (f) {F};
+
+
+      \graph[edges={opacity=0.4}] {
+      (a) -- (b);
+      (a) -- (c);
+      (b) -- (c);
+      (b) -- (d);
+      (c) -- (d);
+      (c) -- (e);
+      (c) -- (f);
+      };
+
+      \draw[->, blue, dashed] (a) to[bend right=40] (b);
+      \draw[->, purple, dashed] (a) to[bend left=40] (c);
+
+      \draw[->, blue, dashed] (a) to[bend left] ([yshift=5pt] c.north west) to [bend right](b.east);
+      \draw[->, purple, dashed] (a) to[bend right] ([yshift=5pt] b.north east) to [bend left](c.west);
+
+    \end{tikzpicture}
+    \caption{Recommender Relationship, showing the two discrete paths trust assessments travel to $A$; $T_{A,B}^R = T_{A,C} \otimes T_{C,B}$ and  $T_{A,C}^R = T_{A,B} \otimes T_{B,C}$}
+
+  \end{subfigure}
+  \hfill
   \caption{Trust Topologies, Direct, Indirect, Recommender, etc. from the perspective of Node A}
   \label{fig:trust_topology_relationships}
 \end{figure}
@@ -209,7 +327,7 @@ What's more is that from the implicit variability and complexity of environment 
 
 This understanding scaled through social systems and has been studied at length to understand the emergence of post-Marxist proto-anarchistic movements\cite{Hunter2016} and from a higher perspective, international politics, especially in the cases of quasi-federalised collections of states such as the United States of America\cite{Halberstam2001} and the European Union/Eurozone/Schengen Area  \cite{Richter2012}
 
- 
+
 In the most general case in the world of artificial systems, Autonomy is understood as a graduated spectrum of allocation of functionality between a system (or system of systems) and an operator tasked with performing a given task; where a system is more ``autonomous'', more of the sensing, planning, decision and action operations are performed by the system. (See Table~\ref{tab:autonomy_definitions} for a review of current definitions of autonomy and autonomous systems)
 
 While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, recent advances in the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Google and beyond.
@@ -546,10 +664,10 @@ Such behaviour would not be detected by the TMF.
 Given the potential incentives to a selfish attacker and potential threats to trust and fairness in sparse, noisy, and constrained environments, single metric trusts discussed above do not suitably cover the exposed threat surface.
 
 \begin{figure}[h!]
-	\centering
-	\includegraphics[width=\linewidth]{threat_surface_sum}
-	\caption{The inclusion of additional metrics and domains in trust assessment reduces the systems exposed threat surface}
-	\label{fig:threat_surface}
+  \centering
+  \includegraphics[width=\linewidth]{threat_surface_sum}
+  \caption{The inclusion of additional metrics and domains in trust assessment reduces the systems exposed threat surface}
+  \label{fig:threat_surface}
 \end{figure}
 
 A multi-metric approach may be more appropriate to capture and monitor the realities of harsh and sparse communications environments.

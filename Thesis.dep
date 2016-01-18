@@ -5,6 +5,27 @@
   *{class}  {book}        {2014/09/29 v1.4h}
   *{file}   {bk11.clo}    {2014/09/29 v1.4h}
   *{package}{setspace}    {2011/12/19 v6.7a}
+  *{package}{diagbox}     {2011/11/23 v2.0}
+  *{package}{keyval}      {2014/10/28 v1.15}
+  *{package}{pict2e}      {2016/01/09 v0.2z}
+  *{file}   {pict2e.cfg}  {2011/04/05 v0.1t}
+  *{file}   {pdftex.def}  {2011/05/27 v0.06d}
+  *{package}{infwarerr}   {2010/04/08 v1.3}
+  *{package}{ltxcmds}     {2011/11/09 v1.22}
+  *{file}   {p2e-pdftex.def}{2011/04/05 v0.1t}
+  *{package}{trig}        {1999/03/16 v1.09}
+  *{package}{fp}          {1995/04/02 v0.0}
+  *{package}{defpattern}  {1994/10/12 v0.0}
+  *{package}{fp-basic}    {1996/05/13 v0.0}
+  *{package}{fp-addons}   {1995/03/15 v0.0}
+  *{package}{fp-snap}     {1995/04/05 v0.0}
+  *{package}{fp-exp}      {1995/04/03 v0.0}
+  *{package}{fp-trigo}    {1995/04/14 v0.0}
+  *{package}{fp-pas}      {1994/08/29 v0.0}
+  *{package}{fp-random}   {1995/02/23 v0.0}
+  *{package}{fp-eqn}      {1995/04/03 v0.0}
+  *{package}{fp-upn}      {1996/10/21 v0.0}
+  *{package}{fp-eval}     {1995/04/03 v0.0}
   *{package}{vmargin}     {2004/07/15 v2.5}
   *{package}{fancyhdr}    {0000/00/00 v0.0}
   *{package}{amsmath}     {2013/01/14 v2.14}
@@ -19,14 +40,9 @@
   *{package}{xspace}      {2014/10/28 v1.13}
   *{package}{caption}     {2015/09/17 v3.3-111}
   *{package}{caption3}    {2015/09/20 v1.7-115}
-  *{package}{keyval}      {2014/10/28 v1.15}
   *{package}{graphicx}    {2014/10/28 v1.0g}
   *{package}{graphics}    {2014/10/28 v1.0p}
-  *{package}{trig}        {1999/03/16 v1.09}
   *{file}   {graphics.cfg}{2010/04/23 v1.9}
-  *{file}   {pdftex.def}  {2011/05/27 v0.06d}
-  *{package}{infwarerr}   {2010/04/08 v1.3}
-  *{package}{ltxcmds}     {2011/11/09 v1.22}
   *{package}{epstopdf}    {2010/02/09 v2.5}
   *{package}{epstopdf-base}{2010/02/09 v2.5}
   *{package}{grfext}      {2010/08/19 v1.1}
@@ -121,18 +137,6 @@
   *{package}{datatool-base}{2016/01/18 v2.25}
   *{package}{substr}      {2009/10/20 v1.2}
   *{package}{datatool-fp} {2016/01/18 v2.25}
-  *{package}{fp}          {1995/04/02 v0.0}
-  *{package}{defpattern}  {1994/10/12 v0.0}
-  *{package}{fp-basic}    {1996/05/13 v0.0}
-  *{package}{fp-addons}   {1995/03/15 v0.0}
-  *{package}{fp-snap}     {1995/04/05 v0.0}
-  *{package}{fp-exp}      {1995/04/03 v0.0}
-  *{package}{fp-trigo}    {1995/04/14 v0.0}
-  *{package}{fp-pas}      {1994/08/29 v0.0}
-  *{package}{fp-random}   {1995/02/23 v0.0}
-  *{package}{fp-eqn}      {1995/04/03 v0.0}
-  *{package}{fp-upn}      {1996/10/21 v0.0}
-  *{package}{fp-eval}     {1995/04/03 v0.0}
   *{package}{glossaries-compatible-307}{2015/11/30 v4.20}
   *{package}{glossary-hypernav}{2015/11/30 v4.20}
   *{package}{glossary-list}{2015/11/30 v4.20}
@@ -141,8 +145,8 @@
   *{package}{supertabular}{2004/02/20 v4.1e}
   *{package}{glossary-tree}{2015/11/30 v4.20}
   *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
-  *{package}{ltcaption}   {2013/06/09 v1.4-94}
   *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
+  *{package}{ltcaption}   {2013/06/09 v1.4-94}
   *{package}{nameref}     {2012/10/27 v2.43}
   *{package}{gettitlestring}{2010/12/03 v1.4}
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
@@ -150,13 +154,13 @@
   *{file}   {Thesis.glsdefs}{0000/00/00 v0.0}
   *{file}   {./Chapters/defs.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
-  *{file}   {umsa.fd}     {2013/01/14 v3.01}
-  *{file}   {umsb.fd}     {2013/01/14 v3.01}
   *{file}   {Thesis.gls}  {0000/00/00 v0.0}
   *{file}   {./Chapters/preface.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/abstract.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c1-introduction.tex}{0000/00/00 v0.0}
+  *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {umsb.fd}     {2013/01/14 v3.01}
   *{file}   {./Chapters/c2-trust_background.tex}{0000/00/00 v0.0}
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}

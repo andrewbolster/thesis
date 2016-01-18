@@ -46,6 +46,8 @@
 \usepackage{setspace}
 \onehalfspacing
 
+%http://tex.stackexchange.com/questions/7262/diagonally-divided-table-cell
+\usepackage{diagbox}
 
 \usepackage{vmargin}
 \setmarginsrb           { 1.5in}  % left margin

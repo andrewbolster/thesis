@@ -25,27 +25,8 @@
 % TikZ stuff
 \usepackage{tikz}
 \usetikzlibrary{shapes, graphs, arrows, backgrounds, positioning, calc}
-\tikzset{
-block/.style = {draw, fill=white, rectangle, minimum height=3em, minimum width=3em, text width=8em, text centered},
-tmp/.style  = {coordinate}, 
-sum/.style= {draw, fill=white, circle, node distance=1cm},
-input/.style = {coordinate},
-output/.style= {coordinate},
-pinstyle/.style = {pin edge={to-,thin,black}
-}
-}
-\newcommand{\cercle}[6]{
-\node[circle,inner sep=0,minimum size={2*#2}](a) at (#1) {};
-\draw[#6,line width=#5] (a.#3) arc (#3:{#3+#4}:#2);
-}
-% USAGE: \cercle {center} {radius in cm} {begin degrees} {value of the arc} {line width} {color}
-% \coordinate (OO) at (2.8,2.2);
-% \cercle{OO}{0.5cm}{-20}{60}{1.0pt}{blue};
 
-
-
-
-
+% Glossaries
 \usepackage[xindy]{glossaries} 
 \usepackage{pgf}
 \setacronymstyle{long-short}  
@@ -55,22 +36,6 @@ pinstyle/.style = {pin edge={to-,thin,black}
 
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \graphicspath{{./Figures/}{../../Dropbox/Thesis_Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
-
-% \SpecialCoor
-\def\subsum{\mathit{\Sigma}}
-
-
-
-
-\def\ifthesis{\iftrue}
-\setcounter{secnumdepth}{2}
-\newenvironment{myindentpar}[1]%
-{\begin{list}{}%
-         {\setlength{\leftmargin}{#1}}%
-         \item[]%
-}
-{\end{list}}
-
 
 \input{./Chapters/notation} % Glossaries Definitions
 \makeglossaries

@@ -1,13 +1,9 @@
 % !TeX spellcheck = en_GB
 \def\ChapterTitle{Modelling and Analysis of Collaborative Node Kinematic Behaviours in Underwater Acoustic \gls{manet}s}
 
-\ifx\ifthesis\undefined
-\input{chapter_standalone_preamble.tex}
-\else
 \chapter{\ChapterTitle}
 \label{Chapter\thechapter}
 \lhead{Chapter \thechapter. \emph{Modelling of Node Behaviours}} % Write in your own chapter title to set the page header
-\fi
 
 \section{Introduction}\label{sec:introduction}
 
@@ -16,7 +12,7 @@
 
 We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 
-Guo et al. introduce a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
+Guo et al.\ introduce a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
 Given that the established links are already heavily constrained, such attacks would severely impact the general performance of the network beyond the scope of simple selfishness.
 These direct malicious behaviours effectively trigger saturation collapses in operating regions of the network that should be stable.
 
@@ -295,7 +291,3 @@ Future work will investigate the improvement of weight-based detection algorithm
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifx\ifthesis\undefined
-	\input{chapter_standalone_postscript.tex}
-\else
-\fi

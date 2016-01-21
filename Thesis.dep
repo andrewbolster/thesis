@@ -169,12 +169,43 @@
   *{file}   {./Figures/ghia_sound_prop_curve.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/c4-trust_in_defence.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/throughput_performance_static.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/prod_breakdown_static.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/prod_breakdown_bella_all_mobile.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/delay_range.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/rts_ratio_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_prod_breakdown_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_delay_variation_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_rts_ratio_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_prod_breakdown_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_delay_variation_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_rts_ratio_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_prod_breakdown_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_delay_variation_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_rts_ratio_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_prod_breakdown_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_delay_variation_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_rts_ratio_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_prod_breakdown_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_delay_variation_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_rts_ratio_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_prod_breakdown_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_delay_variation_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_rts_ratio_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_prod_breakdown_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_delay_variation_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_rts_ratio_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_prod_breakdown_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_delay_variation_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_rts_ratio_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {Figures/input/emission_packet_stats_bella_single_mobile.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c5-multi_domain_trust_strategies.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c6-physical_metrics.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}

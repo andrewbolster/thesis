@@ -1,0 +1,101 @@
+% This file was created by matplotlib2tikz v0.5.3.
+% The lastest updates can be retrieved from
+% 
+% https://github.com/nschloe/matplotlib2tikz
+% 
+% where you can also submit bug reports and leavecomments.
+% 
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{0.298039215686275,0.447058823529412,0.690196078431373}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+
+\begin{axis}[
+xlabel={Packet Emmission Rate (pps)},
+ylabel={Mean End to End Delay(s)},
+xmin=100, xmax=800,
+ymin=0, ymax=7000,
+xtick={100,200,300,400,500,600,700,800},
+xticklabels={$100$,$200$,$300$,$400$,$500$,$600$,$700$,$800$},
+ytick={0,1000,2000,3000,4000,5000,6000,7000},
+yticklabels={$0$,$1000$,$2000$,$3000$,$4000$,$5000$,$6000$,$7000$},
+tick align=outside,
+xmajorgrids,
+x grid style={white},
+ymajorgrids,
+y grid style={white},
+axis line style={white},
+axis background/.style={fill=color0}
+]
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:100,10.879961406966)
+--(axis cs:100,12.7938283129796);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:200,14.5640941135358)
+--(axis cs:200,16.7146232513357);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:300,71.1831370347475)
+--(axis cs:300,78.4897768711765);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:400,1874.21542598334)
+--(axis cs:400,2237.03681561574);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:500,3674.08445699801)
+--(axis cs:500,3956.66700062387);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:600,3360.10973829634)
+--(axis cs:600,4020.99834099263);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:700,3011.47041957972)
+--(axis cs:700,4071.37821746891);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:800,3831.14326108032)
+--(axis cs:800,6334.01826079845);
+
+\addplot [line width=0.7000000000000001pt, color1, mark=-, mark size=3, only marks]
+table {%
+100 10.879961406966
+200 14.5640941135358
+300 71.1831370347475
+400 1874.21542598334
+500 3674.08445699801
+600 3360.10973829634
+700 3011.47041957972
+800 3831.14326108032
+};
+\addplot [line width=0.7000000000000001pt, color1, mark=-, mark size=3, only marks]
+table {%
+100 12.7938283129796
+200 16.7146232513357
+300 78.4897768711765
+400 2237.03681561574
+500 3956.66700062387
+600 4020.99834099263
+700 4071.37821746891
+800 6334.01826079845
+};
+\addplot [line width=0.7000000000000001pt, color1]
+table {%
+100 11.8368948599728
+200 15.6393586824357
+300 74.836456952962
+400 2055.62612079954
+500 3815.37572881094
+600 3690.55403964448
+700 3541.42431852431
+800 5082.58076093939
+};
+\path [draw=white, fill opacity=0] (axis cs:100,1)
+--(axis cs:800,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,7000);
+
+\path [draw=white, fill opacity=0] (axis cs:100,0)
+--(axis cs:800,0);
+
+\path [draw=white, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,7000);
+
+\end{axis}
+
+\end{tikzpicture}

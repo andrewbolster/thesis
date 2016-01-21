@@ -11,7 +11,7 @@
 In this chapter, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
 
 In underwater environments, communications is both sparse and noisy.
-Therefore the observations about the communications processes that are used to generate trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
+Therefore the observations about the communications processes that are used to generate trust metrics occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
 
 In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper \glspl{auv}.
 As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the underwater context \cite{Pavan2015}.
@@ -23,14 +23,13 @@ To date this work has been limited to terrestrial, RF based networks.
 The operation of a selection of traditional \gls{manet} \glspl{tmf} in this environment is investigated.
 These challenges are characterised and results are presented that demonstrate a multi-metric approach to Trust greatly enhances the effectiveness of TMFs in these environments.
 
-In Section \ref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in \cite{Guo11} are reviewed for comparison.
-In Section \ref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented and comparing with other current \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed.
+In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in \cite{Guo11} are reviewed for comparison.
+In~\autoref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented and comparing with other current \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed.\todo{Fix Sec Ref}
 
 The contributions of this chapter are a study on the comparative operation and performance of \glspl{tmf} in marine acoustic networks, and a review of metric suitability for \glspl{tmf} in marine environments, informing future metric selection for experimenters and theorists.
 It is shown that single metric trust systems are not directly suitable for the marine context in terms of the different threat and cost scenario in that environment.
-Finally, a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks is demonstrated.
+Finally, a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks is demonstrated.\todo[inline]{Move to intro}
 
-Key parts of this chapter were presented at TrustCom-BigDataSE-ISPA 2015 as ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks.''\cite{Bolster2015}
 
 These single metric \glspl{tmf} provide malicious actors with a significant advantage if their activity does not impact that metric.
 In the case where the attacker can subvert the \gls{tmf}, the metric under assessment by that \gls{tmf} does not cover the threat mounted by the attacker.
@@ -38,9 +37,11 @@ This causes a significant negative effect on the efficiency of the network, as t
 An example of such a situation would be in a \gls{tmf} focused on \gls{plr} where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
 Such behaviour would not be detected by the \gls{tmf}.
 
-For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:c2_tmfs}, select Hermes trust establishment, \gls{otmf} and \gls{mtfm} are selected as indicative single and multi metrics frameworks for comparison, as Hermes captures the core operation of a pure single metric assessment methodology and \gls{otmf} provides a comparison that combines assessments from across nodes to develop trust opinions.
+For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:c2_tmfs}, Hermes trust establishment, \gls{otmf} and \gls{mtfm} are selected as indicative single and multi metrics frameworks for comparison, as Hermes captures the core operation of a pure single metric assessment methodology and \gls{otmf} provides a comparison that combines assessments from across nodes to develop trust opinions.
 
 From the discussion on the nature of the communications environment in~\autoref{sec:trust_in_marine}, it's clear that before assessing communications metrics a simulated underwater environment, appropriate scaling factors must be found that are realistic from an application perspective but are also comperable in some form to the \gls{manet} case.
+
+Key parts of this chapter were presented at TrustCom-BigDataSE-ISPA 2015 as ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks.''\cite{Bolster2015}
 
 \section{Modelling of \gls{uan} network)\label{sec:initialsystemcharacterization}}
 
@@ -55,10 +56,9 @@ Four mobility patterns are investigated:
 	\item All nodes mobile
 \end{enumerate}
 
-For this case, the mobility model used is a random walk on the nodes modeled kinematic response, i.e. the node periodically picks a spherically normalised random direction in the XY plane
+For this case, the mobility model used is a random walk on the nodes modeled kinematic response, i.e.\ the node periodically picks a spherically normalised random direction in the XY plane.
+Maximum node speed (limited by kinematic acceleration/turning constraints) is 1.5$ms^{-1}$.
 
-The reason for this is that in other mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
-\todo{expand this section to include discussion and results of single mobility models}
 
 The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average 100m from each other as per \cite{Guo11}.
 The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively. 
@@ -77,9 +77,9 @@ Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems
 
 \subsection{Simulation Background}
 
-Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007}, \cite{Stefanov2011} and \cite{Sehgal2010}\todo{it would be worth while going through this verification explicitly as an appendix}
+Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007}, \cite{Stefanov2011} and \cite{Sehgal2010}\todo{it would be worth while going through this verification explicitly as an appendix}
 
-Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g. packet emission rates or throughput) and node separations are equally stable in this environment.
+Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g.\ packet emission rates or throughput) and node separations are equally stable in this environment.
 Therefore, a zone of performance is characterised within which the network has stable operation.
 %
 \begin{table}[h]
@@ -113,120 +113,361 @@ Therefore, a zone of performance is characterised within which the network has s
 %
 
 
-\subsection{Scaling Considerations between Terrestrial and Underwater Environments}
-
-We establish an appropriate safe operating zone for marine communications by looking at the communications rate and physical distribution factors across the two selected mobility scenarios.
-From Table~\ref{tab:sysconstraints}, the operating transmission range of this model of acoustic communications is $\approx 6$ times further than that of 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case.
-However, it was recognised in Section~\ref{sec:marineacousticnetworks} that underwater, the relationship between attenuation and distance is exponential, so this would represent an upper bound of performance, where nodes are approximately $400m$ apart. 
-
-Exploratory simulations were run to further constrain this bound.
-As the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
-This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
-For instance, where all nodes are static, significant drops in saturation rates are not seen until node separation approaches 800m, nearly double the initial estimate. 
-When all nodes are randomly walking the saturation point collapses from $0.025pps$ at $300m$ to $0.015pps$ at $400m$.
-Our results indicate that the best area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $100m$ to $300m$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
-These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
-
-
-
 \section{Establishing Scale Factors in Communications Rate}
 
 In this section the simulated communications environment is characterised to establish an optimal packet emission rate for comparison against \cite{Guo11}.
+This optimal emission rate is taken to be an emission rate that provides reasonable network stability and protection from network saturation.
+Network saturation is the point at which a network can no longer successfully deliver the offered load presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
 
-In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bps, up to 0.07 pps (672 bps)
+In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bits of offered load per node, up to 0.07 pps (672 bps per node).
+Initial node separation was set as per Guo at 100$m$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.\todo[inline]{Need to have a discussion about mission configurations at some point}
 
-From Figs.~\ref{fig:throughput_performance_static} and~\ref{fig:prod_breakdown_static}, it is clear that the threshold curve, expressed as the \emph{Successfully Received Packets} line, exhibits a saturation point between 0.025 and 0.03 pps.
-Particularly in Fig.~\ref{fig:prod_breakdown_static}, the precipitous drop in packet delivery probability beyond 0.025 pps, indicating that this is a strong candidate value for an upper-limit to the safe operating zone in terms of packet emission in the small static case.
+Looking first at the Static mobility case, where all nodes are stationary; from~\autoref{fig:emission_throughput_performance_bella_static} it is already clear that the throughput curve, exhibits a saturation point close to 0.025 pps.
+Similarly in~\autoref{fig:emission_prod_breakdown_bella_static}, the precipitous drop in packet delivery probability beyond 0.025 pps, indicating that this is a strong candidate value for an upper-limit to the safe operating zone in terms of packet emission in the small static case.
+From~\autoref{fig:emission_delay_variation_bella_static}, raising packet emissions above 0.25pps results in a significant increase in end-to-end delay.
+As per~\autoref{tab:sysconstraints}, the CSMA based \gls{mac} incurs a certain amount of control overhead in the form of \gls{rts} packets, when a node attempts to acquire time in its neighbourhood.
+In~\autoref{fig:emission_rts_ratio_bella_static}, the ratio of Control/Data packets increases linearly up to 1.5 until just before 0.025pps, and then accelerates to almost 2.5, further demonstrating that the network has become critically congested.
+It is worthwhile noting that in~\autoref{fig:emission_throughput_performance_bella_static} that even as the saturation point is passed, packet collisions do not significantly increase, and that the saturation is in fact driven by contention in the medium rather than congestion-collisions.
 
-\begin{figure}[H]
-	\centering
-	%\missingfigure{throughput_performance_static}
-	\includegraphics[width=0.8\textwidth]{throughput_performance_static}
-	\caption{Varying packet emission rate demonstrates maximal throughput at 0.025 packets per second, equivalent to $\approx$240 bps}
-	\label{fig:throughput_performance_static}
+Results are also included from the remaining mobility cases (all nodes mobile; all-but-one node mobile; single mobile node), however from Figs.\ref{fig:emission_bella_all_mobile}-~\ref{fig:emission_bella_single_mobile} that the throughput threshold behaviour is qualatitively similar regardless of mobility for this initial node separation.
+
+\begin{figure}[tp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_static}
+    \caption{Packet delivery}
+    \label{fig:emission_throughput_performance_bella_static}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_static}
+    \caption{Probability of arrival}
+    \label{fig:emission_prod_breakdown_bella_static}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_delay_variation_bella_static}
+    \caption{End-to-end delay}
+    \label{fig:emission_delay_variation_bella_static}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_static}
+    \caption{RTS Ratios}
+    \label{fig:emission_rts_ratio_bella_static}
+  \end{subfigure}
+  \caption{Network performance varying packet emission rates for the static case}
+  \label{fig:emission_bella_static}
+\end{figure}\todo[inline]{I have no idea why A is different to the rest\ldots}
+
+
+\begin{figure}[bp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_all_mobile}
+    \caption{Packet delivery}
+    \label{fig:emission_throughput_performance_bella_all_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_all_mobile}
+    \caption{Probability of arrival}
+    \label{fig:emission_prod_breakdown_bella_all_mobile}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_delay_variation_bella_all_mobile}
+    \caption{End-to-end delay}
+    \label{fig:emission_delay_variation_bella_all_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_all_mobile}
+    \caption{RTS Ratios}
+    \label{fig:emission_rts_ratio_bella_all_mobile}
+  \end{subfigure}
+  \caption{Network performance varying packet emission rates for the all mobile case}
+  \label{fig:emission_bella_all_mobile}
 \end{figure}
 
 
-\begin{figure}[H]
-	\centering
-	%\missingfigure{prod_breakdown_static}
-	\includegraphics[width=0.8\textwidth]{prod_breakdown_static}
-	\caption{Varying packet emission rate demonstrates a saturation point at 0.025 packets per second}
-	\label{fig:prod_breakdown_static}
+\begin{figure}[tp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_allbut1_mobile}
+    \caption{Packet delivery}
+    \label{fig:emission_throughput_performance_bella_allbut1_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_allbut1_mobile}
+    \caption{Probability of arrival}
+    \label{fig:emission_prod_breakdown_bella_allbut1_mobile}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_delay_variation_bella_allbut1_mobile}
+    \caption{End-to-end delay}
+    \label{fig:emission_delay_variation_bella_allbut1_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_allbut1_mobile}
+    \caption{RTS Ratios}
+    \label{fig:emission_rts_ratio_bella_allbut1_mobile}
+  \end{subfigure}
+  \caption{Network performance varying packet emission rates for the all-but-one mobile case}
+  \label{fig:emission_bella_allbut1_mobile}
 \end{figure}
 
+\begin{figure}[bp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_single_mobile}
+    \caption{Packet delivery}
+    \label{fig:emission_throughput_performance_bella_single_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_single_mobile}
+    \caption{Probability of arrival}
+    \label{fig:emission_prod_breakdown_bella_single_mobile}
+  \end{subfigure}
 
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_delay_variation_bella_single_mobile}
+    \caption{End-to-end delay}
+    \label{fig:emission_delay_variation_bella_single_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_single_mobile}
+    \caption{RTS Ratios}
+    \label{fig:emission_rts_ratio_bella_single_mobile}
+  \end{subfigure}
+  \caption{Network performance varying packet emission rates for the all-but-one mobile case}
+  \label{fig:emission_bella_single_mobile}
+\end{figure}
 
-\subsection{Establishing Scale Factors in Physical Distribution}
+\clearpage
 
-In this section the effect of node-separation scaling on communications operation is characterised for comparison against \cite{Guo11}. This is particularly important considering the significant scale factor differences between not only the speed of propagation in the medium, but simply the range of operation. 
+\subsection{Scale Factors in Physical Node Distribution}
+
+In this section the effect of node-separation scaling on communications operation is characterised for comparison against \cite{Guo11}. 
+This is particularly important considering the significant scale factor differences in terms of the speed of propagation in the medium, and the range of potential desired operation.
+
 From Table~\ref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
 
-A reasonable range around this is to scale from 100$m$ apart on average to 800$m$.
-
-Varying average node separation shows that while direct throughput isn't significantly affected until, collision rates are Fig.~\ref{fig:throughput_performance_range}.
-This collision rate is well within the tolerances of the MAC layer, as shown in Fig.~\ref{fig:prod_breakdown_range}, where even with a rising collision rate, packets are being reliably received.
-
-\begin{figure}[H]
-	\centering
-	%\missingfigure[width=0.6\textwidth]{throughput_performance_range}
-	\includegraphics[width=0.8\textwidth]{throughput_performance_bella_all_mobile}
-	\caption{Medium Acquisition Collisions, Throughput, and Enqueued packets against varying application packet emission rates for full mobility model}
-	\label{fig:throughput_performance_range}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{prod_breakdown_bella_all_mobile}
-	\caption{Probability of Timely Reception Varying Node Separation for full mobility model}
-	\label{fig:prod_breakdown_range}
-\end{figure}
-
-However, when end-to-end delay is investigated, it's clear from Fig.~\ref{fig:delay_range} that the network is becoming severely impaired approaching the 600$m$ mark, with delays rising to more than 25 minutes above 700$m$.
-This is also demonstrated by the increasing RTS/Data ratio shown in Fig.~\ref{fig:rts_range}.
-
-According to Xu, the RTS/CTS handshake cannot function well as interference protection at node separations beyond 0.56 times the transmission range \cite{Xu2002}.
-This is also demonstrated in~\autoref{fig:rts_range}, where as node separation increases towards $1500m \times 0.56 = 840m$, handshake overheads begin to dominate channel access.\todo{redo these graphs with wider separations ~ 1000m}
+According to Xu, RTS/CTS handshake functionality cannot operate well as interference protection at node separations beyond 0.56 times the transmission range \cite{Xu2002}.
+In the case of marine acoustic transmission at the stated power output, above $1500m \times 0.56 = 840m$, handshake overheads should begin to dominate channel access.\todo{redo these graphs with wider separations ~ 1000m}
 This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes. 
 
-\begin{figure}[H]
-	\centering
-	%\missingfigure{delay range}
-	\includegraphics[width=0.8\textwidth]{delay_range}
-	\caption{End to End Delay under varying node-separations}
-	\label{fig:delay_range}
+A reasonable range around this is to scale from 100$m$ apart on average to 800$m$, and from the previous section, a packet emission rate of 0.02pps (slightly below the 0.025pps saturation threshold) is used to explore this space.
+
+In the case where all nodes remain static, increasing node separation does not significantly impact throughput, delay, delivery probability or \gls{rts} ratios until rising above 700$m$ (Fig.~\ref{fig:separation_bella_static}), nearly double our initial estimate of where an appropriate separation zone would be.
+
+In the other mobility cases, 
+
+\begin{figure}[tp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_static}
+    \caption{Static}
+    \label{fig:separation_throughput_performance_sum_bella_static}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
+    \caption{All Mobile}
+    \label{fig:separation_throughput_performance_sum_bella_all_mobile}
+  \end{subfigure}  
+  
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_allbut1_mobile}
+    \caption{All-but-one Mobile}
+    \label{fig:separation_throughput_performance_sum_bella_allbut1_mobile}
+  \end{subfigure}  
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
+    \caption{Single Mobile}
+    \label{fig:separation_throughput_performance_sum_bella_single_mobile}
+  \end{subfigure}
+  \caption{Throughput performance overview for all mobilities under varying separation \emph{IS THIS ENOUGH?}}
+  \label{fig:separation_all}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	%\missingfigure{rts range}
-  \includegraphics[width=0.8\textwidth]{rts_ratio_bella_static}
-	\caption{RTS/Data ratio for varying node-separations}
-	\label{fig:rts_range}
+% These figures should be colocated
+\begin{figure}[tp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_static}
+    \caption{Packet delivery}
+    \label{fig:separation_throughput_performance_bella_static}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_static}
+    \caption{Probability of arrival}
+    \label{fig:separation_prod_breakdown_bella_static}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_delay_variation_bella_static}
+    \caption{End-to-end delay}
+    \label{fig:separation_delay_variation_bella_static}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_static}
+    \caption{RTS Ratios}
+    \label{fig:separation_rts_ratio_bella_static}
+  \end{subfigure}
+  \caption{Network performance varying packet separation for the static case}
+  \label{fig:separation_bella_static}
 \end{figure}
+
+
+\begin{figure}[bp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
+    \caption{Packet delivery}
+    \label{fig:separation_throughput_performance_bella_all_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_all_mobile}
+    \caption{Probability of arrival}
+    \label{fig:separation_prod_breakdown_bella_all_mobile}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_delay_variation_bella_all_mobile}
+    \caption{End-to-end delay}
+    \label{fig:separation_delay_variation_bella_all_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_all_mobile}
+    \caption{RTS Ratios}
+    \label{fig:separation_rts_ratio_bella_all_mobile}
+  \end{subfigure}
+  \caption{Network performance varying packet separation for the all mobile case}
+  \label{fig:separation_bella_all_mobile}
+\end{figure}
+
+
+\begin{figure}[tp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_allbut1_mobile}
+    \caption{Packet delivery}
+    \label{fig:separation_throughput_performance_bella_allbut1_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_allbut1_mobile}
+    \caption{Probability of arrival}
+    \label{fig:separation_prod_breakdown_bella_allbut1_mobile}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_delay_variation_bella_allbut1_mobile}
+    \caption{End-to-end delay}
+    \label{fig:separation_delay_variation_bella_allbut1_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_allbut1_mobile}
+    \caption{RTS Ratios}
+    \label{fig:separation_rts_ratio_bella_allbut1_mobile}
+  \end{subfigure}
+  \caption{Network performance varying packet separation for the all-but-one mobile case}
+  \label{fig:separation_bella_allbut1_mobile}
+\end{figure}
+
+\begin{figure}[bp!]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
+    \caption{Packet delivery}
+    \label{fig:separation_throughput_performance_bella_single_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_single_mobile}
+    \caption{Probability of arrival}
+    \label{fig:separation_prod_breakdown_bella_single_mobile}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_delay_variation_bella_single_mobile}
+    \caption{End-to-end delay}
+    \label{fig:separation_delay_variation_bella_single_mobile}
+  \end{subfigure}
+  %
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_single_mobile}
+    \caption{RTS Ratios}
+    \label{fig:separation_rts_ratio_bella_single_mobile}
+  \end{subfigure}
+  \caption{Network performance varying packet separation for the all-but-one mobile case}
+  \label{fig:separation_bella_single_mobile}
+\end{figure}
+
 
 
 \begin{table}[H]
 	\caption{Tabular view of data from Figs~\ref{fig:prod_breakdown_range},~\ref{fig:delay_range}, and~\ref{fig:rts_range}} \label{tab:rangedelay}
 	\begin{center}
 		\hyphenpenalty 100000
-		\begin{tabular}{
-				*{2}{@{\hspace{1em}}r@{\hspace{1em}}}
-				*{3}{@{\hspace{1em}}p{0.1\textwidth} @{\hspace{1em}}}
-      }
-			\toprule
-			Separation(m) &  Delay(s) &  Probability of Arrival &  RTS/Data Ratio &  Ideal Delivery Time(s) \\
-			\midrule
-			100 &     60.32 &                    0.99 &            1.80 &                    1.03 \\
-			200 &    419.95 &                    0.97 &            2.02 &                    1.10 \\
-			300 &   1205.66 &                    0.89 &            2.41 &                    1.17 \\
-			400 &   1288.20 &                    0.91 &            2.26 &                    1.25 \\
-			500 &   1868.20 &                    0.87 &            2.41 &                    1.32 \\
-			600 &   2191.07 &                    0.85 &            2.42 &                    1.39 \\
-			\bottomrule
-		\end{tabular}
+    \input{Figures/input/emission_packet_stats_bella_single_mobile}
 	\end{center}
 \end{table}
 
+\clearpage
+
+\section{Conclusions}
+
+An appropriate safe operating zone for marine communications has been established by investigating the impact of variations of the communications rate and physical distribution across the mobility scenarios.
+
+These findings can be summaries as that when the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
+This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
+For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches 800m, nearly double the initial estimate. 
+However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $300m$ to $0.015pps$ at $400m$.\todo[inline]{Double Check These Numbers Before Release}
+Our results indicate that the best area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $100m$ to $300m$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
+These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
+
+
+
+The results from \autoref{fig:something} and \autoref{fig:somethingelse} show that the single-node mobility models don't capture the reality of the network \todo{this is a place holder for actual information}
+The reason for this is that in other mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
+\todo{expand this section to include discussion and results of single mobility models}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -149,18 +149,15 @@
   *{package}{ltcaption}   {2013/06/09 v1.4-94}
   *{package}{nameref}     {2012/10/27 v2.43}
   *{package}{gettitlestring}{2010/12/03 v1.4}
-  *{file}   {Thesis.out}  {0000/00/00 v0.0}
-  *{file}   {Thesis.out}  {0000/00/00 v0.0}
   *{file}   {Thesis.glsdefs}{0000/00/00 v0.0}
   *{file}   {./Chapters/defs.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
-  *{file}   {umsa.fd}     {2013/01/14 v3.01}
-  *{file}   {umsb.fd}     {2013/01/14 v3.01}
-  *{file}   {Thesis.gls}  {0000/00/00 v0.0}
   *{file}   {./Chapters/preface.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/abstract.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c1-introduction.tex}{0000/00/00 v0.0}
+  *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {umsb.fd}     {2013/01/14 v3.01}
   *{file}   {./Chapters/c2-trust_background.tex}{0000/00/00 v0.0}
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
@@ -169,6 +166,10 @@
   *{file}   {./Figures/ghia_sound_prop_curve.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/c4-trust_in_defence.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/emission_throughput_performance_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_prod_breakdown_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_delay_variation_bella_static.pdf}{0000/00/00 v0.0}
@@ -186,9 +187,9 @@
   *{file}   {./Figures/emission_delay_variation_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_rts_ratio_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/separation_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/separation_throughput_performance_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_throughput_performance_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/separation_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_prod_breakdown_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_delay_variation_bella_static.pdf}{0000/00/00 v0.0}
@@ -205,7 +206,11 @@
   *{file}   {./Figures/separation_prod_breakdown_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_delay_variation_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_rts_ratio_bella_single_mobile.pdf}{0000/00/00 v0.0}
-  *{file}   {Figures/input/emission_packet_stats_bella_single_mobile.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/2d_normed_product_bella_static.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/2d_normed_product_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/2d_normed_product_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/2d_normed_product_bella_all_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {Figures/input/separation_packet_stats_bella_single_mobile.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c5-multi_domain_trust_strategies.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c6-physical_metrics.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
@@ -245,5 +250,4 @@
   *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Appendices/appendixB.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/appendixC.tex}{0000/00/00 v0.0}
-  *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
 }

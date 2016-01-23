@@ -117,7 +117,7 @@ Therefore, a zone of performance is characterised within which the network has s
 
 In this section the simulated communications environment is characterised to establish an optimal packet emission rate for comparison against \cite{Guo11}.
 This optimal emission rate is taken to be an emission rate that provides reasonable network stability and protection from network saturation.
-Network saturation is the point at which a network can no longer successfully deliver the offered load presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
+Network saturation is the point at which a network can no longer successfully deliver the offered load\footnote{It will become important to note that Offered Load in this case includes packet retransmissions} presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
 
 In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bits of offered load per node, up to 0.07 pps (672 bps per node).
 Initial node separation was set as per Guo at 100$m$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.\todo[inline]{Need to have a discussion about mission configurations at some point}
@@ -129,7 +129,39 @@ As per~\autoref{tab:sysconstraints}, the CSMA based \gls{mac} incurs a certain a
 In~\autoref{fig:emission_rts_ratio_bella_static}, the ratio of Control/Data packets increases linearly up to 1.5 until just before 0.025pps, and then accelerates to almost 2.5, further demonstrating that the network has become critically congested.
 It is worthwhile noting that in~\autoref{fig:emission_throughput_performance_bella_static} that even as the saturation point is passed, packet collisions do not significantly increase, and that the saturation is in fact driven by contention in the medium rather than congestion-collisions.
 
-Results are also included from the remaining mobility cases (all nodes mobile; all-but-one node mobile; single mobile node), however from Figs.\ref{fig:emission_bella_all_mobile}-~\ref{fig:emission_bella_single_mobile} that the throughput threshold behaviour is qualatitively similar regardless of mobility for this initial node separation.
+Results are also included from the remaining mobility cases (all nodes mobile; all-but-one node mobile; single mobile node), however from Figs.~\ref{fig:emission_all},~ \ref{fig:emission_bella_all_mobile}-~\ref{fig:emission_bella_single_mobile} that the throughput threshold behaviour is qualatitively similar regardless of mobility for this initial node separation.
+
+
+\begin{figure}[h]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_static}
+    \caption{Static}
+    \label{fig:emission_throughput_performance_sum_bella_static}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_all_mobile}
+    \caption{All Mobile}
+    \label{fig:emission_throughput_performance_sum_bella_all_mobile}
+  \end{subfigure}  
+  
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_allbut1_mobile}
+    \caption{All-but-one Mobile}
+    \label{fig:emission_throughput_performance_sum_bella_allbut1_mobile}
+  \end{subfigure}  
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_single_mobile}
+    \caption{Single Mobile}
+    \label{fig:emission_throughput_performance_sum_bella_single_mobile}
+  \end{subfigure}
+  \caption{Throughput performance overview for all mobilities under varying emission rates\emph{IS THIS ENOUGH?}}
+  \label{fig:emission_all}
+\end{figure}
+
 
 \begin{figure}[tp!]
   \begin{subfigure}[t]{0.5\textwidth}
@@ -268,7 +300,7 @@ Results are also included from the remaining mobility cases (all nodes mobile; a
 In this section the effect of node-separation scaling on communications operation is characterised for comparison against \cite{Guo11}. 
 This is particularly important considering the significant scale factor differences in terms of the speed of propagation in the medium, and the range of potential desired operation.
 
-From Table~\ref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
+From~\autoref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
 
 According to Xu, RTS/CTS handshake functionality cannot operate well as interference protection at node separations beyond 0.56 times the transmission range \cite{Xu2002}.
 In the case of marine acoustic transmission at the stated power output, above $1500m \times 0.56 = 840m$, handshake overheads should begin to dominate channel access.\todo{redo these graphs with wider separations ~ 1000m}
@@ -278,9 +310,13 @@ A reasonable range around this is to scale from 100$m$ apart on average to 800$m
 
 In the case where all nodes remain static, increasing node separation does not significantly impact throughput, delay, delivery probability or \gls{rts} ratios until rising above 700$m$ (Fig.~\ref{fig:separation_bella_static}), nearly double our initial estimate of where an appropriate separation zone would be.
 
-In the other mobility cases, 
+The other mobility cases tell a very different story; as can be seen in~\autoref{fig:separation_throughput_performance_sum_bella_single_mobile}, where adding a single mobile node to the network induces a saturation-style response at 500$m$, and this drops further in~\autoref{fig:separation_throughput_performance_sum_bella_allbut1_mobile} and~\autoref{fig:separation_throughput_performance_sum_bella_all_mobile}, reducing the separation of saturation at this emission rate to just 300$m$.
 
-\begin{figure}[tp!]
+Another aspect of these results to highlight is that the Offered Load presented to the network \emph{increases} beyond the collapse of the throughput curve. 
+This indicates that there is a subtly different saturation behaviour with respect to separation than the simple congestion argument with respect to packet emission rate; packets are simply taking too long to cross the increasingly sparse network and in-transit packet routes are logically disconnected and require retransmission.
+\todo[inline]{Another interesting aspect is the behaviour of the Enqueued Packet lines and e2e delay lines; They ``Bump''; no idea why yet}
+
+\begin{figure}[h]
   \begin{subfigure}[t]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{separation_throughput_performance_bella_static}
@@ -289,11 +325,11 @@ In the other mobility cases,
   \end{subfigure}
   \begin{subfigure}[t]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
-    \caption{All Mobile}
-    \label{fig:separation_throughput_performance_sum_bella_all_mobile}
-  \end{subfigure}  
-  
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
+    \caption{Single Mobile}
+    \label{fig:separation_throughput_performance_sum_bella_single_mobile}
+  \end{subfigure}
+
   \begin{subfigure}[t]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{separation_throughput_performance_bella_allbut1_mobile}
@@ -302,10 +338,10 @@ In the other mobility cases,
   \end{subfigure}  
   \begin{subfigure}[t]{0.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
-    \caption{Single Mobile}
-    \label{fig:separation_throughput_performance_sum_bella_single_mobile}
-  \end{subfigure}
+    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
+    \caption{All Mobile}
+    \label{fig:separation_throughput_performance_sum_bella_all_mobile}
+  \end{subfigure}  
   \caption{Throughput performance overview for all mobilities under varying separation \emph{IS THIS ENOUGH?}}
   \label{fig:separation_all}
 \end{figure}
@@ -339,7 +375,7 @@ In the other mobility cases,
     \caption{RTS Ratios}
     \label{fig:separation_rts_ratio_bella_static}
   \end{subfigure}
-  \caption{Network performance varying packet separation for the static case}
+  \caption{Network performance varying node separation for the static case}
   \label{fig:separation_bella_static}
 \end{figure}
 
@@ -372,7 +408,7 @@ In the other mobility cases,
     \caption{RTS Ratios}
     \label{fig:separation_rts_ratio_bella_all_mobile}
   \end{subfigure}
-  \caption{Network performance varying packet separation for the all mobile case}
+  \caption{Network performance varying node separation for the all mobile case}
   \label{fig:separation_bella_all_mobile}
 \end{figure}
 
@@ -405,7 +441,7 @@ In the other mobility cases,
     \caption{RTS Ratios}
     \label{fig:separation_rts_ratio_bella_allbut1_mobile}
   \end{subfigure}
-  \caption{Network performance varying packet separation for the all-but-one mobile case}
+  \caption{Network performance varying node separation for the all-but-one mobile case}
   \label{fig:separation_bella_allbut1_mobile}
 \end{figure}
 
@@ -437,21 +473,64 @@ In the other mobility cases,
     \caption{RTS Ratios}
     \label{fig:separation_rts_ratio_bella_single_mobile}
   \end{subfigure}
-  \caption{Network performance varying packet separation for the all-but-one mobile case}
+  \caption{Network performance varying node separation for the single mobile case}
   \label{fig:separation_bella_single_mobile}
 \end{figure}
 
 
+\clearpage
 
-\begin{table}[H]
-	\caption{Tabular view of data from Figs~\ref{fig:prod_breakdown_range},~\ref{fig:delay_range}, and~\ref{fig:rts_range}} \label{tab:rangedelay}
+\section{Combined Scale Factor Analysis}
+
+Its clear from the previous results that the relationship between emission rates, separations and mobilities is tightly coupled and not totally clear cut. 
+To arrive at a more optimal operating region, a coupled analysis is performed across both emission rate and initial separation distance.
+
+Given what has been discussed so far; it's clear that in identifying an appropriate operating region, it is important to not only ensure throughput, but that that throughput is timely.
+For instance, in~\autoref{fig:separation_bella_single_mobile} (tabulated in~\autoref{tab:separation_bella_single_mobile}), a small increase in separation beyond the apparent throughput-peak at 500$m$ to 600$m$, which constitutes an increased ideal marine acoustic ``time of flight'' between nodes by 0.02$s$, increases the average actual delay by 1800\%. 
+
+To capture these performance requirements, the feature scaled product of Throughput and Delay is taken and plotted against rate and separation in~\autoref{fig:2d_normed_product}.\todo[inline]{This does NOT make for easy comparison between graphs as the scaling is different for each mobility, but I need to think about how to fairly solve this}
+
+
+
+\begin{figure}[h]
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{2d_normed_product_bella_static}
+    \caption{Static}
+    \label{fig:2d_normed_product_bella_static}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{2d_normed_product_bella_single_mobile}
+    \caption{Single Mobile}
+    \label{fig:2d_normed_product_bella_single_mobile}
+  \end{subfigure}
+  
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{2d_normed_product_bella_allbut1_mobile}
+    \caption{All-but-one Mobile}
+    \label{fig:2d_normed_product_bella_allbut1_mobile}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{2d_normed_product_bella_all_mobile}
+    \caption{All Mobile}
+    \label{fig:2d_normed_product_bella_all_mobile}
+  \end{subfigure}
+  \caption{Normalised Throughput-Delay Product for all mobilities under varying separation and emission rate}
+  \label{fig:2d_normed_product}
+\end{figure}
+
+
+\begin{table}[h]
+	\caption{Tabular view of data from~\autoref{fig:separation_bella_single_mobile}, including ideal propagation time} \label{tab:separation_bella_single_mobile}
 	\begin{center}
 		\hyphenpenalty 100000
-    \input{Figures/input/emission_packet_stats_bella_single_mobile}
+    \input{Figures/input/separation_packet_stats_bella_single_mobile}
 	\end{center}
 \end{table}
 
-\clearpage
 
 \section{Conclusions}
 

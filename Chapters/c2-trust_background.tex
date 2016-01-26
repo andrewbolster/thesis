@@ -21,12 +21,13 @@ In human trust relationships it is recognized that there can be several domains 
 
 These domains of trust are, from a human perspective, quite natural and are formed during the earliest stages of linguistic integration.
 This leads to recognisable deviations in the experiential concept of ``trust'' across cultures with differing linguistic histories.
-This has led to a wealth of work in the social sciences (as well as management schools across the world) in to how to develop, understand, and repair trust across cultural boundaries.\cite{Okumura2011} \todo{Get more citations for this paragraph, need background on multicultural definitions rather than second hand}
+This has led to a wealth of work in the social sciences (as well as management schools across the world) in to how to develop, understand, and repair trust across cultural boundaries.\cite{Okumura2011}
 
 As such it is important to explore the following areas of trust definitions, the characteristics of trust relationships and the impact of topology on the information available to assess trust within an abstract network before approaching the application of Trust towards Autonomous Systems and finally to \glspl{manet}:
 
 %
-\begin{table}\centering
+\begin{table}[h]
+  \centering
   \caption{Definitions of Trust}
   \label{tab:trust_definitions}
   \begin{tabularx}{\textwidth}{X p{3cm}}\toprule
@@ -42,13 +43,10 @@ As such it is important to explore the following areas of trust definitions, the
 
 \subsection{Modelling Trust Relationships}
 Mayer et al \cite{Mayer1995} proposed a model of trust that encapsulates generalised factors of perceived trustworthiness of a \textit{trustee} in interpersonal relationships (Table~\ref{tab:trust_factors}), accommodating a subjective trustworthiness and risk-taking potentiality on the part of the \textit{trustor}.
-This formulation of trust allowed a wider discussion of the characteristics of trust relationships, both between individuals and within networks or communities.\todo{possibly expand this}
+This formulation of trust allowed a wider discussion of the characteristics of trust relationships, both between individuals and within networks or communities.
 
-As shown in \autoref{fig:mayer_trust_model}, Mayer primarily focuses on the Trustor's perspective and processes with respect to a give trust-based relationship.
-Three primary factors of perceived trustworthiness; based on previous outcomes, are assessed and synthesised along with the Trustor's own interanalised propensity to Trust with respect to the different factors observed, to generate a given trust value. 
-This trust value is incorporated with the risk / reward as assessed by the trustor to conclude what level of risk taking (Trust) can be assumed in the relationship between this trustor and a given trustee.
-
-\begin{table}\centering
+\begin{table}[h]
+  \centering
   \caption[Factors of Trust]{Factors of Trust\cite{Mayer1995}}
   \label{tab:trust_factors}
   \begin{tabularx}{\textwidth}{p{2cm}X}\toprule
@@ -60,7 +58,11 @@ This trust value is incorporated with the risk / reward as assessed by the trust
   \end{tabularx}
 \end{table}
 
-\begin{figure}[!htb]
+As shown in \autoref{fig:mayer_trust_model}, Mayer primarily focuses on the Trustor's perspective and processes with respect to a give trust-based relationship.
+Three primary factors of perceived trustworthiness; based on previous outcomes, are assessed and synthesised along with the Trustor's own interanalised propensity to Trust with respect to the different factors observed, to generate a given trust value. 
+This trust value is incorporated with the risk / reward as assessed by the trustor to conclude what level of risk taking (Trust) can be assumed in the relationship between this trustor and a given trustee.
+
+\begin{figure}[h]
   \centering
   \begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
     \node [block] (ability) {Ability};
@@ -87,12 +89,12 @@ This trust value is incorporated with the risk / reward as assessed by the trust
     \draw [->] (trust) -- coordinate[midway](mT) (riskTaking);
     \draw [->] (percievedRisk) -- (mT);
     \draw [->] (riskTaking) |- (outcomes);
-    \draw [->] (outcomes.south) --++ (0cm,-4cm) -| (percievedFactors.south);
+    \draw [->] (outcomes.south) --++ (0cm,-2.5cm) -| (percievedFactors.south);
 
   \end{tikzpicture}
   \caption[Model of Trust]{Model of Trust taken from \cite{Mayer1995}, modelling the }
   \label{fig:mayer_trust_model}
-\end{figure}
+\end{figure}\todo[inline]{Only reasonable delimitation of Trustee Operation that doesn't corrupt Mayers thesis is curring half way though Risk Taking, Outcomes and \emph{maybe} perceived risk (as this is also affected by outcomes; may make more sense to have a separate augmented diagram}
 
 Lee and See \cite{Lee2004} extended and synthesised Mayer et al's approach to personal and interpersonal trust towards a generalised concept of trust for human and autonomic/autonomous systems with the following alternative contextual definitions (including their approximate mappings to Mayer et al's approach
 
@@ -134,10 +136,12 @@ Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation P
 
 \todo[inline]{Talk about trust vs untrust vs nontrust}
 
+\todo[inline]{Explore notations of transitivity and abstract trust synthesis}
 
-\subsection{Characteristics of Trust Relationships}\todo{Needs Citations}
 
-There are five commonly considered characteristics or attributes of Trust relationships in general, but not all relationships exhibit them and they are not assumed to be a complete specification of Trust:
+\subsection{Characteristics of Trust Relationships}
+
+There are five commonly considered characteristics or attributes of Trust relationships in general, but not all relationships exhibit them and they are not assumed to be a complete specification of Trust (synthesised from \cite{Liu2006,Mayer1995, Mcknight1996, Pavan2015}):
 
 \begin{itemize}
   \item \emph{Multi-Party} - One-to-one; one-to-many; many-to-one; many-to-many.
@@ -151,20 +155,19 @@ There are five commonly considered characteristics or attributes of Trust relati
   \item \emph{Contextual} - Trust can be variable and loosely coupled between contexts with respect to the action being assessed or the environment within which the trustee is operating, e.g.
     Doctors are trusted to perform medical procedures but that trust may not improve their success at correctly wiring an electrical plug.
     However there are plenty of counter-examples to this, as from \cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and these are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
-
 \end{itemize}
+
 \subsection{Topologies of Multi-Party Trust Networks}
 \label{sec:trust_topologies}
-Beyond the attributes or characteristics of an individual trust relationship, within any multi party sparsely \todo{First References to Sparcity!} connected network or community, topological context is useful in both establishing trust and in disseminating observations for collaborative assessment.
+Beyond the attributes or characteristics of an individual trust relationship, within any multi party sparsely connected network or community, topological context is useful in both establishing trust and in disseminating observations for collaborative assessment.
 
 Within sparsly connected networks, there are three primary types of relationship, minimally demonstrated in Fig.~\ref{fig:trust_topology_relationships};
 
 \begin{itemize}
   \item \emph{Direct} - Whereby two nodes have a zero-hop communications link between them ($A,B,C$ in the given figure)
   \item \emph{Indirect} - Where two nodes have a $n>1$ hop communications link ($E,D$ from $A$ or $C$s perspective in the given figure)
-  \item \emph{Recommendation} -  Where three nodes are fully connected so as to enable the exchange of direct opinions and form composite opinions based on the target and reporter (i.e.\ $A$ has both its own Direct assessment of $C$, as well as it's knowledge of $B$s Direct assessment of $C$)\todo{Possibly worth incorporating the transitive property to this}
+  \item \emph{Recommendation} -  Where three nodes are fully connected so as to enable the exchange of direct opinions and form composite opinions based on the target and reporter (i.e.\ $A$ has both its own Direct assessment of $C$, as well as it's knowledge of $B$s Direct assessment of $C$)
 \end{itemize}
-\todo{Separate Figure for each relationship}
 
 \begin{figure}
   \centering
@@ -178,8 +181,7 @@ Within sparsly connected networks, there are three primary types of relationship
       \node [sum, above right =of c] (e) {E};
       \node [sum, below right =of c] (f) {F};
 
-
-      \graph {
+      \graph{
       (a) -- (b);
       (a) -- (c);
       (b) -- (c);
@@ -191,9 +193,8 @@ Within sparsly connected networks, there are three primary types of relationship
 
       \begin{pgfinterruptboundingbox}
         \coordinate (A) at (a);
-        \cercle {A} {2.25cm} {216} {160}{ 1.50} {red, opacity=0.5, dashed};
+        \cercle{A}{2.25cm}{216}{160}{1.50}{red, opacity=0.5, dashed};
       \end{pgfinterruptboundingbox}
-
     \end{tikzpicture}
     \caption{Sample topology showing logical connections between nodes (Range of $A$ shown in red dashed line)}
     \hfill
@@ -209,7 +210,7 @@ Within sparsly connected networks, there are three primary types of relationship
       \node [sum, below right =of c] (f) {F};
 
 
-      \graph[edges={opacity=0.4}] {
+      \graph[edges={opacity=0.4}]{
       (a) -- (b);
       (a) -- (c);
       (b) -- (c);
@@ -236,7 +237,7 @@ Within sparsly connected networks, there are three primary types of relationship
       \node [sum, below right =of c] (f) {F};
 
 
-      \graph[edges={opacity=0.4}] {
+      \graph[edges={opacity=0.4}]{
       (a) -- (b);
       (a) -- (c);
       (b) -- (c);
@@ -265,7 +266,7 @@ Within sparsly connected networks, there are three primary types of relationship
       \node [sum, below right =of c] (f) {F};
 
 
-      \graph[edges={opacity=0.4}] {
+      \graph[edges={opacity=0.4}]{
       (a) -- (b);
       (a) -- (c);
       (b) -- (c);
@@ -286,20 +287,22 @@ Within sparsly connected networks, there are three primary types of relationship
 
   \end{subfigure}
   \hfill
-  \caption{Trust Topologies, Direct, Indirect, Recommender, etc. from the perspective of Node A}
+  \caption{Trust Topologies, Direct, Indirect, Recommender, etc.\ from the perspective of Node A}
   \label{fig:trust_topology_relationships}
 \end{figure}
 
 \subsection{Trust Establishment Strategies}
 
-\todo{Need to discuss how trust is established a) initially among a co-launched group, b) with a newcomer and c) with a returner}
+\todo[inline]{Need to discuss how trust is established a) initially among a co-launched group, b) with a newcomer and c) with a returner (\cite{Liui2006, Li2007, Theodorakopoulos2004})}
 
 \subsection{Attacks on Trust}
 
 In \cite{Liu2010}, Liu and Wang identify four types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, and Sybil/Newcomer attacks. 
 
-The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e. attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort. In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted or untrusted.
-
+The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
+In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. 
+In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. 
+Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted or untrusted.
 
 
 
@@ -313,7 +316,7 @@ The aim of the section is to explore where trust is likely to impact \gls{sos} t
 
 \subsection{Autonomy and Levels of Autonomy}
 
-Autonomy, like trust, is a nebulous, ill -defined term across research, defense and commercial circles, and like trust, it has its origins in human experience and interactions. 
+Autonomy, like trust, is a nebulous term applied across research, defense and commercial circles that has its origins in human experience and interactions. 
 
 Autonomy, coming from the Greek roots \textit{auto-} (self) and \textit{nomos} (law) is the concept of a self-driven agency, can can be condensed into the concept of a ``rational individuals'' capacity to make un-coerced decisions in an informed manner. 
 This autonomy is distinct from \textit{freedom}, where freedom is the ability to perform an action, not the capability to choose which action to perform.

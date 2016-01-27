@@ -6,6 +6,9 @@
 \lhead{Chapter \thechapter.
 \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
+\section{Introduction}
+
+\todo{Introduction to Maritime}
 
 \section{Maritime Communications Environment}\label{sec:trust_in_marine}
 
@@ -14,23 +17,29 @@ The resultant challenges include; long delays due to propagation, significant in
 
 \subsection{Mechanics of Acoustic Transmission}
 
-Unlike in RF energy energy transfer (where photons move through space to transmit energy from one place to another), acoustic wages are the result of mechanical perturbation of a medium where localised compressions and extensions pass energy across a medium through that mediums elastic properties.
+Unlike in RF energy transfer (where photons move through space to transmit energy from one place to another), acoustic wages are the result of mechanical perturbation of a medium where localised compressions and extensions pass energy across a medium through that mediums elastic properties.
 These ``compression waves'' propagate away from its source, and the rate of this propagation is the sound speed, velocity or $c$, measured in $ms^{-1}$.
-Acoustic pressure is usually measured in \emph{Pascals} ($Pa/\mu Pa$). 
 This is not to be confused with the fluid velocity corresponding to the instantaneous motion of particles in the medium.
 
 Hydrophones, like their more common microphone equivalent in air, are fundamentally pressure sensors.
+Acoustic pressure is usually measured in \emph{Pascals} ($Pa/\mu Pa$). 
 In the underwater environment, the dynamic range (difference between instantaneous high and low pressure values) may be extremely high, often more than 10 orders of magnitude higher. 
 As such, logarithmic notation is justified.\todo{Best to discuss notation here}
 
 Useful acoustic signals are generally maintained vibrations rather than instantaneous pulses.
-They are characterised by their frequency $f$ expressed in Hertz ($Hz$) or by their Period ($T$, related to frequency by $T=1/f$)
+They are characterised by their frequency $f$ expressed in Hertz ($Hz$) or by their Period ($T$) in seconds.
 In commonly used underwater acoustics, used frequencies range from $\approx 10Hz-100kHz$ depending on application.\cite{Stojanovic2007}.
 
 As with all waves, the relationship between frequency, period and the wavelength is given as in \eqref{eq:wavelength}. 
 As such the generally used upper and lower bounds of wavelength in most applications is from $1.5 m @ 10Hz$ to $0.015m @ 100kHz$.
+%
+\begin{equation}
+  \lambda = cT = \frac{c}{f}
+  \label{eq:wavelength}
+\end{equation}
+%
 
-This wide range of frequencies and wavelengths allow for a diverse set of constraining factors; (Paraphrased from \cite{lurton2010}).
+This wide range of frequencies and wavelengths allow for a diverse set of constraining factors; (Paraphrased from \citet{lurton2010}).
 
 \begin{itemize}
   \item \emph{Attenuation} in water; limiting the maximum usable range, which increases very rapidly with frequency
@@ -39,33 +48,30 @@ This wide range of frequencies and wavelengths allow for a diverse set of constr
   \item \emph{Acoustic Response} of target surfaces (analogous to receiver gain in RF networks.
 \end{itemize}
 
-\begin{equation}
-  \lambda = cT = \frac{c}{f}
-  \label{eq:wavelength}
-\end{equation}
-
-
 \subsection{Velocity and density}
 
-Air has a baseline density of approximately $1.3 kg m^{-3}$, and the speed of sound is typically static around $340 ms^{-1}$ 
-In sea water, acoustic wave velocity is close to $c=1500ms^{-1}$ (generally between $1450ms^{-1}$ and $1550ms^{-1}$ depending on temperature, pressure, salinity etc.)
-Similarly variable is sea water density, which is nominally around $\rho = 1030kg m^{-3}$
+Air has a baseline density of approximately $1.3 kg m^{-3}$, and the speed of sound is typically static around $340 ms^{-1}$.
+In sea water, acoustic wave velocity is close to $c=1500ms^{-1}$ (generally between $1450ms^{-1}$ and $1550ms^{-1}$ depending on temperature, pressure, salinity etc.).
+Similarly variable is sea water density, which is nominally $\rho = 1030kg m^{-3}$.
 
-While the sea/air surface is (ideally) a simple refractive interface, the interface between open seawater and marine sediment is graduated, with density ranges between $1200 - 2000 kg m_{3}$. 
-This results in refractive and reflective velocities in the sediment interface ranging from $1500-2000 ms^{-1}$.\cite{lurton2010} 
+While the sea/air surface is (ideally) a simple refractive interface, the interface between open seawater and marine sediment is graduated, with density ranges between $1200 - 2000 kg m^{-3}$. 
+This results in refractive and reflective velocities in the sediment interface ranging from $1500-2000 ms^{-1}$\cite{lurton2010}.
 
-For comparison, the speed of light in air/water is $2.99 \times 10^8 ms^{-1}$ and $2.249 \times 10^{8} ms^{-1}$.\todo{this might be better as a table}
+For comparison, the speed of light in air/water is $2.99 \times 10^8 ms^{-1}$ and $2.249 \times 10^{8} ms^{-1}$ respectively. 
+\todo{this might be better as a table}
 
-Mackenzie proposed a more accurate model of acoustic velocity incorporating archival data from 15 worldwide sites that takes Temperature, Salinity and Depth into consideration \cite{Mackenzie1981}
+\citet{Mackenzie1981} proposed a more accurate model of acoustic velocity incorporating archival data from 15 worldwide sites that takes Temperature, Salinity and Depth into consideration.
 
 \begin{align}
-  c = & 1448.96 + 4.591 T - 5.304 \times 10^{-2} T^2 + 2.374 \times 10^{-4}T^{3}\\
+  c = & 1448.96 + 4.591 T - 5.304 \times 10^{-2} T^2 + 2.374 \times 10^{-4}T^{3}\notag\\
   & +1.340 (S-35) + 1.630\times 10^{-2}D+1.675\times 10^{-7}D^2\\
-  & -1.025 \times 10^{-2}T(S-25) - 7.139\times 10^{-13}TD^3
+  & -1.025 \times 10^{-2}T(S-25) - 7.139\times 10^{-13}TD^3\notag
   \label{equ:mackenzie}
 \end{align}
 
 Where $T$ is the temperature in Celsius, $S$ the salinity in parts per thousand, and $D$ is the depth below the surface in meters.
+
+\todo{Need to discuss Speed of Sound Profiles}
 
 \subsection{Intensity and Power} 
 
@@ -80,7 +86,7 @@ The acoustic intensity ($I$) is the energy flux mean value per unit of surface a
 
 \subsection{Attenuation}
 
-The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear and $dB$ forms respectively is given by
+The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear \eqref{eq:acoattenuation} and $dB$ forms \eqref{eq:acoattenuationdb} is given as;
 
 \begin{equation}
   \label{eq:acoattenuation}
@@ -91,7 +97,7 @@ The attenuation that occurs in an underwater acoustic channel over a distance $d
   10 \log A_{\text{aco}}(d,f)/A_0 = k \cdot 10 \log d + d \cdot 10 \log a(f)
 \end{equation}
 
-where $A_0$ is a unit-normalising constant, $k$ is a geometric spreading factor (commonly taken as 1.5 for practical use, by may be 2 for true spherical propagation or 1 for plane-wave propagation)), and $a(f)$ is the absorption coefficient, that may be modelled in a variety of ways.
+where $A_0$ is a unit-normalising constant, $k$ is a geometric spreading factor (commonly taken as 1.5 for practical use, but may be 2 for perfect spherical propagation or 1 for perfect plane-wave propagation)), and $a(f)$ is the absorption coefficient, that may be modelled in a variety of ways.
 
 Thorp's formula (\autoref{eq:thorp}) is very simple, only depending on $f$, and is designed to be most accurate about a temperature of 4$^{\circ}$C at a depth of $\approx 1Km$.
 %
@@ -104,7 +110,7 @@ Thorp's formula (\autoref{eq:thorp}) is very simple, only depending on $f$, and 
     \label{fig:thorp}
 \end{figure}
 %
-The Ainslie \& McColm model is more complex, and incorporates the acidity of the water ($H^+$) as well as temperature ($T$), salinity ($S$ in parts per trillion) but not depth \autoref{eq:ainslie}.
+The Ainslie \& McColm model is more complex, and incorporates the acidity of the water ($H^+$) as well as temperature ($T$), salinity ($S$ in parts per trillion) but not depth (\autoref{fig:ainslie}).
 %
 \begin{figure}
   \begin{align}
@@ -138,13 +144,23 @@ The Ainslie \& McColm model is more complex, and incorporates the acidity of the
   \label{fig:fisher}
 \end{figure}
 %
-The Fisher-Simmons model (\autoref{eq:fisher}) is significantly more complex, taking into account the effects of boric acid concentrations and dissolved magnesium sulphate. While there are several limitations on this model in terms of its being fixed at a salinity of 35 ppt and a pH of 8, as this model incorporates depth, temperature, distance and frequency, it is very attractive for research directed at high variability environments.\todo{Possibly need to switch this with the Francois Garrison model which, depending on your source, is the refined version (or vise versa}
+The Fisher-Simmons model (\autoref{fig:fisher}) is significantly more complex, taking into account the effects of boric acid concentrations and dissolved magnesium sulphate. While there are several limitations on this model in terms of its being fixed at a salinity of 35 ppt and a pH of 8, as this model incorporates depth, temperature, distance and frequency, it is very attractive for research directed at high variability environments.\todo{Possibly need to switch this with the Francois Garrison model which, depending on your source, is the refined version (or vise versa}
 
+
+
+Regardless of the variations of particular attenuation models, comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model $(A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2)$, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
+While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
+\begin{equation}
+  \label{eq:fspl}
+  A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2
+  \text{where }c\approx 3\times10^8ms^{-1}
+\end{equation}Ó
 
 
  \subsection{Ambient Noise Model}
 
- Ambient ocean noise can be assumed to be Gaussian with a continuous power spectral density in dB re $\mu$Pa per Hz, driven by four major factors, shown in \autoref{tab:ocean_noise_factors} \cite{coates1989}.
+ Ambient ocean noise can be assumed to be Gaussian with a continuous power spectral density in dB re $\mu$Pa per Hz, driven by four major factors, shown in \autoref{tab:ocean_noise_factors} \cite{coates1989}.\todo{check what $s$ and $w$ are in this}
+
 \begin{table}\centering
   \caption{Contributing factors to Ocean Ambient Acoustic Noise}
   \label{tab:ocean_noise_factors}
@@ -161,14 +177,6 @@ The Fisher-Simmons model (\autoref{eq:fisher}) is significantly more complex, ta
 
 Refractive lensing and the multi-path nature of the medium result in line of sight propagation being extremely unreliable for estimating distances to targets.
 The first arriving acoustic signal has as the very least curved in the medium, and commonly has reflected off the surface/seabed before arriving at a receiver, creating secondary paths that are sometimes many times longer than the first arrival path, generating symbol spreading over orders of seconds depending on the ranges and depths involved.
-
-
-\begin{equation}
-  \label{eq:fspl}
-  A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2
-  \text{where }c\approx 3\times10^8ms^{-1}
-\end{equation}
-
 Thus, the multi-path channel transfer function can be described by 
 
 \begin{align}
@@ -177,7 +185,7 @@ Thus, the multi-path channel transfer function can be described by
   \text{where } \tau_p = d_p/c, c \approx 1500 ms^{-1} \notag
 \end{align}
 
-where $d=d_0$ is the minimal path length between the transmitter and receiver, $d_p,p=\{1,\dots P-1\}$ are the secondary path lengths, $\Gamma_p$ models additional losses incurred on each path such as reflection losses at the surface interface, and $\tau_p = d_p/c$ is the delay time ($c \approx 1500 ms^{-1}$ is the nominal speed of sound underwater).
+where $d=d_0$ is the minimal path length between the transmitter and receiver, $d_p,p=\{1,\dots P-1\}$ are the secondary path lengths, $\Gamma_p$ models additional losses incurred on each path such as reflection losses at the surface interface, and $\tau_p = d_p/c$ is the delay time.
 
 \begin{figure}
   \includegraphics{ghia_sound_prop_curve}
@@ -187,13 +195,11 @@ where $d=d_0$ is the minimal path length between the transmitter and receiver, $
 \end{figure}
 
 
-Comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model $(A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2)$, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
-While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
 
 \subsection{Modelling and Simulation of the Acoustic Medium / Channel}
 
 Several toolkits exist in a variety of states that perform communications agent simulation, most notably the NS-2 / 3 family of frameworks and their addons.
-Some of these frameworks, such as SUNSET \cite{Petrioli2012a} and AquaTools \cite{Senghal2010}.
+Some of these frameworks, such as SUNSET \cite{Petrioli2012a} and AquaTools \cite{Sehgal2010}.
 
 Beyond the NS family, there are many other communications and simulation modelling systems such as OpNet++\cite{Chang1999} and MATLAB toolkits such as the AcTUP interface to the Ocean Acoustics Library.
 
@@ -207,6 +213,15 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 
 \todo{Summary of Akyildiz02/05}
 
+\section{Marine Operations}
+
+\subsection{Typical \gls{auv} mission profiles}
+
+\todo{Typical AUV missions, payloads, and available equipment}
+
+\subsection{Potential Future Applications}
+\todo{Future Applications of AUVs}
+
 \subsection{Need for Trust in Maritime Networks}
 
 As \acrfull{auv} platforms become more capable and economical, they are being used in many applications requiring trust.
@@ -214,7 +229,6 @@ These applications are using the collective behaviour of teams or fleets of thes
 With this use being increasingly isolated from stable communications networks, the establishment of trust between nodes is essential for the reliability and stability of such teams.
 As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the challenging underwater communications channel.
 
-\todo{Possibly worth having some discussion on mobility in here}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

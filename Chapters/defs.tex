@@ -21,6 +21,9 @@ pinstyle/.style = {pin edge={to-,thin,black}
 \def\subsum{\mathit{\Sigma}}
 
 \setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+
 \newenvironment{myindentpar}[1]%
 {\begin{list}{}%
          {\setlength{\leftmargin}{#1}}%
@@ -30,3 +33,6 @@ pinstyle/.style = {pin edge={to-,thin,black}
 
 
 \renewcommand*{\figureautorefname}{Fig.}
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\sectionautorefname}{Section}
+\renewcommand*{\subsectionautorefname}{Subsection}

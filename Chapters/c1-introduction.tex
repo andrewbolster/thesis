@@ -6,18 +6,18 @@
 \lhead{Chapter \thechapter.
 \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
-\section{Mobile Ad-hoc Networks (\acrshortpl{manet})}
+\section{\glspl{manet}}
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of a broadcast/receiver or server/client has given way to an increasing use of decentralised, ad-hoc networks that not only accommodate but take advantage of network mobility.
 
 Whether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Nicholson2008}\cite{Selvakennedy2007}, \gls{manet} theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research \cite{Jubin1987}, to being an integral part of modern practical communications.
 
 Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) that communicate cooperatively to collect, distribute, disseminate, and collate data and/or influence across an area.
-In many cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data, however this bi-directionality is not a requirement, for example in the area of Wireless Sensor Networks \cite{Akyildiz2002}.
+In most cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data, however this bi-directionality is not a requirement (for example in the area of Wireless Sensor Networks \cite{Akyildiz2002}).
 \glspl{manet} may utilise omnidirectional, static, or steerable communications antennae, and a selection of protocols such as WiFi, Bluetooth, GSM, UMTS, Optical or Acoustics, and may incorporate a range of mobilities across nodes, from static devices, terrestrial and marine surface platforms, and aerial and underwater platforms
-A core characteristic of the design of \glspl{manet} is the inclusion and integration of heterogeneous node collections, i.e where different nodes or groups of nodes in a network may have different capabilities in terms of propulsion, sensor apparatus, communications capability, etc.
+A core characteristic of \glspl{manet} is the inclusion and integration of heterogeneous node collections, i.e where different nodes or groups of nodes in a network may have different capabilities in terms of propulsion, sensor apparatus, communications capability, etc.
 
-\glspl{manet} may be totally independent with no external connections; include independent per-node communications backhauls (e.g. Cellular Modems in mobile phones as part of a Bluetooth Personal Area Network(PAN)), or include static nodes that provide infrastructure based backhaul.
+\glspl{manet} may be totally independent with no external connections; include independent per-node communications backhauls (e.g. Cellular Modems in mobile phones as part of a Bluetooth Personal Area Network), or include static nodes that provide infrastructure based backhaul.
 However, this multiplicity of variations and options presents several challenges to users and operators; the physical topology of \glspl{manet} can vary wildly over short periods of time.
 A particular challenge to \gls{manet} operation is that given any node may operate as a routing / gateway node, if/when that node moves to a different region, network segments that had previously used that node as a path must renegotiate / re-establish their routes.
 These situations, if not appropriately managed, lead to opportunities for subversion and selfishness.
@@ -44,7 +44,7 @@ As a benefit, the decentralized nature of network control in \glspl{manet} provi
 \end{tabularx}
 \end{table}
 
-\section{Routing in \glspl{manet}}
+\section{Routing in \acrfull{manet}}
 
 Given the decentralised nature of \gls{manet} operations, routing protocols are an active area of research. 
 This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid.
@@ -53,7 +53,7 @@ A summary of the generalised characteristics of these classes is shown in \autor
 \subsection{Proactive Routing}
 
 In Proactive routing, protocols attempt to maintain a up-to-date, global topology awareness of the network, where every node at least knows how to make the best hop to contact any other node in the network.
-This is extremely efficient for relatively static networks, with minimal storage and time requirements \cite{}<++>.
+This is extremely efficient for relatively static networks, with minimal storage and time requirements \cite{}.
 When the network topology is significantly modified by a shift in topology, either due to a node ``dropping out'' or moving, route renegotiation and optimisation is extrememly resource consuming, as this global state is converged upon in a distributed manner by nodes exchanging their local knowledge of the ``new'' topology.
 
 \begin{table}\centering
@@ -69,9 +69,12 @@ When the network topology is significantly modified by a shift in topology, eith
     \bottomrule
   \end{tabularx}
 \end{table}
+\todo{Finish Proactive Routing Protocols Table}
 
 
 \subsection{Reactive Routing}
+
+\todo{Write Write Routing Protocols}
 
 \begin{table}\centering
   \caption[Selection of Reactive Routing Protocols]{Selection of Reactive Routing Protocols}
@@ -88,8 +91,11 @@ When the network topology is significantly modified by a shift in topology, eith
     \bottomrule
   \end{tabularx}
 \end{table}
+\todo{Finish Reactive Routing Protocols Table}
 
 \subsection{Hybrid Routing}
+
+\todo{Write Hybrid Routing Protocols}
 
 \begin{table}\centering
   \caption[Selection of Hybrid Routing Protocols]{Selection of Hybrid Routing Protocols}
@@ -105,10 +111,11 @@ When the network topology is significantly modified by a shift in topology, eith
     \bottomrule
   \end{tabularx}
 \end{table}
+\todo{Finish Hybrid Routing Protocols Table}
 
 
 \begin{table}\centering
-  \caption[Comparison of Routing Strategy Classes]{Comparison of Routing Strategy Classes\cite{Abolhasan2004}}
+  \caption[Comparison of Routing Strategy Classes]{Comparison of Routing Strategy Classes (from \citet{Abolhasan2004})}
   \label{tab:routing_categories}
   \begin{tabularx}{\textwidth}{p{2cm}|XXX}\toprule
     \diagbox[width=2cm, height=1.8cm]{Area}{Class} & Proactive & Reactive & Hybrid \\ \midrule
@@ -153,7 +160,7 @@ When the network topology is significantly modified by a shift in topology, eith
 One fundamental compromise in the operation of wireless \glspl{manet} is the tradeoff between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
 This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, envionmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
 
-
+\todo{Expand Node Density discussion to include examples}
 
 
 \section{\glspl{manet} in Harsh Environments}
@@ -175,11 +182,44 @@ Previous research has established the advantages of implementing \glspl{tmf} in 
 
 \section{Trust Operation Against Capable Attackers}
 
+\todo{Trust operation against capable attackers}
 
 \section{Contributions}
 
+\todo{Contributions}
 
 \section{Conclusion}
+
+\todo{Conclusions including Layout}
+
 \subsection{Layout}
+
+\subsubsection{\autoref{Chapter2}}
+In this chapter the current literature and research on the concepts, theory, and applications concerning Trust and Trust Management is explored, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
+
+In~\autoref{sec:trust_defs}, the abstract quantity of ``trust'' is explored,
+In~\autoref{sec:trust_autonomy}, Autonomy and ``Trusted Operation'' of autonomous systems is investigated from a system architects and a system operators perspective.
+In~\autoref{sec:trust_manets}, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
+
+\subsubsection{\autoref{Chapter4}}
+In this chapter, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
+
+The operation of a selection of traditional \gls{manet} \glspl{tmf} in this environment is investigated.
+These challenges are characterised and results are presented that demonstrate a multi-metric approach to Trust greatly enhances the effectiveness of \glspl{tmf} in these environments.
+
+In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in \cite{Guo11} are reviewed for comparison.
+In~\autoref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented and comparing with other current \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed.\todo{Fix Sec Ref}
+
+The contributions of this chapter are a study on the comparative operation and performance of \glspl{tmf} in marine acoustic networks, and a review of metric suitability for \glspl{tmf} in marine environments, informing future metric selection for experimenters and theorists.
+Finally, a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks is demonstrated.
+
+Key parts of this chapter were presented at TrustCom-BigDataSE-ISPA 2015 as ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks.''\cite{Bolster2015}
+
+
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

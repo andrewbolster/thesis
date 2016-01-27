@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
-\def\ChapterTitle{Assessment of TMF Performance in Marine Environments}
+\def\ChapterTitle{Assessment of \gls{tmf} Performance in Marine Environments}
 
 \chapter{\ChapterTitle}
 \label{Chapter\thechapter}
@@ -8,32 +8,32 @@
 
 \section{Introduction}
 
-In this chapter, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
 
+As \glspl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments to ensure their continued security, reliability, and performance.
+With demand for smaller, more decentralised \gls{manet} systems in a range of domains and applications, as well as a drive towards lower per-unit cost in all areas, \glspl{tmf} are going to be increasingly applied to resource constrained applications, as the benefits and efficiencies they present are significant.
+This work is primarily concerned with the analytical establishment of hard trust within a topologically dynamic network of autonomous actors.
+Beyond the constraints of the communications environment, knock on pressures in battery capacity, on-board processing, and locomotion simultaneously present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance.
+These multiple aspects of potential incentives, trust, and fairness do not directly fall under the scope of single metric trusts discussed above, and this context indicates that a multi-metric approach may be more appropriate.
+These increasingly decentralised applications present unique threats against trust management \cite{Caiti2011}.
+
+Previous research has established the advantages of implementing \glspl{tmf} in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
+
+To date this work has been limited to terrestrial, RF based networks. 
+
+One area of application is the underwater marine environment, where extreme challenges to communications present themselves (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multipath distortion, etc.)(\autoref{Chapter3}).
+In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper \gls{auv} platforms.
 In underwater environments, communications is both sparse and noisy.
-Therefore the observations about the communications processes that are used to generate trust metrics occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
+Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
 
 In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller and cheaper \glspl{auv}.
 As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the underwater context \cite{Pavan2015}.
 Many \glspl{uan} use \gls{manet} architectures, however the marine environment presents new challenges for trust management frameworks that have been developed for use in conventional (i.e. Terrestrial RF) \glspl{manet}.
-Previous research has established the advantages of implementing TMFs in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
 
-To date this work has been limited to terrestrial, RF based networks. 
-
-The operation of a selection of traditional \gls{manet} \glspl{tmf} in this environment is investigated.
-These challenges are characterised and results are presented that demonstrate a multi-metric approach to Trust greatly enhances the effectiveness of TMFs in these environments.
-
-In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in \cite{Guo11} are reviewed for comparison.
-In~\autoref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented and comparing with other current \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed.\todo{Fix Sec Ref}
-
-The contributions of this chapter are a study on the comparative operation and performance of \glspl{tmf} in marine acoustic networks, and a review of metric suitability for \glspl{tmf} in marine environments, informing future metric selection for experimenters and theorists.
 It is shown that single metric trust systems are not directly suitable for the marine context in terms of the different threat and cost scenario in that environment.
-Finally, a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks is demonstrated.\todo[inline]{Move to intro}
-
 
 These single metric \glspl{tmf} provide malicious actors with a significant advantage if their activity does not impact that metric.
 In the case where the attacker can subvert the \gls{tmf}, the metric under assessment by that \gls{tmf} does not cover the threat mounted by the attacker.
-This causes a significant negative effect on the efficiency of the network, as the TMF is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
+This causes a significant negative effect on the efficiency of the network, as the \gls{tmf} is assumed to have reduced the possible set of attacks when it has actually made it more advantageous to attack a different part of the networks operation.
 An example of such a situation would be in a \gls{tmf} focused on \gls{plr} where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
 Such behaviour would not be detected by the \gls{tmf}.
 
@@ -41,9 +41,8 @@ For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:
 
 From the discussion on the nature of the communications environment in~\autoref{sec:trust_in_marine}, it's clear that before assessing communications metrics a simulated underwater environment, appropriate scaling factors must be found that are realistic from an application perspective but are also comperable in some form to the \gls{manet} case.
 
-Key parts of this chapter were presented at TrustCom-BigDataSE-ISPA 2015 as ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks.''\cite{Bolster2015}
 
-\section{Modelling of \gls{uan} network)\label{sec:initialsystemcharacterization}}
+\section{Modelling of \gls{uan} network}\label{sec:initialsystemcharacterization}
 
 
 \subsection{Mobility, Topology, and Communications}

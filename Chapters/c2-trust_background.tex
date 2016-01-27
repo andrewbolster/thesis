@@ -613,6 +613,7 @@ The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reas
 \end{equation}
 %
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
+\todo{This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
 
 Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function (\eqref{eq:beta}), and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
 

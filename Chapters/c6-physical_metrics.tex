@@ -164,12 +164,12 @@ Using this process the primary aspects of an attack can be extracted and highlig
 	
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} 
-		\caption{RX Throughput Emphasised}
+		\caption{Throughput Emphasised}
     \label{fig:all_mobile_badmouthing_rxthroughput}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} 
-		\caption{TX Throughput Emphasised}
+		\caption{Offered Load Emphasised}
     \label{fig:all_mobile_badmouthing_txthroughput}
 	\end{subfigure}
 	\caption{$T_{1,MTFM}$ in the All Mobile case for the Malicious Power Control behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
@@ -202,12 +202,12 @@ Using this process the primary aspects of an attack can be extracted and highlig
 
   \begin{subfigure}{0.45\textwidth}
     \includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} 
-    \caption{RX Throughput Emphasised}
+    \caption{Throughput Emphasised}
     \label{fig:all_mobile_selfish_rxthroughput}
   \end{subfigure}
   \begin{subfigure}{0.45\textwidth}
     \includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} 
-    \caption{TX Throughput Emphasised}
+    \caption{Offered Load Emphasised}
     \label{fig:all_mobile_selfish_txthroughput}
   \end{subfigure}
   \caption{$T_{1,MTFM}$ in the All Mobile case for the Selfish Target Selection behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
@@ -215,7 +215,7 @@ Using this process the primary aspects of an attack can be extracted and highlig
 \end{figure}
 
 Fig.~\ref{fig:all_mobile_badmouthing} shows that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
-This is particularly true for \gls{plr}, with smaller impacts on delay, received power and transmitted throughput. 
+This is particularly true for \gls{plr}, with smaller impacts on delay, received power and offered load. 
 This weighted delta in received throughput is minimal to insignificant compared to the width of the detection envelope, occasionally breaching the envelope for a short period. 
 
 In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) a much lower weighted delta in \gls{plr} and delay is observed, with greatly increased impact on transmission power.
@@ -253,7 +253,7 @@ Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_
 	\begin{center}
 		\begin{tabular}{lcccccc}
 			\toprule
-			Correlation      & Delay & $P_{RX}$ & $P_{TX}$ & $T^P_{RX}$ & $T^P_{TX}$ & PLR \\
+			Correlation      & Delay & $P_{RX}$ & $P_{TX}$ & $G$ & $S$ & PLR \\
 			\midrule
 			Fair / MPC       & 0.199 &  0.159   & -0.416  &  0.708   & -0.238   & -0.401\\
 			Fair / STS       & 0.179 &  -0.009  &  0.724  & -0.697   & -0.145   & -0.052\\

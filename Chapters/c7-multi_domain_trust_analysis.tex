@@ -30,12 +30,12 @@ It is important to clarify what is meant by ``effective'' in this case; the ``ef
 
 \subsection{Communications Trust Metrics}
 
-The metric vector is constructed using those trust metrics that are applicable to the marine environment from \cite{Guo2012}, as the simulated marine acounstic modem stack does not operate on the same tiered data-rate approach as used in the 802.11 stack, the data rate metric was not included. Remaining metrics are; Delay, Received and Transmitted power, Received and Transmitted Throughput, and \gls{plr}.
+The metric vector is constructed using those trust metrics that are applicable to the marine environment from \cite{Guo2012}, as the simulated marine acoustic modem stack does not operate on the same tiered data-rate approach as used in the 802.11 stack, the data rate metric was not included. Remaining metrics are; Delay, Received and Transmitted power, Received and Transmitted Throughput, and \gls{plr}.
 
 Thus, the metric vector used for communications-trust assessment is;
 
 \begin{equation}
-	X_{comms}=\{D, P_{RX}, P_{TX}, Tp_{RX}, Tp_{TX}, PLR\}
+	X_{comms}=\{D, P_{RX}, P_{TX}, S, G, PLR\}
 	\label{eq:comms_vector}
 \end{equation}
 
@@ -63,7 +63,7 @@ Thus, the metric vector used for physical-trust assessment is;
 This simplest possible combination is a vector concatenation across domain metric vectors; in this case; 
 
 \begin{equation}
-  X_{merge} =  (X_{comms}|X_{phy}) = \{D, P_{RX}, P_{TX}, Tp_{RX}, Tp_{TX}, PLR, \text{INDD}, \text{INHD}, S\}
+  X_{merge} =  (X_{comms}|X_{phy}) = \{D, P_{RX}, P_{TX}, S, G, PLR, \text{INDD}, \text{INHD}, S\}
 	\label{eq:phys:vector}
 \end{equation}
 
@@ -77,11 +77,11 @@ The primary aspects of an (mis)behaviour can be detected and assessed by compari
 
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, an initial weighting vector $H'=[h_i\cdots h_M]$ is formed such that $h_i = 1 \forall i \ne j; h_j=2$. That vector $H'$ is then scaled such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 
-The construction of the $g$ and $b$ vectors from~\autoref{eq:grc} depends on the particular metric, e.g. Throughput ($T^P$) on a link is assumed to be positively correlated to trustworthiness and so follows the default construction ($g(T^P) \mapsto \max, b(T^P) \mapsto \min$), whereas in the case of a metric such as delay, this relationship is inverted, i.e.\ longer delays indicate less trustworthy activity ($g(D) \mapsto \min, b(D) \mapsto \max$).
+The construction of the $g$ and $b$ vectors from~\autoref{eq:grc} depends on the particular metric, e.g. Throughput ($S$) on a link is assumed to be positively correlated to trustworthiness and so follows the default construction ($g(S) \mapsto \max, b(S) \mapsto \min$), whereas in the case of a metric such as delay, this relationship is inverted, i.e.\ longer delays indicate less trustworthy activity ($g(D) \mapsto \min, b(D) \mapsto \max$).
 This inversion relationship (i.e.\ those with the construction $g(x) \mapsto \min, b(x) \mapsto \max$) is signified by a negative weight.
 
 In complex environments, the relationship between metrics trustworthiness correlations is not always as obvious as the throughput / delay examples.
-This phenomenon was mentioned by Guo\cite{Guo2012}, but was manually configured for each metric for each behaviour and no analytical method for quantitatively establishing such relationships has been presented since.
+This phenomenon was mentioned by \citet{Guo2012}, but was manually configured for each metric for each behaviour and no analytical method for quantitatively establishing such relationships has been presented since.
 
 With the nine selected metrics from across communications and physical behaviours, we can explore this metric space by varying the weights associated with each metric, and choose to emphasise across three levels; i.e.\ metrics can be ignored or over-emphasised. Naively this results in $3^9 = 19683$ combinations, however as these weights are being normalised, redundant duplicates can be eliminated, e.g. $[0,0,0,0,1,0,0,0,0] \equiv [0,0,0,0,2,0,0,0,0]$ leaving 18661 unique weights for analysis.
 
@@ -91,7 +91,9 @@ See~\autoref{sec:metric_weighting}.
 Note that at this point we establish ``signatures'' of different behaviours rather than optimal detection weights.\todo{Duplicating C6 Metric Weighting Section}
 
 We apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
-Random Forest accomplishes this by generating a large number of random regression trees and prune these trees to fit incoming data. A major advantage of Random Forest in this case is that by walking the most successful regression trees, we can acquire an already normalised maximal activation weight for the particular behaviour comparison being tested.
+Random Forest accomplishes this by generating a large number of random regression trees and prune these trees based on how accurate they are in correctly matching the input data.
+In this case that data is the deviation in trust observed ($\Delta T$) between a two behaviours, i.e. maximising the ability to tell the difference between two given behaviours (i.e.\ ``Fair'' and ``Malicious'').
+A major advantage of Random Forest in this case is that by walking the most successful regression trees, we can acquire an already normalised maximal activation weight for the particular behaviour comparison being tested.
 
 After establishing the importance of weights in particular behaviours, a final weight is arrived at by algorithmically those few metrics that are important, rather than having to further explore the computationally expensive weight-space.
 
@@ -141,7 +143,7 @@ However, these approximated signatures have no information regarding the ``sign'
 One option would be to go back to the regression point and expand the combination options to include negative values, signifying inverted $g,b$ relationships, however this is combinatorially explosive.\footnote{The current version of this analysis uses three metric weights; ignored, standard, emphasised, giving $3^9 = 19683$ combinations. Expanding this to include inverted standard and inverted emphasised weights would raise that to $5^9 = 1.9\times 10^6$}
 Instead, the ``significance'' weight is permuted against it's possible combinations of ``flips'', i.e.\ for $X_s=[0.3,0.4,0.01,0.02,0.27]$ could also be $X_s^p=[0.3,-0.4,0.01,0.02,0.27]$ and so on. 
 This sign permutation is filtered based on a threshold value ($0.01$), so for all indices below that threshold will not be permuted on, halving the number of combinations required for each indices eliminated.
-This reduces the number of additional assessments required from $1.9$ to approximately 500 (when applied to all nine metrics).
+This reduces the number of additional assessments required from $1.9\times 10^6$ to approximately 500 (when applied to all nine metrics).
 
 The best of these permutations is selected to both maximise the (correct) deviation between each nodes trust perspectives and to minimise the trust value reported for the misbehaving nodes; $\Delta T \max$
 
@@ -151,8 +153,8 @@ An exemplar subset of the results is shows in Figs~\ref{fig:comms_sts}-~\ref{fig
 
 Comparing Figs~\ref{fig:comms_sts} and~\ref{fig:full_sts}, while there is a reasonable dip in the misbehavor's trust assessment, the variance across the cohort is such that this "mistrust" triggering is neither consistent or obvious. Unfortunately this is the case across the \gls{sts} responses, where in Table~\ref{tab:domain_deltas} where we have summarized out general results, \gls{sts} has by far and away the lowest average $\Delta T$ in all domains. Interestingly however is the observation that Comms-only trust performs slightly better than Full trust weighting.
 
-Referring to Figs~\ref{fig:comms_feature_extraction} and~\autoref{fig:multi_feature_extraction}, it's clear that the transmitted throughput ($T^P_{TX}$) is the almost singular feature of this behaviour, due to it's almost completely logical behaviour that is only loosely coupled to the state of the environment. 
-The massive emphasis placed on throughput could only be diminished by putting it together in a larger ensemble.
+Referring to Figs~\ref{fig:comms_feature_extraction} and~\autoref{fig:multi_feature_extraction}, it's clear that the offered load ($G$) is the almost singular feature of this behaviour, due to it's almost completely logical behaviour that is only loosely coupled to the state of the environment. 
+The massive emphasis placed on load could only be diminished by putting it together in a larger ensemble.
 
 The other "Primary Communications" behaviour, \gls{mpc}, is not shown for brevity, but scores comfortably in the 90th percentile range in both full and comms trust assessments.
 
@@ -160,6 +162,7 @@ In Figs~\ref{fig:comms_shadow} and~\ref{fig:full_shadow}, the misbehaving node i
 
 From Table~\ref{tab:domain_deltas}, the Shadow behavior is the most consistently detectable behaviour across domains. 
 
+% These figures are the output of test_Thesis_Diagrams.test0ValidationBestPlots
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\linewidth]{best_comms_run_STS}
@@ -204,7 +207,7 @@ From Table~\ref{tab:domain_deltas}, the Shadow behavior is the most consistently
 	\label{fig:full_slowcoach}
 \end{figure}
 
-
+% This table is the output of 
 \begin{table}
 \centering
 \caption{$\Delta T$ across domains and detected behaviours}
@@ -222,6 +225,13 @@ Avg.   &  0.627 &  0.096 &  0.402 &  0.550 &  0.419 \\
 \end{tabular}
 \label{tab:domain_deltas}
 \end{table}
+\begin{table}
+\centering
+\caption{$\Delta T$ across domains and detected behaviours}
+\input{Figures/input/domain_deltas.tex}
+\label{tab:domain_deltas}
+\end{table}
+
 
 \section{Conclusion}
 In this paper we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 

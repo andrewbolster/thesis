@@ -120,6 +120,8 @@
   *{package}{epsf}        {0000/00/00 v0.0}
   *{package}{tabularx}    {2014/10/28 v2.10}
   *{package}{multirow}    {0000/00/00 v0.0}
+  *{package}{pdflscape}   {2008/08/11 v0.10}
+  *{package}{lscape}      {2000/10/22 v3.01}
   *{package}{snapshot}    {2002/03/05 v1.14}
   *{package}{todonotes}   {2012/07/25 v0.0}
   *{package}{xkeyval}     {2014/12/03 v2.7a}
@@ -249,6 +251,7 @@
   *{file}   {./Figures/best_comms_run_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/optimised_weights.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/AppendixA.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}

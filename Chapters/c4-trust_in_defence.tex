@@ -288,7 +288,7 @@ Results are also included from the remaining mobility cases (all nodes mobile; a
     \caption{RTS Ratios}
     \label{fig:emission_rts_ratio_bella_single_mobile}
   \end{subfigure}
-  \caption{Network performance varying packet emission rates for the all-but-one mobile case}
+  \caption{Network performance varying packet emission rates for the single mobile case}
   \label{fig:emission_bella_single_mobile}
 \end{figure}
 
@@ -306,6 +306,7 @@ In the case of marine acoustic transmission at the stated power output, above $1
 This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes. 
 
 A reasonable range around this is to scale from 100$m$ apart on average to 800$m$, and from the previous section, a packet emission rate of 0.02pps (slightly below the 0.025pps saturation threshold) is used to explore this space.
+The ``environment'' of the simluations is also scaled in accoradance with the node scaling, based on an intital environmental ``water-box'' of $1km$ for the $100m$ node separation, i.e.\ the water-box is consistently ten times larger than the initial node separation.
 
 In the case where all nodes remain static, increasing node separation does not significantly impact throughput, delay, delivery probability or \gls{rts} ratios until rising above 700$m$ (Fig.~\ref{fig:separation_bella_static}), nearly double our initial estimate of where an appropriate separation zone would be.
 
@@ -477,6 +478,15 @@ This indicates that there is a subtly different saturation behaviour with respec
 \end{figure}
 
 
+\begin{table}[h]
+	\caption{Tabular view of data from~\autoref{fig:separation_bella_single_mobile}, including ideal propagation time} \label{tab:separation_bella_single_mobile}
+	\begin{center}
+		\hyphenpenalty 100000
+    \input{Figures/input/separation_packet_stats_bella_single_mobile}
+	\end{center}
+\end{table}
+
+
 \clearpage
 
 \section{Combined Scale Factor Analysis}
@@ -489,6 +499,16 @@ For instance, in~\autoref{fig:separation_bella_single_mobile} (tabulated in~\aut
 
 To capture these performance requirements, the feature scaled product of Throughput and Delay is taken and plotted against rate and separation in~\autoref{fig:2d_normed_product}.\todo[inline]{This does NOT make for easy comparison between graphs as the scaling is different for each mobility, but I need to think about how to fairly solve this}
 
+\begin{equation}
+  V = |S] \times (1 - |D|)
+  \label{eq:normed_product}
+\end{equation}
+
+For each scenario, the observed Throughput across the network ($S$ in bytes) is normalised across all observations (i.e.\ each combination of Node Separation and Emission Rate), as is average end-to-end Delay ($D$). The normalised delay is inverted ($1-|D|$) and the product of this and the normalised throughput is used as the basis of a two-dimensional linear interpolation shown in \autoref{fig:2d_normed_product}.
+
+
+
+\todo{Attempt to Formalise the relationship between separation, offered load, throughput and delay}
 
 
 \begin{figure}[h]
@@ -522,15 +542,6 @@ To capture these performance requirements, the feature scaled product of Through
 \end{figure}
 
 
-\begin{table}[h]
-	\caption{Tabular view of data from~\autoref{fig:separation_bella_single_mobile}, including ideal propagation time} \label{tab:separation_bella_single_mobile}
-	\begin{center}
-		\hyphenpenalty 100000
-    \input{Figures/input/separation_packet_stats_bella_single_mobile}
-	\end{center}
-\end{table}
-
-
 \section{Conclusions}
 
 An appropriate safe operating zone for marine communications has been established by investigating the impact of variations of the communications rate and physical distribution across the mobility scenarios.
@@ -539,7 +550,7 @@ These findings can be summaries as that when the separation is increased, the em
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
 For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches 800m, nearly double the initial estimate. 
 However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $300m$ to $0.015pps$ at $400m$.\todo[inline]{Double Check These Numbers Before Release}
-Our results indicate that the best area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $100m$ to $300m$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
+These results indicate that a good area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $100m$ to $300m$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
 These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
 
 

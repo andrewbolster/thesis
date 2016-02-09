@@ -131,6 +131,15 @@
   *{package}{relsize}     {2013/03/29 v4.1}
   *{package}{float}       {2001/11/08 v1.3d}
   *{package}{epigraph}    {2009/09/02 v1.5c}
+  *{package}{eurosym}     {1998/08/06 v1.1}
+  *{package}{siunitx}     {2016/01/19 v2.6p}
+  *{package}{expl3}       {2016/01/03 v6358}
+  *{file}   {expl3-code.tex}{2016/01/03 v6358}
+  *{file}   {l3pdfmode.def}{2015/11/11 v6250}
+  *{package}{xparse}      {2015/12/20 v6326}
+  *{package}{l3keys2e}    {2015/12/20 v6326}
+  *{package}{translator}  {2010/06/12 v1.10}
+  *{file}   {translator-language-mappings.tex}{0000/00/00 v0.0}
   *{package}{glossaries}  {2015/11/30 v4.20}
   *{package}{mfirstuc}    {2015/12/17 v2.02}
   *{package}{etoolbox}    {2015/08/02 v2.2a}
@@ -140,6 +149,9 @@
   *{package}{substr}      {2009/10/20 v1.2}
   *{package}{datatool-fp} {2016/01/18 v2.25}
   *{package}{glossaries-compatible-307}{2015/11/30 v4.20}
+  *{package}{tracklang}   {2015/03/23 v1.2}
+  *{file}   {tracklang.tex}{0000/00/00 v0.0}
+  *{file}   {glossaries-english.ldf}{2014/11/23 v1.0}
   *{package}{glossary-hypernav}{2015/11/30 v4.20}
   *{package}{glossary-list}{2015/11/30 v4.20}
   *{package}{glossary-long}{2015/11/30 v4.20}
@@ -153,11 +165,13 @@
   *{package}{gettitlestring}{2010/12/03 v1.4}
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
+  *{file}   {translator-basic-dictionary-English.dict}{0000/00/00 v0.0}
+  *{file}   {siunitx-abbreviations.cfg}{2016/01/19 v2.6p}
   *{file}   {Thesis.glsdefs}{0000/00/00 v0.0}
-  *{file}   {./Chapters/defs.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
   *{file}   {umsa.fd}     {2013/01/14 v3.01}
   *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{file}   {./Chapters/defs.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
   *{file}   {Thesis.gls}  {0000/00/00 v0.0}
   *{file}   {./Chapters/preface.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/abstract.tex}{0000/00/00 v0.0}
@@ -211,11 +225,11 @@
   *{file}   {./Figures/separation_prod_breakdown_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_delay_variation_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/separation_rts_ratio_bella_single_mobile.pdf}{0000/00/00 v0.0}
+  *{file}   {Figures/input/separation_packet_stats_bella_single_mobile.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_all_mobile.pdf}{0000/00/00 v0.0}
-  *{file}   {Figures/input/separation_packet_stats_bella_single_mobile.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c5-multi_domain_trust_strategies.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/c6-physical_metrics.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
@@ -244,11 +258,17 @@
   *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/full_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_MPC.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_comms_run_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_STS.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_STS.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_comms_run_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_Shadow.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_Shadow.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_comms_run_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/optimised_weights.tex}{0000/00/00 v0.0}

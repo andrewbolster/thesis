@@ -12,7 +12,7 @@ A methodology is demonstrated that applies Grey Sequence operations and Grey Gen
 By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment.
 Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrates, allowing for the elimination of redundant metrics, simplifying the runtime assessment process.
 
-\section{Construction of Multi-Domain Trust}
+\section{Initial Optimisation of Multi-Domain Trust with Predefined Domains}
 
 A key question in this chapter is to assess the advantages and disadvantages of utilising trust from across domains. 
 This includes a secondary question as to how trust assessments from these domains are most effectively combined. 
@@ -35,8 +35,8 @@ The metric vector is constructed using those trust metrics that are applicable t
 Thus, the metric vector used for communications-trust assessment is;
 
 \begin{equation}
-	X_{comms}=\{D, P_{RX}, P_{TX}, S, G, PLR\}
-	\label{eq:comms_vector}
+  X_{comms}=\{D, P_{RX}, P_{TX}, S, G, PLR\}
+  \label{eq:comms_vector}
 \end{equation}
 
 \subsection{Physical Trust Metrics}
@@ -46,16 +46,16 @@ Three physical metrics are selected to encompass the relative distributions and 
 Conceptually, \gls{indd} is a measure of the average spacing of an observed node with respect to its neighbours. \gls{inhd} is a similar approach with respect to node orientation.
 
 \begin{align}
-	INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
-	INHD_{i,j} &= \hat{v} \vert v= V_j - \sum_x{\frac{V_x}{N}}\\
-	S_{i,j} &= |V_j|
+  INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
+  INHD_{i,j} &= \hat{v} \vert v= V_j - \sum_x{\frac{V_x}{N}}\\
+  V_{i,j} &= |V_j|
 \end{align}
 
 Thus, the metric vector used for physical-trust assessment is;
 
 \begin{equation}
-  X_{phy}=\{\text{INDD}, \text{INHD}, S\}
-	\label{eq:phys:vector}
+  X_{phy}=\{\text{INDD}, \text{INHD}, V\}
+  \label{eq:phys:vector}
 \end{equation}
 \todo{Need to actually show physical only trust measurements}
 
@@ -63,8 +63,8 @@ Thus, the metric vector used for physical-trust assessment is;
 This simplest possible combination is a vector concatenation across domain metric vectors; in this case; 
 
 \begin{equation}
-  X_{merge} =  (X_{comms}|X_{phy}) = \{D, P_{RX}, P_{TX}, S, G, PLR, \text{INDD}, \text{INHD}, S\}
-	\label{eq:phys:vector}
+  X_{merge} =  (X_{comms}|X_{phy}) = \{D, P_{RX}, P_{TX}, S, G, PLR, \text{INDD}, \text{INHD}, V\}
+  \label{eq:phys:vector}
 \end{equation}
 
 
@@ -73,7 +73,7 @@ This simplest possible combination is a vector concatenation across domain metri
 From \eqref{eq:metric_weighting}, the final trust values arrived at are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.\todo{referencing the right equ in the wrong place}
 
 This permits the assessment of the significance of different metrics in the detection and identification of different behaviours. 
-The primary aspects of an (mis)behaviour can be detected and assessed by comparing a weighted trust assessment against the deviation from a ``fair'' result set using the same weight, i.e.\ we are interested in the weight schemes that create the largest difference between fair and misbehaving cases.\todo{Possibly redundant sentences}
+The primary aspects of a (mis)behaviour can be detected and assessed by comparing a weighted trust assessment against the deviation from a ``fair'' result set using the same weight, i.e.\ we are interested in the weight schemes that create the largest difference between fair and misbehaving cases.
 
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, an initial weighting vector $H'=[h_i\cdots h_M]$ is formed such that $h_i = 1 \forall i \ne j; h_j=2$. That vector $H'$ is then scaled such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 
@@ -99,8 +99,6 @@ After establishing the importance of weights in particular behaviours, a final w
 
 Using this approach, the results of these simulations can be explored, condensing the multi-dimensional problem (target / observer / behaviour / metric / time) down to a more manageable level for analysis.
 
-\section{Results and Discussion}
-
 \subsection{Significance Analysis}
 
 First the results of the Random Forest regression assessment are discussed; Figs~\ref{fig:comms_feature_extraction} and~\ref{fig:phys_feature_extraction}, show the resultant feature extraction signatures for Comms-only and Physical-only metric selections respectively, and in Fig~\ref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
@@ -110,18 +108,19 @@ This inter-domain activity is to be expected in \glspl{manet} in general, where 
 
 
 
+% These figures are the output of test_Thesis_Diagrams.test????Relevance
 \begin{figure}[h!]
-	\centering
+  \centering
   \includegraphics[width=\linewidth]{comms_metric_trust_relevance}
-	\caption{Plot of Communications Metric Feature Extraction ($X_{comms}$)}
-	\label{fig:comms_feature_extraction}
+  \caption{Plot of Communications Metric Feature Extraction ($X_{comms}$)}
+  \label{fig:comms_feature_extraction}
 \end{figure}
 
 \begin{figure}[h!]
-	\centering
+  \centering
   \includegraphics[width=\linewidth]{phys_metric_trust_relevance}
   \caption{Plot of Physical Metric Feature Extraction ($X_{phys}$)}
-	\label{fig:phys_feature_extraction}
+  \label{fig:phys_feature_extraction}
 \end{figure}
 
 \begin{figure}[h!]
@@ -145,99 +144,140 @@ Instead, the ``significance'' weight is permuted against it's possible combinati
 This sign permutation is filtered based on a threshold value ($0.01$), so for all indices below that threshold will not be permuted on, halving the number of combinations required for each indices eliminated.
 This reduces the number of additional assessments required from $1.9\times 10^6$ to approximately 500 (when applied to all nine metrics).
 
-The best of these permutations is selected to both maximise the (correct) deviation between each nodes trust perspectives and to minimise the trust value reported for the misbehaving nodes; $\Delta T \max$
+The best of these permutations is selected to both maximise the (correct) deviation between each nodes trust perspectives and to minimise the trust value reported for the misbehaving nodes; $\Delta T \max$.
+The ``best'' weight permutations are shown in \autoref{tab:optmised_weights} for reference.
 
 These weights are applied to untrained simulation data to derive the following results.
 
-An exemplar subset of the results is shows in Figs~\ref{fig:comms_sts}-~\ref{fig:full_slowcoach}, with the ``misbehaving node'' highlighted with heavier lines, with any observations about the rest of the cohort faded and dashed. For each node assessment, the mean for that assessment over that time period is also included as a solid / dashed line respectively for clarity.
+An exemplar subset of the results is shows in Figs~\ref{fig:comms_mpc}-~\ref{fig:full_slowcoach}, with the ``misbehaving node'' highlighted with heavier lines, with any observations about the rest of the cohort faded and dashed. For each node assessment, the mean for that assessment over that time period is also included as a solid / dashed line respectively for clarity.
 
-Comparing Figs~\ref{fig:comms_sts} and~\ref{fig:full_sts}, while there is a reasonable dip in the misbehavor's trust assessment, the variance across the cohort is such that this "mistrust" triggering is neither consistent or obvious. Unfortunately this is the case across the \gls{sts} responses, where in Table~\ref{tab:domain_deltas} where we have summarized out general results, \gls{sts} has by far and away the lowest average $\Delta T$ in all domains. Interestingly however is the observation that Comms-only trust performs slightly better than Full trust weighting.
+The most intuiativly ``Communications'' behaviour, \gls{mpc}, scores comfortably in the 90th percentile range in both Communications Domain (\autoref{fig:comms_mpc}) and Full Domain (\autoref{fig:full_mpc})  trust assessments. As seen in \autoref{tab:optimised_weights}, both the ``Full'' and ``Comms'' metric optimsations heavily weigh $P_{TX}$, and as this is the metric directly modified by the misbehaviour, it is expected that this is easily discernable using these domain weights.
+However when this communications information is unavailable, as is the case in the use of Physical Domain metrics alone in \autoref{fig:phys_mpc}, the misbehaving node (Alfa) is completely undiscernible compared to the other nodes, with all nodes in the cohort tending to a trust value of $0.5$.
+How this discernibility would fare under varying emphasis of behaviours is an open question\todo{Answer what happens when you vary MPC power variation}
+
+Under the most ``subtle'' behaviour; \gls{sts}, where no direct metric is being modified in operation, but where the behaviour is effectively in the ``Application layer'' of the networking stack, the picture is far more murky. 
+Comparing Figs~\ref{fig:comms_sts} and~\ref{fig:full_sts}, while there is a reasonable dip in the misbehavor's trust assessment, the high level of variance across the cohort is such that this ``mistrust'' triggering is neither consistent or obvious. 
+From \autoref{tab:optimised_weights}, the metric of import is $G$, the Offered Load on the network, and given it's negative weighting, this matches the expectation that the node doing ``less than it's fair share'' is potentially misbehaving. 
+Unfortunately this is the case across the \gls{sts} responses, where in Table~\ref{tab:domain_deltas} we have summarized out general results, \gls{sts} has by far and away the lowest average $\Delta T$ in all domains. 
+Interestingly however is the observation that Comms-only trust performs slightly better than Full trust weighting.
 
 Referring to Figs~\ref{fig:comms_feature_extraction} and~\autoref{fig:multi_feature_extraction}, it's clear that the offered load ($G$) is the almost singular feature of this behaviour, due to it's almost completely logical behaviour that is only loosely coupled to the state of the environment. 
 The massive emphasis placed on load could only be diminished by putting it together in a larger ensemble.
-
-The other "Primary Communications" behaviour, \gls{mpc}, is not shown for brevity, but scores comfortably in the 90th percentile range in both full and comms trust assessments.
-
 In Figs~\ref{fig:comms_shadow} and~\ref{fig:full_shadow}, the misbehaving node is much more obvious than in \gls{sts}, which is moderately surprising for a physically-focused behaviour. Further, there is a roughly 20\% improvement when incorporating the full metric space.
 
 From Table~\ref{tab:domain_deltas}, the Shadow behavior is the most consistently detectable behaviour across domains. 
 
 % These figures are the output of test_Thesis_Diagrams.test0ValidationBestPlots
+
+\todo{Need to redress potential selection bias in the use for the mean-of-non-outlier-means for $\delta t$ assessment, possibly with an ``Area Under the instantenous mean'' approach; This would also function an as effective ``false positive'' assessment for cross-behaviour weighting}
+
+
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{best_comms_run_STS}
-	\caption{Selfish(STS) Targeting Comms Metric Trust}
-	\label{fig:comms_sts}
+  \centering
+  \includegraphics[width=\linewidth]{best_comms_run_MPC}
+  \caption{\gls{mpc} Comms Metric Trust}
+  \label{fig:comms_mpc}
 \end{figure}
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{best_full_run_STS}
-	\caption{Selfish(STS) Targeting Full Metric Trust}
-	\label{fig:full_sts}
+  \centering
+  \includegraphics[width=\linewidth]{best_phys_run_MPC}
+  \caption{\gls{mpc} Physical Metric Trust}
+  \label{fig:phys_mpc}
 \end{figure}
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{best_comms_run_Shadow}
-	\caption{Shadow Comms Metric Trust}
-	\label{fig:comms_shadow}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{best_full_run_Shadow}
-	\caption{Shadow Full Metric Trust}
-	\label{fig:full_shadow}
+  \centering
+  \includegraphics[width=\linewidth]{best_full_run_MPC}
+  \caption{\gls{mpc} Full Metric Trust}
+  \label{fig:full_mpc}
 \end{figure}
 
 
 \begin{figure}[h]
-	\centering
+  \centering
+  \includegraphics[width=\linewidth]{best_comms_run_STS}
+  \caption{\gls{sts} Comms Metric Trust}
+  \label{fig:comms_sts}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{best_phys_run_STS}
+  \caption{\gls{sts} Physical Metric Trust}
+  \label{fig:phys_sts}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{best_full_run_STS}
+  \caption{\gls{sts} Full Metric Trust}
+  \label{fig:full_sts}
+\end{figure}
+
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{best_comms_run_Shadow}
+  \caption{Shadow Comms Metric Trust}
+  \label{fig:comms_shadow}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{best_phys_run_Shadow}
+  \caption{Shadow Physical Metric Trust}
+  \label{fig:phys_shadow}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{best_full_run_Shadow}
+  \caption{Shadow Full Metric Trust}
+  \label{fig:full_shadow}
+\end{figure}
+
+
+
+\begin{figure}[h]
+  \centering
   \includegraphics[width=\linewidth]{best_comms_run_SlowCoach}
-	\caption{SlowCoach Comms Metric Trust}
-	\label{fig:comms_slowcoach}
+  \caption{SlowCoach Comms Metric Trust}
+  \label{fig:comms_slowcoach}
 \end{figure}
-
 
 \begin{figure}[h]
-	\centering
-  \includegraphics[width=\linewidth]{best_full_run_SlowCoach}
-	\caption{SlowCoach Full Metric Trust}
-	\label{fig:full_slowcoach}
+  \centering
+  \includegraphics[width=\linewidth]{best_phys_run_SlowCoach}
+  \caption{SlowCoach Physical Metric Trust}
+  \label{fig:phys_slowcoach}
 \end{figure}
 
-% This table is the output of 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{best_full_run_SlowCoach}
+  \caption{SlowCoach Full Metric Trust}
+  \label{fig:full_slowcoach}
+\end{figure}
+
+
+% These tables are the output of test_Thesis_Diagrams.ThesisDiagrams#test0ValidationBestPlots
 \begin{table}
-\centering
-\caption{$\Delta T$ across domains and detected behaviours}
-\begin{tabular}{|l|r|r|r|r|r|}
-\hline
-\diagbox{Domain}{Behaviour} &       \gls{mpc} &       \gls{sts} &    Shadow & SlowCoach & Avg.\\
-\hline
-%Domain &           &           &           &           &\\
-Comms  &  0.954 &  0.166 &  0.287 &  0.268 & 0.419 \\
-Phys   &  0.022 &  0.020 &  0.421 &  0.756 & 0.305\\
-Full   &  0.905 &  0.101 &  0.499 &  0.627 & 0.533\\
-\hline
-Avg.   &  0.627 &  0.096 &  0.402 &  0.550 &  0.419 \\
-\hline
-\end{tabular}
-\label{tab:domain_deltas}
+  \centering
+  \caption{$\Delta T$ across domains and detected behaviours}
+  \input{Figures/input/domain_deltas.tex}
+  \label{tab:domain_deltas}
 \end{table}
-\begin{table}
-\centering
-\caption{$\Delta T$ across domains and detected behaviours}
-\input{Figures/input/domain_deltas.tex}
-\label{tab:domain_deltas}
-\end{table}
+\todo{Haven't worked out a clever way of automatically generating both the basic domain and alternate domain texes easily}
+
 \begin{landscape}
-\begin{table}
-\centering
-\caption{Optimised metric vector weights per domain trained upon and behaviour targeted}
-\input{Figures/input/optimised_weights.tex}
-\label{tab:optimised_weights}
-\end{table}
+  \begin{table}
+    \centering
+    \caption{Optimised metric vector weights per domain trained upon and behaviour targeted}
+    \input{Figures/input/optimised_weights.tex}
+    \label{tab:optimised_weights}
+  \end{table}
 \end{landscape}
 
 

@@ -258,19 +258,32 @@
   *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/full_metric_trust_relevance.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/domain_deltas_minus.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/optimised_weights.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/AppendixA.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}

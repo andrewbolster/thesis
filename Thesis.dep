@@ -140,6 +140,7 @@
   *{package}{l3keys2e}    {2015/12/20 v6326}
   *{package}{translator}  {2010/06/12 v1.10}
   *{file}   {translator-language-mappings.tex}{0000/00/00 v0.0}
+  *{package}{afterpage}   {2014/10/28 v1.08}
   *{package}{glossaries}  {2015/11/30 v4.20}
   *{package}{mfirstuc}    {2015/12/17 v2.02}
   *{package}{etoolbox}    {2015/08/02 v2.2a}
@@ -270,6 +271,15 @@
   *{file}   {./Figures/best_comms_run_time_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_phys_run_time_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/domain_deltas_minus.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/optimised_weights.tex}{0000/00/00 v0.0}
+  *{file}   {./Appendices/AppendixA.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {./Appendices/appendixB.tex}{0000/00/00 v0.0}
+  *{file}   {./Appendices/appendixC.tex}{0000/00/00 v0.0}
+  *{file}   {./Appendices/AppendixD.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/best_comms_run_instantaneous_MPC.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_phys_run_instantaneous_MPC.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_instantaneous_MPC.png}{0000/00/00 v0.0}
@@ -282,13 +292,29 @@
   *{file}   {./Figures/best_comms_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_phys_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
-  *{file}   {Figures/input/domain_deltas_minus.tex}{0000/00/00 v0.0}
-  *{file}   {Figures/input/optimised_weights.tex}{0000/00/00 v0.0}
-  *{file}   {./Appendices/AppendixA.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_static_selfish.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/trust_bella_all_mobile_selfish.pdf}{0000/00/00 v0.0}
-  *{file}   {./Appendices/appendixB.tex}{0000/00/00 v0.0}
-  *{file}   {./Appendices/appendixC.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_MPC.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_STS.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
 }

@@ -132,7 +132,7 @@ This inter-domain activity is to be expected in \glspl{manet} in general, where 
 
 %\input{input/full_metric_correlations.tex}
 
-\subsection{Weight Assessment}
+\subsection{Weight Assessment}\label{sec:weight_assessment}
 
 From this significance information, a ``estimated'' signature for each behaviour can be inferred, which can then be fed back into the assessment framework. 
 The aim of this iteration is to minimise the number of weight permutations required to come to a conclusion about the behaviour under observation. 
@@ -181,11 +181,17 @@ In Figs~\ref{fig:comms_time_shadow} and~\ref{fig:full_time_shadow}, the misbehav
 
 From Table~\ref{tab:domain_deltas}, the Shadow behavior is the most consistently detectable behaviour across domains. 
 
-% These figures are the output of test_Thesis_Diagrams.test0ValidationBestPlots
+
+See \autoref{sec:apx_mean_targeting_malicious} for a full collection of graphs showing the comparison of the malicious nodes trust value against the instantenous mean of the remaining cohort.
+See \autoref{sec:apx_targeting_non_malicious} for a full collection of graphs showing the comparison of non-malicious nodes trust value against the individual values of the remaining cohort.
+See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of graphs showing the comparison of non-malicious nodes trust value against the instantenous mean of the remaining cohort.
+
+
 
 \todo{Need to redress potential selection bias in the use for the mean-of-non-outlier-means for $\delta t$ assessment, possibly with an ``Area Under the instantenous mean'' approach; This would also function an as effective ``false positive'' assessment for cross-behaviour weighting}
 
 
+% These figures are the output of test_Thesis_Diagrams.test0ValidationBestPlots
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{best_comms_run_time_MPC}
@@ -273,97 +279,6 @@ From Table~\ref{tab:domain_deltas}, the Shadow behavior is the most consistently
   \includegraphics[width=\linewidth]{best_full_run_time_SlowCoach}
   \caption{SlowCoach Full Metric Trust (showing cohort trust assessments)}
   \label{fig:full_time_slowcoach}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MEAN PLOTS BELOW
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_instantaneous_MPC}
-  \caption{\gls{mpc} Comms Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:comms_instantaneous_mpc}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_instantaneous_MPC}
-  \caption{\gls{mpc} Physical Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:phys_instantaneous_mpc}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_instantaneous_MPC}
-  \caption{\gls{mpc} Full Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:full_instantaneous_mpc}
-\end{figure}
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_instantaneous_STS}
-  \caption{\gls{sts} Comms Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:comms_instantaneous_sts}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_instantaneous_STS}
-  \caption{\gls{sts} Physical Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:phys_instantaneous_sts}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_instantaneous_STS}
-  \caption{\gls{sts} Full Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:full_instantaneous_sts}
-\end{figure}
-
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_instantaneous_Shadow}
-  \caption{Shadow Comms Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:comms_instantaneous_shadow}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_instantaneous_Shadow}
-  \caption{Shadow Physical Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:phys_instantaneous_shadow}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_instantaneous_Shadow}
-  \caption{Shadow Full Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:full_instantaneous_shadow}
-\end{figure}
-
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_instantaneous_SlowCoach}
-  \caption{SlowCoach Comms Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:comms_instantaneous_slowcoach}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_instantaneous_SlowCoach}
-  \caption{SlowCoach Physical Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:phys_instantaneous_slowcoach}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_instantaneous_SlowCoach}
-  \caption{SlowCoach Full Metric Trust (showing mean of non-misbehaving nodes)}
-  \label{fig:full_instantaneous_slowcoach}
 \end{figure}
 
 % These tables are the output of test_Thesis_Diagrams.ThesisDiagrams#test0ValidationBestPlots

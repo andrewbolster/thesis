@@ -1,0 +1,52 @@
+\RequireVersions{
+  *{application}{TeX}     {1990/03/25 v3.x}
+  *{format} {LaTeX2e}     {2014/05/01 v2.e}
+  *{package}{snapshot}    {2002/03/05 v1.14}
+  *{class}  {aamas2016}   {2009/24/07 v1.9}
+  *{package}{epsfig}      {1999/02/16 v1.7a}
+  *{package}{graphicx}    {2014/04/25 v1.0g}
+  *{package}{keyval}      {2014/05/08 v1.15}
+  *{package}{graphics}    {2009/02/05 v1.0o}
+  *{package}{trig}        {1999/03/16 v1.09}
+  *{file}   {graphics.cfg}{2010/04/23 v1.9}
+  *{file}   {pdftex.def}  {2011/05/27 v0.06d}
+  *{package}{infwarerr}   {2010/04/08 v1.3}
+  *{package}{ltxcmds}     {2011/11/09 v1.22}
+  *{package}{amssymb}     {2013/01/14 v3.01}
+  *{package}{amsfonts}    {2013/01/14 v3.01}
+  *{package}{amsmath}     {2013/01/14 v2.14}
+  *{package}{amstext}     {2000/06/29 v2.01}
+  *{package}{amsgen}      {1999/11/30 v2.0}
+  *{package}{amsbsy}      {1999/11/29 v1.2d}
+  *{package}{amsopn}      {1999/12/14 v2.01}
+  *{package}{latexsym}    {1998/08/17 v2.2e}
+  *{package}{fontenc}     {0000/00/00 v0.0}
+  *{file}   {t1enc.def}   {2005/09/27 v1.99g}
+  *{file}   {t1aer.fd}    {1997/11/16 v1/aer.}
+  *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
+  *{package}{pdftexcmds}  {2011/11/29 v0.20}
+  *{package}{ifluatex}    {2010/03/01 v1.3}
+  *{package}{ifpdf}       {2011/01/30 v2.3}
+  *{package}{epstopdf-base}{2010/02/09 v2.5}
+  *{package}{grfext}      {2010/08/19 v1.1}
+  *{package}{kvdefinekeys}{2011/04/07 v1.3}
+  *{package}{kvoptions}   {2011/06/30 v3.11}
+  *{package}{kvsetkeys}   {2012/04/25 v1.16}
+  *{package}{etexcmds}    {2011/02/16 v1.5}
+  *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
+  *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{file}   {ulasy.fd}    {1998/08/17 v2.2e}
+  *{file}   {omsaer.fd}   {1999/12/27 v0.0}
+  *{file}   {img/threat_surface_sum.png}{0000/00/00 v0.0}
+  *{file}   {img/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {img/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {img/full_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {img/best_comms_run_STS.png}{0000/00/00 v0.0}
+  *{file}   {img/best_full_run_STS.png}{0000/00/00 v0.0}
+  *{file}   {img/best_comms_run_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {img/best_full_run_Shadow.png}{0000/00/00 v0.0}
+  *{file}   {img/best_comms_run_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {img/best_full_run_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {aamas2016_bolster.bbl}{0000/00/00 v0.0}
+}

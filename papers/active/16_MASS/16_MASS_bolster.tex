@@ -202,6 +202,7 @@
 % Also of interest may be the (relatively newer and more customizable)
 % algorithmicx.sty package by Szasz Janos:
 % http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+\usepackage{algpseudocode}
 
 
 
@@ -461,7 +462,7 @@ This reference-relative monitoring is particularly useful in the underwater envi
 \subsubsection{Simultaneous Location and Mapping (SLAM)}
 \cite{Williams2000}
 
-Simple Boidean flocking is used in addition to the guiding Waypointing behaviour to provide a collision-avoidance capability.
+Simple Boidean flocking \cite{Reynolds1987a} is used in addition to the guiding Waypointing behaviour to provide a collision-avoidance capability.
 This consists of three heuristic rules; Cohesion, Repulsion and Alignment, and are shown visually in \ref{fig:boid} and mathematically below.
 \begin{itemize}
   \item Cohesion
@@ -514,12 +515,15 @@ These limits are given in Table~\ref{tab:mobility_sysconstraints}
       \midrule
       Length & $m$ & 5.5\\
       Diameter & $m$ & 0.5\\
-      Mass & $kg$ & 1090 \\ 
+      Mass & $kg$ & 37 \\ 
       Max Speed & $ms^{-1}$ & 2.5\\
       Cruising Speed & $ms^{-1}$ & 1.5\\
       Max X-axis Turn & $^{\circ} s^{-1}$ & 4.5\\
       Max Y-axis Turn & $^{\circ} s^{-1}$ & 4.5\\
       Max Z-axis Turn & $^{\circ} s^{-1}$ & 4.5\\
+      Axial Drag Coefficient ($c_d$) & NA & 3\\
+      Cross Section Area & $m^2$ & 0.13\\
+
       \bottomrule
     \end{tabular}
     \setlength{\tabcolsep}{6pt}
@@ -587,17 +591,30 @@ These two behaviours are designated \emph{Shadow} and \emph{SlowCoach} respectiv
 
 \subsection{Analysis Workflow}
 Having established the metrics under investigation, $MANY$ simluation runs are executed for each scenario (i.e.\ one node ``Maliciously'' following the fleet with no mission information, one ``Failing'' node with simulated drivetrain issues, and one baseline control scenario where all nodes are behaving appropriatly.
-Eash of these simulated missions last for $duration$, matching realistic deployment times based on current MOD/NATO operations\cite{Something}.
+Eash of these simulated missions last for $duration$, matching realistic deployment times based on current MOD/NATO operations\cite{Bolster2014a}\cite{Something Else}.
 
 In order to assess the viability of using the previously discussed metrics for behaviour assessment, the raw motion paths recorded by the simulation are fed into an analysis pipeline\footnote{We do not currently deal with the case where nodes maliciously ``fake'' their location}.
 This pipeline initially 
+
+\begin{figure}
+  \begin{algorithmic}
+    \ForAll{m in M}
+      \ForAll{t}
+      \State $d_{i,j}^{m,t} = x_{i,j}^{m,t} - \frac{\sum_k x_{i,k}^{m,t}}{|M|}$
+      \State $\alpha_{i,j}^{m,t} = | \frac{d_{i,j}^{m,t}}{\sigma{d_{i,j}^{m,t}}}|$
+      \EndFor
+    \EndFor
+  \end{algorithmic}
+\end{figure}
+
+Where $i$ and $j$ are indices denoting the current observer node and the current observed node respectively; $x$ is a summation index representing other nodes in the observers region of concern; $X$ is the vector of metrics from \ref{eq:phys_vector}; $d$ is an intermediate value of the deviation of a given observation from the mean, and $\alpha$ is a resulting 
 
 \subsection{Impacts of behaviour on fleet performance}
 
 \section{Conclusion}
 In this paper we have demonstrated that with current and on-the-horizon underwater localisation techniques, that in certain mobility models, that a set of relatively simple geometric abstractions (INHD, INDD, and Speed), between nodes as part of an Underwater MANET can be used as a Trust Assessment and Establishment metric.
 
-We show, using a basic cubic survey mobility model built upon a Boidian collision prevention behaviour that in a simulated underwater environment, the outputs of these metrics can be used to detect and differentiate between example malicious behaviour and node potential failure states.
+We show, using a basic cubic survey mobility model built upon a Boidian collision prevention behaviour that in a simulated underwater environment, the outputs of these metrics can be used to detect and differentiate between example malicious behaviour and potential failure states.
 
 This verification further supports the assertions the authors have made previously in \cite{Bolster2014}  that it is practical to extend Trust protocols such as Multi-parameter Trust Framework for MANETS (MTFM)\cite{Guo2012} to include metrics and observations from the physical domain as well as those from the communication domain. 
 This combination of physical and ``logical'' information would further support the decentralised and distributed establishment of observation based Trust, reducing the significant 

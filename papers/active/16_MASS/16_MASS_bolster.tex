@@ -343,8 +343,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BOLSTER PACKAGES FOR DEV PERIOD %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \usepackage{booktabs}
+\usepackage{hyperref}
+\graphicspath{{../../../Figures/}}
 
 
 \begin{document}
@@ -383,6 +384,10 @@ Email: alan.marshall@liv.ac.uk}
 \begin{abstract}
 %\boldmath
 
+\emph{Relevant sections from the \href{http://www.ene.unb.br/mass2016/}{CFP} art: Key Mgmt \& Trust Establishment; Robotic Networks; Vehicular Networks \& Protocols; Location Based Services; Mobility Managment}
+
+
+
 \end{abstract}
 % no keywords
 
@@ -399,31 +404,203 @@ Email: alan.marshall@liv.ac.uk}
 
 
 \section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
-
-\hfill mds
- 
-\hfill January 11, 2007
-
-\subsection{Subsection Heading Here}
-Subsection text here.
 
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+
+In the majority of Trusted autonomous mobile network implementations, a free space RF communications protocol such as 802.11 is used.
+By their nature, such implementations rely on relatively high bandwidth, low noise, low latency, high channel occupancy where contention is tolerable.
+In contrast; in underwater environments, communications is sparse, delayful, noisy, and very prone to destructive contention.
+Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF MANETS.
+In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, drive towards the use of teams of smaller, cheaper, almost disposable autonomous underwater vehicles (AUVs), particularly in defense, ecological and petrochemical fields. 
+These increasingly decentralised applications present unique threats against trust management. 
+
+Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes operating as teams, groups or networks. 
+This information is used to optimize the performance of a team against malicious, selfish, or defective misbehaviour by one or more nodes.
+Previous research has established the advantages of implementing communications-based TMFs in terrestrial, 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}. 
+Most current TMFs use a single type of observed communuication action to derive trust assessments, typically successfully delivered or forwarded packets. 
+These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
+
+Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust. The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo11}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust. This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust. 
+This method as been previously applied to the marine space, comparing against a selection of existing communications TMFs \cite{Bolster2015} showing that MTFM is more effective at detecting misbehaviours in sparse communications environments. 
+
+This paper investigates the application of these communication-based Trust methodologies to the physical domain, to assess the viability of using the motion and mobility of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
+This is accomplised by looking specifically at operations within the three dimensions of the underwater space 
+
+\section{AUV Mobility and Localisation}
+
+The use and applications of Autonomous Underwater Vehicles (AUVs) has undergone a great expansion in recent times; current applications and considerations are given in Table~\ref{tab:auv_apps} (summarised from \cite{Jalving2003}).
+For the purposes of this exploratory case we do not model the hydrodynamics of the control surfaces of the AUVs.
+
+\begin{table}[h]
+  \caption{REMUS 100 Mobility Constraints as applied in simulation} \label{tab:mobility_sysconstraints}
+  \begin{center}
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{lcc}
+      \toprule
+      \bottomrule
+    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+  \end{center}
+\end{table}
+
+\subsection{Localisation Technologies}
+
+Given the subsurface nature of most AUV operations, terrestrial localisation techniques such as GPS are unavailable (below $\approx 20cm$ depth). 
+However, a range of alternative techniques are used to maintain spacial awareness in the underwater environment.
+\subsubsection{Long baseline (LBL)}
+Long-baseline localisation systems use a series of surface/cable networked acoustic transponders to provide coordinated beacons and (usually) GPS-backed relative location information to local subsurface users. 
+Such systems can be accurate to less that $0.1m$ or better in ideal deployments and are regularly used in controled autonomous survey environments such as harbour patrol operations. 
+LBL systems can also be relative to other mobile surface assets in the area (ships or buoys for example), but these applications put significant computational pressure on the end-point AUV\cite{Matos1999}.
+\subsubsection{Doppler Velocity Log (DVL)}
+Doppler logging involves the emission of directed acoustic ``pings'' that reflect off sea bed/surface interfaces that, when recieved back on the craft with multi-beam phased array acoustic transducers can measure both the absolute depth/altitude (z-axis) of the craft and through directional doppler shifting, the relative (xy-translative) motion of the craft since the ping.
+While classical DVL was highly sensitive to shifting currents in the water column, advances in the development of Acoustic Doppler Current Profiling has turned that situation on it's head, enabling the compensation-for and measurement-of water currents down to the sub-meter level\cite{Snyder2010}.
+\subsubsection{Inertial Navigation Systems (INS)}
+Inertial nativation systems use gyoscopic procession to observe the relative acceleration of a mobile platform.
+This reference-relative monitoring is particularly useful in the underwater environment, as it detects the motion of AUVs as they are carried by the water itself
+\cite{Jalving2003}
+\subsubsection{Simultaneous Location and Mapping (SLAM)}
+\cite{Williams2000}
+
+Simple Boidean flocking is used in addition to the guiding Waypointing behaviour to provide a collision-avoidance capability.
+This consists of three heuristic rules; Cohesion, Repulsion and Alignment, and are shown visually in \ref{fig:boid} and mathematically below.
+\begin{itemize}
+  \item Cohesion
+    \begin{equation}
+      F_{j,C}= F_A\left(p_j, \frac{1}{N}\sum\limits_{\forall i \ne j}^N{p_i}, d_{max}\right)
+    \end{equation}
+  \item Repulsion
+    \begin{equation}
+      F_{j,R}= \sum\limits_{\forall i \ne j}^N F_R\left(p_j, p_i, d_{max}) \big| d_{max}>\|p_i-p_j\|\right)
+    \end{equation}
+  \item Alignment
+    \begin{equation}
+      F_{j,CA}= \frac{1}{N}\cdot\left(\sum\limits_{\forall i \ne j}^N \hat{v_i}\right) 
+    \end{equation}
+\end{itemize}
+where $F$'s are force-vectors applied to the internal guidance of the AUV, 
+\begin{figure*}
+  \centering
+  \subfloat[Cohesion]{\includegraphics[width=0.3\textwidth]{flocking_cohesion}}
+  \subfloat[Repulsion]{\includegraphics[width=0.3\textwidth]{flocking_separation}}
+  \subfloat[Alignment]{\includegraphics[width=0.3\textwidth]{flocking_alignment}}
+  \caption{Visual representation of the basic Boidean collision avoidance rules used}
+  \label{fig:boids}
+\end{figure*}
+Where $F_A$ is a scaled vector attraction function, and $F_R$ is an equivalent repulsion function
 
 
+
+\section{Trust Management Frameworks}
+
+Trust Management Frameworks (TMFs) are being used to improve the efficiency, security, and reliability of decentralized and distributed autonomous systems. 
+Techniques have been developed for high-speed, uncontended environments such as terrestrial 802.11 MANETs. 
+However, these do not perform well in sparse / harsh environments such as those found in Underwater Acoustic Networks (UANs), where network nodes experience significant and variable delays, comparatively low data rates, large contention periods, and considerable multi-path artefacts.\cite{Bolster2015} 
+
+
+\section{Simulation Background}
+
+Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
+For the purposes of this paper, this network is used for the disseminiation of node location information, assuming suitable compression of internally assumed location data compressed into one 4096 bit acoustic data frame.
+Node kinematics are based on REMUS 100 Autonomous Underwater Vehicles, based on limits and core characteristics given in \cite{Mcewen2001}, \cite{Milgram2001} and \cite{Samad2011}.
+
+These limits are given in Table~\ref{tab:mobility_sysconstraints}
+\begin{table}[h]
+  \caption{REMUS 100 Mobility Constraints as applied in simulation} \label{tab:mobility_sysconstraints}
+  \begin{center}
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{lcc}
+      \toprule
+      Parameter & Unit & Value \\
+      \midrule
+      Length & $m$ & 5.5\\
+      Diameter & $m$ & 0.5\\
+      Mass & $kg$ & 1090 \\ 
+      Max Speed & $ms^{-1}$ & 2.5\\
+      Cruising Speed & $ms^{-1}$ & 1.5\\
+      Max X-axis Turn & $^{\circ} s^{-1}$ & 4.5\\
+      Max Y-axis Turn & $^{\circ} s^{-1}$ & 4.5\\
+      Max Z-axis Turn & $^{\circ} s^{-1}$ & 4.5\\
+      \bottomrule
+    \end{tabular}
+    \setlength{\tabcolsep}{6pt}
+  \end{center}
+\end{table}
+
+\subsection{Standards of Accuracy}
+
+The key question of this paper is to assess the advantages and disadvantages of utilising trust from the physical domain. 
+
+It is important to clarify what is meant by ``effective'' in this case; the ``effectiveness'' of any trust assessment framework is taken as consisting of several parts.
+
+\begin{enumerate}
+  \item the \emph{accuracy} of detection and identification of a particular misbehaviour
+  \item the \emph{timeliness} of such detections
+  \item the \emph{complexity} of such analysis, including any specific training required
+  \item the \emph{commonality} of the results of any detections between perspectives (also termed ``isomorphism'' of results)
+\end{enumerate}
+
+In this case we are particularly interested in the accuracy of detection and identification of malicious / failing behaviours, and as such are looking at three key characteristics of accuracy; true detection accuracy (what percentage of ``bad'' behaviours are detected at all); false positive rates (what percentage of ``control'' behaviours are detected as being ``bad''); and misidentification rates (how many instances of one bad behaviour are mischaracterised as the other and vie versa.
+
+\subsection{Physical Metrics}
+
+Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; Inter-node Distance Deviation (INDD), Inter-node Heading Deviation (INHD), and Node Speed. 
+These metrics encapsulate the relative distributions of position and velocity of a particular observed node, optimising for the detection of outlying or deviant behaviour within the fleet.
+
+Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable initial set of metrics to establish the usefulness of physical metrics of trust assessment.
+
+Conceptually, INDD is a measure of the average spacing of an observed node with respect to its neighbours. INHD is a similar approach with respect to node orientation.
+
+\begin{align}
+  INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
+  INHD_{i,j} &= \hat{v} \vert v= V_j - \sum_x{\frac{V_x}{N}}\\
+  V_{i,j} &= |V_j|
+\end{align}
+
+Where $i$ and $j$ are indices denoting the current observer node and the current observed node respectively; $x$ is a summation index representing other nodes in the observers region of concern; $P{j}$ is the $[x,y,z]$ absolute position of the observed node (relative to some coordinated origin point agreed upon at launch) and $V{j}$ is the $[x,y,z]$ velocity of the observed node.
+
+Thus, the metric vector used for the physical-trust assessment from one observer node to a given target node is;
+
+\begin{equation}
+  X_{i,j}=\{\text{INDD}_{i,j}, \text{INHD}_{i,j},, V_{i,j}\}
+  \label{eq:phys:vector}
+\end{equation}
+At each time-step, each node will have a separate $X$ assessment vector for each node it has observed in that time. 
+Ergo the fleet or team as a whole will have $N\times N$ assessment vectors at each timestep.
+
+\subsection{Physical Misbehaviours}
+Misbehaviours in the communications space is heavily investigated area in MANETs \cite{Konate2011}\cite{Wang2009}\cite{Chen2014a}\cite{Mitchell2014}, but attacks and misbehaviours in the physical space are far less explored. 
+Both in terrestrial and underwater contexts, as MANET applications expand and become increasingly \emph{de rigueur}, the impacts of physical or operational misbehaviour become increasingly relevant. 
+As in the communications space, the primary drivers of any ``misbehaviour'' come under two general categories; selfish operation or malicious subterfuge.
+Autonomous MANETs in general rely (or are at least, most effective) when all nodes operate fairly, be that in terms of their bandwidth sharing, energy usage, routing optimality or other factors. 
+Physically, if a node is being ``selfish'', it may preferentially move to the edge of a network to minimise it's dynamic work allocation, or depending on it's intent, may insert itself into the centre of a network to maximise it's ability to capture, monitor, and manipulate traffic going across the network. 
+In the context of a secure operation (or one that's assumed to be secure), the opportunity for capturing a legitimate node and replacing it with a modified clone.
+Assuming a highly capable outside actor and a multi-channel communications opportunity, there is even the possibility of a node appearing to ``play along'' with the crowd that occasionally breaks rank to route internal transmissions to a outside agent.
+In the underwater context this may mean an AUV following the rest of a team along a survey path and occasionally ``breaking surface'' to communicate to a malicious controller.
+Alternatively, if an inserted node is not totally aware of a given mission parameter, such as a particular survey or waypointing path, it may simply follow along, hoping not to be noticed.
+
+In all these cases, such behaviour involves some element of behaving differently from the rest of the team, however, there are other cases where such individual ``deviance'' is observed; where a node is in some kind of mechanical ``failure state''.
+In the underwater context, this could be damage to the drivetrain or navigation systems, causing it to lag behind or consistently drift off course. 
+An ideal physical trust management system would be able to differentiate between both ``malicious'' behaviours and ``failing'' behaviours.
+
+To investigate this hypothesis, we create two ``bad'' behaviours; one ``malicious'', where a cloned node is unaware of the missions' survey parameters and attempts to ``hide'' among the fleet, and a ``failing'' node, with an impaired drive train, increasing the drag force on the nodes movement.
+These two behaviours are designated \emph{Shadow} and \emph{SlowCoach} respectively.
+
+\subsection{Analysis Workflow}
+Having established the metrics under investigation, $MANY$ simluation runs are executed for each scenario (i.e.\ one node ``Maliciously'' following the fleet with no mission information, one ``Failing'' node with simulated drivetrain issues, and one baseline control scenario where all nodes are behaving appropriatly.
+Eash of these simulated missions last for $duration$, matching realistic deployment times based on current MOD/NATO operations\cite{Something}.
+
+In order to assess the viability of using the previously discussed metrics for behaviour assessment, the raw motion paths recorded by the simulation are fed into an analysis pipeline\footnote{We do not currently deal with the case where nodes maliciously ``fake'' their location}.
+This pipeline initially 
+
+\subsection{Impacts of behaviour on fleet performance}
 
 \section{Conclusion}
-The conclusion goes here.
+In this paper we have demonstrated that with current and on-the-horizon underwater localisation techniques, that in certain mobility models, that a set of relatively simple geometric abstractions (INHD, INDD, and Speed), between nodes as part of an Underwater MANET can be used as a Trust Assessment and Establishment metric.
 
+We show, using a basic cubic survey mobility model built upon a Boidian collision prevention behaviour that in a simulated underwater environment, the outputs of these metrics can be used to detect and differentiate between example malicious behaviour and node potential failure states.
 
+This verification further supports the assertions the authors have made previously in \cite{Bolster2014}  that it is practical to extend Trust protocols such as Multi-parameter Trust Framework for MANETS (MTFM)\cite{Guo2012} to include metrics and observations from the physical domain as well as those from the communication domain. 
+This combination of physical and ``logical'' information would further support the decentralised and distributed establishment of observation based Trust, reducing the significant 
 
 
 % conference papers do not normally have an appendix
@@ -432,8 +609,7 @@ The conclusion goes here.
 % use section* for acknowledgement
 \section*{Acknowledgment}
 
-
-The authors would like to thank...
+The Authors would like to thank the DSTL/DGA UK/FR PhD Programme for their support during this project, as well as NATO CMRE for their advice and assistance.
 
 \bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)

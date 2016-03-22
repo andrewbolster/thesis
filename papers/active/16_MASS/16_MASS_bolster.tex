@@ -412,7 +412,7 @@ Email: alan.marshall@liv.ac.uk}
 \section{Introduction}
 
 In the majority of Trusted autonomous mobile network implementations, a free space RF communications protocol such as 802.11 is used as the source of all information about the trustworthy operation of the network.
-By their nature, such implementations rely on relatively high bandwidth, low noise, low latency, high channel occupancy where contention is tolerable.
+By their nature, such implementations rely on relatively high bandwidth, low noise, low latency, and high channel occupancy where contention is tolerable.
 In contrast; in underwater environments, communications is sparse, delayful, noisy, and very prone to destructive contention.
 Therefore, observations of the communications processes used to assess trust occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF MANETS.
 In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, and the increasing drive towards the use of teams of smaller, cheaper, almost disposable autonomous underwater vehicles (AUVs), particularly in defense, ecological and petrochemical fields, present unique threats against trust management. 
@@ -436,7 +436,7 @@ In Section~\ref{sec:exp}, we design a series of simulations, hypotheses, and tes
 
 \section{AUV Mobility and Localisation}\label{sec:mobility}
 
-The use and applications of Autonomous Underwater Vehicles (AUVs) has undergone a great expansion in recent times; current applications and considerations are given in Table~\ref{tab:auv_apps} (summarised from \cite{Jalving2003}\cite{andThen}\cite{AndTHEN}).
+The use and applications of Autonomous Underwater Vehicles (AUVs) has undergone a great expansion in recent times; current applications and considerations are given in Table~\ref{tab:auv_apps} (summarised from \cite{Jalving2003}\cite{andThen}).
 For the purposes of this exploratory case we do not model the hydrodynamics of the control surfaces of the AUVs, however we do model axial drag as a resistive inertial force.
 
 \begin{table}[h]
@@ -459,18 +459,20 @@ For the purposes of this exploratory case we do not model the hydrodynamics of t
 \subsection{Localisation Technologies}
 
 Given the subsurface nature of most AUV operations, terrestrial localisation techniques such as GPS are unavailable (below $\approx 20cm$ depth). 
-However, a range of alternative techniques are used to maintain spacial awareness in the underwater environment.
+However, a range of alternative techniques are used to maintain spacial awareness to a high degree of accuracy in the underwater environment.
 \subsubsection{Long baseline (LBL)}
-Long-baseline localisation systems use a series of surface/cable networked acoustic transponders to provide coordinated beacons and (usually) GPS-backed relative location information to local subsurface users. 
-Such systems can be accurate to less that $0.1m$ or better in ideal deployments and are regularly used in controlled autonomous survey environments such as harbour patrol operations. 
-LBL systems can also be relative to other mobile surface assets in the area (ships or buoys for example), but these applications put significant computational pressure on the end-point AUV\cite{Matos1999}.
+Long-baseline localisation systems use a series of static surface/cable networked acoustic transponders to provide coordinated beacons and (usually) GPS-backed relative location information to local subsurface users. 
+Such systems can be accurate to less that $0.1m$ or better in ideal deployments and are regularly used in controlled autonomous survey environments such as harbour patrol operations where the deployment area is bounded. 
+However, the initial setup and deployment required in advance of any AUV operation makes LBL difficult to utilise in unbounded or contended areas.
+LBL systems can also be deployed on mobile surface platforms in the area (ships or buoys for example), but these applications put significant computational pressure on the end-point AUV and have greatly reduced accuracy compared to ideal deployments\cite{Matos1999}.
 \subsubsection{Doppler Velocity Log (DVL)}
 Doppler logging involves the emission of directed acoustic ``pings'' that reflect off sea bed/surface interfaces that, when received back on the craft with multi-beam phased array acoustic transducers can measure both the absolute depth/altitude (z-axis) of the craft and through directional Doppler shifting, the relative (xy-translative) motion of the craft since the ping.
 While classical DVL was highly sensitive to shifting currents in the water column, advances in the development of Acoustic Doppler Current Profiling has turned that situation on it's head, enabling the compensation-for and measurement-of water currents down to the sub-meter level\cite{Snyder2010}.
 \subsubsection{Inertial Navigation Systems (INS)}
 Inertial navigation systems use gyroscopic procession to observe the relative acceleration of a mobile platform.
 This reference-relative monitoring is particularly useful in the underwater environment, as it detects the motion of AUVs as they are carried by the water itself.
-Several sensor synthesis processes have been demonstrated which combine information from INS along with DVL data to improve localisation into the sub-decimeter level\cite{Jalving2003}.
+Bias Drift is a significant problem for INS systems operating over longer (hundreds of metres) distances, as they usually have some minimal amount of directional bias, that incurs a cumulative effect over time without assistance.
+Several sensor synthesis processes have been demonstrated which combine information from INS along with DVL data to improve localisation into the sub-decimeter level\cite{Jalving2003}\cite{Liu2014}.
 
 \subsubsection{Simultaneous Location and Mapping (SLAM)}
 Simultaneous Location and Mapping is the process of iteratively developing a feature-based model of an environment, and to use the relative movement within that modeled environment to obtain estimates of absolute positioning.
@@ -534,7 +536,7 @@ These two behaviours are designated \emph{Shadow} and \emph{SlowCoach} respectiv
 
 \subsection{Simulation Background}
 
-Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (Table \ref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
+Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
 For the purposes of this paper, this network is used for the dissemination of node location information, assuming suitable compression of internally assumed location data compressed into one 4096 bit acoustic data frame.
 Node kinematics are based on REMUS 100 Autonomous Underwater Vehicles, based on limits and core characteristics given in \cite{Mcewen2001}, \cite{Milgram2001} and \cite{Samad2011}.
 
@@ -567,7 +569,7 @@ These limits are given in Table~\ref{tab:mobility_sysconstraints}
 \subsection{Node Control Modelling}
 
 Simple Boidean flocking \cite{Reynolds1987a} is used in addition to the guiding Waypointing behaviour to provide a collision-avoidance capability.
-This consists of three heuristic rules; Cohesion, Repulsion and Alignment, and are shown visually in~\ref{fig:boid} and mathematically below.
+This consists of three heuristic rules; Cohesion, Repulsion and Alignment, and are shown visually in~\ref{fig:boids} and mathematically below.
 \begin{itemize}
   \item Cohesion
     \begin{equation}
@@ -649,6 +651,25 @@ Where $i$ and $j$ are indices denoting the current observer node and the current
 \subsubsection{Behaviour Detection and Classification}
 \todo{This is going to be a bit of a black box while I work out what works automatically; previous versions simply looked at the ``Highest Deviator'', and while that still works in terms of detection, it's not massively useful in terms of Identification. Could be that in terms of the criteria posed above (simplicity of computation) that using the basic toolkits, we can't do it, however I'd rather not have every single paper I do in my career have half a page explaining the abstract operation of Gray Theory\dots}
 
+One simple behaviour detection is to apply Dixon's Q-test \cite{Dean1951} to the resultant $\sum\alpha$ values for each node for each metric for each run  a) establish if a ``misbheaving node'' exists in a given run, and b) identify that misbehaving node. 
+
+\todo{If you need padding at the end, explain Dixon}
+
+For our initial investigation we will use a Confidence Interval of $95\%$.
+Our initial hypothesis is that by using observations of the previously stated physical metrics, that we will be able to detect and identify misbehaviours.
+Within that context, this Confidence Interval indicates that we would expect only a $5\%$ chance that any run or node identified using the Q-test to \emph{not} be a misbehaving run/node.
+
+Further, due to the range of metrics available to us, by applying the Q-test on a per-metric basis, we can use the ``votes'' of each metric as a simplified consensus classifier.
+\todo{There's got to be a better phrase than ``consensus''\dots}
+This classifier may allow us to characterise some aspect of a given misbehaviour in terms of metrics it heavily impacts, and those that are less affected.
+
+This can then be augmented by taking the residual deviation of $\sum\alpha_{i}$ to generate a ``confidence'' score of a given node being an outlier in a given metric;
+
+\begin{equation}
+  C_{i}^{m} = \Sigma_t\sigma_{i}^m * \frac{N-1}{\sum_{x\neq i}{\Sigma_t\sigma_{x}^m}}\label{eq:confidence}
+\end{equation}
+
+
 \subsubsection{Operational Performance Metrics}
 \todo{``How do we measure the impact of a bad-physical-behaviour on the operational success/efficiency of the fleet overall?''. We have these numbers already in terms of energy use/efficiency of locomotion, cumulative distance covered, mean time to targets, etc, just need to wrap some words around it}
 
@@ -673,15 +694,31 @@ Where $i$ and $j$ are indices denoting the current observer node and the current
 
 \begin{figure*}
   \centering
-  \subfloat[INDD]{\includegraphics[width=0.3\linewidth]{summedsigmabar_INDD}}
-  \subfloat[INHD]{\includegraphics[width=0.3\linewidth]{summedsigmabar_INDD}}
-  \subfloat[Speed]{\includegraphics[width=0.3\linewidth]{summedsigmabar_Speed}}
+  \subfloat[INDD]{\includegraphics[width=0.6\linewidth]{summedsigmabar_INDD}}\\
+  \subfloat[INHD]{\includegraphics[width=0.6\linewidth]{summedsigmabar_INDD}}\\
+  \subfloat[Speed]{\includegraphics[width=0.6\linewidth]{summedsigmabar_Speed}}
   \caption{\emph{VERY Draft; don't get pissy!}: Per-Node-Per-Run $\sum\alpha/T$}
 \end{figure*}
 
 \subsection{Detection of Misbehaviours}
 
 \subsection{Identification of Misbehaviours}
+\todo{The below table is whats going to be used to condense all the ugly above into something processable across many runs (and most importatly, blind runs)}
+\begin{table}[h]
+  \caption{Metric Confidence Responses for known behaviours~\eqref{eq:confidence}}
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    metric &      INDD &      INHD &     Speed \\
+    var       &           &           &           \\
+    \midrule
+    Shadow    &  3.802935 &  3.191642 &  1.867909 \\
+    SlowCoach &  4.227141 &  2.773664 &  1.509357 \\
+    Tail      &  3.874741 &  3.652717 &  2.155030 \\
+    Waypoint  &  0.920183 &  0.966642 &  0.958920 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Impacts of Misbehaviour on operational performance}
 

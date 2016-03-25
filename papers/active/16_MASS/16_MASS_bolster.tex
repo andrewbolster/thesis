@@ -345,6 +345,7 @@
 % BOLSTER PACKAGES FOR DEV PERIOD %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{todonotes}
 \presetkeys%
@@ -353,12 +354,21 @@
 
 \graphicspath{{../../../Figures/}{./figures/}}
 
+\usepackage{fancyhdr}
+\fancypagestyle{firstpage}{% Page style for first page
+  \fancyhf{}% Clear header/footer
+  \renewcommand{\headrulewidth}{0.4pt}% Header rule
+  \fancyhead[C]{Draft for Submission to Mobile Adhoc Sensor Systems (MASS'16) Brasilia Oct'16}% Header
+}
+\pagestyle{plain}% Default page style
+
 
 \begin{document}
+
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Mobility for Trust Assessment in Autonomous Underwater MANETs}
+\title{Physical Behaviours for Trust Assessment in Autonomous Underwater MANETs}
 
 
 % author names and affiliations
@@ -386,6 +396,8 @@ Email: alan.marshall@liv.ac.uk}
 % make the title area
 \maketitle
 
+\thispagestyle{firstpage}% firstpage page style for first page
+
 
 \begin{abstract}
 %\boldmath
@@ -411,49 +423,73 @@ Email: alan.marshall@liv.ac.uk}
 
 \section{Introduction}
 
+Early attempts to secure and protect the integrity of Mobile Ad-hoc Networks have relied on some form of strong-cryptograpic methods to protect information being transited in routing packats.
+Such an approach does protect the integrity of individual pieces of data, the increased computation, and storage requirements of modern, strong, decentralised cryptography present a clear avenue for Denial of Service (DoS) attacks on MANET.
+This threat is particularly relevant in resource-constrained networks, where one or more aspects of the environment are limited, be it available power, locomotive mobility, data storage, onboard processing, available bandwidth, and channel resources such as capacity and delay.
+In such networks, where there is a requirement of security and/or integrity monitoring, strong-cryptographic methods present an entirely new threat-opportunity to potential attackers.
+
+One solution to the trade-off between DoS-protection, and security is the establishment of assessment of ``trustworthiness'' of nodes within a local network. 
+``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour.
+Using this Trust to make simple routing decisions is significantly faster that strong-cryptographic methods, particularly in multi-hhop networks or resource constrined networks\cite{Cordasco2008}.
+
+With Trust being reliant on the near-real-time awareness of some behaviour, and Cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to security
+It is envisioned that going forward, some elements of both methodologies will be used in different contexts and applications. 
+
+However, these approaches to operational security have been totally focused on the establishment of trust/security in the communications domain, and ignore other potential threats to the network exploited through physical movement.
+This threat is particularly evident in collaborative autonomous systems where nodes are tasked to acccomplish some survey / exploration / observation objective in a distributed fashion, where individual nodes make decisions based on the actions of their ``team''. 
+This collaboration opens the opportunity for a physically-misbehaving actor to selfishly conserve it's own resources, or maliciously ``drain'' a given target node.
+Current security / trust systems applied to MANETs are not concerned with the threat of such physical misbehaviours.
+
+This paper proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, assessing the viability of using the motion of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
+This is accomplished by looking specifically at operations within the three dimensions of the underwater space.
+
 In the majority of Trusted autonomous mobile network implementations, a free space RF communications protocol such as 802.11 is used as the source of all information about the trustworthy operation of the network.
+Most current trust frameworks use a single type of observed communication action to derive trust assessments, typically successfully delivered or forwarded packets. 
 By their nature, such implementations rely on relatively high bandwidth, low noise, low latency, and high channel occupancy where contention is tolerable.
 In contrast; in underwater environments, communications is sparse, delayful, noisy, and very prone to destructive contention.
 Therefore, observations of the communications processes used to assess trust occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF MANETS.
 In addition to the communications challenges, other considerations such as command and control isolation, as well as power and locomotive limitations, and the increasing drive towards the use of teams of smaller, cheaper, almost disposable autonomous underwater vehicles (AUVs), particularly in defense, ecological and petrochemical fields, present unique threats against trust management. 
 
-Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes operating as teams, groups or networks. 
-This information is used to optimize the performance of a team against malicious, selfish, or defective misbehaviour by one or more nodes.
-Previous research has established the advantages of implementing communications-based TMFs in terrestrial, 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}. 
-Most current TMFs use a single type of observed communication action to derive trust assessments, typically successfully delivered or forwarded packets. 
-These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
-
-Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust. The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo11}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust. This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust. 
-This method as been previously applied to the marine space, comparing against a selection of existing communications TMFs \cite{Bolster2015} showing that MTFM is more effective at detecting misbehaviours in sparse communications environments. 
-
-This paper investigates the application of these communication-based Trust methodologies to the physical domain, to assess the viability of using the motion and mobility of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
-This is accomplished by looking specifically at operations within the three dimensions of the underwater space.
-
-In Section~\ref{sec:mobility}, we review the current applications and mobility patters of collaborative AUV operations, and the current state-of-the-art in underwater localisation techniques.
-In Section~\ref{sec:tmfs}, we discuss the use of TMFs in the terrestrial space and their applicability to marine operations in general. 
-In Section~\ref{sec:exp}, we design a series of simulations, hypotheses, and tests to assess the detection and identification capabilities of three potential physical metrics for trust assessment.
+In Section~\ref{sec:mobility}, we review the current use cases, deployments and mobility patterns of collaborative AUV operations, and the state-of-the-art in underwater localisation techniques.
+In Section~\ref{sec:tmfs}, we discuss the use of TMFs and their relevance and applicability to marine operations. 
+In Section~\ref{sec:physbev}, we propose a collection of physical metrics to characterise the physical behaviours of node, and establish a set of physical ``misbehaviours'' to test these against.
+In Section~\ref{sec:sim_and_valid}, we design a series of simulations, and tests to assess the detection and identification capabilities of three potential physical metrics for trust assessment.
 
 
 \section{AUV Mobility and Localisation}\label{sec:mobility}
 
-The use and applications of Autonomous Underwater Vehicles (AUVs) has undergone a great expansion in recent times; current applications and considerations are given in Table~\ref{tab:auv_apps} (summarised from \cite{Jalving2003}\cite{andThen}).
-For the purposes of this exploratory case we do not model the hydrodynamics of the control surfaces of the AUVs, however we do model axial drag as a resistive inertial force.
+The use and applications of Autonomous Underwater Vehicles (AUVs) has undergone a great expansion in recent times; current applications and considerations are given below (summarised from \cite{Jalving2003}).
 
-\begin{table}[h]
-  \caption{Applications of AUVs} \label{tab:auv_apps}
-  \begin{center}
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{lcc}
-      \toprule
-      \bottomrule
-    \end{tabular}
-    \setlength{\tabcolsep}{6pt}
-  \end{center}
-\end{table}
 
 \subsection{AUV operations and deployments}
 
-\todo{I have something for this but can't lay my hands on it at the moment; TLDR the used cubic port protection / littoral survey model used isn't perfect but its a reasonable analogue}
+\subsubsection{Hydrographic Survey}
+
+The use of AUVs in the place of manned-surface platforms or tethered undersea platforms enables greatly increased spatial and temporal sampling.
+Importantly, the separation of AUVs from the noisy sea surface enables much more efficient survey operations.
+This is particularly important when comparing to classical tow-line based measurements; where the mobility of the AUVs enables for much tighter-turning survey patterns or operation in inaccessible or hard-to-reach locations such as polar survey\cite{Curtin1993}.
+
+Another significant factor is cost; the daily cost of operating a manned vessel can be signficantly higher than the costs of deploying, operating and recovering one or more AUVs with equivalent capabilities\cite{Nicholson2008}.
+Additionally, the use of low-power ``glider'' AUVs has lowered the barrier to entry for extended mission types, such as persistent environmental survey, or open-ocean operations. 
+Depth-hardened AUVs have also opened up the deepest parts of the oceans to exploration, with the onboard autonomoy, imagery and Simultaneous Location and Mapping (SLAM) techniques allowing deep-dwelling survey AUVs to react to bottom-surface features without the need for a tight craft-to-surface control loop.
+The natural extension of these kind of applications is the use of AUVs on ice-covered planets such as Europa, where three-dimensional, autonomous navigation without an on-the-loop controller is vital for mission resource efficiency and success.
+
+\subsubsection{Hull and Infrastructure Inspection}
+Ongoing concerns regarding the security, safety and legality of international shipping has driven the application of AUVs to the area of near-surface hull and infrastructure inspections, looking for damage as well as devices such as limpet mines and other contraband.
+This use case puts a range of unique pressures on the AUV system; requiring highly accurate three-dimensional localisation and control to clearly image the contours of a hull\cite{Nicholson2008}.
+Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using AUVs for both the laying of and inspection of these cables is an exciting area of work\cite{Yu2004}\cite{Asakawa2002}.
+
+\subsubsection{Marine Petrochemical}
+Oil and Gas industry requirements for high quality, low altitude bathymetry of seabed structures for infrastructure development (pipelines/drill platforms etc.) as well as monitoring of those structures over time (inspection etc.) is another significant application area, and a major driver of research investment.
+As in Hydrography, the mobility of AUVs is the biggest single advantage over classical platforms\cite{Morr2003}.
+
+\subsubsection{Military}
+Mine-Countermeasure Operations benefit greatly from, and significantly drive, AUV development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit.
+This benefit applies to protection as well as incursion; the ability to have persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as AUV technology, autonomy and security practices develop, this use is increasing.
+This Port Protection capability is particularly complex;  teams of AUVs are expected to repeatedly survey an area and remain densly-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
+In Sec.~\ref{sec:sim_and_valid}, we use this Port Protection scenario as a baseline for our simplified simulation context.
+
+\todo{Do I have to talk about the motion path?}
 \todo{\emph{For Chapter} Look at redoing this with other mobilities (particularly distributed lawnmower)}
 
 \subsection{Localisation Technologies}
@@ -481,12 +517,21 @@ SLAM has been most well developed in the contexts of either visual-based inspect
 
 \section{Trust Management Frameworks}\label{sec:tmfs}
 
+Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes operating as teams, groups or networks. 
+This information is used to optimize the performance of a team against malicious, selfish, or defective misbehaviour by one or more nodes.
+Previous research has established the advantages of implementing communications-based TMFs in terrestrial, 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}. 
+These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
+
+Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust. The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo11}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust. This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust. 
+This method as been previously applied to the marine space, comparing against a selection of existing communications TMFs \cite{Bolster2015} showing that MTFM is more effective at detecting misbehaviours in sparse communications environments. 
+
+
 Trust Management Frameworks (TMFs) are used to improve the efficiency, security, and reliability of decentralized and distributed autonomous systems. 
 Techniques have been developed for high-speed, uncontended environments such as terrestrial 802.11 MANETs. 
 However, these do not perform well in sparse / harsh environments such as those found in Underwater Acoustic Networks (UANs), where network nodes experience significant and variable delays, comparatively low data rates, large contention periods, and considerable multi-path artefacts.\cite{Bolster2015} 
 \todo{Not sure how much detail to go into in this section; this paper isn't about the formation of trust from metrics, it's about the assessment of metrics at all}
 
-\section{Experimental Design}\label{sec:exp}
+\section{Physical Behaviours for Trust}\label{sec:physbev}
 
 \subsection{Physical Metrics}
 
@@ -497,7 +542,10 @@ Given that local nodes within the team are aware of the reported positions and v
 
 Additional metric constructions may be more suitable for certain contexts, platforms or operations, however these were selected in collaboration with UK DSTL and NATO CMRE as suitable, generic, assessments, viable on most current platforms in most current deployment schemes.
 
-Conceptually, INDD is a measure of the average spacing of an observed node with respect to its neighbours. INHD is a similar approach with respect to node orientation.
+Conceptually, INDD is a measure of the average spacing of an observed node with respect to its neighbours. 
+INHD is a similar approach with respect to node orientation.
+
+As such, these metrics completly encapsulate and abstract the physical behaviour of any node, potentially performing any misbehaviour.
 
 \begin{align}
   INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
@@ -534,11 +582,14 @@ An ideal physical trust management system would be able to differentiate between
 To investigate this hypothesis, we create two ``bad'' behaviours; one ``malicious'', where a cloned node is unaware of the missions' survey parameters and attempts to ``hide'' among the fleet, and a ``failing'' node, with an impaired drive train, increasing the drag force on the nodes movement.
 These two behaviours are designated \emph{Shadow} and \emph{SlowCoach} respectively.
 
+\section{Simulation and Validation}\label{sec:sim_and_valid}
+
 \subsection{Simulation Background}
 
 Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
 For the purposes of this paper, this network is used for the dissemination of node location information, assuming suitable compression of internally assumed location data compressed into one 4096 bit acoustic data frame.
 Node kinematics are based on REMUS 100 Autonomous Underwater Vehicles, based on limits and core characteristics given in \cite{Mcewen2001}, \cite{Milgram2001} and \cite{Samad2011}.
+For the purposes of this exploratory case we do not model the hydrodynamics of the control surfaces of the AUVs, however we do model axial drag as a resistive inertial force.
 
 These limits are given in Table~\ref{tab:mobility_sysconstraints}
 \begin{table}[h]
@@ -568,7 +619,9 @@ These limits are given in Table~\ref{tab:mobility_sysconstraints}
 
 \subsection{Node Control Modelling}
 
-Simple Boidean flocking \cite{Reynolds1987a} is used in addition to the guiding Waypointing behaviour to provide a collision-avoidance capability.
+In our investigation, we use the example of a 
+
+Simple Boidean flocking \cite{Reynolds1987a} is used in addition to a cubic waypoint-survey behaviour to provide a collision-avoidance capability.
 This consists of three heuristic rules; Cohesion, Repulsion and Alignment, and are shown visually in~\ref{fig:boids} and mathematically below.
 \begin{itemize}
   \item Cohesion
@@ -633,18 +686,10 @@ Eash of these simulated missions last for $duration$, matching realistic deploym
 In order to assess the viability of using the previously discussed metrics for behaviour assessment, the raw motion paths recorded by the simulation are fed into an analysis pipeline\footnote{We do not currently deal with the case where nodes maliciously ``fake'' their location}.
 This pipeline initially 
 
-\begin{figure}
-  \begin{algorithmic}
-    \ForAll{m in M}
-      \ForAll{t}
-      \State $d_{i,j}^{m,t} = x_{i,j}^{m,t} - \frac{\sum_k x_{i,k}^{m,t}}{|M|}$
-      \State $\alpha_{i,j}^{m,t} = | \frac{d_{i,j}^{m,t}}{\sigma{d_{i,j}^{m,t}}}|$
-      \EndFor
-    \EndFor
-  \end{algorithmic}
-  \caption{Numerical Analysis Pipeline for Metric Value Assessment}
-  \label{fig:workflow}
-\end{figure}
+\begin{align}
+  d_{i,j}^{m,t} &= x_{i,j}^{m,t} - \frac{\sum_k x_{i,k}^{m,t}}{|M|}\label{eq:d}\\
+  \alpha_{i,j}^{m,t} &= | \frac{d_{i,j}^{m,t}}{\sigma{d_{i,j}^{m,t}}}|\label{eq:dd}
+\end{align}
 
 Where $i$ and $j$ are indices denoting the current observer node and the current observed node respectively; $x$ is a summation index representing other nodes in the observers region of concern; $X$ is the vector of metrics from~\ref{eq:phys_vector}; $d$ is an intermediate value of the distance of a given observation from the mean, and $\alpha$ is a resulting normalised response value in terms of it's deviation from the mean.
 
@@ -674,29 +719,40 @@ This can then be augmented by taking the residual deviation of $\sum\alpha_{i}$ 
 \todo{``How do we measure the impact of a bad-physical-behaviour on the operational success/efficiency of the fleet overall?''. We have these numbers already in terms of energy use/efficiency of locomotion, cumulative distance covered, mean time to targets, etc, just need to wrap some words around it}
 
 \section{Results and Discussion}
-\begin{figure*}
-  \centering
-  \includegraphics[width=0.8\textwidth]{Metric_Values}
-  \caption{Observed Metric Values for one simulation of each behaviour ($x_{i,j}^{m,t}$ from Fig.~\ref{fig:workflow})}
-\end{figure*}
+Fig.~\ref{fig:metric_values} shows the raw metric values (vertically) from one run of each behaviour (horizontally), starting with the Control case, where all node are behaving properly.
+The misbehaving node in the remaining cases.
+It clear that using the (unitless) INDD and INHD metrics, Alfa is the outlier and other, fairly behaving, nodes are all consistent in their metric values.
+This outlier-response is not nearly as clear in the Speed metric case (bottom row of Fig.~\ref{fig:metric_values}).
+
+In Fig.~\ref{fig:deviance_values}, where we have normalised the metric values as per \eqref{eq:dd}, the outlying-characteristic of INHD and INDD is highlighted; largely eliminating the other nodes-responses.
+In the Speed response of Fig.~\ref{fig:deviance_values}, the Speed metric is not obviously highlighing any significant misbehaviours in that metric. 
+
 
 \begin{figure*}
   \centering
-  \includegraphics[width=0.8\textwidth]{Metric_Deviation}
-  \caption{\emph{Unnecessary but included for draft discussion} Observed Metric Values for one simulation of each behaviour ($d_{i,j}^{m,t}$ from Fig.~\ref{fig:workflow})}
+  \includegraphics[width=0.8\textwidth]{Metric_Values}
+  \caption{Observed Metric Values for one simulation of each behaviour ($x_{i,j}^{m,t}$ from \eqref{eq:d})}
+  \label{fig:metric_values}
 \end{figure*}
+
+%\begin{figure*}
+%  \centering
+%  \includegraphics[width=0.8\textwidth]{Metric_Deviation}
+%  \caption{\emph{Unnecessary but included for draft discussion} Observed Metric Values for one simulation of each behaviour ($d_{i,j}^{m,t}$ from Fig.~\ref{fig:workflow})}
+%\end{figure*}
 
 \begin{figure*}
   \centering
   \includegraphics[width=0.8\textwidth]{Metric_Sigma_Deviance}
-  \caption{Observed Metric Values for one simulation of each behaviour ($\alpha_{i,j}^{m,t}$ from Fig.~\ref{fig:workflow})}
+  \caption{Normalised Deviance values from one simulation of each behaviour ($\alpha_{i,j}^{m,t}$ from \eqref{eq:dd})}
+  \label{fig:deviance_values}
 \end{figure*}
 
 \begin{figure*}
   \centering
-  \subfloat[INDD]{\includegraphics[width=0.6\linewidth]{summedsigmabar_INDD}}\\
-  \subfloat[INHD]{\includegraphics[width=0.6\linewidth]{summedsigmabar_INDD}}\\
-  \subfloat[Speed]{\includegraphics[width=0.6\linewidth]{summedsigmabar_Speed}}
+  \subfloat[INDD]{\includegraphics[width=0.3\linewidth]{summedsigmabar_INDD}}
+  \subfloat[INHD]{\includegraphics[width=0.3\linewidth]{summedsigmabar_INDD}}
+  \subfloat[Speed]{\includegraphics[width=0.3\linewidth]{summedsigmabar_Speed}}
   \caption{\emph{VERY Draft; don't get pissy!}: Per-Node-Per-Run $\sum\alpha/T$}
 \end{figure*}
 
@@ -704,20 +760,38 @@ This can then be augmented by taking the residual deviation of $\sum\alpha_{i}$ 
 
 \subsection{Identification of Misbehaviours}
 \todo{The below table is whats going to be used to condense all the ugly above into something processable across many runs (and most importatly, blind runs)}
+%\begin{table}[h]
+%  \caption{Metric Confidence Responses for known behaviours~\eqref{eq:confidence}}
+%  \centering
+%  \begin{tabular}{lrrr}
+%    \toprule
+%    metric &      INDD &      INHD &     Speed \\
+%    var       &           &           &           \\
+%    \midrule
+%    Shadow    &  3.802935 &  3.191642 &  1.867909 \\
+%    SlowCoach &  4.227141 &  2.773664 &  1.509357 \\
+%    Tail      &  3.874741 &  3.652717 &  2.155030 \\
+%    Waypoint  &  0.920183 &  0.966642 &  0.958920 \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
 \begin{table}[h]
   \caption{Metric Confidence Responses for known behaviours~\eqref{eq:confidence}}
   \centering
-  \begin{tabular}{lrrr}
-    \toprule
-    metric &      INDD &      INHD &     Speed \\
-    var       &           &           &           \\
-    \midrule
-    Shadow    &  3.802935 &  3.191642 &  1.867909 \\
-    SlowCoach &  4.227141 &  2.773664 &  1.509357 \\
-    Tail      &  3.874741 &  3.652717 &  2.155030 \\
-    Waypoint  &  0.920183 &  0.966642 &  0.958920 \\
-    \bottomrule
-  \end{tabular}
+  \input{figures/confidence.tex}
+  \label{tab:confidence}
+\end{table}
+\begin{table}
+  \caption{Overall Q-Test Outlier Detection Characteristics across 256 simulations}
+  \centering
+  \input{figures/overall_stats.tex}
+  \label{tab:overall_stats}
+\end{table}
+\begin{table}
+  \caption{Per-Metric Q-Test Outlier Detection Characteristics across 256 simulations}
+  \centering
+  \input{figures/per_metric_stats.tex}
+  \label{tab:per_metric_stats}
 \end{table}
 
 \subsection{Impacts of Misbehaviour on operational performance}

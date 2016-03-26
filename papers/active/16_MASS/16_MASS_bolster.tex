@@ -63,12 +63,16 @@
 % should be used if it is desired that the figures are to be displayed in
 % draft mode.
 %
-\documentclass[conference]{IEEEtran}
+\documentclass[conference,compsoc,letterpaper]{IEEEtran}
 % Add the compsoc option for Computer Society conferences.
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
 % \documentclass[conference]{../sty/IEEEtran}
+
+\newcommand{\CLASSINPUTinnersidemargin}{1in} 
+\newcommand{\CLASSINPUToutersidemargin}{1in} 
+
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
@@ -319,7 +323,7 @@
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
-\usepackage{url}
+%\usepackage{url}
 % url.sty was written by Donald Arseneau. It provides better support for
 % handling and breaking URLs. url.sty is already installed on most LaTeX
 % systems. The latest version can be obtained at:
@@ -346,7 +350,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage{todonotes}
 \presetkeys%
     {todonotes}%
@@ -407,8 +411,7 @@ Email: alan.marshall@liv.ac.uk}
 This paper proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, using the motion of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
 This is accomplished by looking specifically at operations within the three dimensions of the underwater space.
 We present a series of composite metrics based on physical movement, and apply these metrics to the detection and discrimination of sample physical misbehaviours.
-
-This novel approach opens the possibility of bringing information about both the physical and communications behaviours of autonomous MANETs together to strengthen and expand the application of future Trust Management Frameworks in sparce and/or resource constrained environments.
+This approach opens the possibility of bringing information about both the physical and communications behaviours of autonomous MANETs together to strengthen and expand the application of future Trust Management Frameworks in sparse and/or resource constrained environments.
 
 \end{abstract}
 % no keywords
@@ -427,16 +430,15 @@ This novel approach opens the possibility of bringing information about both the
 
 \section{Introduction}
 
-Early attempts to secure and protect the integrity of Mobile Ad-hoc Networks have relied on some form of strong-cryptographic methods to protect information being sent across it from tampering or malicious inspection.
-While such approaches do protect the integrity of individual pieces of data, the increased computation, and storage requirements of modern, strong, decentralised cryptographic systems presents a clear avenue for Denial of Service (DoS) attacks on MANETs2012This thrl()<++>eat is particularly relevant in resource-constrained networks, where one or more aspects of the environment are limited, be it available power, locomotive mobility, data storage, onboard processing, available bandwidth, and channel resources such as capacity and delay.
-In such networks, where there is a requirement of security and/or integrity monitoring, strong-cryptographic methods present an entirely new threat-opportunity to potential attackers.
+Early attempts to secure and protect the integrity of Mobile Ad-hoc Networks have relied on various forms of strong-cryptography to protect information being transferred from tampering or malicious inspection.
+While such approaches protect the integrity of individual pieces of data, the increased computation, and storage requirements of modern, strong, decentralised cryptographic systems presents a clear avenue for Denial of Service (DoS) attacks on MANETs.
+This threat is particularly relevant in resource-constrained networks, where one or more aspects of the environment are limited, be it available power, mobility, data storage, onboard processing, bandwidth, and channel resources such as capacity and delay.
+In such networks, where there is a requirement of security and/or integrity monitoring, strong-cryptographic methods present an entirely new opportunity to potential attackers.
 
 One solution to the trade-off between DoS-protection, and security is the assessment of ``trustworthiness'' of nodes within a local network. 
 ``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour.
 Using this Trust to make simple routing decisions is significantly simpler and faster that strong-cryptographic methods, particularly in multi-hop networks or resource constrained networks\cite{Cordasco2008}.
-
-With Trust being reliant on the near-real-time awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits.
-It is envisioned that going forward, some elements of both methodologies will be used in different contexts and applications. 
+With Trust being reliant on the near-real-time awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits and in practice, some elements of both methodologies will be used in different contexts and applications. 
 
 However, these approaches to operational security have been totally focused on the establishment of trust/security in the communications domain, and ignore other potential threats to the network exploited through physical movement.
 This threat is particularly evident in collaborative autonomous systems where nodes are tasked to accomplish some survey / exploration / observation objective in a distributed fashion, where individual nodes make decisions based on the actions of their ``team''. 
@@ -527,26 +529,18 @@ These observations then inform future decisions of individual nodes, for example
 Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust. The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo2012}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust. This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust. 
 This method as been previously applied to the marine space, comparing against a selection of existing communications TMFs \cite{Bolster2015} showing that MTFM is more effective at detecting misbehaviours in sparse communications environments. 
 
-
-Trust Management Frameworks (TMFs) are used to improve the efficiency, security, and reliability of decentralized and distributed autonomous systems. 
-Techniques have been developed for high-speed, uncontended environments such as terrestrial 802.11 MANETs. 
-However, these do not perform well in sparse / harsh environments such as those found in Underwater Acoustic Networks (UANs), where network nodes experience significant and variable delays, comparatively low data rates, large contention periods, and considerable multi-path artefacts.\cite{Bolster2015} 
-
 \section{Physical Behaviours for Trust}\label{sec:physbev}
 
 \subsection{Physical Metrics}
 
-Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; Inter-node Distance Deviation (INDD), Inter-node Heading Deviation (INHD), and Node Speed. 
-These metrics encapsulate the relative distributions of position and velocity of a particular observed node, optimising for the detection of outlying or deviant behaviour within the fleet.
-
+Three physical metrics are used to encompass the relative distributions and activities of nodes within the network; Inter-node Distance Deviation (INDD), Inter-node Heading Deviation (INHD), and Node Speed. 
+Conceptually, INDD is a measure of the average spacing of an observed node with respect to its neighbours. 
+INHD is a similar approach with respect to node orientation.
+As such, these metrics completely encapsulate and abstract the physical behaviour of any node, potentially performing any misbehaviour.
 Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable initial set of metrics to establish the usefulness of physical metrics of trust assessment.
 
 Additional metric constructions may be more suitable for certain contexts, platforms or operations, however these were selected in collaboration with UK DSTL and NATO CMRE as suitable, generic, assessments, viable on most current platforms in most current deployment schemes.
 
-Conceptually, INDD is a measure of the average spacing of an observed node with respect to its neighbours. 
-INHD is a similar approach with respect to node orientation.
-
-As such, these metrics completely encapsulate and abstract the physical behaviour of any node, potentially performing any misbehaviour.
 
 \begin{align}
   INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
@@ -622,7 +616,7 @@ These limits are given in Table~\ref{tab:mobility_sysconstraints}
 In our investigation, we use the example of a 
 
 Simple Boidean flocking \cite{Reynolds1987a} is used in addition to a cubic waypoint-survey behaviour to provide a collision-avoidance capability.
-This consists of three heuristic rules; Cohesion, Repulsion and Alignment, and are shown visually in~\ref{fig:boids} and mathematically below.
+This consists of three heuristic rules; Cohesion, Repulsion and Alignment.
 \begin{align}
   F_{j,C}=& F_+\left(p_j, \frac{1}{N}\sum\limits_{\forall i \ne j}^N{p_i}, d_{max}\right)\label{eq:fa}\\
   F_{j,R}=& \sum\limits_{\forall i \ne j}^N F_-\left(p_j, p_i, d_{max}) \big| d_{max}>\|p_i-p_j\|\right)\label{eq:fr}\\
@@ -634,14 +628,14 @@ Where $F$'s are force-vectors applied to the internal guidance of the AUV, $F_{j
   F_-(p^r, p^i)=&(\widehat{p^i-p^r}) \times \frac{|p^r-p^i|}{d}
 \end{align}
 
-\begin{figure*}
-  \centering
-  \subfloat[Cohesion]{\includegraphics[width=0.3\textwidth]{flocking_cohesion}}
-  \subfloat[Repulsion]{\includegraphics[width=0.3\textwidth]{flocking_separation}}
-  \subfloat[Alignment]{\includegraphics[width=0.3\textwidth]{flocking_alignment}}
-  \caption{Visual representation of the basic Boidean collision avoidance rules used}
-  \label{fig:boids}
-\end{figure*}
+%\begin{figure*}
+%  \centering
+%  \subfloat[Cohesion]{\includegraphics[width=0.3\textwidth]{flocking_cohesion}}
+%  \subfloat[Repulsion]{\includegraphics[width=0.3\textwidth]{flocking_separation}}
+%  \subfloat[Alignment]{\includegraphics[width=0.3\textwidth]{flocking_alignment}}
+%  \caption{Visual representation of the basic Boidean collision avoidance rules used}
+%  \label{fig:boids}
+%\end{figure*}
 
 
 \subsection{Standards of Accuracy}\label{sec:standards}
@@ -652,21 +646,18 @@ It is important to clarify what is meant by ``effective'' in this case; the ``ef
 
 In this case we are particularly interested in the accuracy of detection and identification of malicious / failing behaviours, and as such are looking at three key characteristics of accuracy; true detection accuracy (what percentage of ``bad'' behaviours are detected at all); false positive rates (what percentage of ``control'' behaviours are detected as being ``bad''); and misidentification rates (how many instances of one bad behaviour are mischaracterised as the other and vie versa.
 
-As such we have three primary questions to answer to establish if these metrics are useful:
-\begin{itemize}
-  \item How accurate are these metrics in being able to easily differentiate between Normal and Abnormal behaviours in terms of True-Positive and False-Positive rates?
-  \item What differentiation of response, if any, is there between the stated abnormal behaviours?
-  \item Can a simple classification be built to characterise these differentiations of response, and what is it's True-Positive/False-Positive accuracy?
-\end{itemize}
+As such we have three primary questions to answer to establish if these metrics are useful: 
+How accurate are these metrics in being able to easily differentiate between Normal and Abnormal behaviours in terms of True-Positive and False-Positive rates?
+What differentiation of response, if any, is there between the stated abnormal behaviours?
+Can a simple classification be built to characterise these differentiations of response, and what is it's True-Positive/False-Positive accuracy?
 
 
-\subsection{Analysis Workflow}
+\subsection{Analysis}
 Having established the metrics under investigation, 64 simulation runs are executed for each scenario (i.e.\ one node ``Maliciously'' following the fleet with no mission information (Shadow), one ``Failing'' node with simulated drive train issues (Shadow), and one baseline control scenario where all nodes are behaving appropriately (Control).
 Each of these simulated missions last for an hour, matching realistic deployment times based on current MOD/NATO operations\cite{Bolster2014a}.
 
 \subsubsection{Metric Cleaning}
-In order to assess the viability of using the previously discussed metrics for behaviour assessment, the raw motion paths recorded by the simulation are fed into an analysis pipeline\footnote{We do not currently deal with the case where nodes maliciously ``fake'' their location}.
-This pipeline initially 
+In order to assess the viability of using the previously discussed metrics, the raw motion paths recorded by the simulation are fed into an analysis pipeline aimed at abstracting the instantaneous observed values into derived deviations from ``normal'' behaviour in the team.
 
 \begin{align}
   d_{i,j}^{m,t} &= x_{i,j}^{m,t} - \frac{\sum_k x_{i,k}^{m,t}}{|M|}\label{eq:d}\\
@@ -749,7 +740,16 @@ These values match our intuition from Figs.~\ref{fig:metric_values} and~\ref{fig
 \begin{table}
   \caption{Overall Q-Test Outlier Correct Detection Accuracy}
   \centering
-  \input{figures/overall_stats.tex}
+\begin{tabular}{lll}
+\toprule
+Behaviour &  Mean &   Std \\
+\midrule
+Control   & 0.927 & 0.261 \\
+Shadow    & 0.979 & 0.144 \\
+SlowCoach & 0.792 & 0.408 \\
+\bottomrule
+\end{tabular}
+  %\input{figures/overall_stats.tex}
   \label{tab:overall_stats}
 \end{table}
 
@@ -763,7 +763,19 @@ However, the collaborative nature of the collision avoidance system, and the exi
 \begin{table}
   \caption{Per-Metric Q-Test Outlier Detection Accuracy}
   \centering
-  \input{figures/per_metric_stats.tex}
+\begin{tabular}{lllll}
+\toprule
+{} & Behaviour &  INDD &  INHD & Speed \\
+\midrule
+Mean & Control & 0.875 & 0.938 & 0.969 \\
+     & Shadow & 1.000 & 1.000 & 0.938 \\
+     & SlowCoach & 1.000 & 1.000 & 0.375 \\
+Std & Control & 0.336 & 0.246 & 0.177 \\
+     & Shadow & 0.000 & 0.000 & 0.246 \\
+     & SlowCoach & 0.000 & 0.000 & 0.492 \\
+\bottomrule
+\end{tabular}
+  %\input{figures/per_metric_stats.tex}
   \label{tab:per_metric_stats}
 \end{table}
 
@@ -789,7 +801,19 @@ From~\eqref{eq:confidence}, we can establish the per-metric-per-behaviour ``Conf
 \begin{table}[h]
   \caption{Metric Confidence Responses for known behaviours~\eqref{eq:confidence}}
   \centering
-  \input{figures/confidence.tex}
+\begin{tabular}{llrrr}
+\toprule
+{} & Behaviour &  INDD &  INHD &  Speed \\
+\midrule
+Mean & Control & 1.064 & 0.966 &  1.010 \\
+     & Shadow & 4.059 & 3.374 &  2.098 \\
+     & SlowCoach & 4.246 & 3.352 &  1.491 \\
+Std & Control & 0.262 & 0.113 &  0.132 \\
+     & Shadow & 0.398 & 0.436 &  0.206 \\
+     & SlowCoach & 0.198 & 0.288 &  0.180 \\
+\bottomrule
+\end{tabular}
+  %\input{figures/confidence.tex}
   \label{tab:confidence}
 \end{table}
 
@@ -802,17 +826,11 @@ Our generated classifier is formalised in~\eqref{eq:classifier}.
   C \rightarrow 
   \begin{cases}
     % Control
-    Q^{95}(\text{INHD,INDD,Speed}) = \emptyset,& \text{Control}\\
+    Q^{95}(X) = \emptyset,& \text{Control}\\
     % Shadow
-    \begin{aligned}
-    Q^{95}(\text{INHD,INDD,Speed}) \neq& \emptyset\\
-    \land \text{Speed} \leq& 1.75
-    \end{aligned},& \text{Shadow}\\
+    Q^{95}(X) \neq \emptyset \land \text{Speed}^X \leq 1.75, & \text{Shadow}\\
     % SlowCoach
-    \begin{aligned}
-    Q^{95}(\text{INHD,INDD,Speed}) &\neq \emptyset\\
-    \land \text{Speed} &> 1.75
-    \end{aligned},& \text{SlowCoach}\\
+    Q^{95}(X) \neq \emptyset \land \text{Speed}^X > 1.75,& \text{SlowCoach}\\
   \end{cases}
   \label{eq:classifier}
 \end{equation}
@@ -824,7 +842,16 @@ Given the simplicity of the applied classifier, this is a strongly positive resu
 \begin{table}[h]
   \caption{Successful Identification rates on untrained results using~\eqref{eq:classifier}}
   \centering
-  \input{figures/classifier.tex}
+  \begin{tabular}{lr}
+    \toprule
+    True Behaviour &  Probability of Correct Blind Identification \\
+    \midrule
+    Control        &                                        0.719 \\
+    Shadow         &                                        0.906 \\
+    SlowCoach      &                                        0.938 \\
+    \bottomrule
+  \end{tabular}
+  %\input{figures/classifier.tex}
   \label{tab:classifier}
 \end{table}
 

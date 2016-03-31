@@ -1,0 +1,122 @@
+% This file was created by matplotlib2tikz v0.5.3.
+% The lastest updates can be retrieved from
+% 
+% https://github.com/nschloe/matplotlib2tikz
+% 
+% where you can also submit bug reports and leavecomments.
+% 
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{0.298039215686275,0.447058823529412,0.690196078431373}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+\definecolor{color3}{rgb}{0.768627450980392,0.305882352941176,0.32156862745098}
+\definecolor{color2}{rgb}{0.333333333333333,0.658823529411765,0.407843137254902}
+
+\begin{axis}[
+title={Performance Comparison of Varying Packet Emmission Rate (pps),},
+xlabel={Packet Emmission Rate (pps)},
+ylabel={Total Packets},
+xmin=0.005, xmax=0.0325,
+ymin=0, ymax=500,
+xtick={0.005,0.01,0.015,0.02,0.025,0.03,0.035},
+xticklabels={$0.005$,$0.010$,$0.015$,$0.020$,$0.025$,$0.030$,},
+ytick={0,100,200,300,400,500},
+yticklabels={$0$,$100$,$200$,$300$,$400$,$500$},
+tick align=outside,
+xmajorgrids,
+x grid style={white},
+ymajorgrids,
+y grid style={white},
+axis line style={white},
+axis background/.style={fill=color0},
+legend entries={{Successfully Received Packets},{Enqueued Packets},{Collisions (right)}}
+]
+\addplot [line width=0.7000000000000001pt, color1]
+table {%
+0.005 90.1666666666667
+0.0075 135.666666666667
+0.01 180
+0.0125 224.166666666667
+0.015 269.166666666667
+0.0175 315.166666666667
+0.02 358.833333333333
+0.0225 404
+0.025 443.833333333333
+0.0275 463.833333333333
+0.03 449.166666666667
+0.0325 442
+};
+\addplot [line width=0.7000000000000001pt, color2, dashed]
+table {%
+0.005 0.166666666666667
+0.0075 0
+0.01 0
+0.0125 0
+0.015 0.166666666666667
+0.0175 0
+0.02 0
+0.0225 0.5
+0.025 8.5
+0.0275 31
+0.03 91.3333333333333
+0.0325 139.5
+};
+\path [draw=white, fill opacity=0] (axis cs:0.005,1)
+--(axis cs:0.0325,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,500);
+
+\path [draw=white, fill opacity=0] (axis cs:0.005,0)
+--(axis cs:0.0325,0);
+
+\path [draw=white, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,500);
+
+\end{axis}
+
+\begin{axis}[
+xmin=0.005, xmax=0.0325,
+ymin=0, ymax=25,
+axis y line=right,
+ytick={0,5,10,15,20,25},
+yticklabels={$0$,$5$,$10$,$15$,$20$,$25$},
+tick align=outside,
+xmajorgrids,
+x grid style={white},
+ymajorgrids,
+y grid style={white},
+axis line style={white},
+axis background/.style={fill=color0},
+legend entries={{Successfully Received Packets},{Enqueued Packets},{Collisions (right)}}
+]
+\addplot [line width=0.7000000000000001pt, color3, dash pattern=on 1pt off 3pt on 3pt off 3pt]
+table {%
+0.005 0.5
+0.0075 0.666666666666667
+0.01 1.16666666666667
+0.0125 3
+0.015 2.5
+0.0175 7.16666666666667
+0.02 10
+0.0225 7.5
+0.025 12
+0.0275 13.6666666666667
+0.03 15.6666666666667
+0.0325 20.8333333333333
+};
+\path [draw=white, fill opacity=0] (axis cs:0.005,1)
+--(axis cs:0.0325,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,25);
+
+\path [draw=white, fill opacity=0] (axis cs:0.005,0)
+--(axis cs:0.0325,0);
+
+\path [draw=white, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,25);
+
+\end{axis}
+
+\end{tikzpicture}

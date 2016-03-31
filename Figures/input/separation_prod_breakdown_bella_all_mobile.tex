@@ -1,0 +1,101 @@
+% This file was created by matplotlib2tikz v0.5.3.
+% The lastest updates can be retrieved from
+% 
+% https://github.com/nschloe/matplotlib2tikz
+% 
+% where you can also submit bug reports and leavecomments.
+% 
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{0.298039215686275,0.447058823529412,0.690196078431373}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+
+\begin{axis}[
+xlabel={Initial Node Separation (m)},
+ylabel={Probability of Arrival},
+xmin=100, xmax=800,
+ymin=0, ymax=1,
+xtick={100,200,300,400,500,600,700,800},
+xticklabels={$100$,$200$,$300$,$400$,$500$,$600$,$700$,$800$},
+ytick={0,0.2,0.4,0.6,0.8,1},
+yticklabels={$0.0$,$0.2$,$0.4$,$0.6$,$0.8$,$1.0$},
+tick align=outside,
+xmajorgrids,
+x grid style={white},
+ymajorgrids,
+y grid style={white},
+axis line style={white},
+axis background/.style={fill=color0}
+]
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:100,0.982979861642354)
+--(axis cs:100,1.0163140971448);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:200,0.978795528652079)
+--(axis cs:200,1.01041060563187);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:300,0.959957442601271)
+--(axis cs:300,1.00957088250476);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:400,0.663826319385503)
+--(axis cs:400,0.742173908243212);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:500,0.307762678719178)
+--(axis cs:500,0.388133507896708);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:600,0.153015584497854)
+--(axis cs:600,0.206376333828654);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:700,0.104560700183532)
+--(axis cs:700,0.15234977722111);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:800,0.125124172660423)
+--(axis cs:800,0.154976210827886);
+
+\addplot [line width=0.7000000000000001pt, color1, mark=-, mark size=3, only marks]
+table {%
+100 0.982979861642354
+200 0.978795528652079
+300 0.959957442601271
+400 0.663826319385503
+500 0.307762678719178
+600 0.153015584497854
+700 0.104560700183532
+800 0.125124172660423
+};
+\addplot [line width=0.7000000000000001pt, color1, mark=-, mark size=3, only marks]
+table {%
+100 1.0163140971448
+200 1.01041060563187
+300 1.00957088250476
+400 0.742173908243212
+500 0.388133507896708
+600 0.206376333828654
+700 0.15234977722111
+800 0.154976210827886
+};
+\addplot [line width=0.7000000000000001pt, color1]
+table {%
+100 0.999646979393578
+200 0.994603067141975
+300 0.984764162553014
+400 0.703000113814358
+500 0.347948093307943
+600 0.179695959163254
+700 0.128455238702321
+800 0.140050191744155
+};
+\path [draw=white, fill opacity=0] (axis cs:100,1)
+--(axis cs:800,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,1);
+
+\path [draw=white, fill opacity=0] (axis cs:100,0)
+--(axis cs:800,0);
+
+\path [draw=white, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,1);
+
+\end{axis}
+
+\end{tikzpicture}

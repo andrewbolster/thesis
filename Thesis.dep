@@ -231,8 +231,16 @@
   *{file}   {./Figures/2d_normed_product_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_all_mobile.pdf}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c5-multi_domain_trust_strategies.tex}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c6-physical_metrics.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/c5-physical_trust.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/flocking_cohesion.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/flocking_separation.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/flocking_alignment.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Values.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Deviation.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Sigma_Deviance.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/summedsigmabar.png}{0000/00/00 v0.0}
+  *{file}   {Figures/input/classifier_minority.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/c6-comms_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_malicious.pdf}{0000/00/00 v0.0}
@@ -259,6 +267,7 @@
   *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/full_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {Figures/input/full_metric_correlations.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/best_comms_run_time_MPC.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_phys_run_time_MPC.png}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_time_MPC.png}{0000/00/00 v0.0}

@@ -111,7 +111,15 @@
 \usepackage{graphicx}
 \usepackage{epstopdf}
 %\usepackage[scriptsize]{subfigure} %obsolete
-\usepackage{subcaption}
+\usepackage[%
+    font={small,sf},
+    labelfont=bf,
+    format=hang,    
+    format=plain,
+    margin=0pt,
+    width=0.8\textwidth,
+]{caption}
+\usepackage[list=true]{subcaption}
 \captionsetup{compatibility=false}
 \usepackage{booktabs}
 \renewcommand{\arraystretch}{1.3}

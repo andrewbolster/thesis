@@ -613,9 +613,10 @@ These limits are given in Table~\ref{tab:mobility_sysconstraints}
 
 \subsection{Node Control Modelling}
 
-In our investigation, we use the example of a 
+In our investigation, we use the example of a Port Protection scenario, where a team of six AUVs are tasked with surveying a simplified harbour; in this case a 1kmx1kmx100m cuboid volume.
+This is accomplished through a distributed waypoint system where by the team overall must ``check'' several points around the exterior and interior of this volume in reasonable time.
 
-Simple Boidean flocking \cite{Reynolds1987a} is used in addition to a cubic waypoint-survey behaviour to provide a collision-avoidance capability.
+Simple Boidean flocking \cite{Reynolds1987a} is used in addition to the cubic waypoint-survey behaviour to provide a collision-avoidance capability.
 This consists of three heuristic rules; Cohesion, Repulsion and Alignment.
 \begin{align}
   F_{j,C}=& F_+\left(p_j, \frac{1}{N}\sum\limits_{\forall i \ne j}^N{p_i}, d_{max}\right)\label{eq:fa}\\
@@ -836,8 +837,9 @@ Our generated classifier is formalised in~\eqref{eq:classifier}.
 \end{equation}
 
 Applying this simplified classifier to a blind test set of simulations (of the same scale) gives surprisingly positive results as shown in Table~\ref{tab:classifier}, with greater than 90\% identification rates for both misbehaviours.
-However, in this case we experience a false-positive rate of nearly 30\%.
-Given the simplicity of the applied classifier, this is a strongly positive result for the use of physical metrics for behaviour discrimination; with INHD and INDD proving as strong and obvious ``canaries'' of misbehaviour, and Speed in this case proving a capable differentiator between conceptually close misbehaviours.
+However, in the Null (Control) case we experience a false-positive rate of nearly 30\%, that is to say that in the case where there is no misbehaviour, 30\% of the time a node will be mis-identified as misbehaving when it is not.
+
+Given the simplicity of the applied classifier, these are strongly positive results for the use of physical metrics for behaviour discrimination; with INHD and INDD proving as strong and obvious ``canaries'' of misbehaviour, and Speed in this case proving a capable differentiator between conceptually close misbehaviours.
 
 \begin{table}[h]
   \caption{Successful Identification rates on untrained results using~\eqref{eq:classifier}}

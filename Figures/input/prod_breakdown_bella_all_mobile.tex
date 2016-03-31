@@ -1,0 +1,126 @@
+% This file was created by matplotlib2tikz v0.5.3.
+% The lastest updates can be retrieved from
+% 
+% https://github.com/nschloe/matplotlib2tikz
+% 
+% where you can also submit bug reports and leavecomments.
+% 
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{0.298039215686275,0.447058823529412,0.690196078431373}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+
+\begin{axis}[
+title={Probability of Timely Arrival of Varying Packet Emmission Rate (pps),},
+xlabel={Packet Emmission Rate (pps)},
+ylabel={Probability of Timely Arrival},
+xmin=0.005, xmax=0.035,
+ymin=0, ymax=1,
+xtick={0.005,0.01,0.015,0.02,0.025,0.03,0.035},
+xticklabels={$0.005$,$0.010$,$0.015$,$0.020$,$0.025$,$0.030$,$0.035$},
+ytick={0,0.2,0.4,0.6,0.8,1},
+yticklabels={$0.0$,$0.2$,$0.4$,$0.6$,$0.8$,$1.0$},
+tick align=outside,
+xmajorgrids,
+x grid style={white},
+ymajorgrids,
+y grid style={white},
+axis line style={white},
+axis background/.style={fill=color0}
+]
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.005,0.983523306021434)
+--(axis cs:0.005,1.01289509039696);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.0075,0.978930454547601)
+--(axis cs:0.0075,1.02144766940765);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.01,0.987882677914081)
+--(axis cs:0.01,1.01220986037871);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.0125,0.982424227960742)
+--(axis cs:0.0125,1.01482230922178);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.015,0.977529193789551)
+--(axis cs:0.015,1.01914457402193);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.0175,0.981770650695327)
+--(axis cs:0.0175,1.01208588104237);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.02,0.982979861642354)
+--(axis cs:0.02,1.0163140971448);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.0225,0.978313692473842)
+--(axis cs:0.0225,1.0137153669239);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.025,0.967323582611491)
+--(axis cs:0.025,0.986570823661892);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.0275,0.908080507269563)
+--(axis cs:0.0275,0.96054460895543);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.03,0.802575371784281)
+--(axis cs:0.03,0.854097089375654);
+
+\path [draw=color1, line width=0.7000000000000001pt] (axis cs:0.0325,0.721819886427244)
+--(axis cs:0.0325,0.790685678171345);
+
+\addplot [line width=0.7000000000000001pt, color1, mark=-, mark size=3, only marks]
+table {%
+0.005 0.983523306021434
+0.0075 0.978930454547601
+0.01 0.987882677914081
+0.0125 0.982424227960742
+0.015 0.977529193789551
+0.0175 0.981770650695327
+0.02 0.982979861642354
+0.0225 0.978313692473842
+0.025 0.967323582611491
+0.0275 0.908080507269563
+0.03 0.802575371784281
+0.0325 0.721819886427244
+};
+\addplot [line width=0.7000000000000001pt, color1, mark=-, mark size=3, only marks]
+table {%
+0.005 1.01289509039696
+0.0075 1.02144766940765
+0.01 1.01220986037871
+0.0125 1.01482230922178
+0.015 1.01914457402193
+0.0175 1.01208588104237
+0.02 1.0163140971448
+0.0225 1.0137153669239
+0.025 0.986570823661892
+0.0275 0.96054460895543
+0.03 0.854097089375654
+0.0325 0.790685678171345
+};
+\addplot [line width=0.7000000000000001pt, color1]
+table {%
+0.005 0.998209198209198
+0.0075 1.00018906197763
+0.01 1.0000462691464
+0.0125 0.998623268591259
+0.015 0.998336883905738
+0.0175 0.996928265868849
+0.02 0.999646979393578
+0.0225 0.996014529698869
+0.025 0.976947203136691
+0.0275 0.934312558112496
+0.03 0.828336230579967
+0.0325 0.756252782299295
+};
+\path [draw=white, fill opacity=0] (axis cs:0.005,1)
+--(axis cs:0.035,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,1);
+
+\path [draw=white, fill opacity=0] (axis cs:0.005,0)
+--(axis cs:0.035,0);
+
+\path [draw=white, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,1);
+
+\end{axis}
+
+\end{tikzpicture}

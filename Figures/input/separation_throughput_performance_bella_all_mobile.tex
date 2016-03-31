@@ -1,0 +1,92 @@
+% This file was created by matplotlib2tikz v0.5.3.
+% The lastest updates can be retrieved from
+% 
+% https://github.com/nschloe/matplotlib2tikz
+% 
+% where you can also submit bug reports and leavecomments.
+% 
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{0.298039215686275,0.447058823529412,0.690196078431373}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+\definecolor{color3}{rgb}{0.768627450980392,0.305882352941176,0.32156862745098}
+\definecolor{color2}{rgb}{0.333333333333333,0.658823529411765,0.407843137254902}
+\definecolor{color4}{rgb}{0.505882352941176,0.447058823529412,0.698039215686274}
+
+\begin{axis}[
+xlabel={Initial Node Separation (m)},
+ylabel={Total Packets},
+xmin=100, xmax=800,
+ymin=0, ymax=450,
+xtick={100,200,300,400,500,600,700,800},
+xticklabels={$100$,$200$,$300$,$400$,$500$,$600$,$700$,$800$},
+ytick={0,50,100,150,200,250,300,350,400,450},
+yticklabels={$0$,$50$,$100$,$150$,$200$,$250$,$300$,$350$,$400$,$450$},
+tick align=outside,
+xmajorgrids,
+x grid style={white},
+ymajorgrids,
+y grid style={white},
+axis line style={white},
+axis background/.style={fill=color0},
+legend entries={{Throughput},{Offered Load},{Collisions},{Enqueued Packets}}
+]
+\addplot [line width=0.7000000000000001pt, color1]
+table {%
+100 358.833333333333
+200 361
+300 358
+400 268.5
+500 139.833333333333
+600 72.3333333333333
+700 51
+800 56.8333333333333
+};
+\addplot [line width=0.7000000000000001pt, color2]
+table {%
+100 359
+200 363
+300 363.666666666667
+400 382.166666666667
+500 400.833333333333
+600 403
+700 396.166666666667
+800 404.833333333333
+};
+\addplot [line width=0.7000000000000001pt, color3]
+table {%
+100 10
+200 9.16666666666667
+300 12.3333333333333
+400 13
+500 8.83333333333333
+600 6.66666666666667
+700 5
+800 6
+};
+\addplot [line width=0.7000000000000001pt, color4]
+table {%
+100 0
+200 0.833333333333333
+300 0
+400 89.6666666666667
+500 220.166666666667
+600 282.333333333333
+700 304.833333333333
+800 290.166666666667
+};
+\path [draw=white, fill opacity=0] (axis cs:100,1)
+--(axis cs:800,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,450);
+
+\path [draw=white, fill opacity=0] (axis cs:100,0)
+--(axis cs:800,0);
+
+\path [draw=white, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,450);
+
+\end{axis}
+
+\end{tikzpicture}

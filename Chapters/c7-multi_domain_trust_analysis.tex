@@ -30,7 +30,7 @@ It is important to clarify what is meant by ``effective'' in this case; the ``ef
 
 \subsection{Communications Trust Metrics}
 
-The metric vector is constructed using those trust metrics that are applicable to the marine environment from \cite{Guo2012}, as the simulated marine acoustic modem stack does not operate on the same tiered data-rate approach as used in the 802.11 stack, the data rate metric was not included. Remaining metrics are; Delay, Received and Transmitted power, Received and Transmitted Throughput, and \gls{plr}.
+The metric vector is constructed using those trust metrics that are applicable to the marine environment from \cite{Guo2012}, as the simulated marine acoustic modem stack does not operate on the same tiered data-rate approach as used in the 802.11 stack, the data rate metric was not included. Remaining metrics are; Delay, Received and Transmitted power, Throughput ($S$), Offered Load ($G$) and \gls{plr}.
 
 Thus, the metric vector used for communications-trust assessment is;
 
@@ -158,6 +158,7 @@ Additionally, a ``False Positive'' assessment, $\Delta T^-$ \autoref{eq:delta_t_
   \Delta T_{ix} &= \frac{\sum_{j\neq x}\left( \overline{T_{i,j}}^{\forall t}\right)}{N-1} \label{eq:delta_t}\\
   \Delta T_{ix}^- &= \frac{\sum_{j\neq x} \Delta T_{ij}}{N-1} \label{eq:delta_t_minus} 
 \end{align}
+\todo{This isn't right. DT doesn't include it's own value!}
 
 Where $i$ is a given observer, $x$ is the known misbehaving node, $\overline{T_{i,j}}^{\forall t}$ is the average weighted trust assessment of node $j$ observed by node $i$ across time and $N$ is the number of nodes.
 
@@ -362,7 +363,7 @@ See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of grap
 
 
 \section{Conclusion}
-In this paper we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 
+In this chapter we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 
 
 The extension of the methodologies of multi-vector trust into the marine space are already demonstrated, however including information from physical observations of actors in a network enables the detection and identification of a much wider range of behaviours.
 We also demonstrate a method for assessing trust metrics in harsh environments in terms of their relative significance, and a method for establishing classification signatures for misbehaviours.

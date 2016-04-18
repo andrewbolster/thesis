@@ -1,0 +1,63 @@
+% vim:ft=tex:
+%
+\documentclass[crop,tikz]{standalone}
+\usetikzlibrary{positioning,calc,fit,matrix}
+\usetikzlibrary{chains}
+\begin{document}
+\definecolor{mybluei}{RGB}{124,156,205}
+\definecolor{myblueii}{RGB}{73,121,193}
+\definecolor{mygreen}{RGB}{202,217,126}
+\definecolor{mypink}{RGB}{233,198,235}
+
+\newcommand\widernode[5][widebox]{
+  \node[
+    #1,
+    fit={(#2) (#3)},
+    label=center:{\sffamily\bfseries\color{white}#4}] (#5) {};
+}
+
+\begin{tikzpicture}[node distance=3pt,outer sep=0pt,
+boxstyle/.style={
+  draw=white,
+  fill=#1,
+  rounded corners,
+  font={\sffamily\bfseries\color{white}},
+  align=center,
+  minimum height=30pt
+},
+box/.style={
+  boxstyle=#1,
+  text width=2.5cm},
+box/.default=mybluei,
+title/.style={font={\sffamily\bfseries\color{white}}},
+widebox/.style={draw=white,inner sep=0pt, rounded corners,fill=#1},
+widebox/.default=mybluei,
+mylabel/.style={font={\sffamily\bfseries\color{white}}},
+]
+
+\matrix (stack) [boxstyle=mybluei!40, draw=black,%  
+        column sep=3pt, row sep=3pt, inner sep=4mm,%
+      matrix of nodes,% 
+        nodes={box, outer sep=0pt, anchor=center, inner sep=3pt},%  
+        nodes in empty cells
+]
+{
+& & & & & \\
+& & & & & \\
+& & & & & \\
+& & & & & \\
+};
+\widernode[widebox]{stack-1-1}{stack-1-6}{Trusting Behaviour}{TB};
+\widernode[widebox=mygreen]{stack-2-1}{stack-2-6}{Trusting Intention}{TI};
+\widernode[widebox=mygreen]{stack-3-2}{stack-3-5}{Trusting Beliefs}{TBs};
+\widernode[widebox=mygreen, align=center]{stack-3-1}{stack-4-1}{Situational \\ Decision Trust}{TBs};
+
+
+\end{tikzpicture}
+%  \node[blueb] (SDT) {Situational Decision Trust};
+%  \node[blueb, right=of SDT] (DT) {Dispositional Trust};
+%  \node[blueb, right=of DT] (BFP) {Belief-Formation Process};
+%  \node[blueb, right=of BFP] (ST) {System Trust};
+%  \node[blueb, above=of SDT] (TBs) {Trusting Beliefs};
+
+\end{document}

@@ -1,1 +1,2 @@
-git show last_am:papers/active/15_AdHocNow/adhocnow15_bolster.tex > head.tex; latexdiff head.tex adhocnow15_bolster.tex > diff.tex; rm head.tex; latexmk -f diff.tex; go diff.pdf    
+latexdiff --exclude-mboxsafecmd="lhead" --exclude-textcmd="lhead,chapter,section,subsection,subsubsection" --preamble=latexdiff_preamble.tex flattened-old.tex flattened.tex |sed -e "s/\(\DIFdelbegin \)/\1\n/g" -e "s/\(\DIFdelend \)/\1\n/g" | sed '/^[ \t]*%/d' | sed '/\\def\\DIFdelbegin[ ]*$/{$!{N;s/\\def\\DIFdelbegin[ ]*\n\\DIFdelend[ ]*$//;ty;P;D;:y}}' > diff.tex; latexmk -pdf diff.tex
+

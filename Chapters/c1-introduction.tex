@@ -44,6 +44,14 @@ As a benefit, the decentralized nature of network control in \glspl{manet} provi
 \end{tabularx}
 \end{table}
 
+
+\section{Node Density in \glspl{manet}}
+
+One fundamental compromise in the operation of wireless \glspl{manet} is the tradeoff between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
+This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, envionmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
+\todo{Expand Node Density discussion to include examples of sparse, dense, long/deep, fully connected networks}
+
+
 \section{Routing in \acrlong{manet}}
 
 Given the decentralised nature of \gls{manet} operations, routing protocols are an active area of research. 
@@ -52,17 +60,18 @@ A summary of the generalised characteristics of these classes is shown in \autor
 
 \subsection{Proactive Routing}
 
-In Proactive routing, protocols attempt to maintain a up-to-date, global topology awareness of the network, where every node at least knows how to make the best hop to contact any other node in the network.
-This is extremely efficient for relatively static networks, with minimal storage and time requirements \cite{}.
+In Proactive routing, protocols attempt to maintain a up-to-date, global topology awareness of the network, where every node knows how the best next-hop to contact any other node in the network.
+This is extremely efficient for relatively small, static networks, with minimal storage and time requirements \cite{}.
 When the network topology is significantly modified by a shift in topology, either due to a node ``dropping out'' or moving, route renegotiation and optimisation is extrememly resource consuming, as this global state is converged upon in a distributed manner by nodes exchanging their local knowledge of the ``new'' topology.
+The decomposition and updating of the node-knowledge of the network state, and the method of updating these state-tables, is the primary differentiator between proactive protocols, a selection of which are summarised in \autoref{tab:proactive_routing_protocols}.
 
 \begin{table}\centering
   \caption[Selection of Proactive Routing Protocols]{Selection of Proactive Routing Protocols}
   \label{tab:proactive_routing_protocols}
   \begin{tabularx}{\textwidth}{p{1.25cm}|X}\toprule
     Name & Description \\ \midrule
-    \gls{dsdv} & \acrlong{dsdv} is a loop free derivative of the Distributed Bellman-Ford algorithm where each node maintains two tables; one that attempts to maintain a globally accurate next-hop routing table for all destination nodes (routing table) and a route advertisement table, monitoring routes that the node itself can provide. These tables are updated both periodically and opportunistically. Loop-free status is maintained by monitoring the ``sequence number'', which guarantees that if a long-loop returned packet is observed, it is discarded in favour of a route with a higher sequence number (i.e.\ newer route)~\cite{Perkins1994}.\\
-    \gls{olsr} & \acrlong{olsr} \\
+    \gls{dsdv} & \acrlong{dsdv} is a loop free derivative of the Distributed Bellman-Ford algorithm where each node maintains two tables; one that attempts to maintain a globally accurate next-hop routing table for all destination nodes (the routing table) and a route advertisement table, monitoring routes that the node itself can provide. These tables are updated both periodically and opportunistically. Loop-free status is maintained by monitoring a monotonic ``sequence number'', which guarantees that if a long-loop returned packet is observed, it is discarded in favour of a route with a higher sequence number (i.e.\ newer route)~\cite{Perkins1994}.\\
+    \gls{olsr} & \acrlong{olsr} reduces the traffic-overhead of truely distributed link-state exchange and monitoring by establishing a multipoint replaying strategy (MRP) where nodes select a subset of their one-hop network relay to retransmit their packets, based on the two-hop connectivity of the network, thereby reducing contention and overheads by reducing local retransmitters. However, \gls{olsr} does not monitor link \emph{quality} beyond binary ``active/failed'' state which can lead to non-optimial MRP and route selection in wireless networks for instance.\\
     \gls{wrp} & \\
     \gls{tbrpf} & \\
     \gls{dream} & \\
@@ -74,14 +83,18 @@ When the network topology is significantly modified by a shift in topology, eith
 
 \subsection{Reactive Routing}
 
-\todo{Write Write Routing Protocols}
+In contract to Proactive Routing, Reactive (or ``on-demand'') routing establishes routing information when it is required, rather than in advance.
+This route establishment is usually based on a request-response exchange where the node requesting routing information ``floods'' it's local network with next-hop requests.
+The format of this flooding (and the context of any responses) are the main differentiators between protocols, as shown in \autoref{tab:reactive_routing_protocols}. 
+The on-demand nature of of route discovery can lead to significantly lower traffic than proactive routing protocols, but this is often a trade-off between lower average traffic and larger pre-transmission discovery delays. 
+As such, reactive routing lends itself to low-traffic, delay tolerant, dynamic mobile applications as it does not require rediscovery after every \emph{topology} change, but only on transmission along a new or stale route.
 
 \begin{table}\centering
   \caption[Selection of Reactive Routing Protocols]{Selection of Reactive Routing Protocols}
   \label{tab:reactive_routing_protocols}
   \begin{tabularx}{\textwidth}{p{1.25cm}|X}\toprule
     Name & Description \\ \midrule
-    \gls{dsr} & \\
+    \gls{dsr} & \cite{Johnson1996} \\
     \gls{aodv} & \\
     \gls{roam} & \\
     \gls{abr} & \\
@@ -155,12 +168,6 @@ When the network topology is significantly modified by a shift in topology, eith
   \end{tabularx}
 \end{table}
 
-\section{Node Density in \glspl{manet}}
-
-One fundamental compromise in the operation of wireless \glspl{manet} is the tradeoff between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
-This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, envionmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
-
-\todo{Expand Node Density discussion to include examples}
 
 
 \section{\glspl{manet} in Harsh Environments}

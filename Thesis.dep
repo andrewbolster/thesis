@@ -88,6 +88,26 @@
   *{package}{url}         {2013/09/16 v3.4}
   *{file}   {hpdftex.def} {2012/11/06 v6.83m}
   *{package}{rerunfilecheck}{2011/04/15 v1.7}
+  *{package}{natbib}      {2010/09/13 v8.31b}
+  *{package}{verbatim}    {2014/10/28 v1.5q}
+  *{package}{array}       {2014/10/28 v2.4c}
+  *{package}{vector}      {1994/09/16 v1.0}
+  *{package}{calc}        {2014/10/28 v4.3}
+  *{package}{color}       {1999/02/16 v0.0}
+  *{file}   {color.cfg}   {2007/01/18 v1.5}
+  *{package}{psfrag}      {1998/04/11 v3.04}
+  *{package}{epsf}        {0000/00/00 v0.0}
+  *{package}{tabularx}    {2014/10/28 v2.10}
+  *{package}{multirow}    {0000/00/00 v0.0}
+  *{package}{longtable}   {2014/10/28 v4.11}
+  *{package}{pdflscape}   {2008/08/11 v0.10}
+  *{package}{lscape}      {2000/10/22 v3.01}
+  *{package}{snapshot}    {2002/03/05 v1.14}
+  *{package}{todonotes}   {2012/07/25 v0.0}
+  *{package}{xkeyval}     {2014/12/03 v2.7a}
+  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
+  *{package}{xcolor}      {2007/01/21 v2.11}
+  *{file}   {color.cfg}   {2007/01/18 v1.5}
   *{package}{tikz}        {2015/08/07 v3.0.1a}
   *{package}{pgf}         {2015/08/07 v3.0.1a}
   *{package}{pgfrcs}      {2015/08/07 v3.0.1a}
@@ -98,8 +118,6 @@
   *{file}   {pgfsys.code.tex}{0000/00/00 v0.0}
   *{file}   {pgfsyssoftpath.code.tex}{2013/09/09 v1.9)}
   *{file}   {pgfsysprotocol.code.tex}{2006/10/16 v1.4)}
-  *{package}{xcolor}      {2007/01/21 v2.11}
-  *{file}   {color.cfg}   {2007/01/18 v1.5}
   *{file}   {pgfcore.code.tex}{0000/00/00 v0.0}
   *{package}{pgfcomp-version-0-65}{2007/07/03 v3.0.1a}
   *{package}{pgfcomp-version-1-18}{2007/07/23 v3.0.1a}
@@ -110,22 +128,6 @@
   *{file}   {pgfmath.code.tex}{0000/00/00 v0.0}
   *{file}   {pgffor.code.tex}{0000/00/00 v0.0}
   *{file}   {tikz.code.tex}{0000/00/00 v0.0}
-  *{package}{longtable}   {2014/10/28 v4.11}
-  *{package}{natbib}      {2010/09/13 v8.31b}
-  *{package}{verbatim}    {2014/10/28 v1.5q}
-  *{package}{array}       {2014/10/28 v2.4c}
-  *{package}{vector}      {1994/09/16 v1.0}
-  *{package}{calc}        {2014/10/28 v4.3}
-  *{package}{psfrag}      {1998/04/11 v3.04}
-  *{package}{epsf}        {0000/00/00 v0.0}
-  *{package}{tabularx}    {2014/10/28 v2.10}
-  *{package}{multirow}    {0000/00/00 v0.0}
-  *{package}{pdflscape}   {2008/08/11 v0.10}
-  *{package}{lscape}      {2000/10/22 v3.01}
-  *{package}{snapshot}    {2002/03/05 v1.14}
-  *{package}{todonotes}   {2012/07/25 v0.0}
-  *{package}{xkeyval}     {2014/12/03 v2.7a}
-  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
   *{package}{enumerate}   {2015/07/23 v3.00}
   *{package}{algorithm2e} {2013/01/06 v5.00}
   *{package}{relsize}     {2013/03/29 v4.1}
@@ -159,6 +161,8 @@
   *{package}{glossary-super}{2015/11/30 v4.20}
   *{package}{supertabular}{2004/02/20 v4.1e}
   *{package}{glossary-tree}{2015/11/30 v4.20}
+  *{package}{titletoc}    {2011/12/15 v1.6}
+  *{package}{tocloft}     {2013/05/02 v2.3f}
   *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
   *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
   *{package}{ltcaption}   {2013/06/09 v1.4-94}

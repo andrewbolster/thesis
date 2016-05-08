@@ -7,39 +7,19 @@
 \pdfminorversion=4
 \documentclass[a4paper, 11pt,twoside, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
 
-% PACKAGES
-\usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
-\usepackage{verbatim,listings}  % Needed for the "comment" environment to make LaTeX comments
-\usepackage{array}  % Needed for the "comment" environment to make LaTeX comments
-\usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
-\usepackage{amsmath,amsfonts,amsthm,color,psfrag,epsf, tabularx, multirow, longtable, pdflscape}
-%http://tex.stackexchange.com/questions/89166/centering-in-tabularx-and-x-columns
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
-\usepackage{snapshot, todonotes}
-% \usepackage{pstricks}
-\usepackage{enumerate}
-%\usepackage[lined,algonl,boxed]{algorithm2e}
-\usepackage[ruled,linesnumbered,vlined]{algorithm2e}
-\usepackage{float}
-\usepackage{epigraph} % epigraph
-\usepackage{eurosym} % Euro Symbol
-\usepackage{siunitx} % Properly Centered numbers in tables
-
-\usepackage{afterpage}
-
-
-% TikZ stuff
-\usepackage{tikz}
-\usetikzlibrary{shapes, graphs, arrows, backgrounds, positioning, calc}
-
-% Glossaries
-\usepackage[xindy]{glossaries} 
-\usepackage{pgf}
-\setacronymstyle{long-short}  
-
 
 % SETUP
 
+% TikZ stuff
+\usetikzlibrary{shapes, graphs, arrows, backgrounds, positioning, calc}
+
+% Glossaries
+\setacronymstyle{long-short}  
+
+%http://tex.stackexchange.com/questions/89166/centering-in-tabularx-and-x-columns
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% Graphics
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \graphicspath{{./Figures/}{../../Dropbox/Thesis_Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 \presetkeys%
@@ -48,6 +28,7 @@
 
 \input{./Chapters/notation} % Glossaries Definitions
 \makeglossaries
+
 
 % Include any extra LaTeX packages required
 
@@ -112,7 +93,6 @@
 
 \mainmatter	  % Begin normal, numeric (1,2,3...) page numbering
 \pagestyle{fancy}  % Return the page headers back to the "fancy" style
-
 
 \input{./Chapters/c1-introduction} % Introduction
 

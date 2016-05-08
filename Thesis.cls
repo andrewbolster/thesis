@@ -119,7 +119,7 @@
     margin=0pt,
     width=0.8\textwidth,
 ]{caption}
-\usepackage[list=true]{subcaption}
+\usepackage[list=false, listformat=simple]{subcaption}
 \captionsetup{compatibility=false}
 \usepackage{booktabs}
 \renewcommand{\arraystretch}{1.3}
@@ -144,6 +144,24 @@
    \let\\\space
 }
 
+
+\usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
+\usepackage{verbatim,listings}  % Needed for the "comment" environment to make LaTeX comments
+\usepackage{array}  % Needed for the "comment" environment to make LaTeX comments
+\usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
+\usepackage{amsmath,amsfonts,amsthm,color,psfrag,epsf, tabularx, multirow, longtable, pdflscape}
+\usepackage{snapshot, todonotes}
+\usepackage{enumerate}
+\usepackage[ruled,linesnumbered,vlined]{algorithm2e}
+\usepackage{float}
+\usepackage{epigraph} % epigraph
+\usepackage{eurosym} % Euro Symbol
+\usepackage{siunitx} % Properly Centered numbers in tables
+\usepackage{afterpage}
+\usepackage[xindy]{glossaries} 
+\usepackage{pgf}
+\usepackage{titletoc}
+\usepackage{tocloft}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc,fit}
 
@@ -305,9 +323,22 @@
 \addtocounter{secnumdepth}{1}
 \setcounter{tocdepth}{6}
 \newcounter{dummy}
+
 \newcommand\addtotoc[1]{
 \refstepcounter{dummy}
 \addcontentsline{toc}{chapter}{#1}}
+
+\renewcommand{\cftchappresnum}{Chapter }
+\AtBeginDocument{\addtolength\cftchapnumwidth{\widthof{\bfseries Appendix~}}}
+
+\g@addto@macro\appendix{%
+  \addtocontents{toc}{%
+      \protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+        }%
+        }
+
+
+
 \renewcommand\tableofcontents{
 \btypeout{Table of Contents}
 \begin{spacing}{1}{
@@ -319,13 +350,13 @@
     \fi
     \chapter*{\contentsname
         \@mkboth{
-           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}
+    }
     \@starttoc{toc}
     \if@restonecol\twocolumn\fi
    \cleardoublepage
 }\end{spacing}
 }
-
 \def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
  \fi\section*{\listfigurename\@mkboth{{\listfigurename}}{{\listfigurename}}}
  \@starttoc{lof}\if@restonecol\twocolumn\fi}

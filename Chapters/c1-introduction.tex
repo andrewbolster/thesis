@@ -6,7 +6,7 @@
 \lhead{Chapter \thechapter.
 \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
-\section{\glspl{manet}}
+\section{\glspl{manet}}\label{manets}
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of a broadcast/receiver or server/client has given way to an increasing use of decentralised, ad-hoc networks that not only accommodate but take advantage of network mobility.
 
@@ -47,8 +47,8 @@ As a benefit, the decentralized nature of network control in \glspl{manet} provi
 
 \section{Node Density in \glspl{manet}}
 
-One fundamental compromise in the operation of wireless \glspl{manet} is the tradeoff between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
-This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, envionmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
+One fundamental compromise in the operation of wireless \glspl{manet} is the trade-off between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
+This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, environmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
 \todo{Expand Node Density discussion to include examples of sparse, dense, long/deep, fully connected networks}
 
 
@@ -57,12 +57,13 @@ This compromise is encapsulated in the relative density of a given network; that
 Given the decentralised nature of \gls{manet} operations, routing protocols are an active area of research. 
 This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid.
 A summary of the generalised characteristics of these classes is shown in \autoref{tab:routing_categories}.
+Additional, these classes can be further rearranged, combined or augmented based on assumptions made about the structure of the baseline topology, i.e. flat, hierarchical or geographic) or by assumed constraints of the available resources of the nodes within the network i.e. heterogeneity in power, mobility, or communications capabilities where resource-based heuristics are used as well as purely topological considerations\cite{Li2005}\cite{Gerla2002}.
 
 \subsection{Proactive Routing}
 
 In Proactive routing, protocols attempt to maintain a up-to-date, global topology awareness of the network, where every node knows how the best next-hop to contact any other node in the network.
 This is extremely efficient for relatively small, static networks, with minimal storage and time requirements \cite{}.
-When the network topology is significantly modified by a shift in topology, either due to a node ``dropping out'' or moving, route renegotiation and optimisation is extrememly resource consuming, as this global state is converged upon in a distributed manner by nodes exchanging their local knowledge of the ``new'' topology.
+When the network topology is significantly modified by a shift in topology, either due to a node ``dropping out'' or moving, route renegotiation and optimisation is extremely resource consuming, as this global state is converged upon in a distributed manner by nodes exchanging their local knowledge of the ``new'' topology.
 The decomposition and updating of the node-knowledge of the network state, and the method of updating these state-tables, is the primary differentiator between proactive protocols, a selection of which are summarised in \autoref{tab:proactive_routing_protocols}.
 
 \begin{table}\centering
@@ -71,21 +72,20 @@ The decomposition and updating of the node-knowledge of the network state, and t
   \begin{tabularx}{\textwidth}{p{1.25cm}|X}\toprule
     Name & Description \\ \midrule
     \gls{dsdv} & \acrlong{dsdv} is a loop free derivative of the Distributed Bellman-Ford algorithm where each node maintains two tables; one that attempts to maintain a globally accurate next-hop routing table for all destination nodes (the routing table) and a route advertisement table, monitoring routes that the node itself can provide. These tables are updated both periodically and opportunistically. Loop-free status is maintained by monitoring a monotonic ``sequence number'', which guarantees that if a long-loop returned packet is observed, it is discarded in favour of a route with a higher sequence number (i.e.\ newer route)~\cite{Perkins1994}.\\
-    \gls{olsr} & \acrlong{olsr} reduces the traffic-overhead of truely distributed link-state exchange and monitoring by establishing a multipoint replaying strategy (MRP) where nodes select a subset of their one-hop network relay to retransmit their packets, based on the two-hop connectivity of the network, thereby reducing contention and overheads by reducing local retransmitters. However, \gls{olsr} does not monitor link \emph{quality} beyond binary ``active/failed'' state which can lead to non-optimial MRP and route selection in wireless networks for instance.\\
-    \gls{wrp} & \\
-    \gls{tbrpf} & \\
-    \gls{dream} & \\
+    \gls{olsr} & \acrlong{olsr} reduces the traffic-overhead of truly distributed link-state exchange and monitoring by establishing a multipoint replaying strategy (MRP) where nodes select a subset of their one-hop network relay to retransmit their packets, based on the two-hop connectivity of the network, thereby reducing contention and overheads by reducing local re-transmitters. However, \gls{olsr} does not monitor link \emph{quality} beyond binary ``active/failed'' state which can lead to non-optimial MRP and route selection in wireless networks for instance.\\
+    \gls{tbrpf} & \acrlong{tbrpf} consists of two main modules; the neighbour discovery (TND) module and the routing module; the TND uses differential updates to report only the \emph{changes} in the local topology. Further, instead of flooding the entire network with updates, \gls{tbrpf} selectively updates the relevant route updates to nodes that are on the minimum spanning tree route of of that update. Full topology updates are also used on a periodic, but occasional basis to maintain consistency and visibility. Given the use of differential updating, \gls{tbrpf} is more responsive and resilient in the face of dynamic mobile networks and incurs lower traffic overheads.\cite{Bellur1999}\\
     \bottomrule
   \end{tabularx}
+\todo{What other fundamental proactive routing strategies am I forgetting?}
 \end{table}
-\todo{Finish Proactive Routing Protocols Table}
 
 
 \subsection{Reactive Routing}
 
-In contract to Proactive Routing, Reactive (or ``on-demand'') routing establishes routing information when it is required, rather than in advance.
-This route establishment is usually based on a request-response exchange where the node requesting routing information ``floods'' it's local network with next-hop requests.
-The format of this flooding (and the context of any responses) are the main differentiators between protocols, as shown in \autoref{tab:reactive_routing_protocols}. 
+In contract to Proactive Routing, Reactive (or ``on-demand'') routing establishes routing information when it is required, rather than in advance or periodically.
+This route establishment is usually based on a request-response exchange where the node requesting routing information ``floods'' its local network with next-hop requests.
+The structure of this flooding (and the context of any responses) are the main differentiators between protocols, as shown in \autoref{tab:reactive_routing_protocols}.
+There are two main sub-classes of reactive routing; source routing and hop-by-hop routing where packet routing information is either totally planned in advance and encapsulated in the packet on transmission, or decided at each forwarding point respectively.
 The on-demand nature of of route discovery can lead to significantly lower traffic than proactive routing protocols, but this is often a trade-off between lower average traffic and larger pre-transmission discovery delays. 
 As such, reactive routing lends itself to low-traffic, delay tolerant, dynamic mobile applications as it does not require rediscovery after every \emph{topology} change, but only on transmission along a new or stale route.
 
@@ -97,14 +97,14 @@ As such, reactive routing lends itself to low-traffic, delay tolerant, dynamic m
     \gls{dsr} & \cite{Johnson1996} \\
     \gls{aodv} & \\
     \gls{roam} & \\
-    \gls{abr} & \\
+    \gls{abr} & \acrlong{abr} extends classical source-routing by including a stability (``associativity'') heuristic of the long-term link state between mobile nodes, ensuring that the least-mobile nodes are preferentially used for routing. Further, this heuristic is applied outward from destination rather than from the source, selecting only the ``best'' route, reducing the liklihood of packet duplication in the mid-network. However this ``associativity'' measure requires periodic beaconing forcing all nodes to remain active. Finally, in the case where the ``best'' route fails through an in-the-air topology change, there is no in-network path recovery mechanism, and link discovery must be restarted\cite{Toh1997}.\\
     \gls{lar} & \acrlong{lar} incorporates location information (usually from \gls{gps}), and generates a heuristic based on either the distance from the current node \emph{towards} the destination location, or the distance from the current node \emph{away from} the original source, minimising and maximising this distance respectively.These methods limit control overheads and usually accurately determine the shortest path. However, in highly mobile networks this behaviour appears increasingly flood-like (similar to \gls{dsr} and \gls{aodv}), and the general requirement for highly accurate and timely positional information restricts the application of this protocol\\
-    \gls{cbrp} & \acrlong{cbrp} uses a hierarchical topology where each cluster has a cluster-head which coordinates routing within that cluster. As only cluster-heads coordinate routing across clusters, transmission overheads are minimised compared to other route distribution methods. However, the negotiation and maintence overheads and propogation delays associated with hierarchical clustering make the network susceptible to temporary routing loops as nodes may have inconsistent residual routing information during cluster re-negotiation\\
+    \gls{cbrp} & \acrlong{cbrp} uses a hierarchical clustering topology where each cluster has a cluster-head which coordinates routing within that cluster. As only cluster-heads coordinate routing across clusters, transmission overheads are minimised compared to other route distribution methods. However, the negotiation and maintence overheads and propogation delays associated with hierarchical clustering make the network susceptible to temporary routing loops as nodes may have inconsistent residual routing information during cluster re-negotiation\\
     
     \bottomrule
   \end{tabularx}
+\todo{What other fundamental reactive routing strategies am I forgetting?}
 \end{table}
-\todo{Finish Reactive Routing Protocols Table}
 
 \subsection{Hybrid Routing}
 
@@ -159,7 +159,7 @@ As such, reactive routing lends itself to low-traffic, delay tolerant, dynamic m
     Delay Level &
       Short routes are predetermined &
       Higher than proactive &
-      Short for destinations in the same zone/cluster as source. Interzone may be as large as Reactive protocols\\
+      Short for destinations in the same zone/cluster as source. Inter-zone may be as large as Reactive protocols\\
     Scalability &
       Up to 100 nodes; \gls{ospf} and \gls{tbrpf} may scale higher &
       Source routing protocols; up to a few hundred nodes. Point-to-point may scale higher. Depends on level of traffic and levels of multihopping&
@@ -174,8 +174,11 @@ As such, reactive routing lends itself to low-traffic, delay tolerant, dynamic m
 
 As \acrfullpl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
 
-The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain a \gls{ttp} or evidence based trust system such as Certificate Authorities or using \gls{pki}.\todo{more background on the operation of TTP/CA/PKI?}
+The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain an evidence based trust system such as \gls{ttp}, Certificate Authorities or using \gls{pki}. 
+In both cases, there is the assumption of a run-time canonical source of trust, i.e. a ``Master'' node or Certifying Authority that can objectively coordinate the security and trust of the network.
+This single-point-of-failure is antithetical to \gls{manet} architectures, and given the normally limited transmission, storage, battery and computational power of \gls{manet} nodes, the overheads of true \gls{ttp} or \gls{pki} architectures have been out of the realms of practicality for most applications.
 Therefore, a distributed, collaborative system must be applied to these networks.
+\footnote{ \citet{Zouridaki} has demonstrated an intriguing low-power Distributed CA based \gls{manet} architecture, however given the soon-to-be-discussed assumptions about capable attackers(~\autoref{sec:capable_attackers}), this ``decentralised'' approach is less than ideal}
 Such distributed trust management frameworks aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
 As such, \glspl{tmf} can be used to predict and reason on the future interactions between entities in a system.
 
@@ -185,9 +188,9 @@ Previous research has established the advantages of implementing \glspl{tmf} in 
 
 \section{Systems Approach to Trust and Trust Engineering}
 
-\todo{Trust as Assurance}
 
-\section{Trust Operation Against Capable Attackers}
+
+\section{Trust Operation Against Capable Attackers}\label{sec:capable_attackers}
 
 \todo{Trust operation against capable attackers}
 
@@ -207,6 +210,9 @@ In this chapter the current literature and research on the concepts, theory, and
 In~\autoref{sec:trust_defs}, the abstract quantity of ``trust'' is explored,
 In~\autoref{sec:trust_autonomy}, Autonomy and ``Trusted Operation'' of autonomous systems is investigated from a system architects and a system operators perspective.
 In~\autoref{sec:trust_manets}, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
+
+\subsubsection{\autoref{Chapter3}}
+In this chapter, 
 
 \subsubsection{\autoref{Chapter4}}
 In this chapter, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.

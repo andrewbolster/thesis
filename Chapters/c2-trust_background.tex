@@ -566,12 +566,71 @@ There are five topics that are important to address in any \glspl{manet} trust m
 \end{itemize}
 %
 
-\subsection{Attacks on \glspl{manet}}
+\subsection{Vulnerabilities of \glspl{manet}}
 
-\todo{Standard table}
+The openness of the \gls{manet} architecture leaves it inherently vulnerable to security threats. 
+Mitigation protocols must be built on top of this architecture to maintain security and reliability in the face of open-access threats (whether these threats be directed attacks, uncooperative or selfish operation, or indeed malfunctioning/failing nodes).
+It is worthwhile to briefly summarise the factors of \gls{manet} architecture that make it vulnerable to different threat vectors, establish the inter-node threat surface within an operating \gls{manet}.
 
-\todo{Emphasise Threat Surface discussion}
+\subsubsection{Exposed Threat Surfaces}
+\emph{This section based on a summary of \citet{csen2010security} and other sources directly cited}
 
+\emph{Wireless Links} - The use of wireless interfaces expose such networks eavesdropping and active interference, with no physical access required.
+These links normally have significant channel access and bandwidth constraints compared to closed-wired networks.
+This presents outside threats with the ability to eavesdrop or actively interfere with the operation of the network, leading to data security risk and risk of \gls{dos}-style attacks.
+
+\emph{Mobility and Dynamic Topology} - Nodes joining/leaving/re-joining the network and moving around the environment leads to significant topology and access control changes, making it difficult to differentiate between malicious and normal behaviour.
+Additionally this assumption of node mobility and ``temporary disconnection'' presents opportunities to outside attackers to physically compromise, capture or replicate nodes.
+
+\emph{Assumption of Cooperation} - \gls{manet} routing is predicated on the assumed ``fairness'' of nodes both in their routing operation and their ``advertisement'' of routing capability, leading to opportunities to disrupt the optimal operation of the network\cite{Papadimitratos2002}.
+
+\emph{Resource Constraint} - In \glspl{manet}, more than in static wired networks, secondary resources such as power, and tertiary resources such as locomotion, onboard processing and data storage capabilities present additional opportunities for selfish or malicious threat that simultaneously constrain the ability of nodes to mitigate threat (i.e. limited processing power restricting the use of advanced cryptographic protocols, power/locomotion constraints limiting the available operational time to ``learn'' about attack characteristics, etc.)
+
+\emph{Insecure/Fuzzy Operational Boundary} - With no hard boundary between ``in network'' and ``out of network'', \gls{manet} security must combat both internal and external threats.
+
+
+
+\begin{table}
+  \caption[Selected Attacks on the Protocol Stack]{Selected Attacks on the Protocol Stack extended from \cite{csen2010security}}
+  \label{tab:stack_attacks}
+  \begin{tabularx}{\textwidth}{p{5cm} X}\toprule
+    Layer & Attacks\\\midrule
+    Application & Data Corruption, Malware, Virii and Worms\\
+    Transport & SYN Flodding, Session Hijacking\\
+    Network & ``HELLO'' Flood, (Black/Worm/Sink)hole, Sybil, Replay, Rishing, Resource-Consumption\\
+    Data Link & Monitoring, Traffic Analysis\\
+    Physical& Eavesdropping, Active Interference\\\bottomrule
+  \end{tabularx}
+\end{table}
+
+\begin{table}
+  \caption[Threat Actor Classification]{Threat Actor Classification from \citet{Gagandeep2012}}
+  \label{tab:attacker_class}
+  \begin{tabularx}{\textwidth}{X X X X X X}\toprule
+    Emission & Location & Quantity & Target & Rationality & Mobility \\\midrule
+    Active & Insider & Individual & Confidentiality & Rational & Static\\
+    Passive & Outsider & Collaborating & Integrity & Irrational & Mobile\\
+            &         &               & Fairness & & \\
+            &         &               & Authorisation & &\\
+            &         &               &  \gls{dos} & &\\
+    \bottomrule
+    
+  \end{tabularx}
+\end{table}
+
+
+\subsubsection{Threat Mitigation Strategies}
+
+To mitigate these threats in efficient ways, several strategies have emerged that can loosely be grouped into ``Deter'' and ``Detect'' strategies.
+
+Deterrant strategies usually include some form of misbehaviour-induced backoff policy to passively punish misbehaviour~\cite{Konorski2002}\cite{Cardenas:2004:DPM:1029102.1029107}.
+On the other hand, Detection strategies are usually based on some derivative form of hardwire-network \gls{ids} frameworks, where 
+
+\citet{zhang2003intrusion} first proposed a general \gls{ids} framework for \glspl{manet}; leveraging the distributed and cooperative predicates of the architecture, introducing both per-node and cooperative \gls{ids} submodules such that nodes work independently and cooperatively to identify certain misbehaviours.
+Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range.
+However it is commonly accepted that this framework had significant deficiencies in terms of power and communications overheads~\cite{csen2010security}.
+
+\citet{Parker2006} proposed an extension to this framework structure 
 
 \subsection{Trust Management Frameworks}\label{sec:c2_tmfs}
 

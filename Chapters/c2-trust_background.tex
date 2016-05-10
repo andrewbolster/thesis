@@ -1,4 +1,4 @@
-\def\ChapterTitle{Background on Trust and its Applications to \gls{manet}s} % Write in your own chapter title
+\def\ChapterTitle{Background on Trust and its Applications to \glspl{manet}} % Write in your own chapter title
 \chapter{\ChapterTitle}
 \label{Chapter\thechapter}
 \lhead{Chapter \thechapter.
@@ -122,15 +122,34 @@ Sun argues that only System Trust and Behavioural Trust are relevant to trusted 
 However, it is arguable that in any communications network where the operation of that network is not the only concern, or where that network has to interact with any operator, then all of these factors come into play; as we will see (\autoref{sec:trust_perspectives}).
 Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation Process’, or a trust assessment, while the other trust constructs deal with the interactions between trust and decision making against an internal assessment of network trustworthiness.
 
+\todo{Trust Structure needs a diagram (15.1 from Liu2010 or similar)}
 
-\subsection{Taxonomy and Notations of Trust}
+
+\subsection{Taxonomy and Notations of Trust}\label{sec:trust_taxonomy}
+
+To abstractly discuss Trust and trust modelling, \citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property posessed by that agent.
+
+This notation is normally abbreviated such that 
+\begin{equation}
+  \label{eq:trust_notation}
+  T{A:B,a} = T^a_{AB}
+\end{equation} 
+where $T^a_{AB}$ denotes the expectation or trust that a node $A$ has that node $B$ will successfully perform action $a$.
+
+A special extension is assumed for multi-party trust relationships for the ``action'' of recommending another nodes perspective on a given nodes expectation or trust that it will perform an action $a$; ($a_R$)
+%
+\begin{equation}
+  \label{eq:recommendation_notation}
+  T{A:B,a_R} = R^a_{AB}
+\end{equation}
+%
+Where the action underdiscussion is implied or there is a single action under debate (for example, packet routing in \glspl{manet}), the action superscript can be left out.
+
+Based on this notation, \citet{Sun2008} demonstrate that by taking an Information Theoretic approach to trust as function of uncertainty (i.e.\ trust having both a valency and a confidence)~\footnote{Donald Rumsfelds famous 2002 ``Known Knowns'' quote is a perfect example of this}, a series of axioms can be constructed to model the 
 
 \todo{Liu and Wang do lots on this \cite{Liu2010} as well as discussion regarding the entropic/probabilistic models of trust. This may be too much to throw in, might inject it later}
 
-\todo{Talk about trust vs untrust vs nontrust}
-
 \todo{Explore notations of transitivity and abstract trust synthesis}
-
 
 \subsection{Characteristics of Trust Relationships}
 
@@ -149,6 +168,8 @@ There are five commonly considered characteristics or attributes of Trust relati
     Doctors are trusted to perform medical procedures but that trust may not improve their success at correctly wiring an electrical plug.
     However there are plenty of counter-examples to this, as from \cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and these are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
 \end{itemize}
+
+\cite{Liu2010} summarises these attributes in a series of axioms 
 
 \subsection{Topologies of Multi-Party Trust Networks}\label{sec:trust_topologies}
 Beyond the attributes or characteristics of an individual trust relationship, within any multi party sparsely connected network or community, topological context is useful in both establishing trust and in disseminating observations for collaborative assessment.
@@ -290,7 +311,7 @@ Within sparsly connected networks, there are three primary types of relationship
 
 \subsection{Attacks on Trust}
 
-In \cite{Liu2010}, Liu and Wang identify four types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, and Sybil/Newcomer attacks. 
+\citet{Liu2010} identify four types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, and Sybil/Newcomer attacks. 
 
 The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
 In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. 

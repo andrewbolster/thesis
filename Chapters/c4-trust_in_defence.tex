@@ -6,6 +6,12 @@
 \lhead{Chapter \thechapter. \emph{\nameref{Chapter\thechapter}}} % Write in your own chapter title to set the page header
 
 
+\todo{Ch4 Needs a near complete rewrite; \\
+	Intro\\
+	Describe the simulation environment\\
+	Compare single and vector TMF operation in the environment (separately)
+	Optimise vector TMF with metric weighting strategy}
+
 \section{Introduction}
 
 
@@ -38,9 +44,6 @@ An example of such a situation would be in a \gls{tmf} focused on \gls{plr} wher
 Such behaviour would not be detected by the \gls{tmf}.
 
 For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:c2_tmfs}, Hermes trust establishment, \gls{otmf} and \gls{mtfm} are selected as indicative single and multi metrics frameworks for comparison, as Hermes captures the core operation of a pure single metric assessment methodology and \gls{otmf} provides a comparison that combines assessments from across nodes to develop trust opinions.
-
-From the discussion on the nature of the communications environment in~\autoref{sec:trust_in_marine}, it's clear that before assessing communications metrics a simulated underwater environment, appropriate scaling factors must be found that are realistic from an application perspective but are also comperable in some form to the \gls{manet} case.
-
 
 \section{Modelling of \gls{uan} network}\label{sec:initialsystemcharacterization}
 
@@ -560,4 +563,5 @@ These results are similar to work performed in \cite{Miquel2008}, and are expect
 The results from \autoref{fig:something} and \autoref{fig:somethingelse} show that the single-node mobility models don't capture the reality of the network \todo{this is a place holder for actual information}
 The reason for this is that in other mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
 
+\todo{''In conclusion, state that a new domain is required; the physical domain''}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

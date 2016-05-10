@@ -11,7 +11,7 @@
 However, these approaches to operational security have been totally focused on the establishment of trust/security in the communications domain, and ignore other potential threats to the network exploited through physical movement.
 This threat is particularly evident in collaborative autonomous systems where nodes are tasked to accomplish some survey / exploration / observation objective in a distributed fashion, where individual nodes make decisions based on the actions of their ``team''. 
 This collaboration opens the opportunity for a physically-misbehaving actor to selfishly conserve it's own resources, or maliciously ``drain'' a given target node.
-Current security / trust systems applied to MANETs are not concerned with the threat of such physical misbehaviours.
+Current security / trust systems applied to \glspl{manet} are not concerned with the threat of such physical misbehaviours.
 
 In Section~\ref{sec:mobility}, we review the current use cases, deployments and mobility patterns of collaborative AUV operations, and the state-of-the-art in underwater localisation techniques.
 In Section~\ref{sec:tmfs}, we discuss the use of Trust Management Frameworks and their relevance and applicability to marine operations.\todo{Probably do away with this, repeated in a few other places} 
@@ -75,16 +75,6 @@ SLAM has been most well developed in the contexts of either visual-based inspect
 
 In summary, current technology reliably enables AUVs to localise to a sub-metre accuracy in most areas of application.
 
-\section{Trust Management Frameworks}\label{sec:tmfs}
-
-Trust Management Frameworks (TMFs) provide information to assist the estimation of future states and actions of nodes operating as teams, groups or networks. 
-This information is used to optimize the performance of a team against malicious, selfish, or defective misbehaviour by one or more nodes.
-Previous research has established the advantages of implementing communications-based TMFs in terrestrial, 802.11 based MANETs, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}. 
-These observations then inform future decisions of individual nodes, for example, route selection \cite{Li2008}.
-
-Recent work has demonstrated the use of a number of metrics to form a ``vector'' of trust. The Multi-parameter Trust Framework for MANETs (MTFM) \cite{Guo2012}, uses a range of communications metrics beyond packet delivery/loss rate (PLR) to assess trust. This vectorized trust also allows a system to detect and identify the tactics being used to undermine or subvert trust. 
-This method as been previously applied to the marine space, comparing against a selection of existing communications TMFs \cite{Bolster2015} showing that MTFM is more effective at detecting misbehaviours in sparse communications environments. 
-
 \section{Physical Behaviours for Trust}\label{sec:physbev}
 
 \subsection{Physical Metrics}
@@ -116,10 +106,10 @@ Ergo the fleet or team as a whole will have $N\times N$ assessment vectors at ea
 
 \subsection{Physical Misbehaviours}
 
-Misbehaviours in the communications space is heavily investigated area in MANETs \cite{Konate2011}\cite{Wang2009}\cite{Chen2014a}\cite{Mitchell2014}, but attacks and misbehaviours in the physical space are far less explored. 
-Both in terrestrial and underwater contexts, as MANET applications expand and become increasingly \emph{de rigueur}, the impacts of physical or operational misbehaviour become increasingly relevant. 
+Misbehaviours in the communications space is heavily investigated area in \glspl{manet} \cite{Konate2011,Wang2009,Chen2014a,Mitchell2014}, but attacks and misbehaviours in the physical space are far less explored. 
+Both in terrestrial and underwater contexts, as \gls{manet} applications expand and become increasingly \emph{de rigueur}, the impacts of physical or operational misbehaviour become increasingly relevant. 
 As in the communications space, the primary drivers of any ``misbehaviour'' come under two general categories; selfish operation or malicious subterfuge.
-Autonomous MANETs in general rely (or are at least, most effective) when all nodes operate fairly, be that in terms of their bandwidth sharing, energy usage, routing optimality or other factors. 
+Autonomous \glspl{manet} in general rely (or are at least, most effective) when all nodes operate fairly, be that in terms of their bandwidth sharing, energy usage, routing optimality or other factors. 
 Physically, if a node is being ``selfish'', it may preferentially move to the edge of a network to minimise it's dynamic work allocation, or depending on it's intent, may insert itself into the centre of a network to maximise it's ability to capture, monitor, and manipulate traffic going across the network. 
 In the context of a secure operation (or one that's assumed to be secure), the opportunity for capturing a legitimate node and replacing it with a modified clone.
 Assuming a highly capable outside actor and a multi-channel communications opportunity, there is also the possibility of a node appearing to ``play along'' with the crowd that occasionally breaks rank to route internal transmissions to a outside agent.
@@ -139,8 +129,8 @@ These two behaviours are designated \emph{Shadow} and \emph{SlowCoach} respectiv
 
 Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
 For the purposes of this chapter, this network is used for the dissemination of node location information, assuming suitable compression of internally assumed location data compressed into one 4096 bit acoustic data frame, with the network overall emitting approximately 10 frames a minute.
-Node kinematics are modeled on REMUS 100 AUVs, based on limits and core characteristics given in \cite{Mcewen2001}, \cite{Milgram2001} and \cite{Samad2011}.\footnote{While the hydrodynamics of the control surfaces of the AUVs are not modeled in this case, axial drag is modeled as a resistive inertial force on the craft.}
-
+Node kinematics are modeled on REMUS 100 AUVs, based on limits and core characteristics given in \cite{Mcewen2001,Milgram2001,Samad2011}.\footnote{While the hydrodynamics of the control surfaces of the AUVs are not modeled in this case, axial drag is modeled as a resistive inertial force on the craft.}
+\todo{Picture of REMUS}
 These limits are given in Table~\ref{tab:mobility_sysconstraints}
 \begin{table}[h]
   \caption{REMUS 100 Mobility Constraints as applied in simulation} \label{tab:mobility_sysconstraints}
@@ -447,7 +437,7 @@ As for physical efficiency, achievement rates were identical to within 2\% error
 It's possible that our selected behaviours were too unambitious in our impacts, and future work will have to investigate the impact of ``heavy-handed'' or destructive behaviours on the operational efficiency of autonomous networks.
 
 \section{Conclusion}
-In this paper we have demonstrated that with current and on-the-horizon underwater localisation techniques, that in certain mobility models, that a set of relatively simple geometric abstractions (INHD, INDD, and Speed), between nodes as part of an Underwater MANET can be used as a Trust Assessment and Establishment metric.
+In this chapter we have demonstrated that with current and on-the-horizon underwater localisation techniques, that in certain mobility models, that a set of relatively simple geometric abstractions (INHD, INDD, and Speed), between nodes as part of an Underwater \gls{manet} can be used as a Trust Assessment and Establishment metric.
 
 These metrics are application-agnostic and could potentially be applied in other areas of mobile autonomy such as UAV operations and Autonomous Vehicular Networks.
 

@@ -7,21 +7,6 @@
 
 \section{Introduction}
 
-This chapter proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, using the motion of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
-This is accomplished by looking specifically at operations within the three dimensions of the underwater space.
-A series of composite metrics based on physical movement are presented and applied to the detection and discrimination of sample physical misbehaviours.
-This approach opens the possibility of bringing information about both the physical and communications behaviours of autonomous \glspl{manet} together to strengthen and expand the application of future Trust Management Frameworks in sparse and/or resource constrained environments.
-
-Early attempts to secure and protect the integrity of Mobile Ad-hoc Networks have relied on various forms of strong-cryptography to protect information being transferred from tampering or malicious inspection.
-While such approaches protect the integrity of individual pieces of data, the increased computation, and storage requirements of modern, strong, decentralised cryptographic systems presents a clear avenue for Denial of Service (DoS) attacks on MANETs.
-This threat is particularly relevant in resource-constrained networks, where one or more aspects of the environment are limited, be it available power, mobility, data storage, onboard processing, bandwidth, and channel resources such as capacity and delay.
-In such networks, where there is a requirement of security and/or integrity monitoring, strong-cryptographic methods present an entirely new opportunity to potential attackers.
-\todo{This should be moved back}
-
-One solution to the trade-off between DoS-protection, and security is the assessment of ``trustworthiness'' of nodes within a local network. 
-``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour.
-Using this Trust to make simple routing decisions is significantly simpler and faster that strong-cryptographic methods, particularly in multi-hop networks or resource constrained networks\cite{Cordasco2008}.
-With Trust being reliant on the near-real-time awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits and in practice, some elements of both methodologies will be used in different contexts and applications. 
 
 However, these approaches to operational security have been totally focused on the establishment of trust/security in the communications domain, and ignore other potential threats to the network exploited through physical movement.
 This threat is particularly evident in collaborative autonomous systems where nodes are tasked to accomplish some survey / exploration / observation objective in a distributed fashion, where individual nodes make decisions based on the actions of their ``team''. 

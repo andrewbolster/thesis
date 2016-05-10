@@ -61,7 +61,7 @@ In \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the 
 The trust vector is given as
 %
 \begin{align}
-  \label{eq:grc}
+  %\label{eq:grc}
   \theta_{k,j}^t = \frac{\min_k|a_{k,j}^t - g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|}{|a_{k,j}^t-g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|} \\
   \phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
 \end{align}
@@ -72,7 +72,7 @@ Weighting can be applied before generating a scalar value which allows the ident
 
 %
 \begin{equation}
-  \label{eq:metric_weighting}
+  %\label{eq:metric_weighting}
   [\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
 \end{equation}
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in the basic case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$ to treat all metrics evenly.
@@ -88,13 +88,13 @@ The Indirect case, similar to the Recommendation case, the recommender $n_k$, do
 These relationships give us node sets, $N_R$ and $N_I$ containing the nodes that have recommendation or indirect, relationships to the observing node respectively.
 %
 \begin{align}
-  \label{eq:networkeffects}
+  %\label{eq:networkeffects}
   T_{i,j}^{\acrshort{mtfm}}=\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}+&\frac{1}{2} \frac{2|N_R| }{2|N_R| + |N_I|}\sum_{n \in N_R} \max_s\{f_s(T_{i,n})\} T_{i,n}\\ \notag
   +&\frac{1}{2} \frac{|N_I| }{2|N_R| + |N_I|}\sum_{n \in N_I} \max_s\{f_s(T_{i,n})\} T_{i,n} 
 \end{align}
 Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s = [ f_1,f_2, f_3]$ given as:
 \begin{align}
-  \label{eq:whitenization}
+  %\label{eq:whitenization}
   f_1(x)&= -x+1\notag\\
   f_2(x)&= 
   \begin{cases}

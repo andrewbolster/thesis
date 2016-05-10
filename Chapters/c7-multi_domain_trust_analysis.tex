@@ -41,7 +41,7 @@ Thus, the metric vector used for communications-trust assessment is;
 
 \subsection{Physical Trust Metrics}
 
-Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; \gls{indd}, \gls{inhd}, and Node Speed. These metrics encapsulate the relative distributions of position and velocity within the fleet, optimising for the detection of outlying or deviant behaviour within the fleet.
+From \autoref{Chapter5}; Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; \gls{indd}, \gls{inhd}, and Node Speed. These metrics encapsulate the relative distributions of position and velocity within the fleet, optimising for the detection of outlying or deviant behaviour within the fleet.
 
 Conceptually, \gls{indd} is a measure of the average spacing of an observed node with respect to its neighbours. \gls{inhd} is a similar approach with respect to node orientation.
 
@@ -57,7 +57,7 @@ Thus, the metric vector used for physical-trust assessment is;
   X_{phy}=\{\text{INDD}, \text{INHD}, V\}
   \label{eq:phys:vector}
 \end{equation}
-\todo{Need to actually show physical only trust measurements}
+
 
 \subsection{Cross Domain Trust Metrics}
 This simplest possible combination is a vector concatenation across domain metric vectors; in this case; 
@@ -70,14 +70,14 @@ This simplest possible combination is a vector concatenation across domain metri
 
 \subsection{Metric Weight Analysis Scheme}
 
-From \eqref{eq:metric_weighting}, the final trust values arrived at are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.\todo{referencing the right equ in the wrong place}
+From \eqref{eq:metric_weighting}, the final trust values arrived at are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
 
 This permits the assessment of the significance of different metrics in the detection and identification of different behaviours. 
 The primary aspects of a (mis)behaviour can be detected and assessed by comparing a weighted trust assessment against the deviation from a ``fair'' result set using the same weight, i.e.\ we are interested in the weight schemes that create the largest difference between fair and misbehaving cases.
 
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, an initial weighting vector $H'=[h_i\cdots h_M]$ is formed such that $h_i = 1 \forall i \ne j; h_j=2$. That vector $H'$ is then scaled such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 
-The construction of the $g$ and $b$ vectors from~\autoref{eq:grc} depends on the particular metric, e.g. Throughput ($S$) on a link is assumed to be positively correlated to trustworthiness and so follows the default construction ($g(S) \mapsto \max, b(S) \mapsto \min$), whereas in the case of a metric such as delay, this relationship is inverted, i.e.\ longer delays indicate less trustworthy activity ($g(D) \mapsto \min, b(D) \mapsto \max$).
+The construction of the $g$ and $b$ vectors from~\eqref{eq:grc} depends on the particular metric, e.g. Throughput ($S$) on a link is assumed to be positively correlated to trustworthiness and so follows the default construction ($g(S) \mapsto \max, b(S) \mapsto \min$), whereas in the case of a metric such as delay, this relationship is inverted, i.e.\ longer delays indicate less trustworthy activity ($g(D) \mapsto \min, b(D) \mapsto \max$).
 This inversion relationship (i.e.\ those with the construction $g(x) \mapsto \min, b(x) \mapsto \max$) is signified by a negative weight.
 
 In complex environments, the relationship between metrics trustworthiness correlations is not always as obvious as the throughput / delay examples.
@@ -88,7 +88,7 @@ With the nine selected metrics from across communications and physical behaviour
 To assess the performance of a given weight combination (i.e.\ an optimisation factor), we are initially interested in the metric weight vector that consistently provides the largest deviation in the final trust value $T$ across the cohort, i.e.\ producing the most clear detection of a node misbehaving in that particular fashion.
 This is approached as an inverse outlier filtering problem, and the range outside a $\pm\sigma$ envelope compared to the equivalent weighting in a known ``fair'' behaviour is selected to assess detection (or comparing to other misbehaviours to assess discrimination).
 See~\autoref{sec:metric_weighting}.
-Note that at this point we establish ``signatures'' of different behaviours rather than optimal detection weights.\todo{Duplicating C6 Metric Weighting Section}
+Note that at this point we establish ``signatures'' of different behaviours rather than optimal detection weights.
 
 We apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
 Random Forest accomplishes this by generating a large number of random regression trees and prune these trees based on how accurate they are in correctly matching the input data.
@@ -104,7 +104,7 @@ Using this approach, the results of these simulations can be explored, condensin
 First the results of the Random Forest regression assessment are discussed; Figs~\ref{fig:comms_feature_extraction} and~\ref{fig:phys_feature_extraction}, show the resultant feature extraction signatures for Comms-only and Physical-only metric selections respectively, and in Fig~\ref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
 
 In both single-domain cases, there are clear ``signatures'' in misbehaviours that don't directly target that domain ($P_{RX}$ in the Physical Shadow and Slowcoach behaviours in Fig~\ref{fig:comms_feature_extraction} and $INDD$ in the Selfish Target Selection behaviour in Fig~\ref{fig:phys_feature_extraction}).
-This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic for differentiating potential misbehaviours.\todo{Come back to this and talk about redundancy}
+This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic for differentiating potential misbehaviours.\todo{Come back to this and talk about redundancy after subset analysis}
 
 
 
@@ -155,10 +155,9 @@ The best of these permutations is selected to both maximise the (correct) deviat
 Additionally, a ``False Positive'' assessment, $\Delta T^-$ \autoref{eq:delta_t_minus} is shown in \autoref{tab:domain_deltas_minus} which encapsuates the average false positive selection rate.
 
 \begin{align}
-  \Delta T_{ix} &= \frac{\sum_{j\neq x}\left( \overline{T_{i,j}}^{\forall t}\right)}{N-1} \label{eq:delta_t}\\
-  \Delta T_{ix}^- &= \frac{\sum_{j\neq x} \Delta T_{ij}}{N-1} \label{eq:delta_t_minus} 
+  \Delta T_{ix} &= \frac{\sum_{j\neq x}\left( \overline{T_{i,j}}^{\forall t}\right)}{N-1} - \overline{T_{i,x}}^{\forall t} \label{eq:delta_t}\\
+  \Delta T_{ix}^- &= \frac{\sum_{j\neq x} \Delta T_{ij}}{N-1} - \overline{\Delta T_{i,x}}^{\forall t} \label{eq:delta_t_minus} 
 \end{align}
-\todo{This isn't right. DT doesn't include it's own value!}
 
 Where $i$ is a given observer, $x$ is the known misbehaving node, $\overline{T_{i,j}}^{\forall t}$ is the average weighted trust assessment of node $j$ observed by node $i$ across time and $N$ is the number of nodes.
 

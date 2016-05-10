@@ -437,7 +437,7 @@ For the purposes of this work, two perspectives on trust for autonomous systems 
     Can be viewed as the abstract level of confidence an operator has in an actor to perform a task unsupervised.
     \end{itemize}
 \end{itemize}
-\todo{Possibly worth looking at the Definition environment from amsthm to look after definitions like this}
+%\todo{Possibly worth looking at the Definition environment from amsthm to look after definitions like this}
 Operational Trust is functionally derived from, but distinct from Design Trust.
 
 It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system.
@@ -448,7 +448,7 @@ It is already clear that these two definitions are extremely close in their cons
 \subsection{Design Trust}\label{sec:design_trust}
 
 Five aspects of Design Trust have been identified: \todo{No idea how to phrase this citation correctly; it's ``my'' work that was generated for DSTL and don't want to waste any more space backing it up; can I get away with just citing myself?}
-\todo{Rethink using these questions at all; opens up to awkward questioning that isn't ansered in the thesis}
+\todo{Rethink using these questions at all; opens up to awkward questioning that isn't answered in the thesis}
 
 \begin{enumerate}
   \item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
@@ -475,10 +475,10 @@ Five aspects of Design Trust have been identified: \todo{No idea how to phrase t
     Because the aim of autonomous systems is to deal effectively with uncertain environments, \textit{can they (autonomous systems) be certified without being demonstrated in the environment within which they will adapt new behaviour?}
 \end{enumerate}
 
-Design against and Compliance with existing standards can contribut significantly to the demonstrable trustworthiness of any systems’ design.
+Design against and Compliance with existing standards can contribute significantly to the demonstrable trustworthiness of any systems’ design.
 If a system has been designed to a Standard then it has known properties that have been accepted as good practice.
 However, current standards do not address the issue of the five areas listed above.
-\todo{Need to squeeze in something about Block 4 above is the focus of this work. Possibly could live in the conclusions}
+%\todo{Need to squeeze in something about Block 4 above is the focus of this work. Possibly could live in the conclusions}
 
 There are three main organisations that are developing or have developed assurance standards for Unmanned Systems in commercial, civil and military applications:
 
@@ -519,8 +519,8 @@ The AS-4 steering group is responsible for the development and maintenance of th
 This provides a stack-like interoperability model akin to the OSI inter-networking standard, providing logical connections between common levels across devices regardless of how subordinate layers are implemented.
 Importantly, \gls{jaus} service models are open-sourced under the BSD-license, and a development toolkit is available for anyone to develop \gls{jaus}-compatible communications and control protocols\cite{JTS}.
 
-It is also important to note that \gls{jaus} is part funded, and heavily utilised by, US Army and Marine Robotic Systems Joint Project Office (RS-JPO), which manage the development, testing, and fielding of unmanned (ground) systems for those respective forces.
-This includes now legacy M160 mine clearance platform and the highly popular (both with forces and their in-field operators) iRobot Packbot inspection and \gls{eod} family of robotic platforms.\todo{Needs references}
+It is also important to note that \gls{jaus} is part funded, and heavily utilised by, US Army and Marine Robotic Systems Joint Project Office (RS-JPO), which manage the development, testing, and fielding of unmanned (ground) systems for those respective forces.\cite{JTS,Huang2004}
+This includes now legacy M160 mine clearance platform and the highly popular (both with forces and their in-field operators) iRobot Packbot inspection and \gls{eod} family of robotic platforms.
 
 \paragraph{\gls{astm}}
 
@@ -560,7 +560,7 @@ To be able to trust that systems’ ability to continue on a course, survey an a
 
 \subsection{Conclusions}
 
-\todo{ReDo this later}
+\todo{Conclusion of Trusted Development}
 
 
 \section{Trust in Autonomous \glspl{manet}}\label{sec:trust_manets}
@@ -570,7 +570,7 @@ To be able to trust that systems’ ability to continue on a course, survey an a
 From the previous sections, Trust can be redefined as ``the level of confidence one agent has in another to perform a given action on request or in a certain context''.
 Trust in the autonomous or semi-autonomous realm is the ability of a system to establish and maintain this level of confidence in itself or another systems' operations.
 
-There are five topics that are important to address in any \glspl{manet} trust model \cite{Kamvar2003}:\todo{Could really do with a better / additional cite than this\ldots}
+There are five topics that are important to address in any \glspl{manet} trust model~\cite{Kamvar2003}:
 %
 \begin{itemize}
   \item The trust model should be without infrastructure.
@@ -688,7 +688,7 @@ Taking some examples;
 
 Where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
 
-\todo{Expand background detail on more frameworks}
+%\todo{Expand background detail on more frameworks}
 The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
 %
 \begin{equation}
@@ -722,7 +722,7 @@ In \eqref{eq:otmf_trust}, $x$ and $y$ are constants to weight the two-dimensiona
 
 Upon this per-node assessment methodology, \gls{otmf} overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
 
-\todo{Want at least CONFIDANT and Fuzzy in here for contrast}
+%\todo{Want at least CONFIDANT and Fuzzy in here for contrast}
 
 To date this work has been mostly limited to terrestrial, RF based networks.
 There are many situations where the observed metrics will include significant noise and occur at irregular, sparse, intervals.
@@ -783,7 +783,6 @@ Where an observing node $n_i$ assesses the trust of another target node, $n_j$; 
 In the Recommendation case, a node $n_k$ which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.
 In the Indirect case, similar to the Recommendation case, the recommender $n_k$ does not have a direct link with the observer $n_i$ but $n_k$ has a Direct link with the target node, $n_j$.
 These relationships give node sets, $N_R$ and $N_I$ containing the nodes that have recommendation or indirect, relationships to the observing node respectively.
-\todo{Fix equation links on this page after finishing grey stuff}
 %
 \begin{align}
   \label{eq:networkeffects}

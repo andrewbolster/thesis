@@ -7,6 +7,8 @@
 \pdfminorversion=4
 \documentclass[a4paper, 11pt,twoside, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
 
+\usepackage{ifplatform}
+
 % SETUP
 
 % TikZ stuff
@@ -122,7 +124,7 @@
 
 \input{./Appendices/appendixC} % Appendix Title
 
-\input{./Appendices/AppendixD} % Appendix Title
+%\input{./Appendices/AppendixD} % Appendix Title
 
 \todototoc
 \listoftodos
@@ -135,7 +137,11 @@
 \lhead{\emph{Bibliography}}  % Change the left side page header to "Bibliography"
 \bibliographystyle{unsrtnat}
 % \bibliographystyle{unsrtnat}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
-\bibliography{Thesis}  % The references (bibliography) information are stored in the file named "Thesis.bib"
+\ifwindows
+	\bibliography{../../../Dropbox/Documents/MendeleyBibs/Documents-Thesis}  % The references (bibliography) information are stored in the file named "Thesis.bib"
+\else
+	\bibliography{Thesis}  % The references (bibliography) information are stored in the file named "Thesis.bib"
+\fi
 
 \end{document}  % The End
 %% ----------------------------------------------------------------

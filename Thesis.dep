@@ -5,14 +5,14 @@
   *{class}  {book}        {2014/09/29 v1.4h}
   *{file}   {bk11.clo}    {2014/09/29 v1.4h}
   *{package}{setspace}    {2011/12/19 v6.7a}
-  *{package}{diagbox}     {2016/02/24 v2.1}
+  *{package}{diagbox}     {2011/11/23 v2.0}
   *{package}{keyval}      {2014/10/28 v1.15}
-  *{package}{pict2e}      {2016/02/05 v0.3b}
+  *{package}{pict2e}      {2016/01/09 v0.2z}
   *{file}   {pict2e.cfg}  {2011/04/05 v0.1t}
   *{file}   {pdftex.def}  {2011/05/27 v0.06d}
   *{package}{infwarerr}   {2010/04/08 v1.3}
   *{package}{ltxcmds}     {2011/11/09 v1.22}
-  *{file}   {p2e-pdftex.def}{2016/02/05 v0.1u}
+  *{file}   {p2e-pdftex.def}{2011/04/05 v0.1t}
   *{package}{trig}        {1999/03/16 v1.09}
   *{package}{fp}          {1995/04/02 v0.0}
   *{package}{defpattern}  {1994/10/12 v0.0}
@@ -26,8 +26,7 @@
   *{package}{fp-eqn}      {1995/04/03 v0.0}
   *{package}{fp-upn}      {1996/10/21 v0.0}
   *{package}{fp-eval}     {1995/04/03 v0.0}
-  *{package}{array}       {2014/10/28 v2.4c}
-  *{package}{vmargin}     {1999/06/01 v0.0}
+  *{package}{vmargin}     {2004/07/15 v2.5}
   *{package}{fancyhdr}    {0000/00/00 v0.0}
   *{package}{amsmath}     {2013/01/14 v2.14}
   *{package}{amstext}     {2000/06/29 v2.01}
@@ -39,11 +38,11 @@
   *{package}{amscd}       {1999/11/29 v2.0}
   *{package}{amsthm}      {2015/03/04 v2.20.2}
   *{package}{xspace}      {2014/10/28 v1.13}
-  *{package}{caption}     {2016/02/21 v3.3-144}
-  *{package}{caption3}    {2016/02/04 v1.7-139}
+  *{package}{caption}     {2015/09/17 v3.3-111}
+  *{package}{caption3}    {2015/09/20 v1.7-115}
   *{package}{graphicx}    {2014/10/28 v1.0g}
   *{package}{graphics}    {2014/10/28 v1.0p}
-  *{file}   {graphics.cfg}{2007/01/18 v1.5}
+  *{file}   {graphics.cfg}{2010/04/23 v1.9}
   *{package}{epstopdf}    {2010/02/09 v2.5}
   *{package}{epstopdf-base}{2010/02/09 v2.5}
   *{package}{grfext}      {2010/08/19 v1.1}
@@ -54,7 +53,8 @@
   *{package}{ifluatex}    {2010/03/01 v1.3}
   *{package}{pdftexcmds}  {2011/11/29 v0.20}
   *{package}{ifpdf}       {2011/01/30 v2.3}
-  *{package}{subcaption}  {2016/02/20 v1.1-142}
+  *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
+  *{package}{subcaption}  {2015/09/15 v1.1-100}
   *{package}{booktabs}    {2005/04/14 v1.61803}
   *{package}{rotating}    {2009/03/28 v2.16a}
   *{package}{ifthen}      {2014/09/29 v1.1c}
@@ -64,9 +64,9 @@
   *{file}   {listings.cfg}{2015/06/04 v1.6}
   *{package}{lstpatch}    {0000/00/00 v0.0}
   *{package}{hyperref}    {2012/11/06 v6.83m}
-  *{package}{hobsub-hyperref}{2012/04/25 v1.12}
-  *{package}{hobsub-generic}{2012/04/25 v1.12}
-  *{package}{hobsub}      {2012/04/25 v1.12}
+  *{package}{hobsub-hyperref}{2012/05/28 v1.13}
+  *{package}{hobsub-generic}{2012/05/28 v1.13}
+  *{package}{hobsub}      {2012/05/28 v1.13}
   *{package}{ifvtex}      {2010/03/01 v1.5}
   *{package}{intcalc}     {2007/09/27 v1.1}
   *{package}{pdfescape}   {2011/11/25 v1.13}
@@ -74,7 +74,7 @@
   *{package}{bitset}      {2011/01/30 v1.1}
   *{package}{uniquecounter}{2011/01/30 v1.2}
   *{package}{letltxmacro} {2010/09/02 v1.4}
-  *{package}{hopatch}     {2011/06/24 v1.1}
+  *{package}{hopatch}     {2012/05/28 v1.2}
   *{package}{xcolor-patch}{2011/01/30 v0.0}
   *{package}{atveryend}   {2011/06/30 v1.8}
   *{package}{atbegshi}    {2011/10/05 v1.16}
@@ -90,6 +90,7 @@
   *{package}{rerunfilecheck}{2011/04/15 v1.7}
   *{package}{natbib}      {2010/09/13 v8.31b}
   *{package}{verbatim}    {2014/10/28 v1.5q}
+  *{package}{array}       {2014/10/28 v2.4c}
   *{package}{vector}      {1994/09/16 v1.0}
   *{package}{calc}        {2014/10/28 v4.3}
   *{package}{color}       {1999/02/16 v0.0}
@@ -129,20 +130,20 @@
   *{file}   {tikz.code.tex}{0000/00/00 v0.0}
   *{package}{enumerate}   {2015/07/23 v3.00}
   *{package}{algorithm2e} {2013/01/06 v5.00}
-  *{package}{relsize}     {2003/07/04 v3.1}
+  *{package}{relsize}     {2013/03/29 v4.1}
   *{package}{float}       {2001/11/08 v1.3d}
   *{package}{epigraph}    {2009/09/02 v1.5c}
   *{package}{eurosym}     {1998/08/06 v1.1}
-  *{package}{siunitx}     {2016/03/01 v2.6q}
-  *{package}{expl3}       {2016/04/20 v6476}
-  *{file}   {expl3-code.tex}{2016/04/20 v6476}
-  *{file}   {l3pdfmode.def}{2016/03/26 v6465}
-  *{package}{xparse}      {2016/04/20 v6476}
-  *{package}{l3keys2e}    {2016/04/20 v6476}
+  *{package}{siunitx}     {2016/01/19 v2.6p}
+  *{package}{expl3}       {2016/01/03 v6358}
+  *{file}   {expl3-code.tex}{2016/01/03 v6358}
+  *{file}   {l3pdfmode.def}{2015/11/11 v6250}
+  *{package}{xparse}      {2015/12/20 v6326}
+  *{package}{l3keys2e}    {2015/12/20 v6326}
   *{package}{translator}  {2010/06/12 v1.10}
   *{file}   {translator-language-mappings.tex}{0000/00/00 v0.0}
   *{package}{afterpage}   {2014/10/28 v1.08}
-  *{package}{glossaries}  {2016/04/30 v4.23}
+  *{package}{glossaries}  {2015/11/30 v4.20}
   *{package}{mfirstuc}    {2015/12/17 v2.02}
   *{package}{etoolbox}    {2015/08/02 v2.2a}
   *{package}{textcase}    {2004/10/07 v0.07}
@@ -150,20 +151,21 @@
   *{package}{datatool-base}{2016/01/18 v2.25}
   *{package}{substr}      {2009/10/20 v1.2}
   *{package}{datatool-fp} {2016/01/18 v2.25}
-  *{package}{glossaries-compatible-307}{2016/04/30 v4.23}
+  *{package}{glossaries-compatible-307}{2015/11/30 v4.20}
   *{package}{tracklang}   {2015/03/23 v1.2}
   *{file}   {tracklang.tex}{0000/00/00 v0.0}
   *{file}   {glossaries-english.ldf}{2014/11/23 v1.0}
-  *{package}{glossary-hypernav}{2016/04/30 v4.23}
-  *{package}{glossary-list}{2016/04/30 v4.23}
-  *{package}{glossary-long}{2016/04/30 v4.23}
-  *{package}{glossary-super}{2016/04/30 v4.23}
+  *{package}{glossary-hypernav}{2015/11/30 v4.20}
+  *{package}{glossary-list}{2015/11/30 v4.20}
+  *{package}{glossary-long}{2015/11/30 v4.20}
+  *{package}{glossary-super}{2015/11/30 v4.20}
   *{package}{supertabular}{2004/02/20 v4.1e}
-  *{package}{glossary-tree}{2016/04/30 v4.23}
+  *{package}{glossary-tree}{2015/11/30 v4.20}
   *{package}{titletoc}    {2011/12/15 v1.6}
   *{package}{tocloft}     {2013/05/02 v2.3f}
   *{package}{ifplatform}  {2010/10/22 v0.4}
   *{package}{catchfile}   {2011/03/01 v1.6}
+  *{file}   {Thesis.w18}  {0000/00/00 v0.0}
   *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
   *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
   *{package}{ltcaption}   {2013/06/09 v1.4-94}
@@ -172,22 +174,24 @@
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
   *{file}   {translator-basic-dictionary-English.dict}{0000/00/00 v0.0}
-  *{file}   {siunitx-abbreviations.cfg}{2016/03/01 v2.6q}
+  *{file}   {siunitx-abbreviations.cfg}{2016/01/19 v2.6p}
+  *{file}   {Thesis.glsdefs}{0000/00/00 v0.0}
   *{file}   {umsa.fd}     {2013/01/14 v3.01}
   *{file}   {umsb.fd}     {2013/01/14 v3.01}
   *{file}   {./Chapters/defs.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
+  *{file}   {Thesis.gls}  {0000/00/00 v0.0}
   *{file}   {./Chapters/preface.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/abstract.tex}{0000/00/00 v0.0}
-  *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c1-introduction.tex}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c2-trust_background.tex}{0000/00/00 v0.0}
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
+  *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/introduction.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/trust_background.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
   *{file}   {./Figures/threat_surface_sum.png}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c3-maritime-background.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/maritime-background.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/ghia_sound_prop_curve.png}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c4-trust_in_defence.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/trust_in_defence.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
@@ -234,16 +238,6 @@
   *{file}   {./Figures/2d_normed_product_bella_single_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/2d_normed_product_bella_all_mobile.pdf}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c5-physical_trust.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/flocking_cohesion.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/flocking_separation.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/flocking_alignment.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/Metric_Values.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/Metric_Deviation.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/Metric_Sigma_Deviance.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/summedsigmabar.png}{0000/00/00 v0.0}
-  *{file}   {Figures/input/classifier_minority.tex}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c6-comms_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_static_malicious.pdf}{0000/00/00 v0.0}
@@ -266,7 +260,17 @@
   *{file}   {./Figures/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/MaliciousSelfishMetricFactors.png}{0000/00/00 v0.0}
-  *{file}   {./Chapters/c7-multi_domain_trust_analysis.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/physical_trust.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/flocking_cohesion.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/flocking_separation.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/flocking_alignment.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Values.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Deviation.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Sigma_Deviance.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/summedsigmabar.png}{0000/00/00 v0.0}
+  *{file}   {Figures/input/classifier_minority.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/comms_trust.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/multi_domain_trust_analysis.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/full_metric_trust_relevance.png}{0000/00/00 v0.0}
@@ -286,6 +290,7 @@
   *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/domain_deltas_minus.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/optimised_weights.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/conclusion.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/HumanFactors.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/Grey.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/OrphanedSections.tex}{0000/00/00 v0.0}

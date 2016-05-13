@@ -5,7 +5,10 @@
 
 % Set up the document
 \pdfminorversion=4
-\documentclass[a4paper, 11pt,twoside, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
+\documentclass[a4paper, 18pt, twoside, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
+
+% Bella used 18pt Times New Roman with Double Spacing.
+\linespread{1.6}
 
 \usepackage{ifplatform}
 
@@ -95,21 +98,21 @@
 \mainmatter	  % Begin normal, numeric (1,2,3...) page numbering
 \pagestyle{fancy}  % Return the page headers back to the "fancy" style
 
-\input{./Chapters/c1-introduction} % Introduction
+\input{./Chapters/introduction} % Introduction
 
-\input{./Chapters/c2-trust_background} % Background on Trust and its Applications to MANETs
+\input{./Chapters/trust_background} % Background on Trust and its Applications to MANETs
 
-\input{./Chapters/c3-maritime-background} % Background on Maritime Uses of Autonomous Systems and the Maritime Communications Environment
+\input{./Chapters/maritime-background} % Background on Maritime Uses of Autonomous Systems and the Maritime Communications Environment
 
-\input{./Chapters/c4-trust_in_defence} % Trust in Autonomous Systems of Systems for Maritime Defence Applications
+\input{./Chapters/trust_in_defence} % Trust in Autonomous Systems of Systems for Maritime Defence Applications
 
-\input{./Chapters/c5-physical_trust} % Strategies for Multi-Domain Trust Assessment
+\input{./Chapters/physical_trust} % Strategies for Multi-Domain Trust Assessment
 
-\input{./Chapters/c6-comms_trust} % Communications Trust Assessment in Underwater MANETS
+\input{./Chapters/comms_trust} % Communications Trust Assessment in Underwater MANETS
 
-\input{./Chapters/c7-multi_domain_trust_analysis} % Comparative Analysis of Multi-Comain Trust Assessment in Collaborative Module Networks
+\input{./Chapters/multi_domain_trust_analysis} % Comparative Analysis of Multi-Comain Trust Assessment in Collaborative Module Networks
 
-
+\input{./Chapters/conclusion} % Conclusion
 
 %% ----------------------------------------------------------------
 % Now begin the Appendices, including them as separate files

@@ -1,23 +1,18 @@
 % !TeX spellcheck = en_GB
-\def\ChapterTitle{Introduction} % Write in your own chapter title
 
-\chapter{\ChapterTitle}
+\chapter{Introduction}
 \label{ch:introduction}
-\lhead{Chapter \thechapter. \emph{\ChapterTitle}}
-
-
-
-\todo{Lead into problem etc, mention trust, marine autonomy and applications}
+\lhead{Chapter \thechapter. \emph{Introduction}}
 
 \section{\glspl{manet}}\label{manets}
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of a broadcast/receiver or server/client has given way to an increasing use of decentralised, ad-hoc networks that not only accommodate but take advantage of network mobility.
 
-Whether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Nicholson2008}\cite{Selvakennedy2007}, \gls{manet} theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research \cite{Jubin1987}, to being an integral part of modern practical communications.
+Whether these networks are decentralised cellular / RF / 802.11 WiFi networks for use in disaster relief areas \cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring \cite{Nicholson2008,Selvakennedy2007}, \gls{manet} theory developed over the past 30 years has gone from it's first formal definition, emerging from DARPA's Packet Radio Network research \cite{Jubin1987}, to being an integral part of modern practical communications.
 
 Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) that communicate cooperatively to collect, distribute, disseminate, and collate data and/or influence across an area.
 In most cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data, however this bi-directionality is not a requirement (for example in the area of Wireless Sensor Networks \cite{Akyildiz2002}).
-\glspl{manet} may utilise omnidirectional, static, or steerable communications antennae, and a selection of protocols such as WiFi, Bluetooth, GSM, UMTS, Optical or Acoustics, and may incorporate a range of mobilities across nodes, from static devices, terrestrial and marine surface platforms, and aerial and underwater platforms
+\glspl{manet} may utilise omnidirectional, static, or steerable communications antennae, and a selection of protocols such as WiFi, Bluetooth, GSM, UMTS, Optical or Acoustics, and may incorporate a range of mobilities across nodes, from static devices, terrestrial and marine surface platforms, and aerial and underwater platforms.
 A core characteristic of \glspl{manet} is the inclusion and integration of heterogeneous node collections, i.e where different nodes or groups of nodes in a network may have different capabilities in terms of propulsion, sensor apparatus, communications capability, etc.
 
 \glspl{manet} may be totally independent with no external connections; include independent per-node communications backhauls (e.g. Cellular Modems in mobile phones as part of a Bluetooth Personal Area Network), or include static nodes that provide infrastructure based backhaul.
@@ -48,14 +43,6 @@ As a benefit, the decentralized nature of network control in \glspl{manet} provi
 \end{table}
 
 
-\subsection{Node Density in \glspl{manet}}
-
-One fundamental compromise in the operation of wireless \glspl{manet} is the trade-off between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
-This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, environmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
-\todo{Expand Node Density discussion to include examples of sparse, dense, long/deep, fully connected networks. This is graphics heavy and will take time}
-
-
-
 \subsection{\glspl{manet} in Harsh Environments}
 
 As \acrfullpl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
@@ -72,9 +59,11 @@ As such, \glspl{tmf} can be used to predict and reason on the future interaction
 This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes.
 Previous research has established the advantages of implementing \glspl{tmf} in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
 
-\todo{Section on autonomy}
+\subsection{Autonomous \glspl{manet}}
 
-\section{Systems Approach to Trust and Trust Engineering}
+\todo{short discussion of autonomy}
+
+\section{Autonomous Systems Approach to Trust and Trust Engineering}
 
 \subsection{Trust vs Security vs Integrity}
 
@@ -95,28 +84,20 @@ As will be discussed further in \autoref{sec:trust_perspectives}, the ``Trust'' 
 
 \todo{Trust operation against capable attackers, something something russians}
 
-\section{Contributions}
+\subsection{Thesis Layout and Contributions}
 
-\todo{Contributions}
-
-\section{Conclusion}
-
-\todo{Introduction Conclusions}
-
-\subsection{Thesis Layout}
-
-\subsubsection{\autoref{ch:trust_background}}
+\subsubsection{\fullref{ch:trust_background}}
 In this chapter the current literature and research on the concepts, theory, and applications concerning Trust and Trust Management are explored, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
 
 In~\autoref{sec:trust_defs}, the abstract quantity of ``trust'' is explored,
 In~\autoref{sec:trust_autonomy}, Autonomy and ``Trusted Operation'' of autonomous systems is investigated from a system architects and a system operators perspective.
 In~\autoref{sec:trust_manets}, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
 
-\subsubsection{\autoref{ch:maritime_background}}
+\subsubsection{\fullref{ch:maritime_background}}
 In \autoref{ch:maritime_background}, the maritime context is investigated, particularly concerned with the mechanisms of maritime acoustic communications, including the opportunities and challenges of the marine acoustic channel and its modelling(\autoref{sec:marine_comms}).
 Additionally, in \autoref{sec:marine_ops}, the application scope of \glspl{auv}, liteoral and sub-marine operations are explored to provide context to the problem.
 
-\subsubsection{\autoref{ch:marine_trust_assessment}}
+\subsubsection{\fullref{ch:comms_trust}}
 In this chapter, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
 
 The operation of a selection of traditional \gls{manet} \glspl{tmf} in this environment is investigated.
@@ -127,35 +108,34 @@ In~\autoref{sec:trustresultsanddiscussion} findings in trust establishment and m
 
 The contributions of this chapter are the first study on the comparative operation and performance of \glspl{tmf} in marine acoustic networks, and a review of metric suitability for \glspl{tmf} in marine environments, informing future metric selection for experimenters and theorists.
 Finally, a methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks is demonstrated.
+
 \todo{''Identify the need to generate trust in a new domain (physical)''}
 
-Key parts of this chapter were presented at TrustCom-BigDataSE-ISPA 2015 as ``Single and Multi-Metric Trust Management Frameworks for use in Underwater Autonomous Networks.''\cite{Bolster2015}
+Key parts of this chapter were published as \bibentry{Bolster2015}
 
-\todo{Rewrite Ch4 Intro after rewriting Ch4/6}
+\subsubsection{\fullref{ch:physical_trust}}
 
-\subsubsection{\autoref{ch:comms_trust}}
 This chapter proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, using the motion of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
 This is accomplished by looking specifically at operations within the three dimensions of the underwater space, based on kinematics of industry standard \glspl{auv}.
 A series of composite metrics based on physical movement are presented and applied to the detection and discrimination of sample physical misbehaviours.
-This approach opens the possibility of bringing information about both the physical and communications behaviours of autonomous \glspl{manet} together to strengthen and expand the application of Trust Management Frameworks in sparse and/or resource constrained environments.\citet{Bolster2016}
+This approach opens the possibility of bringing information about both the physical and communications behaviours of autonomous \glspl{manet} together to strengthen and expand the application of Trust Management Frameworks in sparse and/or resource constrained environments\cite{Bolster2016}.
 
 \todo{Need to include discussion of single-metric/vector/multi-domain}
 
-\subsubsection{\autoref{Chapter6}}
-In this chapter we establish an experimental configuration for the marine space, and review the scenarios and results presented in \citet{Guo11} in this context.
-We present our findings in trust establishment and malicious behaviour detection, comparing with other current TMFs (Hermes and OTMF) and analyse the use of this multi-parameter approach to detecting malicious and selfish behaviour in autonomous marine networks.
-\todo{Expand and elaborate on results}
-\citet{Bolster2015}
 
-\subsection{\autoref{Chapter7}}
+\todo{Expand and elaborate on physical trust results}
+
+
+\subsubsection{\fullref{ch:multi_domain}}
 
 In this chapter, a multi-domain trust management framework (MD-TMF) is demonstrated in collaborative marine \glspl{manet}
 A methodology is demonstrated that applies Grey Sequence operations and Grey Generators to provide continuous trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
 By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment.
-Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrates, allowing for the elimination of redundant metrics, simplifying the runtime assessment process.\citet{Bolster2016a}\todo{Discussion}
+Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrates, allowing for the elimination of redundant metrics, simplifying the runtime assessment process\cite{Bolster2016a}\todo{Discussion on Multi Domain results}
 
-\subsubsection{\autoref{Chapter8}}
+\subsubsection{\autoref{ch:conclusion}}
 
+\todo{Describe Conclusion (Is this redundant?)}
 
 
 

@@ -1,10 +1,6 @@
-\def\ChapterTitle{Background on Trust and its Applications to \glspl{manet}} % Write in your own chapter title
-\chapter{\ChapterTitle}
+\chapter{Background on Trust and its Applications to \glspl{manet}}
 \label{ch:trust_background}
-\lhead{Chapter \thechapter. \emph{\ChapterTitle}}
-
-
-\todo{probably need to rearrange the relevant ``summary'' in \ref{ch:introduction} for \ref{ch:trust_background}}
+\lhead{Chapter \thechapter. \emph{Trust and \gls{manet} Applications}}
 
 \section{\acrlong{manet} Topologies}
 
@@ -32,6 +28,10 @@ In order to understand and clarify the challenges to generic \gls{manet} applica
 \end{table}
 
 \subsection{Network Density and Connectivity}
+
+One fundamental compromise in the operation of wireless \glspl{manet} is the trade-off between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
+This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, environmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
+
 From graph theory, the concept of ``Density'' is a $D_G=[0,1]$ bounded measure of how ``Complete'' or fully-connected a given graph $G$ is.
 ``Connectivity'' can be generalised as the routing-ability and the possible redundancy of that routing-ability across the graph, i.e.\ for a ``Connected'' graph, such that there is a sequence of edges (a path) that can be traversed to link all possible pairs of nodes, but if any of the nodes were removed, the graph becomes disconnected or separated, that graph has a connectivity of $1$.
 If this is not possible, but it is possible to disconnect the graph by removing two vertices, the graph has connectivity 2, and so on.
@@ -39,12 +39,10 @@ A graph with a connectivity of $0$ indicates that that graph has separated (or d
 
 The concepts of graph density and connectivity are demonstrated visually in \autoref{fig:manet_density}, constructed with a uniform vertex distribution and decomposed by removing subsequent ``longest edges''
 
-
 \tikzstyle{cblue}=[circle, draw, thin,fill=cyan!20, scale=0.8]
 
 \begin{figure}
-	\caption{Network Density and Connectivity Examples}
-	\label{fig:manet_density}
+
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\begin{tikzpicture}[>=latex',scale=1]
@@ -114,18 +112,20 @@ The concepts of graph density and connectivity are demonstrated visually in \aut
 		\end{tikzpicture}
 		\caption{An Empty Graph ($D=0,k=0$)}
 	\end{subfigure}
+	\caption{Network Density and Connectivity Examples}
+	\label{fig:manet_density}
 \end{figure}
+
+
+\subsection{Node Density in \glspl{manet}}
 
 In practical wireless network applications, network connectivity is a product of the physical distribution of nodes within an environment, and the propagation characteristics of the medium.
 
 Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown. 
 
 \begin{figure}
-	\caption{Examples of states of \gls{manet} topologies}
-	\label{fig:manet_topo_states}
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-
 		\begin{tikzpicture}[>=latex',scale=1]
 		% Physical layer nodes
 		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
@@ -139,7 +139,6 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 	\end{subfigure}
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-
 		\begin{tikzpicture}[>=latex',scale=1]
 		% Physical layer nodes
 		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
@@ -153,7 +152,6 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 	\end{subfigure}
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-
 		\begin{tikzpicture}[>=latex',scale=1]
 		% Physical layer nodes
 		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
@@ -178,10 +176,11 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 		\end{tikzpicture}
 		\caption{($r=1,D=0.08,k=0$)}
 	\end{subfigure}
-	
+	\caption{Examples of states of \gls{manet} topologies}
+	\label{fig:manet_topo_states}
 \end{figure}
 \begin{figure}
-\caption{Examples of states of \gls{manet} topologies (With an initial graph density of $0.38$)}
+
 \label{fig:manet_topo_states}
 	\begin{subfigure}[t]{0.5\textwidth}
 	  	\centering
@@ -224,10 +223,11 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 			\end{tikzpicture}
 			\caption{Node 9 rejoins the network}
 		\end{subfigure}
+		\caption{Examples of states of \gls{manet} topologies}
 \end{figure}
 
 
-\section{Routing in \acrlong{manet}}
+\section{Routing in \acrlongpl{manet}}\label{sec:manet_routing}
 
 Given the decentralised nature of \gls{manet} operations, routing protocols are an active area of research. 
 This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid.
@@ -272,7 +272,9 @@ Based on \gls{dsdv} and \gls{dsr}; uses beaconing and sequence numbering (\gls{d
 
 \subsection{Hybrid Routing}
 
-\todo{Write Hybrid Routing Blurb}
+Hybrid routing protocols combine selected elements from both Proactive and Reactive routing  in an attempt to minimise weaknesses in the respective classes.
+In many cases, this takes the form of a tiered or bounded choice between proactive and reactive approaches based, where inside a given ``set'' of nodes (either physically proximate or or via a directory-based subgrouping), lower latency, deterministic, proactive approaches are used, and outside or between such sets, reactive approaches are applied.
+These in general exhibit ``better'' performance on average, particularly with increasing numbers and expanding distributions of nodes, but the variability in performance may be significant, particularly when sets require updating due to physical mobility of nodes, or where key gateway nodes are removed from the network somehow. 
 
 \subsubsection{\gls{zrp}}
 A true-blend of Proactive and Reactive policies; \gls{zrp} draws ``Routing Zones'' around nodes based on hop-distance, within which routing is made proactively, providing immediate local routes, and reactive, on-demand routes outside this distance. This significantly reduces local overheads and delays by reducing the scope of potential routes as those nodes on the edge of the zone. The control of this boundary point is a significant challenge to optimise with respect to overall network scale. \\
@@ -506,7 +508,6 @@ Within sparsely connected networks, there are three primary types of relationshi
   \item \emph{Indirect} - Where two nodes have a $n>1$ hop communications link ($E,D$ from $A$ or $C$s perspective in the given figure), i.e.\ there is no direct link from the trustor ($A$) to trustees ($E,D$)
   \item \emph{Recommendation} -  Where three nodes are fully connected so as to enable the exchange of direct opinions and form composite opinions based on the target and reporter (i.e.\ $A$ has both its own Direct assessment of $C$, as well as it's knowledge of $B$s Direct assessment of $C$)
 \end{itemize}
-\todo{Redo relationship examples after Notation finished}
 
 \begin{figure}
   \centering
@@ -668,10 +669,11 @@ This understanding of individual autonomy has been scaled up through social syst
 In the most general case in the world of artificial systems, Autonomy is understood as a graduated spectrum of allocation of functionality between a system (or system of systems) and a human operator assigned with performing a given task. 
 Where a system is more ``autonomous'', more of the sensing, planning, decision and action operations are performed by the system. (See Table~\ref{tab:autonomy_definitions} for a review of current definitions of autonomy and autonomous systems)
 This graduated spectrum of allocated functionality is generally termed the \gls{loa}, where an increasing \gls{loa} correlated to increasing control and decision making freedom to the autonomous system from the human operator.(\autoref{tab:autonomy_levels_sheridan})
+These levels can be loosely viewed as a spectrum from across Planning Support, Decision Support, Bounded Execution, and finally, Informed Execution\footnote{In theory there is a further ``Uninformed execution'' level of autonomy, however this is beyond the scope of this work\cite{Cameron1984}}.
 
 While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Google and beyond.
 
-As such, the interactions \emph{between} autonomous agents are becoming increasinly relevant to the operating efficiencies of overall collaborative systems, wether or not a human operator is ``in-the-loop''.
+As such, the interactions \emph{between} autonomous agents are becoming increasingly relevant to the operating efficiencies of overall collaborative systems, wether or not a human operator is ``in-the-loop''.
 
 \todo{Possibly expand this discussion}
 See \autoref{apx:human_factors} for a more thorough discussion on the Human Psychological Factors related to the planning, use, and integration of trusted autonomous systems in classical command and control contexts.
@@ -694,9 +696,9 @@ See \autoref{apx:human_factors} for a more thorough discussion on the Human Psyc
 \end{table}
 
 \begin{table}\centering
-  \caption[Levels of Decision Making Automation]{Levels of Decision Making Automation (\citet{Sheridan1978})}
+  \caption[Levels of Decision Making Automation]{Levels of Decision Making Automation (Extended from \citet{Sheridan1978})}
   \label{tab:autonomy_levels_sheridan}
-  \begin{tabularx}{\textwidth}{c X}\toprule
+  \begin{tabularx}{\textwidth}{c c X}\toprule
     \gls{loa} & Description \\ \midrule
     1&    The computer offers no assistance; the human must make all decisions and actions\\
     2&    The computer offers a complete set of decision/action alternatives, or\\
@@ -1011,9 +1013,6 @@ Taking some examples;\todo{Check for more recent evolutions in Trust/TMFs}
 
 \subsection{Single Metric Trust Frameworks}
 
-
-Where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively.
-
 \todo{Expand background detail on more frameworks}
 The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
 %
@@ -1044,7 +1043,8 @@ A secondary measurement of the confidence factor of the trust assessment $t$ is 
   T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{x^2} + \frac{(c_i-1)^2}{y^2}}}{\sqrt{\frac{1}{x^2}+\frac{1}{y^2}}} \label{eq:otmf_trust}
 \end{align}
 %
-In \eqref{eq:otmf_trust}, $x$ and $y$ are constants to weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$), and from \cite{Zouridaki2005}, are taken as $x=\sqrt{2},y=\sqrt{9}$.\todo{This makes absolutely no sense without a few diagrams}
+In \eqref{eq:otmf_trust}, $x$ and $y$ are constants to weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$)
+From \citet{Zouridaki2005} these are set to $x=\sqrt{2},y=\sqrt{9}$, generating an elliptical mapping $f(t,c) \mapsto T$, effectively weighting the level of confidence heavier than the observed trust behaviour.
 
 Upon this per-node assessment methodology, \gls{otmf} overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
 

@@ -1,0 +1,110 @@
+% This file was created by matplotlib2tikz v0.5.4.
+% The lastest updates can be retrieved from
+% 
+% https://github.com/nschloe/matplotlib2tikz
+% 
+% where you can also submit bug reports and leavecomments.
+% 
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{0.298039215686275,0.447058823529412,0.690196078431373}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+\definecolor{color3}{rgb}{0.768627450980392,0.305882352941176,0.32156862745098}
+\definecolor{color2}{rgb}{0.333333333333333,0.658823529411765,0.407843137254902}
+\definecolor{color4}{rgb}{0.505882352941176,0.447058823529412,0.698039215686274}
+
+\begin{axis}[
+xlabel={Packet Emission Rate (pps)},
+ylabel={Total Packets},
+xmin=0.005, xmax=0.035,
+ymin=0, ymax=600,
+xtick={0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04},
+xticklabels={$0.005$,$0.010$,$0.015$,$0.020$,$0.025$,$0.030$,$0.035$,},
+ytick={0,100,200,300,400,500,600},
+yticklabels={$0$,$100$,$200$,$300$,$400$,$500$,$600$},
+tick align=outside,
+xmajorgrids,
+x grid style={white},
+ymajorgrids,
+y grid style={white},
+axis line style={white},
+axis background/.style={fill=color0},
+legend style={draw=none, fill=color0},
+legend cell align={left},
+legend entries={{Throughput},{Offered Load},{Collisions},{Enqueued Packets}}
+]
+\addplot [line width=0.7000000000000001pt, color1]
+table {%
+0.005 90.1666666666667
+0.0075 135.166666666667
+0.01 180.5
+0.0125 223.833333333333
+0.015 269.166666666667
+0.0175 313.833333333333
+0.02 361
+0.0225 404.833333333333
+0.025 444
+0.0275 446.5
+0.03 443.5
+0.0325 433.833333333333
+};
+\addplot [line width=0.7000000000000001pt, color2]
+table {%
+0.005 90.1666666666667
+0.0075 135.333333333333
+0.01 181
+0.0125 223.833333333333
+0.015 269.5
+0.0175 314.166666666667
+0.02 362.333333333333
+0.0225 406.5
+0.025 449.5
+0.0275 497.833333333333
+0.03 541.833333333333
+0.0325 586.833333333333
+};
+\addplot [line width=0.7000000000000001pt, color3]
+table {%
+0.005 0.333333333333333
+0.0075 1
+0.01 2.16666666666667
+0.0125 3.66666666666667
+0.015 3
+0.0175 4
+0.02 4.66666666666667
+0.0225 13.1666666666667
+0.025 11.6666666666667
+0.0275 14.3333333333333
+0.03 18
+0.0325 17.3333333333333
+};
+\addplot [line width=0.7000000000000001pt, color4]
+table {%
+0.005 0
+0.0075 0.166666666666667
+0.01 0
+0.0125 0
+0.015 0
+0.0175 0
+0.02 0.333333333333333
+0.0225 0.5
+0.025 3.66666666666667
+0.0275 48.3333333333333
+0.03 95.6666666666667
+0.0325 150
+};
+\path [draw=white, fill opacity=0] (axis cs:0.005,1)
+--(axis cs:0.035,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,600);
+
+\path [draw=white, fill opacity=0] (axis cs:0.005,0)
+--(axis cs:0.035,0);
+
+\path [draw=white, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,600);
+
+\end{axis}
+
+\end{tikzpicture}

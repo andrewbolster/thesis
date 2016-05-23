@@ -3,10 +3,18 @@
   *{format} {LaTeX2e}     {2016/03/31 v2.e}
   *{class}  {Thesis}      {2007/22/02 v1.0}
   *{class}  {book}        {2014/09/29 v1.4h}
-  *{file}   {bk12.clo}    {2014/09/29 v1.4h}
+  *{file}   {bk11.clo}    {2014/09/29 v1.4h}
+  *{package}{savetrees}   {2014/12/19 v2.3}
+  *{package}{xkeyval}     {2014/12/03 v2.7a}
+  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
+  *{package}{ifpdf}       {2011/01/30 v2.3}
+  *{package}{ifluatex}    {2010/03/01 v1.3}
+  *{package}{calc}        {2014/10/28 v4.3}
+  *{package}{microtype}   {2013/05/23 v2.5a}
+  *{file}   {microtype-pdftex.def}{2013/05/23 v2.5a}
+  *{file}   {microtype.cfg}{2013/05/23 v2.5a}
   *{package}{setspace}    {2011/12/19 v6.7a}
   *{package}{diagbox}     {2016/02/24 v2.1}
-  *{package}{keyval}      {2014/10/28 v1.15}
   *{package}{pict2e}      {2016/02/05 v0.3b}
   *{file}   {pict2e.cfg}  {2016/02/05 v0.1u}
   *{file}   {pdftex.def}  {2011/05/27 v0.06d}
@@ -41,6 +49,9 @@
   *{package}{xspace}      {2014/10/28 v1.13}
   *{package}{caption}     {2016/02/21 v3.3-144}
   *{package}{caption3}    {2016/02/04 v1.7-139}
+  *{package}{xcolor}      {2007/01/21 v2.11}
+  *{file}   {color.cfg}   {2007/01/18 v1.5}
+  *{file}   {dvipsnam.def}{2015/12/30 v3.0k}
   *{package}{graphicx}    {2014/10/28 v1.0g}
   *{package}{graphics}    {2016/01/03 v1.0q}
   *{file}   {graphics.cfg}{2010/04/23 v1.9}
@@ -51,9 +62,7 @@
   *{package}{kvoptions}   {2011/06/30 v3.11}
   *{package}{kvsetkeys}   {2012/04/25 v1.16}
   *{package}{etexcmds}    {2011/02/16 v1.5}
-  *{package}{ifluatex}    {2010/03/01 v1.3}
   *{package}{pdftexcmds}  {2011/11/29 v0.20}
-  *{package}{ifpdf}       {2011/01/30 v2.3}
   *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
   *{package}{subcaption}  {2016/02/20 v1.1-142}
   *{package}{booktabs}    {2005/04/14 v1.61803}
@@ -92,9 +101,6 @@
   *{package}{natbib}      {2010/09/13 v8.31b}
   *{package}{verbatim}    {2014/10/28 v1.5q}
   *{package}{vector}      {1994/09/16 v1.0}
-  *{package}{calc}        {2014/10/28 v4.3}
-  *{package}{color}       {1999/02/16 v0.0}
-  *{file}   {color.cfg}   {2007/01/18 v1.5}
   *{package}{psfrag}      {1998/04/11 v3.04}
   *{package}{epsf}        {0000/00/00 v0.0}
   *{package}{tabularx}    {2016/02/03 v2.11}
@@ -104,10 +110,6 @@
   *{package}{lscape}      {2000/10/22 v3.01}
   *{package}{snapshot}    {2002/03/05 v1.14}
   *{package}{todonotes}   {2012/07/25 v0.0}
-  *{package}{xkeyval}     {2014/12/03 v2.7a}
-  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
-  *{package}{xcolor}      {2007/01/21 v2.11}
-  *{file}   {color.cfg}   {2007/01/18 v1.5}
   *{package}{tikz}        {2015/08/07 v3.0.1a}
   *{package}{pgf}         {2015/08/07 v3.0.1a}
   *{package}{pgfrcs}      {2015/08/07 v3.0.1a}
@@ -163,23 +165,28 @@
   *{package}{glossary-tree}{2016/01/24 v4.21}
   *{package}{titletoc}    {2011/12/15 v1.6}
   *{package}{tocloft}     {2013/05/02 v2.3f}
+  *{package}{bibentry}    {2007/10/30 v1.5}
+  *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
+  *{package}{nameref}     {2012/10/27 v2.43}
+  *{package}{gettitlestring}{2010/12/03 v1.4}
   *{package}{ifplatform}  {2010/10/22 v0.4}
   *{package}{catchfile}   {2011/03/01 v1.6}
   *{file}   {Thesis.w18}  {0000/00/00 v0.0}
   *{package}{dot2texi}    {2008/05/07 v3.0p1}
   *{package}{moreverb}    {2008/06/03 v2.3a}
   *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
+  *{file}   {mt-cmr.cfg}  {2013/05/19 v2.2}
   *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
   *{package}{ltcaption}   {2013/06/09 v1.4-94}
-  *{package}{nameref}     {2012/10/27 v2.43}
-  *{package}{gettitlestring}{2010/12/03 v1.4}
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
   *{file}   {translator-basic-dictionary-English.dict}{0000/00/00 v0.0}
   *{file}   {siunitx-abbreviations.cfg}{2016/03/01 v2.6q}
   *{file}   {Thesis.glsdefs}{0000/00/00 v0.0}
   *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {mt-msa.cfg}  {2006/02/04 v1.1}
   *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{file}   {mt-msb.cfg}  {2005/06/01 v1.0}
   *{file}   {./Chapters/defs.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/logoc.pdf}{0000/00/00 v0.0}
   *{file}   {Thesis.gls}  {0000/00/00 v0.0}
@@ -193,7 +200,7 @@
   *{file}   {./Figures/threat_surface_sum.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/maritime-background.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/ghia_sound_prop_curve.png}{0000/00/00 v0.0}
-  *{file}   {./Chapters/trust_in_defence.tex}{0000/00/00 v0.0}
+  *{file}   {./Chapters/comms_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
@@ -271,7 +278,6 @@
   *{file}   {./Figures/Metric_Sigma_Deviance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/summedsigmabar.png}{0000/00/00 v0.0}
   *{file}   {Figures/input/classifier_minority.tex}{0000/00/00 v0.0}
-  *{file}   {./Chapters/comms_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/multi_domain_trust_analysis.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}

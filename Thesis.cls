@@ -43,8 +43,11 @@
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi
   \space \number\year}
+
+% SPACING AND FORMATTING 
+\usepackage[moderate]{savetrees}
 \usepackage{setspace}
-\onehalfspacing
+\doublespacing
 
 %http://tex.stackexchange.com/questions/7262/diagonally-divided-table-cell
 \usepackage{diagbox}
@@ -65,6 +68,7 @@
 \widowpenalty=9999                % Almost no widows at bottom of page.
 \clubpenalty=9999                 % Almost no orphans at top of page.
 \interfootnotelinepenalty=9999    % Almost never break footnotes.
+
 \usepackage{fancyhdr}
 \lhead[\rm\thepage]{\fancyplain{}{\sl{\rightmark}}}
 \rhead[\fancyplain{}{\sl{\leftmark}}]{\rm\thepage}
@@ -90,6 +94,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+
 \usepackage[centerlast,small,sc]{caption}
 \setlength{\captionmargin}{20pt}
 \newcommand{\fref}[1]{Figure~\ref{#1}}
@@ -108,9 +113,10 @@
 \setcounter{bottomnumber}{9}
 \setcounter{totalnumber}{20}
 \setcounter{dbltopnumber}{9}
+
+\usepackage[dvipsnames]{xcolor}
 \usepackage{graphicx}
 \usepackage{epstopdf}
-%\usepackage[scriptsize]{subfigure} %obsolete
 \usepackage[%
     font={small,sf},
     labelfont=bf,
@@ -162,6 +168,10 @@
 \usepackage{pgf}
 \usepackage{titletoc}
 \usepackage{tocloft}
+\usepackage{bibentry}
+\nobibliography*
+
+\usepackage{nameref}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc,fit}
 
@@ -230,11 +240,15 @@
 	pdfstartview={FitH},    % fits the width of the page to the window
 	pdfnewwindow=true,      % links in new window
 	colorlinks=true,       % false: boxed links; true: colored links
-	linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
-	citecolor=green,        % color of links to bibliography
+	linkcolor=Blue,          % color of internal links (change box color with linkbordercolor)
+	citecolor=ForestGreen,        % color of links to bibliography
 	filecolor=red,      % color of file links
-	urlcolor=blue           % color of external links
+	urlcolor=Blue           % color of external links
 }
+
+%\renewcommand*{\glstextformat}[1]{\textcolor{BlueViolet}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
+
+
 \renewcommand\maketitle{
   \btypeout{Title Page}
   \hypersetup{pdftitle={\@title}}

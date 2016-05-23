@@ -1,11 +1,11 @@
 \tikzset{
-block/.style = {draw, fill=white, rectangle, minimum height=3em, minimum width=3em, text width=8em, text centered},
-tmp/.style  = {coordinate}, 
-sum/.style= {draw, fill=white, circle, node distance=1cm},
-input/.style = {coordinate},
-output/.style= {coordinate},
-pinstyle/.style = {pin edge={to-,thin,black}
-}
+	block/.style = {draw, fill=white, rectangle, minimum height=3em, minimum width=3em, text width=8em, text centered},
+	tmp/.style  = {coordinate}, 
+	sum/.style= {draw, fill=white, circle, node distance=1cm},
+	input/.style = {coordinate},
+	output/.style= {coordinate},
+	pinstyle/.style = {pin edge={to-,thin,black}
+	}
 }
 
 % USAGE: \cercle {center} {radius in cm} {begin degrees} {value of the arc} {line width} {color}
@@ -36,3 +36,6 @@ pinstyle/.style = {pin edge={to-,thin,black}
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
 \renewcommand*{\subsectionautorefname}{Subsection}
+
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}} % One single link
+

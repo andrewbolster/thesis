@@ -160,6 +160,7 @@
 \usepackage{enumerate}
 \usepackage[ruled,linesnumbered,vlined]{algorithm2e}
 \usepackage{float}
+
 \usepackage{epigraph} % epigraph
 \usepackage{eurosym} % Euro Symbol
 \usepackage{siunitx} % Properly Centered numbers in tables

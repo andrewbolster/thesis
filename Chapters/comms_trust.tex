@@ -70,7 +70,7 @@ Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems
 
 \subsubsection{Simulation Background}
 
-Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007}, \cite{Stefanov2011} and \cite{Sehgal2010}\todo{it would be worth while going through this verification explicitly as an appendix}
+Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon \gls{auv}NetSim \cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007}, \cite{Stefanov2011} and \cite{Sehgal2010}\todo{it would be worth while going through this verification explicitly as an appendix}
 
 Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g.\ packet emission rates or throughput) and node separations are equally stable in this environment.
 Therefore, a zone of performance is characterised within which the network has stable operation.
@@ -656,7 +656,7 @@ As per \citet{Guo11}, ``fair'' scenarios were also performed with no malicious b
 	\label{fig:otmf_beta_comparison}
 \end{figure*}
 %
-The use of \gls{fbr} and a \gls{csmaca} \gls{mac} scheme from AUVNetSim \cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission (See \autoref{sec:manet_routing}).
+The use of \gls{fbr} and a \gls{csmaca} \gls{mac} scheme from \gls{auv}NetSim \cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission (See \autoref{sec:manet_routing}).
 As such, confirmed packet losses are relatively rare and in a delaying network like this, it is difficult to set a differentiating time out between packets that are in the network but queued, and packets that are actually ``lost''.
 
 The single metric \glspl{tmf} used in conventional \gls{manet}s require regular and constant input to shape and adjust their evaluations, which for a network with significant and irregular delays such as this, is not practical.

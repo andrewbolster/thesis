@@ -113,7 +113,8 @@ This optimal emission rate is taken to be an emission rate that provides reasona
 Network saturation is the point at which a network can no longer successfully deliver the offered load\footnote{It will become important to note that Offered Load in this case includes packet retransmissions} presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
 
 In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bits of offered load per node, up to 0.07 pps (672 bps per node).
-Initial node separation was set as per \citet{Guo11} at 100$m$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.\todo[inline]{Need to have a discussion about mission configurations at some point}
+Initial node separation was set as per \citet{Guo11} at 100$m$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.
+This configuration and duration are specified to correlate to previously discussed mobile collaborative port protection scenarios from \autoref{sec:marine_ops}.
 
 Looking first at the Static mobility case, where all nodes are stationary; from~\autoref{fig:emission_throughput_performance_bella_static} it is already clear that the throughput curve, exhibits a saturation point close to 0.025 pps.
 Similarly in~\autoref{fig:emission_prod_breakdown_bella_static}, the precipitous drop in packet delivery probability beyond 0.025 pps, indicating that this is a strong candidate value for an upper-limit to the safe operating zone in terms of packet emission in the small static case.
@@ -788,6 +789,7 @@ Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_
 	\caption{Random Forest Factor Analysis of Malicious (\gls{mpc}, Selfish (\gls{sts}) and Fair behaviours compared against each-other}
 	\label{fig:malselfactors}
 \end{figure}
+\todo{Malicious Factors graph is out of date and shouldn't have physical metrics after rearrange. Also needs vector}
 
 \begin{table}[h]
 	\caption{Correlation Coefficients between metric weights and behaviour detection targets} \label{tab:correlations}

@@ -64,7 +64,64 @@ For comparison, the speed of light in air/water is $2.99 \times 10^8 ms^{-1}$ an
 
 Where $T$ is the temperature in Celsius, $S$ the salinity in parts per thousand, and $D$ is the depth below the surface in meters.
 
-\todo{Need to discuss Speed of Sound Profiles}
+These are ``ideal'' assessments, and the parameters of this model are massively varied both across individual water columns, and indeed across bodies of water, across the world. 
+\gls{noaa} regularly publish their \gls{woa}\cite{Locarnini2013,Zweng2013} that includes these variables and many more, sampled across the world and at a range of depths. 
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.8\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{temp_globe}
+		\caption{Surface Temperature}
+		\label{fig:temp_globe}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.8\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{sal_globe}
+		\caption{Surface Salinity}
+		\label{fig:sal_globe}
+	\end{subfigure}
+	\caption{Global Variations in selected Speed of Sound variance factors}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[height=6in]{temp_sal_profile}
+	\caption{Depth Variations in selected Speed of Sound variance factors}
+	\label{fig:temp_sal_profile}
+\end{figure}
+
+
+\begin{figure}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ssp_linear_increasing}
+		\caption{Linear Increasing}
+		\label{fig:ssp_linear_increasing}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ssp_linear_decreasing}
+		\caption{Linear Decreasing}
+		\label{fig:ssp_linear_decreasing}
+	\end{subfigure}\\
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ssp_n_squared}
+		\caption{Quadratic}
+		\label{fig:ssp_n_squared}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ssp_isovelocity}
+		\caption{Isovelocity}
+		\label{fig:ssp_isovelocity}
+	\end{subfigure}
+	\caption{Bellhop Model of Non-Linear Marine Shortest-Path Propagation in various Speed of Sound Profiles}
+	\label{fig:ssps}
+\end{figure}
+\todo{Need a decent Medeterranian one for balance.}
 
 \subsection{Intensity and Power} 
 
@@ -156,7 +213,7 @@ While both frequency dependant factors are quadratic, approximating the factors 
 
  Ambient ocean noise can be assumed to be Gaussian with a continuous power spectral density in dB re $\mu$Pa per Hz, driven by four major factors, shown in \autoref{tab:ocean_noise_factors}, where $s$ is a shipping activity factor bounded from $[0,1]$ and $w$ is the surface wind speed in $ms^{-1}$ \cite{coates1989}.
 
-\begin{table}\centering
+\begin{table}[h]\centering
   \caption{Contributing factors to Ocean Ambient Acoustic Noise}
   \label{tab:ocean_noise_factors}
   \begin{tabularx}{\textwidth}{p{3.5cm} X}\toprule
@@ -182,12 +239,7 @@ Thus, the multi-path channel transfer function can be described by
 
 where $d=d_0$ is the minimal path length between the transmitter and receiver, $d_p,p=\{1,\dots P-1\}$ are the secondary path lengths, $\Gamma_p$ models additional losses incurred on each path such as reflection losses at the surface interface, and $\tau_p = d_p/c$ is the delay time.
 
-\begin{figure}
-  \includegraphics{ghia_sound_prop_curve}
-  \caption{Non-Linear Marine Propagation in an isothermal profile}
-  \todo[inline]{Vectorise and Label}
-  \label{fig:ghia_sound_prop_curve}
-\end{figure}
+
 
 
 
@@ -210,7 +262,63 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 
 \todo{callback to routing discussion in c1 explain why fbr is the best of everything all the time}
 
-\section{Marine Operations}\label{sec:marine_ops}
+\section{Marine Operations, Payloads and Technologies}\label{sec:marine_ops}
+
+The use and applications of \glspl{auv} has undergone a great expansion in recent years; current applications and considerations are summarised below.
+
+\subsection{AUV operations and deployments}
+
+\subsubsection{Hydrographic Survey}
+
+The use of \glspl{auv} in the place of manned-surface platforms or tethered undersea platforms enables greatly increased spatial and temporal sampling.
+Importantly, the separation of \glspl{auv} from the noisy sea surface enables much more efficient survey operations.
+This is particularly important when comparing to classical tow-line based measurements; where the mobility of the \glspl{auv} enables for much tighter-turning survey patterns or operation in inaccessible or hard-to-reach locations such as polar survey\cite{Curtin1993}.
+
+Another significant factor is cost; the daily cost of operating a manned vessel can be considerably higher than the costs of deploying, operating and recovering one or more \glspl{auv} with equivalent capabilities\cite{Nicholson2008}.
+Additionally, the use of low-power ``glider'' \glspl{auv} has lowered the barrier to entry for extended mission types, such as persistent environmental survey, or open-ocean operations. 
+Depth-hardened \glspl{auv} have also opened up the deepest parts of the oceans to exploration, with the onboard autonomy, imagery and Simultaneous Location and Mapping (SLAM) techniques allowing deep-dwelling survey \glspl{auv} to react to bottom-surface features without the need for a tight craft-to-surface control loop.
+The natural extension of these kind of applications is the use of \glspl{auv} on ice-covered planets such as Europa, where three-dimensional, autonomous navigation without an on-the-loop controller is vital for mission resource efficiency and success.
+
+\subsubsection{Hull and Infrastructure Inspection}
+Ongoing concerns regarding the security, safety and legality of international shipping has driven the application of \glspl{auv} to the area of near-surface hull and infrastructure inspections, looking for damage as well as devices such as limpet mines and other contraband.
+This use case puts a range of unique pressures on the AUV system; requiring highly accurate three-dimensional localisation and path-planning to clearly image the contours of a hull\cite{Nicholson2008}.
+Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using \glspl{auv} for both the laying of and inspection of these cables is an exciting area of work\cite{Yu2004}\cite{Asakawa2002}.
+
+\subsubsection{Marine Petrochemical}
+Oil and Gas industry requirements for high quality, low altitude bathymetry of seabed structures for infrastructure development (pipelines/drill platforms etc.) as well as monitoring of those structures over time (inspection etc.) is another significant application area, and a major driver of research investment.
+As in Hydrography, the mobility of \glspl{auv} is the biggest single advantage over classical platforms\cite{Morr2003}.
+
+\subsubsection{Military}
+Mine-Countermeasure Operations benefit greatly from, and significantly drive, AUV development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit.
+This benefit applies to protection as well as incursion; the ability to have persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as AUV technology, autonomy and security practices develop, this use is increasing.
+This Port Protection capability is particularly complex;  teams of \glspl{auv} are expected to repeatedly survey an area and remain densely-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
+In Sec.~\ref{sec:sim_and_valid}, we use this Port Protection scenario as a baseline for our simplified simulation context.
+
+\todo{Look at redoing this with other mobilities (particularly distributed lawnmower)}
+
+\subsection{Localisation Technologies}
+
+Given the subsurface nature of most \gls{auv} operations, terrestrial localisation techniques such as \gls{gps} are unavailable (below $\approx 20cm$ depth). 
+However, a range of alternative techniques are used to maintain spacial awareness to a high degree of accuracy in the underwater environment.
+\subsubsection{\gls{lbl}}
+Long-baseline localisation systems use a series of static surface/cable networked acoustic transponders to provide coordinated beacons and (usually) \gls{gps}-backed relative location information to local subsurface users. 
+Such systems can be accurate to less that $0.1m$ or better in ideal deployments and are regularly used in controlled autonomous survey environments such as harbour patrol operations where the deployment area is bounded. 
+However, the initial set-up and deployment required in advance of any \gls{auv} operation makes \gls{lbl} difficult to utilise in unbounded or contended areas.
+LBL systems can also be deployed on mobile surface platforms in the area (ships or buoys for example), but these applications put significant computational pressure on the end-point AUV and have greatly reduced accuracy compared to ideal deployments\cite{Matos1999}.
+\subsubsection{\gls{dvl}}
+Doppler Velocity Logging involves the emission of directed acoustic ``pings'' that reflect off sea bed/surface interfaces that, when received back on the craft with multi-beam phased array acoustic transducers can measure both the absolute depth/altitude (z-axis) of the craft and through directional Doppler shifting, the relative (xy-translative) motion of the craft since the ping.
+While classical \gls{dvl} was highly sensitive to shifting currents in the water column, advances in the development of Acoustic Doppler Current Profiling has turned that situation on it's head, enabling the compensation-for and measurement-of water currents down to the sub-meter level\cite{Snyder2010}.
+\subsubsection{\gls{ins}}
+Inertial navigation systems use gyroscopic procession to observe the relative acceleration of a mobile platform.
+This reference-relative monitoring is particularly useful in the underwater environment, as it detects the motion of \glspl{auv} as they are carried by the water itself.
+Bias Drift is a significant problem for \gls{ins} systems operating over longer (hundreds of metres) distances, as they usually have some minimal amount of directional bias, that incurs a cumulative effect over time without assistance.
+Several sensor synthesis processes have been demonstrated which combine information from \gls{ins} along with \gls{dvl} data to improve localisation into the sub-decimeter level\cite{Jalving2003,Liu2014,Allotta2015}.
+\subsubsection{\gls{slam}}
+Simultaneous Location and Mapping is the process of iteratively developing a feature-based model of an environment, and to use the relative movement within that modelled environment to obtain estimates of absolute positioning.
+SLAM has been most well developed in the contexts of either visual-based inspection using cameras, or LIDAR-style distance triangulation, however the same principles have been successfully applied using marine sonar readings, providing sub-meter accuracy, real-time, feature-relative localisation information that is (for the most part) environmentally agnostic\cite{Williams2000}.
+
+
+In summary, current technology reliably enables \glspl{auv} to localise to a sub-metre accuracy in most areas of application.
 
 \subsection{Typical \gls{auv} mission profiles}
 

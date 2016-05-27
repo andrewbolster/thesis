@@ -122,6 +122,7 @@ The concepts of graph density and connectivity are demonstrated visually in \aut
 In practical wireless network applications, network connectivity is a product of the physical distribution of nodes within an environment, and the propagation characteristics of the medium.
 
 Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown. 
+\todo{Need some ``observations'' on the impacts of this routing constraint in manets}
 
 \begin{figure}
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -270,11 +271,11 @@ Based on \gls{dsdv} and \gls{dsr}; uses beaconing and sequence numbering (\gls{d
 \subsubsection{\gls{cbrp}}
 \gls{cbrp} uses a hierarchical clustering topology where each cluster has a cluster-head which coordinates routing within that cluster. As only cluster-heads coordinate routing across clusters, transmission overheads are minimised compared to other route distribution methods. However, the negotiation and maintenance overheads and propagation delays associated with hierarchical clustering make the network susceptible to temporary routing loops as nodes may have inconsistent residual routing information during cluster re-negotiation\\
 \subsection{\gls{geraf}}
-\gls{geraf} is a geographic, on-demand, opportunistically routed protocol that could be considered an edge case of the ``reactive'' definition, in that it relies on additional knowledge about the envionment to make routing decisions.
+\gls{geraf} is a geographic, on-demand, opportunistically routed protocol that could be considered an edge case of the ``reactive'' definition, in that it relies on additional knowledge about the environment to make routing decisions.
 It's basic operation is that a source node broadcasts a packet to be sent, including it's own location and the estimated location of the intended recipient.
 Intermediate nodes then reactively assess their own optimality in relaying based on maximum distance advancement from source and sink positions, and contend for the channel to receive the packet and rebroadcast it on.
 The core innovation of \gls{geraf} is this intermediate / receiver contention policy\cite{Zorzi2003,Zorzi2003a}.
-One downside of this distance-only priority heuristic is that it can induce long, zip-zag paths that can be sensitive to node mobility.\todo{Need a cite for this but only person who mentions it is \cite{Jornet2008}}
+One downside of this distance-only priority heuristic is that it can induce long, zig-zag paths that can be sensitive to node mobility.\todo{Need a cite for this but only person who mentions it is \cite{Jornet2008}}
 
 \subsection{Hybrid Routing}
 
@@ -293,7 +294,7 @@ Compared to \gls{zrp}, \gls{zhls} extended the zoning concept to include some el
 \subsubsection{\gls{slurp}}
 With a similar hierarchical non-overlapping zone structure to \gls{zhls}, \gls{slurp} does away with global routing through a deterministic mapping of node identifiers to ``Home'' regions, such that any node attempting to communicate with a node, can directly calculate from what ``Home'' zone that node originated.As and when nodes leave their ``Home'' region, they feedback to that region their current location. Subsequently when that node is a destination for a packet, the routing query is automatically directed to the home region which can direct the source node as to the direction of its destination, upon which the source can start sending data towards the destination using a most forward with fixed radius (MFR) geographical forwarding algorithm. Once the data reaches the zone where the destination currently resides, source-routing is used internally to complete the route. This strategy works well for relatively static networks with some mobile nodes, or where node mobility is ``slow'', such as \gls{wsn}, however it still relies on pre-programmes static zone maps as per \gls{zhls}\cite{Woo2001}
 \subsubsection{\gls{fbr}}
-\gls{fbr} is built upon the concepts of \gls{geraf}, which uses straight line distance-from-receiver minimisation, extending with a cone-based prioritisation metric rather than absolute distance, mitigating the zip zag effect of \gls{geraf} and implicitly supporting partially overlapping simultaneous alternate routing, improving system redundancy and (usually) eliminating the need for retransmission \cite{Jornet2008}.
+\gls{fbr} is built upon the concepts of \gls{geraf}, which uses straight line distance-from-receiver minimisation, extending with a cone-based prioritisation metric rather than absolute distance, mitigating the zig zag effect of \gls{geraf} and implicitly supporting partially overlapping simultaneous alternate routing, improving system redundancy and (usually) eliminating the need for retransmission \cite{Jornet2008}.
 This is further augmented with an adaptive open-loop power control system which both aids in energy consumption and in preventing spurious blocking of the channel.
 \gls{fbr} is particularly well suited to constrained energy mobility networks with high mobility and high retransmission costs\cite{Noh2012}.
 
@@ -875,12 +876,12 @@ This standard was withdrawn in 2015 due to \gls{astm} regulations requiring stan
 
 \subsubsection{Summary of Design Trust}
 
-The implications of trust in autonomy beyond securing communications and data are an area in need of further research (BAE Systems, 2013. Maritime Autonomy Final Report - Combined Response,)\todo{Need to check security status of this source}
+The implications of trust in autonomy beyond securing communications and data are an area in need of further research~\cite{BAESystems2013}
 Of particular concern is the verification of autonomous behaviours.
 Technology Readiness Level deficiencies were identified in the Maritime Capability Contribution of Unmanned Systems (MCCUS) Osprey Phase 1 report(Clark, H. et al., 2012. Maritime Capability Contribution of Unmanned Systems,)\todo{Need to check security status of this source}, with a particular focus on failsafe behaviour.
-The addition of increased on-board autonomy in MUxS, properly understood and verified, would greatly improve this future capability, similar to recent developments in the UAS arena\cite{Cummings2010}.
+The addition of increased on-board autonomy in MUxS, properly understood and verified, would greatly improve this future capability, similar to recent developments in the UAS arena~\cite{Cummings2010}.
 
-There are opportunities for increased decentralisation and in-field collaboration(Walton, R., 2012. Maritime Autonomy PDR Pack.)\todo{Need to check security status of this source}, however, difficulties in “Trust” between human operators and autonomous systems have already been clearly identified\cite{Chen2011b},and this has been demonstrated by the recent decision by the German government to renege on its \euro500M investment in the Euro Hawk programme, due to concerns about civil certification of the onboard autonomy\cite{Mehta2013}
+There are opportunities for increased decentralisation and in-field collaboration\cite{Walton2012}, however, difficulties in “Trust” between human operators and autonomous systems have already been clearly identified\cite{Chen2011b},and this has been demonstrated by the recent decision by the German government to renege on its \euro500M investment in the Euro Hawk programme, due to concerns about civil certification of the onboard autonomy\cite{Mehta2013}
 In order for these new distributed structures to be relied upon to provide operational performance, reliability and to maintain in-field situational awareness, vulnerabilities to disruption, interruption, and subversion need to be understood and minimised.
 
 \subsection{Operational Trust}
@@ -898,7 +899,6 @@ To be able to trust that systems’ ability to continue on a course, survey an a
 \subsection{Conclusions}
 
 \todo{Conclusion of Trusted Development}
-
 
 
 \section{Trust in Autonomous \glspl{manet}}\label{sec:trust_manets}
@@ -983,13 +983,13 @@ Additionally this assumption of node mobility and ``temporary disconnection'' pr
 To mitigate these threats in efficient ways, several strategies have emerged that can loosely be grouped into ``Deter'' and ``Detect'' strategies.
 
 Deterrant strategies usually include some form of misbehaviour-induced backoff policy to passively punish misbehaviour~\cite{Konorski2002}\cite{Cardenas:2004:DPM:1029102.1029107}.
-On the other hand, Detection strategies are usually based on some derivative form of hardwire-network \gls{ids} frameworks, where 
+On the other hand, Detection strategies are usually based on some derivative form of hardline-network \gls{ids} frameworks, where 
 
 \citet{zhang2003intrusion} first proposed a general \gls{ids} framework for \glspl{manet}; leveraging the distributed and cooperative predicates of the architecture, introducing both per-node and cooperative \gls{ids} submodules such that nodes work independently and cooperatively to identify certain misbehaviours.
-Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range.
+Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range\cite{Parker2006}
 However it is commonly accepted that this framework had significant deficiencies in terms of power and communications overheads~\cite{csen2010security}.
 
-\citet{Parker2006} proposed an extension to this framework structure \todo{Finish threat mitigation}
+\todo{Finish threat mitigation}
 
 \subsection{Trust Management Frameworks}\label{sec:tmfs}
 
@@ -1023,7 +1023,7 @@ Taking some examples;\todo{Check for more recent evolutions in Trust/TMFs}
 
 \subsection{Single Metric Trust Frameworks}
 
-\todo{Expand background detail on more frameworks}
+\todo{Expand background detail on more frameworks, (Confidant/Fuzzy)}
 The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
 %
 \begin{equation}
@@ -1058,7 +1058,7 @@ From \citet{Zouridaki2005} these are set to $x=\sqrt{2},y=\sqrt{9}$, generating 
 
 Upon this per-node assessment methodology, \gls{otmf} overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
 
-\todo{Want at least CONFIDANT and Fuzzy in here for contrast}
+
 
 To date this work has been mostly limited to terrestrial, RF based networks.
 There are many situations where the observed metrics will include significant noise and occur at irregular, sparse, intervals.
@@ -1081,7 +1081,6 @@ Given the potential incentives to a selfish attacker and potential threats to tr
   \caption{The inclusion of additional metrics and domains in trust assessment reduces the systems exposed threat surface}
   \label{fig:threat_surface}
 \end{figure}
-\todo{Replace \autoref{fig:threat_surface} with vector one}
 
 A multi-metric approach may be more appropriate to capture and monitor the realities of harsh and sparse communications environments.
 

@@ -6,7 +6,7 @@
 
 This work has largely considered autonomous systems as entities of wider systems, implicitly involving human operators/agents in some part of the desired operation.
 We refer to these systems as \gls{acs}.
-As described in~\autoref{Chapter3}, Operational Trust has two main aspects, trust in the system to behave as expected and trust in the interfaces between systems (human/machine and machine/machine).
+As described in~\autoref{ch:trust_background}, Operational Trust has two main aspects, trust in the system to behave as expected and trust in the interfaces between systems (human/machine and machine/machine).
 Of all of the interfaces in an Autonomous Collaborative System, the most problematic is that arguably that between the \gls{acs} and the human operator / team of operators.
 Cummings identified the main challenges to \gls{hsc}, summarised below:\cite{Cummings2010}
 
@@ -34,17 +34,17 @@ What \gls{loa}s are appropriate for what circumstances?}
 In a modern, non-hierarchical, often distributed or cellular military management system (Network Centric Warfare doctrine for example), tools are increasingly being used to mitigate information asymmetry within command and control.
 A simple example of this is shared watch-logs in Naval operations, providing temporal collaboration between watch-teams separated in time.
 The DoD Global Information Grid is another example of a spatial collaborative framework.
-Recent work has demonstrated the power of collaborative analysis and human-machine shared sensing technologies even with low levels of training on the part of the operators providing superior results and resource efficiencies than either humans or machines alone in survey and search-and-rescue scenarios (Ahmed et al.2014)\todo{Check Security}.
+Recent work has demonstrated the power of collaborative analysis and human-machine shared sensing technologies even with low levels of training on the part of the operators providing superior results and resource efficiencies than either humans or machines alone in survey and search-and-rescue scenarios~\cite{Ahmed2014}.
 As these temporal and spatial collaboration tools increase in complexity and ability, decisions that previously required SA that was only available at higher echelons within the standard hierarchy are available to commanders on the ground, or even to individual team members, enabling the potential for informed decisions to be taken faster and more effectively, enabled by automated strategies to present relevant information to teams based on the operational context.
 However there are a range of operational, legal, psychological and technical challenges that need to be addressed before confidence in these distributed management structures can be established.
-Studies into situational awareness sharing techniques (telepresent table-top environments, video conferencing, and interactive whiteboards) have generally yielded positive results, however investigations into interruptive-communications (such as instant messaging chat) have demonstrated a negative impact on operational efficiency.
+Studies into situational awareness sharing techniques (tele-present table-top environments, video conferencing, and interactive whiteboards) have generally yielded positive results, however investigations into interruptive-communications (such as instant messaging chat) have demonstrated a negative impact on operational efficiency.
 In short, the biggest problem with distributed decision making in the context of supervisory systems is that \textit{there is no consensus on whether it is advantageous or not, and what magnitude of operational delta is introduced, if any.}
 
 \section{Complexity}
 Beyond simple Information Overload, increasing complexity of information presented to operators is having a negative effect on operational efficiency.
 In HSC, displays are designed to reduce complexity, introducing abstractions with an aim to presenting the minimum amount of information to the operator required to maintain an accurate and up-to-date mental model of the environmental and operational state.
 This has led to the development of many domain specific decision support interfaces, however, in academic research, there has been nothing but ‘mixed results’.
-One commonly raised negative is the general bias on the ‘cool factor’ of interfaces.
+One commonly raised negative is the general bias on the ``cool factor'' of interfaces.
 Immersive 3D visual, aural, or haptic interfaces that at first appraisal seem to provide more approachable information to the operator, and are indeed tacitly preferred by operators in use.
 However, there has not been any evidence to demonstrate performance improvement when using these tools, and in-fact, \textit{improving the ``fidelity'' of the interfaces has led to operators’ overly-relying on these representations of the environment rather than remaining engaged in the environment.}
 
@@ -58,5 +58,5 @@ For example, in the context of decision support systems, ``Autonomy Bias'' has b
 This behaviour isn't only the reserve of decision support systems, but also in the generic allocation of operator attention; scheduling heuristics are used to decide how much time tasks should be worked on, and time and again, humans are found to be far from optimal in this regard, especially in time-pressured scenarios where these heuristics are in even more demand.
 Even when operators are given optimal scheduling rules, these quickly fall apart, often due to primary task efficiency degradation after interruption.
 This highlights a critical interface in the adoption of complex autonomous systems that still demand ‘Man in the loop’ functionality; if a system is required to have full-time concentrated supervision (e.g.\ flying a UCAV), but also event-based reactive decision making (e.g.\ alerts from non-critical subsystems), both tasks are negatively impacted.
-In an assessment of factors influencing trust in autonomous vehicles and medical diagnosis support systems, Carlson et al also identified that a major factor in an operator or users’ trust in a system was not only dependant on past performance and current accuracy but also on ``soft factors'' such as the branding and reputation of the manufacture / designer. (Carlson et al. 2014)\todo{Check Security}
+In an assessment of factors influencing trust in autonomous vehicles and medical diagnosis support systems, Carlson et al also identified that a major factor in an operator or users’ trust in a system was not only dependant on past performance and current accuracy but also on ``soft factors'' such as the branding and reputation of the manufacture / designer~\cite{Carlson2014}.
 Further, autonomous decision support / detection / classification systems have an ``uncanny valley'' to overcome in terms of accuracy, in that there is a dangerous period when such systems are used but not perfect, but operators become complacent, causing an increased error rate, until such a time that those autonomous systems can match or exceed the detection rates of their human counterparts.

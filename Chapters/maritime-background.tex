@@ -266,9 +266,10 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 
 \section{Marine Operations, Payloads and Technologies}\label{sec:marine_ops}
 
-The use and applications of \glspl{auv} has undergone a great expansion in recent years; current applications and considerations are summarised below.
+The use and applications of \glspl{auv} has undergone a great expansion in recent years\cite{Alam2014}.
+The primary application for \glspl{auv} has long been identified as the environmental monitoring of marine areas, and are actively being researched by a great range of industrial and defence sector applications, with secondary applications in the physical sciences and environmental research, which are summarised below\cite{Bingham2002,Wynn2014}.
 
-\subsection{AUV operations and deployments}
+\subsection{\gls{auv} operations and deployments}
 
 \subsubsection{Hydrographic Survey}
 
@@ -286,17 +287,16 @@ Ongoing concerns regarding the security, safety and legality of international sh
 This use case puts a range of unique pressures on the AUV system; requiring highly accurate three-dimensional localisation and path-planning to clearly image the contours of a hull\cite{Nicholson2008}.
 Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using \glspl{auv} for both the laying of and inspection of these cables is an exciting area of work\cite{Yu2004}\cite{Asakawa2002}.
 
-\subsubsection{Marine Petrochemical}
+\subsubsection{Marine Petrochemical/Mineralogy}
 Oil and Gas industry requirements for high quality, low altitude bathymetry of seabed structures for infrastructure development (pipelines/drill platforms etc.) as well as monitoring of those structures over time (inspection etc.) is another significant application area, and a major driver of research investment.
 As in Hydrography, the mobility of \glspl{auv} is the biggest single advantage over classical platforms\cite{Morr2003}.
+Additionally, recent advances in \gls{sas} have provided invaluable sub-surface profile data over much wider areas for multi-spectral mineralogical analysis than previous sonar profilers\cite{Denny2015}.
 
 \subsubsection{Military}
-Mine-Countermeasure Operations benefit greatly from, and significantly drive, AUV development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit.
+Mine-Countermeasure Operations benefit greatly from, and significantly drive, \gls{auv} development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit.
 This benefit applies to protection as well as incursion; the ability to have persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as AUV technology, autonomy and security practices develop, this use is increasing.
 This Port Protection capability is particularly complex;  teams of \glspl{auv} are expected to repeatedly survey an area and remain densely-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
 In Sec.~\ref{sec:sim_and_valid}, we use this Port Protection scenario as a baseline for our simplified simulation context.
-
-\todo{FUT:Look at redoing this with other mobilities (particularly distributed lawnmower)}
 
 \subsection{Localisation Technologies}
 
@@ -317,17 +317,27 @@ Bias Drift is a significant problem for \gls{ins} systems operating over longer 
 Several sensor synthesis processes have been demonstrated which combine information from \gls{ins} along with \gls{dvl} data to improve localisation into the sub-decimeter level\cite{Jalving2003,Liu2014,Allotta2015}.
 \subsubsection{\gls{slam}}
 Simultaneous Location and Mapping is the process of iteratively developing a feature-based model of an environment, and to use the relative movement within that modelled environment to obtain estimates of absolute positioning.
-SLAM has been most well developed in the contexts of either visual-based inspection using cameras, or LIDAR-style distance triangulation, however the same principles have been successfully applied using marine sonar readings, providing sub-meter accuracy, real-time, feature-relative localisation information that is (for the most part) environmentally agnostic\cite{Williams2000}.
+\gls{slam} has been most well developed in the contexts of either visual-based inspection using cameras, or LIDAR-style distance triangulation, however the same principles have been successfully applied using marine sonar readings, providing sub-meter accuracy, real-time, feature-relative localisation information that is (for the most part) environmentally agnostic\cite{Williams2000}.
 
 
 In summary, current technology reliably enables \glspl{auv} to localise to a sub-metre accuracy in most areas of application.
 
-\subsection{Typical \gls{auv} mission profiles}
+\subsection{Payloads}
 
-\todo{ADD NEXT: Typical AUV missions, payloads, and available equipment}
+\todo{ADD: Do the same formatting as Localisation specifically on Sensors instead of this enumerate}
+
+\glspl{auv} are capable of being loaded with a wide range of sensing payloads;
+\begin{enumerate}
+	\item 
+	\item Bathymetry
+	\item Temperature/salinity/conductivity
+	\item Side scanning sonar 
+	\item Sub-bottom Sonar Profiling
+\end{enumerate}
+
 
 \subsection{Potential Future Applications}
-\todo{ADD NEXT: Future Applications of \glspl{auv}}
+\todo{ADD NEXT: Future Applications of \glspl{auv}, mostly in the ``Actuation'' side of things as opposed to classical sensor payloads}
 
 \subsection{Need for Trust in Maritime Networks}
 
@@ -352,7 +362,7 @@ Similarly, the assessment that the Risk of Data Corruption is low is arguable on
 	\end{tabularx}
 \end{table}
 
-Resource Depletion, or \gls{dos} has a very wide ranging definition, from network-level attacks to saturate a communications channel or the computing resources of routing nodes, or the exploitation of a power-control loop to induce a node to waste energy with overly-high-powered communications, to the intentional geographic mis-leading of nodes to induce a similar power-drain on locomotive systems, through tactics such as location spoofing or \gls{gps} denial.
+Resource Depletion, or \gls{dos} has a very wide ranging definition, from network-level attacks to saturate a communications channel or the computing resources of routing nodes, or the exploitation of a power-control loop to induce a node to waste energy with overly-high-powered communications, to the intentional geographic misleading of nodes to induce a similar power-drain on locomotive systems, through tactics such as location spoofing or \gls{gps} denial.
 
 With respect to the critical, and from \autoref{tab:manet_risk}, it is assessed that the highest overall threats are those of Resource Depletion and Masquerading.
 

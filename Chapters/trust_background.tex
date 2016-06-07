@@ -2,7 +2,7 @@
 \label{ch:trust_background}
 \lhead{Chapter \thechapter. \emph{Trust and \gls{manet} Applications}}
 
-\section{\acrlong{manet} Topologies}
+\section{\acrlong{manet} Topologies}\label{sec:manet_topologies}
 
 
 \glspl{manet} are wireless networks consisting of mobile devices acting simultaneously as sensor/processing/effector nodes and routing nodes, acting without a classical \gls{wlan} structured network architecture. 
@@ -32,7 +32,7 @@ In order to understand and clarify the challenges to generic \gls{manet} applica
 One fundamental compromise in the operation of wireless \glspl{manet} is the trade-off between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
 This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, environmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
 
-From graph theory, the concept of ``Density'' is a $D_G=[0,1]$ bounded measure of how ``Complete'' or fully-connected a given graph $G$ is.
+From graph theory, the concept of ``Density'' is a $D_G=[0,1]$ bounded measure of how ``Complete'' or fully-connected a given graph $G$ consisting of the set of vertices $V$ and edges (links) $E$ is.
 ``Connectivity'' can be generalised as the routing-ability and the possible redundancy of that routing-ability across the graph, i.e.\ for a ``Connected'' graph, such that there is a sequence of edges (a path) that can be traversed to link all possible pairs of nodes, but if any of the nodes were removed, the graph becomes disconnected or separated, that graph has a connectivity of $1$.
 If this is not possible, but it is possible to disconnect the graph by removing two vertices, the graph has connectivity 2, and so on.
 A graph with a connectivity of $0$ indicates that that graph has separated (or disconnected) vertices.
@@ -122,7 +122,7 @@ The concepts of graph density and connectivity are demonstrated visually in \aut
 In practical wireless network applications, network connectivity is a product of the physical distribution of nodes within an environment, and the propagation characteristics of the medium.
 
 Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown. 
-\todo{Need some ``observations'' on the impacts of this routing constraint in manets}
+\todo{ADD:Need some ``observations'' on the impacts of this routing constraint in manets}
 
 \begin{figure}
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -275,7 +275,7 @@ Based on \gls{dsdv} and \gls{dsr}; uses beaconing and sequence numbering (\gls{d
 It's basic operation is that a source node broadcasts a packet to be sent, including it's own location and the estimated location of the intended recipient.
 Intermediate nodes then reactively assess their own optimality in relaying based on maximum distance advancement from source and sink positions, and contend for the channel to receive the packet and rebroadcast it on.
 The core innovation of \gls{geraf} is this intermediate / receiver contention policy\cite{Zorzi2003,Zorzi2003a}.
-One downside of this distance-only priority heuristic is that it can induce long, zig-zag paths that can be sensitive to node mobility.\todo{Need a cite for this but only person who mentions it is \cite{Jornet2008}}
+One downside of this distance-only priority heuristic is that it can induce long, zig-zag paths that can be sensitive to node mobility~\cite{Jornet2008}.
 
 \subsection{Hybrid Routing}
 
@@ -421,7 +421,7 @@ This trust value is incorporated with the risk / reward as assessed by the trust
     \draw [->] (outcomes.south) --++ (0cm,-2.5cm) -| (percievedFactors.south);
 
   \end{tikzpicture}
-  \caption[Model of Trust]{Model of Trust (from \cite{Mayer1995})}
+  \caption[Model of Trust]{Model of Trust (from \citet{Mayer1995})}
   \label{fig:mayer_trust_model}
 \end{figure}\todo{\autoref{fig:mayer_trust_model}: Only reasonable delimitation of Trustee Operation that doesn't corrupt Mayers thesis is curring half way though Risk Taking, Outcomes and \emph{maybe} perceived risk (as this is also affected by outcomes; may make more sense to have a separate augmented diagram}
 
@@ -460,17 +460,23 @@ Sun argues that only System Trust and Behavioural Trust are relevant to trusted 
 However, it is arguable that in any communications network where the operation of that network is not the only concern, or where that network has to interact with any operator, then all of these factors come into play; as we will see (\autoref{sec:trust_perspectives}).
 Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation Process’, or a trust assessment, while the other trust constructs deal with the interactions between trust and decision making against an internal assessment of network trustworthiness.
 
-\todo{Trust Structure needs a diagram (15.1 from Liu2010 or similar)}
+\todo{FIX: Vectorise Trust Construct Diag}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{liu2010RelationshipStack}
+	\caption{Trust Construct Relationships (from \citet{Liu2010})}
+	\label{fig:trust_constructs}
+\end{figure}
 
 
 \subsection{Taxonomy and Notations of Trust}\label{sec:trust_taxonomy}
 
-To abstractly discuss Trust and trust modelling, \citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property posessed by that agent.
+To abstractly discuss Trust and trust modelling, \citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property possessed by that agent.
 
 This notation is normally abbreviated such that 
 \begin{equation}
   \label{eq:trust_notation}
-  T{A:B,a} = T^a_{AB}
+  T\{A:B,a\} = T^a_{AB}
 \end{equation} 
 where $T^a_{AB}$ denotes the expectation or trust that a node $A$ has that node $B$ will successfully perform action $a$.
 
@@ -478,36 +484,207 @@ A special extension is assumed for multi-party trust relationships for the ``act
 %
 \begin{equation}
   \label{eq:recommendation_notation}
-  T{A:B,a_R} = R^a_{AB}
+  T\{A:B,a_R\} = R^a_{AB}
 \end{equation}
 %
-Where the action underdiscussion is implied or there is a single action under debate (for example, packet routing in \glspl{manet}), the action superscript can be left out.
+Where the action under discussion is implied or there is a single action under debate (for example, packet routing in \glspl{manet}), the action superscript can be left out; $T_{AB} , R_{AB}$.
 
-Based on this notation, \citet{Sun2008} demonstrate that by taking an Information Theoretic approach to trust as function of uncertainty (i.e.\ trust having both a valency and a confidence)~\footnote{Donald Rumsfelds famous 2002 ``Known Knowns'' quote is a perfect example of this}, a series of axioms can be constructed to model the 
+Trust can be propagated through a number of nodes, forming a chain of assessments and recommendations, expressed as per \eqref{eq:trust_prop}.
+While the particular algorithms and methods of combination vary between \glspl{tmf}, the $\cdot$ symbol is used as a generic operator.
+In any case, if a given node $A$ has no knowledge about node $B$, or likewise $B$ having no knowledge of $C$, trust between $A,C$ is zero; $T_{ABC} = 0$
 
-\todo{Liu and Wang do lots on this \cite{Liu2010} as well as discussion regarding the entropic/probabilistic models of trust. This may be too much to throw in, might inject it later}
+\begin{equation}
+	\label{eq:trust_prop}
+	T_ {AC}\mapsto T_{ABC} = R_{AB} \cdot T_{BC} \text{ where } R_{AB} \neq 0 , T_{BC} \neq 0
+\end{equation}
 
-\todo{Explore notations of transitivity and abstract trust synthesis}
+Either notation; $T_{AC}, T_{ABC}$ is valid for this chaining depending on the context, where, $T_{AC}$ is preferred where there is either one unambiguous transiting node $B$, or where the value is the multi-path trust synthesis across many individual links, where $T_{ABC}$ is then the preferred notation for a single path within a multi-path network.
 
-\subsection{Characteristics of Trust Relationships}
+For discussion of individual links or subsets of links, Set notation can be applied to $T_{AC}$ multi-path networks based on the graph theoretic notation introduced in~\autoref{sec:manet_topologies}, for example;
+
+\begin{equation}
+	T_{AC} \subseteq T_{AxC} \forall x | \overrightarrow{AxC} \in E
+\end{equation}
+
+Similarly, these multi-path sets can be decomposed into their individual links, i.e. $T_x \ge 0 \forall x \in T_{AC}$
+\subsubsection{Characteristics of Trust Relationships}
 
 There are five commonly considered characteristics or attributes of Trust relationships in general, but not all relationships exhibit them and they are not assumed to be a complete specification of Trust (synthesised from \cite{Liu2006,Mayer1995, Mcknight1996, Pavan2015}):
 
 \begin{itemize}
-  \item \emph{Multi-Party} - One-to-one; one-to-many; many-to-one; many-to-many.
-    Trust is not an absolute characteristic of a lone individual.
-    Trust may include multi-agent abstractions (one-to-many), such as a preferential trust/distrust towards a group exhibiting a particular attribute, e.g.\ members of the armed forces / police services.
-    Likewise, there can be trustor/trustee attributes that can generalise relationships between collectives (many-to-many), e.g.\ Jets and Sharks\cite{Robbins1961}.
-  \item \emph{Transitive} - Trust assessments can be shared (i.e.\ recommendations), where this second order trust assessment incorporates both the observed trustworthiness of the trustee, as well as the trustworthiness of the intermediate trustor.
-    In some models this is further extended to include out-of-network intermediate trustors that have some other defined authority, e.g.\ PKI Certificate Authority
-  \item \emph{Evidential} - Trust must be based on some form of evidence-based observation or assessment, such as historical success rates of performing a certain action, or second-hand observations of trust from a third party.
-  \item \emph{Directional Asymmetry} - The majority of relationships are bi-directional but are asymmetric, i.e.\ between two entities who ``trust'' each other, there are two independent trust relationships that may have very different ``values'' or extents.
-  \item \emph{Contextual} - Trust can be variable and loosely coupled between contexts with respect to the action being assessed or the environment within which the trustee is operating, e.g.
-    Doctors are trusted to perform medical procedures but that trust may not improve their success at correctly wiring an electrical plug.
-    However there are plenty of counter-examples to this, as from \cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and these are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
+	\item \emph{Multi-Party} - One-to-one; one-to-many; many-to-one; many-to-many.
+	Trust is not an absolute characteristic of a lone individual.
+	Trust may include multi-agent abstractions (one-to-many), such as a preferential trust/distrust towards a group exhibiting a particular attribute, e.g.\ members of the armed forces / police services.
+	Likewise, there can be trustor/trustee attributes that can generalise relationships between collectives (many-to-many), e.g.\ Jets and Sharks\cite{Robbins1961}.
+	\item \emph{Transitive} - Trust assessments can be shared (i.e.\ recommendations), where this second order trust assessment incorporates both the observed trustworthiness of the trustee, as well as the trustworthiness of the intermediate trustor.
+	In some models this is further extended to include out-of-network intermediate trustors that have some other defined authority, e.g.\ PKI Certificate Authority
+	\item \emph{Evidential} - Trust must be based on some form of evidence-based observation or assessment, such as historical success rates of performing a certain action, or second-hand observations of trust from a third party.
+	\item \emph{Directional Asymmetry} - The majority of relationships are bi-directional but are asymmetric, i.e.\ between two entities who ``trust'' each other, there are two independent trust relationships that may have very different ``values'' or extents.
+	\item \emph{Contextual} - Trust can be variable and loosely coupled between contexts with respect to the action being assessed or the environment within which the trustee is operating, e.g.
+	Doctors are trusted to perform medical procedures but that trust may not improve their success at correctly wiring an electrical plug.
+	However there are plenty of counter-examples to this, as from \cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and these are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
 \end{itemize}
 
 \cite{Liu2010} summarises these attributes in a series of axioms 
+
+\subsubsection{Fundamental Axioms of Trust}\label{sec:axioms}
+\citet{Sun2008} demonstrate that by taking an Information Theoretic approach to trust as function of entropy and as such, uncertainty (i.e.\ trust having both a valency and a confidence)~\footnote{Donald Rumsfelds famous 2002 ``Known Knowns'' quote is a perfect example of this}, a series of axioms can be constructed to model the interactions between trusting agents.
+Many of these axioms are mirrored in pure information theory, as discussed in \cite{Liu2010}.
+
+\emph{Axioms and their quoted descriptions from \cite{Liu2010}}
+
+\paragraph{Axiom 1: Concatenation propagation of Trust does not increase Trust} 
+\begin{displayquote}
+	When the subject establishes a trust relationship with the agent through the recommendation from a third party, the trust value between the subject and the agent should not be more than the trust value between the subject and the recommender as well as the trust value between the recommender and the agent.
+\end{displayquote}
+This axiom sets up the rules for trust propagation from an entropic perspective and using the notation discussed above, can be expressed as in \eqref{eq:trust_prop} (see~\autoref{fig:trust_chaining} for context)
+\begin{equation}
+	\label{eq:trust_prop}
+	T_{AC} \leq \min({R_{AB},T_{BC}})
+\end{equation}
+
+
+
+\todo{FIX: Label placements}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
+	\node [sum, preaction={fill=red!20}] (a) {A};
+	\node [sum, right =of a] (b) {B};
+	\node [sum, right =of b] (c) {C};
+	
+	\draw [dashed, ->] (a) -- (b) node [midway] {$R_{AB}$};
+	\draw [->] (b) -- (c) node [midway] {$T_{BC}$};;
+	
+	\end{tikzpicture}
+	\caption{Trust Chaining}
+	\label{fig:trust_chaining}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.35\textwidth}
+		\hfill
+		\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex', baseline=(a.base)]
+		\node [sum, preaction={fill=red!20}] (a) {A};
+		\node [sum, right =of a] (b) {B};
+		\node [sum, right =of b] (c) {C};
+		
+		\draw [dashed, ->] (a) -- (b) node [midway] {$R_\alpha$};
+		\draw [->] (b) -- (c) node [midway] {$T_\alpha$};;
+		
+		\end{tikzpicture}
+		\label{fig:trust_combination_a}
+		\caption{}
+		\hfill
+	\end{subfigure}
+	\begin{subfigure}[b]{0.35\textwidth}
+		\hfill
+		\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex', baseline=(a.base)]
+		\node [sum, preaction={fill=red!20}] (a) {$A'$};
+		\node [sum, above right =of a] (b) {$B'$};
+		\node [sum, below right =of a] (d) {$D'$};
+		\node [sum, below right =of b] (c) {$C'$};
+		
+		\draw [dashed, ->] (a) -- (b) node [midway] {$R_\alpha$};
+		\draw [dashed, ->] (a) -- (d) node [midway] {$R_\alpha$};
+		\draw [->] (b) -- (c) node [midway] {$T_\alpha$};;
+	    \draw [->] (d) -- (c) node [near end, below] {$T_\alpha$};;
+		
+		\end{tikzpicture}
+		\label{fig:trust_combination_b}
+		\caption{}
+		\hfill
+	\end{subfigure}
+	\caption{Trust Combination}
+	\label{fig:trust_combination}
+\end{figure}
+
+
+\paragraph{Axiom 2: Multipath propagation of Trust does not reduce Trust}
+
+\begin{displayquote}
+	If the subject receives \textit{the same} recommendations for the agents from multiple sources, the trust value should be no less than that in the case when the subject receives fewer recommendations.
+\end{displayquote}
+
+In this case, this axiom sets the groundwork for multi-node analysis of trust networks, shown in~\autoref{fig:trust_combination} and described in \eqref{eq:trust_combination}.
+In essence, adding additional information sources of the same observation should increase the trust value arrived at from a smaller subset of sources.
+
+\begin{align}
+T_{AC} \geq T_{A'C'} \geq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \geq 0\\
+T_{AC} \leq T_{A'C'} \leq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \le 0
+\end{align}
+
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.35\textwidth}
+		\hfill
+		\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex', baseline=(a.base)]
+		\node [sum, preaction={fill=red!20}] (a) {A};
+		\node [sum, right =of a] (b) {B};
+		\node [sum, below right =of b] (e) {E};
+		\node [sum, above right =of b] (d) {D};
+		\node [sum, below right =of d] (c) {C};
+		
+		\draw [dashed, ->] (a) -- (b) node [midway] {$R_{AB}$};
+		\draw [dashed, ->] (b) -- (e) node [midway] {$R_{BE}$};
+		\draw [dashed, ->] (b) -- (d) node [midway] {$R_{BD}$};
+		\draw [->] (e) -- (c) node [midway] {$T_{EC}$};;
+		\draw [->] (d) -- (c) node [near end, below] {$T_{DC}$};;
+		
+		\end{tikzpicture}
+		\label{fig:trust_paths_a}
+		\caption{}
+		\hfill
+	\end{subfigure}
+	\begin{subfigure}[b]{0.35\textwidth}
+		\hfill
+		\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex', baseline=(a.base)]
+		\node [sum, preaction={fill=red!20}] (a) {$A'$};
+		\node [sum, above right =of a] (b) {$B'$};
+		\node [sum, right =of b] (d) {$D'$};
+		\node [sum, below right =of a] (f) {$F'$};
+		\node [sum, right =of f] (e) {$E'$};
+		\node [sum, below right =of d] (c) {$C'$};
+		
+		\draw [dashed, ->] (a) -- (b) node [midway] {$R_{A'B'}$};
+		\draw [dashed, ->] (a) -- (f) node [midway] {$R_{A'F'}$};
+		\draw [dashed, ->] (f) -- (e) node [midway] {$R_{F'E'}$};
+		\draw [dashed, ->] (b) -- (d) node [midway] {$R_{B'D'}$};
+		\draw [->] (e) -- (c) node [midway] {$T_{E'C'}$};;
+		\draw [->] (d) -- (c) node [near end, below] {$T_{D'C'}$};;
+		
+		\end{tikzpicture}
+		\label{fig:trust_paths_b}
+		\caption{}
+		\hfill
+	\end{subfigure}
+	\caption{Trust Paths}
+	\label{fig:trust_paths}
+\end{figure}
+
+\paragraph{Axiom 3: Trust based on multiple recommendations from a single source should not be higher than that derived from independent sources.}
+
+\begin{displayquote}
+	When the trust relationship is established jointly through concatenation and multipath trust propagation, [...] recommendations from independent sources can reduce uncertainty more effectively than can recommendations from correlated sources.
+\end{displayquote}
+
+This axiom addresses the information independence of trust links; In ~\autoref{fig:trust_paths} there are two networks, both with two potential chains from right to left-nodes ($A,C,A',C'$),.
+\begin{align}
+T_{AC}&=\{T_{ABCD}, T{ABEC}\}\\
+T_{A'C'}&=\{T_{A'B'D'C'}, T{A'F'E'C}\}
+\end{align}
+
+Given that the sub-chain $T_{AB}$ prepends both chains in $T_{AC}$, the weight of node $B$'s recommendations are effectively duplicated, and from Axiom 2, this duplication should not decrease the trust assessment.
+However for $T{A'C'}$, no such duplication exists, and as such it's trust assessment should have a larger magnitude.
+
+\begin{align}
+T_{AC} \geq T_{A'C'} \geq 0, &| T_{A'C'} \geq 0\\
+T_{AC} \leq T_{A'C'} \leq 0, &| T_{A'C'} \le 0
+\end{align}
+
 
 \subsection{Topologies of Multi-Party Trust Networks}\label{sec:trust_topologies}
 Beyond the attributes or characteristics of an individual trust relationship, within any multi party sparsely connected network or community, topological context is useful in both establishing trust and in disseminating observations for collaborative assessment.
@@ -644,7 +821,7 @@ Within sparsely connected networks, there are three primary types of relationshi
 
 \subsection{Trust Establishment Strategies}
 
-\todo{Need to discuss how trust is established a) initially among a co-launched group, b) with a newcomer and c) with a returner (\citet{Liu2006, Li2007, Theodorakopoulos2004})}
+\todo{ADD: Need to discuss how trust is established a) initially among a co-launched group, b) with a newcomer and c) with a returner (\citet{Liu2006, Li2007, Theodorakopoulos2004})}
 
 \subsection{Attacks on Trust}
 
@@ -653,7 +830,7 @@ Within sparsely connected networks, there are three primary types of relationshi
 The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
 In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. 
 In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. 
-Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted.\todo{Backref to ``Trust vs UnTrust'' section}
+Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted.\todo{FIX: Backref to ``Trust vs UnTrust'' section}
 
 
 \section{Trusted Development and Operation of Autonomous Systems}\label{sec:trust_autonomy}
@@ -662,7 +839,7 @@ Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed na
 
 The aim of the section is to explore where trust is likely to impact \gls{sos} that contain autonomous elements incorporating Human Factors, Command and Control considerations, and \gls{v2v} distributed communication, from the perspective of trusted and semi-trusted operation.
 
-\todo{Expand introduction and plan the rest of the section}
+\todo{ADD:Expand introduction and plan the rest of the section}
 
 \subsection{Autonomy and Levels of Autonomy}
 
@@ -686,7 +863,6 @@ While Autonomy is largely taken to be a robotics term based in the case of one h
 
 As such, the interactions \emph{between} autonomous agents are becoming increasingly relevant to the operating efficiencies of overall collaborative systems, wether or not a human operator is ``in-the-loop''.
 
-\todo{Possibly expand this discussion}
 See \autoref{apx:human_factors} for a more thorough discussion on the Human Psychological Factors related to the planning, use, and integration of trusted autonomous systems in classical command and control contexts.
 
 
@@ -723,7 +899,7 @@ See \autoref{apx:human_factors} for a more thorough discussion on the Human Psyc
     10&   The computer decides everything and acts autonomously, ignoring the human.\\\bottomrule
   \end{tabularx}
 \end{table}
-\todo{Ref \autoref{tab:autonomy_levels_sheridan} there may be a case to discuss the breakdown of ``Plan, Decide, Execute, Inform'', possibly a nice onion-style graphic}
+%\todo{Ref \autoref{tab:autonomy_levels_sheridan} there may be a case to discuss the breakdown of ``Plan, Decide, Execute, Inform'', possibly a nice onion-style graphic}
 
 \begin{table}\centering
   \caption[Levels of Automation]{Levels of Automation (paraphrased from \citet{Endsley1999})}
@@ -775,18 +951,17 @@ For the purposes of this work, two perspectives on trust for autonomous systems 
     Can be viewed as the abstract level of confidence an operator has in an actor to perform a task unsupervised.
     \end{itemize}
 \end{itemize}
-\todo{Possibly worth looking at the Definition environment from amsthm to look after definitions like this}
+
 Operational Trust is functionally derived from, but distinct from Design Trust.
 
 It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system.
 
-\todo{Need to provide a linking section to the next blocks about Design/Operational Trust}
+\todo{ADD:Need to provide a linking section to the next blocks about Design/Operational Trust}
 
 
 \subsection{Design Trust}\label{sec:design_trust}
 
-Five aspects of Design Trust have been identified: \todo{No idea how to phrase this citation correctly; it's ``my'' work that was generated for DSTL and don't want to waste any more space backing it up; can I get away with just citing myself?}
-\todo{Rethink using these questions at all; opens up to awkward questioning that isn't answered in the thesis}
+As part of \cite{Bolster2014a}, five aspects of Design Trust have been identified, with major questions in each respective aspect emphasised.
 
 \begin{enumerate}
   \item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
@@ -798,7 +973,7 @@ Five aspects of Design Trust have been identified: \todo{No idea how to phrase t
     This would produce a secure network assured through the accreditation of its component systems.
     For example, the Multinational Security Accreditation Board (MSAB) deals with Combined Communications Electronics Board (CCEB) and NATO Accreditations to provide security assurance of internationally connected networks.
     Encoding such agreements into secure handshakes could enable dynamic accreditation of autonomous systems cooperating in a coalition environment.
-    It is not known whether these have been demonstrated, so the question is: \textit{Can autonomous systems be designed to understand the security situation when interfacing with known or unknown systems?}\todo{Need to check in with JP/JGF on status of JANUS. IIRC Janus dropped the whole idea of negotiating capabilities}
+    It is not known whether these have been demonstrated, so the question is: \textit{Can autonomous systems be designed to understand the security situation when interfacing with known or unknown systems?}
   \item \textbf{Verification and Validation of a Flexible Specification}: Following on from the description of a flexible specification, establish that the AS conforms and performs in accordance to the specification.
     This has direct implication for the trust in the resultant system.
     How can systems demonstrate that they will behave acceptably when the environment is unknown?
@@ -813,26 +988,26 @@ Five aspects of Design Trust have been identified: \todo{No idea how to phrase t
     Because the aim of autonomous systems is to deal effectively with uncertain environments, \textit{can they (autonomous systems) be certified without being demonstrated in the environment within which they will adapt new behaviour?}
 \end{enumerate}
 
+While this work is primarily concerned with those aspects of \textbf{Trust Modelling and Metrics}, it is useful to consider this Trust assessment in the wider context of the design process, and what best practices are available.
 Design against and Compliance with existing standards can contribute significantly to the demonstrable trustworthiness of any systems’ design.
 If a system has been designed to a Standard then it has known properties that have been accepted as good practice.
 However, current standards do not address the issue of the five areas listed above.
-\todo{Need to squeeze in something about Block 4 above is the focus of this work. Possibly could live in the conclusions}
 
 There are three main organisations that are developing or have developed assurance standards for Unmanned Systems in commercial, civil and military applications:
 
 \begin{itemize}
   \item NATO Standardization Office (NSO)
-  \item Society of Automotive Engineers (SAE)
-  \item American Society of Testing and Materials (ASTM)
+  \item \acrfull{sae}
+  \item \acrfull{astm}
 \end{itemize}
 
 \paragraph{NATO Standardization Office}
-Faced with the growing adoption of similar but disparate \gls{uav} systems within NATO territories and coalition nations, STANAG 4586\cite{STANAG4586} was promulgated in 2005 and defined a logistic and interoperability framework to provide commonality in the command and comtrol architecture and implementations of \gls{uav}/Ground station communications.
+Faced with the growing adoption of similar but disparate \gls{uav} systems within NATO territories and coalition nations, STANAG 4586\cite{STANAG4586} was promulgated in 2005 and defined a logistic and interoperability framework to provide commonality in the command and control architecture and implementations of \gls{uav}/Ground station communications.
 
 This included a particularly interesting development in the form of \gls{sae} \gls{vsm} interoperability, whereby existing systems could be grandfathered into STANAG 4586 compliance by the addition of a \gls{vsm} to operate as a protocol translator.
 This \gls{vsm} could be mounted on the remote system directly, utilising a compliant \gls{dli}, or mounted on the ground-based controller, retaining the proprietary \gls{dli} to the remote system.
 The standard describes five \acrfull{loi} for compliant \gls{uav} systems, shown in Table~\ref{tab:levels_of_interoperability}.
-This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations \cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ‘direct control’ or ‘Operator-in-the-loop’, especially in the case of \gls{blos} systems, and that in increasingly autonomous systems, operation is done as \gls{hsc}, or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware.
+This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations \cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ``direct control'' or ``Operator-in-the-loop'', especially in the case of \gls{blos} systems, and that in increasingly autonomous systems, operation is done as \gls{hsc}, or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware.
 
 \begin{table}
   \begin{tabularx}{\textwidth}{lX}
@@ -849,7 +1024,7 @@ This structure has been criticised as being short sighted and at odds with the r
   \label{tab:levels_of_interoperability}
 \end{table}
 
-Further, the standard predominantly deals with a one-to-one mapping between operators and nodes, when this is quite against the current state of the art; greater focus is being made in collective and collaborative assignment and having a single operating agent managing a group of autonomous nodes in-field, and handing off vehicle management responsibilities to the individual nodes.
+Further, the standard predominantly deals with a one-to-one mapping between operators and nodes, when this is quite against the current state of the art; greater focus is being made in collective and collaborative assignment and having a single operating agent managing groups of autonomous nodes in-field, and handing off vehicle management responsibilities to the individual nodes.
 
 \paragraph{\gls{sae}}
 
@@ -876,12 +1051,11 @@ This standard was withdrawn in 2015 due to \gls{astm} regulations requiring stan
 
 \subsubsection{Summary of Design Trust}
 
-The implications of trust in autonomy beyond securing communications and data are an area in need of further research~\cite{BAESystems2013}
-Of particular concern is the verification of autonomous behaviours.
-Technology Readiness Level deficiencies were identified in the Maritime Capability Contribution of Unmanned Systems (MCCUS) Osprey Phase 1 report(Clark, H. et al., 2012. Maritime Capability Contribution of Unmanned Systems,)\todo{Need to check security status of this source}, with a particular focus on failsafe behaviour.
-The addition of increased on-board autonomy in MUxS, properly understood and verified, would greatly improve this future capability, similar to recent developments in the UAS arena~\cite{Cummings2010}.
+The implications of trust in autonomy beyond securing communications and data are an area in need of further research.
+Of particular concern is the verification of autonomous behaviours and failsafe behaviour~\cite{BAESystems2013}.
+The addition of increased on-board autonomy in MUxS, properly understood and verified, would greatly improve this future capability, similar to recent developments in the \gls{umvs} arena~\cite{Cummings2010}.
 
-There are opportunities for increased decentralisation and in-field collaboration\cite{Walton2012}, however, difficulties in “Trust” between human operators and autonomous systems have already been clearly identified\cite{Chen2011b},and this has been demonstrated by the recent decision by the German government to renege on its \euro500M investment in the Euro Hawk programme, due to concerns about civil certification of the onboard autonomy\cite{Mehta2013}
+There are opportunities for increased decentralisation and in-field collaboration~\cite{Walton2012}, however, difficulties in ``Trust'' between human operators and autonomous systems have already been clearly identified~\cite{Chen2011b},and this has been demonstrated by the recent decision by the German government to renege on its \euro500M investment in the Euro Hawk programme, due to concerns about civil certification of the onboard autonomy~\cite{Mehta2013}
 In order for these new distributed structures to be relied upon to provide operational performance, reliability and to maintain in-field situational awareness, vulnerabilities to disruption, interruption, and subversion need to be understood and minimised.
 
 \subsection{Operational Trust}
@@ -891,14 +1065,14 @@ In order for these new distributed structures to be relied upon to provide opera
 When dealing with human supervision of autonomous or semi-autonomous systems, there is an inherent conflict between the expectations of the operator, and the hopes of system architects.
 System architects aim to provide more and more information to the operator to justify a systems operation, and Operators in reality need less and less information to be efficient when things are going well, and responsive in a dynamic environment.
 This places huge demands on Human Interface design and indeed on communications design to provide this timely, relevant, interactive connection between any autonomous system and the end operator(s).
-Recent work has presented the idea of taking user interface (UI) inspiration from the entertainment sector, in terms of UI best practises developed over two decades of Real-Time Strategy game development \cite{Johnson2007}, and follow up work into automated mission debrief demonstrated that such operational support could improve causal situational awareness of an operator when compared to a human-baseline \cite{Johnson2011}.
-In terms of the human factors challenges (See~\autoref{apx:human_factors} for a discussion of these challenges), they are often contradictory in their direction, particularly when contrasting between Adaptive Automation and Cognitive Biases challenges.
+Recent work has presented the idea of taking user interface inspiration from the entertainment sector, in terms of UI best practises developed over two decades of Real-Time Strategy game development~\cite{Johnson2007}, and follow up work into automated mission debrief demonstrated that such operational support could improve causal situational awareness of an operator when compared to a human-baseline~\cite{Johnson2011}.
+In terms of the human factors challenges \footnote{See~\autoref{apx:human_factors} for a discussion of these challenges}, they are often contradictory in their direction, particularly when contrasting between Adaptive Automation and Cognitive Biases challenges.
 This is a key part of the ``soft trust'' perspective, where the operators and commanders need to be able to implicitly and explicitly trust the operation of a remote system with limited feed-back bandwidth, high latency, or long-term operation such that direct remote operation is infeasible or undesirable.
-To be able to trust that systems’ ability to continue on a course, survey an area, notify on detection of an anomaly, etc.is going to be the corner stone of any autonomous systems justification in the future.
+To be able to trust that system's ability to continue on a course, survey an area, notify on detection of an anomaly, etc.is going to be the corner stone of any autonomous systems justification in the future.
 
 \subsection{Conclusions}
 
-\todo{Conclusion of Trusted Development}
+\todo{ADD: Conclusion of Trusted Development}
 
 
 \section{Trust in Autonomous \glspl{manet}}\label{sec:trust_manets}
@@ -915,7 +1089,7 @@ There are five topics that are important to address in any \glspl{manet} trust m
     Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a \acrfull{ttp}.
     There is no \gls{pki}, where some center nodes monitor the network, and publish illegal nodes periodically.
     In a \gls{manet}, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
-  \item The trust model should be anonymous because of the anonymity of mobile nodes in \glspl{manet}.\todo{This isn't actually explained or justified in Kamvar so it may have been pulled out of his ass}
+  \item The trust model should be anonymous because of the anonymity of mobile nodes in \glspl{manet}.\todo{Q: This isn't actually explained or justified in Kamvar so it may have been pulled out of his ass}
   \item The trust model should be robust.
     That is, it can be robust to all kinds of unfriendly attacks and the network itself should not be susceptible to attacks by unfriendly nodes.
     Moreover, in the presence of malicious nodes, they may attempt to subvert the model in order to get an unfairly good trust value.
@@ -980,16 +1154,17 @@ Additionally this assumption of node mobility and ``temporary disconnection'' pr
 
 \subsubsection{Threat Mitigation Strategies}
 
-To mitigate these threats in efficient ways, several strategies have emerged that can loosely be grouped into ``Deter'' and ``Detect'' strategies.
 
-Deterrant strategies usually include some form of misbehaviour-induced backoff policy to passively punish misbehaviour~\cite{Konorski2002}\cite{Cardenas:2004:DPM:1029102.1029107}.
-On the other hand, Detection strategies are usually based on some derivative form of hardline-network \gls{ids} frameworks, where 
 
-\citet{zhang2003intrusion} first proposed a general \gls{ids} framework for \glspl{manet}; leveraging the distributed and cooperative predicates of the architecture, introducing both per-node and cooperative \gls{ids} submodules such that nodes work independently and cooperatively to identify certain misbehaviours.
+Many classical mitigation strategies focus on selfishness rather than malicious attack, usually including some form of misbehaviour-induced backoff policy to passively punish misbehaviour~\cite{Konorski2002,Cardenas:2004:DPM:1029102.1029107}.
+On the other hand, many  strategies are usually based on some derivative form of hardline-network \gls{ids} frameworks, where such systems passively observe a network for misbehaviour and 
+
+\citet{zhang2003intrusion} first proposed a general \gls{ids} framework for \glspl{manet}; leveraging the distributed and cooperative predicates of the architecture, introducing both per-node and cooperative \gls{ids} submodules such that nodes work independently and cooperatively to identify certain misbehaviours, specifically targeting routing attacks and incongruities.
 Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range\cite{Parker2006}
-However it is commonly accepted that this framework had significant deficiencies in terms of power and communications overheads~\cite{csen2010security}.
+However it is commonly accepted that these frameworks had significant deficiencies in terms of power and communications overheads~\cite{csen2010security,Ryu2008}.
+One interesting aspect to highlight about \citet{zhang2003intrusion} is that while information about the physical mobility was assessed in the detection of misbehaviours in the context of routing changes, no collective cross-comparison was used, and rather focused on a per-node relative distance/velocity estimation to identify anomalous routing table updates.
 
-\todo{Finish threat mitigation}
+In the wider scope of threat mitigation for \glspl{manet}, most previous procedures involve 
 
 \subsection{Trust Management Frameworks}\label{sec:tmfs}
 
@@ -999,7 +1174,7 @@ From the settled upon definition of trust (From ~\autoref{sec:trust_model_design
 This predictive behaviour attempts to solve four important problems (paraphrased from \cite{Sun2008}):
 \begin{itemize}
   \item \emph{Decision support} - For example; making informed routing table decisions based on past successes/failures.
-  \item \emph{Adaptability} - Ongoing prediciction of the networks future trust states directly detemines the risk faced by the network. Internalised knowledge of the expected risk can aid in selecting appropriate measures/ countermeasures such as automatically varying the level of authentication required for network activities.
+  \item \emph{Adaptability} - Ongoing prediction of the networks future trust states directly determines the risk faced by the network. Internalised knowledge of the expected risk can aid in selecting appropriate measures/ countermeasures such as automatically varying the level of authentication required for network activities.
   \item \emph{Misbehaviour Detection} - Trust evaluation leads to a the natural policy that highly variable or low-trust nodes within a network should be subject to higher scrutiny; triggering this response indicates that a node is damaged or misbehaving.
   \item \emph{Abstraction of Collective security characteristics} - Through per-node trust evaluation, the generalised trustworthiness of a set or subset of nodes can be derived to encapsulate the ``health'' of the network as a whole.
 \end{itemize}
@@ -1007,7 +1182,7 @@ This predictive behaviour attempts to solve four important problems (paraphrased
 
 Various models and algorithms for describing trust and developing trust management in distributed systems, \gls{p2p} communities or wireless networks have been considered.
 
-Taking some examples;\todo{Check for more recent evolutions in Trust/TMFs}
+Taking some examples;\todo{TODO:Check for more recent evolutions in Trust/TMFs}
 %
 \begin{itemize}
   \item \emph{Hermes Trust Establishment Framework} uses a Bayesian Beta function to model per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
@@ -1023,7 +1198,7 @@ Taking some examples;\todo{Check for more recent evolutions in Trust/TMFs}
 
 \subsection{Single Metric Trust Frameworks}
 
-\todo{Expand background detail on more frameworks, (Confidant/Fuzzy)}
+\todo{ADD:Expand background detail on more frameworks, (Confidant/Fuzzy)}
 The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
 %
 \begin{equation}
@@ -1032,7 +1207,7 @@ The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reas
 \end{equation}
 %
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
-\todo{This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
+\todo{Q:This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
 
 Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function (\eqref{eq:beta}), and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
 
@@ -1112,6 +1287,7 @@ Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, 
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
 To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
 \gls{mtfm} combines this \gls{gra} with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}.
+This whitenization model allows the previously grey value to be practically computed on and used to generate the final trust assessment\cite{Liu2011}. See~\autoref{apx:grey} for a wider discussion of this topic and the operation of Grey numbers.)
 
 There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect, as discussed in~\autoref{sec:trust_topologies}.
 Where an observing node $n_i$ assesses the trust of another target node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
@@ -1137,15 +1313,55 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
   f_3(x)&= x\notag
 \end{align}
 %
-\todo{Plot and explain the point of Whitenization (or move these back to the appendix)}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+	
+	\begin{axis}[
+	xlabel={$x$},
+	ylabel={$f_s(x)$},
+	xmin=0, xmax=1,
+	ymin=0, ymax=1,
+	axis on top,
+	legend style={at={(0.5,0.09)}, anchor=south},
+	legend entries={{$f_1(x)$},{$f_2(x)$},{$f_3(x)$}},
+	legend cell align={left}
+	]
+	\addplot [blue]
+	table {%
+		0 1
+		0.5 0.5
+		1 0
+	};
+	\addplot [green!50.0!black]
+	table {%
+		0 0
+		0.5 1
+		1 0
+	};
+	\addplot [red]
+	table {%
+		0 0
+		0.5 0.5
+		1 1
+	};
+	\end{axis}
+	
+	\end{tikzpicture}
+	\caption{Operation of the Centre-Point Triangular Whitenization used in \gls{mtfm}}
+	\label{fig:whitenization}
+\end{figure}
 
 In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 
 \citet{Guo11} demonstrated that when compared against \gls{otmf} and Hermes trust assessment, \gls{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
 
 \section{Conclusion}
+In this chapter, \gls{manet} implementations, topologies, and applications have been explored. 
+Further, the concept of a ``Trusting'' network has been explored, both on a abstract theoretical basis, and in the context of a wider development and operational pipeline involving autonomous actors, including a review of current \acrfullpl{tmf}.
+These \glspl{tmf} have several aspects that are dependant on assumptions of sufficient available resources and connectivity, that they may not behave as efficiently as would be hoped in constrained or delayful networks, particularly in cases where metric assessment data may be extremely sparse or noisy.
 
-In the next chapter, the marine communications environment will be studied, as will the current state of the art in the use of autonomy in specifically defence related maritime applications.
-\todo{Actual Conclusion of Trust Background}
-\todo{''Can you say that nothing to date considers trust in sparse comms environments eg DTNs?''}
+While many aspects of this Trust have been discussed, we are primarily concerned with this problem of assessment of trust through experiential observation of node behaviours in a practical runtime environment, namely the underwater acoustic environment.
+In the next chapter, the marine communications environment will be studied, as will the current state of the art in the use of autonomy in defence related maritime applications, and briefly discussing the context of those operations.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

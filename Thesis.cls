@@ -169,6 +169,8 @@
 \usepackage{pgf}
 \usepackage{titletoc}
 \usepackage{tocloft}
+\usepackage{csquotes}
+\usepackage{pgfplots}
 \usepackage{bibentry}
 \nobibliography*
 

@@ -165,6 +165,10 @@
   *{package}{glossary-tree}{2016/01/24 v4.21}
   *{package}{titletoc}    {2011/12/15 v1.6}
   *{package}{tocloft}     {2013/05/02 v2.3f}
+  *{package}{csquotes}    {2016/01/31 v5.1g}
+  *{file}   {csquotes.def}{2016/01/31 v5.1g}
+  *{file}   {csquotes.cfg}{0000/00/00 v0.0}
+  *{package}{pgfplots}    {2016/01/06 v1.13}
   *{package}{bibentry}    {2007/10/30 v1.5}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
   *{package}{nameref}     {2012/10/27 v2.43}
@@ -196,6 +200,7 @@
   *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/introduction.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/trust_background.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/liu2010RelationshipStack.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
   *{file}   {./Figures/threat_surface_sum.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/maritime-background.tex}{0000/00/00 v0.0}

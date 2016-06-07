@@ -51,7 +51,7 @@ While the sea/air surface is (ideally) a simple refractive interface, the interf
 This results in refractive and reflective velocities in the sediment interface ranging from $1500-2000 ms^{-1}$\cite{lurton2010}.
 
 For comparison, the speed of light in air/water is $2.99 \times 10^8 ms^{-1}$ and $2.249 \times 10^{8} ms^{-1}$ respectively. 
-\todo{this might be better as a table}
+\todo{FIX:this might be better as a table}
 
 \citet{Mackenzie1981} proposed a more accurate model of acoustic velocity incorporating archival data from 15 worldwide sites that takes Temperature, Salinity and Depth into consideration.
 
@@ -121,7 +121,7 @@ These are ``ideal'' assessments, and the parameters of this model are massively 
 	\caption{Bellhop Model of Non-Linear Marine Shortest-Path Propagation in various Speed of Sound Profiles}
 	\label{fig:ssps}
 \end{figure}
-\todo{Need a decent Medeterranian one for balance.}
+\todo{ADD: Need a decent Medeterranian one for balance.}
 
 \subsection{Intensity and Power} 
 
@@ -242,7 +242,6 @@ where $d=d_0$ is the minimal path length between the transmitter and receiver, $
 
 
 
-
 \subsection{Modelling and Simulation of the Acoustic Medium / Channel}
 
 Several toolkits exist in a variety of states that perform communications agent simulation, most notably the NS-2 / 3 family of frameworks and their addons.
@@ -251,16 +250,19 @@ Some of these frameworks, such as SUNSET \cite{Petrioli2012a} and AquaTools \cit
 Beyond the NS family, there are many other communications and simulation modelling systems such as OpNet++\cite{Chang1999} and MATLAB toolkits such as the AcTUP interface to the Ocean Acoustics Library.
 
 
-\todo{expand this, justify AUVNetSim, reactive mobility, python compatibility, SimPy Etc.}
+\todo{ADD:expand this, justify AUVNetSim, reactive mobility, python compatibility, SimPy Etc.}
 
 
 \subsection{Routing and Network Design for \glspl{uan}}
 
 Forward Error Correction coding is used on such channels to minimise packet losses.
 
-\todo{Summary of Akyildiz02/05}
+\todo{ADD:Summary of Akyildiz02/05}
 
-\todo{callback to routing discussion in c1 explain why fbr is the best of everything all the time}
+\todo{FIX:callback to routing discussion in c1 explain why fbr is the best of everything all the time}
+\subsection{Conclusion}
+
+
 
 \section{Marine Operations, Payloads and Technologies}\label{sec:marine_ops}
 
@@ -294,7 +296,7 @@ This benefit applies to protection as well as incursion; the ability to have per
 This Port Protection capability is particularly complex;  teams of \glspl{auv} are expected to repeatedly survey an area and remain densely-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
 In Sec.~\ref{sec:sim_and_valid}, we use this Port Protection scenario as a baseline for our simplified simulation context.
 
-\todo{Look at redoing this with other mobilities (particularly distributed lawnmower)}
+\todo{FUT:Look at redoing this with other mobilities (particularly distributed lawnmower)}
 
 \subsection{Localisation Technologies}
 
@@ -322,18 +324,43 @@ In summary, current technology reliably enables \glspl{auv} to localise to a sub
 
 \subsection{Typical \gls{auv} mission profiles}
 
-\todo{Typical AUV missions, payloads, and available equipment}
+\todo{ADD NEXT: Typical AUV missions, payloads, and available equipment}
 
 \subsection{Potential Future Applications}
-\todo{Future Applications of \glspl{auv}}
+\todo{ADD NEXT: Future Applications of \glspl{auv}}
 
 \subsection{Need for Trust in Maritime Networks}
+
+
+Given the breadth of the threat space in \glspl{manet}, many strategies for mitigating these risks have been proposed in a matrix-basis; i.e. you can't cover all eventualities with one tool.
+\autoref{tab:manet_risk} summaries some of these general strategies or ``solutions'' for range of threats identified specifically in the context of the deployment of \glspl{manet} in a tactical/defence context, originally based on \citet{Kidston2010} but with some contextual alterations with modifications discussed below.
+
+In this context of this table, Vulnerability is an assessment of how available a particular threat is to a generic attacker, Impact is an assessment of the in-system affects of a successful attack, and Risk is a qualitative assessment of the likelihood of exploitation of an attack.
+\citet{Kidston2010} originally lowered the assessment of vulnerability of Eavesdropping, citing the tactical use of non-standard \gls{mac} as a barrier to attack, however considering the increasing commoditisation of tactical hardware across the world, and increasing application of \gls{cots} hardware, this is no longer a fair assessment.
+Similarly, the assessment that the Risk of Data Corruption is low is arguable on the basis of simplistic spread spectrum jamming but this assessment is unchanged.
+
+\begin{table}
+	\caption{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from \cite{Kidston2010}}
+	\label{tab:manet_risk}
+	\begin{tabularx}{\textwidth}{X X X X X}\toprule
+		Threat & Vulnerability & Impact & Risk & Mitigation	\\\midrule
+		Resource Depletion / \gls{dos} & Low-High & High & Low-High & Layer Specific Mechanisms\cite{Wu2007,Nwaocha2015}\\
+		Eavesdropping & Medium & High & Low & Cryptography \cite{Chen2010}\\
+		Masquerade & Low & Very High & Medium & Trust Systems\cite{Wang2009a} and Cryptography\\
+		Data Corruption & Low & High & Low & Cryptography\\
+		Traffic Analysis & High & Low & Medium & Obfuscation\cite{Huang2010}\\
+	\end{tabularx}
+\end{table}
+
+Resource Depletion, or \gls{dos} has a very wide ranging definition, from network-level attacks to saturate a communications channel or the computing resources of routing nodes, or the exploitation of a power-control loop to induce a node to waste energy with overly-high-powered communications, to the intentional geographic mis-leading of nodes to induce a similar power-drain on locomotive systems, through tactics such as location spoofing or \gls{gps} denial.
+
+With respect to the critical, and from \autoref{tab:manet_risk}, it is assessed that the highest overall threats are those of Resource Depletion and Masquerading.
+
+\section{Conclusion}
 
 As \acrfull{auv} platforms become more capable and economical, they are being used in many applications requiring trust.
 These applications are using the collective behaviour of teams or fleets of these \glspl{auv} to accomplish tasks \cite{Caiti2011}.
 With this use being increasingly isolated from stable communications networks, the establishment of trust between nodes is essential for the reliability and stability of such teams.
 As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the challenging underwater communications channel.
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

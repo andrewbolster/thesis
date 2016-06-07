@@ -104,7 +104,7 @@ Using this approach, the results of these simulations can be explored, condensin
 First the results of the Random Forest regression assessment are discussed; Figs~\ref{fig:comms_feature_extraction} and~\ref{fig:phys_feature_extraction}, show the resultant feature extraction signatures for Comms-only and Physical-only metric selections respectively, and in Fig~\ref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
 
 In both single-domain cases, there are clear ``signatures'' in misbehaviours that don't directly target that domain ($P_{RX}$ in the Physical Shadow and Slowcoach behaviours in Fig~\ref{fig:comms_feature_extraction} and $INDD$ in the Selfish Target Selection behaviour in Fig~\ref{fig:phys_feature_extraction}).
-This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic for differentiating potential misbehaviours.\todo{Come back to this and talk about redundancy after subset analysis}
+This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic for differentiating potential misbehaviours.\todo{ADD: Come back to this and talk about redundancy after subset analysis}
 
 
 
@@ -164,9 +164,9 @@ Where $i$ is a given observer, $x$ is the known misbehaving node, $\overline{T_{
 Conceptually, $\Delta T_{ix}$ represents the ``Distrust'' of the target node $x$, as the difference in trust value from $0\to1$, the higher the better. 
 $\Delta T_{ix}^-$ represents the average $\Delta T_{ij}$ for all other nodes, representing the likelihood of another node being as highly distrusted as $x$, where positive values indicate that $x$ is not the obvious outlier, negative values indicate that $x$ is a very clear outlier, and near-zero values indicate a difficulty in selection of any outlier from the cohort.
 
-\todo{Could do with a conceptual graphic showing what these look like, although it'd be messy as all hell}
+\todo{FIX: Could do with a conceptual graphic showing what these look like, although it'd be messy as all hell}
 
-\todo{Could also do with a investigation into the deviation of T's; so far most of this analysis averages everything, which is almost certainly not the best approach alone}
+\todo{ADD: Could also do with a investigation into the deviation of T's; so far most of this analysis averages everything, which is almost certainly not the best approach alone}
 
 The ``best'' weight permutations, as shown in \autoref{tab:optimised_weights}, are applied to untrained datasets for these results.
 
@@ -174,7 +174,7 @@ An exemplar subset of the results is shows in Figs~\ref{fig:comms_time_mpc}-~\re
 
 The most intuiativly ``Communications'' behaviour, \gls{mpc}, scores comfortably in the 90th percentile range in both Communications Domain (\autoref{fig:comms_time_mpc}) and Full Domain (\autoref{fig:full_time_mpc})  trust assessments. As seen in \autoref{tab:optimised_weights}, both the ``Full'' and ``Comms'' metric optimsations heavily weigh $P_{TX}$, and as this is the metric directly modified by the misbehaviour, it is expected that this is easily discernable using these domain weights.
 However when this communications information is unavailable, as is the case in the use of Physical Domain metrics alone in \autoref{fig:phys_time_mpc}, the misbehaving node (Alfa) is completely undiscernible compared to the other nodes, with all nodes in the cohort tending to a trust value of $0.5$.
-How this discernibility would fare under varying emphasis of behaviours is an open question\todo{Answer what happens when you vary MPC power variation}
+How this discernibility would fare under varying emphasis of behaviours is an open question\todo{FUT: Answer what happens when you vary MPC power variation}
 
 Under the most ``subtle'' behaviour; \gls{sts}, where no direct metric is being modified in operation, but where the behaviour is effectively in the ``Application layer'' of the networking stack, the picture is far more murky. 
 Comparing Figs~\ref{fig:comms_time_sts} and~\ref{fig:full_time_sts}, while there is a reasonable dip in the misbehavor's trust assessment, the high level of variance across the cohort is such that this ``mistrust'' triggering is neither consistent or obvious. 
@@ -298,8 +298,8 @@ See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of grap
   \input{Figures/input/domain_deltas_minus.tex}
   \label{tab:domain_deltas_minus}
 \end{table}
-\todo{Haven't worked out a clever way of automatically generating both the basic domain and alternate domain texes easily}
-\todo{These tables need changed from being ``delta T'' to ``Probability of detection by an idiotic classifier}
+\todo{FIX CODE: Haven't worked out a clever way of automatically generating both the basic domain and alternate domain texes easily}
+\todo{FIX CODE: These tables need changed from being ``delta T'' to ``Probability of detection by an idiotic classifier}
 
 \begin{landscape}
   \begin{table}
@@ -362,7 +362,7 @@ See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of grap
 \end{figure}
 
 \section{Optimal Metric Subset Analysis}
-\todo{OH GOD THERE'S MORE}
+\todo{ADD: Subset Analysis}
 
 
 \section{Conclusion}

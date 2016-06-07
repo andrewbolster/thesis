@@ -6,6 +6,13 @@
 	output/.style= {coordinate},
 	pinstyle/.style = {pin edge={to-,thin,black}
 	}
+	from/.style args={#1 to #2}{% without transformations
+		above right={0cm of #1},% needs positioning library
+		/utils/exec=\pgfpointdiff
+		{\tikz@scan@one@point\pgfutil@firstofone(#1)\relax}
+		{\tikz@scan@one@point\pgfutil@firstofone(#2)\relax},
+		minimum width/.expanded=\the\pgf@x,
+		minimum height/.expanded=\the\pgf@y}
 }
 
 % USAGE: \cercle {center} {radius in cm} {begin degrees} {value of the arc} {line width} {color}

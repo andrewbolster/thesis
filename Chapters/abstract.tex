@@ -1,23 +1,24 @@
 As \acrfullpl{auv} become technically more competent, and fiscally more attainable, their use has been applied to a great many areas within defence, commercial and environmental areas of concern. 
 Increasingly, these applications are tending towards utilising independent, autonomous, collective behaviour of teams or fleets of these \gls{auv} platforms.
-This convergence of research experiences in the \gls{uan} and \gls{manet} fields, along with the increasing \gls{loa} of such applications, creates unique challenges to secure operation and communication of these networks.
+This convergence of research experiences in the \acrfull{uan} and \gls{manet} fields, along with the increasing \gls{loa} of such applications, creates unique challenges to secure the operation and communication of these networks.
 
-This question of security and reliability of operation has usually been resolved by having a centralised coordinating agent to coordinate shared secrets and monitor for misbehaviour; however, in the sparse, noisy and constrained communications environment of \glspl{uan}, and particularly when faced with capable attackers, the communications overheads and single-point-of-failure risk of this model is challenged.
+The question of security and reliability of operation has usually been resolved by having a centralised coordinating agent to manage shared secrets and monitor for misbehaviour; however, in the sparse, noisy and constrained communications environment of \glspl{uan}, and particularly when faced with capable attackers, the communications overheads and single-point-of-failure risk of this model is challenged.
 
-As such, a more lightweight, distributed, experience based\footnote{rather than ``Evidence based'' in the case of shared keys, \gls{pki} etc.} systems of ``Trust'' have been established to dynamically model and evaluate the ``trustworthiness'' of nodes within a \gls{manet}, and to enforce ``fairness'' across the networks, preventing or isolating the impacts of malicious, selfish, or faulty misbehaviour. 
-Previously however, these models have monitored actions purely within the communications realm, and the vast majority of such models and frameworks rely on only one type of observation (metric) to evaluate trust; successful packet forwarding.
-
-In these cases, motivated actors may use this limited scope of observation to either perform unfairly without repercussions in other domains/metrics, or to make another, fair, node appear to operate fairly.
+As such, more lightweight, distributed, experience based\footnote{rather than ``Evidence based'' in the case of shared keys, \gls{pki} etc.} systems of ``Trust'' have been proposed to dynamically model and evaluate the ``trustworthiness'' of nodes within a \gls{manet} across the networks to prevent or isolate the impacts of malicious, selfish, or faulty misbehaviour. 
+Previously however, these models have monitored actions purely within the communications realm. 
+Moreover, the vast majority rely on only one type of observation (metric) to evaluate trust; successful packet forwarding.
+In these cases, motivated actors may use this limited scope of observation to either perform unfairly without repercussions in other domains/metrics, or to make another, fair, node appear to operate unfairly.
 
 Three main novelties are explored and demonstrated in this work;
-
+\todo{ADD: Lead into this, in terms of how we came to the physical or hybrid domain threat surface}
+\todo{FIX: Get rid of the bullets}
 \begin{itemize}
 	\item Trust evaluation using metrics from the physical domain (movement/distribution/etc.)
 	\item Communications-based Trust evaluation in the sparse, noisy, delayful and non-linear \gls{uan} environment and the performance of such existing trust models.
 	\item Multi-Domain Trust assessment across physical and communications domains.
 \end{itemize}
 
-The final two elements of this novelty apply a Random Forest regression machine learning methodology to establish selection filters for abstract and cross-domain / metric misbehaviours.
+The final two elements of this novelty apply a machine learning methodology to establish selection filters for abstract and cross-domain / metric misbehaviours.
 This is accomplished through a series of simulated experiments modelling the underwater communications and kinematic environments and we hope that these hypotheses, results, and novelties can be tested and proven in practical experimentation.
 
 \todo{FIX: come back to the abstract}

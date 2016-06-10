@@ -58,19 +58,21 @@
 \cleardoublepage  % Declaration ended, now start a new page
 
 \onehalfspacing
+{\hypersetup{linkcolor=black}
 \tableofcontents  % Write out the Table of Contents
  \clearpage      
-{\huge \bf Illustrations}
+
 \listoffigures  % Write out the List of Figures
 
 \listoftables  % Write out the List of Tables
-
+}
 
 \cleardoublepage  %Start a new page
 
 %\listofnomenclature{lll}  % Include a list of Symbols (a three column table)
 \glsaddall
 \printglossaries
+\glsresetall
 
 
 \cleardoublepage  

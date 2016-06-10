@@ -65,7 +65,16 @@ For comparison, the speed of light in air/water is $2.99 \times 10^8 ms^{-1}$ an
 Where $T$ is the temperature in Celsius, $S$ the salinity in parts per thousand, and $D$ is the depth below the surface in meters.
 
 These are ``ideal'' assessments, and the parameters of this model are massively varied both across individual water columns, and indeed across bodies of water, across the world. 
-\gls{noaa} regularly publish their \gls{woa}\cite{Locarnini2013,Zweng2013} that includes these variables and many more, sampled across the world and at a range of depths. 
+\gls{noaa} regularly publish their \gls{woa}~\cite{Locarnini2013,Zweng2013} that includes these variables and many more, sampled across the world and at a range of depths. 
+Outputs from these surveys are shown for example in \autoref{fig:globes}. 
+Variability in Temperature across the globe is something that we are acutely aware of, but the significant regional variations, such as in the Sea of Japan, the US Eastern Seaboard, and between the Mediterranean and Black Seas (\autoref{fig:temp_globe}).
+Global surface salinity appears almost uniform in comparison (\autoref{fig:sal_globe}).
+However, a few global variants stand out, both due to the extremity of their transition in relatively small areas, and the general research / defence context of those areas. 
+For example the differential between the geographically proximate and politically contentious Black, Caspian, and Mediterranean Seas, as well as the Persian Gulf exhibit variations from less than $6ppt$ to over $40ppt$.
+Similarly, there is a navigable waterway providing access between the Baltic and North seas that across the $300km$ long run from Malm{\"o} in Sweden to Skagen in Denmark, transitions from less than $5ppt$ to just under $30ppt$. 
+
+Below the surface, the variability increases; \autoref{fig:temp_sal_profile}
+\todo{ADD: More variability  blurb}
 
 \begin{figure}
 	\centering
@@ -82,6 +91,7 @@ These are ``ideal'' assessments, and the parameters of this model are massively 
 		\label{fig:sal_globe}
 	\end{subfigure}
 	\caption{Global Variations in selected Speed of Sound variance factors}
+	\label{fig:globes}
 \end{figure}
 
 
@@ -121,7 +131,6 @@ These are ``ideal'' assessments, and the parameters of this model are massively 
 	\caption{Bellhop Model of Non-Linear Marine Shortest-Path Propagation in various Speed of Sound Profiles}
 	\label{fig:ssps}
 \end{figure}
-\todo{ADD: Need a decent Medeterranian one for balance.}
 
 \subsection{Intensity and Power} 
 
@@ -156,7 +165,7 @@ Thorp's formula (\autoref{eq:thorp}) is very simple, only depending on $f$, and 
     10 \log a(f) = 0.11 \cdot \frac{f^2}{1+f^2} + 44\cdot\frac{f^2}{4100+f^2}+ 2.75\times10^{-4} f^2 + 0.003
     \label{eq:thorp}
   \end{equation}
-  \caption[Thorp's formula]{Thorp's Absorption Model\cite{Stojanovic2007}}
+  \caption[Thorp's formula]{Thorp's Absorption Model~\cite{Stojanovic2007}}
     \label{fig:thorp}
 \end{figure}
 %
@@ -260,7 +269,8 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 \todo{ADD:Summary of Akyildiz02/05}
 
 \todo{FIX:callback to routing discussion in c1 explain why fbr is the best of everything all the time}
-\subsection{Conclusion}
+\subsection{Summary}
+\todo{ADD: Summary of Marine Comms}
 
 
 

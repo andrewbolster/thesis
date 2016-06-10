@@ -1,15 +1,14 @@
-\chapter{Background on Trust and its Applications to \glspl{manet}}
+\chapter{\glspl{manet} and Trust}
 \label{ch:trust_background}
-\lhead{Chapter \thechapter. \emph{Trust and \gls{manet} Applications}}
+\lhead{Chapter \thechapter. \emph{\glspl{manet} and Trust}}
 
-\section{\acrlong{manet} Topologies}\label{sec:manet_topologies}
-
+\section{\acrlong{manet} Topologies \& Routing}\label{sec:manet_topologies}
 
 \glspl{manet} are wireless networks consisting of mobile devices acting simultaneously as sensor/processing/effector nodes and routing nodes, acting without a classical \gls{wlan} structured network architecture. 
-Given constraints on propagation in such wireless networks, it is impractical for nodes to be ``fully connected'' to the rest of the network, and is instead constructed from single-hop ``node-pair'' links, through and across which data is routed through to more distant parts of the network.
-This results in a potentially highly dynamic topology, where the instantaneous graph of node-pair connectivity can change regularly and dramatically. 
+Given constraints on propagation in such wireless networks, it is impractical for nodes to be ``fully connected'' to the rest of the network, and is instead constructed from single-hop ``node-pair'' links, through and across which data is routed to more distant parts of the network.
+This link-wise approach coupled with inherant Node mobility results in a potentially highly dynamic topology, where the instantaneous graph of node-pair connectivity can change dramatically in short intervals, and it may take considerable time for the network to ``re-optimise'' for this new, possibly temporary, topology. 
 
-In order to understand and clarify the challenges to generic \gls{manet} applications, it is beneficial to explore the concepts from Graph Theory that apply to the discussion of \gls{manet} topologies. 
+In order to understand and clarify the challenges to generic \gls{manet} applications, it is beneficial to explore some concepts from Graph Theory that apply to the discussion of \gls{manet} topologies. 
 
 
 \begin{table} 
@@ -29,7 +28,7 @@ In order to understand and clarify the challenges to generic \gls{manet} applica
 
 \subsection{Network Density and Connectivity}
 
-One fundamental compromise in the operation of wireless \glspl{manet} is the trade-off between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall\cite{Royer2001}.
+One fundamental compromise in the operation of wireless \glspl{manet} is the trade-off between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall~\cite{Royer2001}.
 This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, environmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
 
 From graph theory, the concept of ``Density'' is a $D_G=[0,1]$ bounded measure of how ``Complete'' or fully-connected a given graph $G$ consisting of the set of vertices $V$ and edges (links) $E$ is.
@@ -37,7 +36,9 @@ From graph theory, the concept of ``Density'' is a $D_G=[0,1]$ bounded measure o
 If this is not possible, but it is possible to disconnect the graph by removing two vertices, the graph has connectivity 2, and so on.
 A graph with a connectivity of $0$ indicates that that graph has separated (or disconnected) vertices.
 
-The concepts of graph density and connectivity are demonstrated visually in \autoref{fig:manet_density}, constructed with a uniform vertex distribution and decomposed by removing subsequent ``longest edges''
+The concepts of graph density and connectivity are demonstrated visually in \autoref{fig:manet_density}, constructed with a uniform vertex distribution and decomposed by removing subsequent ``longest edges'' from a fully connected (Complete) graph.
+
+\todo{ADD: Need a ``Centralised/DeCentralised/Distributed'' graph series}
 
 \tikzstyle{cblue}=[circle, draw, thin,fill=cyan!20, scale=0.8]
 
@@ -122,7 +123,7 @@ The concepts of graph density and connectivity are demonstrated visually in \aut
 In practical wireless network applications, network connectivity is a product of the physical distribution of nodes within an environment, and the propagation characteristics of the medium.
 
 Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown. 
-\todo{ADD:Need some ``observations'' on the impacts of this routing constraint in manets}
+\todo{ADD:Need some ``observations'' on the impacts of this routing constraint in manets in terms of \autoref{fig:manet_topo_states}\autoref{fig:manet_topo_mobility}}
 
 \begin{figure}
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -181,11 +182,8 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 	\label{fig:manet_topo_states}
 \end{figure}
 \begin{figure}
-
-\label{fig:manet_topo_states}
 	\begin{subfigure}[t]{0.5\textwidth}
 	  	\centering
-
 		\begin{tikzpicture}[>=latex',scale=1]
 			 % Physical layer nodes
 			 \foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
@@ -224,21 +222,24 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 			\end{tikzpicture}
 			\caption{Node 9 rejoins the network}
 		\end{subfigure}
-		\caption{Examples of states of \gls{manet} topologies}
+		\caption{Example of node mobility of \gls{manet} topologies}
+		\label{fig:manet_topo_mobility}
 \end{figure}
 
 
 \section{Routing in \acrlongpl{manet}}\label{sec:manet_routing}
 
-Given the decentralised nature of \gls{manet} operations, routing protocols are an active area of research. 
-This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid.
+Given the decentralised nature of \gls{manet} operations, routing protocols have been an active area of research since their inception~\cite{Jubin1987}.
+This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid protocols.
 A summary of the generalised characteristics of these classes is shown in \autoref{tab:routing_categories}.
 Additional, these classes can be further rearranged, combined or augmented based on assumptions made about the structure of the baseline topology, i.e. flat, hierarchical or geographic) or by assumed constraints of the available resources of the nodes within the network i.e. heterogeneity in power, mobility, or communications capabilities where resource-based heuristics are used as well as purely topological considerations\cite{Li2005,Gerla2002}.
+
+
 
 \subsection{Proactive Routing}
 
 In Proactive routing, protocols attempt to maintain a up-to-date, global topology awareness of the network, where every node knows how the best next-hop to contact any other node in the network.
-This is extremely efficient for relatively small, static networks, with minimal storage and time requirements \cite{}.
+This is extremely efficient for relatively small, static networks, with minimal storage and time requirements~\cite{Mbarushimana2007}.
 When the network topology is significantly modified by a shift in topology, either due to a node ``dropping out'' or moving, route renegotiation and optimisation is extremely resource consuming, as this global state is converged upon in a distributed manner by nodes exchanging their local knowledge of the ``new'' topology.
 The decomposition and updating of the node-knowledge of the network state, and the method of updating these state-tables, is the primary differentiator between proactive protocols, a selection of which are summarised below.
 
@@ -299,8 +300,7 @@ This is further augmented with an adaptive open-loop power control system which 
 \gls{fbr} is particularly well suited to constrained energy mobility networks with high mobility and high retransmission costs\cite{Noh2012}.
 
 
-
-\begin{table}\centering
+\begin{table}[H]\centering
 	\caption[Comparison of Routing Strategy Classes]{Comparison of Routing Strategy Classes (from \citet{Abolhasan2004})}
 	\label{tab:routing_categories}
 	\begin{tabularx}{\textwidth}{p{2cm}|XXX}\toprule
@@ -340,6 +340,7 @@ This is further augmented with an adaptive open-loop power control system which 
 		\bottomrule
 	\end{tabularx}
 \end{table}
+
 
 
 \section{Trust Definitions, Perspectives, and Relationships}\label{sec:trust_defs}
@@ -464,7 +465,7 @@ Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation P
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{liu2010RelationshipStack}
-	\caption{Trust Construct Relationships (from \citet{Liu2010})}
+	\caption[Trust Construct Relationships]{Trust Construct Relationships (from \citet{Liu2010})}
 	\label{fig:trust_constructs}
 \end{figure}
 
@@ -748,8 +749,8 @@ Within sparsely connected networks, there are three primary types of relationshi
       (c) -- (f);
       };
 
-      \draw[->, blue, dashed] (a) to[bend right] (b);
-      \draw[->, purple, dashed] (a) to[bend left] (c);
+      \draw[->, blue, dashed] (a) to[bend right] (b) node [left of=a] {$T_{A,B}$};
+      \draw[->, purple, dashed] (a) to[bend left] (c) node [right of=a] {$T_{A,C}$};
 
     \end{tikzpicture}
     \caption{Direct Relationships, the two possible trust assessments from $A$ to its connected neighbours, $B,C$}
@@ -775,10 +776,10 @@ Within sparsely connected networks, there are three primary types of relationshi
       (c) -- (f);
       };
 
-      \draw[->, blue, dashed] (a) to[bend right] (c.west) to [bend right](d.north east);
-      \draw[->, purple, dashed] (a) to[bend left] (b.east) to [bend left](d.north west);
-      \draw[->, teal, dashed] (a) to[bend left] (c.north east) to [bend left](e.west);
-      \draw[->, magenta, dashed] (a) to[bend left] (c.north) to [bend left](f.north);
+      \draw[->, blue, dashed] (a) to[bend right] (c.west) to [bend right](d.north east) node [right of=d] {$T_{A,C,D}$};
+      \draw[->, purple, dashed] (a) to[bend left] (b.east) to [bend left](d.north west) node [left of=d] {$T_{A,B,D}$};
+      \draw[->, teal, dashed] (a) to[bend left] (c.north east) to [bend left](e.west) node [above of=c] {$T_{A,C,E}$};
+      \draw[->, magenta, dashed] (a) to[bend left] (c.north) to [bend left](f.north) node [right of=c] {$T_{A,C,F}$};
     \end{tikzpicture}
     \caption{Indirect Relationships, showing the four possible trust assessments from $A$ or the three disconnected leaf nodes, $D,E,F$}
 
@@ -804,14 +805,14 @@ Within sparsely connected networks, there are three primary types of relationshi
       (c) -- (f);
       };
 
-      \draw[->, blue, dashed] (a) to[bend right=40] (b);
-      \draw[->, purple, dashed] (a) to[bend left=40] (c);
+      \draw[->, blue, dashed] (a) to[bend right] (b) node [left of=a] {$T_{A,B}$};
+      \draw[->, purple, dashed] (a) to[bend left] (c) node [right of=a] {$T_{A,C}$};
 
-      \draw[->, blue, dashed] (a) to[bend left] ([yshift=5pt] c.north west) to [bend right](b.east);
-      \draw[->, purple, dashed] (a) to[bend right] ([yshift=5pt] b.north east) to [bend left](c.west);
+      \draw[->, blue, dashed] (a) to[bend left] ([yshift=5pt] c.north west) to [bend right](b.east)  node [above left of=d, xshift=2ex, yshift=-3ex] {$T_{A,C,B}$} ;
+      \draw[->, purple, dashed] (a) to[bend right] ([yshift=5pt] b.north east) to [bend left](c.west) node [above right of=d, xshift=-2ex, yshift=-3ex] {$T_{A,B,C}$};
 
     \end{tikzpicture}
-    \caption{Recommender Relationship, showing the two discrete paths trust assessments travel to $A$; $T_{A,B}^R = T_{A,C} \otimes T_{C,B}$ and  $T_{A,C}^R = T_{A,B} \otimes T_{B,C}$}
+    \caption{Recommender Relationship, showing the two discrete paths trust assessments travel to $A$; $T_{A,B}^R = T_{A,C} \cdot T_{C,B}$ and  $T_{A,C}^R = T_{A,B} \cdot T_{B,C}$}
 
   \end{subfigure}
   \hfill
@@ -1045,7 +1046,7 @@ This standard was withdrawn in 2015 due to \gls{astm} regulations requiring stan
 
 \begin{figure}
   \includegraphics[width=\textwidth]{astmf41arch}
-  \caption{\gls{astm} F41 \gls{umvs} Architecture  (with relevant substandards in parenthesis)}
+  \caption[\acrshort{astm} F41 \acrshort{umvs} Architecture]{\acrshort{astm} F41 \acrshort{umvs} Architecture  (with relevant substandards in parenthesis)}
   \label{fig:astmf41arch}
 \end{figure}
 
@@ -1070,7 +1071,7 @@ In terms of the human factors challenges \footnote{See~\autoref{apx:human_factor
 This is a key part of the ``soft trust'' perspective, where the operators and commanders need to be able to implicitly and explicitly trust the operation of a remote system with limited feed-back bandwidth, high latency, or long-term operation such that direct remote operation is infeasible or undesirable.
 To be able to trust that system's ability to continue on a course, survey an area, notify on detection of an anomaly, etc.is going to be the corner stone of any autonomous systems justification in the future.
 
-\subsection{Conclusions}
+\subsection{Summary}
 
 \todo{ADD: Conclusion of Trusted Development}
 
@@ -1250,12 +1251,6 @@ Such behaviour would not be detected by the \gls{tmf}.
 \subsection{Multi-Metric Trust Frameworks}\label{sec:multimetrictrust}
 Given the potential incentives to a selfish attacker and potential threats to trust and fairness in sparse, noisy, and constrained environments, single metric trusts discussed above do not suitably cover the exposed threat surface.
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=\linewidth]{threat_surface_sum}
-  \caption{The inclusion of additional metrics and domains in trust assessment reduces the systems exposed threat surface}
-  \label{fig:threat_surface}
-\end{figure}
 
 A multi-metric approach may be more appropriate to capture and monitor the realities of harsh and sparse communications environments.
 

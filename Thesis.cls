@@ -142,10 +142,7 @@
         keywordstyle=\color{blue},
         commentstyle=\color[rgb]{0.13,0.55,0.13}\em,
         stringstyle=\color[rgb]{0.7,0,0} }
-\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
-   bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
-   colorlinks,linkcolor={blue},citecolor={blue},urlcolor={red},
-   pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
+\usepackage{hyperref}
 \pdfstringdefDisableCommands{
    \let\\\space
 }
@@ -236,6 +233,7 @@
 
 \hypersetup{
 	bookmarks=true,         % show bookmarks bar?
+	bookmarksopen=true,
 	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
 	pdftoolbar=true,        % show Acrobat’s toolbar?
 	pdfmenubar=true,        % show Acrobat’s menu?
@@ -246,10 +244,18 @@
 	linkcolor=Blue,          % color of internal links (change box color with linkbordercolor)
 	citecolor=ForestGreen,        % color of links to bibliography
 	filecolor=red,      % color of file links
-	urlcolor=Blue           % color of external links
+	urlcolor=Blue,           % color of external links
+	pdfpagemode={UseOutlines},
+	bookmarksopenlevel=0,
+	bookmarksnumbered=true,
+	hypertexnames=false,
+	linkbordercolor={black},
+	pdfborderstyle={/S/U/W 1},
+	pdfstartview={FitV},
+	breaklinks=true
 }
 
-%\renewcommand*{\glstextformat}[1]{\textcolor{BlueViolet}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
 
 
 \renewcommand\maketitle{

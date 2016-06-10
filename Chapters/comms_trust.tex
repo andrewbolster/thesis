@@ -5,7 +5,7 @@
 \label{ch:comms_trust}
 \lhead{Chapter \thechapter. \emph{\nameref{ch:comms_trust}}}
 
-\section{Introduction}
+\section{\glspl{uan} as \gls{manet} analogue}
 
 
 As \glspl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments to ensure their continued security, reliability, and performance.
@@ -160,7 +160,7 @@ Results are also included from the remaining mobility cases (all nodes mobile; a
     \caption{Single Mobile}
     \label{fig:emission_throughput_performance_sum_bella_single_mobile}
   \end{subfigure}
-  \caption{Throughput performance overview for all mobilities under varying emission rates\emph{IS THIS ENOUGH?}}
+  \caption{Throughput performance overview for all mobilities under varying emission rates}
   \label{fig:emission_all}
 \end{figure}
 
@@ -344,7 +344,7 @@ This indicates that there is a subtly different saturation behaviour with respec
     \caption{All Mobile}
     \label{fig:separation_throughput_performance_sum_bella_all_mobile}
   \end{subfigure}  
-  \caption{Throughput performance overview for all mobilities under varying separation \emph{IS THIS ENOUGH?}}
+  \caption{Throughput performance overview for all mobilities under varying separation}
   \label{fig:separation_all}
 \end{figure}
 
@@ -560,8 +560,6 @@ The reason for this is that in other mobility combinations, the node targeted fo
 
 \section{Operation of \glspl{tmf} in \gls{uan}}
 
-\subsection{Introduction}
-
 We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 
 \citet{Guo11} introduce a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
@@ -631,7 +629,7 @@ Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in ass
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_selfish}  \label{fig:trust_all_mobile_sel}
 	\end{subfigure}%
 	
-	\caption{\gls{mtfm} Trust assessments of $n_1$ ($T_{1,X}$), showing Direct, Recommender and Indirect relationships, as well as the Aggregate trust assessments from combining these} 
+	\caption{\gls{mtfm} Trust assessments of $n_1$ ($T_{1,X}$), showing Direct, Recommender and Indirect relationships, and derived aggregates} 
 	\label{fig:trust_mobility}
 \end{figure}
 %
@@ -723,7 +721,7 @@ Using this process the primary aspects of an attack can be extracted and highlig
 		\caption{Offered Load Emphasised}
 		\label{fig:all_mobile_badmouthing_txthroughput}
 	\end{subfigure}
-	\caption{$T_{1,MTFM}$ in the All Mobile case for the Malicious Power Control behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
+	\caption{$T_{1,0}^\text{MTFM}$ in the All Mobile case for the Malicious Power Control behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
 	\label{fig:all_mobile_badmouthing}
 \end{figure}
 %
@@ -761,7 +759,7 @@ Using this process the primary aspects of an attack can be extracted and highlig
 		\caption{Offered Load Emphasised}
 		\label{fig:all_mobile_selfish_txthroughput}
 	\end{subfigure}
-	\caption{$T_{1,MTFM}$ in the All Mobile case for the Selfish Target Selection behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
+	\caption{$T_{1,0}^\text{MTFM}$ in the All Mobile case for the Selfish Target Selection behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
 	\label{fig:all_mobile_selfish}
 \end{figure}
 
@@ -817,7 +815,7 @@ Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_
 As such this presents the open opportunity to develop a heuristic weight search scheme to detect malicious behaviour without the comparison to the fair scenario.
 This would be accomplished by assessing the impact of differential metric weighting on the mean trust assessment rather than comparing co-weighted valuations across scenarios.
 
-\section{Conclusions}
+\section{Conclusion}
 It has been demonstrated that existing \gls{manet} Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
 By comparing the operation and performance of trust establishment in \glspl{manet} in a simulated underwater environment has demonstrated that in order to have any reasonable expectation of performance, that throughput and delay responses must be characterised before implementing trust. 
 While the \gls{mtfm} value does not display any immediate difference between the two behaviours, it has been shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.

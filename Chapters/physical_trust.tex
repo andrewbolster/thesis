@@ -2,24 +2,13 @@
 \chapter{Use of Physical Behaviours for Trust Assessment} \label{ch:physical_trust}
 \lhead{Chapter \thechapter. \emph{Physical Trust Assessment}}
 
-\section{Introduction}
-
-
-However, these approaches to operational security have been totally focused on the establishment of trust/security in the communications domain, and ignore other potential threats to the network exploited through physical movement.
-This threat is particularly evident in collaborative autonomous systems where nodes are tasked to accomplish some survey / exploration / observation objective in a distributed fashion, where individual nodes make decisions based on the actions of their ``team''. 
-This collaboration opens the opportunity for a physically-misbehaving actor to selfishly conserve it's own resources, or maliciously ``drain'' a given target node.
-Current security / trust systems applied to \glspl{manet} are not concerned with the threat of such physical misbehaviours.
-
-In Section~\ref{sec:physbev}, we propose a collection of metrics to characterise the physical behaviours of node, and establish a set of physical ``misbehaviours'' to test these against.
-In Section~\ref{sec:sim_and_valid}, we design a series of simulations, and tests to assess the detection and identification capabilities of three potential physical metrics for trust assessment.
-
 \section{Physical Behaviours for Trust}\label{sec:physbev}
 
 \subsection{Physical Metrics}
 
-Three physical metrics are used to encompass the relative distributions and activities of nodes within the network; Inter-node Distance Deviation (INDD), Inter-node Heading Deviation (INHD), and Node Speed. 
+Three physical metrics are used to encompass the relative distributions and activities of nodes within the network; \acrfull{indd}, \acrfull{inhd}, and Node Speed. 
 \todo{ADD: Do more physical metrics (Theres lots more in bounous.Analyses.Metrics), this might be better chucked in the appendix }
-Conceptually, INDD is a measure of the average spacing of an observed node with respect to its neighbours. 
+Conceptually, \gls{indd} is a measure of the average spacing of an observed node with respect to its neighbours. 
 INHD is a similar approach with respect to node orientation.
 As such, these metrics completely encapsulate and abstract the physical behaviour of any node, potentially performing any misbehaviour.
 Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable initial set of metrics to establish the usefulness of physical metrics of trust assessment.
@@ -204,11 +193,13 @@ From a behaviour-perspective, it appears that the Shadow behaviour is creating t
   \label{fig:metric_values}
 \end{figure*}
 
+\begin{comment}
 \begin{figure*}
   \centering
   \includegraphics[width=\textwidth]{Metric_Deviation}
   \caption{\emph{Unnecessary but included for draft discussion} Observed Metric Values for one simulation of each behaviour ($d_{i,j}^{m,t}$ from Fig.~\ref{fig:workflow})}
 \end{figure*}
+\end{comment}
 
 In Fig.~\ref{fig:deviance_values} the metric values are normalised as per \eqref{eq:dd}.
 This has highlighted the outlying-characteristic of INHD and INDD; largely eliminating the other nodes-responses.

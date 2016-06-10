@@ -94,7 +94,6 @@
   *{package}{auxhook}     {2011/03/04 v1.3}
   *{file}   {pd1enc.def}  {2012/11/06 v6.83m}
   *{file}   {hyperref.cfg}{2002/06/06 v1.2}
-  *{file}   {puenc.def}   {2012/11/06 v6.83m}
   *{package}{url}         {2013/09/16 v3.4}
   *{file}   {hpdftex.def} {2012/11/06 v6.83m}
   *{package}{rerunfilecheck}{2011/04/15 v1.7}
@@ -199,10 +198,10 @@
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/introduction.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/threat_surface_sum.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/trust_background.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/liu2010RelationshipStack.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/threat_surface_sum.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/maritime-background.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/temp_globe.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/sal_globe.pdf}{0000/00/00 v0.0}
@@ -286,7 +285,6 @@
   *{file}   {./Figures/flocking_separation.png}{0000/00/00 v0.0}
   *{file}   {./Figures/flocking_alignment.png}{0000/00/00 v0.0}
   *{file}   {./Figures/Metric_Values.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/Metric_Deviation.png}{0000/00/00 v0.0}
   *{file}   {./Figures/Metric_Sigma_Deviance.png}{0000/00/00 v0.0}
   *{file}   {./Figures/summedsigmabar.png}{0000/00/00 v0.0}
   *{file}   {Figures/input/classifier_minority.tex}{0000/00/00 v0.0}

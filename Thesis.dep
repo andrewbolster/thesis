@@ -51,7 +51,7 @@
   *{package}{caption3}    {2016/02/04 v1.7-139}
   *{package}{xcolor}      {2007/01/21 v2.11}
   *{file}   {color.cfg}   {2007/01/18 v1.5}
-  *{file}   {dvipsnam.def}{2015/12/30 v3.0k}
+  *{file}   {svgnam.def}  {2007/01/21 v2.11}
   *{package}{graphicx}    {2014/10/28 v1.0g}
   *{package}{graphics}    {2016/01/03 v1.0q}
   *{file}   {graphics.cfg}{2010/04/23 v1.9}
@@ -172,6 +172,7 @@
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
   *{package}{nameref}     {2012/10/27 v2.43}
   *{package}{gettitlestring}{2010/12/03 v1.4}
+  *{package}{layouts}     {2009/09/02 v2.6d}
   *{package}{ifplatform}  {2010/10/22 v0.4}
   *{package}{catchfile}   {2011/03/01 v1.6}
   *{file}   {Thesis.w18}  {0000/00/00 v0.0}
@@ -211,7 +212,6 @@
   *{file}   {./Figures/ssp_n_squared.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/ssp_isovelocity.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/comms_trust.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/s1_layout.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_allbut1_mobile.pdf}{0000/00/00 v0.0}
@@ -266,6 +266,7 @@
   *{file}   {./Figures/trust_beta_otmf_fair.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_beta_otmf_malicious.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_beta_otmf_selfish.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/trust_beta_otmf_mtfm_boxes.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl.pdf}{0000/00/00 v0.0}
@@ -278,77 +279,77 @@
   *{file}   {./Figures/trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/MaliciousSelfishMetricFactors.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/MaliciousSelfishMetricFactors.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/physical_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/img/glider.jpg}{0000/00/00 v0.0}
   *{file}   {./Figures/flocking_cohesion.png}{0000/00/00 v0.0}
   *{file}   {./Figures/flocking_separation.png}{0000/00/00 v0.0}
   *{file}   {./Figures/flocking_alignment.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/Metric_Values.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/Metric_Sigma_Deviance.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/summedsigmabar.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Values.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/Metric_Sigma_Deviance.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/summedsigmabar.pdf}{0000/00/00 v0.0}
   *{file}   {Figures/input/classifier_minority.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/multi_domain_trust_analysis.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/comms_metric_trust_relevance.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/phys_metric_trust_relevance.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/full_metric_trust_relevance.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/comms_metric_trust_relevance.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/phys_metric_trust_relevance.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/full_metric_trust_relevance.pdf}{0000/00/00 v0.0}
   *{file}   {Figures/input/full_metric_correlations.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_time_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_time_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_time_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_time_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_time_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_time_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_time_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_time_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_time_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_time_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_time_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_time_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_time_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_time_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_time_SlowCoach.pdf}{0000/00/00 v0.0}
   *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/domain_deltas_minus.tex}{0000/00/00 v0.0}
-  *{file}   {Figures/input/optimised_weights.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/optimised_weights_5.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/conclusion.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/HumanFactors.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/Grey.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/OrphanedSections.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/GraphOverflow.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_MPC.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_STS.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_Shadow.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_SlowCoach.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_time_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_time_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_time_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_MPC.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_STS.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_comms_run_alt_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_phys_run_alt_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/best_full_run_alt_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
   *{file}   {omlcmr.fd}   {2014/09/29 v2.5h}
 }

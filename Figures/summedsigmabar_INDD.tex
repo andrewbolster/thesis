@@ -1,0 +1,40 @@
+% This file was created by matplotlib2tikz v0.5.4.
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{0,0.75,0.75}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+\definecolor{color3}{rgb}{0.75,0.75,0}
+\definecolor{color2}{rgb}{0.75,0,0.75}
+
+\begin{axis}[
+xlabel={Behaviour},
+ylabel={Overall $\sigma$},
+xmin=-0.5, xmax=2.5,
+ymin=-1, ymax=1,
+xtick={0,1,2},
+xticklabels={Control,Shadow,SlowCoach},
+ytick={-1,-0.5,0,0.5,1},
+yticklabels={$-1.0$,$-0.5$,$0.0$,$0.5$,$1.0$},
+tick align=outside,
+xmajorgrids,
+x grid style={white!82.745098039215677!black},
+ymajorgrids,
+y grid style={white!82.745098039215677!black},
+axis line style={white!82.745098039215677!black},
+axis background/.style={fill=color0}
+]
+\path [draw=white, fill opacity=0] (axis cs:-0.5,1)
+--(axis cs:2.5,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,-1)
+--(axis cs:1,1);
+
+\path [draw=white!82.745098039215677!black, fill opacity=0] (axis cs:-0.5,0)
+--(axis cs:2.5,0);
+
+\path [draw=white!82.745098039215677!black, fill opacity=0] (axis cs:0,-1)
+--(axis cs:0,1);
+
+\end{axis}
+
+\end{tikzpicture}

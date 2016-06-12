@@ -274,7 +274,7 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 
 
 
-\section{Marine Operations, Payloads and Technologies}\label{sec:marine_ops}
+\section{Marine Operations, Payloads, Technologies, and Durations}\label{sec:marine_ops}
 
 The use and applications of \glspl{auv} has undergone a great expansion in recent years\cite{Alam2014}.
 The primary application for \glspl{auv} has long been identified as the environmental monitoring of marine areas, and are actively being researched by a great range of industrial and defence sector applications, with secondary applications in the physical sciences and environmental research, which are summarised below\cite{Bingham2002,Wynn2014}.
@@ -303,10 +303,13 @@ As in Hydrography, the mobility of \glspl{auv} is the biggest single advantage o
 Additionally, recent advances in \gls{sas} have provided invaluable sub-surface profile data over much wider areas for multi-spectral mineralogical analysis than previous sonar profilers\cite{Denny2015}.
 
 \subsubsection{Military}
-Mine-Countermeasure Operations benefit greatly from, and significantly drive, \gls{auv} development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit.
-This benefit applies to protection as well as incursion; the ability to have persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as AUV technology, autonomy and security practices develop, this use is increasing.
+\gls{mcm} Operations benefit greatly from, and significantly drive, \gls{auv} development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit both in Dedicated \gls{mcm} (e.g. Large Area Hunting/ \gls{eod} Clearance) and in Organic \gls{mcm} for Expeditionary Forces.
+This benefit applies to protection as well as incursion; the ability to rapidly deploy persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as \gls{auv} technology, autonomy and security practices develop, this use is increasing.
 This Port Protection capability is particularly complex;  teams of \glspl{auv} are expected to repeatedly survey an area and remain densely-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
 In Sec.~\ref{sec:sim_and_valid}, we use this Port Protection scenario as a baseline for our simplified simulation context.
+Additional defence application areas include \gls{asw}, \gls{rea}, Navigational Aid/Force projection, 
+
+
 
 \subsection{Localisation Technologies}
 
@@ -339,17 +342,32 @@ In summary, current technology reliably enables \glspl{auv} to localise to a sub
 \glspl{auv} are capable of being loaded with a wide range of sensing payloads;
 \begin{enumerate}
 	\item 
-	\item Bathymetry
-	\item Temperature/salinity/conductivity
+	\item Sonar Bathymetry
+	\item \gls{ctd} sensor packages (Depth from Pressure sensing rather than sonar)
+	\item Salinity and Particulate sensing
 	\item Side scanning sonar 
 	\item Sub-bottom Sonar Profiling
 \end{enumerate}
 
+\subsection{Example \gls{auv} Platforms and Operational Limitations}
+
+\subsubsection{Konsburg REMUS/HUGIN ranges}
+The REMUS range of \gls{auv} platforms have been very popular in research and \gls{uan} application prototypes due to their relatively small size and high level of configurability.
+The basic configurations of the REMUS 100 configuration consist of a single pressure vessel, $0.2m$ in diameter and $1.6m$ long, weighting in at $37kg$, rated to operational depths of $150m$. 
+This package includes \gls{dvl}, \gls{ctd}, Underwater Videography, \gls{lbl} and onboard computing power suitable for low \gls{loa} independence, with onboard Li-on battery packs rated to provide up to 10-hours of cruising operational endurance.
+These capabilities can be extended through the addition of further modular extensions through the REMUS range, such as the REMUS 600, rated for up to $600m$ depth and a cruising endurance of 45 hours, or the REMUS 6000, rated for up to $6km$ with 22 hours duration.
+
+The HUGIN 1000 is a high-resolution extension to the REMUS range, characterised by it's default payload of a High Definition \gls{sas}, co-designed with the Norwegian Defence Research Establishment (FFI) for \gls{mcm} operations, with a dynamic depth rating up to $3km$ and 24 hour cruising endurance (17 hours with continuous \gls{sas} engagement)
+
+The Konsburg range also include range specific \gls{lars}
+\subsection{Autosub}
+\subsection{GeoSub}
+\subsection{\emph{USS Cuthroat}}
 
 \subsection{Potential Future Applications}
 \todo{ADD NEXT: Future Applications of \glspl{auv}, mostly in the ``Actuation'' side of things as opposed to classical sensor payloads}
 
-\subsection{Need for Trust in Maritime Networks}
+\subsection{Need for Trust in Maritime Networks}\label{sec:trust_in_marine}
 
 
 Given the breadth of the threat space in \glspl{manet}, many strategies for mitigating these risks have been proposed in a matrix-basis; i.e. you can't cover all eventualities with one tool.
@@ -372,9 +390,10 @@ Similarly, the assessment that the Risk of Data Corruption is low is arguable on
 	\end{tabularx}
 \end{table}
 
-Resource Depletion, or \gls{dos} has a very wide ranging definition, from network-level attacks to saturate a communications channel or the computing resources of routing nodes, or the exploitation of a power-control loop to induce a node to waste energy with overly-high-powered communications, to the intentional geographic misleading of nodes to induce a similar power-drain on locomotive systems, through tactics such as location spoofing or \gls{gps} denial.
+Resource Depletion, or \gls{dos} has a very wide ranging definition, from network-level attacks to saturate a communications channel or the computing resources of routing nodes, or the exploitation of a power-control loop to induce a node to waste energy with overly-high-powered communications, to the intentional geographic misleading of nodes to induce a similar power-drain on locomotive systems, through tactics such as location spoofing or \gls{gps} denial~\cite{Zuba2015}.
 
-With respect to the critical, and from \autoref{tab:manet_risk}, it is assessed that the highest overall threats are those of Resource Depletion and Masquerading.
+From \autoref{tab:manet_risk}, it is assessed that the highest overall threats are those of Resource Depletion and Masquerading.
+Within this threat context, the general optimisation of any \gls{tmf} would be to prefer high but fair overall network throughput, while minimising delay, \gls{plr}, and power usage.
 
 \section{Conclusion}
 

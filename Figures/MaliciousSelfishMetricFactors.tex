@@ -1,0 +1,37 @@
+% This file was created by matplotlib2tikz v0.5.4.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+
+\begin{axis}[
+ylabel={Relative Significance},
+xmin=-0.5, xmax=5.5,
+ymin=0, ymax=0.6,
+xtick={0,1,2,3,4,5},
+xticklabels={$Delay$,$P_{RX}$,$P_{TX}$,$S$,$G$,$PLR$},
+ytick={0,0.1,0.2,0.3,0.4,0.5,0.6,0.7},
+yticklabels={$0.0$,$0.1$,$0.2$,$0.3$,$0.4$,$0.5$,$0.6$,},
+tick align=outside,
+xmajorgrids,
+ymajorgrids,
+axis line style={white!82.745098039215677!black},
+axis background/.style={fill=color0},
+legend entries={{Fair/MPC},{Fair/STS},{MPC/STS}},
+legend style={at={(0.91,0.5)}, anchor=west, draw=none, fill=color0},
+legend cell align={left}
+]
+\path [draw=white, fill opacity=0] (axis cs:-0.5,1)
+--(axis cs:5.5,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,0.6);
+
+\path [draw=white!82.745098039215677!black, fill opacity=0] (axis cs:-0.5,0)
+--(axis cs:5.5,0);
+
+\path [draw=white!82.745098039215677!black, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,0.6);
+
+\end{axis}
+
+\end{tikzpicture}

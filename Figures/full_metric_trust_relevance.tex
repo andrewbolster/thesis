@@ -1,0 +1,78 @@
+% This file was created by matplotlib2tikz v0.5.4.
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{1,0,0.16}
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+\definecolor{color3}{rgb}{0.975092739798622,1,0}
+\definecolor{color2}{rgb}{1,0.431372549019608,0}
+\definecolor{color5}{rgb}{0,1,0.231920725279359}
+\definecolor{color4}{rgb}{0.36036036036036,1,0}
+\definecolor{color7}{rgb}{0,0.56159420289855,1}
+\definecolor{color6}{rgb}{0,1,0.843348091924942}
+\definecolor{color9}{rgb}{0.653239556692242,0,1}
+\definecolor{color8}{rgb}{0.0564791133844844,0,1}
+
+\begin{axis}[
+xlabel={Behaviour},
+ylabel={Est. Metric Significance},
+xmin=-0.7, xmax=3.7,
+ymin=0, ymax=0.7,
+xtick={0,1,2,3},
+xticklabels={MPC,STS,Shadow,SlowCoach},
+ytick={0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8},
+yticklabels={$0.0$,$0.1$,$0.2$,$0.3$,$0.4$,$0.5$,$0.6$,$0.7$,},
+tick align=outside,
+x grid style={white!82.745098039215677!black},
+ymajorgrids,
+y grid style={white!82.745098039215677!black},
+axis line style={white!82.745098039215677!black},
+axis background/.style={fill=color0},
+legend style={draw=none, fill=color0},
+legend entries={{$Delay$},{$P_{RX}$},{$P_{TX}$},{$S$},{$G$},{$PLR$},{$INDD$},{$INHD$},{$Speed$}},
+legend cell align={left}
+]
+\path [draw=white, fill opacity=0] (axis cs:-0.7,1)
+--(axis cs:3.7,1);
+
+\path [draw=white, fill opacity=0] (axis cs:1,0)
+--(axis cs:1,0.7);
+
+\path [draw=white!82.745098039215677!black, fill opacity=0] (axis cs:-0.7,0)
+--(axis cs:3.7,0);
+
+\path [draw=white!82.745098039215677!black, fill opacity=0] (axis cs:0,0)
+--(axis cs:0,0.7);
+
+\node at (axis cs:1.7,0.658402325482929)[
+  scale=0.3332,
+  anchor=south,
+  text=white!15.0!black,
+  rotate=0.0
+]{ 0.65};
+\node at (axis cs:-0.2,0.502289848578473)[
+  scale=0.3332,
+  anchor=south,
+  text=white!15.0!black,
+  rotate=0.0
+]{ 0.5};
+\node at (axis cs:2.7,0.371766105144362)[
+  scale=0.3332,
+  anchor=south,
+  text=white!15.0!black,
+  rotate=0.0
+]{ 0.37};
+\node at (axis cs:1,0.444973920372932)[
+  scale=0.3332,
+  anchor=south,
+  text=white!15.0!black,
+  rotate=0.0
+]{ 0.44};
+\node at (axis cs:3.4,0.329691812117751)[
+  scale=0.3332,
+  anchor=south,
+  text=white!15.0!black,
+  rotate=0.0
+]{ 0.32};
+\end{axis}
+
+\end{tikzpicture}

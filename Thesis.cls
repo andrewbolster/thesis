@@ -114,7 +114,7 @@
 \setcounter{totalnumber}{20}
 \setcounter{dbltopnumber}{9}
 
-\usepackage[dvipsnames]{xcolor}
+\usepackage[svgnames]{xcolor}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage[%
@@ -148,6 +148,7 @@
 }
 
 
+
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
 \usepackage{verbatim,listings}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{array}  % Needed for the "comment" environment to make LaTeX comments
@@ -174,6 +175,8 @@
 \usepackage{nameref}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc,fit}
+
+\usepackage{layouts}
 
 
 \newcommand*{\supervisor}[1]{\def\supname{#1}}
@@ -241,22 +244,21 @@
 	pdfstartview={FitH},    % fits the width of the page to the window
 	pdfnewwindow=true,      % links in new window
 	colorlinks=true,       % false: boxed links; true: colored links
-	linkcolor=Blue,          % color of internal links (change box color with linkbordercolor)
-	citecolor=ForestGreen,        % color of links to bibliography
+	linkcolor=DarkBlue,          % color of internal links (change box color with linkbordercolor)
+	citecolor=blue,        % color of links to bibliography
 	filecolor=red,      % color of file links
-	urlcolor=Blue,           % color of external links
+	urlcolor=DarkBlue,           % color of external links
 	pdfpagemode={UseOutlines},
 	bookmarksopenlevel=0,
 	bookmarksnumbered=true,
 	hypertexnames=false,
 	linkbordercolor={black},
-	pdfborderstyle={/S/U/W 1},
+	%pdfborderstyle={/S/U/W 1},
 	pdfstartview={FitV},
 	breaklinks=true
 }
 
-\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
-
+\renewcommand*{\glstextformat}[1]{\textcolor{Indigo}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
 
 \renewcommand\maketitle{
   \btypeout{Title Page}

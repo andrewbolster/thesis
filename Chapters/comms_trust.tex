@@ -1,5 +1,4 @@
 % !TeX spellcheck = en_GB
-\def\ChapterTitle{}
 
 \chapter{Assessment of \gls{tmf} Performance in Marine Environments}
 \label{ch:comms_trust}
@@ -37,7 +36,6 @@ For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:
 \gls{mtfm} is also included as an example of an existing multi-metric \gls{tmf} that looking purely at the communications domain.
 
 
-
 \section{Modelling of \gls{uan} network}\label{sec:initialsystemcharacterization}
 
 \subsection{Mobility, Topology, and Communications}
@@ -58,11 +56,34 @@ The use of six nodes and the particular layout enables the investigation of the 
 (See Section~\ref{sec:trust_topologies})
 
 Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems Group inform that this is a practical team-size for environmental and defence applications.
-
 %
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.45\textwidth]{s1_layout}
+	\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex', baseline=(a.base)]
+	\node [sum] (n0) {$n_0$};
+	\node [sum, right =of n0] (n1) {$n_1$};
+	\node [sum, above right =of n0] (n2) {$n_2$};
+	\node [sum, below right =of n0] (n3) {$n_3$};
+	\node [sum, above right =of n1, xshift=10,yshift=-15] (n4) {$n_4$};
+	\node [sum, below right =of n1, xshift=10,yshift=15](n5) {$n_5$};
+	
+	
+	\draw (n0) -- (n1);
+	\draw (n0) -- (n2);	
+	\draw (n0) -- (n3);
+
+	\draw (n1) -- (n2);	
+	\draw (n1) -- (n3);
+	\draw (n1) -- (n4);
+	\draw (n1) -- (n5);	
+	
+	\draw (n2) -- (n4);
+	
+	\draw (n3) -- (n5);
+	
+	\draw (n4) -- (n5);
+	
+	\end{tikzpicture}
 	\caption{Initial layout with nodes spaced an average of 100m apart}
 	\label{fig:s1_layout}
 \end{figure}
@@ -112,7 +133,7 @@ In this section the simulated communications environment is characterised to est
 This optimal emission rate is taken to be an emission rate that provides reasonable network stability and protection from network saturation.
 Network saturation is the point at which a network can no longer successfully deliver the offered load\footnote{It will become important to note that Offered Load in this case includes packet retransmissions} presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
 
-Formally, this saturation rate occures if
+Formally, this saturation rate occurs if
 
 \begin{equation}
 N\lambda_s>\mu_\text{max}
@@ -134,165 +155,166 @@ It is worthwhile noting that in~\autoref{fig:emission_throughput_performance_bel
 Results are also included from the remaining mobility cases (all nodes mobile; all-but-one node mobile; single mobile node), however from Figs.~\ref{fig:emission_all},~ \ref{fig:emission_bella_all_mobile}-~\ref{fig:emission_bella_single_mobile} that the throughput threshold behaviour is qualitatively similar regardless of mobility for this initial node separation.
 
 
+
 \begin{figure}[h]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_static}
-    \caption{Static}
-    \label{fig:emission_throughput_performance_sum_bella_static}
-  \end{subfigure}
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_all_mobile}
-    \caption{All Mobile}
-    \label{fig:emission_throughput_performance_sum_bella_all_mobile}
-  \end{subfigure}  
-  
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_allbut1_mobile}
-    \caption{All-but-one Mobile}
-    \label{fig:emission_throughput_performance_sum_bella_allbut1_mobile}
-  \end{subfigure}  
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_single_mobile}
-    \caption{Single Mobile}
-    \label{fig:emission_throughput_performance_sum_bella_single_mobile}
-  \end{subfigure}
-  \caption{Throughput performance overview for all mobilities under varying emission rates}
-  \label{fig:emission_all}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_static}
+		\caption{Static}
+		\label{fig:emission_throughput_performance_sum_bella_static}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_all_mobile}
+		\caption{All Mobile}
+		\label{fig:emission_throughput_performance_sum_bella_all_mobile}
+	\end{subfigure}  
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_allbut1_mobile}
+		\caption{All-but-one Mobile}
+		\label{fig:emission_throughput_performance_sum_bella_allbut1_mobile}
+	\end{subfigure}  
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_single_mobile}
+		\caption{Single Mobile}
+		\label{fig:emission_throughput_performance_sum_bella_single_mobile}
+	\end{subfigure}
+	\caption{Throughput performance overview for all mobilities under varying emission rates}
+	\label{fig:emission_all}
 \end{figure}
 
 
 \begin{figure}[tp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_static}
-    \caption{Packet delivery}
-    \label{fig:emission_throughput_performance_bella_static}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_static}
-    \caption{Probability of arrival}
-    \label{fig:emission_prod_breakdown_bella_static}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_delay_variation_bella_static}
-    \caption{End-to-end delay}
-    \label{fig:emission_delay_variation_bella_static}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_static}
-    \caption{RTS Ratios}
-    \label{fig:emission_rts_ratio_bella_static}
-  \end{subfigure}
-  \caption{Network performance varying packet emission rates for the static case}
-  \label{fig:emission_bella_static}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_static}
+		\caption{Packet delivery}
+		\label{fig:emission_throughput_performance_bella_static}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_prod_breakdown_bella_static}
+		\caption{Probability of arrival}
+		\label{fig:emission_prod_breakdown_bella_static}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_delay_variation_bella_static}
+		\caption{End-to-end delay}
+		\label{fig:emission_delay_variation_bella_static}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_rts_ratio_bella_static}
+		\caption{RTS Ratios}
+		\label{fig:emission_rts_ratio_bella_static}
+	\end{subfigure}
+	\caption{Network performance varying packet emission rates for the static case}
+	\label{fig:emission_bella_static}
 \end{figure}
 
 
 \begin{figure}[bp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_all_mobile}
-    \caption{Packet delivery}
-    \label{fig:emission_throughput_performance_bella_all_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_all_mobile}
-    \caption{Probability of arrival}
-    \label{fig:emission_prod_breakdown_bella_all_mobile}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_delay_variation_bella_all_mobile}
-    \caption{End-to-end delay}
-    \label{fig:emission_delay_variation_bella_all_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_all_mobile}
-    \caption{RTS Ratios}
-    \label{fig:emission_rts_ratio_bella_all_mobile}
-  \end{subfigure}
-  \caption{Network performance varying packet emission rates for the all mobile case}
-  \label{fig:emission_bella_all_mobile}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_all_mobile}
+		\caption{Packet delivery}
+		\label{fig:emission_throughput_performance_bella_all_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_prod_breakdown_bella_all_mobile}
+		\caption{Probability of arrival}
+		\label{fig:emission_prod_breakdown_bella_all_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_delay_variation_bella_all_mobile}
+		\caption{End-to-end delay}
+		\label{fig:emission_delay_variation_bella_all_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_rts_ratio_bella_all_mobile}
+		\caption{RTS Ratios}
+		\label{fig:emission_rts_ratio_bella_all_mobile}
+	\end{subfigure}
+	\caption{Network performance varying packet emission rates for the all mobile case}
+	\label{fig:emission_bella_all_mobile}
 \end{figure}
 
 
 \begin{figure}[tp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_allbut1_mobile}
-    \caption{Packet delivery}
-    \label{fig:emission_throughput_performance_bella_allbut1_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_allbut1_mobile}
-    \caption{Probability of arrival}
-    \label{fig:emission_prod_breakdown_bella_allbut1_mobile}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_delay_variation_bella_allbut1_mobile}
-    \caption{End-to-end delay}
-    \label{fig:emission_delay_variation_bella_allbut1_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_allbut1_mobile}
-    \caption{RTS Ratios}
-    \label{fig:emission_rts_ratio_bella_allbut1_mobile}
-  \end{subfigure}
-  \caption{Network performance varying packet emission rates for the all-but-one mobile case}
-  \label{fig:emission_bella_allbut1_mobile}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_allbut1_mobile}
+		\caption{Packet delivery}
+		\label{fig:emission_throughput_performance_bella_allbut1_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_prod_breakdown_bella_allbut1_mobile}
+		\caption{Probability of arrival}
+		\label{fig:emission_prod_breakdown_bella_allbut1_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_delay_variation_bella_allbut1_mobile}
+		\caption{End-to-end delay}
+		\label{fig:emission_delay_variation_bella_allbut1_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_rts_ratio_bella_allbut1_mobile}
+		\caption{RTS Ratios}
+		\label{fig:emission_rts_ratio_bella_allbut1_mobile}
+	\end{subfigure}
+	\caption{Network performance varying packet emission rates for the all-but-one mobile case}
+	\label{fig:emission_bella_allbut1_mobile}
 \end{figure}
 
 \begin{figure}[bp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_throughput_performance_bella_single_mobile}
-    \caption{Packet delivery}
-    \label{fig:emission_throughput_performance_bella_single_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_prod_breakdown_bella_single_mobile}
-    \caption{Probability of arrival}
-    \label{fig:emission_prod_breakdown_bella_single_mobile}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_delay_variation_bella_single_mobile}
-    \caption{End-to-end delay}
-    \label{fig:emission_delay_variation_bella_single_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{emission_rts_ratio_bella_single_mobile}
-    \caption{RTS Ratios}
-    \label{fig:emission_rts_ratio_bella_single_mobile}
-  \end{subfigure}
-  \caption{Network performance varying packet emission rates for the single mobile case}
-  \label{fig:emission_bella_single_mobile}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_throughput_performance_bella_single_mobile}
+		\caption{Packet delivery}
+		\label{fig:emission_throughput_performance_bella_single_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_prod_breakdown_bella_single_mobile}
+		\caption{Probability of arrival}
+		\label{fig:emission_prod_breakdown_bella_single_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_delay_variation_bella_single_mobile}
+		\caption{End-to-end delay}
+		\label{fig:emission_delay_variation_bella_single_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{emission_rts_ratio_bella_single_mobile}
+		\caption{RTS Ratios}
+		\label{fig:emission_rts_ratio_bella_single_mobile}
+	\end{subfigure}
+	\caption{Network performance varying packet emission rates for the single mobile case}
+	\label{fig:emission_bella_single_mobile}
 \end{figure}
 
 \clearpage
@@ -318,165 +340,168 @@ The other mobility cases tell a very different story; as can be seen in~\autoref
 Another aspect of these results to highlight is that the Offered Load presented to the network \emph{increases} beyond the collapse of the throughput curve. 
 This indicates that there is a subtly different saturation behaviour with respect to separation than the simple congestion argument with respect to packet emission rate; packets are simply taking too long to cross the increasingly sparse network and in-transit packet routes are logically disconnected and require retransmission.
 
-\begin{figure}[h]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_static}
-    \caption{Static}
-    \label{fig:separation_throughput_performance_sum_bella_static}
-  \end{subfigure}
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
-    \caption{Single Mobile}
-    \label{fig:separation_throughput_performance_sum_bella_single_mobile}
-  \end{subfigure}
 
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_allbut1_mobile}
-    \caption{All-but-one Mobile}
-    \label{fig:separation_throughput_performance_sum_bella_allbut1_mobile}
-  \end{subfigure}  
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
-    \caption{All Mobile}
-    \label{fig:separation_throughput_performance_sum_bella_all_mobile}
-  \end{subfigure}  
-  \caption{Throughput performance overview for all mobilities under varying separation}
-  \label{fig:separation_all}
+
+\subsection{Combined Scale Factor Analysis}
+\begin{figure}[h]
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_static}
+		\caption{Static}
+		\label{fig:separation_throughput_performance_sum_bella_static}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
+		\caption{Single Mobile}
+		\label{fig:separation_throughput_performance_sum_bella_single_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_allbut1_mobile}
+		\caption{All-but-one Mobile}
+		\label{fig:separation_throughput_performance_sum_bella_allbut1_mobile}
+	\end{subfigure}  
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
+		\caption{All Mobile}
+		\label{fig:separation_throughput_performance_sum_bella_all_mobile}
+	\end{subfigure}  
+	\caption{Throughput performance overview for all mobilities under varying separation}
+	\label{fig:separation_all}
 \end{figure}
 
 % These figures should be colocated
 \begin{figure}[tp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_static}
-    \caption{Packet delivery}
-    \label{fig:separation_throughput_performance_bella_static}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_static}
-    \caption{Probability of arrival}
-    \label{fig:separation_prod_breakdown_bella_static}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_delay_variation_bella_static}
-    \caption{End-to-end delay}
-    \label{fig:separation_delay_variation_bella_static}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_static}
-    \caption{RTS Ratios}
-    \label{fig:separation_rts_ratio_bella_static}
-  \end{subfigure}
-  \caption{Network performance varying node separation for the static case}
-  \label{fig:separation_bella_static}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_static}
+		\caption{Packet delivery}
+		\label{fig:separation_throughput_performance_bella_static}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_prod_breakdown_bella_static}
+		\caption{Probability of arrival}
+		\label{fig:separation_prod_breakdown_bella_static}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_delay_variation_bella_static}
+		\caption{End-to-end delay}
+		\label{fig:separation_delay_variation_bella_static}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_rts_ratio_bella_static}
+		\caption{RTS Ratios}
+		\label{fig:separation_rts_ratio_bella_static}
+	\end{subfigure}
+	\caption{Network performance varying node separation for the static case}
+	\label{fig:separation_bella_static}
 \end{figure}
 
 
 \begin{figure}[bp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
-    \caption{Packet delivery}
-    \label{fig:separation_throughput_performance_bella_all_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_all_mobile}
-    \caption{Probability of arrival}
-    \label{fig:separation_prod_breakdown_bella_all_mobile}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_delay_variation_bella_all_mobile}
-    \caption{End-to-end delay}
-    \label{fig:separation_delay_variation_bella_all_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_all_mobile}
-    \caption{RTS Ratios}
-    \label{fig:separation_rts_ratio_bella_all_mobile}
-  \end{subfigure}
-  \caption{Network performance varying node separation for the all mobile case}
-  \label{fig:separation_bella_all_mobile}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_all_mobile}
+		\caption{Packet delivery}
+		\label{fig:separation_throughput_performance_bella_all_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_prod_breakdown_bella_all_mobile}
+		\caption{Probability of arrival}
+		\label{fig:separation_prod_breakdown_bella_all_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_delay_variation_bella_all_mobile}
+		\caption{End-to-end delay}
+		\label{fig:separation_delay_variation_bella_all_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_rts_ratio_bella_all_mobile}
+		\caption{RTS Ratios}
+		\label{fig:separation_rts_ratio_bella_all_mobile}
+	\end{subfigure}
+	\caption{Network performance varying node separation for the all mobile case}
+	\label{fig:separation_bella_all_mobile}
 \end{figure}
 
 
 \begin{figure}[tp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_allbut1_mobile}
-    \caption{Packet delivery}
-    \label{fig:separation_throughput_performance_bella_allbut1_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_allbut1_mobile}
-    \caption{Probability of arrival}
-    \label{fig:separation_prod_breakdown_bella_allbut1_mobile}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_delay_variation_bella_allbut1_mobile}
-    \caption{End-to-end delay}
-    \label{fig:separation_delay_variation_bella_allbut1_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_allbut1_mobile}
-    \caption{RTS Ratios}
-    \label{fig:separation_rts_ratio_bella_allbut1_mobile}
-  \end{subfigure}
-  \caption{Network performance varying node separation for the all-but-one mobile case}
-  \label{fig:separation_bella_allbut1_mobile}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_allbut1_mobile}
+		\caption{Packet delivery}
+		\label{fig:separation_throughput_performance_bella_allbut1_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_prod_breakdown_bella_allbut1_mobile}
+		\caption{Probability of arrival}
+		\label{fig:separation_prod_breakdown_bella_allbut1_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_delay_variation_bella_allbut1_mobile}
+		\caption{End-to-end delay}
+		\label{fig:separation_delay_variation_bella_allbut1_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_rts_ratio_bella_allbut1_mobile}
+		\caption{RTS Ratios}
+		\label{fig:separation_rts_ratio_bella_allbut1_mobile}
+	\end{subfigure}
+	\caption{Network performance varying node separation for the all-but-one mobile case}
+	\label{fig:separation_bella_allbut1_mobile}
 \end{figure}
 
 \begin{figure}[bp!]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
-    \caption{Packet delivery}
-    \label{fig:separation_throughput_performance_bella_single_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_prod_breakdown_bella_single_mobile}
-    \caption{Probability of arrival}
-    \label{fig:separation_prod_breakdown_bella_single_mobile}
-  \end{subfigure}
-
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_delay_variation_bella_single_mobile}
-    \caption{End-to-end delay}
-    \label{fig:separation_delay_variation_bella_single_mobile}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{separation_rts_ratio_bella_single_mobile}
-    \caption{RTS Ratios}
-    \label{fig:separation_rts_ratio_bella_single_mobile}
-  \end{subfigure}
-  \caption{Network performance varying node separation for the single mobile case}
-  \label{fig:separation_bella_single_mobile}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_throughput_performance_bella_single_mobile}
+		\caption{Packet delivery}
+		\label{fig:separation_throughput_performance_bella_single_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_prod_breakdown_bella_single_mobile}
+		\caption{Probability of arrival}
+		\label{fig:separation_prod_breakdown_bella_single_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_delay_variation_bella_single_mobile}
+		\caption{End-to-end delay}
+		\label{fig:separation_delay_variation_bella_single_mobile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{separation_rts_ratio_bella_single_mobile}
+		\caption{RTS Ratios}
+		\label{fig:separation_rts_ratio_bella_single_mobile}
+	\end{subfigure}
+	\caption{Network performance varying node separation for the single mobile case}
+	\label{fig:separation_bella_single_mobile}
 \end{figure}
 
 
@@ -485,14 +510,16 @@ This indicates that there is a subtly different saturation behaviour with respec
 	\caption{Tabular view of data from~\autoref{fig:separation_bella_single_mobile}, including ideal propagation time} \label{tab:separation_bella_single_mobile}
 	\begin{center}
 		\hyphenpenalty 10000
-    \input{Figures/input/separation_packet_stats_bella_single_mobile}
+		\input{Figures/input/separation_packet_stats_bella_single_mobile}
 	\end{center}
 \end{table}
 
 
 \clearpage
 
-\subsection{Combined Scale Factor Analysis}
+
+
+
 
 Its clear from the previous results that the relationship between emission rates, separations and mobilities is tightly coupled and not totally clear cut. 
 To arrive at a more optimal operating region, a coupled analysis is performed across both emission rate and initial separation distance.
@@ -503,8 +530,8 @@ For instance, in~\autoref{fig:separation_bella_single_mobile} (tabulated in~\aut
 To capture these performance requirements, the feature scaled product of Throughput and Delay is taken and plotted against rate and separation in~\autoref{fig:2d_normed_product}.\todo[inline]{FIX: This does NOT make for easy comparison between graphs as the scaling is different for each mobility, but I need to think about how to fairly solve this}
 
 \begin{equation}
-  V = |S] \times (1 - |D|)
-  \label{eq:normed_product}
+V = |S] \times (1 - |D|)
+\label{eq:normed_product}
 \end{equation}
 
 For each scenario, the observed Throughput across the network ($S$ in bytes) is normalised across all observations (i.e.\ each combination of Node Separation and Emission Rate), as is average end-to-end Delay ($D$). The normalised delay is inverted ($1-|D|$) and the product of this and the normalised throughput is used as the basis of a two-dimensional linear interpolation shown in \autoref{fig:2d_normed_product}.
@@ -513,56 +540,61 @@ For each scenario, the observed Throughput across the network ($S$ in bytes) is 
 
 
 \begin{figure}[h]
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{2d_normed_product_bella_static}
-    \caption{Static}
-    \label{fig:2d_normed_product_bella_static}
-  \end{subfigure}
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{2d_normed_product_bella_single_mobile}
-    \caption{Single Mobile}
-    \label{fig:2d_normed_product_bella_single_mobile}
-  \end{subfigure}
-  
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{2d_normed_product_bella_allbut1_mobile}
-    \caption{All-but-one Mobile}
-    \label{fig:2d_normed_product_bella_allbut1_mobile}
-  \end{subfigure}
-  \begin{subfigure}[t]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{2d_normed_product_bella_all_mobile}
-    \caption{All Mobile}
-    \label{fig:2d_normed_product_bella_all_mobile}
-  \end{subfigure}
-  \caption{Normalised Throughput-Delay Product for all mobilities under varying separation and emission rate}
-  \label{fig:2d_normed_product}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{2d_normed_product_bella_static}
+		\caption{Static}
+		\label{fig:2d_normed_product_bella_static}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{2d_normed_product_bella_single_mobile}
+		\caption{Single Mobile}
+		\label{fig:2d_normed_product_bella_single_mobile}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{2d_normed_product_bella_allbut1_mobile}
+		\caption{All-but-one Mobile}
+		\label{fig:2d_normed_product_bella_allbut1_mobile}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{2d_normed_product_bella_all_mobile}
+		\caption{All Mobile}
+		\label{fig:2d_normed_product_bella_all_mobile}
+	\end{subfigure}
+	\caption{Normalised Throughput-Delay Product for all mobilities under varying separation and emission rate}
+	\label{fig:2d_normed_product}
 \end{figure}
 
 
-\subsection{Conclusions}
+\subsection{Summary}
 
 An appropriate safe operating zone for marine communications has been established by investigating the impact of variations of the communications rate and physical distribution across the mobility scenarios.
 
 These findings can be summaries as that when the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
-For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches 800m, nearly double the initial estimate. 
+For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches $800m$, nearly double the initial estimate. 
 However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $300m$ to $0.015pps$ at $400m$.\todo[inline]{FIX:Double Check These Saturation Points Before Release}
 These results indicate that a good area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $100m$ to $300m$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
-These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
+These results are similar to related simulation work \cite{Miquel2008,Diamant2010,Noh2012}, and is to be expected in such a sparse, noisy, and contentious environment.
+It should be noted that these rates are not what would be expected in a single-node/single-operator environment that most current \gls{auv} operations inhabit, as without any channel contention and mixed-delay effects, data-rates many times higher than this would be expected.
+However, few practical experiments have been performed that are suitable for direct comparison, as this context relies on multiple available nodes in a dynamic \gls{manet} topology with differential mobility.
+
 
 \todo{ADD:expand this section to include discussion and results of single mobility models}
-The results from \autoref{fig:something} and \autoref{fig:somethingelse} show that the single-node mobility models don't capture the reality of the network.
-The reason for this is that in other mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
+The results from \autoref{fig:2d_normed_product_bella_single_mobile} and \autoref{fig:2d_normed_product_bella_allbut1_mobile} show that the single-node differential mobility models don't capture the reality of the network in the proposed port-protection context.
+The reason for this is that in these single-differential mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
+A future extension to this work could be to look at differential ratios of static/mobile nodes in alternative scenarios, such as in data-muling applications or \gls{wsn}.
 
-\section{Operation of \glspl{tmf} in \gls{uan}}
+\section{Operation of \glspl{tmf} in \glspl{uan}}
 
 We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 
 \citet{Guo11} introduce a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
+\todo{FIX:Link back to intro/bg misbehaviour dicussion}
 Given that the established links are already heavily constrained, such attacks would severely impact the general performance of the network beyond the scope of simple selfishness.
 These direct malicious behaviours effectively trigger saturation collapses in operating regions of the network that should be stable.
 
@@ -575,25 +607,25 @@ Therefore, two more subtle misbehaviours to investigate are;
 
 \section{Simulation Results and Discussion}\label{sec:trustresultsanddiscussion}
 
-Having established a safe operating range for comparison at 300m average separation and an emission rate of 0.015pps, each of the three selected behaviours (Fair, \gls{mpc}, \gls{sts}) are performed in both the static and mobile scenarios. 
-We select a trust assessment period of 10 mins for a five hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
+Having established a safe operating range for comparison at $300m$ average separation and an emission rate of $0.015pps$, each of the three selected behaviours (Fair, \gls{mpc}, \gls{sts}) are performed in both the static and mobile scenarios. 
+We select a trust assessment period of 10 mins for a five hour mission to scale in comparison to relative bitrates experienced ($1Mbps$ vs $\approx15bps$).
 
 The six metrics used for grey assessment are; transmitted and received throughput and power, delay, and \gls{plr} as calculated by aborted and unacknowledged, transmissions.
 Compared to \cite{Guo11}, this metric set lacks a data rate quantity as the network is not dynamically adjusting bandwidth.
-In context of \gls{grc} generation \eqref{eq:grc}, the best sequence $g$ was selected using the lowest PLR, delay, and powers, and the highest throughputs, and the worst sequence, $b$ the inverse of these metrics, reflecting the observations made in Section~\ref{sec:trust_in_marine}.
+In context of \gls{grc} generation \eqref{eq:grc}, the best sequence $g$ was selected using the lowest \gls{plr}, delay, and powers, and the highest throughputs, and the worst sequence, $b$ the inverse of these metrics, reflecting the observations made in \autoref{sec:trust_in_marine}.
 
 The particular factors under discussion are the relative performance of \gls{mtfm} against \gls{otmf} and Beta with respect to statistical stability across mobilities and in responsiveness to changing network behaviour. 
 We establish a similar result set by initially tracking the resultant trust values established by \gls{mtfm} in the pair of mobility scenarios, shown in Fig.~\ref{fig:trust_mobility}.
-We are also concerned with the opinions of $n_1$ provided to $n_0$ by other nodes, where $[T_{1,2},T_{1,3}]$ and $[T_{1,4},T_{1,5}]$ denote the sets of recommendation and indirect trust assessment respectively.
+We are also concerned with the opinions of $n_1$ provided to $n_0$ by other nodes, where $[T_{2,1},T_{3,1}]$ and $[T_{4,1},T_{5,1}]$ denote the sets of recommendation and indirect trust assessment respectively.
 
-We also include aggregate assessments; $T_{1,\text{Avg}}$, the unweighted mean of direct trust assessments of $n_1$ from all nodes and $T_{1,\text{MTFM}}$, the final \gls{mtfm} trust assessment value based on both network topology and whitenization from \eqref{eq:whitenization}.
+We also include aggregate assessments; $T_{N,1}^\text{Avg}$, the unweighted mean of direct trust assessments of $n_1$ from all nodes and $T_{0,1}^\text{MTFM}$, the final \gls{mtfm} trust assessment value based on both network topology with respect to $n_0$ and whitenization from \eqref{eq:whitenization}.
 
 The variability in assessment is coupled to mobility; in the static case (Fig.~\ref{fig:trust_static}), the nodes exhibit relatively consistent distributions.
 In the full mobility case, shown in Fig.~\ref{fig:trust_all_mobile}, this subjective variability is greatly increased. 
 As the topology is highly dynamic, delays due to re-establishing routes can be very large, perturbing the trust value.
-The $T_{1,\text{MTFM}}$ displays a significantly reduced variation than those of the individual subjective observations in all cases, even when compared to the unweighted average, $T_{1,\text{Avg}}$.
+The $T_{0,1}^\text{MTFM}$ displays a significantly reduced variation than those of the individual subjective observations in all cases, even when compared to the unweighted average, $T_{N,1}^\text{Avg}$.
 This demonstrates $T_{MTFM}$'s value as an aggregating trust assessment in such sparse and noisy environments.
-Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in assessment is observed in $T_0$, correctly indicating that there is something wrong with the relationship between $n_0$ and $n_1$.
+Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in assessment is observed in $T_{0,1}$, correctly indicating that there is something wrong with the relationship between $n_0$ and $n_1$.
 
 \begin{figure}[h]
 	\centering
@@ -629,7 +661,7 @@ Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in ass
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_selfish}  \label{fig:trust_all_mobile_sel}
 	\end{subfigure}%
 	
-	\caption{\gls{mtfm} Trust assessments of $n_1$ ($T_{1,X}$), showing Direct, Recommender and Indirect relationships, and derived aggregates} 
+	\caption{\gls{mtfm} Trust assessments of $n_1$ ($T_{X,1}$), showing Direct, Recommender and Indirect relationships, and derived aggregates} 
 	\label{fig:trust_mobility}
 \end{figure}
 %
@@ -659,30 +691,41 @@ As per \citet{Guo11}, ``fair'' scenarios were also performed with no malicious b
 			\label{fig:all_mobile_selfish_beta}
 		\end{subfigure}
 	\end{tabular}
-	\caption{$T_{1,0}$ for Hermes, \gls{otmf} and \gls{mtfm} assessment values for fair and malicious behaviours in the fully mobile scenario (mean of \gls{mtfm} also shown)}
+	\caption{$T_{0,1}$ for Hermes, \gls{otmf} and \gls{mtfm} assessment values for fair and malicious behaviours in the fully mobile scenario}
 	\label{fig:otmf_beta_comparison}
 \end{figure*}
 %
-The use of \gls{fbr} and a \gls{csmaca} \gls{mac} scheme from \gls{auv}NetSim \cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission (See \autoref{sec:manet_routing}).
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{trust_beta_otmf_mtfm_boxes}
+	\caption{Alternative Visualisation of \gls{tmf} performance comparison across Fair, \gls{mpc}, and \gls{sts} scenarios}
+	\label{fig:otmf_beta_comparison_boxes}
+\end{figure}
+The use of \gls{fbr} and a \gls{csmaca} \gls{mac} scheme from AUVNetSim~\cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission (See \autoref{sec:manet_routing}).
 As such, confirmed packet losses are relatively rare and in a delaying network like this, it is difficult to set a differentiating time out between packets that are in the network but queued, and packets that are actually ``lost''.
 
 The single metric \glspl{tmf} used in conventional \gls{manet}s require regular and constant input to shape and adjust their evaluations, which for a network with significant and irregular delays such as this, is not practical.
 This renders \gls{otmf} and Hermes assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
 
-Fig.~\ref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of \gls{mtfm} compared to \gls{otmf} and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
+\autoref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of \gls{mtfm} compared to \gls{otmf} and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
+This time-series perspective demonstrates how noisy and variable the assessments from all \glspl{tmf} in this environment.
+For clarity, \autoref{fig:otmf_beta_comparison_boxes} displays a compressed-time perspective, showing the overall trend and sensitivity of the different frameworks in the same scenarios as shown in \autoref{fig:otmf_beta_comparison}.
 It is important to note a distinction between the expectations of \gls{mtfm} compared to other \glspl{tmf}; \gls{mtfm} is primarily concerned with the identification of differences in the behaviours of nodes in a network, and is relative rather than absolute.
 That is to say that under \gls{mtfm}, nodes are compared against the worst current performances across metrics of other observed nodes and graded against them, rather than the absolute (objective) approach taken by many \glspl{tmf}.
+
+In the case of the \gls{mpc}
 In these cases, particularly since the methods of attack were not directly related to \gls{plr}, \gls{otmf} and Hermes have not registered significant activity in either misbehaviour when compared to the fair scenario.
 The difference between the \gls{mtfm} trust assessments under ``fair'' and ``malicious'' behaviour is lowered by $\approx 10\%$ in both cases, in terms of the mean values returned.
-At run time, similar results could be attained by an exponentially weighted moving average filter (EWMA).
+At run time, similar results could be attained by an \gls{ewma}.
 
 On their own, neither \gls{otmf}, Hermes, or unbiased \gls{mtfm} appear to be effective in detecting or identifying malicious behaviour in this environment, in fact \gls{otmf} and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+
 
 
 \subsection{Metric Vector Weighting}\label{sec:metric_weighting}
 %
 
-A sequence of vectors that preferentially weight each metric in Eq. \eqref{eq:metric_weighting} to each of the three simulation runs.
+A sequence of vectors that preferentially weight each metric in \eqref{eq:metric_weighting} to each of the three simulation runs.
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, forming an initial weighting vector $H'=[h_i\dots h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$.
 That vector $H'$ is normalised such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 Using this process the primary aspects of an attack can be extracted and highlighted by comparing against the deviation from the ``fair'' result set. 
@@ -691,34 +734,34 @@ Using this process the primary aspects of an attack can be extracted and highlig
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} 
-		\caption{Delay Emphasised}
+		\caption{$\text{Delay}$ Emphasised}
 		\label{fig:all_mobile_badmouthing_delay}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl} 
-		\caption{PLR Emphasised}
+		\caption{$PLR$ Emphasised}
 		\label{fig:all_mobile_badmouthing_plr}
 	\end{subfigure}
 	
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} 
-		\caption{RX Power Emphasised}
+		\caption{Received Power ($P_{RX}$) Emphasised}
 		\label{fig:all_mobile_badmouthing_rxp}
 	\end{subfigure}	
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl} 
-		\caption{TX Power Emphasised}
+		\caption{Transmit Power ($P_{TX}$) Emphasised}
 		\label{fig:all_mobile_badmouthing_txp}
 	\end{subfigure}
 	
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} 
-		\caption{Throughput Emphasised}
+		\caption{Throughput ($S$) Emphasised}
 		\label{fig:all_mobile_badmouthing_rxthroughput}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} 
-		\caption{Offered Load Emphasised}
+		\caption{Offered Load ($G$) Emphasised}
 		\label{fig:all_mobile_badmouthing_txthroughput}
 	\end{subfigure}
 	\caption{$T_{1,0}^\text{MTFM}$ in the All Mobile case for the Malicious Power Control behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
@@ -729,39 +772,40 @@ Using this process the primary aspects of an attack can be extracted and highlig
 	\centering
 	\begin{subfigure}{0.45\textwidth}	
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ADelay_SelfishTargetSelection} 
-		\caption{Delay Emphasised}
+		\caption{$Delay$ Emphasised}
 		\label{fig:all_mobile_selfish_delay}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}	
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_PLR_SelfishTargetSelection}
-		\caption{PLR Emphasised}
+		\caption{$PLR$ Emphasised}
 		\label{fig:all_mobile_selfish_plr}
 	\end{subfigure}
 	
 	\begin{subfigure}{0.45\textwidth}	
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ARXP_SelfishTargetSelection}
-		\caption{RX Power Emphasised}
+		\caption{Received Power ($P_{RX}$) Emphasised}
 		\label{fig:all_mobile_selfish_rxp}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ATXP_SelfishTargetSelection}
-		\caption{TX Power Emphasised}
+		\caption{Transmit Power ($P_{TX}$) Emphasised}
 		\label{fig:all_mobile_selfish_txp}
 	\end{subfigure}
 	
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_RXThroughput_SelfishTargetSelection} 
-		\caption{Throughput Emphasised}
+		\caption{Throughput ($S$) Emphasised}
 		\label{fig:all_mobile_selfish_rxthroughput}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_TXThroughput_SelfishTargetSelection} 
-		\caption{Offered Load Emphasised}
+		\caption{Offered Load ($G$) Emphasised}
 		\label{fig:all_mobile_selfish_txthroughput}
 	\end{subfigure}
 	\caption{$T_{1,0}^\text{MTFM}$ in the All Mobile case for the Selfish Target Selection behaviour, including dashed $\pm\sigma$ envelope about the fair scenario}
 	\label{fig:all_mobile_selfish}
 \end{figure}
+
 
 Fig.~\ref{fig:all_mobile_badmouthing} shows that the malicious node is consistently outside the $\pm\sigma$ (one standard deviation above and below the mean) envelope of the fair scenario it's being compared to.
 This is particularly true for \gls{plr}, with smaller impacts on delay, received power and offered load. 
@@ -774,7 +818,7 @@ In comparison to \cite{Guo11}, these results are qualitatively similar, however 
 \subsection{Weight Significance Analysis for Behaviour Classification}
 
 For a more quantitative assessment of the viability of multi-metric trust assessment methods, taking the qualitative analysis above and apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
-Random Forest accomplishes this by generating a large number of random regression trees and prune these trees to fit incoming data.
+Random Forest accomplishes this by generating a large number of random regression trees and prunes these trees to fit incoming data.
 The target function for this regression was the area between the target behaviours weighted $T_{MTFM}$ curve and the $\pm\sigma$ envelope of the base behaviour as shaded in Figs.~\ref{fig:all_mobile_badmouthing} and~\ref{fig:all_mobile_selfish}.
 From this training process, the relative importance of each input feature (metric) can be inferred in terms of how good it is to differentiate between the fair case and a given misbehaviour.
 Additionally a cross correlation analysis is performed to establish the correlations between given metric weighting emphasis and the output of the target function.
@@ -795,7 +839,6 @@ Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_
 	\caption{Random Forest Factor Analysis of Malicious (\gls{mpc}, Selfish (\gls{sts}) and Fair behaviours compared against each-other}
 	\label{fig:malselfactors}
 \end{figure}
-\todo{FIX:Malicious Factors graph is out of date and shouldn't have physical metrics after rearrange. Also needs vector}
 
 \begin{table}[h]
 	\caption{Correlation Coefficients between metric weights and behaviour detection targets} \label{tab:correlations}
@@ -819,7 +862,7 @@ This would be accomplished by assessing the impact of differential metric weight
 It has been demonstrated that existing \gls{manet} Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
 By comparing the operation and performance of trust establishment in \glspl{manet} in a simulated underwater environment has demonstrated that in order to have any reasonable expectation of performance, that throughput and delay responses must be characterised before implementing trust. 
 While the \gls{mtfm} value does not display any immediate difference between the two behaviours, it has been shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
-Another difference is that \gls{mtfm} is significantly more computationally intensive than the relatively simple Hermes / \gls{otmf} algorthms.
+Another difference is that \gls{mtfm} is significantly more computationally intensive than the relatively simple Hermes / \gls{otmf} algorithms.
 The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization.
 With significant delays (from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical \gls{manet} \gls{tmf} deployment environments.
 
@@ -830,9 +873,8 @@ This indicates that there is a good case, particularly within constrained \gls{m
 A significant additional factor of trust assessment in such a constrained environment is that there may be long periods where two edge nodes (for instance, $n_0 \to n_5$) may not interact at all. 
 This can be due to a range of factors beyond malicious behaviour, including simple random scheduling coincidence and intermediate or neighbouring nodes collectively causing long back-off or contention periods.
 This disconnection hinders trust assessment in two ways; assessing nodes that do not receive timely recommendations may make decisions based on very old data, and malicious nodes have a long dwelling time where they can operate under a reasonable certainty that the \gls{tmf} will not detect it (especially if the node itself is behaving disruptively).
-One solution to this would be to move from a stepping-window of trust observations to a continuous trust log, updated on packet reception rather than waiting regular periods for packets to be analysed.
-Future work could investigate the improvement of weight-based detection algorithms, the stability of \gls{gra} under multi-node collusion, the development of real-time outlier detection.
 
 However the demonstrated noisiness and sparseness of communications metrics for trust assessment indicate that it may be more beneficial to look to other domains beyond communications to establish trust, such as the physical domain where we are concerned with the motion, placement and behaviour of the network nodes.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

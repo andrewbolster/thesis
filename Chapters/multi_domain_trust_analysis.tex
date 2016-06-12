@@ -191,108 +191,108 @@ See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of grap
 
 
 % These figures are the output of test_Thesis_Diagrams.test0ValidationBestPlots
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_time_MPC}
-  \caption{\gls{mpc} Comms Metric Trust (showing cohort trust assessments)}
-  \label{fig:comms_time_mpc}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_time_MPC}
-  \caption{\gls{mpc} Physical Metric Trust (showing cohort trust assessments)}
-  \label{fig:phys_time_mpc}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_time_MPC}
-  \caption{\gls{mpc} Full Metric Trust (showing cohort trust assessments)}
-  \label{fig:full_time_mpc}
-\end{figure}
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_time_STS}
-  \caption{\gls{sts} Comms Metric Trust (showing cohort trust assessments)}
-  \label{fig:comms_time_sts}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_time_STS}
-  \caption{\gls{sts} Physical Metric Trust (showing cohort trust assessments)}
-  \label{fig:phys_time_sts}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_time_STS}
-  \caption{\gls{sts} Full Metric Trust (showing cohort trust assessments)}
-  \label{fig:full_time_sts}
-\end{figure}
-
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_time_Shadow}
-  \caption{Shadow Comms Metric Trust (showing cohort trust assessments)}
-  \label{fig:comms_time_shadow}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_time_Shadow}
-  \caption{Shadow Physical Metric Trust (showing cohort trust assessments)}
-  \label{fig:phys_time_shadow}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_time_Shadow}
-  \caption{Shadow Full Metric Trust (showing cohort trust assessments)}
-  \label{fig:full_time_shadow}
+\begin{figure}
+	\begin{subfigure}[b]{0.5\textwidth}
+	  \centering
+	  \includegraphics[width=\linewidth]{best_comms_run_time_MPC}
+	  \caption{\gls{mpc} Comms Metric Trust }
+	  \label{fig:comms_time_mpc}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_comms_run_time_STS}
+		\caption{\gls{sts} Comms Metric Trust }
+		\label{fig:comms_time_sts}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.5\textwidth}
+	  \centering
+	  \includegraphics[width=\linewidth]{best_phys_run_time_MPC}
+	  \caption{\gls{mpc} Physical Metric Trust }
+	  \label{fig:phys_time_mpc}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_phys_run_time_STS}
+		\caption{\gls{sts} Physical Metric Trust }
+		\label{fig:phys_time_sts}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.5\textwidth}
+	  \centering
+	  \includegraphics[width=\linewidth]{best_full_run_time_MPC}
+	  \caption{\gls{mpc} Full Metric Trust }
+	  \label{fig:full_time_mpc}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+	  \centering
+	  \includegraphics[width=\linewidth]{best_full_run_time_STS}
+	  \caption{\gls{sts} Full Metric Trust }
+	  \label{fig:full_time_sts}
+	\end{subfigure}
+	\caption{$T^{MTFM}$ assessments for \gls{mpc} and \gls{sts} ``Communications'' behaviours}
+	\label{fig:trust_mpc_sts}
 \end{figure}
 
 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_comms_run_time_SlowCoach}
-  \caption{SlowCoach Comms Metric Trust (showing cohort trust assessments)}
-  \label{fig:comms_time_slowcoach}
+\begin{figure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_comms_run_time_Shadow}
+		\caption{Shadow Comms Metric Trust}
+		\label{fig:comms_time_shadow}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_comms_run_time_SlowCoach}
+		\caption{SlowCoach Comms Metric Trust}
+		\label{fig:comms_time_slowcoach}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_phys_run_time_Shadow}
+		\caption{Shadow Physical Metric Trust }
+		\label{fig:phys_time_shadow}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_phys_run_time_SlowCoach}
+		\caption{SlowCoach Physical Metric Trust}
+		\label{fig:phys_time_slowcoach}
+	\end{subfigure}
+		
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_full_run_time_Shadow}
+		\caption{Shadow Full Metric Trust }
+		\label{fig:full_time_shadow}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{best_full_run_time_SlowCoach}
+		\caption{SlowCoach Full Metric Trust}
+		\label{fig:full_time_slowcoach}
+	\end{subfigure}
+	\caption{$T^{MTFM}$ assessments for Shadow and SlowCoach ``Physical'' behaviours}
+	\label{fig:trust_shadow_slowcoach}
 \end{figure}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_phys_run_time_SlowCoach}
-  \caption{SlowCoach Physical Metric Trust (showing cohort trust assessments)}
-  \label{fig:phys_time_slowcoach}
-\end{figure}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{best_full_run_time_SlowCoach}
-  \caption{SlowCoach Full Metric Trust (showing cohort trust assessments)}
-  \label{fig:full_time_slowcoach}
-\end{figure}
-
+	
 % These tables are the output of test_Thesis_Diagrams.ThesisDiagrams#test0ValidationBestPlots
 \begin{table}
-  \centering
-  \caption{$\Delta T$ across domains and ``proposed'' behaviours targeting known misbehaving node}
-  \input{Figures/input/domain_deltas.tex}
-  \label{tab:domain_deltas}
+	\centering
+	\caption{$\Delta T$ across domains and ``proposed'' behaviours targeting known misbehaving node}
+	\input{Figures/input/domain_deltas.tex}
+	\label{tab:domain_deltas}
 \end{table}
 
 \begin{table}
-  \centering
-  \caption{$\Delta T^-$ False Positive assessments across domains and ``proposed'' behaviours across non-misbehaving nodes}
-  \input{Figures/input/domain_deltas_minus.tex}
-  \label{tab:domain_deltas_minus}
+	\centering
+	\caption{$\Delta T^-$ False Positive assessments across domains and ``proposed'' behaviours across non-misbehaving nodes}
+	\input{Figures/input/domain_deltas_minus.tex}
+	\label{tab:domain_deltas_minus}
 \end{table}
 \todo{FIX CODE: Haven't worked out a clever way of automatically generating both the basic domain and alternate domain texes easily}
 \todo{FIX CODE: These tables need changed from being ``delta T'' to ``Probability of detection by an idiotic classifier}
@@ -301,7 +301,7 @@ See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of grap
   \begin{table}
     \centering
     \caption{Optimised metric vector weights per domain trained upon and behaviour targeted}
-    \input{Figures/input/optimised_weights.tex}
+    \input{Figures/input/optimised_weights_5.tex}
     \label{tab:optimised_weights}
   \end{table}
 \end{landscape}

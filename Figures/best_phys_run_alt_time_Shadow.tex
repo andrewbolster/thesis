@@ -1,12 +1,12 @@
 % This file was created by matplotlib2tikz v0.5.4.
 \begin{tikzpicture}
 
-\definecolor{color1}{rgb}{0.105882352941176,0.619607843137255,0.466666666666667}
-\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
-\definecolor{color3}{rgb}{0.589542483660131,0.416993464052288,0.470588235294118}
-\definecolor{color2}{rgb}{0.719492502883506,0.416147635524798,0.0888119953863898}
-\definecolor{color5}{rgb}{0.488581314878893,0.654440599769319,0.0982698961937716}
-\definecolor{color4}{rgb}{0.686735870818916,0.297270280661284,0.61999231064975}
+\definecolor{color1}{rgb}{0.719492502883506,0.416147635524798,0.0888119953863898}
+\definecolor{color0}{rgb}{0.105882352941176,0.619607843137255,0.466666666666667}
+\definecolor{color3}{rgb}{0.686735870818916,0.297270280661284,0.61999231064975}
+\definecolor{color2}{rgb}{0.589542483660131,0.416993464052288,0.470588235294118}
+\definecolor{color5}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+\definecolor{color4}{rgb}{0.488581314878893,0.654440599769319,0.0982698961937716}
 
 \begin{groupplot}[group style={group size=2 by 1}]
 \nextgroupplot[
@@ -22,12 +22,11 @@ x grid style={white!82.745098039215677!black},
 ymajorgrids,
 y grid style={white!82.745098039215677!black},
 axis line style={white!82.745098039215677!black},
-axis background/.style={fill=color0},
-legend style={draw=none, fill=color0},
+legend style={draw=none, fill=color5},
 legend cell align={left},
 legend entries={{Alfa},{Bravo},{Charlie},{Delta},{Foxtrot}}
 ]
-\addplot [color1, opacity=0.6]
+\addplot [color0, opacity=0.6]
 table {%
 0 0
 1 0.348555551853019
@@ -89,7 +88,7 @@ table {%
 57 0.0689174304368311
 58 0.0494878473598311
 };
-\addplot [color2, opacity=1.0]
+\addplot [color1, opacity=1.0]
 table {%
 0 0.906887099429539
 1 0.477826472012349
@@ -151,7 +150,7 @@ table {%
 57 0.539627192852599
 58 0.656670387231292
 };
-\addplot [color3, opacity=0.6]
+\addplot [color2, opacity=0.6]
 table {%
 0 0.534095632436973
 1 0.529487146636364
@@ -213,7 +212,7 @@ table {%
 57 0.483654266550835
 58 0.615920023319415
 };
-\addplot [color4, opacity=0.6]
+\addplot [color3, opacity=0.6]
 table {%
 0 0.999918581787238
 1 0.771192924187127
@@ -275,7 +274,7 @@ table {%
 57 0.553444436066937
 58 0.66988628341154
 };
-\addplot [color5, opacity=0.6]
+\addplot [color4, opacity=0.6]
 table {%
 0 0.989369724662943
 1 0.958774737832351
@@ -362,12 +361,11 @@ x grid style={white!82.745098039215677!black},
 ymajorgrids,
 y grid style={white!82.745098039215677!black},
 axis line style={white!82.745098039215677!black},
-axis background/.style={fill=color0},
-legend style={draw=none, fill=color0},
+legend style={draw=none, fill=color5},
 legend cell align={left},
 legend entries={{Alfa},{Bravo},{Charlie},{Delta},{Foxtrot}}
 ]
-\addplot [very thin, color1, opacity=1]
+\addplot [very thin, color0, opacity=1]
 table {%
 0.6 0.055497124954421
 1.4 0.055497124954421
@@ -395,12 +393,12 @@ table {%
 0.8 0.349721594561341
 1.2 0.349721594561341
 };
-\addplot [color1, opacity=1]
+\addplot [color0, opacity=1]
 table {%
 0.6 0.103236685178589
 1.4 0.103236685178589
 };
-\addplot [very thin, color1, opacity=0.5]
+\addplot [very thin, color0, opacity=0.5]
 table {%
 0.6 0.135179911931676
 1.4 0.135179911931676
@@ -411,7 +409,7 @@ table {%
 1 0.383028975726506
 1 0.37863597666906
 };
-\addplot [very thin, color2, opacity=1]
+\addplot [very thin, color1, opacity=1]
 table {%
 1.6 0.48085174206878
 2.4 0.48085174206878
@@ -439,12 +437,12 @@ table {%
 1.8 0.906887099429539
 2.2 0.906887099429539
 };
-\addplot [color2, opacity=1]
+\addplot [color1, opacity=1]
 table {%
 1.6 0.637751471207667
 2.4 0.637751471207667
 };
-\addplot [very thin, color2, opacity=0.5]
+\addplot [very thin, color1, opacity=0.5]
 table {%
 1.6 0.616381935583471
 2.4 0.616381935583471
@@ -452,7 +450,7 @@ table {%
 \addplot [blue, mark=+, mark size=3, mark options={draw=black}, only marks]
 table {%
 };
-\addplot [very thin, color3, opacity=1]
+\addplot [very thin, color2, opacity=1]
 table {%
 2.6 0.396026239802281
 3.4 0.396026239802281
@@ -480,12 +478,12 @@ table {%
 2.8 0.878932725000312
 3.2 0.878932725000312
 };
-\addplot [color3, opacity=1]
+\addplot [color2, opacity=1]
 table {%
 2.6 0.507114944766453
 3.4 0.507114944766453
 };
-\addplot [very thin, color3, opacity=0.5]
+\addplot [very thin, color2, opacity=0.5]
 table {%
 2.6 0.517490355792292
 3.4 0.517490355792292
@@ -493,7 +491,7 @@ table {%
 \addplot [blue, mark=+, mark size=3, mark options={draw=black}, only marks]
 table {%
 };
-\addplot [very thin, color4, opacity=1]
+\addplot [very thin, color3, opacity=1]
 table {%
 3.6 0.318632709533292
 4.4 0.318632709533292
@@ -521,12 +519,12 @@ table {%
 3.8 0.999918581787238
 4.2 0.999918581787238
 };
-\addplot [color4, opacity=1]
+\addplot [color3, opacity=1]
 table {%
 3.6 0.481962998497098
 4.4 0.481962998497098
 };
-\addplot [very thin, color4, opacity=0.5]
+\addplot [very thin, color3, opacity=0.5]
 table {%
 3.6 0.486110837127123
 4.4 0.486110837127123
@@ -534,7 +532,7 @@ table {%
 \addplot [blue, mark=+, mark size=3, mark options={draw=black}, only marks]
 table {%
 };
-\addplot [very thin, color5, opacity=1]
+\addplot [very thin, color4, opacity=1]
 table {%
 4.6 0.531774122432222
 5.4 0.531774122432222
@@ -562,12 +560,12 @@ table {%
 4.8 0.840505279567524
 5.2 0.840505279567524
 };
-\addplot [color5, opacity=1]
+\addplot [color4, opacity=1]
 table {%
 4.6 0.592981126849659
 5.4 0.592981126849659
 };
-\addplot [very thin, color5, opacity=0.5]
+\addplot [very thin, color4, opacity=0.5]
 table {%
 4.6 0.602764367586346
 5.4 0.602764367586346

@@ -826,7 +826,17 @@ Within sparsely connected networks, there are three primary types of relationshi
 
 \subsection{Attacks on Trust}
 
-\citet{Liu2010} identify four types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, and Sybil/Newcomer attacks. 
+\citet{Liu2010} identify four types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, and Sybil/Newcomer attacks.
+
+\begin{enumerate}
+	\item \emph{Bad Mouthing:} Where a malicious node provides dishonest recommendations of other nodes in the network, to disrupt optimal operation  by making other nodes appear untrustworthy
+	\item \emph{Sybil attack:} Where a malicious node uses multiple pseudonymous entities to diffuse blame for bad behaviour, while maintaining a good reputation using the nodes genuine identity
+	\item \emph{Newcomer Attack:} Similar to the Sybil attack in operation, whereby a malicious node will periodically assume a ``fresh'' identify with the network, shedding an identity that as accumulated an ``untrustworthy'' assessment
+	\item \emph{Conflicting Behaviour attack:} Where a node (or a collaborating collection of malicious nodes) selectively drops messages, or modified recommendation values to or from certain nodes or groups of nodes, implicitly reducing the apparent trustworthiness of those attacked nodes with the rest of the fleet, while reducing the operational efficiency of the fleet overall.  This attack exploits the dynamic properties of trust through taking advantage of the expected dynamism in topology and behaviors such that other nodes ``won't notice'' (Alternatively called the Grey Hole Attack)
+	\item \emph{On-Off attack:} Malicious entities alternate between ``good'' and ``bad'' behaviours, hoping that they can remain undetected while causing damage. This attack exploits the dynamic properties of trust through time-domain inconsistent behaviours.
+\end{enumerate} 
+
+It is to be noted that the Sybil and Newcomer attacks do not exclusively rely on trust, but instead are a problem of network authentication.
 
 The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
 In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. 
@@ -857,7 +867,7 @@ This understanding of individual autonomy has been scaled up through social syst
 
 In the most general case in the world of artificial systems, Autonomy is understood as a graduated spectrum of allocation of functionality between a system (or system of systems) and a human operator assigned with performing a given task. 
 Where a system is more ``autonomous'', more of the sensing, planning, decision and action operations are performed by the system. (See Table~\ref{tab:autonomy_definitions} for a review of current definitions of autonomy and autonomous systems)
-This graduated spectrum of allocated functionality is generally termed the \gls{loa}, where an increasing \gls{loa} correlated to increasing control and decision making freedom to the autonomous system from the human operator.(\autoref{tab:autonomy_levels_sheridan})
+This graduated spectrum of allocated functionality is generally termed the \gls{loa}, where an increasing \gls{loa} correlated to increasing control and decision making freedom to the autonomous system from the human operator(\autoref{tab:autonomy_levels_sheridan}).
 These levels can be loosely viewed as a spectrum from across Planning Support, Decision Support, Bounded Execution, and finally, Informed Execution\footnote{In theory there is a further ``Uninformed execution'' level of autonomy, however this is beyond the scope of this work\cite{Cameron1984}}.
 
 While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Google and beyond.
@@ -875,11 +885,12 @@ See \autoref{apx:human_factors} for a more thorough discussion on the Human Psyc
     \ldots should be able to carry out its actions and to refine or modify the task and its own behaviour according to the current goal and execution context of its task & \citet{Alami1998}\\
     Autonomy refers to systems capable of operating in the real-world environment without any for of external control for extended periods of time & \citet{Bekey2005}\\
     \ldots a system situated within and a part of an environment that senses that environment and acts on it, over time, in pursuit of its own agenda and so as to effect with it senses in the future. \ldots Exercises control over its own actions & \citet{Franklin1997} \\
-    An unmanned systems own ability of sensing, perceiving, analyzing, communicating, planning, devision-making, and acting, to achieve goals as assigned by its human operator(s) through designed \gls{hri}. \ldots The condition or quality of being self-governing & \citet{Huang2004}\\
+    An unmanned systems own ability of sensing, perceiving, analysing, communicating, planning, decision-making, and acting, to achieve goals as assigned by its human operator(s) through designed \gls{hri}. \ldots The condition or quality of being self-governing & \citet{Huang2004}\\
     \ldots that the robot can operate self-contained, under all reasonable conditions without requiring recourse to the human operator. Autonomy means that a robot can adapt to change in its environment \ldots or itself \ldots and continue to reach a goal. & \citet{Murphy2000}\\
     \ldots it should learn what it can to compensate for partial or incorrect prior knowledge & \citet{Russell2009} \\
     Autonomy refers to a robot's ability to accommodate variations in its environment. Different robots exhibit different degrees of autonomy; the degree of autonomy is often measured by relating the degree at which the environment can be varied to the mean time between failures and other factors indicative of the robots performance. & \citet{Thrun2004}\\
-    \ldots agents operate without the direct intervention of humans or others, and have some kind of control over their actions and internal states. & \citet{Wooldridge1995}\\\bottomrule
+    \ldots agents operate without the direct intervention of humans or others, and have some kind of control over their actions and internal states. & \citet{Wooldridge1995}\\
+    Systems have a set of intelligence based capabilities or learning adaptive capabilities that allow it to respond within a bounded domain to situations that were not pre-programmed or anticipated in the design. & \citet{Fox2014}\\\bottomrule
   \end{tabularx}
 \end{table}
 

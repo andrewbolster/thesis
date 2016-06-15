@@ -10,8 +10,6 @@
 
 % Bella used 18pt Times New Roman with Double Spacing.
 
-\usepackage{ifplatform}
-
 % SETUP
 
 % TikZ stuff
@@ -25,8 +23,8 @@
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 % Graphics
-\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\graphicspath{{./Figures/}{../../Dropbox/Thesis_Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+\graphicspath{{./Figures/}{./Figures/img/}{../../Dropbox/Thesis_Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 \presetkeys%
     {todonotes}%
     {inline,backgroundcolor=yellow}{}

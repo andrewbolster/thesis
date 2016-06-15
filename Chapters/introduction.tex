@@ -70,11 +70,13 @@ This exposes significant parts of the overall systemic threat surface to unobser
 \end{figure}
 
 
-
 \section{Autonomous Systems Approach to Trust and Trust Engineering}
 
 \subsection{Autonomous \glspl{manet}}
-\todo{ADD: short discussion of autonomy}
+Autonomy is the capability of an entity to assess its environment and make informed, un-coerced decisions.
+In the \gls{manet} context, this sliding scale of capability ranges from basic automated collision avoidance systems while under direct operator control\footnote{For example Automated Driver Assistance Systems entering the consumer vehicle market through the likes of the Tesla P85 and Ford Kuga \cite{Sawade2016}}, through to self-regulating mission guidance and execution, with limited human interaction\footnote{No such systems have been actively deployed, but this form of collaborative autonomy is the centre of much commercial and academic research\cite{Rajesh2015,Autefage2015,Teke2015}}.
+This non-deterministic operation presents significant challenges to security and integrity; fundamentally, previously accepted formal verification methodologies for guaranteeing operation are not currently capable of accurately validating the actions and interactions of a fleet or swarm of autonomous nodes in dynamic, noisy environments with imperfect operators\cite{Teke2015}. 
+As such an overlapping combination of ``Secure'' and ``Trusted'' approaches are required throughout the lifecycle and operation of an Autonomous \gls{manet} capability to maintain the integrity of such collaborative systems.
 
 \subsection{Trust vs Security vs Integrity}
 
@@ -98,6 +100,9 @@ Within the defence context of this work, it is assumed that any attacking agency
 
 This is also one of the primary motivators for this particular direction of work; where increasingly complex and subtle evidentiary security measures (passwords, encryption, etc) are applied, with increasing pressures in computation, connectivity, or communication, the assumption that a slightly-higher-technical-investment will protect a system from state-level espionage or infiltration (or the discovery of some technical flaw in the system) is unfounded, with many examples of cryptographic applications being ``disseminated'' through human or technical failings, but internal and external. 
 
+\section{Maritime Autonomy}
+
+\subsection{title}
 \todo{ADD: Intro Section on Marine/AUV inc Pics}
 
 \section{Thesis Layout and Contributions}

@@ -1,1 +1,3 @@
-trust_beta_otmf_mtfm_boxes.pdf
+trust_beta_otmf_fair.pdf
+trust_beta_otmf_malicious.pdf
+trust_beta_otmf_selfish.pdf

@@ -173,9 +173,7 @@
   *{package}{nameref}     {2012/10/27 v2.43}
   *{package}{gettitlestring}{2010/12/03 v1.4}
   *{package}{layouts}     {2009/09/02 v2.6d}
-  *{package}{ifplatform}  {2010/10/22 v0.4}
-  *{package}{catchfile}   {2011/03/01 v1.6}
-  *{file}   {Thesis.w18}  {0000/00/00 v0.0}
+  *{package}{wrapfig}     {2003/01/31 v3.6}
   *{package}{dot2texi}    {2008/05/07 v3.0p1}
   *{package}{moreverb}    {2008/06/03 v2.3a}
   *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
@@ -196,11 +194,11 @@
   *{file}   {Thesis.gls}  {0000/00/00 v0.0}
   *{file}   {./Chapters/preface.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/abstract.tex}{0000/00/00 v0.0}
-  *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Chapters/acknowledgements.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/introduction.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/threat_surface_sum.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/trust_background.tex}{0000/00/00 v0.0}
+  *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Figures/liu2010RelationshipStack.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/maritime-background.tex}{0000/00/00 v0.0}
@@ -211,6 +209,8 @@
   *{file}   {./Figures/ssp_linear_decreasing.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/ssp_n_squared.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/ssp_isovelocity.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/hugin.jpg}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/autosub.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/comms_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
@@ -288,7 +288,6 @@
   *{file}   {./Figures/Metric_Values.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/Metric_Sigma_Deviance.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/summedsigmabar.pdf}{0000/00/00 v0.0}
-  *{file}   {Figures/input/classifier_minority.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/multi_domain_trust_analysis.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/comms_metric_trust_relevance.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/phys_metric_trust_relevance.pdf}{0000/00/00 v0.0}

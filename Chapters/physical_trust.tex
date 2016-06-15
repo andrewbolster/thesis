@@ -5,15 +5,31 @@
 \section{Physical Behaviours for Trust}\label{sec:physbev}
 
 \subsection{Physical Metrics}
+The aim of any \gls{tmf} is to constrain the operation of a system such that any ``trusted'' behaviour is inherently ``correct'' behaviour; by monitoring \gls{plr}, delay, and throughput etc. in the communications domain, \glspl{tmf} aim to optimise the efficiency of these aspects of the networks performance.
 
-Three physical metrics are used to encompass the relative distributions and activities of nodes within the network; \acrfull{indd}, \acrfull{inhd}, and Node Speed. 
-\todo{ADD: Do more physical metrics (Theres lots more in bounous.Analyses.Metrics), this might be better chucked in the appendix }
-Conceptually, \gls{indd} is a measure of the average spacing of an observed node with respect to its neighbours. 
-INHD is a similar approach with respect to node orientation.
+Looking at the physical domain, the question becomes ``What characteristics of the nodes operations require constraint or optimisation, and what information is exposed to assess those?''.
+
+Fundamentally, the physical information available (or at least, is reasonable to assume) is simple positional and velocity information reported by the nodes itself.
+These assessments could be augmented with the use of sonar or visual tracking at short distances, or through time-of-flight positioning, but in the marine environment, both of these are difficult to accomplish and maintain consistently.
+
+As for what characteristics of operations require optimisation, an assumption can be made that the primary threat is for the masquerading or damage of a node by a competent attacker, i.e.~ a physical \gls{tmf} should identify nodes that are behaving oddly. 
+Additionally, and in a less threatening manner, an additional aspect to optimise for is efficiency of mobility and communication, i.e.~ maintaining relative proximity to lower communications energy costs, and minimise expensive or ``thrusty'' course corrections.
+
+Therefore, based on a fuzzy incomplete knowledge of the position and velocities of fleet/team members over time, designed around the REMUS 100 AUV’s Kinematics, three primary initial metrics were arrived at:
+\begin{enumerate}
+\item \emph{\acrfull{indd}}, a second order measure of the variation in the average distances between nodes in a squad
+\item \emph{\acrfull{inhd}}, similar to \gls{indd} but based on instantaneous unit velocity, i.e. the direction of travel
+\item \emph{Node Speed}, looking at the variability of through-the-water speed of each node in the squad with respect to the observable squads’ speeds.
+\end{enumerate}
+Using these metrics, appropriate behaviour within a dynamic fleet can be assessed dynamically and in a decentralised fashion.
+\todo{ADD MAYBE: Do more physical metrics (Theres lots more in bounous.Analyses.Metrics), this might be better chucked in the appendix }
+
+These physical metrics are used to encompass the relative distributions and activities of nodes within the network. 
 As such, these metrics completely encapsulate and abstract the physical behaviour of any node, potentially performing any misbehaviour.
 Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable initial set of metrics to establish the usefulness of physical metrics of trust assessment.
 
-Additional metric constructions may be more suitable for certain contexts, platforms or operations, however these were selected in collaboration with UK DSTL and NATO CMRE as suitable, generic, assessments, viable on most current platforms in most current deployment schemes.
+Additional metric constructions may be more suitable for certain contexts, platforms or operations, however these were selected in collaboration with UK DSTL and NATO CMRE as suitable, generic, assessments, viable on most current platforms in most current deployment schemes\footnote{An additionally prototyped metric was Reported Position Deviation which used a per-node Enhanced Kalman filter based ``god view'' estimator that constructed positional models based on highly accurate timing and time-of-flight modelling for non-linear channel paths to predict the movements of squad members and report discrepancies against their periodic positional updates (assumed to be part of a normal broadcast protocol), however this investigation is outside the scope of this current work}.
+	.
 
 \begin{align}
   INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
@@ -103,7 +119,7 @@ This consists of three heuristic rules; Cohesion, Repulsion and Alignment.
   F_{j,R}=& \sum\limits_{\forall i \ne j}^N F_-\left(p_j, p_i, d_{max}) \big| d_{max}>\|p_i-p_j\|\right)\label{eq:fr}\\
   F_{j,A}=& \frac{1}{N}\cdot\left(\sum\limits_{\forall i \ne j}^N \hat{v_i}\right)\label{eq:fc}
 \end{align}
-Where $F$'s are force-vectors applied to the internal guidance of the AUV, $F_{j,C}$ representing Cohesion, $F_{j,R}$ representing Repulsion, and $F_{j,A}$ as Alignment: $F_+$ is a scaled vector attraction function, and $F_-$ is an equivalent repulsion function
+Where $F$'s are force-vectors applied to the internal guidance of the \gls{auv}, $F_{j,C}$ representing Cohesion, $F_{j,R}$ representing Repulsion, and $F_{j,A}$ as Alignment: $F_+$ is a scaled vector attraction function, and $F_-$ is an equivalent repulsion function
 \begin{align}
   F_+(p^a, p^i)=&(\widehat{p^a-p^i}) \times \frac{|p^a-p^i|}{d}\\
   F_-(p^r, p^i)=&(\widehat{p^i-p^r}) \times \frac{|p^r-p^i|}{d}
@@ -181,7 +197,7 @@ Given that in acoustic communications, transmission is energetically expensive w
 \section{Results and Discussion}
 Fig.~\ref{fig:metric_values} shows the raw metric values (vertically) from one run of each behaviour (horizontally), starting with the Control case, where all node are behaving properly.
 The misbehaving node in the remaining cases.
-It clear that using the (unitless) INDD and INHD metrics, Alfa is the outlier and other, fairly behaving, nodes are all consistent in their metric values.
+It clear that using the (unitless) \gls{indd} and \gls{inhd} metrics, Alfa is the outlier and other, fairly behaving, nodes are all consistent in their metric values.
 This outlier-response is not nearly as clear in the Speed metric case (bottom row of Fig.~\ref{fig:metric_values}).
 
 From a behaviour-perspective, it appears that the Shadow behaviour is creating the largest, most obvious deviations.
@@ -202,7 +218,7 @@ From a behaviour-perspective, it appears that the Shadow behaviour is creating t
 \end{comment}
 
 In Fig.~\ref{fig:deviance_values} the metric values are normalised as per \eqref{eq:dd}.
-This has highlighted the outlying-characteristic of INHD and INDD; largely eliminating the other nodes-responses.
+This has highlighted the outlying-characteristic of \gls{indd} and \gls{inhd}; largely eliminating the other nodes-responses.
 In the Speed response of Fig.~\ref{fig:deviance_values}, the Speed metric is not obviously highlighting any significant misbehaviours in that metric. 
 
 \begin{figure*}
@@ -212,7 +228,7 @@ In the Speed response of Fig.~\ref{fig:deviance_values}, the Speed metric is not
   \label{fig:deviance_values}
 \end{figure*}
 
-From Fig.~\ref{fig:summedsigmabar}, it appears that Speed is being significantly affected by the differing behaviours, but much less so than INHD/INDD.  
+From Fig.~\ref{fig:summedsigmabar}, it appears that Speed is being significantly affected by the differing behaviours, but much less so than \gls{indd}/\gls{inhd}.  
 
 \begin{figure*}
   \centering
@@ -222,9 +238,9 @@ From Fig.~\ref{fig:summedsigmabar}, it appears that Speed is being significantly
 \end{figure*}
 
 \subsection{Detection of Misbehaviours}
-We have demonstrated by graphical result that from our initial metrics, INHD and INDD do appear to accurately and obviously identify the malicious node in the case that there is one. 
+It has been demonstrated by graphical result that from the initial metrics set, \gls{indd} and \gls{inhd} do appear to accurately and obviously identify the malicious node in the case that there is one. 
 Using the deviance normalisation presented in \eqref{eq:dd}, clear, almost contiguous areas under the Alfa-values are observed in Fig.~\ref{fig:deviance_values} in the Shadow and SlowCoach misbehaviours.
-Further, from Fig.~\ref{fig:summedsigmabar}, it is shown that while it is nowhere near as ``clear'' as the deviance in INHD and INDD, that the Speed metric is still registering a statistically significant deviation in both misbehaviours, and that the difference between the deviances in Speed may indicate a way to analytically differentiate between the two misbehaviours.
+Further, from Fig.~\ref{fig:summedsigmabar}, it is shown that while it is nowhere near as ``clear'' as the deviance in \gls{indd} and \gls{inhd}, that the Speed metric is still registering a statistically significant deviation in both misbehaviours, and that the difference between the deviances in Speed may indicate a way to analytically differentiate between the two misbehaviours.
 
 To investigate how this would relate to the ability to blindly detect misbehaviours, the Q-test is applied to $\Sigma\alpha$ results as used in Fig.~\ref{fig:summedsigmabar}, to attempt to correctly establish:
 \begin{enumerate}
@@ -242,19 +258,18 @@ These values match our intuition from Figs.~\ref{fig:metric_values} and~\ref{fig
   \centering
 \begin{tabular}{lll}
 \toprule
-Behaviour &  Mean &   Std \\
+Behaviour &  Mean &   Std. \\
 \midrule
 Control   & 0.927 & 0.261 \\
 Shadow    & 0.979 & 0.144 \\
 SlowCoach & 0.792 & 0.408 \\
 \bottomrule
 \end{tabular}
-  %\input{figures/overall_stats.tex}
   \label{tab:overall_stats}
 \end{table}
 
 We can investigate this further by looking at the ``correctness'' of the assessments of each metric individually (Table~\ref{tab:per_metric_stats}).
-In both misbehaviours, INHD and INDD correctly identify Alfa as the misbehaver 100\% of the time. 
+In both misbehaviours, \gls{indd} and \gls{inhd} correctly identify Alfa as the misbehaver 100\% of the time. 
 However, they misidentify a potential misbehaviour in the Control case 13\% and 7\% of the time respectively.
 Meanwhile, Speed correctly identified the Control case 97\% of the time, and the Shadow case 94\% of the time, but missed the SlowCoach behaviour 63\% of the time. 
 This result is surprising on the face of it, as SlowCoach is a misbehaviour that is exclusively about individual node speed and conceptually should have had a much larger impact on the simple Speed metric.
@@ -275,29 +290,15 @@ Std & Control & 0.336 & 0.246 & 0.177 \\
      & SlowCoach & 0.000 & 0.000 & 0.492 \\
 \bottomrule
 \end{tabular}
-  %\input{figures/per_metric_stats.tex}
   \label{tab:per_metric_stats}
 \end{table}
 
 \subsection{Identification of Misbehaviours}
-Having established the ability of INDD, INHD and Speed to all detect physical misbehaviour to a statistically significant level, and having shown that there is a demonstrable difference in response to different misbehaviours, we return to the last question from Sec.~\ref{sec:standards}; can a simple classifier based on a subset of our results be constructed, and can it be blindly applied to a new set of results successfully?
+Having established the ability of \gls{indd}, \gls{inhd} and Speed to all detect physical misbehaviour to a statistically significant level, and having shown that there is a demonstrable difference in response to different misbehaviours, we return to the last question from Sec.~\ref{sec:standards}; can a simple classifier based on a subset of our results be constructed, and can it be blindly applied to a new set of results successfully?
 
 From~\eqref{eq:confidence}, the per-metric-per-behaviour ``Confidence'' in the relationship between a given metric deviance and each behaviour is established. It is hypothesised that this confidence can be used as a signature for that metric.
 
-%\begin{table}[h]
-%  \caption{Metric Confidence Responses for known behaviours~\eqref{eq:confidence}}
-%  \centering
-%\begin{tabular}{lrrr}
-%\toprule
-%metric &  INDD &  INHD &  Speed \\
-%var       &       &       &        \\
-%\midrule
-%Control   & 0.970 & 0.914 &  0.892 \\
-%Shadow    & 4.459 & 3.875 &  1.797 \\
-%SlowCoach & 3.910 & 2.847 &  1.518 \\
-%\bottomrule
-%\end{tabular}
-%\end{table}
+
 \begin{table}[h]
   \caption{Metric Confidence Responses for known behaviours~\eqref{eq:confidence}}
   \centering
@@ -313,13 +314,12 @@ Std & Control & 0.262 & 0.113 &  0.132 \\
      & SlowCoach & 0.198 & 0.288 &  0.180 \\
 \bottomrule
 \end{tabular}
-  %\input{figures/confidence.tex}
   \label{tab:confidence}
 \end{table}
 
 Having demonstrated that the Null case (All nodes behaving fairly) can be identified to a strong degree of accuracy, our classifier will continue to use the Q-test across all metrics for that case and concentrate of differentiating the Shadow and SlowCoach behaviours where they exist.
 
-From Table~\ref{tab:confidence} it is clear that INHD and INDD have similar responses to both misbehaviours, with significant standard deviations, but the response of the Speed metric is much more stable and discernible; across the range of training simulation runs.
+From Table~\ref{tab:confidence} it is clear that \gls{indd} and \gls{inhd} have similar responses to both misbehaviours, with significant standard deviations, but the response of the Speed metric is much more stable and discernible; across the range of training simulation runs.
 In the SlowCoach behaviour, this Speed response centres around $1.5$, while the Shadow behaviour centres around $2.0$, with these centres being at least one standard deviation away from each other respectively.
 
 Our generated classifier is formalised in~\eqref{eq:classifier}.
@@ -340,8 +340,6 @@ Our generated classifier is formalised in~\eqref{eq:classifier}.
 Applying this simplified classifier to a blind test set of simulations (of the same scale) gives surprisingly positive results as shown in Table~\ref{tab:classifier}, with greater than 90\% identification rates for both misbehaviours.
 However, in the Null (Control) case we experience a false-positive rate of nearly 30\%, that is to say that in the case where there is no misbehaviour, 30\% of the time a node will be misidentified as misbehaving when it is not.
 
-Given the simplicity of the applied classifier, these are strongly positive results for the use of physical metrics for behaviour discrimination; with INHD and INDD proving as strong and obvious ``canaries'' of misbehaviour, and Speed in this case proving a capable differentiator between conceptually close misbehaviours.
-
 \begin{table}[h]
   \caption{Successful Identification rates on untrained results using~\eqref{eq:classifier}}
   \centering
@@ -358,14 +356,37 @@ Given the simplicity of the applied classifier, these are strongly positive resu
   \label{tab:classifier}
 \end{table}
 
+If the rules of this classifier are loosened to require two deviating $Q^95(X)$ observations for detection of non-Control behaviours (i.e. multi-metric deviations), this false positive rate is eliminated while maintaining true-positive detection characteristics for misbehaviours.
+
+\begin{equation}
+C \rightarrow 
+\begin{cases}
+% Control
+|Q^{95}(X)| \leq 1,& \text{Control}\\
+% Shadow
+|Q^{95}(X)| > 1 \land \text{Speed}^X \leq 1.75, & \text{Shadow}\\
+% SlowCoach
+|Q^{95}(X)| > 1 \land \text{Speed}^X > 1.75,& \text{SlowCoach}\\
+\end{cases}
+\label{eq:classifier_minority}
+\end{equation}
 \begin{table}[h]
   \caption{Successful Identification rates on untrained results using~\eqref{eq:classifier}, with outlier consensus checks}
   \centering
-  \input{Figures/input/classifier_minority.tex}
+  \begin{tabular}{lr}
+  	\toprule
+  	True Behaviour &  Probability of Correct Blind Identification \\
+  	\midrule
+  	Control        &                                        1.000 \\
+  	Shadow         &                                        0.906 \\
+  	SlowCoach      &                                        0.938 \\
+  	\bottomrule
+  \end{tabular}
+  %\input{Figures/input/classifier_minority.tex}
   \label{tab:classifier_minority}
 \end{table}
-\todo{ADD: Explain the Minority Classifier}
 
+Given the simplicity of the applied classifiers, these are strongly positive results for the use of physical metrics for behaviour discrimination; with \gls{indd} and \gls{inhd} proving as strong and obvious ``canaries'' of misbehaviour, and Speed in this case proving a capable differentiator between conceptually close misbehaviours.
 
 
 \subsection{Impacts of Misbehaviour on operational performance}
@@ -375,7 +396,7 @@ As for physical efficiency, achievement rates were identical to within 2\% error
 It's possible that our selected behaviours were too unambitious in our impacts, and future work will have to investigate the impact of ``heavy-handed'' or destructive behaviours on the operational efficiency of autonomous networks.
 
 \section{Conclusion}
-In this chapter we have demonstrated that with current and on-the-horizon underwater localisation techniques, that in certain mobility models, that a set of relatively simple geometric abstractions (INHD, INDD, and Speed), between nodes as part of an Underwater \gls{manet} can be used as a Trust Assessment and Establishment metric.
+In this chapter we have demonstrated that with current and on-the-horizon underwater localisation techniques, that in certain mobility models, that a set of relatively simple geometric abstractions (\gls{indd}, \gls{inhd}, and Speed), between nodes as part of an Underwater \gls{manet} can be used as a Trust Assessment and Establishment metric.
 
 These metrics are application-agnostic and could potentially be applied in other areas of mobile autonomy such as \gls{auv} operations and Autonomous Vehicular Networks.
 

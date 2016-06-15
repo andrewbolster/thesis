@@ -177,6 +177,7 @@
 \usetikzlibrary{shapes,arrows,positioning,calc,fit}
 
 \usepackage{layouts}
+\usepackage{wrapfig}
 
 
 \newcommand*{\supervisor}[1]{\def\supname{#1}}

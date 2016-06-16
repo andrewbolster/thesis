@@ -1,3 +1,28 @@
+%http://tex.stackexchange.com/questions/32867/tikz-rectangular-node-with-different-rounded-corners
+\makeatletter
+\pgfdeclareshape{roundedNode}{
+	\inheritsavedanchors[from=rectangle] % this is nearly a rectangle
+	\inheritanchorborder[from=rectangle]
+	\inheritanchor[from=rectangle]{center}
+	\inheritanchor[from=rectangle]{north}
+	\inheritanchor[from=rectangle]{south}
+	\inheritanchor[from=rectangle]{west}
+	\inheritanchor[from=rectangle]{east}
+	\backgroundpath{% this is new
+		% store lower right in xa/ya and upper right in xb/yb
+		\southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+		\northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+		% construct main path
+		\pgfsetcornersarced{\pgfpoint{5pt}{5pt}}
+		\pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@ya}}
+		\pgfpathlineto{\pgfpoint{\pgf@xa}{\pgf@yb}}
+		\pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yb}}
+		\pgfsetcornersarced{\pgfpoint{5pt}{5pt}}
+		\pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@ya}}
+		\pgfpathclose
+	}
+}
+\makeatother
 \tikzset{
 	block/.style = {draw, fill=white, rectangle, minimum height=3em, minimum width=3em, text width=8em, text centered},
 	tmp/.style  = {coordinate}, 
@@ -5,14 +30,16 @@
 	input/.style = {coordinate},
 	output/.style= {coordinate},
 	pinstyle/.style = {pin edge={to-,thin,black}
-	}
+	},
 	from/.style args={#1 to #2}{% without transformations
 		above right={0cm of #1},% needs positioning library
 		/utils/exec=\pgfpointdiff
 		{\tikz@scan@one@point\pgfutil@firstofone(#1)\relax}
 		{\tikz@scan@one@point\pgfutil@firstofone(#2)\relax},
 		minimum width/.expanded=\the\pgf@x,
-		minimum height/.expanded=\the\pgf@y}
+		minimum height/.expanded=\the\pgf@y},
+	doc/.style={draw, shape=roundedNode, align=center},
+	bluefill/.style={fill=blue, opacity=0.5, text opacity=1}
 }
 
 % USAGE: \cercle {center} {radius in cm} {begin degrees} {value of the arc} {line width} {color}

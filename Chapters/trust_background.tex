@@ -424,7 +424,9 @@ This trust value is incorporated with the risk / reward as assessed by the trust
   \end{tikzpicture}
   \caption[Model of Trust]{Model of Trust (from \citet{Mayer1995})}
   \label{fig:mayer_trust_model}
-\end{figure}\todo{\autoref{fig:mayer_trust_model}: Only reasonable delimitation of Trustee Operation that doesn't corrupt Mayers thesis is curring half way though Risk Taking, Outcomes and \emph{maybe} perceived risk (as this is also affected by outcomes; may make more sense to have a separate augmented diagram}
+\end{figure}
+
+%\todo{\autoref{fig:mayer_trust_model}: Only reasonable delimitation of Trustee Operation that doesn't corrupt Mayers thesis is curring half way though Risk Taking, Outcomes and \emph{maybe} perceived risk (as this is also affected by outcomes; may make more sense to have a separate augmented diagram}
 
 \citet{Lee2004} extended and synthesised Mayer et al's approach to personal and interpersonal trust towards a generalised concept of trust for human and autonomic/autonomous systems with alternative contextual definitions shown in~\autoref{tab:autonomous_trust_factors} (including their approximate mappings to Mayer et al's approach.
 
@@ -544,10 +546,6 @@ This axiom sets up the rules for trust propagation from an entropic perspective 
 	T_{AC} \leq \min({R_{AB},T_{BC}})
 \end{equation}
 
-
-
-\todo{FIX: Label placements}
-
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
@@ -591,7 +589,7 @@ This axiom sets up the rules for trust propagation from an entropic perspective 
 		\draw [dashed, ->] (a) -- (b) node [midway] {$R_\alpha$};
 		\draw [dashed, ->] (a) -- (d) node [midway] {$R_\alpha$};
 		\draw [->] (b) -- (c) node [midway] {$T_\alpha$};;
-	    \draw [->] (d) -- (c) node [near end, below] {$T_\alpha$};;
+	    \draw [->] (d) -- (c) node [midway, below, xshift=5] {$T_\alpha$};;
 		
 		\end{tikzpicture}
 		\label{fig:trust_combination_b}
@@ -630,10 +628,10 @@ T_{AC} \leq T_{A'C'} \leq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \le 0
 		\node [sum, below right =of d] (c) {C};
 		
 		\draw [dashed, ->] (a) -- (b) node [midway] {$R_{AB}$};
-		\draw [dashed, ->] (b) -- (e) node [midway] {$R_{BE}$};
+		\draw [dashed, ->] (b) -- (e) node [near start, below, xshift=-5] {$R_{BE}$};
 		\draw [dashed, ->] (b) -- (d) node [midway] {$R_{BD}$};
 		\draw [->] (e) -- (c) node [midway] {$T_{EC}$};;
-		\draw [->] (d) -- (c) node [near end, below] {$T_{DC}$};;
+		\draw [->] (d) -- (c) node [midway,  above, xshift=10] {$T_{DC}$};;
 		
 		\end{tikzpicture}
 		\label{fig:trust_paths_a}
@@ -654,8 +652,9 @@ T_{AC} \leq T_{A'C'} \leq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \le 0
 		\draw [dashed, ->] (a) -- (f) node [midway] {$R_{A'F'}$};
 		\draw [dashed, ->] (f) -- (e) node [midway] {$R_{F'E'}$};
 		\draw [dashed, ->] (b) -- (d) node [midway] {$R_{B'D'}$};
-		\draw [->] (e) -- (c) node [near end, below] {$T_{E'C'}$};
-		\draw [->] (d) -- (c) node [near end, above] {$T_{D'C'}$};
+		
+		\draw [->] (d) -- (c) node [midway, above, xshift=10] {$T_{D'C'}$};
+		\draw [->] (e) -- (c) node [midway, below, xshift=10] {$T_{E'C'}$};
 		
 		\end{tikzpicture}
 		\label{fig:trust_paths_b}
@@ -674,8 +673,8 @@ T_{AC} \leq T_{A'C'} \leq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \le 0
 
 This axiom addresses the information independence of trust links; In ~\autoref{fig:trust_paths} there are two networks, both with two potential chains from right to left-nodes ($A,C,A',C'$),.
 \begin{align}
-T_{AC}&=\{T_{ABCD}, T{ABEC}\}\\
-T_{A'C'}&=\{T_{A'B'D'C'}, T{A'F'E'C}\}
+T_{AC}&=\{T_{ABCD}, T_{ABEC}\}\\
+T_{A'C'}&=\{T_{A'B'D'C'}, T_{A'F'E'C}\}
 \end{align}
 
 Given that the sub-chain $T_{AB}$ prepends both chains in $T_{AC}$, the weight of node $B$'s recommendations are effectively duplicated, and from Axiom 2, this duplication should not decrease the trust assessment.
@@ -966,10 +965,21 @@ For the purposes of this work, two perspectives on trust for autonomous systems 
 
 Operational Trust is functionally derived from, but distinct from Design Trust.
 
-It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system.
+It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system during design, development, procurement, and deployment.
 
-\todo{ADD:Need to provide a linking section to the next blocks about Design/Operational Trust}
+While the focus of this work is on the operational trust between teams of autonomous systems, there are two disjointed areas that are relevant to discuss.
+Firstly, it is valuable to briefly discuss the impact and effect of the actions and reactions of human operators in the context of autonomous operational trust; these human factors can have significant impact on the design constraints, operation, and indeed the ease-of-adoption of autonomous systems in the future. 
+Secondly, It is important to understand the wider Design Trust context to understand potential limitations or constraints on future development of such systems across their development lifecycle.
 
+\subsection{Summary of Human Factors impacting Operational Trust in Defence Contexts}
+
+When dealing with human supervision of autonomous or semi-autonomous systems, there is an inherent conflict between the expectations of the operator, and the hopes of system architects.
+System architects aim to provide more and more information to the operator to justify a systems operation, and Operators in reality need less and less information to be efficient when things are going well, and responsive in a dynamic environment.
+This places huge demands on Human Interface design and indeed on communications design to provide this timely, relevant, interactive connection between any autonomous system and the end operator(s).
+Recent work has presented the idea of taking user interface inspiration from the entertainment sector, in terms of UI best practises developed over two decades of Real-Time Strategy game development~\cite{Johnson2007}, and follow up work into automated mission debrief demonstrated that such operational support could improve causal situational awareness of an operator when compared to a human-baseline~\cite{Johnson2011}.
+In terms of the human factors challenges \footnote{See~\autoref{apx:human_factors} for a discussion of these challenges}, they are often contradictory in their direction, particularly when contrasting between Adaptive Automation and Cognitive Biases challenges.
+This is a key part of the ``soft trust'' perspective, where the operators and commanders need to be able to implicitly and explicitly trust the operation of a remote system with limited feed-back bandwidth, high latency, or long-term operation such that direct remote operation is infeasible or undesirable.
+To be able to trust that system's ability to continue on a course, survey an area, notify on detection of an anomaly, etc.is going to be the corner stone of any autonomous systems justification in the future.
 
 \subsection{Design Trust}\label{sec:design_trust}
 
@@ -1056,10 +1066,31 @@ Further, the standard states that the responsibility of the safety and integrity
 This standard was withdrawn in 2015 due to \gls{astm} regulations requiring standards to be updated within 8 years of approval, and has no direct replacement within \gls{astm}, but stands as a useful guiding perspective on autonomy standards within industry.
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{astmf41arch}
-  \caption[\acrshort{astm} F41 \acrshort{umvs} Architecture]{\acrshort{astm} F41 \acrshort{umvs} Architecture  (with relevant substandards in parenthesis)}
-  \label{fig:astmf41arch}
+	\centering
+	\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
+		\node[draw, trapezium, trapezium left angle=110, trapezium right angle=110] (client) {Authorised Client};
+		\node[doc, bluefill, below of=client] (comms) {UUV Comms\\(F2594)};
+		\node[doc, bluefill, below of=comms] (control) {UUV Autonomy \& Control\\(F2541)};
+		\node[doc, bluefill, below of=control, yshift=-1cm] (payload) {UUV Mission\\Payload Interface\\(WK11283)};
+		\node[doc, bluefill, left of=payload, xshift=-1.5cm] (vsens) {UUV Sensor\\Data Formats\\(F2595)};
+		\node[doc, bluefill, right of=payload, xshift=1.5cm] (psens) {UUV Sensor\\Data Formats\\(F2595)};	
+		
+		\draw[red,thick,dotted]($(control.north)+(-0.01,0.2)$) rectangle ($(vsens.south)+(-1.5,-.3)$);
+		\draw[blue,thick,dotted]($(control.north)+(0.01,0.2)$) rectangle ($(psens.south)+(1.5,-.3)$);
+		
+		\node[left of=control, xshift=-2cm, red] (v) {Vehicle};
+		\node[right of=control, xshift=2cm, blue] (p) {Payload};
+		
+		\draw[->] (comms) -| (v);
+		\draw[->] (comms) -| (p);
+		\draw[->] (comms) -- (client);
+		
+		\draw[<->, draw=cyan,solid,line width=2mm,fill=cyan] ([xshift=-2cm, yshift=0.5cm]payload.north) -- ([xshift=2cm,yshift=0.5cm]payload.north);
+	\end{tikzpicture}
+	\caption[\acrshort{astm} F41 \acrshort{umvs} Architecture]{\acrshort{astm} F41 \acrshort{umvs} Architecture  (with relevant substandards in parenthesis)}
+	\label{fig:astmf41arch}
 \end{figure}
+
 
 \subsubsection{Summary of Design Trust}
 
@@ -1070,21 +1101,6 @@ The addition of increased on-board autonomy in MUxS, properly understood and ver
 There are opportunities for increased decentralisation and in-field collaboration~\cite{Walton2012}, however, difficulties in ``Trust'' between human operators and autonomous systems have already been clearly identified~\cite{Chen2011b},and this has been demonstrated by the recent decision by the German government to renege on its \euro500M investment in the Euro Hawk programme, due to concerns about civil certification of the onboard autonomy~\cite{Mehta2013}
 In order for these new distributed structures to be relied upon to provide operational performance, reliability and to maintain in-field situational awareness, vulnerabilities to disruption, interruption, and subversion need to be understood and minimised.
 
-\subsection{Operational Trust}
-
-\subsubsection{Summary of Human Factors impacting Operational Trust in Defence Contexts}
-
-When dealing with human supervision of autonomous or semi-autonomous systems, there is an inherent conflict between the expectations of the operator, and the hopes of system architects.
-System architects aim to provide more and more information to the operator to justify a systems operation, and Operators in reality need less and less information to be efficient when things are going well, and responsive in a dynamic environment.
-This places huge demands on Human Interface design and indeed on communications design to provide this timely, relevant, interactive connection between any autonomous system and the end operator(s).
-Recent work has presented the idea of taking user interface inspiration from the entertainment sector, in terms of UI best practises developed over two decades of Real-Time Strategy game development~\cite{Johnson2007}, and follow up work into automated mission debrief demonstrated that such operational support could improve causal situational awareness of an operator when compared to a human-baseline~\cite{Johnson2011}.
-In terms of the human factors challenges \footnote{See~\autoref{apx:human_factors} for a discussion of these challenges}, they are often contradictory in their direction, particularly when contrasting between Adaptive Automation and Cognitive Biases challenges.
-This is a key part of the ``soft trust'' perspective, where the operators and commanders need to be able to implicitly and explicitly trust the operation of a remote system with limited feed-back bandwidth, high latency, or long-term operation such that direct remote operation is infeasible or undesirable.
-To be able to trust that system's ability to continue on a course, survey an area, notify on detection of an anomaly, etc.is going to be the corner stone of any autonomous systems justification in the future.
-
-\subsection{Summary}
-
-\todo{ADD: Conclusion of Trusted Development}
 
 
 \section{Trust in Autonomous \glspl{manet}}\label{sec:trust_manets}
@@ -1101,7 +1117,7 @@ There are five topics that are important to address in any \glspl{manet} trust m
     Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a \acrfull{ttp}.
     There is no \gls{pki}, where some center nodes monitor the network, and publish illegal nodes periodically.
     In a \gls{manet}, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
-  \item The trust model should be anonymous because of the anonymity of mobile nodes in \glspl{manet}.\todo{Q: This isn't actually explained or justified in Kamvar so it may have been pulled out of his ass}
+  \item The trust model should be anonymous because of the anonymity of mobile nodes in \glspl{manet}. %\todo{Q: This isn't actually explained or justified in Kamvar so it may have been pulled out of his ass}
   \item The trust model should be robust.
     That is, it can be robust to all kinds of unfriendly attacks and the network itself should not be susceptible to attacks by unfriendly nodes.
     Moreover, in the presence of malicious nodes, they may attempt to subvert the model in order to get an unfairly good trust value.
@@ -1219,7 +1235,7 @@ The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reas
 \end{equation}
 %
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
-\todo{Q:This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
+%\todo{Q:This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
 
 Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function (\eqref{eq:beta}), and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
 

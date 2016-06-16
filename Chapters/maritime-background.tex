@@ -45,14 +45,26 @@ This wide range of frequencies and wavelengths allow for a diverse set of constr
 
 Air has a baseline density of approximately $1.3 kg m^{-3}$, and the speed of sound is typically static around $340 ms^{-1}$.
 In sea water, acoustic wave velocity is close to $c=1500ms^{-1}$ (generally between $1450ms^{-1}$ and $1550ms^{-1}$ depending on temperature, pressure, salinity etc.).
-Similarly variable is sea water density, which is nominally $\rho = 1030kg m^{-3}$.
+Similarly variable is sea water density, which is nominally $\rho = 1027kg m^{-3}$\cite{Wang2010}.
 
 While the sea/air surface is (ideally) a simple refractive interface, the interface between open seawater and marine sediment is graduated, with density ranges between $1200 - 2000 kg m^{-3}$. 
 This results in refractive and reflective velocities in the sediment interface ranging from $1500-2000 ms^{-1}$\cite{lurton2010}.
 
 For comparison, the speed of light in air/water is $2.99 \times 10^8 ms^{-1}$ and $2.249 \times 10^{8} ms^{-1}$ respectively. 
-\todo{FIX:this might be better as a table}
 
+\begin{table}
+	\centering
+	\caption{Summary of physical factors differentiating terrestrial and acoustic channel constraints}
+	\label{tab:channel_constraings_comp}
+	\begin{tabularx}{0.8\textwidth}{X X X}\toprule
+		Variable & Air & Water\\
+		\midrule
+		Density & $\SI{1.3}{\kilo\gram\per\meter\cubed}$ & $\approx\SI{1027}{\kilo\gram\per\meter\cubed}\pm0.5\%$ \\
+		Speed of Sound & $\SI{340}{\meter\per\second}$ & $\approx\SI{1500}{\meter\per\second}\pm 5\%$ \\
+		Speed of Light & $\SI{2.99e8}{\meter\per\second}$ & $\SI{2.249e8}{\meter\per\second}$\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
 \citet{Mackenzie1981} proposed a more accurate model of acoustic velocity incorporating archival data from 15 worldwide sites that takes Temperature, Salinity and Depth into consideration.
 
 \begin{align}
@@ -269,10 +281,6 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 \todo{ADD:Summary of Akyildiz02/05}
 
 \todo{FIX:callback to routing discussion in c1 explain why fbr is the best of everything all the time}
-\subsection{Summary}
-\todo{ADD: Summary of Marine Comms}
-
-
 
 \section{Marine Operations, Payloads, Technologies, and Durations}\label{sec:marine_ops}
 
@@ -374,7 +382,8 @@ Developed under the UK's National Oceanography Centres Marine Autonomous and Rob
 	\caption{\label{fig:autosub}NOC Autosub 3 being deployed off the Pine Island Glacier}
 \end{figure}
 \subsubsection{Spray Glider}
-\subsubsection{\emph{USS Cuthroat}}
+\subsubsection{\emph{USS Cutthroat}}
+\todo{ADD: Finish ``Other AUV'' bits}
 
 \subsection{Potential Future Applications}
 \todo{ADD NEXT: Future Applications of \glspl{auv}, mostly in the ``Actuation'' side of things as opposed to classical sensor payloads}

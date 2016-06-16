@@ -91,7 +91,7 @@ Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems
 
 \subsubsection{Simulation Background}
 
-Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon \gls{auv}NetSim \cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against \cite{Stojanovic2007}, \cite{Stefanov2011} and \cite{Sehgal2010}\todo{ADD:it would be worth while going through this verification explicitly as an appendix}
+Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon \gls{auv}NetSim \cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against existing studied \cite{Stojanovic2007,Stefanov2011,Sehgal2010}
 
 Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g.\ packet emission rates or throughput) and node separations are equally stable in this environment.
 Therefore, a zone of performance is characterised within which the network has stable operation.
@@ -102,23 +102,23 @@ Therefore, a zone of performance is characterised within which the network has s
 		\setlength{\tabcolsep}{8pt}
 		\begin{tabular}{lccc}
 			\toprule
-			Parameter & Unit & Terrestrial & Marine \\
+			Parameter & Terrestrial & Marine \\
 			\midrule
-			Simulated Duration & $s$ & 300 & 18000\\
-			Trust Sampling Period & $s$ & 1 & 600 \\
-			Simulated Area & $km^2$ & 0.7 & 0.7-4 \\
-			Transmission Range & $km$ & 0.25 & 1.5 \\
-			Physical Layer & & RF(802.11) & Acoustic\\
-			Propagation Speed& $m/s$ & $3\times10^8$ & 1490\\
-			Center Frequency& $Hz$ & $2.6\times10^9$ & $2 \times 10^4$ \\
-			Bandwidth& $Hz$ & $22\times10^6$ & $1\times10^4$\\
-			MAC Type & & CSMA/DCF & CSMA/CA\\
-			Routing Protocol & & DSDV & FBR \\
-			Max Speed & $ms^{-1}$ & 5 & 1.5 \\
-			Max Data Rate & $bps$ & $5\times10^6$ & $\approx 240$ \\
-			Packet Size & bits & 4096 &  9600 \\
-			Single Transmission Duration & $s$ & 10 & 32 \\
-			Single Transmission Size & bits & $10^7$ & $9600$ \\
+			Simulated Duration & \SI{300}{\second} & \SI{18000}{\second}\\
+			Trust Sampling Period & \SI{1}{\second} & \SI{600}{\second} \\
+			Simulated Area & \SI{0.7}{\kilo\meter\squared} & \SIrange{0.7}{4}{\kilo\meter\squared} \\
+			Transmission Range & \SI{0.25}{\kilo\meter} & \SI{1.5}{\kilo\meter} \\
+			Physical Layer & RF(802.11) & Acoustic\\
+			Propagation Speed&  \SI{3e8}{\meter\per\second} & \SI{1490}{\meter\per\second}\\
+			Center Frequency & \SI{2.6e9}{\hertz} & \SI{2e4}{\hertz} \\
+			Bandwidth& \SI{22e6}{\hertz} & \SI{1e4}{\hertz}\\
+			MAC Type & CSMA/DCF & CSMA/CA\\
+			Routing Protocol & DSDV & FBR \\
+			Max Speed & \SI{5}{\meter\per\second} & \SI{1.5}{\meter\per\second} \\
+			Max Data Rate & \SI{5e6}{\bit\per\second} & $\approx\SI{240}{\bit\per\second}$ \\
+			Packet Size & \SI{4096}{\bit} & \SI{9600}{\bit} \\
+			Single Transmission Duration & \SI{10}{\second} & \SI{32}{\second} \\
+			Single Transmission Size & \SI{1e7}{\bit} & \SI{9600}{\bit} \\
 			\bottomrule
 		\end{tabular}
 		\setlength{\tabcolsep}{6pt}
@@ -139,7 +139,7 @@ Formally, this saturation rate occurs if
 N\lambda_s>\mu_\text{max}
 \end{equation}
 
-\todo{ADD: Attempt to Formalise the relationship between separation, offered load, throughput and delay using Bianchi Model \cite{Manshaei2007}}
+\todo{ADD NEXT: Attempt to Formalise the relationship between separation, offered load, throughput and delay using Bianchi Model \cite{Manshaei2007}}
 
 In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bits of offered load per node, up to $0.07 pps$ ($672 bps$ per node).
 Initial node separation was set as per \citet{Guo11} at $100m$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.

@@ -184,6 +184,7 @@
   *{file}   {Thesis.out}  {0000/00/00 v0.0}
   *{file}   {translator-basic-dictionary-English.dict}{0000/00/00 v0.0}
   *{file}   {siunitx-abbreviations.cfg}{2016/03/01 v2.6q}
+  *{file}   {siunitx-binary.cfg}{2016/03/01 v2.6q}
   *{file}   {Thesis.glsdefs}{0000/00/00 v0.0}
   *{file}   {umsa.fd}     {2013/01/14 v3.01}
   *{file}   {mt-msa.cfg}  {2006/02/04 v1.1}
@@ -200,7 +201,6 @@
   *{file}   {./Chapters/trust_background.tex}{0000/00/00 v0.0}
   *{file}   {omscmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Figures/liu2010RelationshipStack.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/astmf41arch.png}{0000/00/00 v0.0}
   *{file}   {./Chapters/maritime-background.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/temp_globe.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/sal_globe.pdf}{0000/00/00 v0.0}

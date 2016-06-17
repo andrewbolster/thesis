@@ -53,7 +53,7 @@ Four mobility patterns are investigated:
 For this case, the mobility model used is a random walk on the nodes modelled kinematic response, i.e.\ the node periodically picks a spherically normalised random direction in the XY plane.
 Maximum node speed (limited by kinematic acceleration/turning constraints) is 1.5$ms^{-1}$.\todo{cite node speed}
 
-The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average 100m from each other as per \cite{Guo11}.
+The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average \SI{100}{\meter} from each other as per \cite{Guo11}.
 The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively. 
 (See Section~\ref{sec:trust_topologies})
 
@@ -63,7 +63,7 @@ Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.45\textwidth]{s1_layout}
-	\caption{Initial layout with nodes spaced an average of 100m apart}
+	\caption{Initial layout with nodes spaced an average of \SI{100}{\meter} apart}
 	\label{fig:s1_layout}
 \end{figure}
 %
@@ -296,11 +296,11 @@ This is particularly important considering the significant scale factor differen
 From~\autoref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
 
 According to Xu, RTS/CTS handshake functionality cannot operate well as interference protection at node separations beyond 0.56 times the transmission range \cite{Xu2002}.
-In the case of marine acoustic transmission at the stated power output, above $1500m \times 0.56 = 840m$, handshake overheads should begin to dominate channel access.\todo{redo these graphs with wider separations ~ 1000m}
+In the case of marine acoustic transmission at the stated power output, above $\SI{1500}{\meter} \times 0.56 = \SI{840}{\meter}$, handshake overheads should begin to dominate channel access.\todo{redo these graphs with wider separations ~ \SI{1000}{\meter}}
 This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes. 
 
 A reasonable range around this is to scale from 100$m$ apart on average to 800$m$, and from the previous section, a packet emission rate of 0.02pps (slightly below the 0.025pps saturation threshold) is used to explore this space.
-The ``environment'' of the simluations is also scaled in accoradance with the node scaling, based on an intital environmental ``water-box'' of $1km$ for the $100m$ node separation, i.e.\ the water-box is consistently ten times larger than the initial node separation.
+The ``environment'' of the simluations is also scaled in accoradance with the node scaling, based on an intital environmental ``water-box'' of $1km$ for the $\SI{100}{\meter}$ node separation, i.e.\ the water-box is consistently ten times larger than the initial node separation.
 
 In the case where all nodes remain static, increasing node separation does not significantly impact throughput, delay, delivery probability or \gls{rts} ratios until rising above 700$m$ (Fig.~\ref{fig:separation_bella_static}), nearly double our initial estimate of where an appropriate separation zone would be.
 
@@ -543,9 +543,9 @@ An appropriate safe operating zone for marine communications has been establishe
 
 These findings can be summaries as that when the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
-For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches 800m, nearly double the initial estimate. 
-However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $300m$ to $0.015pps$ at $400m$.\todo[inline]{Double Check These Numbers Before Release}
-These results indicate that a good area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $100m$ to $300m$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
+For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches \SI{800}{\meter}, nearly double the initial estimate. 
+However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $\SI{300}{\meter}$ to $0.015pps$ at $\SI{400}{\meter}$.\todo[inline]{Double Check These Numbers Before Release}
+These results indicate that a good area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $\SI{100}{\meter}$ to $\SI{300}{\meter}$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
 These results are similar to work performed in \cite{Miquel2008}, and are expected in such a sparse, noisy, and contentious environment. 
 
 \todo{expand this section to include discussion and results of single mobility models}
@@ -573,7 +573,7 @@ Therefore, two more subtle misbehaviours to investigate are;
 
 \section{Simulation Results and Discussion}\label{sec:trustresultsanddiscussion}
 
-Having established a safe operating range for comparison at 300m average separation and an emission rate of 0.015pps, each of the three selected behaviours (Fair, \gls{mpc}, \gls{sts}) are performed in both the static and mobile scenarios. 
+Having established a safe operating range for comparison at \SI{300}{\meter} average separation and an emission rate of 0.015pps, each of the three selected behaviours (Fair, \gls{mpc}, \gls{sts}) are performed in both the static and mobile scenarios. 
 We select a trust assessment period of 10 mins for a five hour mission to scale in comparison to relative bitrates experienced (1Mbps vs $\approx15$bps).
 
 The six metrics used for grey assessment are; transmitted and received throughput and power, delay, and \gls{plr} as calculated by aborted and unacknowledged, transmissions.

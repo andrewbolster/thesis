@@ -38,9 +38,48 @@ A graph with a connectivity of $0$ indicates that that graph has separated (or d
 
 The concepts of graph density and connectivity are demonstrated visually in \autoref{fig:manet_density}, constructed with a uniform vertex distribution and decomposed by removing subsequent ``longest edges'' from a fully connected (Complete) graph.
 
-\todo{ADD: Need a ``Centralised/DeCentralised/Distributed'' graph series}
-
 \tikzstyle{cblue}=[circle, draw, thin,fill=cyan!20, scale=0.8]
+
+\begin{figure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}[>=latex',scale=1]
+			\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
+			\node[cblue] (a\x) at \place {};
+			
+			\foreach \x in {1,2,3,4,5,6,7,8,9}
+			\path[thin](a\x) edge (a5);
+		\end{tikzpicture}
+		\caption{Centralised}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}[>=latex',scale=1]
+		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
+		\node[cblue] (a\x) at \place {};
+		
+		\foreach \x in {1,3,4,5}
+		\path[thin](a\x) edge (a2);
+		
+		\foreach \x in {5,6,7,9}
+		\path[thin](a\x) edge (a8);
+		\end{tikzpicture}
+		\caption{Decentralised}
+	\end{subfigure}
+	\\
+	\begin{subfigure}[t]{\textwidth}
+		\centering
+		\begin{tikzpicture}[>=latex',scale=1]
+		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
+		\node[cblue] (a\x) at \place {};
+		
+		\foreach \x/\y in {{1/2},{1/3},{2/3},{2/4},{3/4},{3/5},{3/6},{4/5},{5/6},{5/7},{6/8},{6/7},{7/8},{8/9},{4/7},{6/9}}
+		% Physical layer links
+		\path[thin] (a\x) edge (a\y);
+		\end{tikzpicture}
+		\caption{Distributed}
+	\end{subfigure}
+\end{figure}
 
 \begin{figure}
 
@@ -209,8 +248,8 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 		\draw [->] (a9) -- (3.2, 1.3);			
 		\end{tikzpicture}
 		\caption{Node $9$ moves out of range and loses connectivity}
-		\end{subfigure}
-		\begin{subfigure}[t]{0.5\textwidth}
+		\end{subfigure}\\
+		\begin{subfigure}[t]{\textwidth}
 			\centering
 			\begin{tikzpicture}[>=latex',scale=1]
 			% Physical layer nodes
@@ -220,9 +259,9 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 				% Physical layer links
 				\path[thin] (a\x) edge (a\y);
 			\end{tikzpicture}
-			\caption{Node 9 rejoins the network}
+			\caption{Node 9 rejoins the network at some future point in a different topology}
 		\end{subfigure}
-		\caption{Example of node mobility of \gls{manet} topologies}
+		\caption{Example of node mobility in \gls{manet} topology changes}
 		\label{fig:manet_topo_mobility}
 \end{figure}
 
@@ -453,7 +492,7 @@ This trust value is incorporated with the risk / reward as assessed by the trust
 It is suggested that these overarching forms are supported by and indeed are drawn from four major constructs within social and networked environments, as identified by \citet{Mcknight1996}:
 
 \begin{itemize}
-  \item Trusting Belief: the subjective belief within a system that the other trusted components are willing and able to act in each others’ best interests
+  \item Trusting Belief: the subjective belief within a system that the other trusted components are willing and able to act in each others' best interests
   \item Dispositional Trust: a general expectation of trustworthiness over time 
   \item Situational Decision Trust: in-situ risk assessment where the benefits of trust outweigh the negative outcomes of trust
   \item System Trust: the assurance that formal impersonal or procedural structures are in place to ensure successful operation.
@@ -461,12 +500,31 @@ It is suggested that these overarching forms are supported by and indeed are dra
 
 Sun argues that only System Trust and Behavioural Trust are relevant to trusted networking applications.
 However, it is arguable that in any communications network where the operation of that network is not the only concern, or where that network has to interact with any operator, then all of these factors come into play; as we will see (\autoref{sec:trust_perspectives}).
-Both System and Behavioural trust rely on what Sun calls a ‘Belief Formation Process’, or a trust assessment, while the other trust constructs deal with the interactions between trust and decision making against an internal assessment of network trustworthiness.
+Both System and Behavioural trust rely on what Sun calls a ``Belief Formation Process'', or a trust assessment, while the other trust constructs deal with the interactions between trust and decision making against an internal assessment of network trustworthiness.
 
-\todo{FIX: Vectorise Trust Construct Diag}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{liu2010RelationshipStack}
+	\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=1pt, >=latex', every node/.style = {align=center, minimum height=1em}]
+		\node[fit={(0,0)(2,3)}, draw=black, inner sep=-1pt] (sit) {Situational Decision to Trust};
+		
+		\node[fit={(2,0)(4,2)}] (disp) {Disposition to Trust};
+		\path[draw=black] (2cm+1pt,0cm+1pt) -- (4cm-1pt,0cm+1pt) -- (4cm-1pt,2cm-1pt) -- (3cm-1pt,2cm-1pt) -- (3cm-1pt,3cm-1pt) -- (2cm+1pt,3cm-1pt) -- cycle;
+		
+		\node[fit={(4,0)(8,2)}, draw=black, inner sep=-1pt] (belief) {Belief Formation\\Process};
+		\node[fit={(8,0)(10,3)}, draw=black, inner sep=-1pt] (sys) {System\\Trust};
+		
+		\node[fit={(3,2)(8,3)}, draw=black, inner sep=-1pt] (trustb) {Trusting Beliefs};
+		\node[fit={(0,3)(10,4)}, draw=black, inner sep=-1pt] (trusti) {Trusting Intention};
+		\node[fit={(0,4)(10,5)}, draw=black, inner sep=-1pt] (trusth) {Trusting Behaviour};
+		
+		
+		\draw[<-, *|] ([yshift=10pt]trusth.south) to ([yshift=-10pt]sit.north);
+		\draw[<-, *|] ([yshift=10pt]trusth.south) to ([yshift=-10pt, xshift=-15pt]disp.north);	
+		\draw[<-, *|] ([yshift=10pt]trusth.south) to ([yshift=-10pt, xshift=30pt]belief.north);
+		\draw[<-, *|] ([yshift=10pt]trusth.south) to ([yshift=-10pt]sys.north);	
+		  
+		
+	\end{tikzpicture}
 	\caption[Trust Construct Relationships]{Trust Construct Relationships (from \citet{Liu2010})}
 	\label{fig:trust_constructs}
 \end{figure}
@@ -549,9 +607,9 @@ This axiom sets up the rules for trust propagation from an entropic perspective 
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
-	\node [sum, preaction={fill=red!20}] (a) {A};
-	\node [sum, right =of a] (b) {B};
-	\node [sum, right =of b] (c) {C};
+	\node [sum, preaction={fill=red!20}] (a) {$A$};
+	\node [sum, right =of a] (b) {$B$};
+	\node [sum, right =of b] (c) {$C$};
 	
 	\draw [dashed, ->] (a) -- (b) node [midway] {$R_{AB}$};
 	\draw [->] (b) -- (c) node [midway] {$T_{BC}$};;
@@ -564,22 +622,23 @@ This axiom sets up the rules for trust propagation from an entropic perspective 
 \begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.35\textwidth}
-		\hfill
+		\centering
+		\raisebox{17mm}{
 		\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex', baseline=(a.base)]
-		\node [sum, preaction={fill=red!20}] (a) {A};
-		\node [sum, right =of a] (b) {B};
-		\node [sum, right =of b] (c) {C};
+		\node [sum, preaction={fill=red!20}] (a) {$A$};
+		\node [sum, right =of a] (b) {$B$};
+		\node [sum, right =of b] (c) {$C$};
 		
 		\draw [dashed, ->] (a) -- (b) node [midway] {$R_\alpha$};
-		\draw [->] (b) -- (c) node [midway] {$T_\alpha$};;
+		\draw [->] (b) -- (c) node [midway] {$T_\alpha$};
 		
 		\end{tikzpicture}
+		}
 		\label{fig:trust_combination_a}
 		\caption{}
-		\hfill
 	\end{subfigure}
 	\begin{subfigure}[b]{0.35\textwidth}
-		\hfill
+		\centering
 		\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex', baseline=(a.base)]
 		\node [sum, preaction={fill=red!20}] (a) {$A'$};
 		\node [sum, above right =of a] (b) {$B'$};
@@ -589,12 +648,11 @@ This axiom sets up the rules for trust propagation from an entropic perspective 
 		\draw [dashed, ->] (a) -- (b) node [midway] {$R_\alpha$};
 		\draw [dashed, ->] (a) -- (d) node [midway] {$R_\alpha$};
 		\draw [->] (b) -- (c) node [midway] {$T_\alpha$};;
-	    \draw [->] (d) -- (c) node [midway, below, xshift=5] {$T_\alpha$};;
+	    \draw [->] (d) -- (c) node [midway, below, xshift=5] {$T_\alpha$};
 		
 		\end{tikzpicture}
 		\label{fig:trust_combination_b}
 		\caption{}
-		\hfill
 	\end{subfigure}
 	\caption{Trust Combination}
 	\label{fig:trust_combination}

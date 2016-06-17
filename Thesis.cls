@@ -161,7 +161,7 @@
 
 \usepackage{epigraph} % epigraph
 \usepackage{eurosym} % Euro Symbol
-\usepackage[detect-weight=true, binary-units=true]{siunitx} % Properly Centered numbers in tables
+\usepackage[detect-weight=true, binary-units=true, range-units=single]{siunitx} % Properly Centered numbers in tables
 \usepackage{afterpage}
 \usepackage[xindy]{glossaries} 
 \usepackage{pgf}

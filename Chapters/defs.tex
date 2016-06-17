@@ -41,6 +41,17 @@
 	doc/.style={draw, shape=roundedNode, align=center},
 	bluefill/.style={fill=blue, opacity=0.5, text opacity=1}
 }
+\tikzset{
+	*|/.style={
+		to path={
+			(perpendicular cs: horizontal line through={(\tikztostart)},
+			vertical line through={(\tikztotarget)})
+			% is the same as (\tikztostart -| \tikztotarget)
+			% but just to be safe: http://tex.stackexchange.com/a/29781/16595
+			-- (\tikztotarget) \tikztonodes
+		}
+	}
+}
 
 % USAGE: \cercle {center} {radius in cm} {begin degrees} {value of the arc} {line width} {color}
 % \coordinate (OO) at (2.8,2.2);

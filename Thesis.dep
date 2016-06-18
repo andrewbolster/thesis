@@ -212,6 +212,8 @@
   *{file}   {ts1cmr.fd}   {2014/09/29 v2.5h}
   *{file}   {./Figures/img/hugin.jpg}{0000/00/00 v0.0}
   *{file}   {./Figures/img/autosub.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/seaglider.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/seahunter.jpg}{0000/00/00 v0.0}
   *{file}   {./Chapters/comms_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}
@@ -313,43 +315,6 @@
   *{file}   {./Appendices/HumanFactors.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/Grey.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/OrphanedSections.tex}{0000/00/00 v0.0}
-  *{file}   {./Appendices/GraphOverflow.tex}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_time_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_time_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_time_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_MPC.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_STS.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_Shadow.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_comms_run_alt_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_phys_run_alt_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {./Figures/best_full_run_alt_instantaneous_SlowCoach.pdf}{0000/00/00 v0.0}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
   *{file}   {omlcmr.fd}   {2014/09/29 v2.5h}
 }

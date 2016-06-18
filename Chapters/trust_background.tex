@@ -26,7 +26,7 @@ In order to understand and clarify the challenges to generic \gls{manet} applica
 	\caption{Basic mapping between Graph and Network Theory nomenclatures}
 \end{table}
 
-\subsection{Network Density and Connectivity}
+\subsection{Network Density and Connectivity}\label{sec:connectivity}
 
 One fundamental compromise in the operation of wireless \glspl{manet} is the trade-off between the number of hops required between source and destination nodes and the effective bandwidth available to the network overall~\cite{Royer2001}.
 This compromise is encapsulated in the relative density of a given network; that is, the number of nodes in a given node's one-hop locality, drawing direct links between wireless transmission strength / reception sensitivity, the environmental noise floor, environmental channel characteristics, the mobility of the nodes and the number of nodes deployed in a region.
@@ -39,47 +39,6 @@ A graph with a connectivity of $0$ indicates that that graph has separated (or d
 The concepts of graph density and connectivity are demonstrated visually in \autoref{fig:manet_density}, constructed with a uniform vertex distribution and decomposed by removing subsequent ``longest edges'' from a fully connected (Complete) graph.
 
 \tikzstyle{cblue}=[circle, draw, thin,fill=cyan!20, scale=0.8]
-
-\begin{figure}
-	\begin{subfigure}[t]{0.5\textwidth}
-		\centering
-		\begin{tikzpicture}[>=latex',scale=1]
-			\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
-			\node[cblue] (a\x) at \place {};
-			
-			\foreach \x in {1,2,3,4,5,6,7,8,9}
-			\path[thin](a\x) edge (a5);
-		\end{tikzpicture}
-		\caption{Centralised}
-	\end{subfigure}
-	\begin{subfigure}[t]{0.5\textwidth}
-		\centering
-		\begin{tikzpicture}[>=latex',scale=1]
-		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
-		\node[cblue] (a\x) at \place {};
-		
-		\foreach \x in {1,3,4,5}
-		\path[thin](a\x) edge (a2);
-		
-		\foreach \x in {5,6,7,9}
-		\path[thin](a\x) edge (a8);
-		\end{tikzpicture}
-		\caption{Decentralised}
-	\end{subfigure}
-	\\
-	\begin{subfigure}[t]{\textwidth}
-		\centering
-		\begin{tikzpicture}[>=latex',scale=1]
-		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
-		\node[cblue] (a\x) at \place {};
-		
-		\foreach \x/\y in {{1/2},{1/3},{2/3},{2/4},{3/4},{3/5},{3/6},{4/5},{5/6},{5/7},{6/8},{6/7},{7/8},{8/9},{4/7},{6/9}}
-		% Physical layer links
-		\path[thin] (a\x) edge (a\y);
-		\end{tikzpicture}
-		\caption{Distributed}
-	\end{subfigure}
-\end{figure}
 
 \begin{figure}
 
@@ -161,8 +120,8 @@ The concepts of graph density and connectivity are demonstrated visually in \aut
 
 In practical wireless network applications, network connectivity is a product of the physical distribution of nodes within an environment, and the propagation characteristics of the medium.
 
-Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown. 
-\todo{ADD:Need some ``observations'' on the impacts of this routing constraint in manets in terms of \autoref{fig:manet_topo_states}\autoref{fig:manet_topo_mobility}}
+Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown(See \autoref{fig:manet_topo_mobility}).
+Naturally, as the relative transmission range is reduced, the natural density and connectivity of the network reduces down to the point in \autoref{fig:topo_broken_net} where the ``network'' is fundamentally broken.
 
 \begin{figure}
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -216,10 +175,69 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 		\draw [line width=0.1em] (1.5,-1) -- node[below,inner sep=0.1em, font=\footnotesize] {1 Unit} (2.5,-1);
 		\end{tikzpicture}
 		\caption{($r=1,D=0.08,k=0$)}
+		\label{fig:topo_broken_net}
 	\end{subfigure}
 	\caption{Examples of states of \gls{manet} topologies}
 	\label{fig:manet_topo_states}
 \end{figure}
+
+Another graph theoretic factor that is worth considering in \gls{manet} design is \emph{Centrality}, that is, the measure of importance of individual nodes to the connectivity of the network.
+There are a great many methods for calculating centrality, however the important understanding from a network perspective is that of network-relative centralisation; in \autoref{fig:centralisation}, our previously deployed network layout is used to demonstrate three delineations of network centrality.
+In the first, all nodes are connected to one node, and that one node is totally responsible for communications and routing in the network.
+This is architecturally similar to switch-managed wired networks in a small office or home.
+In the second example, a generally de-centralised layout is set, with a generally hierarchical logical routing setup, where a few nodes take the brunt of the connectivity and bridging, almost creating centralised ``sub graphs'' with single uplinks.
+Finally, a truly ``distributed'' topology is shown, where there are no architecturally important nodes and, in general, shorter link distances. 
+
+\begin{figure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}[>=latex',scale=1]
+		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
+		\node[cblue] (a\x) at \place {};
+		
+		\foreach \x in {1,2,3,4,5,6,7,8,9}
+		\path[thin](a\x) edge (a5);
+		\end{tikzpicture}
+		\caption{Centralised}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}[>=latex',scale=1]
+		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
+		\node[cblue] (a\x) at \place {};
+		
+		\foreach \x in {1,3,4,5}
+		\path[thin](a\x) edge (a2);
+		
+		\foreach \x in {5,6,7,9}
+		\path[thin](a\x) edge (a8);
+		\end{tikzpicture}
+		\caption{Decentralised}
+	\end{subfigure}
+	\\
+	\begin{subfigure}[t]{\textwidth}
+		\centering
+		\begin{tikzpicture}[>=latex',scale=1]
+		\foreach \x/\place in {{1/(-2.5, 0.3)},{2/(-1.75, -0.55)},{3/(-1.2, 0.55)},{4/(-0.75, -0.7)},{5/(-0.25, 0)},{6/(0.25, 0.7)},{7/(0.75, -0.3)},{8/(1.5, 0)},{9/(2.5, 0.4)}}
+		\node[cblue] (a\x) at \place {};
+		
+		\foreach \x/\y in {{1/2},{1/3},{2/3},{2/4},{3/4},{3/5},{3/6},{4/5},{5/6},{5/7},{6/8},{6/7},{7/8},{8/9},{4/7},{6/9}}
+		% Physical layer links
+		\path[thin] (a\x) edge (a\y);
+		\end{tikzpicture}
+		\caption{Distributed}
+	\end{subfigure}
+	\label{fig:centralisation}
+	\caption{Example of routing strategies and logical connectivity in a sample network}
+	
+\end{figure}
+
+The last issue to consider directly is that of the impacts of node mobility and temporary absence.
+In \autoref{fig:manet_topo_mobility}, a node leaves the network from one ``side'', and later reappears at another part of the network.
+This is quite possible in cases where node links may be physically interrupted by obstructions (or indeed the planned paths for nodes are obstructed, requiring a course correction and delay).
+When the node reappears, all routing information that may have been established (i.e. node 5 would send packets destined to node 9 to nodes 6 or 7 rather than nodes 3 or 4) must be renegotiated and re-distributed across the network before efficient operation can continue.
+Secondarily to this, any authentication and validation that may be required to positively identify node 9 as \emph{actually being} node 9 may have to be transited from node 8, which had previously been the only node directly communicating to node 9.
+
 \begin{figure}
 	\begin{subfigure}[t]{0.5\textwidth}
 	  	\centering
@@ -265,6 +283,8 @@ Taking the same physical configuration as in \autoref{fig:manet_density}, the st
 		\label{fig:manet_topo_mobility}
 \end{figure}
 
+These factors of network density, link length, centralisation and mobility simultaneously give \glspl{manet} their strength and resilience as well as their risks and challenges.
+
 
 \section{Routing in \acrlongpl{manet}}\label{sec:manet_routing}
 
@@ -272,7 +292,6 @@ Given the decentralised nature of \gls{manet} operations, routing protocols have
 This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid protocols.
 A summary of the generalised characteristics of these classes is shown in \autoref{tab:routing_categories}.
 Additional, these classes can be further rearranged, combined or augmented based on assumptions made about the structure of the baseline topology, i.e. flat, hierarchical or geographic) or by assumed constraints of the available resources of the nodes within the network i.e. heterogeneity in power, mobility, or communications capabilities where resource-based heuristics are used as well as purely topological considerations\cite{Li2005,Gerla2002}.
-
 
 
 \subsection{Proactive Routing}
@@ -877,9 +896,23 @@ Within sparsely connected networks, there are three primary types of relationshi
   \label{fig:trust_topology_relationships}
 \end{figure}
 
-\subsection{Trust Establishment Strategies}
+\subsection{Trust Establishment Strategies and their impact on Trust Frameworks}
 
-\todo{ADD: Need to discuss how trust is established a) initially among a co-launched group, b) with a newcomer and c) with a returner (\citet{Liu2006, Li2007, Theodorakopoulos2004})}
+In the majority of cases, the establishment of trust is a purely observational effort, as opposed to providing a pre-initialised ``secure state''\citet{Liu2006, Li2007, Theodorakopoulos2004}.
+The network is initialised, routes are dynamically generated and propogated depending on the routing strategy defined, and as information about the performance of nodes is recorded, Trust is established. 
+This method of ``blind trust establishment'' may initially reduce efficiencies in the early phases of operation, but this is quickly overcome with the establishment of a short ``introduction'' period, where the network is not tasked to perform any tasks where thorough Trust is necessary.
+
+In the course of normal operations, there are two additional ``trust establishment'' cases that must be understood in the development of trust frameworks; newcomer integration and depart-return reintegration. 
+In the first case, where a new node is joining the network, that new node is initially at a disadvantage; the rest of the network already trusts each other and could, by default, not perform any trusting behaviours to/with the new node, making it difficult for that new node to ``demonstrate'' trustworthiness~\cite{Li2007}.
+This state is resolved by treating Trust as a multivariate factor consisting of at least two components; ``Trust'' and ``Knowledge'' or ``Confidence'', such that there is a substantive difference between ``I'm not sure that this node is totally trustworthy but I've observed many actions'' and ``I have no idea how trustworthy this node is as I've not observed many actions''.
+As such, when a node integrates with the trust network, the rest of the network is ``ignorant'' about it, and can probabilistically interact with it in a tentatively trusting manner.
+
+In the latter operational case, where a node leaves the network (or ``disappears'' from the network in the case of temporarily broken topology such as in \autoref{sec:connectivity}) and returns, it is not sensible for nodes to maintain their previous opinions of the returning node. 
+As such (and not purely for this reason) the majority of \glspl{tmf} maintain a ``remembering'' (or forgetting) factor, normally noted as $\beta$.
+This $beta$ factor inversely weights the contributions of older observations in the formation of the current trust assessment, tending towards having zero confidence and zero trust in the node over time while it is not observed (or recommendations regarding that node are not observed).
+
+On the return of a departed node, depending on the duration of the departure with respect to $beta$, it may be treated as a total newcomer, but will generally have some residual trust-valence, which puts it at a slight advantage. 
+However, this reaction assumes that the identity of such a returning node can be verified, and in some cases, it is beneficial to initially distrust an apparrent ``returner'' in case of malicious masquerading.
 
 \subsection{Attacks on Trust}
 
@@ -902,12 +935,6 @@ Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed na
 
 
 \section{Trusted Development and Operation of Autonomous Systems}\label{sec:trust_autonomy}
-
-\subsection{Introduction}
-
-The aim of the section is to explore where trust is likely to impact \gls{sos} that contain autonomous elements incorporating Human Factors, Command and Control considerations, and \gls{v2v} distributed communication, from the perspective of trusted and semi-trusted operation.
-
-\todo{ADD:Expand introduction and plan the rest of the section}
 
 \subsection{Autonomy and Levels of Autonomy}
 
@@ -1367,7 +1394,8 @@ Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, 
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
 To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
 \gls{mtfm} combines this \gls{gra} with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}.
-This whitenization model allows the previously grey value to be practically computed on and used to generate the final trust assessment\cite{Liu2011}. See~\autoref{apx:grey} for a wider discussion of this topic and the operation of Grey numbers.)
+This whitenization model allows the previously grey value to be practically computed on and used to generate the final trust assessment, through fuzzy sequence classification, functionally treating each observation differently if it appear to be Trusted, Untrusted or Ignorant (\autoref{fig:whitenization}) ~\cite{Liu2011}.
+See~\autoref{apx:grey} for a wider discussion of this topic and the operation of Grey numbers.
 
 There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect, as discussed in~\autoref{sec:trust_topologies}.
 Where an observing node $n_i$ assesses the trust of another target node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.

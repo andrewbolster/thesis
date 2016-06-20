@@ -273,7 +273,7 @@ Beyond the NS family, there are many other communications and simulation modelli
 
 \todo{ADD:expand this, justify AUVNetSim, reactive mobility, python compatibility, SimPy Etc.}
 
-
+\begin{comment}
 \subsection{Routing and Network Design for \glspl{uan}}
 
 Forward Error Correction coding is used on such channels to minimise packet losses.
@@ -281,6 +281,7 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 \todo{ADD:Summary of Akyildiz02/05}
 
 \todo{FIX:callback to routing discussion in c1 explain why fbr is the best of everything all the time}
+\end{comment}
 
 \section{Marine Operations, Payloads, Technologies, and Durations}\label{sec:marine_ops}
 
@@ -345,9 +346,7 @@ In summary, current technology reliably enables \glspl{auv} to localise to a sub
 
 \subsection{Payloads}
 
-\todo{ADD: Do the same formatting as Localisation specifically on Sensors instead of this enumerate}
-
-\glspl{auv} are capable of being loaded with a wide range of sensing payloads;
+\glspl{auv} are capable of being loaded with a wide range of sensing payloads such as
 \begin{enumerate}
 	\item Sonar Bathymetry
 	\item \gls{ctd} sensor packages (Depth from Pressure sensing rather than sonar)
@@ -370,7 +369,7 @@ The HUGIN 1000 is a high-resolution extension to the REMUS range, characterised 
 The Konsburg range also include range specific \gls{lars}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.35\textwidth]{hugin.jpg}
+	\includegraphics[width=0.45\textwidth]{hugin.jpg}
 	\caption{\label{fig:hugin}HUGIN AUV mounted on LARS}
 \end{figure}
 \subsubsection{NOC Autosub}
@@ -378,28 +377,27 @@ The Konsburg range also include range specific \gls{lars}
 Developed under the UK's National Oceanography Centres Marine Autonomous and Robotic Systems group, the Autosub family of \glspl{auv} is similar in many ways to the REMUS deployment profile; with long range and deep-ocean variants, operating at depths up to \SI{600}{\kilo\meter} for up to 36 hours (however, this configuration leaves it with a cruising speed of \SI{0.4}{\meter\per\second})
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.35\textwidth]{autosub}
+	\includegraphics[width=0.45\textwidth]{autosub}
 	\caption{\label{fig:autosub}NOC Autosub 3 being deployed off the Pine Island Glacier}
 \end{figure}
+
 \subsubsection{University of Washington SeaGlider}
 Taking a fundamentally different approach to underwater mobility for targeting depth-variant environmental studies, the SeaGlider eschews classical propulsion to use it's downward-facing structure and fins to use it's weight/buoyancy to propel itself.   
 At \SI{1.8}{\meter} long and weighting only \SI{52}{\kilogram}, this highly portable \gls{auv} can cover ranges up to \SI{4600}{\kilo\meter} with 650 \SI{1}{\kilo\meter} dive segments at a rate of \SI{0.25}{\meter\per\second}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.35\textwidth]{seaglider}
+	\includegraphics[width=0.45\textwidth]{seaglider}
 	\caption{\label{fig:seaglider}''Flight path'' of the UW SeaGlider}
 \end{figure}
-\subsubsection{\emph{USN Sea Hunter}}
+
+\subsubsection{USN Sea Hunter}
 The Sea Hunter is an autonomous unmanned surface vehicle (USV) launched in 2016 and is undergoing seatrials as part of the \gls{darpa} Anti-Submarine Warfare Continuous Trail Unmanned Vessel program. With a top speed of \SI{50}{\km\per\hour}, weighing \SI{122}{\tonne}.
 While unarmed during its sea trials, the \emph{Sea Hunter} will be armed and used for \gls{asw} and \gls{mcm} duties, operating at a tiny fraction of the standard operating costs of a littoral destroyer.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.35\textwidth]{seahunter}
+	\includegraphics[width=0.45\textwidth]{seahunter}
 	\caption{\label{fig:seaglider}Initially manned deployment of the unmanned \emph{Sea Hunter}. U.S. Navy photo by John F. Williams/Released}
 \end{figure}
-
-\subsection{Potential Future Applications}
-\todo{ADD NEXT: Future Applications of \glspl{auv}, mostly in the ``Actuation'' side of things as opposed to classical sensor payloads}
 
 \subsection{Need for Trust in Maritime Networks}\label{sec:trust_in_marine}
 
@@ -410,6 +408,7 @@ Given the breadth of the threat space in \glspl{manet}, many strategies for miti
 In this context of this table, Vulnerability is an assessment of how available a particular threat is to a generic attacker, Impact is an assessment of the in-system affects of a successful attack, and Risk is a qualitative assessment of the likelihood of exploitation of an attack.
 \citet{Kidston2010} originally lowered the assessment of vulnerability of Eavesdropping, citing the tactical use of non-standard \gls{mac} as a barrier to attack, however considering the increasing commoditisation of tactical hardware across the world, and increasing application of \gls{cots} hardware, this is no longer a fair assessment.
 Similarly, the assessment that the Risk of Data Corruption is low is arguable on the basis of simplistic spread spectrum jamming but this assessment is unchanged.
+%Finally, \citet{Kidston2010} did not take into account the presence of weapons or other actuation methods with \glspl{auv} as the endpoint.
 
 \begin{table}
 	\caption{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from \cite{Kidston2010}}
@@ -421,6 +420,7 @@ Similarly, the assessment that the Risk of Data Corruption is low is arguable on
 		Masquerade & Low & Very High & Medium & Trust Systems\cite{Wang2009a} and Cryptography\\
 		Data Corruption & Low & High & Low & Cryptography\\
 		Traffic Analysis & High & Low & Medium & Obfuscation\cite{Huang2010}\\
+%		Misfire/Misactuation & Low & Very High & High & Man-in-the-loop firing\cite{Caseley2009}\\
 	\end{tabularx}
 \end{table}
 

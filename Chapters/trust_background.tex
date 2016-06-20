@@ -896,7 +896,7 @@ Within sparsely connected networks, there are three primary types of relationshi
   \label{fig:trust_topology_relationships}
 \end{figure}
 
-\subsection{Trust Establishment Strategies and their impact on Trust Frameworks}
+\subsection{Trust Establishment Strategies and their impact on Trust Frameworks}\label{sec:trust_establishment}
 
 In the majority of cases, the establishment of trust is a purely observational effort, as opposed to providing a pre-initialised ``secure state''\citet{Liu2006, Li2007, Theodorakopoulos2004}.
 The network is initialised, routes are dynamically generated and propogated depending on the routing strategy defined, and as information about the performance of nodes is recorded, Trust is established. 
@@ -931,7 +931,7 @@ It is to be noted that the Sybil and Newcomer attacks do not exclusively rely on
 The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
 In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. 
 In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. 
-Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted.\todo{FIX: Backref to ``Trust vs UnTrust'' section}
+Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted(See \autoref{sec:trust_establishment})
 
 
 \section{Trusted Development and Operation of Autonomous Systems}\label{sec:trust_autonomy}

@@ -327,7 +327,7 @@ This is particularly important considering the significant scale factor differen
 From~\autoref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
 
 According to \citet{Xu2002}, \gls{rts}/\gls{cts} handshake functionality cannot operate well as interference protection at node separations beyond 0.56 times the transmission range\cite{Xu2002}.
-In the case of marine acoustic transmission at the stated power output, above $\SI{1500}{\meter} \times 0.56 = \SI{840}{\meter}$, handshake overheads should begin to dominate channel access.\todo{FIX CODE:redo these graphs with wider separations ~ \SI{1000}{\meter}}
+In the case of marine acoustic transmission at the stated power output, above $\SI{1500}{\meter} \times 0.56 = \SI{840}{\meter}$, handshake overheads should begin to dominate channel access.
 This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes. 
 
 A reasonable range around this is to scale from 100$m$ apart on average to $\SI{800}{\meter}$, and from the previous section, a packet emission rate of $0.02pps$ (slightly below the $0.025pps$ saturation threshold) is used to explore this space.
@@ -527,7 +527,7 @@ To arrive at a more optimal operating region, a coupled analysis is performed ac
 Given what has been discussed so far; it's clear that in identifying an appropriate operating region, it is important to not only ensure throughput, but that that throughput is timely.
 For instance, in~\autoref{fig:separation_bella_single_mobile} (tabulated in~\autoref{tab:separation_bella_single_mobile}), a small increase in separation beyond the apparent throughput-peak at 500$m$ to 600$m$, which constitutes an increased ideal marine acoustic ``time of flight'' between nodes by 0.02$s$, increases the average actual delay by 1800\%. 
 
-To capture these performance requirements, the feature scaled product of Throughput and Delay is taken and plotted against rate and separation in~\autoref{fig:2d_normed_product}.\todo[inline]{FIX: This does NOT make for easy comparison between graphs as the scaling is different for each mobility, but I need to think about how to fairly solve this}
+To capture these performance requirements, the feature scaled product of Throughput and Delay is taken and plotted against rate and separation in~\autoref{fig:2d_normed_product}.
 
 \begin{equation}
 V = |S] \times (1 - |D|)
@@ -577,14 +577,14 @@ An appropriate safe operating zone for marine communications has been establishe
 These findings can be summaries as that when the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
 For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches $\SI{800}{\meter}$, nearly double the initial estimate. 
-However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $\SI{300}{\meter}$ to $0.015pps$ at $\SI{400}{\meter}$.\todo[inline]{FIX:Double Check These Saturation Points Before Release}
+However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $\SI{300}{\meter}$ to $0.015pps$ at $\SI{400}{\meter}$.
 These results indicate that a good area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $\SI{100}{\meter}$ to $\SI{300}{\meter}$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
 These results are similar to related simulation work \cite{Miquel2008,Diamant2010,Noh2012}, and is to be expected in such a sparse, noisy, and contentious environment.
 It should be noted that these rates are not what would be expected in a single-node/single-operator environment that most current \gls{auv} operations inhabit, as without any channel contention and mixed-delay effects, data-rates many times higher than this would be expected.
 However, few practical experiments have been performed that are suitable for direct comparison, as this context relies on multiple available nodes in a dynamic \gls{manet} topology with differential mobility.
 
 
-\todo{ADD:expand this section to include discussion and results of single mobility models}
+%\todo{ADD:expand this section to include discussion and results of single mobility models}
 The results from \autoref{fig:2d_normed_product_bella_single_mobile} and \autoref{fig:2d_normed_product_bella_allbut1_mobile} show that the single-node differential mobility models don't capture the reality of the network in the proposed port-protection context.
 The reason for this is that in these single-differential mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
 A future extension to this work could be to look at differential ratios of static/mobile nodes in alternative scenarios, such as in data-muling applications or \gls{wsn}.
@@ -593,8 +593,7 @@ A future extension to this work could be to look at differential ratios of stati
 
 We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
 
-\citet{Guo11} introduce a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
-\todo{FIX:Link back to intro/bg misbehaviour dicussion}
+\citet{Guo11} introduced a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
 Given that the established links are already heavily constrained, such attacks would severely impact the general performance of the network beyond the scope of simple selfishness.
 These direct malicious behaviours effectively trigger saturation collapses in operating regions of the network that should be stable.
 

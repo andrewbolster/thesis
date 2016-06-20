@@ -97,12 +97,65 @@ Using this approach, the results of these simulations can be explored, condensin
 
 \subsection{Significance Analysis}
 
-First the results of the Random Forest regression assessment are discussed; Figs~\ref{fig:comms_feature_extraction} and~\ref{fig:phys_feature_extraction}, show the resultant feature extraction signatures for Comms-only and Physical-only metric selections respectively, and in Fig~\ref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
+First the results of the Random Forest regression assessment are discussed; Figs~\ref{fig:comms_feature_extraction} and~\ref{fig:phys_feature_extraction}, show the resultant feature extraction signatures for Comms-only and Physical-only metric selections respectively, and in ~\autoref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
 
 In both single-domain cases, there are clear ``signatures'' in misbehaviours that don't directly target that domain ($P_{RX}$ in the Physical Shadow and Slowcoach behaviours in Fig~\ref{fig:comms_feature_extraction} and $INDD$ in the Selfish Target Selection behaviour in Fig~\ref{fig:phys_feature_extraction}).
-This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic for differentiating potential misbehaviours.\todo{ADD: Come back to this and talk about redundancy after subset analysis}
+This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic for differentiating potential misbehaviours.
+
+\autoref{fig:alternate_domain_diag} attempts to lay out the results of Feature Extraction across a spectrum of Communications / Physical domain assessment, matching the assumed domains of the stated misbehaviours.
+From this, two alternative ``domains'' can be constructed; ``Comms. Alt.'' and ``Phys. Alt.'', as artificial constructions of the relevant domains attempting to encapsulate the most responsive features for each misbehaviour-domain.
+The results from this domain grouping are shown along side the Full, Comms, and Phys domains.
 
 
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[-latex,
+	comms/.style={text=blue, draw=blue, rounded corners=.8ex},
+	phys/.style={text=red, draw=red, rounded corners=.8ex}]
+	% Start off with the line
+	%\draw [<-|][comms, draw=blue, very thick] (0,1) -- (5,1); 
+	%\draw [|->][phys, draw=red, very thick] (5,1) -- (10,1); 
+	\path[left color=blue,right color=red]
+	(0,0.95) rectangle +(10,2.5pt);
+	
+	% Baseline labels
+	\node[comms, fill=blue, fill opacity=0.2, text opacity=1] at (-1,1) {Comms.};
+	\node[phys, fill=red, fill opacity=0.2, text opacity=1] at (11,1) {Physical};
+	
+	% Metric Labels
+	\node[comms] at (7,2.2) {$D$};
+	\node[comms] at (9,2.2) {$P_{RX}$};
+	\node[comms] at (1,1.4) {$P_{TX}$};
+	\node[comms] at (2.5,1.4) {$S$};
+	\node[comms] at (3.3,1.4) {$G$};
+	\node[comms] at (2,2.2) {$PLR$};
+	\node[phys] at (5,2.2) {$INDD$};
+	\node[phys] at (7,1.4) {$INHD$};
+	\node[phys] at (9,1.4) {$Speed$};
+	
+	\node[rotate=90, align=center] at (-1, 3) {Metric\\Clustering};
+	\node[rotate=90, align=center] at (-1, -1.5) {Apparent Domain\\of Misbehaviour};
+	\node[comms] at (1,-1.4) {$MPC$};
+	\node[comms] at (2.5,-0.8) {$STS$};
+	\node[phys] at (6.5,-1.8) {$Shadow$};
+	\node[phys] at (8.7,-1) {$SlowCoach$};
+	
+	% Draw approx subsets
+	\draw[comms] (2.9,1.9) ellipse (3.3 and 1.4);
+	\draw[phys] (7.2,1.9) ellipse (3.3 and 1.4);
+	
+	\node[text=red] at (7.2,3.8) {Phys. Alt.};
+	\node[text=blue] at (2.9,3.8) {Comms. Alt.};
+	
+	% Misc
+	\draw[-|][dotted] (5,5) -- (5,1);
+	\draw[-|][dotted] (5,-3) -- (5,1);
+	
+	
+	\end{tikzpicture}
+	\caption{Assumptions made about the relevant domains of impact / detectability of misbehaviours, and domain relevance of metrics, may not be optimal}
+	\label{fig:alternate_domain_diag}
+\end{figure}
 
 % These figures are the output of test_Thesis_Diagrams.test????Relevance
 \begin{figure}[h!]
@@ -163,6 +216,7 @@ $\Delta T_{ix}^-$ represents the average $\Delta T_{ij}$ for all other nodes, re
 The ``best'' weight permutations, as shown in \autoref{tab:optimised_weights}, are applied to untrained datasets for these results.
 
 This is a departure from the Dixons Q-Test applied in \autoref{ch:physical_trust}, as the number of metrics in use 
+\todo{ADD:come back to this}
 
 An exemplar subset of the results is shows in Figs~\ref{fig:comms_time_mpc}-~\ref{fig:full_time_slowcoach}, with the ``misbehaving node'' highlighted with heavier lines, with any observations about the rest of the cohort faded and dashed. For each node assessment, the mean for that assessment over that time period is also included as a solid / dashed line respectively for clarity.
 
@@ -180,12 +234,12 @@ Referring to Figs~\ref{fig:comms_feature_extraction} and~\autoref{fig:multi_feat
 The massive emphasis placed on load could only be diminished by putting it together in a larger ensemble.
 In Figs~\ref{fig:comms_time_shadow} and~\ref{fig:full_time_shadow}, the misbehaving node is much more obvious than in \gls{sts}, which is moderately surprising for a physically-focused behaviour. Further, there is a roughly 20\% improvement when incorporating the full metric space.
 
-From Table~\ref{tab:domain_deltas}, the Shadow behavior is the most consistently detectable behaviour across selected metric domains. 
+From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistently detectable behaviour across selected metric domains. 
 
 
-See \autoref{sec:apx_mean_targeting_malicious} for a full collection of graphs showing the comparison of the malicious nodes trust value against the instantaneous mean of the remaining cohort.
-See \autoref{sec:apx_targeting_non_malicious} for a full collection of graphs showing the comparison of non-malicious nodes trust value against the individual values of the remaining cohort.
-See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of graphs showing the comparison of non-malicious nodes trust value against the instantaneous mean of the remaining cohort.
+%See \autoref{sec:apx_mean_targeting_malicious} for a full collection of graphs showing the comparison of the malicious nodes trust value against the instantaneous mean of the remaining cohort.
+%See \autoref{sec:apx_targeting_non_malicious} for a full collection of graphs showing the comparison of non-malicious nodes trust value against the individual values of the remaining cohort.
+%See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of graphs showing the comparison of non-malicious nodes trust value against the instantaneous mean of the remaining cohort.
 
 
 % These figures are the output of test_Thesis_Diagrams.test0ValidationBestPlots
@@ -277,6 +331,10 @@ See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of grap
 \end{figure}
 
 
+\section{Optimal Metric Subset Analysis}
+\todo{ADD: Subset Analysis}
+
+
 	
 % These tables are the output of test_Thesis_Diagrams.ThesisDiagrams#test0ValidationBestPlots
 \begin{table}
@@ -303,60 +361,6 @@ See \autoref{sec:apx_mean_targeting_non_malicious} for a full collection of grap
     \label{tab:optimised_weights}
   \end{table}
 \end{landscape}
-
-
-\begin{figure}[h]
-  \centering
-  \begin{tikzpicture}[-latex,
-    comms/.style={text=blue, draw=blue, rounded corners=.8ex},
-    phys/.style={text=red, draw=red, rounded corners=.8ex}]
-    % Start off with the line
-    %\draw [<-|][comms, draw=blue, very thick] (0,1) -- (5,1); 
-    %\draw [|->][phys, draw=red, very thick] (5,1) -- (10,1); 
-    \path[left color=blue,right color=red]
-    (0,0.95) rectangle +(10,2.5pt);
-
-    % Baseline labels
-    \node[comms, fill=blue, fill opacity=0.2, text opacity=1] at (-1,1) {Comms.};
-    \node[phys, fill=red, fill opacity=0.2, text opacity=1] at (11,1) {Physical};
-
-    % Metric Labels
-    \node[comms] at (7,2.2) {$D$};
-    \node[comms] at (9,2.2) {$P_{RX}$};
-    \node[comms] at (1,1.4) {$P_{TX}$};
-    \node[comms] at (2.5,1.4) {$S$};
-    \node[comms] at (3.3,1.4) {$G$};
-    \node[comms] at (2,2.2) {$PLR$};
-    \node[phys] at (5,2.2) {$INDD$};
-    \node[phys] at (7,1.4) {$INHD$};
-    \node[phys] at (9,1.4) {$Speed$};
-
-    \node[rotate=90, align=center] at (-1, 3) {Metric\\Clustering};
-    \node[rotate=90, align=center] at (-1, -1.5) {Apparent Domain\\of Misbehaviour};
-    \node[comms] at (1,-1.4) {$MPC$};
-    \node[comms] at (2.5,-0.8) {$STS$};
-    \node[phys] at (6.5,-1.8) {$Shadow$};
-    \node[phys] at (8.7,-1) {$SlowCoach$};
-
-    % Draw approx subsets
-    \draw[comms] (2.9,1.9) ellipse (3.3 and 1.4);
-    \draw[phys] (7.2,1.9) ellipse (3.3 and 1.4);
-
-    \node[text=red] at (7.2,3.8) {Phys. Alt.};
-    \node[text=blue] at (2.9,3.8) {Comms. Alt.};
-
-    % Misc
-    \draw[-|][dotted] (5,5) -- (5,1);
-    \draw[-|][dotted] (5,-3) -- (5,1);
-
-
-  \end{tikzpicture}
-  \caption{Assumptions made about the relevant domains of impact / detectability of misbehaviours, and domain relevance of metrics, may not be optimal}
-  \label{fig:alternate_domain_diag}
-\end{figure}
-
-\section{Optimal Metric Subset Analysis}
-\todo{ADD: Subset Analysis}
 
 
 \section{Conclusion}

@@ -265,13 +265,18 @@ where $d=d_0$ is the minimal path length between the transmitter and receiver, $
 
 \subsection{Modelling and Simulation of the Acoustic Medium / Channel}
 
-Several toolkits exist in a variety of states that perform communications agent simulation, most notably the NS-2 / 3 family of frameworks and their addons.
-Some of these frameworks, such as SUNSET \cite{Petrioli2012a} and AquaTools \cite{Sehgal2010}.
+Several toolkits exist in a variety of states that perform communications agent simulation, most notably the NS-2 / 3 family of frameworks and their add-ons.
+Some of these frameworks, such as SUNSET \cite{Petrioli2012a} and AquaTools \cite{Sehgal2010}, that are particularly proven in their capability in modelling static network performance, with less in built support for advanced, reactive node mobilities such as those involving collision or object avoidance.
 
-Beyond the NS family, there are many other communications and simulation modelling systems such as OpNet++\cite{Chang1999} and MATLAB toolkits such as the AcTUP interface to the Ocean Acoustics Library.
+Beyond the NS family, there are many other communications and simulation modelling systems such as OpNet++\cite{Chang1999} and MATLAB toolkits such as the AcTUP interface to the Ocean Acoustics Library, that primarily focus on simulation of the acoustic channel and contention issues without concentration on Underwater-specific \gls{mac} protocols.
 
+AUVNetSim is a simulation platform designed from the ground up with \gls{auv} operations in mind\cite{Miquel2008}.
+Including support for dynamic modular mobility and application behaviours, considering the stated context of an environmentally reactive \gls{uan}, AUVNetSim was tested and selected as a foundation upon which to build an exploratory network testing framework for this research.
 
-\todo{ADD:expand this, justify AUVNetSim, reactive mobility, python compatibility, SimPy Etc.}
+In order to implement a collaborative, reactive, simulation suite, the SimPy~\cite{Muller2003SimPy} agent framework was used for ``background'' synchronisation.
+
+As mentioned in the individual testing cases, transmission parameters for simulation were initially taken from and validated against results from \citet{Stojanovic2007} and \citet{Stefanov2011}.
+
 
 \begin{comment}
 \subsection{Routing and Network Design for \glspl{uan}}
@@ -303,7 +308,7 @@ The natural extension of these kind of applications is the use of \glspl{auv} on
 
 \subsubsection{Hull and Infrastructure Inspection}
 Ongoing concerns regarding the security, safety and legality of international shipping has driven the application of \glspl{auv} to the area of near-surface hull and infrastructure inspections, looking for damage as well as devices such as limpet mines and other contraband.
-This use case puts a range of unique pressures on the AUV system; requiring highly accurate three-dimensional localisation and path-planning to clearly image the contours of a hull\cite{Nicholson2008}.
+This use case puts a range of unique pressures on the \gls{auv} system; requiring highly accurate three-dimensional localisation and path-planning to clearly image the contours of a hull\cite{Nicholson2008}.
 Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using \glspl{auv} for both the laying of and inspection of these cables is an exciting area of work\cite{Yu2004}\cite{Asakawa2002}.
 
 \subsubsection{Marine Petrochemical/Mineralogy}

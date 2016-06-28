@@ -1,0 +1,30 @@
+\ifglsentryexists{manet}{}%
+{%
+\gls@defglossaryentry{manet}%
+{%
+name={MANET},%
+sort={MANET},%
+type={main},%
+first={MANET},%
+firstplural={MANETs},%
+text={MANET},%
+plural={MANETs},%
+description={mobile ad-hoc network},%
+descriptionplural={mobile ad-hoc network},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

@@ -308,9 +308,21 @@
   *{file}   {./Figures/best_phys_run_time_SlowCoach.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_time_Shadow.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_time_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {Figures/input/domain_deltas.tex}{0000/00/00 v0.0}
-  *{file}   {Figures/input/domain_deltas_minus.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/domain_deltas_5.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/domain_deltas_minus_5.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/optimised_weights_5.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/top_mpc_dt_box.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/top_sts_dt_box.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/top_shadow_dt_box.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/top_slowcoach_dt_box.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/top_mean_dt_box.pdf}{0000/00/00 v0.0}
+  *{file}   {Figures/input/top_MPC_dt.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/top_STS_dt.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/top_Shadow_dt.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/top_SlowCoach_dt.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/top_Mean_dt.tex}{0000/00/00 v0.0}
+  *{file}   {Figures/input/top_targeted_dt.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/focus_ratio.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/conclusion.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/HumanFactors.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/Grey.tex}{0000/00/00 v0.0}

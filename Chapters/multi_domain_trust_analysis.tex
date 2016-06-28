@@ -331,27 +331,23 @@ From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistentl
 \end{figure}
 
 
-\section{Optimal Metric Subset Analysis}
-\todo{ADD: Subset Analysis}
-
 
 	
 % These tables are the output of test_Thesis_Diagrams.ThesisDiagrams#test0ValidationBestPlots
 \begin{table}
 	\centering
 	\caption{$\Delta T$ across domains and ``proposed'' behaviours targeting known misbehaving node}
-	\input{Figures/input/domain_deltas.tex}
+	\input{Figures/input/domain_deltas_5.tex}
 	\label{tab:domain_deltas}
 \end{table}
 
 \begin{table}
 	\centering
 	\caption{$\Delta T^-$ False Positive assessments across domains and ``proposed'' behaviours across non-misbehaving nodes}
-	\input{Figures/input/domain_deltas_minus.tex}
+	\input{Figures/input/domain_deltas_minus_5.tex}
 	\label{tab:domain_deltas_minus}
 \end{table}
-\todo{FIX CODE: Haven't worked out a clever way of automatically generating both the basic domain and alternate domain texes easily}
-\todo{FIX CODE: These tables need changed from being ``delta T'' to ``Probability of detection by an idiotic classifier}
+%\todo{FIX CODE: These tables need changed from being ``delta T'' to ``Probability of detection by an idiotic classifier}
 
 \begin{landscape}
   \begin{table}
@@ -362,6 +358,110 @@ From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistentl
   \end{table}
 \end{landscape}
 
+\section{Metric Subset Analysis}
+So far the ability to generate and test the ``best'' metric weighting schemes across domains has been demonstrated, optimising for the highest levels of selectivity between fair and expected misbehaviours. 
+However, these metric weighting schemes have been constructed into ``domains'' based on natural experience in the operating environment. 
+Through observation of the metric relevancies shown in \autoref{fig:multi_feature_extraction}, potential alternative ``domains'' were generated through simple observation of the visual result.
+In order to remove the human element, and investigate the wider impact and potential optimisation of this ``optimum subdomain'' subset idea, the idea wether these intrinsic  domains (Physical and Communications) can be improved upon by removing the assumption that ``Communications'' behaviours are best identified through the use of Communications metrics is tested.
+
+To accomplish this, the above discussed analysis from metric weight relevance regression and generation to $\Delta{T}_{ix}/\Delta{T}_{ix}$ validation is performed for all combinations of the $M=9$ explored metrics with three or more metrics ($k\ge3$). 
+
+From this brute-force approach~\footnote{each ``run'' consisting of ${M\choose{k}}$ individual weight assessments, with the same multiplicity of 8 experimental runs per scenario per target node as before in previous runs}, a small investigation can be made in to both the performance of metric subsets, and the potential redundancies between metrics. 
+For instance, one could expect that $P_{RX}$ would be almost always directly related to the expected positioning between nodes and therefore to \gls{indd}.
+However, a counter hypothesis would be that this redundancy is present in the ``Fair'' case, but in misbehaving cases, the discrepancy between $P_{RX}$ and \gls{indd} could indicate or characterise a particular misbehaviour. 
+
+\begin{figure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{top_mpc_dt_box}
+		\caption{MPC}
+		\label{fig:top_mpc_dt_box}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{top_sts_dt_box}
+		\caption{STS}
+		\label{fig:top_sts_dt_box}
+	\end{subfigure}\\
+	
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{top_shadow_dt_box}
+		\caption{Shadow}
+		\label{fig:top_shadow_dt_box}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{top_slowcoach_dt_box}
+		\caption{SlowCoach}
+		\label{fig:top_slowcoach_dt_box}
+	\end{subfigure}
+	
+	\centering
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{top_mean_dt_box}
+		\caption{Mean of all responses}
+		\label{fig:top_mean_dt_box}
+	\end{subfigure}
+	\caption{Variability in cross-behaviour performance of Top 10\% of synthetic domains based on individual misbehaviours and the overall mean response}\label{fig:top_dt_boxes}
+\end{figure}
+
+\subsection{Simple Maximisation}
+Initially, a simple mean of the True Positive ($\Delta T_{ix}$) is used to indicate the overall performance of a particular synthetic domain (i.e. a synthetic domain created by the arbitrary selection of a given set of trust metrics for assessment).
+\autoref{fig:top_mean_dt_box} shows the distribution in $\Delta T_{ix}$ for each behaviour for the top 10\% of this simple mean.
+As has been shown before, it's immediately clear that \gls{mpc} and SlowCoach are the more responsive behaviours to detect across the metric space, with Shadow being slightly more difficult and \gls{sts} remaining as challenging to detect as in earlier attempts.
+This is disappointing, as it was hoped that \emph{some} combination of metrics in relative isolation would be capable of detecting this behaviour in a more convincing manner, but it is clear that the Application level nature of the \gls{sts} attack is avoiding significant impacts across all the metrics currently applied.
+\todo{FUT: It'd be good to apply this to ``blind'' behaviours, but that's a very complicated issue in terms of anomaly detection etc. Should work though as long as it's not Application-specific like STS}
+
+Across the figures in \autoref{fig:top_dt_boxes} that when behaviours are targeted for this meta-optimisation, naive as it is, the variability in response performance in other, unoptimised, misbehaviours is greatly increased, indicating that, at least in the case of attempting to \emph{identify} misbehaviour, that this is a case of over-optimisation, and that in the majority of cases, optimising for the mean response (\autoref{fig:top_mean_dt_box}) is sufficient to get a strong and consistent performance across misbehaviours.
+
+\begin{table}
+	\centering
+	\caption{Top 5 performing synthetic domains, targeting MPC, and including their performance in detecting other misbehaviours}
+	\centerline{\input{Figures/input/top_MPC_dt.tex}}
+	\label{tab:top_mpc_dt}
+\end{table}
+\begin{table}
+	\centering
+	\caption{As in \autoref{tab:top_mpc_dt}, but targeting STS}
+	\centerline{\input{Figures/input/top_STS_dt.tex}}
+	\label{tab:top_sts_dt}
+\end{table}
+\begin{table}
+	\centering
+	\caption{As in \autoref{tab:top_mpc_dt}, but targeting Shadow}
+	\centerline{\input{Figures/input/top_Shadow_dt.tex}}
+	\label{tab:top_shadow_dt}
+\end{table}
+\begin{table}
+	\centering
+	\caption{As in \autoref{tab:top_mpc_dt}, but targeting SlowCoach}
+	\centerline{\input{Figures/input/top_SlowCoach_dt.tex}}
+	\label{tab:top_sts_dt}
+\end{table}
+\begin{table}
+	\centering
+	\caption{As in \autoref{tab:top_mpc_dt}, but targeting the mean response across misbehaviours}
+	\centerline{\input{Figures/input/top_Mean_dt.tex}}
+	\label{tab:top_mean_dt}
+\end{table}
+\todo{FIX: If these tables are worth anything at all, they can be combined into one (i.e. with the targeted behaviour on the left), or alternatively, the top ``10\%'' could me averaged with the ``popularity'' of metrics used rather than a checkmark on each result}
+
+\begin{table}
+	\centering
+	\caption{Averaged summary of top 10\% for each targeted behaviour, with the average ratio of occurrence of each metrics for the summarised synthetic domains}
+	\centerline{\input{Figures/input/top_targeted_dt.tex}}
+	\label{tab:top_targeted_dt}
+\end{table}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{focus_ratio}
+	\caption{Mean of all responses}
+	\label{fig:focus_ratio}
+\end{figure}
+\todo{NOW: Talk about the relationship between the targeted results and the mean optimisation as an excuse to say that it's ok to look across the top performers in most cases}
 
 \section{Conclusion}
 In this chapter we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 

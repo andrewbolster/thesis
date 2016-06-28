@@ -23,6 +23,9 @@
 	}
 }
 \makeatother
+%http://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
 \tikzset{
 	block/.style = {draw, fill=white, rectangle, minimum height=3em, minimum width=3em, text width=8em, text centered},
 	tmp/.style  = {coordinate}, 

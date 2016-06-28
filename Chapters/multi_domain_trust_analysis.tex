@@ -215,12 +215,13 @@ $\Delta T_{ix}^-$ represents the average $\Delta T_{ij}$ for all other nodes, re
 
 The ``best'' weight permutations, as shown in \autoref{tab:optimised_weights}, are applied to untrained datasets for these results.
 
-This is a departure from the Dixons Q-Test applied in \autoref{ch:physical_trust}, as the number of metrics in use 
-\todo{ADD:come back to this}
+This is a departure from the Dixons Q-Test applied in \autoref{ch:physical_trust}, as the number of metrics in use, and the recognised variability in response to different metrics makes a simple outlier assessment unfairly naive for performance assessment. 
+The primary motivation to this work is to generate weights that (in the case of a single attacker) induce the largest Trust reduction observable by as many nodes within the network.
+This motivation is encapsulated in the $\Delta T_{ix}$ assessment, and allows increased abstraction so as to assess the variability of metrics in use, and to assess the usefulness of such generated ``Alternate'' or ``Synthetic'' domains.
 
 An exemplar subset of the results is shows in Figs~\ref{fig:comms_time_mpc}-~\ref{fig:full_time_slowcoach}, with the ``misbehaving node'' highlighted with heavier lines, with any observations about the rest of the cohort faded and dashed. For each node assessment, the mean for that assessment over that time period is also included as a solid / dashed line respectively for clarity.
 
-The most intuitively ``Communications'' behaviour, \gls{mpc}, scores comfortably in the 90th percentile range in both Communications Domain (\autoref{fig:comms_time_mpc}) and Full Domain (\autoref{fig:full_time_mpc})  trust assessments. As seen in \autoref{tab:optimised_weights}, both the ``Full'' and ``Comms'' metric optimisations heavily weigh $P_{TX}$, and as this is the metric directly modified by the misbehaviour, it is expected that this is easily discernable using these domain weights.
+The most intuitively ``Communications'' behaviour, \gls{mpc}, scores comfortably in the 90th percentile range in both Communications Domain (\autoref{fig:comms_time_mpc}) and Full Domain (\autoref{fig:full_time_mpc})  trust assessments. As seen in \autoref{tab:optimised_weights}, both the ``Full'' and ``Comms'' metric optimisations heavily weigh $P_{TX}$, and as this is the metric directly modified by the misbehaviour, it is expected that this is easily discernible using these domain weights.
 However when this communications information is unavailable, as is the case in the use of Physical Domain metrics alone in \autoref{fig:phys_time_mpc}, the misbehaving node (Alfa) is completely indiscernible compared to the other nodes, with all nodes in the cohort tending to a trust value of $0.5$.
 How this discernibility would fare under varying emphasis of behaviours is an open question\todo{FUT: Answer what happens when you vary MPC power variation}
 
@@ -359,7 +360,7 @@ From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistentl
 \end{landscape}
 
 \section{Metric Subset Analysis}
-So far the ability to generate and test the ``best'' metric weighting schemes across domains has been demonstrated, optimising for the highest levels of selectivity between fair and expected misbehaviours. 
+So far, the ability to generate and test the ``best'' metric weighting schemes across domains has been demonstrated, optimising for the highest levels of selectivity between fair and expected misbehaviours. 
 However, these metric weighting schemes have been constructed into ``domains'' based on natural experience in the operating environment. 
 Through observation of the metric relevancies shown in \autoref{fig:multi_feature_extraction}, potential alternative ``domains'' were generated through simple observation of the visual result.
 In order to remove the human element, and investigate the wider impact and potential optimisation of this ``optimum subdomain'' subset idea, the idea wether these intrinsic  domains (Physical and Communications) can be improved upon by removing the assumption that ``Communications'' behaviours are best identified through the use of Communications metrics is tested.
@@ -407,14 +408,26 @@ However, a counter hypothesis would be that this redundancy is present in the ``
 	\caption{Variability in cross-behaviour performance of Top 10\% of synthetic domains based on individual misbehaviours and the overall mean response}\label{fig:top_dt_boxes}
 \end{figure}
 
-\subsection{Simple Maximisation}
-Initially, a simple mean of the True Positive ($\Delta T_{ix}$) is used to indicate the overall performance of a particular synthetic domain (i.e. a synthetic domain created by the arbitrary selection of a given set of trust metrics for assessment).
+The True Positive ($\Delta T_{ix}$) is again used to indicate the overall performance of a particular synthetic domain (i.e. a synthetic domain created by the arbitrary selection of a given set of trust metrics for optimisation and assessment).
 \autoref{fig:top_mean_dt_box} shows the distribution in $\Delta T_{ix}$ for each behaviour for the top 10\% of this simple mean.
 As has been shown before, it's immediately clear that \gls{mpc} and SlowCoach are the more responsive behaviours to detect across the metric space, with Shadow being slightly more difficult and \gls{sts} remaining as challenging to detect as in earlier attempts.
 This is disappointing, as it was hoped that \emph{some} combination of metrics in relative isolation would be capable of detecting this behaviour in a more convincing manner, but it is clear that the Application level nature of the \gls{sts} attack is avoiding significant impacts across all the metrics currently applied.
 \todo{FUT: It'd be good to apply this to ``blind'' behaviours, but that's a very complicated issue in terms of anomaly detection etc. Should work though as long as it's not Application-specific like STS}
 
-Across the figures in \autoref{fig:top_dt_boxes} that when behaviours are targeted for this meta-optimisation, naive as it is, the variability in response performance in other, unoptimised, misbehaviours is greatly increased, indicating that, at least in the case of attempting to \emph{identify} misbehaviour, that this is a case of over-optimisation, and that in the majority of cases, optimising for the mean response (\autoref{fig:top_mean_dt_box}) is sufficient to get a strong and consistent performance across misbehaviours.
+Across the figures in \autoref{fig:top_dt_boxes}, when behaviours are targeted for this meta-optimisation, naive as it is, the variability in response performance in other, unoptimised, misbehaviours is greatly increased, indicating that, at least in the case of attempting to \emph{identify} misbehaviour, that this is a case of over-optimisation, and that in the majority of cases, optimising for the mean response (\autoref{fig:top_mean_dt_box}) is sufficient to get a strong and consistent performance across misbehaviours.
+
+This is shown explicitly in \autoref{fig:focus_ratio}, where the selective performance ratio between a targeted subset optimisation and the ``mean'' subset optimisation demonstrates that in all cases but \gls{sts}, targeting specific behaviours for this domain synthesis does not meaningfully improve the true-positive behaviour of trust assessment, and in general decreases the detection accuracy.
+The abstractions for the generation of \autoref{fig:focus_ratio} are shown in \autoref{tab:focus_ratio}.
+
+Looking at the performance of these targeted synthetic domains with respect to the metrics used, \autoref{fig:top_targeted_dt_heatmap} shows the metric selection correlations across metrics and behaviours.
+From this it is observed that while there is a relatively consistent relationship between ``Physical'' metrics (INDD, INHD and Speed) and ``Physical'' misbehaviours (SlowCoach and Shadow), this is far from consistent across the domain space. 
+
+Looking back at the performance of the previously used Basic and Alternative Domains, \autoref{tab:domain_deltas} can be extended to include results from the ``Best'' synthetic domains for each misbehaviour, shown in \autoref{tab:augmented_domain_deltas}.
+As stated, it is not surprising that these Behaviour-optimised synthetic domains perform better at maximising $\Delta T_{ix}$ in their targeted behaviours, with an incurred reduction in the average response to other misbehaviours. 
+
+In terms of a comparison between the previously generated ``Alternate'' domains, which were made by visual inspection of the returned relevance from \autoref{fig:multi_feature_extraction}, the ``SlowCoach'' synthetic domain uses almost all the same domains as the ``Phys Alt.'' domain, such that the synthetic domain leaves the Delay metric out, and in all cases except for \gls{sts}, outperforms the Alternate domain.
+A final observation is that none of the synthetic domains use the Offered Load metric ($G$), indicating that in this particular scenario where such load is near-constant that it is not particularly useful for Trust Assessment.
+
 
 \begin{table}
 	\centering
@@ -446,30 +459,71 @@ Across the figures in \autoref{fig:top_dt_boxes} that when behaviours are target
 	\centerline{\input{Figures/input/top_Mean_dt.tex}}
 	\label{tab:top_mean_dt}
 \end{table}
-\todo{FIX: If these tables are worth anything at all, they can be combined into one (i.e. with the targeted behaviour on the left), or alternatively, the top ``10\%'' could me averaged with the ``popularity'' of metrics used rather than a checkmark on each result}
 
 \begin{table}
 	\centering
 	\caption{Averaged summary of top 10\% for each targeted behaviour, with the average ratio of occurrence of each metrics for the summarised synthetic domains}
-	\centerline{\input{Figures/input/top_targeted_dt.tex}}
-	\label{tab:top_targeted_dt}
+	
+	%\centerline{\input{Figures/input/top_targeted_dt.tex}}
+	\centerline{\begin{tabular}{|p{2cm}||*{5}{c|}|*{9}{c|}}
+		\toprule
+		\multirow{3}{*}{\parbox{2cm}{Targeted Behaviour}}&\multicolumn{5}{c||}{Behaviour $\Delta T_{ix}$} & \multicolumn{9}{c|}{Metrics in Synthetic Domain}\\
+			 &                \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} & \rot{Mean} &                     \rot{$Delay$} & \rot{$P_{RX}$} & \rot{$P_{TX}$} &  \rot{$S$} &  \rot{$G$} & \rot{$PLR$} & \rot{$INDD$} & \rot{$INHD$} & \rot{$Speed$} \\
+		\midrule
+		MPC                &               0.89 & 0.02 &   0.25 &      0.53 & 0.42 &                        0.65 &     0.40 &     1.00 & 0.50 & 0.40 &  0.00 &   0.20 &   0.70 &    0.45 \\
+		STS                &               0.58 & 0.05 &   0.25 &      0.43 & 0.33 &                        0.80 &     0.40 &     0.55 & 0.70 & 0.30 &  0.65 &   0.30 &   0.35 &    0.35 \\
+		Shadow             &               0.70 & 0.00 &   0.43 &      0.63 & 0.44 &                        0.50 &     1.00 &     0.65 & 0.05 & 0.45 &  0.75 &   1.00 &   0.70 &    0.95 \\
+		SlowCoach          &               0.52 & 0.00 &   0.38 &      0.70 & 0.40 &                        0.50 &     0.80 &     0.25 & 0.35 & 0.65 &  0.15 &   0.65 &   0.05 &    1.00 \\
+		Mean               &               0.87 & 0.02 &   0.40 &      0.67 & 0.49 &                        0.55 &     1.00 &     1.00 & 0.35 & 0.70 &  0.20 &   0.60 &   0.20 &    1.00 \\
+		\bottomrule
+	\end{tabular}}
+
+	\label{tab:focus_ratio}
 \end{table}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{focus_ratio}
+	\includegraphics[width=0.9\linewidth]{focus_ratio}
 	\caption{Mean of all responses}
 	\label{fig:focus_ratio}
 \end{figure}
-\todo{NOW: Talk about the relationship between the targeted results and the mean optimisation as an excuse to say that it's ok to look across the top performers in most cases}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{top_targeted_dt_heatmap}
+	\caption{Correlations between highest performing synthetic domain metrics with respect to Targeted misbehaviours}
+	\label{fig:top_targeted_dt_heatmap}
+\end{figure}
+
+\begin{table}
+	\centering
+	\caption{$\Delta T_{ix}$ behaviour detection performance across native, alternate, and targeted-synthetic domains, showing the respective constituent metrics}
+	\begin{tabular}{|p{2cm}||*{5}{c|}|*{9}{c|}}
+		\toprule
+		\multirow{3}{*}{\parbox{2cm}{Domain}}&\multicolumn{5}{c||}{Behaviour $\Delta T_{ix}$} & \multicolumn{9}{c|}{Metrics in Domain}\\
+		&                \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} & \rot{Mean} &                     \rot{$Delay$} & \rot{$P_{RX}$} & \rot{$P_{TX}$} &  \rot{$S$} &  \rot{$G$} & \rot{$PLR$} & \rot{$INDD$} & \rot{$INHD$} & \rot{$Speed$} \\
+		\midrule
+		Full       & 0.81 & -0.03 &    0.42 &       0.60 &  0.45 &\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK\\\hline
+		Comms      & 0.85 &  0.04 &    0.19 &       0.26 &  0.34 &\OK&\OK&\OK&\OK&\OK&\OK&&&\\
+		Phys       & 0.04 &  0.00 &    0.39 &       0.69 &  0.28 &&&&&&&\OK&\OK&\OK\\\hline
+		Comms alt. & 0.85 &  0.03 &    0.38 &       0.45 &  0.43 &&&&\OK&\OK&\OK&\OK&&\\
+		Phys alt.  & 0.48 &  0.03 &    0.42 &       0.63 &  0.39 &\OK&\OK&&&&&\OK&\OK&\OK\\\hline
+        MPC        & 0.89 &  0.01 &   0.35 &      0.54 & 0.45 &                         \OK &      \OK &      \OK &      &      &       &        &    \OK &         \\
+		STS        & 0.86 & 0.06 &   0.37 &      0.49 & 0.45 &                         \OK &          &      \OK &  \OK &      &   \OK &    \OK &        &         \\
+		Shadow     & 0.49 & -0.00 &   0.44 &      0.66 & 0.40 &                             &      \OK &          &     &     &       &    \OK &    \OK &     \OK \\
+		SlowCoach  & 0.47 &  0.00 &   0.37 &      0.72 & 0.39 &                         \OK &      \OK &          &  \OK &      &       &        &        &     \OK \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:augmented_domain_deltas}
+\end{table}
 \section{Conclusion}
 In this chapter we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 
 
 The extension of the methodologies of multi-vector trust into the marine space are already demonstrated, however including information from physical observations of actors in a network enables the detection and identification of a much wider range of behaviours.
 We also demonstrate a method for assessing trust metrics in harsh environments in terms of their relative significance, and a method for establishing classification signatures for misbehaviours.
+Finally, the synthetic generation of abstract metric domains is explored, where it is found that in most cases, optimising for generalised performance prevents response-overfitting, and that in general, but provide the strongest deviations in observed Trust when targeted specifically, further supporting the use of a mixed-domain approach for Trust across domains for identification of misbehaviours.
 
-It is to be noted that this presented method is significantly more computationally intensive than the relatively simple Hermes / OTMF algorithms communications only algorithms, and is exponential in complexity as metrics and/or domains are added. The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization. More work needs to be done to characterise how worthwhile this approach is compared to a separate synthesis approach where by MTFM-style trust is generated and assessed on a per-domain basis and subsequently fused.
+It is to be noted that this presented method is significantly more computationally intensive than the relatively simple Hermes / \gls{otmf} algorithms communications only algorithms, and is exponential in complexity as metrics and/or domains are added. The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization. More work needs to be done to characterise how worthwhile this approach is compared to a separate synthesis approach where by \gls{mtfm}-style trust is generated and assessed on a per-domain basis and subsequently fused.
 
 For greater fidelity and more optimal results, a wider range of weights can be used in the initial regression step; however this is computationally expensive given that weighting is applied to each perspective (i.e.\ observer/target node pair) for each trust assessment time step, presenting 15 perspectives at each time interval in the 6 node case.
 

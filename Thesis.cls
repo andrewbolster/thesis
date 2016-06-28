@@ -128,8 +128,10 @@
 \usepackage[list=false, listformat=simple]{subcaption}
 \captionsetup{compatibility=false}
 \usepackage{booktabs}
+\usepackage{array}
 \renewcommand{\arraystretch}{1.3}
 \usepackage{rotating}
+\usepackage{pifont}
 \usepackage{listings}
 \usepackage{lstpatch}
 \lstset{captionpos=b,

@@ -68,6 +68,9 @@
   *{package}{booktabs}    {2005/04/14 v1.61803}
   *{package}{rotating}    {2009/03/28 v2.16a}
   *{package}{ifthen}      {2014/09/29 v1.1c}
+  *{package}{pifont}      {2005/04/12 v9.2a}
+  *{file}   {upzd.fd}     {2001/06/04 v0.0}
+  *{file}   {upsy.fd}     {2001/06/04 v0.0}
   *{package}{listings}    {2015/06/04 v1.6}
   *{package}{lstpatch}    {0000/00/00 v0.0}
   *{package}{lstmisc}     {2015/06/04 v1.6}
@@ -321,12 +324,11 @@
   *{file}   {Figures/input/top_Shadow_dt.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/top_SlowCoach_dt.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/top_Mean_dt.tex}{0000/00/00 v0.0}
-  *{file}   {Figures/input/top_targeted_dt.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/focus_ratio.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/top_targeted_dt_heatmap.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/conclusion.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/HumanFactors.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/Grey.tex}{0000/00/00 v0.0}
-  *{file}   {./Appendices/OrphanedSections.tex}{0000/00/00 v0.0}
   *{file}   {Thesis.bbl}  {0000/00/00 v0.0}
   *{file}   {omlcmr.fd}   {2014/09/29 v2.5h}
 }

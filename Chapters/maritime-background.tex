@@ -309,7 +309,7 @@ The natural extension of these kind of applications is the use of \glspl{auv} on
 \subsubsection{Hull and Infrastructure Inspection}
 Ongoing concerns regarding the security, safety and legality of international shipping has driven the application of \glspl{auv} to the area of near-surface hull and infrastructure inspections, looking for damage as well as devices such as limpet mines and other contraband.
 This use case puts a range of unique pressures on the \gls{auv} system; requiring highly accurate three-dimensional localisation and path-planning to clearly image the contours of a hull\cite{Nicholson2008}.
-Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using \glspl{auv} for both the laying of and inspection of these cables is an exciting area of work\cite{Yu2004}\cite{Asakawa2002}.
+Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using \glspl{auv} for both the laying of and inspection of these cables is an exciting area of work\cite{Yu2004,Asakawa2002}.
 
 \subsubsection{Marine Petrochemical/Mineralogy}
 Oil and Gas industry requirements for high quality, low altitude bathymetry of seabed structures for infrastructure development (pipelines/drill platforms etc.) as well as monitoring of those structures over time (inspection etc.) is another significant application area, and a major driver of research investment.
@@ -359,6 +359,8 @@ In summary, current technology reliably enables \glspl{auv} to localise to a sub
 	\item Side scanning sonar 
 	\item Sub-bottom Sonar Profiling
 \end{enumerate}
+
+\todo{FFS Finish the payloads, needs some pictures too.}
 
 \subsection{Example Maritime Autonomous Systems, Platforms and Operational Limitations}
 
@@ -418,13 +420,13 @@ Similarly, the assessment that the Risk of Data Corruption is low is arguable on
 \begin{table}
 	\caption{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from \cite{Kidston2010}}
 	\label{tab:manet_risk}
-	\begin{tabularx}{\textwidth}{X X X X X}\toprule
+	\begin{tabularx}{\textwidth}{p{4cm} X X X >{\raggedright\arraybackslash}p{4cm}}\toprule
 		Threat & Vulnerability & Impact & Risk & Mitigation	\\\midrule
-		Resource Depletion / \gls{dos} & Low-High & High & Low-High & Layer Specific Mechanisms\cite{Wu2007,Nwaocha2015}\\
-		Eavesdropping & Medium & High & Low & Cryptography \cite{Chen2010}\\
-		Masquerade & Low & Very High & Medium & Trust Systems\cite{Wang2009a} and Cryptography\\
+		Resource Depletion / \gls{dos} & Low-High & High & Low-High & Layer Specific Mechanisms~\cite{Wu2007,Nwaocha2015}\\
+		Eavesdropping & Medium & High & Low & Cryptography~\cite{Chen2010}\\
+		Masquerade & Low & Very High & Medium & Trust Systems and Cryptography~\cite{Wang2009a}\\
 		Data Corruption & Low & High & Low & Cryptography\\
-		Traffic Analysis & High & Low & Medium & Obfuscation\cite{Huang2010}\\
+		Traffic Analysis & High & Low & Medium & Obfuscation~\cite{Huang2010}\\
 %		Misfire/Misactuation & Low & Very High & High & Man-in-the-loop firing\cite{Caseley2009}\\
 	\end{tabularx}
 \end{table}

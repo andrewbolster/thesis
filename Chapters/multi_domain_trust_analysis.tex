@@ -446,8 +446,7 @@ Looking back at the performance of the previously used Native and Alternative Do
 As stated, it is not surprising that these Behaviour-optimised synthetic domains perform better at maximising $\Delta T_{ix}$ in their targeted behaviours, with an incurred reduction in the average response to other misbehaviours. 
 
 In terms of a comparison between the previously generated ``Alternate'' domains, which were made by visual inspection of the returned relevance from \autoref{fig:multi_feature_extraction}, the ``SlowCoach'' synthetic domain uses almost all the same domains as the ``Phys Alt.'' domain, such that the synthetic domain leaves the Delay metric out, and in all cases except for \gls{sts}, outperforms the Alternate domain.
-A final observation is that none of the synthetic domains use the Offered Load metric ($G$), indicating that in this particular scenario where such load is near-constant that it is not particularly useful for Trust Assessment.
-\todo{This is bullshit}
+
 
 \begin{table}
 	\centering
@@ -518,25 +517,47 @@ A final observation is that none of the synthetic domains use the Offered Load m
 \begin{table}
 	\centering
 	\caption{$\Delta T_{ix}$ behaviour detection performance across native, alternate, and targeted-synthetic domains, showing the respective constituent metrics}
-	\begin{tabular}{|p{2cm}||*{5}{c|}|*{9}{c|}}
+	\begin{tabular}{|c|p{2cm}||*{5}{c|}|*{9}{c|}}
 		\toprule
-		\multirow{3}{*}{\parbox{2cm}{Domain}}&\multicolumn{5}{c||}{Behaviour $\Delta T_{ix}$} & \multicolumn{9}{c|}{Metrics in Domain}\\
-		&                \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} & \rot{Mean} &                     \rot{$Delay$} & \rot{$P_{RX}$} & \rot{$P_{TX}$} &  \rot{$S$} &  \rot{$G$} & \rot{$PLR$} & \rot{$INDD$} & \rot{$INHD$} & \rot{$Speed$} \\
+		\multicolumn{2}{|c||}{\multirow{3}{*}{\parbox{2cm}{Domain}}}&\multicolumn{5}{c||}{Behaviour $\Delta T_{ix}$} & \multicolumn{9}{c|}{Metrics in Domain}\\
+		&&                \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} & \rot{Mean} &                     \rot{$Delay$} & \rot{$P_{RX}$} & \rot{$P_{TX}$} &  \rot{$S$} &  \rot{$G$} & \rot{$PLR$} & \rot{$INDD$} & \rot{$INHD$} & \rot{$Speed$} \\
 		\midrule
-		Full       & 0.81 & -0.03 &    0.42 &       0.60 &  0.45 &\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK\\\hline
-		Comms      & 0.85 &  0.04 &    0.19 &       0.26 &  0.34 &\OK&\OK&\OK&\OK&\OK&\OK&&&\\
-		Phys       & 0.04 &  0.00 &    0.39 &       0.69 &  0.28 &&&&&&&\OK&\OK&\OK\\\hline
-		Comms alt. & 0.85 &  0.03 &    0.38 &       0.45 &  0.43 &&&&\OK&\OK&\OK&\OK&&\\
-		Phys alt.  & 0.48 &  0.03 &    0.42 &       0.63 &  0.39 &\OK&\OK&&&&&\OK&\OK&\OK\\\hline
-        MPC        & 0.89 &  0.01 &   0.35 &      0.54 & 0.45 &                         \OK &      \OK &      \OK &      &      &       &        &    \OK &         \\
-		STS        & 0.86 & 0.06 &   0.37 &      0.49 & 0.45 &                         \OK &          &      \OK &  \OK &      &   \OK &    \OK &        &         \\
-		Shadow     & 0.49 & -0.00 &   0.44 &      0.66 & 0.40 &                             &      \OK &          &     &     &       &    \OK &    \OK &     \OK \\
-		SlowCoach  & 0.47 &  0.00 &   0.37 &      0.72 & 0.39 &                         \OK &      \OK &          &  \OK &      &       &        &        &     \OK \\
+		\multirow{3}{*}{\rot{Basic}} & Full       & 0.81 & -0.03 &    0.42 &       0.60 &  0.45 &\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK\\[0.3em]\hline
+		& Comms      & 0.85 &  0.04 &    0.19 &       0.26 &  0.34 &\OK&\OK&\OK&\OK&\OK&\OK&&&\\
+		& Phys       & 0.04 &  0.00 &    0.39 &       0.69 &  0.28 &&&&&&&\OK&\OK&\OK\\[0.7em]\hline
+		\multirow{2}{*}{\rot{Alternate}}&Comms alt. & 0.85 &  0.03 &    0.38 &       0.45 &  0.43 &&&&\OK&\OK&\OK&\OK&&\\[0.5em]
+		& Phys alt.  & 0.48 &  0.03 &    0.42 &       0.63 &  0.39 &\OK&\OK&&&&&\OK&\OK&\OK\\[0.5em]\hline
+        \multirow{5}{*}{\rot{Synthetic}}& MPC        & 0.89 &  0.01 &   0.35 &      0.54 & 0.45 &                         \OK &      \OK &      \OK &      &      &       &        &    \OK &         \\
+		& STS        & 0.86 & 0.06 &   0.37 &      0.49 & 0.45 &                         \OK &          &      \OK &  \OK &      &   \OK &    \OK &        &         \\
+		& Shadow     & 0.49 & -0.00 &   0.44 &      0.66 & 0.40 &                             &      \OK &          &     &     &       &    \OK &    \OK &     \OK \\
+		& SlowCoach  & 0.47 &  0.00 &   0.37 &      0.72 & 0.39 &                         \OK &      \OK &          &  \OK &      &       &        &        &     \OK \\
+		& Mean       & 0.88 & 0.03 &   0.42 &      0.69 & 0.50 &                             &      \OK &      \OK &      &  \OK &       &    \OK &        &     \OK \\
 		\bottomrule
 	\end{tabular}
 	\label{tab:augmented_domain_deltas}
 \end{table}
 \todo{Bring mean to the bottom of this table, and do the fucking classifier}
+\section{Selectivity Performance of Optimised Domains}
+
+Having arrived at a set of Basic, Alternate, and now Synthetic domains, optimised for maximising the induced ``drop'' in trust, (i.e. maximising $\Delta T_{ix}$), an estimate of the actual performance of these assessments must be made.
+This is accomplished using an extension of the Dixon classifier used in \autoref{ch:physical_trust}, such that rather than detecting outliers based on a physical metric, outliers are detected based on the differential trust value given by a given optimised weight.
+
+This is initially tested in what can be considered the ``best case''; using the previously optimised domains above to weight a collection of over 5000 execution runs in each of the four domains, and using this multi-domain trust vector in Dixons' Q-Test. (Again, $Q^{95}$)
+
+It would be expected that with the increased ``noise'' from using a range of executions that this simple identifier should have an accuracy directly related to the previously observed $\Delta T_{ix}$ values which indicated the ``size'' of the gap between a suspected node and the remainder of the cohorts trust assessments.
+\begin{table}
+	\begin{tabular}{|l|r|r|}
+		\toprule
+		Targeted Behaviour &        Accuracy &        -+ \\
+		\midrule
+       MPC & 1.000 & 0.000 \\
+       STS & 0.041 & 0.085 \\
+       Shadow & 0.579 & 0.000 \\
+       SlowCoach & 0.902 & 0.000 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Selectivity performance using Domain-Trained weight vectors using a Dixons Q based limit-classifier}
+\end{table}
 \section{Conclusion}
 \todo{the guts of this conclusion could be the start of the main conclusion}
 In this chapter we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 

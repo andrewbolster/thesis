@@ -5,12 +5,57 @@
 	\label{ch:conclusion}
 	\lhead{Chapter \thechapter. \emph{\ChapterTitle}} % Write in your own chapter title to set the page header
 
+\section{Conclusions}
+
+The use of \gls{manet} architectures in the \gls{uan} space requires a fundamental reassessment of the security and reliability mechanisms and performance of such networks in the challenging underwater environment.
+The strengths of \gls{manet} architectures inherently produce decentralised, self-organised, collaborative networks that strive towards efficiency and performance where all network members perform fairly.
+However, with the increasing introduction of autonomy into the general \gls{manet} space, this assessment of ``fairness'' is simultaneously an assessment of the capability of the network, and of the ``trustworthiness'' of the autonomous nodes within it.
+
+The original \gls{manet} architecture was designed with no in-built defence or security capabilities, and as such, threat mitigation mechanisms been superimposed over time to protect against fundamental vulnerabilities in the architecture due to assumptions of fairness, the use of open, wireless links with ``fuzzy'' operational boundaries, highly mobile nodes inducing dynamic topologies, and constrained power/computation/locomotion/communications resources
+These mechanisms vary, from evidence based cryptographic security such as centralised trusted third parties, a-priori shared secrets or one-time-pads, or fully decentralised \gls{pki} systems.
+However, these classical security measures require significant investments in computational memory and power; communications channel occupancy; and inherently rely on relatively short delays between links and from end-to-end points in the network.
+
+While in the terrestrial realm, the increasing computing power of devices such as mobile phones has enabled the creation of pervasive, end to end security, as discussed in \autoref{ch:maritime_background}, these assumptions of channel availability and low-latency do not hold in the underwater acoustic space, which is massively variable in channel capacity and delay-response.
+As such, regardless of on-board computing power, alternative, decentralised methods for ensuring the integrity of the network and its operations is essential for expanding the applications of \gls{manet} architectures in this space. 
+
+These applications vary from defensive patrolling, \gls{asw} and \gls{mcm}, to pervasive environmental monitoring, and in almost all cases, current military and commercial implementations benefit from leveraging individual node autonomy in a distributed architecture to bring down development and operating costs, increase system efficiency, and fundamentally, save humans time and in extreme cases, lives. 
+
+Trust is one alternative approach evidence based security to maintaining network integrity in the face of selfish, malicious or faulty misbehaviours in \glspl{manet}, and this approach has been well explored in the terrestrial realm.
+In \autoref{ch:trust_background}, the fundamental concept of Trust was explored, and a range of psychological, phenomenological, and technical approaches to Trust assessment and collaborative Trust were investigated.
+While this included excursions into the concepts of Design Trust (\autoref{sec:trust_perspectives}) and the impacts of human factors on the expected performance of trusting systems (\autoref{apx:human_factors}), this discussion was directed towards the application of Trust to autonomous \gls{manet}, as well as currently developed methods for establishing and maintaining trust in \glspl{manet} such as the Hermes and \gls{otmf} single-metric assessment frameworks (\autoref{sec:single_trust}), and \gls{mtfm}, which broke new ground in Trust establishment by looking at many available communications related metrics as an ensemble(\autoref{sec:multimetrictrust}), and applies Grey Relational Grading and whitenization (\autoref{apx:grey}) to take assessments across the communications domain and across the network topology to assess the trustworthiness of nodes within a \gls{manet} in a distributed fashion without requiring environmental or application specific ``training''.
+
+In general, Trust is ``the level of confidence one agent has in another to perform a given action on request or in a certain context'' (\autoref{sec:trust_manets}), and has previously been exclusively concerned with the communications operations of networks, generally relying on measures of packet routing success to infer expectations of future packet delivery probabilities, improving route generation and mitigating threats from selfish or malicious interference (\autoref{sec:manet_vuln}).
+However, the \gls{uan} application area and its challenging operation and communications constraints puts unique challenges on previous assumptions about the operation of abstract trust frameworks in \glspl{manet}, and as such required reassessment.
+
+Further, the \gls{uan} application area also highlights more general challenges to Trust in autonomous \gls{manet}; with the imposition of a highly constrained communications channel, it is difficult to maintain sufficient information about the operation of nodes in the network with high enough regularity to reliably disseminate that information across the network.
+Also, the high constrained physical dynamics and resource intensive communications and locomotion in \gls{uan} \glspl{manet} greatly expands the potential threat surface, particularly for \gls{dos}-style resource manipulation attacks; when locomotion is energetically expensive, if a node can selfishly get a ``free ride'' by minimising its mobility rather than fairly distributing effort across the network, operational mission times and overall efficiency can be impaired. 
+
+As such there is an open opportunity to explore the application of Trust methodologies to the physical domain instead of and as well as the communications domain, making such a \glspl{tmf} able to identify a much greater range of potential misbehaviours and maintain both integrity and efficiency.
+
+
 \section{Contributions and Findings}
 
-\todo{Contributions}
+Within this context, \autoref{ch:comms_trust} initially explores the scaling differences in node distance and communications rates using a simulated agent based environmental and communications model, identifying network saturation rates using a range of mobility, scaling, and offered loads, maximising network performance in terms of a throughput-delay product.
+Existing \glspl{tmf} methods are applied to this established range, demonstrating that these (Hermes, \gls{otmf} and \gls{mtfm}) existing frameworks are not directly suitable to the sparse, noisy, and dynamic underwater environment.
+While there is little that can be done to augment Hermes and \gls{otmf} in this environment, the weighted-metric nature of \gls{mtfm} allows the metric space to be explored for ``better'' weighting vectors to detect and identify misbehaviours that are hidden in the unweighted assessment.
+
+Having established the operation of Trust in the marine \gls{manet} environment, \autoref{ch:physical_trust} demonstrates through statistical measures of node distribution and velocities, that malicious and faulty misbehaviours can be both detected and identified to a high selectivity using a simple tree-based classifier, using a collaborative Port Protection scenario as a targeted waypoint mobility baseline.
+
+\autoref{ch:multi_domain}, the combination of these domains is assessed.
+The relative significance of metrics in the specific identification of a given behaviour is performed through a full-sight random forest regression by comparing a significant number of simulated mission runs.
+These significances, while simply a statistical measure of the importance of a given metric in discriminating between two behaviour (i.e. a fair behaviour and the misbehaviour) provide actionable information to generate a weighted metric sequence targeting that behaviour.
+The identification and classification methodologies from both \autoref{ch:comms_trust} and \autoref{ch:physical_trust} are combined to generate a classifier with very beneficial performance, \todo{insert numbers here}
+
+One disappointing issue with these results is that the \gls{sts} behaviour has been stubbornly avoiding identification, and with the applied methodology 
 
 \section{Future Work}
 \todo{Future Work}
 From \autoref{ch:comms_trust}:
 One solution to this would be to move from a stepping-window of trust observations to a continuous trust log, updated on packet reception rather than waiting regular periods for packets to be analysed.
 Future work could investigate the improvement of weight-based detection algorithms, the stability of \gls{gra} under multi-node collusion, the development of real-time outlier detection.
+
+From \autoref{ch:physical_trust}, it is recognised that the geometric abstractions used to assess the validity of ``physical trust assessment'' are application-agnostic (assuming collaborative mobility) and the applicability of this assessment and detection method to other areas such as \gls{auv} operations or Autonomous Vehicle Networks, potentially forming a mode of ``body language'' verification for autonomous systems. 
+Equally, the selected metrics are by no means exhaustive, and 
+
+Overall, the approaches taken throughout this thesis are relatively application agnostic and are indeed domain-agnostic also; it has been demonstrated that the use of trust assessment across communications and physical domains yields beneficial results, but the same approach could be applied to non-physical autonomous agents such as high-frequency trading initiatives, forensic accounting/auditing,  cheat-detection in online gaming, lane-assistance in self-driving cars, and possibly most interesting, having the autonomous agents assess how trust-worthy we are across domains such as vocal tonality, facial expressions, ``body language'', and other biometric factors in addition to just the words or commands we use.
+So, should they trust us?

@@ -853,7 +853,8 @@ This would be accomplished by assessing the impact of differential metric weight
 \section{Conclusion}
 It has been demonstrated that existing \gls{manet} Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
 By comparing the operation and performance of trust establishment in \glspl{manet} in a simulated underwater environment has demonstrated that in order to have any reasonable expectation of performance, that throughput and delay responses must be characterised before implementing trust. 
-While the \gls{mtfm} value does not display any immediate difference between the two behaviours, it has been shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
+It is shown that across the tested \glspl{tmf}, Hermes and \gls{otmf} demonstrate a small discriminating factor between normal behaviour and one of the misbehaviours, this discrimination is not very clear and \gls{otmf} does not detect the \gls{sts} behaviour at all, while \gls{mtfm} shows a significant ($\approx 10\%$) mean assessment drop the both misbehaving cases. 
+In terms of behaviour discrimination, the \gls{mtfm} value only displays a small immediate difference between the two misbehaviours, however it has been shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.
 Another difference is that \gls{mtfm} is significantly more computationally intensive than the relatively simple Hermes / \gls{otmf} algorithms.
 The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization.
 With significant delays (from seconds to many minutes), in a fading, refractive medium with varying propagation characteristics, the environment is not as predictable or performant as classical \gls{manet} \gls{tmf} deployment environments.

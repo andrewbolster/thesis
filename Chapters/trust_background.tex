@@ -322,7 +322,7 @@ On-demand route formation when a transmitting node requests one. However, packet
 \subsubsection{\gls{aodv}}
 Based on \gls{dsdv} and \gls{dsr}; uses beaconing and sequence numbering (\gls{dsdv}) as well as shortest path route discovery from \gls{dsr}, except that \gls{aodv} does not use full-path source routing, instead relying on intermediate-routing based only on a destination. This optimisation reduces overhead and is more resilient to highly dynamic deployments at the cost of variable and potentially very long delays due to slow route construction or complete retransmissions due to link failure.\cite{Rai2010a}  \\
 \subsubsection{\gls{roam}}
-\gls{roam} uses inter-nodal coordination along directed acyclic sub-graphs, which is derived from the router’s distance to destination. This operation is referred to as a “diffusing computation”. The advantage of this protocol is that it eliminates the search-to-infinity problem present in some of the on-demand routing protocols by stopping multiple flood searches when the required destination is no longer reachable. Another advantage is that each router maintains entries (in a route table) for destinations, which flow data packets through them (i.e. the router is a node which completes/or connects a router to the destination). This reduces significant amount of storage space and bandwidth needed to maintain an up-to-date routing table. Another novelty of \gls{roam} is that each time the distance of a router to a destination changes by more than a defined threshold, it broadcasts update messages to its neighbouring nodes, as described earlier. Although this has the benefit of increasing the network connectivity, in highly dynamic networks it may prevent nodes entering sleep mode to conserve power.\\ % REWORD THIS ITS DIRECTLY FROM \cite{Abolhasan2004}
+\gls{roam} uses inter-nodal coordination along directed acyclic sub-graphs, which is derived from the router’s distance to destination. This operation is referred to as a “diffusing computation”. The advantage of this protocol is that it eliminates the search-to-infinity problem present in some of the on-demand routing protocols by stopping multiple flood searches when the required destination is no longer reachable. Another advantage is that each router maintains entries (in a route table) for destinations, which flow data packets through them (i.e. the router is a node which completes/or connects a router to the destination). This reduces significant amount of storage space and bandwidth needed to maintain an up-to-date routing table. Another novelty of \gls{roam} is that each time the distance of a router to a destination changes by more than a defined threshold, it broadcasts update messages to its neighbouring nodes, as described earlier. Although this has the benefit of increasing the network connectivity, in highly dynamic networks it may prevent nodes entering sleep mode to conserve power.\\ % REWORD THIS ITS DIRECTLY FROM~\cite{Abolhasan2004}
 \subsubsection{\gls{abr}}
 \gls{abr} extends classical source-routing by including a stability (``associativity'') heuristic of the long-term link state between mobile nodes, ensuring that the least-mobile nodes are preferentially used for routing. Further, this heuristic is applied outward from destination rather than from the source, selecting only the ``best'' route, reducing the likelihood of packet duplication in the mid-network. However this ``associativity'' measure requires periodic beaconing forcing all nodes to remain active. Finally, in the case where the ``best'' route fails through an in-the-air topology change, there is no in-network path recovery mechanism, and link discovery must be restarted\cite{Toh1997}.\\
 \subsubsection{\gls{lar}}
@@ -353,13 +353,13 @@ Compared to \gls{zrp}, \gls{zhls} extended the zoning concept to include some el
 \subsubsection{\gls{slurp}}
 With a similar hierarchical non-overlapping zone structure to \gls{zhls}, \gls{slurp} does away with global routing through a deterministic mapping of node identifiers to ``Home'' regions, such that any node attempting to communicate with a node, can directly calculate from what ``Home'' zone that node originated.As and when nodes leave their ``Home'' region, they feedback to that region their current location. Subsequently when that node is a destination for a packet, the routing query is automatically directed to the home region which can direct the source node as to the direction of its destination, upon which the source can start sending data towards the destination using a most forward with fixed radius (MFR) geographical forwarding algorithm. Once the data reaches the zone where the destination currently resides, source-routing is used internally to complete the route. This strategy works well for relatively static networks with some mobile nodes, or where node mobility is ``slow'', such as \gls{wsn}, however it still relies on pre-programmes static zone maps as per \gls{zhls}\cite{Woo2001}
 \subsubsection{\gls{fbr}}
-\gls{fbr} is built upon the concepts of \gls{geraf}, which uses straight line distance-from-receiver minimisation, extending with a cone-based prioritisation metric rather than absolute distance, mitigating the zig zag effect of \gls{geraf} and implicitly supporting partially overlapping simultaneous alternate routing, improving system redundancy and (usually) eliminating the need for retransmission \cite{Jornet2008}.
+\gls{fbr} is built upon the concepts of \gls{geraf}, which uses straight line distance-from-receiver minimisation, extending with a cone-based prioritisation metric rather than absolute distance, mitigating the zig zag effect of \gls{geraf} and implicitly supporting partially overlapping simultaneous alternate routing, improving system redundancy and (usually) eliminating the need for retransmission~\cite{Jornet2008}.
 This is further augmented with an adaptive open-loop power control system which both aids in energy consumption and in preventing spurious blocking of the channel.
 \gls{fbr} is particularly well suited to constrained energy mobility networks with high mobility and high retransmission costs\cite{Noh2012}.
 
 
 \begin{table}[H]\centering
-	\caption[Comparison of Routing Strategy Classes]{Comparison of Routing Strategy Classes (from \citet{Abolhasan2004})}
+	\caption[Comparison of Routing Strategy Classes]{Comparison of Routing Strategy Classes (from~\citet{Abolhasan2004})}
 	\label{tab:routing_categories}
 	\begin{tabularx}{\textwidth}{p{2cm}|XXX}\toprule
 		\diagbox[width=2cm, height=1.8cm]{Area}{Class} & Proactive & Reactive & Hybrid \\ \midrule
@@ -406,7 +406,7 @@ For a term that is so common in every-day speech, ``Trust''\footnote{As a point 
 
 Beyond these dry, vague, and often ``fuzzy'' definitions, there is a significant ontological conflict between the subjective and objective perspectives of trust; is ``trust'' an attribute of the actor performing a given action, or of the observer of such an action? Or indeed is trust itself an action upon a relationship between actors? Is it qualitative or quantitative? These questions have challenged philosophers, psychologists and social scientists for decades.
 
-In human trust relationships it is recognized that there can be several domains of trust for example organizational, sociological, interpersonal, psychological and neurological \cite{Lee2004}.
+In human trust relationships it is recognized that there can be several domains of trust for example organizational, sociological, interpersonal, psychological and neurological~\cite{Lee2004}.
 
 These domains of trust are, from a human perspective, quite natural and are formed during the earliest stages of linguistic integration.
 This leads to recognisable deviations in the experiential concept of ``trust'' across cultures with differing linguistic histories.
@@ -423,8 +423,8 @@ As such it is important to explore the following areas of trust definitions, the
     Assured reliance on the character, ability, strength, or truth of someone or something.
     & Merriam-Webster\\
     Firm belief in the reliability, truth, or ability of someone or something & OED\\
-    The willingness of a party to be vulnerable to the actions of another party based on the expectation that the other will perform a articular action important to the trustor, irrespective of the ability to monitor or control that other party & \citet{Mayer1995} \\
-    An expectancy held by and individual or a group that the word, promise, verbal or written statement of another individual or group can be relied upon & \citet{Rotter1967}\\\bottomrule
+    The willingness of a party to be vulnerable to the actions of another party based on the expectation that the other will perform a articular action important to the trustor, irrespective of the ability to monitor or control that other party &~\citet{Mayer1995} \\
+    An expectancy held by and individual or a group that the word, promise, verbal or written statement of another individual or group can be relied upon &~\citet{Rotter1967}\\\bottomrule
   \end{tabularx}
 \end{table}
 %
@@ -435,7 +435,7 @@ This formulation of trust allowed a wider discussion of the characteristics of t
 
 \begin{table}[h]
   \centering
-  \caption[Factors of Trust]{Factors of Trust (from \citet{Mayer1995})}
+  \caption[Factors of Trust]{Factors of Trust (from~\citet{Mayer1995})}
   \label{tab:trust_factors}
   \begin{tabularx}{\textwidth}{p{2cm}X}\toprule
     Factor & Definition \\ \midrule
@@ -480,7 +480,7 @@ This trust value is incorporated with the risk / reward as assessed by the trust
     \draw [->] (outcomes.south) --++ (0cm,-2.5cm) -| (percievedFactors.south);
 
   \end{tikzpicture}
-  \caption[Model of Trust]{Model of Trust (from \citet{Mayer1995})}
+  \caption[Model of Trust]{Model of Trust (from~\citet{Mayer1995})}
   \label{fig:mayer_trust_model}
 \end{figure}
 
@@ -489,7 +489,7 @@ This trust value is incorporated with the risk / reward as assessed by the trust
 \citet{Lee2004} extended and synthesised Mayer et al's approach to personal and interpersonal trust towards a generalised concept of trust for human and autonomic/autonomous systems with alternative contextual definitions shown in~\autoref{tab:autonomous_trust_factors} (including their approximate mappings to Mayer et al's approach.
 
 \begin{table}
-  \caption[Factors of Trust for Autonomous Systems]{Factors of Trust for Autonomous Systems (from \citet{Lee2004})}
+  \caption[Factors of Trust for Autonomous Systems]{Factors of Trust for Autonomous Systems (from~\citet{Lee2004})}
   \label{tab:autonomous_trust_factors}
   \begin{tabularx}{\textwidth}{p{2cm}X p{2cm}}\toprule
     Factor & Definition & Mayer Term\\ \midrule
@@ -508,7 +508,7 @@ This trust value is incorporated with the risk / reward as assessed by the trust
   \item Intentional: That one entity would be willing to depend on another entity
 \end{itemize}
 
-It is suggested that these overarching forms are supported by and indeed are drawn from four major constructs within social and networked environments, as identified by \citet{Mcknight1996}:
+It is suggested that these overarching forms are supported by and indeed are drawn from four major constructs within social and networked environments, as identified by~\citet{Mcknight1996}:
 
 \begin{itemize}
   \item Trusting Belief: the subjective belief within a system that the other trusted components are willing and able to act in each others' best interests
@@ -544,14 +544,14 @@ Both System and Behavioural trust rely on what Sun calls a ``Belief Formation Pr
 		  
 		
 	\end{tikzpicture}
-	\caption[Trust Construct Relationships]{Trust Construct Relationships (from \citet{Liu2010})}
+	\caption[Trust Construct Relationships]{Trust Construct Relationships (from~\citet{Liu2010})}
 	\label{fig:trust_constructs}
 \end{figure}
 
 
 \subsection{Taxonomy and Notations of Trust}\label{sec:trust_taxonomy}
 
-To abstractly discuss Trust and trust modelling, \citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property possessed by that agent.
+To abstractly discuss Trust and trust modelling,~\citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property possessed by that agent.
 
 This notation is normally abbreviated such that 
 \begin{equation}
@@ -589,7 +589,7 @@ For discussion of individual links or subsets of links, Set notation can be appl
 Similarly, these multi-path sets can be decomposed into their individual links, i.e. $T_x \ge 0 \forall x \in T_{AC}$
 \subsubsection{Characteristics of Trust Relationships}
 
-There are five commonly considered characteristics or attributes of Trust relationships in general, but not all relationships exhibit them and they are not assumed to be a complete specification of Trust (synthesised from \cite{Liu2006,Mayer1995, Mcknight1996, Pavan2015}):
+There are five commonly considered characteristics or attributes of Trust relationships in general, but not all relationships exhibit them and they are not assumed to be a complete specification of Trust (synthesised from~\cite{Liu2006,Mayer1995, Mcknight1996, Pavan2015}):
 
 \begin{itemize}
 	\item \emph{Multi-Party} - One-to-one; one-to-many; many-to-one; many-to-many.
@@ -602,16 +602,16 @@ There are five commonly considered characteristics or attributes of Trust relati
 	\item \emph{Directional Asymmetry} - The majority of relationships are bi-directional but are asymmetric, i.e.\ between two entities who ``trust'' each other, there are two independent trust relationships that may have very different ``values'' or extents.
 	\item \emph{Contextual} - Trust can be variable and loosely coupled between contexts with respect to the action being assessed or the environment within which the trustee is operating, e.g.
 	Doctors are trusted to perform medical procedures but that trust may not improve their success at correctly wiring an electrical plug.
-	However there are plenty of counter-examples to this, as from \cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and these are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
+	However there are plenty of counter-examples to this, as from~\cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and these are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
 \end{itemize}
 
 \cite{Liu2010} summarises these attributes in a series of axioms 
 
 \subsubsection{Fundamental Axioms of Trust}\label{sec:axioms}
 \citet{Sun2008} demonstrate that by taking an Information Theoretic approach to trust as function of entropy and as such, uncertainty (i.e.\ trust having both a valency and a confidence)~\footnote{Donald Rumsfelds famous 2002 ``Known Knowns'' quote is a perfect example of this}, a series of axioms can be constructed to model the interactions between trusting agents.
-Many of these axioms are mirrored in pure information theory, as discussed in \cite{Liu2010}.
+Many of these axioms are mirrored in pure information theory, as discussed in~\cite{Liu2010}.
 
-\emph{Axioms and their quoted descriptions from \cite{Liu2010}}
+\emph{Axioms and their quoted descriptions from~\cite{Liu2010}}
 
 \paragraph{Axiom 1: Concatenation propagation of Trust does not increase Trust} 
 \begin{displayquote}
@@ -966,20 +966,20 @@ See \autoref{apx:human_factors} for a more thorough discussion on the Human Psyc
   \label{tab:autonomy_definitions}
   \begin{tabularx}{\textwidth}{X p{3cm}}\toprule
     Definition & Source \\ \midrule
-    \ldots should be able to carry out its actions and to refine or modify the task and its own behaviour according to the current goal and execution context of its task & \citet{Alami1998}\\
-    Autonomy refers to systems capable of operating in the real-world environment without any for of external control for extended periods of time & \citet{Bekey2005}\\
-    \ldots a system situated within and a part of an environment that senses that environment and acts on it, over time, in pursuit of its own agenda and so as to effect with it senses in the future. \ldots Exercises control over its own actions & \citet{Franklin1997} \\
-    An unmanned systems own ability of sensing, perceiving, analysing, communicating, planning, decision-making, and acting, to achieve goals as assigned by its human operator(s) through designed \gls{hri}. \ldots The condition or quality of being self-governing & \citet{Huang2004}\\
-    \ldots that the robot can operate self-contained, under all reasonable conditions without requiring recourse to the human operator. Autonomy means that a robot can adapt to change in its environment \ldots or itself \ldots and continue to reach a goal. & \citet{Murphy2000}\\
-    \ldots it should learn what it can to compensate for partial or incorrect prior knowledge & \citet{Russell2009} \\
-    Autonomy refers to a robot's ability to accommodate variations in its environment. Different robots exhibit different degrees of autonomy; the degree of autonomy is often measured by relating the degree at which the environment can be varied to the mean time between failures and other factors indicative of the robots performance. & \citet{Thrun2004}\\
-    \ldots agents operate without the direct intervention of humans or others, and have some kind of control over their actions and internal states. & \citet{Wooldridge1995}\\
-    Systems have a set of intelligence based capabilities or learning adaptive capabilities that allow it to respond within a bounded domain to situations that were not pre-programmed or anticipated in the design. & \citet{Fox2014}\\\bottomrule
+    \ldots should be able to carry out its actions and to refine or modify the task and its own behaviour according to the current goal and execution context of its task &~\citet{Alami1998}\\
+    Autonomy refers to systems capable of operating in the real-world environment without any for of external control for extended periods of time &~\citet{Bekey2005}\\
+    \ldots a system situated within and a part of an environment that senses that environment and acts on it, over time, in pursuit of its own agenda and so as to effect with it senses in the future. \ldots Exercises control over its own actions &~\citet{Franklin1997} \\
+    An unmanned systems own ability of sensing, perceiving, analysing, communicating, planning, decision-making, and acting, to achieve goals as assigned by its human operator(s) through designed \gls{hri}. \ldots The condition or quality of being self-governing &~\citet{Huang2004}\\
+    \ldots that the robot can operate self-contained, under all reasonable conditions without requiring recourse to the human operator. Autonomy means that a robot can adapt to change in its environment \ldots or itself \ldots and continue to reach a goal. &~\citet{Murphy2000}\\
+    \ldots it should learn what it can to compensate for partial or incorrect prior knowledge &~\citet{Russell2009} \\
+    Autonomy refers to a robot's ability to accommodate variations in its environment. Different robots exhibit different degrees of autonomy; the degree of autonomy is often measured by relating the degree at which the environment can be varied to the mean time between failures and other factors indicative of the robots performance. &~\citet{Thrun2004}\\
+    \ldots agents operate without the direct intervention of humans or others, and have some kind of control over their actions and internal states. &~\citet{Wooldridge1995}\\
+    Systems have a set of intelligence based capabilities or learning adaptive capabilities that allow it to respond within a bounded domain to situations that were not pre-programmed or anticipated in the design. &~\citet{Fox2014}\\\bottomrule
   \end{tabularx}
 \end{table}
 
 \begin{table}\centering
-  \caption[Levels of Decision Making Automation]{Levels of Decision Making Automation (Extended from \citet{Sheridan1978})}
+  \caption[Levels of Decision Making Automation]{Levels of Decision Making Automation (Extended from~\citet{Sheridan1978})}
   \label{tab:autonomy_levels_sheridan}
   \begin{tabularx}{\textwidth}{c c X}\toprule
     \gls{loa} & Description \\ \midrule
@@ -998,7 +998,7 @@ See \autoref{apx:human_factors} for a more thorough discussion on the Human Psyc
 %\todo{Ref \autoref{tab:autonomy_levels_sheridan} there may be a case to discuss the breakdown of ``Plan, Decide, Execute, Inform'', possibly a nice onion-style graphic}
 
 \begin{table}\centering
-  \caption[Levels of Automation]{Levels of Automation (paraphrased from \citet{Endsley1999})}
+  \caption[Levels of Automation]{Levels of Automation (paraphrased from~\citet{Endsley1999})}
   \label{tab:autonomy_levels_endsley}
   \begin{tabularx}{\textwidth}{p{3cm} X}\toprule
     \gls{loa} & Description \\ \midrule
@@ -1068,7 +1068,7 @@ To be able to trust that system's ability to continue on a course, survey an are
 
 \subsection{Design Trust}\label{sec:design_trust}
 
-As part of \cite{Bolster2014a}, five aspects of Design Trust have been identified, with major questions in each respective aspect emphasised.
+As part of~\cite{Bolster2014a}, five aspects of Design Trust have been identified, with major questions in each respective aspect emphasised.
 
 \begin{enumerate}
   \item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
@@ -1114,7 +1114,7 @@ Faced with the growing adoption of similar but disparate \gls{uav} systems withi
 This included a particularly interesting development in the form of \gls{sae} \gls{vsm} interoperability, whereby existing systems could be grandfathered into STANAG 4586 compliance by the addition of a \gls{vsm} to operate as a protocol translator.
 This \gls{vsm} could be mounted on the remote system directly, utilising a compliant \gls{dli}, or mounted on the ground-based controller, retaining the proprietary \gls{dli} to the remote system.
 The standard describes five \acrfull{loi} for compliant \gls{uav} systems, shown in Table~\ref{tab:levels_of_interoperability}.
-This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations \cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ``direct control'' or ``Operator-in-the-loop'', especially in the case of \gls{blos} systems, and that in increasingly autonomous systems, operation is done as \gls{hsc}, or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware.
+This structure has been criticised as being short sighted and at odds with the reality of modern and proposed autonomous vehicle operations~\cite{Cummings2010}, specifically that in modern autonomous systems, there is no such thing as ``direct control'' or ``Operator-in-the-loop'', especially in the case of \gls{blos} systems, and that in increasingly autonomous systems, operation is done as \gls{hsc}, or more commonly described as ‘Operator-on-the-loop’, whereby the operator interacts with the intermediate autonomous system and that autonomous system eventually performs that task on the hardware.
 
 \begin{table}
   \begin{tabularx}{\textwidth}{lX}
@@ -1127,7 +1127,7 @@ This structure has been criticised as being short sighted and at odds with the r
     5 &  Launch and Recovery in addition to \gls{loi} 4\\ 
     \bottomrule 
   \end{tabularx}
-  \caption[\gls{loi} for STANAG 4586 Compliant UCS]{Levels of Interoperability for STANAG 4586 Compliant UCS \cite{STANAG4586}}
+  \caption[\gls{loi} for STANAG 4586 Compliant UCS]{Levels of Interoperability for STANAG 4586 Compliant UCS~\cite{STANAG4586}}
   \label{tab:levels_of_interoperability}
 \end{table}
 
@@ -1219,7 +1219,7 @@ Mitigation protocols must be built on top of this architecture to maintain secur
 It is worthwhile to briefly summarise the factors of \gls{manet} architecture that make it vulnerable to different threat vectors, establish the inter-node threat surface within an operating \gls{manet}.
 
 \subsubsection{Exposed Threat Surfaces}
-\emph{This section based on a summary of \citet{csen2010security} and other sources directly cited}
+\emph{This section based on a summary of~\citet{csen2010security} and other sources directly cited}
 
 \emph{Wireless Links} - The use of wireless interfaces expose such networks eavesdropping and active interference, with no physical access required.
 These links normally have significant channel access and bandwidth constraints compared to closed-wired networks.
@@ -1237,7 +1237,7 @@ Additionally this assumption of node mobility and ``temporary disconnection'' pr
 
 
 \begin{table}
-  \caption[Selected Attacks on the Protocol Stack]{Selected Attacks on the Protocol Stack extended from \cite{csen2010security}}
+  \caption[Selected Attacks on the Protocol Stack]{Selected Attacks on the Protocol Stack extended from~\cite{csen2010security}}
   \label{tab:stack_attacks}
   \begin{tabularx}{\textwidth}{p{5cm} X}\toprule
     Layer & Attacks\\\midrule
@@ -1250,7 +1250,7 @@ Additionally this assumption of node mobility and ``temporary disconnection'' pr
 \end{table}
 
 \begin{table}
-  \caption[Threat Actor Classification]{Threat Actor Classification from \citet{Gagandeep2012}}
+  \caption[Threat Actor Classification]{Threat Actor Classification from~\citet{Gagandeep2012}}
   \label{tab:attacker_class}
   \begin{tabularx}{\textwidth}{X X X X X X}\toprule
     Emission & Location & Quantity & Target & Rationality & Mobility \\\midrule
@@ -1275,7 +1275,7 @@ On the other hand, many  strategies are usually based on some derivative form of
 \citet{zhang2003intrusion} first proposed a general \gls{ids} framework for \glspl{manet}; leveraging the distributed and cooperative predicates of the architecture, introducing both per-node and cooperative \gls{ids} submodules such that nodes work independently and cooperatively to identify certain misbehaviours, specifically targeting routing attacks and incongruities.
 Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range\cite{Parker2006}
 However it is commonly accepted that these frameworks had significant deficiencies in terms of power and communications overheads~\cite{csen2010security,Ryu2008}.
-One interesting aspect to highlight about \citet{zhang2003intrusion} is that while information about the physical mobility was assessed in the detection of misbehaviours in the context of routing changes, no collective cross-comparison was used, and rather focused on a per-node relative distance/velocity estimation to identify anomalous routing table updates.
+One interesting aspect to highlight about~\citet{zhang2003intrusion} is that while information about the physical mobility was assessed in the detection of misbehaviours in the context of routing changes, no collective cross-comparison was used, and rather focused on a per-node relative distance/velocity estimation to identify anomalous routing table updates.
 
 In the wider scope of threat mitigation for \glspl{manet}, most previous procedures involve 
 
@@ -1284,7 +1284,7 @@ In the wider scope of threat mitigation for \glspl{manet}, most previous procedu
 Distributed trust management frameworks for \glspl{manet} aim to detect, identify, and mitigate the impacts of malicious or selfish actors by generating, distributing and integrating per-node assessments and opinions to collectively self-police behaviour.
 From the settled upon definition of trust (From ~\autoref{sec:trust_model_design_considerations}), these opinions are attempting to model the confidence of success in a particular actor for a particular future action.
 
-This predictive behaviour attempts to solve four important problems (paraphrased from \cite{Sun2008}):
+This predictive behaviour attempts to solve four important problems (paraphrased from~\cite{Sun2008}):
 \begin{itemize}
   \item \emph{Decision support} - For example; making informed routing table decisions based on past successes/failures.
   \item \emph{Adaptability} - Ongoing prediction of the networks future trust states directly determines the risk faced by the network. Internalised knowledge of the expected risk can aid in selecting appropriate measures/ countermeasures such as automatically varying the level of authentication required for network activities.
@@ -1298,21 +1298,21 @@ Various models and algorithms for describing trust and developing trust manageme
 Taking some examples; %\todo{TODO:Check for more recent evolutions in Trust/TMFs}
 %
 \begin{itemize}
-  \item \emph{Hermes Trust Establishment Framework} uses a Bayesian Beta function to model per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Zouridaki2005}.
-  \item \emph{\acrfull{otmf}} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value \cite{Li2008}.
-    \gls{otmf} however does not appropriately combat multi-node-collusion in the network \cite{Cho2011}.
-  \item \emph{Trust-based Secure Routing} demonstrated an extension to \gls{dsr}, incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (\gls{plr}) \cite{Moe2008a,Cho2011}.
+  \item \emph{Hermes Trust Establishment Framework} uses a Bayesian Beta function to model per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value~\cite{Zouridaki2005}.
+  \item \emph{\acrfull{otmf}} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value~\cite{Li2008}.
+    \gls{otmf} however does not appropriately combat multi-node-collusion in the network~\cite{Cho2011}.
+  \item \emph{Trust-based Secure Routing} demonstrated an extension to \gls{dsr}, incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (\gls{plr})~\cite{Moe2008a,Cho2011}.
   \item \emph{CONFIDANT}; presented an approach using a probabilistic estimation of normal observations, similar to \gls{otmf}.
-    Also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter \cite{Buchegger2002}.
-  \item \emph{Fuzzy Trust-Based Filtering};presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network \cite{Luo2008}.
-  \item \emph{\acrfull{mtfm}} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust \cite{Guo11}.
+    Also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter~\cite{Buchegger2002}.
+  \item \emph{Fuzzy Trust-Based Filtering};presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network~\cite{Luo2008}.
+  \item \emph{\acrfull{mtfm}} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust~\cite{Guo11}.
 \end{itemize}
 %
 
 \subsection{Single Metric Trust Frameworks}
 
 %\todo{ADD:Expand background detail on more frameworks, (Confidant/Fuzzy)}
-The Hermes trust establishment framework \cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
+The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
 %
 \begin{equation}
   p(B|O)  = \frac{p(O|B) \times p(B)}{\rho}
@@ -1342,7 +1342,7 @@ A secondary measurement of the confidence factor of the trust assessment $t$ is 
 \end{align}
 %
 In \eqref{eq:otmf_trust}, $x$ and $y$ are constants to weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$)
-From \citet{Zouridaki2005} these are set to $x=\sqrt{2},y=\sqrt{9}$, generating an elliptical mapping $f(t,c) \mapsto T$, effectively weighting the level of confidence heavier than the observed trust behaviour.
+From~\citet{Zouridaki2005} these are set to $x=\sqrt{2},y=\sqrt{9}$, generating an elliptical mapping $f(t,c) \mapsto T$, effectively weighting the level of confidence heavier than the observed trust behaviour.
 
 Upon this per-node assessment methodology, \gls{otmf} overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
 
@@ -1392,7 +1392,7 @@ Weighting can be applied before generating a scalar value \eqref{eq:metric_weigh
 %
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
-To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$ \cite{Hong2010}.
+To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$~\cite{Hong2010}.
 \gls{mtfm} combines this \gls{gra} with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}.
 This whitenization model allows the previously grey value to be practically computed on and used to generate the final trust assessment, through fuzzy sequence classification, functionally treating each observation differently if it appear to be Trusted, Untrusted or Ignorant (\autoref{fig:whitenization}) ~\cite{Liu2011}.
 See~\autoref{apx:grey} for a wider discussion of this topic and the operation of Grey numbers.
@@ -1461,7 +1461,7 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 	\label{fig:whitenization}
 \end{figure}
 
-In the case of the terrestrial communications network used in \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
+In the case of the terrestrial communications network used in~\cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 
 \citet{Guo11} demonstrated that when compared against \gls{otmf} and Hermes trust assessment, \gls{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
 

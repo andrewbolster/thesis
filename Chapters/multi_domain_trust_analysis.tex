@@ -23,7 +23,7 @@ It is important to clarify what is meant by ``effective'' in this case; the ``ef
 
 \subsection{Communications Trust Metrics}
 
-The metric vector is constructed using those trust metrics that are applicable to the marine environment from \cite{Guo2012}, as the simulated marine acoustic modem stack does not operate on the same tiered data-rate approach as used in the 802.11 stack, the data rate metric was not included. Remaining metrics are; Delay, Received and Transmitted power, Throughput ($S$), Offered Load ($G$) and \gls{plr}.
+The metric vector is constructed using those trust metrics that are applicable to the marine environment from~\cite{Guo2012}, as the simulated marine acoustic modem stack does not operate on the same tiered data-rate approach as used in the 802.11 stack, the data rate metric was not included. Remaining metrics are; Delay, Received and Transmitted power, Throughput ($S$), Offered Load ($G$) and \gls{plr}.
 
 Thus, the metric vector used for communications-trust assessment is;
 
@@ -74,7 +74,7 @@ The construction of the $g$ and $b$ vectors from~\eqref{eq:grc} depends on the p
 This inversion relationship (i.e.\ those with the construction $g(x) \mapsto \min, b(x) \mapsto \max$) is signified by a negative weight.
 
 In complex environments, the relationship between metrics trustworthiness correlations is not always as obvious as the throughput / delay examples.
-This phenomenon was mentioned by \citet{Guo2012}, but was manually configured for each metric for each behaviour and no analytical method for quantitatively establishing such relationships has been presented since.
+This phenomenon was mentioned by~\citet{Guo2012}, but was manually configured for each metric for each behaviour and no analytical method for quantitatively establishing such relationships has been presented since.
 
 With the nine selected metrics from across communications and physical behaviours, we can explore this metric space by varying the weights associated with each metric, and choose to emphasise across three levels; i.e.\ metrics can be ignored or over-emphasised. Naively this results in $3^9 = 19683$ combinations, however as these weights are being normalised, redundant duplicates can be eliminated, e.g. $[0,0,0,0,1,0,0,0,0] \equiv [0,0,0,0,2,0,0,0,0]$ leaving 18661 unique weights for analysis.
 
@@ -83,7 +83,7 @@ This is approached as an inverse outlier filtering problem, and the range outsid
 See~\autoref{sec:metric_weighting}.
 Note that at this point we establish ``signatures'' of different behaviours rather than optimal detection weights.
 
-We apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
+We apply a Random Forest regression~\cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
 Random Forest accomplishes this by generating a large number of random regression trees and prune these trees based on how accurate they are in correctly matching the input data.
 In this case that data is the deviation in trust observed ($\Delta T$) between a two behaviours, i.e. maximising the ability to tell the difference between two given behaviours (i.e.\ ``Fair'' and ``Malicious'').
 A major advantage of Random Forest in this case is that by walking the most successful regression trees, we can acquire an already normalised maximal activation weight for the particular behaviour comparison being tested.

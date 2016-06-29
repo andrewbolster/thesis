@@ -50,7 +50,7 @@ Ergo the fleet or team as a whole will have $N\times N$ assessment vectors at ea
 
 \subsection{Physical Misbehaviours}
 
-Misbehaviours in the communications space is heavily investigated area in \glspl{manet} \cite{Konate2011,Wang2009,Chen2014a,Mitchell2014}, but attacks and misbehaviours in the physical space are far less explored. 
+Misbehaviours in the communications space is heavily investigated area in \glspl{manet}~\cite{Konate2011,Wang2009,Chen2014a,Mitchell2014}, but attacks and misbehaviours in the physical space are far less explored. 
 Both in terrestrial and underwater contexts, as \gls{manet} applications expand and become increasingly \emph{de rigueur}, the impacts of physical or operational misbehaviour become increasingly relevant. 
 As in the communications space, the primary drivers of any ``misbehaviour'' come under two general categories; selfish operation or malicious subterfuge.
 Autonomous \glspl{manet} in general rely (or are at least, most effective) when all nodes operate fairly, be that in terms of their bandwidth sharing, energy usage, routing optimality or other factors. 
@@ -78,9 +78,9 @@ These two behaviours are designated \emph{Shadow} and \emph{SlowCoach} respectiv
 	\label{img:remus}
 \end{figure}
 
-Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, with transmission parameters taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
+Simulations were conducted using a Python based simulation framework, SimPy~\cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim~\cite{Miquel2008}, with transmission parameters taken from and validated against~\cite{Stojanovic2007} and~\cite{Stefanov2011}.
 For the purposes of this chapter, this network is used for the dissemination of node location information, assuming suitable compression of internally assumed location data compressed into one 4096 bit acoustic data frame, with the network overall emitting approximately 10 frames a minute.
-Node kinematics are modelled on REMUS 100 \glspl{auv} (\autoref{img:remus}), based on limits and core characteristics given in \cite{Mcewen2001,Milgram2001,Samad2011}.\footnote{While the hydrodynamics of the control surfaces of the \glspl{auv} are not modelled in this case, axial drag is modelled as a resistive inertial force on the craft.}
+Node kinematics are modelled on REMUS 100 \glspl{auv} (\autoref{img:remus}), based on limits and core characteristics given in~\cite{Mcewen2001,Milgram2001,Samad2011}.\footnote{While the hydrodynamics of the control surfaces of the \glspl{auv} are not modelled in this case, axial drag is modelled as a resistive inertial force on the craft.}
 These limits are given in Table~\ref{tab:mobility_sysconstraints}.
 
 
@@ -176,7 +176,7 @@ In order to assess the viability of using the previously discussed metrics, the 
 Where $i$ and $j$ are indices denoting the current observer node and the current observed node respectively; $x$ is a summation index representing other nodes in the observers region of concern; $X$ is the vector of metrics from~\ref{eq:phys_vector}; $d$ is an intermediate value of the distance of a given observation from the mean, and $\alpha$ is a resulting normalised response value in terms of it's deviation from the mean.
 
 \subsubsection{Behaviour Detection and Classification}
-A simple misbehaviour detection is to apply Dixon's Q-test \cite{Dean1951} to the resultant $\sum\alpha$ values for each node for each metric for each run establishing if a ``misbehaving node'' exists in a given run, and if so, attempt to identify that misbehaving node. 
+A simple misbehaviour detection is to apply Dixon's Q-test~\cite{Dean1951} to the resultant $\sum\alpha$ values for each node for each metric for each run establishing if a ``misbehaving node'' exists in a given run, and if so, attempt to identify that misbehaving node. 
 For our initial investigation we will use a Confidence Interval of $95\%$.
 
 Our initial hypothesis is that by using observations of the previously stated physical metrics, that we will be able to detect and identify misbehaviours.
@@ -402,7 +402,7 @@ These metrics are application-agnostic and could potentially be applied in other
 
 We show, using a Port-Protection way point scenario built upon a Boidian collision prevention behaviour that in a simulated underwater environment, the outputs of these metrics can be used to detect and differentiate between exemplar malicious behaviour and potential failure states.
 
-This verification further supports the assertions the authors have made previously that it is practical to extend Trust protocols such as \gls{mtfm} \cite{Guo2012} to include metrics and observations from the physical domain as well as those from the communication domain\cite{Bolster2014}.
+This verification further supports the assertions the authors have made previously that it is practical to extend Trust protocols such as \gls{mtfm}~\cite{Guo2012} to include metrics and observations from the physical domain as well as those from the communication domain\cite{Bolster2014}.
 This combination of physical and ``logical'' information would further support the decentralised and distributed establishment of observation based Trust.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -10,9 +10,9 @@
 As \glspl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments to ensure their continued security, reliability, and performance.
 With demand for smaller, more decentralised \gls{manet} systems in a range of domains and applications, as well as a drive towards lower per-unit cost in all areas, \glspl{tmf} are increasingly applied to resource constrained applications, as the benefits and efficiencies these systems present are significant.
 Many \glspl{uan} use \gls{manet} architectures, however the marine environment presents new challenges for trust management frameworks that have been developed for use in conventional (i.e. Terrestrial RF) \glspl{manet}.
-These increasingly decentralised applications present unique threats against trust management \cite{Caiti2011}.
+These increasingly decentralised applications present unique threats against trust management~\cite{Caiti2011}.
 
-Previous research has established the advantages of implementing \glspl{tmf} in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems \cite{Li2007}, and maintaining throughput in the presence of malicious actors \cite{Buchegger2002}
+Previous research has established the advantages of implementing \glspl{tmf} in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems~\cite{Li2007}, and maintaining throughput in the presence of malicious actors~\cite{Buchegger2002}
 
 To date this work has been limited to terrestrial, RF based networks, which, as discussed in \autoref{ch:maritime_background}, is a much more favourable communications environment compared to the marine environment of \glspl{uan}, where extreme communications challenges are present (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multipath distortion, etc.).
 As a result of these challenges, in underwater environments, communications is both sparse and noisy.
@@ -21,7 +21,7 @@ Therefore the observations about the communications processes that are used to g
 Beyond the constraints of the communications environment, knock on pressures in battery capacity, on-board processing, and locomotion simultaneously present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance.
 These multiple aspects of potential incentives, trust, and fairness do not directly fall under the scope of single metric trusts discussed previously in \autoref{sec:tmfs}, and this context indicates that a multi-metric approach may be more appropriate.
 
-As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the underwater context \cite{Pavan2015}.
+As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the underwater context~\cite{Pavan2015}.
 
 This chapter is primarily concerned with the analytical establishment of hard trust within a topologically dynamic network of mobile autonomous actors.
 It is shown that single metric trust systems are not directly suitable for the marine context in terms of the different threat and cost scenario in that environment.
@@ -51,7 +51,7 @@ Four mobility patterns are investigated:
 For this case, the mobility model used is a random walk on the nodes modelled kinematic response, i.e.\ the node periodically picks a spherically normalised random direction in the XY plane.
 Maximum node speed (limited by kinematic acceleration/turning constraints) is 1.5$ms^{-1}$\cite{Milgram2001}.
 
-The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average $\SI{100}{\meter}$ from each other as per \cite{Guo11}.
+The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average $\SI{100}{\meter}$ from each other as per~\cite{Guo11}.
 The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively. 
 (See Section~\ref{sec:trust_topologies})
 
@@ -91,7 +91,7 @@ Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems
 
 \subsubsection{Simulation Background}
 
-Simulations were conducted using a Python based simulation framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon \gls{auv}NetSim \cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against existing studied \cite{Stojanovic2007,Stefanov2011,Sehgal2010}
+Simulations were conducted using a Python based simulation framework, SimPy~\cite{Mueller2003SimPy}, with a network stack built upon \gls{auv}NetSim~\cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against existing studied~\cite{Stojanovic2007,Stefanov2011,Sehgal2010}
 
 Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g.\ packet emission rates or throughput) and node separations are equally stable in this environment.
 Therefore, a zone of performance is characterised within which the network has stable operation.
@@ -129,7 +129,7 @@ Therefore, a zone of performance is characterised within which the network has s
 
 \subsection{Establishing Scale Factors in Communications Rate}
 
-In this section the simulated communications environment is characterised to establish an optimal packet emission rate for comparison against \cite{Guo11}.
+In this section the simulated communications environment is characterised to establish an optimal packet emission rate for comparison against~\cite{Guo11}.
 This optimal emission rate is taken to be an emission rate that provides reasonable network stability and protection from network saturation.
 Network saturation is the point at which a network can no longer successfully deliver the offered load\footnote{It will become important to note that Offered Load in this case includes packet retransmissions} presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
 
@@ -139,10 +139,10 @@ Formally, this saturation rate occurs if
 N\lambda_s>\mu_\text{max}
 \end{equation}
 
-%\todo{ADD NEXT: Attempt to Formalise the relationship between separation, offered load, throughput and delay using Bianchi Model \cite{Manshaei2007}}
+%\todo{ADD NEXT: Attempt to Formalise the relationship between separation, offered load, throughput and delay using Bianchi Model~\cite{Manshaei2007}}
 
 In order to establish the point at which the network becomes saturated due, a range of packet emission rates were explored between 0.01 packets per second (pps), equivalent to 96 bits of offered load per node, up to $0.07 pps$ ($672 bps$ per node).
-Initial node separation was set as per \citet{Guo11} at $\SI{100}{\meter}$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.
+Initial node separation was set as per~\citet{Guo11} at $\SI{100}{\meter}$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.
 This configuration and duration are specified to correlate to previously discussed mobile collaborative port protection scenarios from \autoref{sec:marine_ops}.
 
 Looking first at the Static mobility case, where all nodes are stationary; from~\autoref{fig:emission_throughput_performance_bella_static} it is already clear that the throughput curve, exhibits a saturation point close to 0.025 pps.
@@ -321,12 +321,12 @@ Results are also included from the remaining mobility cases (all nodes mobile; a
 
 \subsection{Scale Factors in Physical Node Distribution}
 
-In this section the effect of node-separation scaling on communications operation is characterised for comparison against \cite{Guo11}. 
+In this section the effect of node-separation scaling on communications operation is characterised for comparison against~\cite{Guo11}. 
 This is particularly important considering the significant scale factor differences in terms of the speed of propagation in the medium, and the range of potential desired operation.
 
 From~\autoref{tab:sysconstraints}, the operating transmission range of acoustic is $\approx 6$ times further than 802.11, indicating that a suitable operating environment will have an area $\approx \sqrt{6}$ times the area of the 802.11 case. Therefore, a reasonable experimental range would have an upper bound of performance around this scaling factor, where nodes are approximately 400$m$ apart. 
 
-According to \citet{Xu2002}, \gls{rts}/\gls{cts} handshake functionality cannot operate well as interference protection at node separations beyond 0.56 times the transmission range\cite{Xu2002}.
+According to~\citet{Xu2002}, \gls{rts}/\gls{cts} handshake functionality cannot operate well as interference protection at node separations beyond 0.56 times the transmission range\cite{Xu2002}.
 In the case of marine acoustic transmission at the stated power output, above $\SI{1500}{\meter} \times 0.56 = \SI{840}{\meter}$, handshake overheads should begin to dominate channel access.
 This is due to reduced channel availability due to collisions, which are then due to a much longer potential contention period between nodes. 
 
@@ -579,7 +579,7 @@ This throughput degradation is tightly coupled with the mobility, as increasing 
 For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches $\SI{800}{\meter}$, nearly double the initial estimate. 
 However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $\SI{300}{\meter}$ to $0.015pps$ at $\SI{400}{\meter}$.
 These results indicate that a good area to continue operating in for a range of node separations is at $0.015pps$, and that a reasonable position scaling is from $\SI{100}{\meter}$ to $\SI{300}{\meter}$, beyond which communication becomes increasingly unstable, especially in terms of end-to-end delay.
-These results are similar to related simulation work \cite{Miquel2008,Diamant2010,Noh2012}, and is to be expected in such a sparse, noisy, and contentious environment.
+These results are similar to related simulation work~\cite{Miquel2008,Diamant2010,Noh2012}, and is to be expected in such a sparse, noisy, and contentious environment.
 It should be noted that these rates are not what would be expected in a single-node/single-operator environment that most current \gls{auv} operations inhabit, as without any channel contention and mixed-delay effects, data-rates many times higher than this would be expected.
 However, few practical experiments have been performed that are suitable for direct comparison, as this context relies on multiple available nodes in a dynamic \gls{manet} topology with differential mobility.
 
@@ -610,7 +610,7 @@ Having established a safe operating range for comparison at $\SI{300}{\meter}$ a
 We select a trust assessment period of 10 mins for a five hour mission to scale in comparison to relative bitrates experienced ($1Mbps$ vs $\approx15bps$).
 
 The six metrics used for grey assessment are; transmitted and received throughput and power, delay, and \gls{plr} as calculated by aborted and unacknowledged, transmissions.
-Compared to \cite{Guo11}, this metric set lacks a data rate quantity as the network is not dynamically adjusting bandwidth.
+Compared to~\cite{Guo11}, this metric set lacks a data rate quantity as the network is not dynamically adjusting bandwidth.
 In context of \gls{grc} generation \eqref{eq:grc}, the best sequence $g$ was selected using the lowest \gls{plr}, delay, and powers, and the highest throughputs, and the worst sequence, $b$ the inverse of these metrics, reflecting the observations made in \autoref{sec:trust_in_marine}.
 
 The particular factors under discussion are the relative performance of \gls{mtfm} against \gls{otmf} and Beta with respect to statistical stability across mobilities and in responsiveness to changing network behaviour. 
@@ -666,7 +666,7 @@ Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in ass
 %
 
 \subsection{Comparison between \gls{mtfm}, Hermes and \gls{otmf}}
-As per \citet{Guo11}, ``fair'' scenarios were also performed with no malicious behaviour, applying \gls{otmf} and Hermes assessment as well as \gls{mtfm}, providing like-for-like comparison of assessment.
+As per~\citet{Guo11}, ``fair'' scenarios were also performed with no malicious behaviour, applying \gls{otmf} and Hermes assessment as well as \gls{mtfm}, providing like-for-like comparison of assessment.
 
 \begin{figure*}[t]
 	\centering
@@ -811,12 +811,12 @@ This is particularly true for \gls{plr}, with smaller impacts on delay, received
 This weighted delta in received throughput is minimal to insignificant compared to the width of the detection envelope, occasionally breaching the envelope for a short period. 
 
 In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) a much lower weighted delta in \gls{plr} and delay is observed, with greatly increased impact on transmission power.
-In comparison to \cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
+In comparison to~\cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
 \citet{Guo11} show similar types of behaviour but report a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in $P_{TX}$ in selfish behaviour (Fig.~\ref{fig:all_mobile_selfish_txp}) of $\approx$ 0.3 for an inconsistent interval.
 
 \subsection{Weight Significance Analysis for Behaviour Classification}
 
-For a more quantitative assessment of the viability of multi-metric trust assessment methods, taking the qualitative analysis above and apply a Random Forest regression \cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
+For a more quantitative assessment of the viability of multi-metric trust assessment methods, taking the qualitative analysis above and apply a Random Forest regression~\cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
 Random Forest accomplishes this by generating a large number of random regression trees and prunes these trees to fit incoming data.
 The target function for this regression was the area between the target behaviours weighted $T_{MTFM}$ curve and the $\pm\sigma$ envelope of the base behaviour as shaded in Figs.~\ref{fig:all_mobile_badmouthing} and~\ref{fig:all_mobile_selfish}.
 From this training process, the relative importance of each input feature (metric) can be inferred in terms of how good it is to differentiate between the fair case and a given misbehaviour.

@@ -32,7 +32,7 @@ As such the generally used upper and lower bounds of wavelength in most applicat
 \end{equation}
 %
 
-This wide range of frequencies and wavelengths allow for a diverse set of constraining factors; (Paraphrased from \citet{lurton2010}).
+This wide range of frequencies and wavelengths allow for a diverse set of constraining factors; (Paraphrased from~\citet{lurton2010}).
 
 \begin{itemize}
   \item \emph{Attenuation} in water; limiting the maximum usable range, which increases very rapidly with frequency
@@ -232,7 +232,7 @@ While both frequency dependant factors are quadratic, approximating the factors 
 
  \subsection{Ambient Noise Model}
 
- Ambient ocean noise can be assumed to be Gaussian with a continuous power spectral density in dB re $\si{\micro\pascal\per\hertz}$, driven by four major factors, shown in \autoref{tab:ocean_noise_factors}, where $s$ is a shipping activity factor bounded from $[0,1]$ and $w$ is the surface wind speed in $\si{\meter\per\second}$ \cite{coates1989}.
+ Ambient ocean noise can be assumed to be Gaussian with a continuous power spectral density in dB re $\si{\micro\pascal\per\hertz}$, driven by four major factors, shown in \autoref{tab:ocean_noise_factors}, where $s$ is a shipping activity factor bounded from $[0,1]$ and $w$ is the surface wind speed in $\si{\meter\per\second}$~\cite{coates1989}.
 
 \begin{table}[h]\centering
   \caption{Contributing factors to Ocean Ambient Acoustic Noise}
@@ -266,7 +266,7 @@ where $d=d_0$ is the minimal path length between the transmitter and receiver, $
 \subsection{Modelling and Simulation of the Acoustic Medium / Channel}
 
 Several toolkits exist in a variety of states that perform communications agent simulation, most notably the NS-2 / 3 family of frameworks and their add-ons.
-Some of these frameworks, such as SUNSET \cite{Petrioli2012a} and AquaTools \cite{Sehgal2010}, that are particularly proven in their capability in modelling static network performance, with less in built support for advanced, reactive node mobilities such as those involving collision or object avoidance.
+Some of these frameworks, such as SUNSET~\cite{Petrioli2012a} and AquaTools~\cite{Sehgal2010}, that are particularly proven in their capability in modelling static network performance, with less in built support for advanced, reactive node mobilities such as those involving collision or object avoidance.
 
 Beyond the NS family, there are many other communications and simulation modelling systems such as OpNet++\cite{Chang1999} and MATLAB toolkits such as the AcTUP interface to the Ocean Acoustics Library, that primarily focus on simulation of the acoustic channel and contention issues without concentration on Underwater-specific \gls{mac} protocols.
 
@@ -275,7 +275,7 @@ Including support for dynamic modular mobility and application behaviours, consi
 
 In order to implement a collaborative, reactive, simulation suite, the SimPy~\cite{Muller2003SimPy} agent framework was used for ``background'' synchronisation.
 
-As mentioned in the individual testing cases, transmission parameters for simulation were initially taken from and validated against results from \citet{Stojanovic2007} and \citet{Stefanov2011}.
+As mentioned in the individual testing cases, transmission parameters for simulation were initially taken from and validated against results from~\citet{Stojanovic2007} and~\citet{Stefanov2011}.
 
 
 \begin{comment}
@@ -410,15 +410,15 @@ While unarmed during its sea trials, the \emph{Sea Hunter} will be armed and use
 
 
 Given the breadth of the threat space in \glspl{manet}, many strategies for mitigating these risks have been proposed in a matrix-basis; i.e. you can't cover all eventualities with one tool.
-\autoref{tab:manet_risk} summaries some of these general strategies or ``solutions'' for range of threats identified specifically in the context of the deployment of \glspl{manet} in a tactical/defence context, originally based on \citet{Kidston2010} but with some contextual alterations with modifications discussed below.
+\autoref{tab:manet_risk} summaries some of these general strategies or ``solutions'' for range of threats identified specifically in the context of the deployment of \glspl{manet} in a tactical/defence context, originally based on~\citet{Kidston2010} but with some contextual alterations with modifications discussed below.
 
 In this context of this table, Vulnerability is an assessment of how available a particular threat is to a generic attacker, Impact is an assessment of the in-system affects of a successful attack, and Risk is a qualitative assessment of the likelihood of exploitation of an attack.
 \citet{Kidston2010} originally lowered the assessment of vulnerability of Eavesdropping, citing the tactical use of non-standard \gls{mac} as a barrier to attack, however considering the increasing commoditisation of tactical hardware across the world, and increasing application of \gls{cots} hardware, this is no longer a fair assessment.
 Similarly, the assessment that the Risk of Data Corruption is low is arguable on the basis of simplistic spread spectrum jamming but this assessment is unchanged.
-%Finally, \citet{Kidston2010} did not take into account the presence of weapons or other actuation methods with \glspl{auv} as the endpoint.
+%Finally,~\citet{Kidston2010} did not take into account the presence of weapons or other actuation methods with \glspl{auv} as the endpoint.
 
 \begin{table}
-	\caption{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from \cite{Kidston2010}}
+	\caption{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from~\cite{Kidston2010}}
 	\label{tab:manet_risk}
 	\begin{tabularx}{\textwidth}{p{4cm} X X X >{\raggedright\arraybackslash}p{4cm}}\toprule
 		Threat & Vulnerability & Impact & Risk & Mitigation	\\\midrule
@@ -439,7 +439,7 @@ Within this threat context, the general optimisation of any \gls{tmf} would be t
 \section{Conclusion}
 
 As \acrfull{auv} platforms become more capable and economical, they are being used in many applications requiring trust.
-These applications are using the collective behaviour of teams or fleets of these \glspl{auv} to accomplish tasks \cite{Caiti2011}.
+These applications are using the collective behaviour of teams or fleets of these \glspl{auv} to accomplish tasks~\cite{Caiti2011}.
 With this use being increasingly isolated from stable communications networks, the establishment of trust between nodes is essential for the reliability and stability of such teams.
 As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the challenging underwater communications channel.
 

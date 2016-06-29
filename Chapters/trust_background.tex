@@ -120,7 +120,7 @@ The concepts of graph density and connectivity are demonstrated visually in \aut
 
 In practical wireless network applications, network connectivity is a product of the physical distribution of nodes within an environment, and the propagation characteristics of the medium.
 
-Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown(See \autoref{fig:manet_topo_mobility}).
+Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown (See \autoref{fig:manet_topo_states}).
 Naturally, as the relative transmission range is reduced, the natural density and connectivity of the network reduces down to the point in \autoref{fig:topo_broken_net} where the ``network'' is fundamentally broken.
 
 \begin{figure}
@@ -181,13 +181,6 @@ Naturally, as the relative transmission range is reduced, the natural density an
 	\label{fig:manet_topo_states}
 \end{figure}
 
-Another graph theoretic factor that is worth considering in \gls{manet} design is \emph{Centrality}, that is, the measure of importance of individual nodes to the connectivity of the network.
-There are a great many methods for calculating centrality, however the important understanding from a network perspective is that of network-relative centralisation; in \autoref{fig:centralisation}, our previously deployed network layout is used to demonstrate three delineations of network centrality.
-In the first, all nodes are connected to one node, and that one node is totally responsible for communications and routing in the network.
-This is architecturally similar to switch-managed wired networks in a small office or home.
-In the second example, a generally de-centralised layout is set, with a generally hierarchical logical routing setup, where a few nodes take the brunt of the connectivity and bridging, almost creating centralised ``sub graphs'' with single uplinks.
-Finally, a truly ``distributed'' topology is shown, where there are no architecturally important nodes and, in general, shorter link distances. 
-
 \begin{figure}
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
@@ -231,6 +224,12 @@ Finally, a truly ``distributed'' topology is shown, where there are no architect
 	\caption{Example of routing strategies and logical connectivity in a sample network}
 	
 \end{figure}
+Another graph theoretic factor that is worth considering in \gls{manet} design is \emph{Centrality}, that is, the measure of importance of individual nodes to the connectivity of the network.
+There are a great many methods for calculating centrality, however the important understanding from a network perspective is that of network-relative centralisation; in \autoref{fig:centralisation}, our previously deployed network layout is used to demonstrate three delineations of network centrality.
+In the first, all nodes are connected to one node, and that one node is totally responsible for communications and routing in the network.
+This is architecturally similar to switch-managed wired networks in a small office or home.
+In the second example, a generally de-centralised layout is set, with a generally hierarchical logical routing setup, where a few nodes take the brunt of the connectivity and bridging, almost creating centralised ``sub graphs'' with single uplinks.
+Finally, a truly ``distributed'' topology is shown, where there are no architecturally important nodes and, in general, shorter link distances. 
 
 The last issue to consider directly is that of the impacts of node mobility and temporary absence.
 In \autoref{fig:manet_topo_mobility}, a node leaves the network from one ``side'', and later reappears at another part of the network.
@@ -349,13 +348,13 @@ Based on a combination of Hybrid Tree Flooding and Distributed Spanning Tree shu
 \subsubsection{\gls{ddr}} 
 A tree protocol similar to \gls{dst} except without the need for a root node; trees are constructed and maintained by periodic neighbour beaconing, where each node becomes the potential root of its own tree within the ``forest'' of the wider network. The construction of this forest follows six phases; neighbour election, forest construction, intra-tree clustering, inter-tree clustering, zone naming and zone partitioning. Each of these phases are executed based on information received in the beacon messages. One of the strengths of \gls{dst} is its lack of centralisation or a-priori structure requirement (i.e. root/cluster-heads or static zone maps), however there is no equalisation method to balance the case where a gateway node that is a preferred neighbour to many subtrees becomes congested and represents a significant bottleneck, as the neighbour selection is predicated on graph connectivity alone, without taking maximum throughput into account. In variably connected networks this could potentially cause network-wide delays through mid-network packet drops.\\
 \subsubsection{\gls{zhls}}
-Compared to \gls{zrp}, \gls{zhls} extended the zoning concept to include some elements of \gls{lar}, by constructing hierarchical non-overlapping zones based on physical location as well as connectivity. This location management is purely decentralised, with no explicit ``zone-heads'', eliminating single-point-of-failure concerns and significantly reducing invalid-flooding overheads, as topology updates only carry towards zones where the information is relevant. Shifting topologies within zones are tolerated cleanly as the internal zone-map is flat rather than hierarchical, and does not require re-computation or re-location as long as the node stays within a given ``zone''. This static map also leads to a significant disadvantage in that this zone-map must be pre-set, so are inappropriate for fully-mobile applications or applications with dynamic geographic boundaries.\cite{Joa-Ng1999,Hamma2006}
+Compared to \gls{zrp}, \gls{zhls} extended the zoning concept to include some elements of \gls{lar}, by constructing hierarchical non-overlapping zones based on physical location as well as connectivity. This location management is purely decentralised, with no explicit ``zone-heads'', eliminating single-point-of-failure concerns and significantly reducing invalid-flooding overheads, as topology updates only carry towards zones where the information is relevant. Shifting topologies within zones are tolerated cleanly as the internal zone-map is flat rather than hierarchical, and does not require re-computation or re-location as long as the node stays within a given ``zone''. This static map also leads to a significant disadvantage in that this zone-map must be pre-set, so are inappropriate for fully-mobile applications or applications with dynamic geographic boundaries~\cite{Joa-Ng1999,Hamma2006}.
 \subsubsection{\gls{slurp}}
-With a similar hierarchical non-overlapping zone structure to \gls{zhls}, \gls{slurp} does away with global routing through a deterministic mapping of node identifiers to ``Home'' regions, such that any node attempting to communicate with a node, can directly calculate from what ``Home'' zone that node originated.As and when nodes leave their ``Home'' region, they feedback to that region their current location. Subsequently when that node is a destination for a packet, the routing query is automatically directed to the home region which can direct the source node as to the direction of its destination, upon which the source can start sending data towards the destination using a most forward with fixed radius (MFR) geographical forwarding algorithm. Once the data reaches the zone where the destination currently resides, source-routing is used internally to complete the route. This strategy works well for relatively static networks with some mobile nodes, or where node mobility is ``slow'', such as \gls{wsn}, however it still relies on pre-programmes static zone maps as per \gls{zhls}\cite{Woo2001}
+With a similar hierarchical non-overlapping zone structure to \gls{zhls}, \gls{slurp} does away with global routing through a deterministic mapping of node identifiers to ``Home'' regions, such that any node attempting to communicate with a node, can directly calculate from what ``Home'' zone that node originated.As and when nodes leave their ``Home'' region, they feedback to that region their current location. Subsequently when that node is a destination for a packet, the routing query is automatically directed to the home region which can direct the source node as to the direction of its destination, upon which the source can start sending data towards the destination using a most forward with fixed radius (MFR) geographical forwarding algorithm. Once the data reaches the zone where the destination currently resides, source-routing is used internally to complete the route. This strategy works well for relatively static networks with some mobile nodes, or where node mobility is ``slow'', such as \gls{wsn}, however it still relies on pre-programmes static zone maps as per \gls{zhls}~\cite{Woo2001}
 \subsubsection{\gls{fbr}}
 \gls{fbr} is built upon the concepts of \gls{geraf}, which uses straight line distance-from-receiver minimisation, extending with a cone-based prioritisation metric rather than absolute distance, mitigating the zig zag effect of \gls{geraf} and implicitly supporting partially overlapping simultaneous alternate routing, improving system redundancy and (usually) eliminating the need for retransmission~\cite{Jornet2008}.
 This is further augmented with an adaptive open-loop power control system which both aids in energy consumption and in preventing spurious blocking of the channel.
-\gls{fbr} is particularly well suited to constrained energy mobility networks with high mobility and high retransmission costs\cite{Noh2012}.
+\gls{fbr} is particularly well suited to constrained energy mobility networks with high mobility and high retransmission costs~\cite{Noh2012}.
 
 
 \begin{table}[H]\centering
@@ -493,7 +492,7 @@ This trust value is incorporated with the risk / reward as assessed by the trust
   \label{tab:autonomous_trust_factors}
   \begin{tabularx}{\textwidth}{p{2cm}X p{2cm}}\toprule
     Factor & Definition & Mayer Term\\ \midrule
-    Performance & `The current and historical operation of the automation, including characteristics such as reliability, predictability, and ability & Ability\\
+    Performance & The current and historical operation of the automation, including characteristics such as reliability, predictability, and ability & Ability\\
     Purpose & The degree to which the automation is being used within the realm of the designers intent & Benevolence \\
     Process & The degree to which the automation's algorithms are appropriate for the situation and able to achieve the operators goals.
     & Integrity\\
@@ -569,12 +568,12 @@ A special extension is assumed for multi-party trust relationships for the ``act
 %
 Where the action under discussion is implied or there is a single action under debate (for example, packet routing in \glspl{manet}), the action superscript can be left out; $T_{AB} , R_{AB}$.
 
-Trust can be propagated through a number of nodes, forming a chain of assessments and recommendations, expressed as per \eqref{eq:trust_prop}.
+Trust can be propagated through a number of nodes, forming a chain of assessments and recommendations, expressed as per \eqref{eq:trust_chain}.
 While the particular algorithms and methods of combination vary between \glspl{tmf}, the $\cdot$ symbol is used as a generic operator.
 In any case, if a given node $A$ has no knowledge about node $B$, or likewise $B$ having no knowledge of $C$, trust between $A,C$ is zero; $T_{ABC} = 0$
 
 \begin{equation}
-	\label{eq:trust_prop}
+	\label{eq:trust_chain}
 	T_ {AC}\mapsto T_{ABC} = R_{AB} \cdot T_{BC} \text{ where } R_{AB} \neq 0 , T_{BC} \neq 0
 \end{equation}
 
@@ -688,7 +687,8 @@ In this case, this axiom sets the groundwork for multi-node analysis of trust ne
 In essence, adding additional information sources of the same observation should increase the trust value arrived at from a smaller subset of sources.
 
 \begin{align}
-T_{AC} \geq T_{A'C'} \geq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \geq 0\\
+\label{eq:trust_combination}
+T_{AC} \geq T_{A'C'} \geq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \geq 0\nonumber\\
 T_{AC} \leq T_{A'C'} \leq 0, &\text{ for } R_\alpha \ge 0, T_\alpha \le 0
 \end{align}
 
@@ -755,7 +755,7 @@ T_{A'C'}&=\{T_{A'B'D'C'}, T_{A'F'E'C}\}
 \end{align}
 
 Given that the sub-chain $T_{AB}$ prepends both chains in $T_{AC}$, the weight of node $B$'s recommendations are effectively duplicated, and from Axiom 2, this duplication should not decrease the trust assessment.
-However for $T{A'C'}$, no such duplication exists, and as such it's trust assessment should have a larger magnitude.
+However for $T_{A'C'}$, no such duplication exists, and as such it's trust assessment should have a larger magnitude.
 
 \begin{align}
 T_{AC} \geq T_{A'C'} \geq 0, &| T_{A'C'} \geq 0\\
@@ -898,7 +898,7 @@ Within sparsely connected networks, there are three primary types of relationshi
 
 \subsection{Trust Establishment Strategies and their impact on Trust Frameworks}\label{sec:trust_establishment}
 
-In the majority of cases, the establishment of trust is a purely observational effort, as opposed to providing a pre-initialised ``secure state''\citet{Liu2006, Li2007, Theodorakopoulos2004}.
+In the majority of cases, the establishment of trust is a purely observational effort, as opposed to providing a pre-initialised ``secure state''~\cite{Liu2006, Li2007, Theodorakopoulos2004}.
 The network is initialised, routes are dynamically generated and propogated depending on the routing strategy defined, and as information about the performance of nodes is recorded, Trust is established. 
 This method of ``blind trust establishment'' may initially reduce efficiencies in the early phases of operation, but this is quickly overcome with the establishment of a short ``introduction'' period, where the network is not tasked to perform any tasks where thorough Trust is necessary.
 
@@ -911,12 +911,12 @@ In the latter operational case, where a node leaves the network (or ``disappears
 As such (and not purely for this reason) the majority of \glspl{tmf} maintain a ``remembering'' (or forgetting) factor, normally noted as $\beta$.
 This $beta$ factor inversely weights the contributions of older observations in the formation of the current trust assessment, tending towards having zero confidence and zero trust in the node over time while it is not observed (or recommendations regarding that node are not observed).
 
-On the return of a departed node, depending on the duration of the departure with respect to $beta$, it may be treated as a total newcomer, but will generally have some residual trust-valence, which puts it at a slight advantage. 
+On the return of a departed node, depending on the duration of the departure with respect to $beta$, it may be treated as a total newcomer, but will generally have some residual trust-valence, which puts it at a slight advantage compared to a complete newcomer. 
 However, this reaction assumes that the identity of such a returning node can be verified, and in some cases, it is beneficial to initially distrust an apparrent ``returner'' in case of malicious masquerading.
 
 \subsection{Attacks on Trust}
 
-\citet{Liu2010} identify four types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, and Sybil/Newcomer attacks.
+\citet{Liu2010} identify five types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, Sybil and /Necomer attacks.
 
 \begin{enumerate}
 	\item \emph{Bad Mouthing:} Where a malicious node provides dishonest recommendations of other nodes in the network, to disrupt optimal operation  by making other nodes appear untrustworthy
@@ -928,7 +928,7 @@ However, this reaction assumes that the identity of such a returning node can be
 
 It is to be noted that the Sybil and Newcomer attacks do not exclusively rely on trust, but instead are a problem of network authentication.
 
-The all of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
+All of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
 In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. 
 In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. 
 Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted(See \autoref{sec:trust_establishment})
@@ -944,7 +944,7 @@ Autonomy, coming from the Greek roots \textit{auto-} (self) and \textit{nomos} (
 This autonomy is distinct from \textit{freedom}, where freedom is the \textit{ability} to perform an action, not the \textit{capability to choose} which action to perform.
 That is not to say that autonomy or autonomous action exists in an ideal vacuum with perfect and complete information with no coercive factors or outside influences.
 The ability to recognise, process, weight and filter inputs, knowledge, ``responsibilities'', influences and outside factors and come to an effective decision is a key skill for any self-governing agent, however this is above and beyond the concept of ``basic autonomy''.
-From the implicit variability and complexity of environment and context that classically autonomous entitie\footnote{That's \textit{Homo Sapiens}} inhabit, there is little assumption that ``autonomy'' always produces a categorically ``correct''or ``good'' decision, but is instead a case of an agent choosing the action that is \textit{in its own best interests based on available information}\cite{Arpaly2003}.\footnote{Arply discusses a counter example of this ``goodness'' assessment as  Huckleberry Finns' release of Jim against his ``best judgement'', and that rather than this action being an instance of morally justified or self-congratulatory autonomy, it was ``the right thing to do'' from an abstract moralistic perspective rather than a justifiably beneficial action, and it is a case of \textit{akrasia}; the lacking of self-governance and the antonym of autonomy.}
+From the implicit variability and complexity of environment and context that classically autonomous entities\footnote{That's \textit{Homo Sapiens}} inhabit, there is little assumption that ``autonomy'' always produces a categorically ``correct''or ``good'' decision, but is instead a case of an agent choosing the action that is \textit{in its own best interests based on available information}\cite{Arpaly2003}.\footnote{Arply discusses a counter example of this ``goodness'' assessment as  Huckleberry Finns' release of Jim against his ``best judgement'', and that rather than this action being an instance of morally justified or self-congratulatory autonomy, it was ``the right thing to do'' from an abstract moralistic perspective rather than a justifiably beneficial action, and it is a case of \textit{akrasia}; the lacking of self-governance and the antonym of autonomy.}
 
 This understanding of individual autonomy has been scaled up through social systems and has been studied at length to understand the emergence of post-Marxist proto-anarchistic movements~\cite{Hunter2016} and from a higher perspective, international politics, especially in the cases of quasi-federalised collections of states such as the United States of America~\cite{Halberstam2001} and the European Union/Eurozone/Schengen Area~\cite{Richter2012}
 

@@ -1,11 +1,11 @@
 As \acrfullpl{auv} become more technically capable and economically feasible, they are being increasingly used in a great many areas of defence, commercial and environmental applications. 
-Increasingly, these applications are tending towards utilising independent, autonomous, ad-hoc, collaborative behaviour of teams or fleets of these \gls{auv} platforms.
+Increasingly, these applications are tending towards using independent, autonomous, ad-hoc, collaborative behaviour of teams or fleets of these \gls{auv} platforms.
 This convergence of research experiences in the \acrfull{uan} and \gls{manet} fields, along with the increasing \gls{loa} of such platforms, creates unique challenges to secure the operation and communication of these networks.
 
 The question of security and reliability of operation has usually been resolved by having a centralised coordinating agent to manage shared secrets and monitor for misbehaviour.
 However, in the sparse, noisy and constrained communications environment of \glspl{uan}, the communications overheads and single-point-of-failure risk of this model is challenged (particularly when faced with capable attackers).
 
-As such, more lightweight, distributed, experience based\footnote{rather than ``Evidence based'' in the case of shared keys, \gls{pki} etc.} systems of ``Trust'' have been proposed to dynamically model and evaluate the ``trustworthiness'' of nodes within a \gls{manet} across the networks to prevent or isolate the impact of malicious, selfish, or faulty misbehaviour. 
+As such, more lightweight, distributed, experience based\footnote{rather than ``Evidence based'' in the case of shared keys, \gls{pki} etc.} systems of ``Trust'' have been proposed to dynamically model and evaluate the ``trustworthiness'' of nodes within a \gls{manet} across the network to prevent or isolate the impact of malicious, selfish, or faulty misbehaviour. 
 Previously, these models have monitored actions purely within the communications domain. 
 Moreover, the vast majority rely on only one type of observation (metric) to evaluate trust; successful packet forwarding.
 In these cases, motivated actors may use this limited scope of observation to either perform unfairly without repercussions in other domains/metrics, or to make another, fair, node appear to be operating unfairly.
@@ -13,7 +13,7 @@ In these cases, motivated actors may use this limited scope of observation to ei
 This thesis is primarily concerned with the use of terrestrial-\gls{manet} trust frameworks to the \gls{uan} space. 
 Considering the massive theoretical and practical difference in the communications environment, these frameworks must be reassessed for suitability to the marine realm. 
 We find that current single-metric \glspl{tmf} do not perform well in a best-case scaling of the marine network, due to sparse and noisy observation metrics, and while basic multi-metric communications-only frameworks perform better than their single-metric forms, this performance is still not at a reliable level. 
-We propose, demonstrate (through simulation) and integrate the use of Physical observational metrics for trust assessment, in tandem with metrics from the communications realm, to improve the safety, security, reliability and integrity of autonomous \glspl{uan}.
+We propose, demonstrate (through simulation) and integrate the use of physical observational metrics for trust assessment, in tandem with metrics from the communications realm, to improve the safety, security, reliability and integrity of autonomous \glspl{uan}.
 
 Three main novelties are explored and demonstrated in this work;
 Trust evaluation using metrics from the physical domain (movement/distribution/etc.),

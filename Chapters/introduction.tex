@@ -12,7 +12,7 @@ Whether these networks are decentralised cellular / \gls{rf} / 802.11 WiFi netwo
 
 Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) that communicate cooperatively to collect, distribute, disseminate, and collate data and/or influence across an area.
 In most cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data\footnote{However this bi-directionality is not always a requirement; for example in the area of \gls{wsn}~\cite{Akyildiz2002})}
-\glspl{manet} may utilise omnidirectional, static, or steerable communications antennae, and a selection of protocols such as WiFi, Bluetooth, \gls{gsm}, \gls{umts}, Optical or Acoustic, and may incorporate a range of mobilities across nodes, from static devices, terrestrial and marine surface platforms, as well as aerial and underwater platforms.
+\glspl{manet} may utilise omnidirectional, static, or steerable communications antennae, and a selection of protocols such as WiFi, Bluetooth, \gls{gsm}, \gls{umts}, as well as Optical or Acoustic media, and may incorporate a range of mobilities across nodes, from static devices, terrestrial and marine surface platforms, as well as aerial and underwater platforms.
 A core characteristic of \glspl{manet} is the inclusion and integration of heterogeneous node collections, i.e.\ different nodes or groups of nodes in a network may have different capabilities in terms of propulsion, sensor apparatus, communications capability, etc.
 
 \glspl{manet} may be totally independent with no external connections, may include independent per-node communications backhauls (e.g. Cellular Modems in mobile phones as part of a Bluetooth Personal Area Network), or include static nodes that provide infrastructure based backhaul.
@@ -50,7 +50,7 @@ As \glspl{manet} grow beyond the terrestrial arena, their operation and the prot
 The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain an evidence based ``trust'' system such as \gls{ttp}, \gls{ca} or using \gls{pki}. 
 In both cases, there is the assumption of a run-time canonical source of trust, i.e. a ``Master'' node or Certifying Authority that can objectively coordinate the security and trust of the network.
 This single-point-of-failure is antithetical to \gls{manet} architectures, and given the normally limited transmission, storage, battery and computational power of \gls{manet} nodes, the overheads of true \gls{ttp} or \gls{pki} architectures have been out of the realms of practicality for most applications.
-Therefore, a distributed, collaborative system must be applied to these networks\footnote{\citet{Zouridaki} have demonstrated an intriguing low-power Distributed \gls{ca} based \gls{manet} architecture, however given the soon-to-be-discussed assumptions about capable attackers(~\autoref{sec:capable_attackers}), this ``semi-decentralised'' approach is less than ideal}.
+Therefore, a distributed, collaborative system must be applied to these networks\footnote{\citet{Zouridaki} have demonstrated an intriguing low-power Distributed \gls{ca} based \gls{manet} architecture, however given the soon-to-be-discussed assumptions about capable attackers(\autoref{sec:capable_attackers}), this ``semi-decentralised'' approach is less than ideal}.
 Such distributed \glspl{tmf} aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
 As such, \glspl{tmf} can be used to predict and reason on the future interactions between entities in a system.
 
@@ -75,19 +75,20 @@ This exposes significant parts of the overall systemic threat surface to unobser
 \subsection{Autonomous \glspl{manet}}
 Autonomy is the capability of an entity to assess its environment and make informed, un-coerced decisions.
 In the \gls{manet} context, this sliding scale of capability ranges from basic automated collision avoidance systems while under direct operator control\footnote{For example Automated Driver Assistance Systems entering the consumer vehicle market through the likes of the Tesla P85 and Ford Kuga~\cite{Sawade2016}}, through to self-regulating mission guidance and execution, with limited human interaction\footnote{No such systems have been actively deployed, but this form of collaborative autonomy is the centre of much commercial and academic research\cite{Rajesh2015,Autefage2015,Teke2015}}.
-This non-deterministic operation presents significant challenges to security and integrity; fundamentally, previously accepted formal verification methodologies for guaranteeing operation are not currently capable of accurately validating the actions and interactions of a fleet or swarm of autonomous nodes in dynamic, noisy environments with imperfect operators\cite{Teke2015}. 
-As such an overlapping combination of ``Secure'' and ``Trusted'' approaches are required throughout the lifecycle and operation of an Autonomous \gls{manet} capability to maintain the integrity of such collaborative systems.
+This non-deterministic operation presents significant challenges to security and integrity.
+Fundamentally, previously accepted formal verification methodologies for guaranteeing operation are not currently capable of accurately validating the actions and interactions of a fleet or swarm of autonomous nodes in dynamic, noisy environments with imperfect operators~\cite{Teke2015}. 
+As such an overlapping combination of ``Secure'' and ``Trusted'' approaches is required throughout the lifecycle and operation of an Autonomous \gls{manet} capability to maintain the integrity of such collaborative systems.
 
 \subsection{Trust vs Security vs Integrity}
 
 Early attempts to secure and protect the integrity of \glspl{manet} have relied on various forms of strong-cryptography to protect information being transferred from tampering or malicious inspection.
 While such approaches protect the integrity of individual pieces of data, the increased computation, and storage requirements of modern, strong, decentralised cryptographic systems presents a clear avenue for \gls{dos} attacks on \glspl{manet}.
 This threat is particularly relevant in resource-constrained networks, where one or more aspects of the environment are limited, be it available power, mobility, data storage, onboard processing, bandwidth, and channel resources such as capacity and delay.
-In such networks, where there is a requirement of security and/or integrity monitoring, strong-cryptographic methods present an entirely new opportunity to potential attackers.
+In such networks, where there is a requirement for security and/or integrity monitoring, strong-cryptographic methods present an entirely new opportunity to potential attackers.
 
 One solution to the trade-off between \gls{dos}-protection, and security is the assessment of ``trustworthiness'' of nodes within a local network. 
 ``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour.
-Using this Trust to make simple routing decisions is significantly simpler and faster than strong-cryptographic methods, particularly in multi-hop networks or resource constrained networks\cite{Cordasco2008}.
+Using this Trust to make simple routing decisions is significantly simpler and faster than strong-cryptographic methods, particularly in multi-hop networks or resource constrained networks~\cite{Cordasco2008}.
 With Trust being reliant on the runtime awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits and in practice, some elements of both methodologies will be used in different contexts and applications as those applications dictate.
 
 \subsection{Systemic Trust and Trusted Development}
@@ -98,15 +99,15 @@ As will be discussed further in \autoref{sec:trust_perspectives}, the ``Trust'' 
 In any security situation, the hazards and risks of a systemic vulnerability being identified and exploited by an attacker are tightly coupled to the expectation of capability of that attacker.
 Within the defence context of this work, it is assumed that any attacking agency has the complexity and resources of a nation state.
 
-This is also one of the primary motivators for this particular direction of work; where increasingly complex and subtle evidentiary security measures (passwords, encryption, etc) are applied, with increasing pressures in computation, connectivity, or communication, the assumption that a slightly-higher-technical-investment will protect a system from state-level espionage or infiltration (or the discovery of some technical flaw in the system) is unfounded, with many examples of cryptographic applications being ``disseminated'' through human or technical failings, but internal and external. 
+This is also one of the primary motivators for this particular direction of work; where increasingly complex and subtle evidentiary security measures (passwords, encryption, etc) are applied, with increasing pressures in computation, connectivity, or communication, the assumption that a slightly-higher-technical-investment will protect a system from state-level espionage or infiltration (or the discovery of some technical flaw in the system) is unfounded, with many examples of cryptographic applications being ``disseminated'' through human or technical failings, both internal and external. 
 
 \section{Maritime Autonomy}
 
-Given the physical difficulties and requirements of having humans operate underwater (particularly at depth), and the operational limitations of tethered \glspl{rov}, or even untethered remote controlled surface platforms, there has been a great research and commercial interest in the development of autonomous systems, particularly in the defence and petrochemical sectors, where the lives of human operators are most at risk in normal activity\cite{Pechoucek:2008:DIA:1355335}.
+Given the physical difficulties and requirements of having humans operate underwater (particularly at depth), and the operational limitations of tethered \glspl{rov}, or even untethered remote controlled surface platforms, there has been a great deal of research and commercial interest in the development of autonomous systems, particularly in the defence and petrochemical sectors, where the lives of human operators are most at risk in normal activity\cite{Pechoucek:2008:DIA:1355335}.
 
 With potential applications ranging from the replacement of human divers in \gls{mcm} activity, to persistent littoral hydrography for environmental flood plain monitoring, many aspects of the proposed efficiencies gained from moving to autonomous agents rely on decentralised, \gls{manet} style collaboration between individual agents, and a level of trust that an operator (or indeed, agents within the system itself) can have in terms of the current activity, readiness, and performance of such autonomous systems\cite{Wynn2014}.
 
-This ``Trust'', that we know implicitly in the human space, is particularly challenging to establish and maintain in the underwater environment, and as such, the development of stable, reliable, adaptable trust systems that can operate in this and other challenging environments is a limiting factor on the adoption of generalised distributed autonomous systems in the defence space\cite{Caseley2009}.
+This ``Trust'', that we know implicitly in the human space, is particularly difficult to establish and maintain in the underwater environment, and as such, the development of stable, reliable, adaptable trust systems that can operate in this and other challenging environments is a limiting factor on the adoption of generalised distributed autonomous systems in the defence space\cite{Caseley2009}.
 
 \begin{figure}[h]
 	\centering
@@ -125,13 +126,13 @@ In~\autoref{sec:trust_autonomy}, Autonomy and ``Trusted Operation'' of autonomou
 In~\autoref{sec:trust_manets}, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
 
 \subsection{\fullref{ch:maritime_background}}
-In \autoref{ch:maritime_background}, the maritime context is investigated, particularly concerned with the mechanisms of maritime acoustic communications, including the opportunities and challenges of the marine acoustic channel and its modelling(\autoref{sec:marine_comms}).
+In \autoref{ch:maritime_background}, the maritime context is investigated, particularly the mechanisms of maritime acoustic communications, as well as the opportunities and challenges of the marine acoustic channel and its modelling (\autoref{sec:marine_comms}).
 Additionally, the application scope of \glspl{auv}, littoral and sub-marine operations are explored to provide context to the problem (\autoref{sec:marine_ops}).
 
 \subsection{\fullref{ch:comms_trust}}
 In \autoref{ch:comms_trust}, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
 
-The operation of a selection of traditional \gls{manet} \glspl{tmf} in this environment is investigated.
+The operation of a selection of traditional \gls{manet} \glspl{tmf} is investigated in this environment.
 These challenges are characterised and results are presented that demonstrate a multi-metric approach to Trust can greatly enhance the effectiveness of \glspl{tmf} in these environments.
 
 In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in~\citet{Guo11} are reviewed for comparison.
@@ -160,11 +161,12 @@ This approach opens the possibility of bringing information about both the physi
 
 \subsubsection{\fullref{ch:multi_domain}}
 
-In this chapter methodology is demonstrated that applies Grey Sequence operations and Grey Generators to provide trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
+In this chapter a methodology is demonstrated that applies Grey Sequence operations and Grey Generators to provide trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
 By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment.
 Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrated, allowing for the elimination of redundant metrics, simplifying the runtime assessment process.
+\todo{NORELEASE: IF CLASSIFICATION GOES SOUTH YOU NEED TO FIX THE INTRO}
 
-Key parts of this chapter were published as \bibentry{Bolster2016a}.
+Key parts of this chapter are awaiting publication as \bibentry{Bolster2016a}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

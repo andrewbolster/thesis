@@ -5,17 +5,18 @@
 \section{Physical Behaviours for Trust}\label{sec:physbev}
 
 \subsection{Physical Metrics}
-The aim of any \gls{tmf} is to constrain the operation of a system such that any ``trusted'' behaviour is inherently ``correct'' behaviour; by monitoring \gls{plr}, delay, and throughput etc. in the communications domain, \glspl{tmf} aim to optimise the efficiency of these aspects of the networks performance.
+The aim of any \gls{tmf} is to constrain the operation of a system such that any ``trusted'' behaviour is inherently ``correct'' behaviour; by monitoring \gls{plr}, delay, and throughput etc. 
+In the communications domain, \glspl{tmf} aim to optimise the efficiency of these aspects of the networks performance.
 
 Looking at the physical domain, the question becomes ``What characteristics of the nodes operations require constraint or optimisation, and what information is exposed to assess those?''.
 
 Fundamentally, the physical information available (or at least, is reasonable to assume) is simple positional and velocity information reported by the nodes itself.
 These assessments could be augmented with the use of sonar or visual tracking at short distances, or through time-of-flight positioning, but in the marine environment, both of these are difficult to accomplish and maintain consistently.
 
-As for what characteristics of operations require optimisation, an assumption can be made that the primary threat is for the masquerading or damage of a node by a competent attacker, i.e.~ a physical \gls{tmf} should identify nodes that are behaving oddly. 
+As for what characteristics of operations require optimisation, an assumption can be made that the primary threat is of a masquerading or damage of a node by a competent attacker, i.e.~ a physical \gls{tmf} should identify nodes that are behaving oddly. 
 Additionally, and in a less threatening manner, an additional aspect to optimise for is efficiency of mobility and communication, i.e.~ maintaining relative proximity to lower communications energy costs, and minimise expensive or ``thrusty'' course corrections.
 
-Therefore, based on a fuzzy incomplete knowledge of the position and velocities of fleet/team members over time, designed around the REMUS 100 AUV’s Kinematics, three primary initial metrics were arrived at:
+Therefore, based on a fuzzy incomplete knowledge of the position and velocities of fleet/team members over time, designed around the REMUS 100 AUV’s Kinematics, three primary initial metrics are arrived at:
 \begin{enumerate}
 \item \emph{\acrfull{indd}}, a second order measure of the variation in the average distances between nodes in a squad
 \item \emph{\acrfull{inhd}}, similar to \gls{indd} but based on instantaneous unit velocity, i.e. the direction of travel
@@ -26,10 +27,9 @@ Using these metrics, appropriate behaviour within a dynamic fleet can be assesse
 
 These physical metrics are used to encompass the relative distributions and activities of nodes within the network. 
 As such, these metrics completely encapsulate and abstract the physical behaviour of any node, potentially performing any misbehaviour.
-Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable initial set of metrics to establish the usefulness of physical metrics of trust assessment.
+Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable set of metrics to establish the usefulness of physical metrics of trust assessment.
 
 Additional metric constructions may be more suitable for certain contexts, platforms or operations, however these were selected in collaboration with UK DSTL and NATO CMRE as suitable, generic, assessments, viable on most current platforms in most current deployment schemes\footnote{An additionally prototyped metric was Reported Position Deviation which used a per-node Enhanced Kalman filter based ``god view'' estimator that constructed positional models based on highly accurate timing and time-of-flight modelling for non-linear channel paths to predict the movements of squad members and report discrepancies against their periodic positional updates (assumed to be part of a normal broadcast protocol), however this investigation is outside the scope of this current work}.
-	.
 
 \begin{align}
   INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
@@ -37,7 +37,7 @@ Additional metric constructions may be more suitable for certain contexts, platf
   V_{i,j} &= |V_j|
 \end{align}
 
-Where $i$ and $j$ are indices denoting the current observer node and the current observed node respectively; $x$ is a summation index representing other nodes in the observers region of concern; $P{j}$ is the $[x,y,z]$ absolute position of the observed node (relative to some coordinated origin point agreed upon at launch) and $V{j}$ is the $[x,y,z]$ velocity of the observed node.
+Where $i$ and $j$ are indices denoting the current observer node and the current observed node respectively; $x$ is a summation index representing other nodes in the observers region of concern; $P_{j}$ is the $[x,y,z]$ absolute position of the observed node (relative to some coordinated origin point agreed upon at launch) and $V_{j}$ is the $[x,y,z]$ velocity of the observed node.
 
 Thus, the metric vector used for the physical-trust assessment from one observer node to a given target node is;
 
@@ -46,7 +46,7 @@ Thus, the metric vector used for the physical-trust assessment from one observer
   \label{eq:phys_vector}
 \end{equation}
 At each time-step, each node will have a separate $X$ assessment vector for each node it has observed in that time. 
-Ergo the fleet or team as a whole will have $N\times N$ assessment vectors at each timestep.
+Ergo the fleet or team as a whole will have $N\times N-1$ assessment vectors at each timestep.
 
 \subsection{Physical Misbehaviours}
 
@@ -55,9 +55,9 @@ Both in terrestrial and underwater contexts, as \gls{manet} applications expand 
 As in the communications space, the primary drivers of any ``misbehaviour'' come under two general categories; selfish operation or malicious subterfuge.
 Autonomous \glspl{manet} in general rely (or are at least, most effective) when all nodes operate fairly, be that in terms of their bandwidth sharing, energy usage, routing optimality or other factors. 
 Physically, if a node is being ``selfish'', it may preferentially move to the edge of a network to minimise it's dynamic work allocation, or depending on it's intent, may insert itself into the centre of a network to maximise it's ability to capture, monitor, and manipulate traffic going across the network. 
-In the context of a secure operation (or one that's assumed to be secure), the opportunity for capturing a legitimate node and replacing it with a modified clone.
+In the context of a secure operation (or one that's assumed to be secure), there is also the opportunity for capturing a legitimate node and replacing it with a modified clone.
 Assuming a highly capable outside actor and a multi-channel communications opportunity, there is also the possibility of a node appearing to ``play along'' with the crowd that occasionally breaks rank to route internal transmissions to a outside agent.
-In the underwater context this may mean an AUV following the rest of a team along a survey path and occasionally ``breaking surface'' to communicate to a malicious controller.
+In the underwater context this may mean an AUV following the rest of a team along a survey path and occasionally ``breaking surface'' to communicate to a malicious controller using a secondary communications link such as WiFi or satcomms.
 Alternatively, if an inserted node is not totally aware of a given mission parameter, such as a particular survey or waypointing path, it may simply follow along, hoping not to be noticed.
 
 In all these cases, such behaviour involves some element of behaving differently from the rest of the team, however, there are other cases where such individual ``deviance'' is observed; where a node is in some kind of mechanical ``failure state''.
@@ -112,8 +112,9 @@ These limits are given in Table~\ref{tab:mobility_sysconstraints}.
 
 In our investigation, we use the example of a Port Protection scenario, where a team of six \glspl{auv} are tasked with surveying a simplified harbour; in this case a 1kmx1kmx100m cuboid volume.
 This is accomplished through a distributed way point system where by the team overall must ``check'' several points around the exterior and interior of this volume in reasonable time.
+In addition to this, there is a reasoned requirement for both collision avoidance and a pressure for the fleet to maintain communications distance.
 
-This consists of three heuristic rules; Cohesion, Repulsion and Alignment.
+These are encapsulated as three heuristic rules; Cohesion, Repulsion and Alignment.
 \begin{align}
   F_{j,C}=& F_+\left(p_j, \frac{1}{N}\sum\limits_{\forall i \ne j}^N{p_i}, d_{max}\right)\label{eq:fa}\\
   F_{j,R}=& \sum\limits_{\forall i \ne j}^N F_-\left(p_j, p_i, d_{max}) \big| d_{max}>\|p_i-p_j\|\right)\label{eq:fr}\\
@@ -124,6 +125,8 @@ Where $F$'s are force-vectors applied to the internal guidance of the \gls{auv},
   F_+(p^a, p^i)=&(\widehat{p^a-p^i}) \times \frac{|p^a-p^i|}{d}\\
   F_-(p^r, p^i)=&(\widehat{p^i-p^r}) \times \frac{|p^r-p^i|}{d}
 \end{align}
+
+In essence, the fleet is simultaneously attracted to its current target waypoint as well as a lesser attraction to the centre of the fleet to retain communications.
 
 \begin{figure*}
   \centering
@@ -184,21 +187,18 @@ Within that context, this Confidence Interval indicates that we would expect onl
 Further, due to the range of metrics available, by applying the Q-test on a per-metric basis, we can use the ``votes'' of each metric as a simplified consensus classifier.
 This classifier may allow us to characterise some aspect of a given misbehaviour in terms of metrics it heavily impacts, and those that are less affected, finding some differentiating-limit between certain behaviours using certain metrics.
 
-\begin{equation}
-  C_{i}^{m} = \Sigma_t\sigma_{i}^m * \frac{N-1}{\sum_{x\neq i}{\Sigma_t\sigma_{x}^m}}\label{eq:confidence}
-\end{equation}
 
 \subsubsection{Operational Performance Metrics}
-While not the focus of this paper, we are also concerned with the impact of these misbehaviours on the mission efficiency of the team overall.
+While not the focus of this chapter, we are also concerned with the impact of these misbehaviours on the mission efficiency of the team overall.
 We monitor this in three main measurements; the ``speed'' of the fleet in terms of how many of it's port-protection way points it successfully approaches and passes, the total energy used for communications, and the average end-to-end delay in the acoustic network.
 We would expect that any misbehaviour in positioning will incur some loss of efficiency, whether it is the fleet being slowed down by a straggler attempting to catch up or of a node moving in an unexpected fashion dragging the team temporarily off course.
 Given that in acoustic communications, transmission is energetically expensive while reception is not, and while physical misbehaviours will not impact the amount of offered load on the network, collisions induced by uneven distribution of nodes should have a small but measurable effect on energy used for packet reception.
 
 \section{Results and Discussion}
-Fig.~\ref{fig:metric_values} shows the raw metric values (vertically) from one run of each behaviour (horizontally), starting with the Control case, where all node are behaving properly.
-The misbehaving node in the remaining cases.
+Fig.~\ref{fig:metric_values} shows the raw metric values (vertically) from one run of each behaviour (horizontally), starting with the Control case, where all node are behaving properly with Alfa as the misbehaving node in the remaining cases.
 It clear that using the (unitless) \gls{indd} and \gls{inhd} metrics, Alfa is the outlier and other, fairly behaving, nodes are all consistent in their metric values.
 This outlier-response is not nearly as clear in the Speed metric case (bottom row of Fig.~\ref{fig:metric_values}).
+This would be expected considering the cumulative factor of increasing distance between nodes if a given node is ``lagging'' behind.
 
 From a behaviour-perspective, it appears that the Shadow behaviour is creating the largest, most obvious deviations.
 
@@ -273,7 +273,7 @@ In both misbehaviours, \gls{indd} and \gls{inhd} correctly identify Alfa as the 
 However, they misidentify a potential misbehaviour in the Control case 13\% and 7\% of the time respectively.
 Meanwhile, Speed correctly identified the Control case 97\% of the time, and the Shadow case 94\% of the time, but missed the SlowCoach behaviour 63\% of the time. 
 This result is surprising on the face of it, as SlowCoach is a misbehaviour that is exclusively about individual node speed and conceptually should have had a much larger impact on the simple Speed metric.
-However, the collaborative nature of the collision avoidance system, and the existing limits on node kinematics from Table~\ref{tab:mobility_sysconstraints} appear to be hiding this impact. 
+However, the collaborative nature of the collision avoidance system, and the existing limits on node kinematics from Table~\ref{tab:mobility_sysconstraints} are masking this impact. 
 
 \begin{table}
   \caption{Per-Metric Q-Test Outlier Detection Accuracy}
@@ -298,6 +298,9 @@ Having established the ability of \gls{indd}, \gls{inhd} and Speed to all detect
 
 From~\eqref{eq:confidence}, the per-metric-per-behaviour ``Confidence'' in the relationship between a given metric deviance and each behaviour is established. It is hypothesised that this confidence can be used as a signature for that metric.
 
+\begin{equation}
+C_{i}^{m} = \Sigma_t\sigma_{i}^m * \frac{N-1}{\sum_{x\neq i}{\Sigma_t\sigma_{x}^m}}\label{eq:confidence}
+\end{equation}
 
 \begin{table}[h]
   \caption{Metric Confidence Responses for known behaviours~\eqref{eq:confidence}}
@@ -356,7 +359,7 @@ However, in the Null (Control) case we experience a false-positive rate of nearl
   \label{tab:classifier}
 \end{table}
 
-If the rules of this classifier are loosened to require two deviating $Q^95(X)$ observations for detection of non-Control behaviours (i.e. multi-metric deviations), this false positive rate is eliminated while maintaining true-positive detection characteristics for misbehaviours.
+If the rules of this classifier are loosened to require two deviating $Q^{95}(X)$ observations for detection of non-Control behaviours (i.e. multi-metric deviations), this false positive rate is eliminated while maintaining true-positive detection characteristics for misbehaviours.
 
 \begin{equation}
 C \rightarrow 
@@ -395,6 +398,8 @@ One observation of merit was an observed 10\% increase in end-to-end delay in th
 As for physical efficiency, achievement rates were identical to within 2\% error on each run across all behaviours, and fleet distance varied by a similar margin.
 It's possible that our selected behaviours were too unambitious in our impacts, and future work will have to investigate the impact of ``heavy-handed'' or destructive behaviours on the operational efficiency of autonomous networks.
 
+\todo{ADD:PUT THE BLOODY PERFORMANCE GRAPH IN}
+
 \section{Conclusion}
 In this chapter we have demonstrated that with current and on-the-horizon underwater localisation techniques, that in certain mobility models, that a set of relatively simple geometric abstractions (\gls{indd}, \gls{inhd}, and Speed), between nodes as part of an Underwater \gls{manet} can be used as a Trust Assessment and Establishment metric.
 
@@ -403,6 +408,6 @@ These metrics are application-agnostic and could potentially be applied in other
 We show, using a Port-Protection way point scenario built upon a Boidian collision prevention behaviour that in a simulated underwater environment, the outputs of these metrics can be used to detect and differentiate between exemplar malicious behaviour and potential failure states.
 
 This verification further supports the assertions the authors have made previously that it is practical to extend Trust protocols such as \gls{mtfm}~\cite{Guo2012} to include metrics and observations from the physical domain as well as those from the communication domain\cite{Bolster2014}.
-This combination of physical and ``logical'' information would further support the decentralised and distributed establishment of observation based Trust.
+In the next chapter, this combination of physical and ``logical'' information is explored to establish if it further supports the decentralised and distributed establishment of observation based Trust.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

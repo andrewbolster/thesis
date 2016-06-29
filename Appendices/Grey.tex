@@ -12,7 +12,7 @@ There are several classes of grey numbers based on the relationships between the
 Black and White numbers are the extremes of this classification; such that $\dot\oplus \in [-\infty, +\infty]$ and $\mathring\oplus \in [x, x] | x \in \mathbb{R}$ or $\oplus(x)$
 It is clear that white numbers such as $\mathring\oplus$ have a field of zero while black numbers have an infinite field.
 
-Grey numbers may represent partial knowledge about a system or metric, and as such can represent half-open concepts, by only defining a single bound; for example $\underline\oplus = \oplus(\underline x ) \in [x, +\infty]$ and $\overline\oplus = \oplus(\overline x) \in [-\infty, x]$.
+Grey numbers can also represent partial knowledge about a system or metric, and as such can represent half-open concepts, by only defining a single bound; for example $\underline\oplus = \oplus(\underline x ) \in [x, +\infty]$ and $\overline\oplus = \oplus(\overline x) \in [-\infty, x]$.
 
 Primary operations within this number system are as follows;
 \begin{subequations}
@@ -49,15 +49,15 @@ In the weakening case, these operations perform a level of smoothing on the vola
 A powerful tool in grey system theory is the use of grey incidence factors, comparing the ``likeness'' of one value against a cohort of values.
 This usefulness applies particularly well in the case of multi-agent trust networks, where the aim is to detect and identify malicious or maladaptive behaviour, rather than an absolute assessment of ``trustworthiness''.
 
-\section{Grey Trust}
-Grey Theory performs cohort based normalization of metrics at runtime.
-This creates a more stable contextual assessment of trust, providing a ``grade'' of trust compared to other observed entities in that interval, while maintaining the ability to reduce trust values to a stable assessment range for decision support without requiring every environment entered into to be characterised.
+\section{Application of Grey Relational Grading to Trust}
+Grey Relational Grading performs cohort based normalization of metrics at runtime.
+This creates a more stable contextual assessment, providing a ``grade'' of trust compared to other observed entities in that interval, while maintaining the ability to reduce values to a stable assessment range for decision support without requiring every environment entered into to be characterised.
 Grey assessments are relative in both fairly and unfairly operating cohorts.
 Entities will receive mid-range trust assessments if there are no malicious actors as there is no-one else ``bad'' to compare against.
 
 \citet{Guo11} demonstrated the ability of Grey Relational Analysis (GRA)\cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc.\ into a Grey Relational Coefficient, or a ``trust vector''.
 In \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
-The trust vector is given as
+The Grey Relational Grade is given as
 %
 \begin{align}
   %\label{eq:grc}
@@ -65,7 +65,7 @@ The trust vector is given as
   \phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
 \end{align}
 %
-where $a_{k,j}^t$ is the value of a observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the '``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, e.g.\ $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g.\ higher throughput is always better).
+where $a_{k,j}^t$ is the value of a observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient, usually set to $0.5$, $g$ and $b$ are respectively the '``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, e.g.\ $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g.\ higher throughput is always better).
 
 Weighting can be applied before generating a scalar value which allows the identification and classification of untrustworthy behaviours.
 
@@ -79,7 +79,7 @@ $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.
 The $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$.
 This trust value minimises the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc}.
 
-\acrshort{mtfm} combines this GRA with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whitenization model\eqref{eq:whitenization}.
+\acrshort{mtfm} combines this \gls{gra} with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whitenization model\eqref{eq:whitenization}.
 There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
 Where an observing node, $n_i$, assesses the trust of another, target, node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
 In the Recommendation case, a node $n_k$, which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.

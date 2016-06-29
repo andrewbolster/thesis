@@ -10,7 +10,7 @@ The resultant challenges include; long delays due to propagation, significant in
 
 \subsection{Mechanics of Acoustic Transmission}
 
-Unlike in RF energy transfer (where photons move through space to transmit energy from one place to another), acoustic wages are the result of mechanical perturbation of a medium where localised compressions and extensions pass energy across a medium through that mediums elastic properties.
+Unlike in RF energy transfer (where photons move through space to transmit energy from one place to another), acoustic waves are the result of mechanical perturbation of a medium where localised compressions and extensions pass energy across a medium through that mediums elastic properties.
 These ``compression waves'' propagate away from its source, and the rate of this propagation is the sound speed, velocity or $c$, measured in $ms^{-1}$.
 This is not to be confused with the fluid velocity corresponding to the instantaneous motion of particles in the medium.
 
@@ -21,7 +21,7 @@ As such, logarithmic notation is justified.
 
 Useful acoustic signals are generally maintained vibrations rather than instantaneous pulses.
 They are characterised by their frequency $f$ expressed in Hertz ($Hz$) or by their Period ($T$) in seconds.
-In commonly used underwater acoustics, used frequencies range from $\approx 10Hz-100kHz$ depending on application.\cite{Stojanovic2007}.
+In commonly used underwater acoustics, used frequencies range from $\approx 10Hz-100kHz$ depending on application~\cite{Stojanovic2007}.
 
 As with all waves, the relationship between frequency, period and the wavelength is given as in \eqref{eq:wavelength}. 
 As such the generally used upper and lower bounds of wavelength in most applications is from $\SI{1.5}{\meter} @ 10Hz$ to $\SI{0.015}{\meter} @ 100kHz$.
@@ -38,10 +38,10 @@ This wide range of frequencies and wavelengths allow for a diverse set of constr
   \item \emph{Attenuation} in water; limiting the maximum usable range, which increases very rapidly with frequency
   \item \emph{Dimensions} of sound source; which increase at lower $f$ for a given transmission power
   \item \emph{Spatial Selectivity} of sources and receivers as $f$ increases, due to similarly increasing directivity of energy propagation.
-  \item \emph{Acoustic Response} of target surfaces (analogous to receiver gain in RF networks.
+  \item \emph{Acoustic Response} of target surfaces (analogous to receiver gain in RF networks).
 \end{itemize}
 
-\subsection{Velocity and density}
+\subsection{Velocity and density}\label{sec:aco_vel}
 
 Air has a baseline density of approximately $\SI{1.3}{\kilogram\per\meter\cubed}$, and the speed of sound is typically static around $\SI{340}{\meter\per\second}$.
 In sea water, acoustic wave velocity is close to $c=\SI{1500}{\meter\per\second}$ (generally between $\SIrange{1450}{1550}{\meter\per\second}$ depending on temperature, pressure, salinity etc.).
@@ -103,7 +103,10 @@ However, a few global variants stand out, both due to the extremity of their tra
 For example the differential between the geographically proximate and politically contentious Black, Caspian, and Mediterranean Seas, as well as the Persian Gulf exhibit variations from less than $6ppt$ to over $40ppt$.
 Similarly, there is a navigable waterway providing access between the Baltic and North seas that across the $\SI{300}{\kilo\meter}$ long run from Malm{\"o} in Sweden to Skagen in Denmark, transitions from less than $5ppt$ to just under $30ppt$. 
 
-Below the surface, the variability increases; \autoref{fig:temp_sal_profile} shows an example 
+Below the surface, the variability increases; \autoref{fig:temp_sal_profile} shows an example of a depth profile of these variations and the modelled impact on the speed of sound with respect to depth in three different regions. 
+The variability of this speed is crucial to the operation of an underwater acoustic network, as it fundamentally changes the propagation paths of compressive energy transfer, and in particular, the fastest ``path''. 
+\autoref{fig:ssps} shows the impact on this fastest recieved path and it's true path between two nodes in shallow, littoral, waters.
+Even with relatively small variations in sound speed, and with the introduction of sea floor/surface interfaces, the ``fastest'' path deviates significantly from a true ``line of sight'' path where there is any variability in speed of sound profile, making delay-based positioning extremely difficult, and presents significant opportunities for out-of-sync multi-path effects\footnote{\autoref{fig:ssps} shows a staged, iterative approximation method to arrive at the shortest path, where the ``colour intensity'' of the chart shows the stage at which that path was explored, so the ``final'' paths are darkest, and the ``exploitative'' paths are lightest, however in reality these secondary paths are still emitted and arrive, delayed, to the reciever, causing significant inter-symbol interference unless equalised.}
 
 
 
@@ -215,13 +218,13 @@ The Ainslie \& McColm model is more complex, and incorporates the acidity of the
   \label{fig:fisher}
 \end{figure}
 %
-The Fisher-Simmons model (\autoref{fig:fisher}) is significantly more complex, taking into account the effects of boric acid concentrations and dissolved magnesium sulphate. While there are several limitations on this model in terms of its being fixed at a salinity of 35 ppt and a pH of 8, as this model incorporates depth, temperature, distance and frequency, it is very attractive for research directed at high variability environments.
+The Fisher-Simmons model (\autoref{fig:fisher}) is significantly more complex, taking into account the effects of boric acid concentrations and dissolved magnesium sulphate. While there are several limitations on this model in terms of its being fixed at a salinity of 35 ppt and a pH of 8, as this model incorporates depth, temperature, distance and frequency, it is very attractive for research directed at high variability environments and is used for the remainder of this work unless otherwise stated.
 
 %\todo{Possibly need to switch this with the Francois Garrison model which, depending on your source, is the refined version (or vise versa}
 
 
 
-Regardless of the variations of particular attenuation models, comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model $(A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2)$, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
+Regardless of the variations of particular attenuation models, comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model~\autoref{eq:fspl}, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
 While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
 \begin{equation}
   \label{eq:fspl}
@@ -248,9 +251,9 @@ While both frequency dependant factors are quadratic, approximating the factors 
 
 \subsection{Multipath effects}
 
-Refractive lensing and the multi-path nature of the medium result in line of sight propagation being extremely unreliable for estimating distances to targets.
+Refractive lensing and the multi-path nature of the medium result in line of sight propagation being extremely unreliable for estimating distances to targets (See \autoref{sec:aco_vel} and \autoref{fig:ssps}).
 The first arriving acoustic signal has as the very least curved in the medium, and commonly has reflected off the surface/seabed before arriving at a receiver, creating secondary paths that are sometimes many times longer than the first arrival path, generating symbol spreading over orders of seconds depending on the ranges and depths involved.
-Thus, the multi-path channel transfer function can be described by 
+Thus, the multi-path channel transfer function can be described by :
 
 \begin{align}
   \label{eq:acomultipath}
@@ -261,19 +264,17 @@ Thus, the multi-path channel transfer function can be described by
 where $d=d_0$ is the minimal path length between the transmitter and receiver, $d_p,p=\{1,\dots P-1\}$ are the secondary path lengths, $\Gamma_p$ models additional losses incurred on each path such as reflection losses at the surface interface, and $\tau_p = d_p/c$ is the delay time.
 
 
-
-
 \subsection{Modelling and Simulation of the Acoustic Medium / Channel}
 
 Several toolkits exist in a variety of states that perform communications agent simulation, most notably the NS-2 / 3 family of frameworks and their add-ons.
 Some of these frameworks, such as SUNSET~\cite{Petrioli2012a} and AquaTools~\cite{Sehgal2010}, that are particularly proven in their capability in modelling static network performance, with less in built support for advanced, reactive node mobilities such as those involving collision or object avoidance.
 
-Beyond the NS family, there are many other communications and simulation modelling systems such as OpNet++\cite{Chang1999} and MATLAB toolkits such as the AcTUP interface to the Ocean Acoustics Library, that primarily focus on simulation of the acoustic channel and contention issues without concentration on Underwater-specific \gls{mac} protocols.
+Beyond the NS family, there are many other communications and simulation modelling systems such as OpNet++~\cite{Chang1999} and MATLAB toolkits such as the AcTUP interface to the Ocean Acoustics Library, that primarily focus on simulation of the acoustic channel and contention issues without concentration on Underwater-specific \gls{mac} protocols.
 
-AUVNetSim is a simulation platform designed from the ground up with \gls{auv} operations in mind\cite{Miquel2008}.
+AUVNetSim is a simulation platform designed from the ground up with \gls{auv} operations in mind~\cite{Miquel2008}.
 Including support for dynamic modular mobility and application behaviours, considering the stated context of an environmentally reactive \gls{uan}, AUVNetSim was tested and selected as a foundation upon which to build an exploratory network testing framework for this research.
 
-In order to implement a collaborative, reactive, simulation suite, the SimPy~\cite{Muller2003SimPy} agent framework was used for ``background'' synchronisation.
+In order to implement a collaborative, reactive, simulation suite, the SimPy~\cite{Mueller2003SimPy} agent framework was used for ``background'' synchronisation.
 
 As mentioned in the individual testing cases, transmission parameters for simulation were initially taken from and validated against results from~\citet{Stojanovic2007} and~\citet{Stefanov2011}.
 
@@ -290,7 +291,7 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 
 \section{Marine Operations, Payloads, Technologies, and Durations}\label{sec:marine_ops}
 
-The use and applications of \glspl{auv} has undergone a great expansion in recent years\cite{Alam2014}.
+The use and applications of \glspl{auv} has undergone a great expansion in recent years~\cite{Alam2014}.
 The primary application for \glspl{auv} has long been identified as the environmental monitoring of marine areas, and are actively being researched by a great range of industrial and defence sector applications, with secondary applications in the physical sciences and environmental research, which are summarised below\cite{Bingham2002,Wynn2014}.
 
 \subsection{\gls{auv} operations and deployments}
@@ -299,28 +300,28 @@ The primary application for \glspl{auv} has long been identified as the environm
 
 The use of \glspl{auv} in the place of manned-surface platforms or tethered undersea platforms enables greatly increased spatial and temporal sampling.
 Importantly, the separation of \glspl{auv} from the noisy sea surface enables much more efficient survey operations.
-This is particularly important when comparing to classical tow-line based measurements; where the mobility of the \glspl{auv} enables for much tighter-turning survey patterns or operation in inaccessible or hard-to-reach locations such as polar survey\cite{Curtin1993}.
+This is particularly important when comparing to classical tow-line based measurements; where the mobility of the \glspl{auv} enables for much tighter-turning survey patterns or operation in inaccessible or hard-to-reach locations such as polar survey~\cite{Curtin1993}.
 
-Another significant factor is cost; the daily cost of operating a manned vessel can be considerably higher than the costs of deploying, operating and recovering one or more \glspl{auv} with equivalent capabilities\cite{Nicholson2008}.
+Another significant factor is cost; the daily cost of operating a manned vessel can be considerably higher than the costs of deploying, operating and recovering one or more \glspl{auv} with equivalent capabilities~\cite{Nicholson2008}.
 Additionally, the use of low-power ``glider'' \glspl{auv} has lowered the barrier to entry for extended mission types, such as persistent environmental survey, or open-ocean operations. 
 Depth-hardened \glspl{auv} have also opened up the deepest parts of the oceans to exploration, with the onboard autonomy, imagery and Simultaneous Location and Mapping (SLAM) techniques allowing deep-dwelling survey \glspl{auv} to react to bottom-surface features without the need for a tight craft-to-surface control loop.
 The natural extension of these kind of applications is the use of \glspl{auv} on ice-covered planets such as Europa, where three-dimensional, autonomous navigation without an on-the-loop controller is vital for mission resource efficiency and success.
 
 \subsubsection{Hull and Infrastructure Inspection}
 Ongoing concerns regarding the security, safety and legality of international shipping has driven the application of \glspl{auv} to the area of near-surface hull and infrastructure inspections, looking for damage as well as devices such as limpet mines and other contraband.
-This use case puts a range of unique pressures on the \gls{auv} system; requiring highly accurate three-dimensional localisation and path-planning to clearly image the contours of a hull\cite{Nicholson2008}.
-Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using \glspl{auv} for both the laying of and inspection of these cables is an exciting area of work\cite{Yu2004,Asakawa2002}.
+This use case puts a range of unique pressures on the \gls{auv} system; requiring highly accurate three-dimensional localisation and path-planning to clearly image the contours of a hull~\cite{Nicholson2008}.
+Similarly, with the increasing use and criticality of intercontinental undersea optical fibre connections, using \glspl{auv} for both the laying of and inspection of these cables is an exciting area of work~\cite{Yu2004,Asakawa2002}.
 
 \subsubsection{Marine Petrochemical/Mineralogy}
 Oil and Gas industry requirements for high quality, low altitude bathymetry of seabed structures for infrastructure development (pipelines/drill platforms etc.) as well as monitoring of those structures over time (inspection etc.) is another significant application area, and a major driver of research investment.
-As in Hydrography, the mobility of \glspl{auv} is the biggest single advantage over classical platforms\cite{Morr2003}.
-Additionally, recent advances in \gls{sas} have provided invaluable sub-surface profile data over much wider areas for multi-spectral mineralogical analysis than previous sonar profilers\cite{Denny2015}.
+As in Hydrography, the mobility of \glspl{auv} is the biggest single advantage over classical platforms~\cite{Morr2003}.
+Additionally, recent advances in \gls{sas} have provided invaluable sub-surface profile data over much wider areas for multi-spectral mineralogical analysis than previous sonar profilers~\cite{Denny2015}.
 
 \subsubsection{Military}
 \gls{mcm} Operations benefit greatly from, and significantly drive, \gls{auv} development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit both in Dedicated \gls{mcm} (e.g. Large Area Hunting/ \gls{eod} Clearance) and in Organic \gls{mcm} for Expeditionary Forces.
 This benefit applies to protection as well as incursion; the ability to rapidly deploy persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as \gls{auv} technology, autonomy and security practices develop, this use is increasing.
 This Port Protection capability is particularly complex;  teams of \glspl{auv} are expected to repeatedly survey an area and remain densely-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
-In Sec.~\ref{sec:sim_and_valid}, we use this Port Protection scenario as a baseline for our simplified simulation context.
+In the remainder of this work this Port Protection scenario is used as a baseline for our simplified simulation context.
 Additional defence application areas include \gls{asw}, \gls{rea}, Navigational Aid/Force projection, 
 
 
@@ -333,34 +334,22 @@ However, a range of alternative techniques are used to maintain spacial awarenes
 Long-baseline localisation systems use a series of static surface/cable networked acoustic transponders to provide coordinated beacons and (usually) \gls{gps}-backed relative location information to local subsurface users. 
 Such systems can be accurate to less that $0.\SI{1}{\meter}$ or better in ideal deployments and are regularly used in controlled autonomous survey environments such as harbour patrol operations where the deployment area is bounded. 
 However, the initial set-up and deployment required in advance of any \gls{auv} operation makes \gls{lbl} difficult to utilise in unbounded or contended areas.
-LBL systems can also be deployed on mobile surface platforms in the area (ships or buoys for example), but these applications put significant computational pressure on the end-point AUV and have greatly reduced accuracy compared to ideal deployments\cite{Matos1999}.
+\gls{lbl} systems can also be deployed on mobile surface platforms in the area (ships or buoys for example), but these applications put significant computational pressure on the end-point AUV and have greatly reduced accuracy compared to ideal deployments~\cite{Matos1999}.
 \subsubsection{\gls{dvl}}
 Doppler Velocity Logging involves the emission of directed acoustic ``pings'' that reflect off sea bed/surface interfaces that, when received back on the craft with multi-beam phased array acoustic transducers can measure both the absolute depth/altitude (z-axis) of the craft and through directional Doppler shifting, the relative (xy-translative) motion of the craft since the ping.
-While classical \gls{dvl} was highly sensitive to shifting currents in the water column, advances in the development of Acoustic Doppler Current Profiling has turned that situation on it's head, enabling the compensation-for and measurement-of water currents down to the sub-meter level\cite{Snyder2010}.
+While classical \gls{dvl} was highly sensitive to shifting currents in the water column, advances in the development of Acoustic Doppler Current Profiling has turned that situation on it's head, enabling the compensation-for and measurement-of water currents down to the sub-meter level~\cite{Snyder2010}.
 \subsubsection{\gls{ins}}
 Inertial navigation systems use gyroscopic procession to observe the relative acceleration of a mobile platform.
 This reference-relative monitoring is particularly useful in the underwater environment, as it detects the motion of \glspl{auv} as they are carried by the water itself.
 Bias Drift is a significant problem for \gls{ins} systems operating over longer (hundreds of metres) distances, as they usually have some minimal amount of directional bias, that incurs a cumulative effect over time without assistance.
-Several sensor synthesis processes have been demonstrated which combine information from \gls{ins} along with \gls{dvl} data to improve localisation into the sub-decimeter level\cite{Jalving2003,Liu2014,Allotta2015}.
+Several sensor synthesis processes have been demonstrated which combine information from \gls{ins} along with \gls{dvl} data to improve localisation into the sub-decimeter level~\cite{Jalving2003,Liu2014,Allotta2015}.
 \subsubsection{\gls{slam}}
 Simultaneous Location and Mapping is the process of iteratively developing a feature-based model of an environment, and to use the relative movement within that modelled environment to obtain estimates of absolute positioning.
-\gls{slam} has been most well developed in the contexts of either visual-based inspection using cameras, or LIDAR-style distance triangulation, however the same principles have been successfully applied using marine sonar readings, providing sub-meter accuracy, real-time, feature-relative localisation information that is (for the most part) environmentally agnostic\cite{Williams2000}.
+\gls{slam} has been most well developed in the contexts of either visual-based inspection using cameras, or LIDAR-style distance triangulation, however the same principles have been successfully applied using marine sonar readings, providing sub-meter accuracy, real-time, feature-relative localisation information that is (for the most part) environmentally agnostic~\cite{Williams2000}.
 
+\vspace{\baselineskip}
 
 In summary, current technology reliably enables \glspl{auv} to localise to a sub-metre accuracy in most areas of application.
-
-\subsection{Payloads}
-
-\glspl{auv} are capable of being loaded with a wide range of sensing payloads such as
-\begin{enumerate}
-	\item Sonar Bathymetry
-	\item \gls{ctd} sensor packages (Depth from Pressure sensing rather than sonar)
-	\item Salinity and Particulate sensing
-	\item Side scanning sonar 
-	\item Sub-bottom Sonar Profiling
-\end{enumerate}
-
-\todo{FFS Finish the payloads, needs some pictures too.}
 
 \subsection{Example Maritime Autonomous Systems, Platforms and Operational Limitations}
 
@@ -398,7 +387,7 @@ At \SI{1.8}{\meter} long and weighting only \SI{52}{\kilogram}, this highly port
 \end{figure}
 
 \subsubsection{USN Sea Hunter}
-The Sea Hunter is an autonomous unmanned surface vehicle (USV) launched in 2016 and is undergoing seatrials as part of the \gls{darpa} Anti-Submarine Warfare Continuous Trail Unmanned Vessel program. With a top speed of \SI{50}{\km\per\hour}, weighing \SI{122}{\tonne}.
+The Sea Hunter is an autonomous unmanned surface vehicle (USV) launched in 2016 and is undergoing seatrials as part of the \gls{darpa} Anti-Submarine Warfare Continuous Trail Unmanned Vessel program, with a top speed of \SI{50}{\km\per\hour}, weighing \SI{122}{\tonne}.
 While unarmed during its sea trials, the \emph{Sea Hunter} will be armed and used for \gls{asw} and \gls{mcm} duties, operating at a tiny fraction of the standard operating costs of a littoral destroyer.
 \begin{figure}[h]
 	\centering
@@ -441,6 +430,6 @@ Within this threat context, the general optimisation of any \gls{tmf} would be t
 As \acrfull{auv} platforms become more capable and economical, they are being used in many applications requiring trust.
 These applications are using the collective behaviour of teams or fleets of these \glspl{auv} to accomplish tasks~\cite{Caiti2011}.
 With this use being increasingly isolated from stable communications networks, the establishment of trust between nodes is essential for the reliability and stability of such teams.
-As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the challenging underwater communications channel.
+In the next chapter, the use of Trust methods developed in the terrestrial \gls{manet} space will be re-appraised for application within the challenging underwater communications channel.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

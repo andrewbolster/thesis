@@ -311,8 +311,6 @@
   *{file}   {./Figures/best_phys_run_time_SlowCoach.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_time_Shadow.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/best_full_run_time_SlowCoach.pdf}{0000/00/00 v0.0}
-  *{file}   {Figures/input/domain_deltas_5.tex}{0000/00/00 v0.0}
-  *{file}   {Figures/input/domain_deltas_minus_5.tex}{0000/00/00 v0.0}
   *{file}   {Figures/input/optimised_weights_5.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/top_mpc_dt_box.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/top_sts_dt_box.pdf}{0000/00/00 v0.0}

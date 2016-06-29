@@ -951,7 +951,7 @@ This understanding of individual autonomy has been scaled up through social syst
 
 In the most general case in the world of artificial systems, Autonomy is understood as a graduated spectrum of allocation of functionality between a system (or system of systems) and a human operator assigned with performing a given task. 
 Where a system is more ``autonomous'', more of the sensing, planning, decision and action operations are performed by the system. (See Table~\ref{tab:autonomy_definitions} for a review of current definitions of autonomy and autonomous systems)
-This graduated spectrum of allocated functionality is generally termed the \gls{loa}, where an increasing \gls{loa} correlated to increasing control and decision making freedom to the autonomous system from the human operator(\autoref{tab:autonomy_levels_sheridan}).
+This graduated spectrum of allocated functionality is generally termed the \acrfull{loa}, where an increasing \gls{loa} correlated to increasing control and decision making freedom to the autonomous system from the human operator(\autoref{tab:autonomy_levels_sheridan}).
 These levels can be loosely viewed as a spectrum from across Planning Support, Decision Support, Bounded Execution, and finally, Informed Execution\footnote{In theory there is a further ``Uninformed execution'' level of autonomy, however this is beyond the scope of this work\cite{Cameron1984}}.
 
 While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Google and beyond.
@@ -1038,7 +1038,7 @@ For the purposes of this work, two perspectives on trust for autonomous systems 
 
   \item \emph{Operational Trust} - Trust at runtime or in-situ that both the individual nodes within a system are operating as expected and that the interfaces between the operator and the system are as expected.
     This latter aspect covers issues such as physical/wireless links and interpretation of data at each end of such a communication link.
-    Can be subdivided into two types of perspective;
+    This can be subdivided into two types of perspective;
     \begin{itemize}
       \item \emph{Hard Trust} or technical trust - The quantitative measurement and communication of the expectation of an actor performing a certain task, based on historic performance and through consensus building within a networked system.
     Can be thought of as a de-risking strategy to measure and monitor the ability of a system, or another actor within a system, to perform a task unsupervised.
@@ -1048,9 +1048,9 @@ For the purposes of this work, two perspectives on trust for autonomous systems 
     \end{itemize}
 \end{itemize}
 
-Operational Trust is functionally derived from, but distinct from Design Trust.
+Hard Operational Trust is functionally derived from, but distinct from Design Trust.
 
-It is already clear that these two definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system during design, development, procurement, and deployment.
+It is already clear that these definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system during design, development, procurement, and deployment.
 
 While the focus of this work is on the operational trust between teams of autonomous systems, there are two disjointed areas that are relevant to discuss.
 Firstly, it is valuable to briefly discuss the impact and effect of the actions and reactions of human operators in the context of autonomous operational trust; these human factors can have significant impact on the design constraints, operation, and indeed the ease-of-adoption of autonomous systems in the future. 
@@ -1068,7 +1068,7 @@ To be able to trust that system's ability to continue on a course, survey an are
 
 \subsection{Design Trust}\label{sec:design_trust}
 
-As part of~\cite{Bolster2014a}, five aspects of Design Trust have been identified, with major questions in each respective aspect emphasised.
+As part of work conducted with DSTL~\cite{Bolster2014a}, five aspects of Design Trust have been identifiedwith respect to Design Trust, with open research questions identified in each aspect emphasised.
 
 \begin{enumerate}
   \item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
@@ -1083,7 +1083,7 @@ As part of~\cite{Bolster2014a}, five aspects of Design Trust have been identifie
     It is not known whether these have been demonstrated, so the question is: \textit{Can autonomous systems be designed to understand the security situation when interfacing with known or unknown systems?}
   \item \textbf{Verification and Validation of a Flexible Specification}: Following on from the description of a flexible specification, establish that the AS conforms and performs in accordance to the specification.
     This has direct implication for the trust in the resultant system.
-    How can systems demonstrate that they will behave acceptably when the environment is unknown?
+    \emph{How can systems demonstrate that they will behave acceptably when the environment is unknown?}
   \item \textbf{Trust Modelling and Metrics}: This could be argued as part of the Verification and Validation of the system.
     However, models are increasingly being embedded into system design as a reference.
     Thus it is useful to consider this element separately.
@@ -1221,14 +1221,14 @@ It is worthwhile to briefly summarise the factors of \gls{manet} architecture th
 \subsubsection{Exposed Threat Surfaces}
 \emph{This section based on a summary of~\citet{csen2010security} and other sources directly cited}
 
-\emph{Wireless Links} - The use of wireless interfaces expose such networks eavesdropping and active interference, with no physical access required.
+\emph{Wireless Links} - The use of wireless interfaces expose such networks to eavesdropping and active interference, with no physical access required.
 These links normally have significant channel access and bandwidth constraints compared to closed-wired networks.
 This presents outside threats with the ability to eavesdrop or actively interfere with the operation of the network, leading to data security risk and risk of \gls{dos}-style attacks.
 
 \emph{Mobility and Dynamic Topology} - Nodes joining/leaving/re-joining the network and moving around the environment leads to significant topology and access control changes, making it difficult to differentiate between malicious and normal behaviour.
 Additionally this assumption of node mobility and ``temporary disconnection'' presents opportunities to outside attackers to physically compromise, capture or replicate nodes.
 
-\emph{Assumption of Cooperation} - \gls{manet} routing is predicated on the assumed ``fairness'' of nodes both in their routing operation and their ``advertisement'' of routing capability, leading to opportunities to disrupt the optimal operation of the network\cite{Papadimitratos2002}.
+\emph{Assumption of Cooperation} - \gls{manet} routing is predicated on the assumed ``fairness'' of nodes both in their routing operation and their ``advertisement'' of routing capability, leading to opportunities to disrupt the optimal operation of the network~\cite{Papadimitratos2002}.
 
 \emph{Resource Constraint} - In \glspl{manet}, more than in static wired networks, secondary resources such as power, and tertiary resources such as locomotion, onboard processing and data storage capabilities present additional opportunities for selfish or malicious threat that simultaneously constrain the ability of nodes to mitigate threat (i.e. limited processing power restricting the use of advanced cryptographic protocols, power/locomotion constraints limiting the available operational time to ``learn'' about attack characteristics, etc.)
 
@@ -1237,7 +1237,7 @@ Additionally this assumption of node mobility and ``temporary disconnection'' pr
 
 
 \begin{table}
-  \caption[Selected Attacks on the Protocol Stack]{Selected Attacks on the Protocol Stack extended from~\cite{csen2010security}}
+  \caption[Selected Attacks on the Protocol Stack]{Selected Attacks on the Protocol Stack extended from~\citet{csen2010security}}
   \label{tab:stack_attacks}
   \begin{tabularx}{\textwidth}{p{5cm} X}\toprule
     Layer & Attacks\\\midrule
@@ -1273,11 +1273,9 @@ Many classical mitigation strategies focus on selfishness rather than malicious 
 On the other hand, many  strategies are usually based on some derivative form of hardline-network \gls{ids} frameworks, where such systems passively observe a network for misbehaviour and 
 
 \citet{zhang2003intrusion} first proposed a general \gls{ids} framework for \glspl{manet}; leveraging the distributed and cooperative predicates of the architecture, introducing both per-node and cooperative \gls{ids} submodules such that nodes work independently and cooperatively to identify certain misbehaviours, specifically targeting routing attacks and incongruities.
-Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range\cite{Parker2006}
+Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range~\cite{Parker2006}
 However it is commonly accepted that these frameworks had significant deficiencies in terms of power and communications overheads~\cite{csen2010security,Ryu2008}.
 One interesting aspect to highlight about~\citet{zhang2003intrusion} is that while information about the physical mobility was assessed in the detection of misbehaviours in the context of routing changes, no collective cross-comparison was used, and rather focused on a per-node relative distance/velocity estimation to identify anomalous routing table updates.
-
-In the wider scope of threat mitigation for \glspl{manet}, most previous procedures involve 
 
 \subsection{Trust Management Frameworks}\label{sec:tmfs}
 
@@ -1292,6 +1290,7 @@ This predictive behaviour attempts to solve four important problems (paraphrased
   \item \emph{Abstraction of Collective security characteristics} - Through per-node trust evaluation, the generalised trustworthiness of a set or subset of nodes can be derived to encapsulate the ``health'' of the network as a whole.
 \end{itemize}
 
+\vspace{\baselineskip}
 
 Various models and algorithms for describing trust and developing trust management in distributed systems, \gls{p2p} communities or wireless networks have been considered.
 
@@ -1302,7 +1301,7 @@ Taking some examples; %\todo{TODO:Check for more recent evolutions in Trust/TMFs
   \item \emph{\acrfull{otmf}} takes a Bayesian approach and introduces the idea of applying a Beta function to changes in the per-link \gls{plr} over time, combining ``Trust'' and ``Confidence of Assessment'' into a single value~\cite{Li2008}.
     \gls{otmf} however does not appropriately combat multi-node-collusion in the network~\cite{Cho2011}.
   \item \emph{Trust-based Secure Routing} demonstrated an extension to \gls{dsr}, incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (\gls{plr})~\cite{Moe2008a,Cho2011}.
-  \item \emph{CONFIDANT}; presented an approach using a probabilistic estimation of normal observations, similar to \gls{otmf}.
+  \item \emph{\gls{confidant}}; presented an approach using a probabilistic estimation of normal observations, similar to \gls{otmf}.
     Also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter~\cite{Buchegger2002}.
   \item \emph{Fuzzy Trust-Based Filtering};presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network~\cite{Luo2008}.
   \item \emph{\acrfull{mtfm}} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust~\cite{Guo11}.
@@ -1357,7 +1356,7 @@ These single metric \glspl{tmf} provide malicious actors with a significant adva
 The objective of operating a \gls{tmf} is to increase the confidence in, and efficiency of, a system by reducing the amount of undetectable negative operations an attacker can perform.
 In the case where the attacker can subvert the \gls{tmf}, the metric under assessment by that \gls{tmf} does not cover the threat mounted by the attacker.
 In turn, this causes a super-linearly negative effect in the efficiency of the network as the \gls{tmf} is assumed to have reduced the possible set of attacks when in fact it has only made it more advantageous to attack a different aspect of the networks operation.
-An example of such a behaviour would be the case in a \gls{tmf} focused on PLR where an attacker selectively delays packets going through it, reducing the overall throughput of one or more network routes.
+An example of such a behaviour would be the case in a \gls{tmf} focused on \gls{plr} where an attacker selectively delays packets going through it, reducing the overall throughput of one or more network routes.
 Such behaviour would not be detected by the \gls{tmf}.
 
 \subsection{Multi-Metric Trust Frameworks}\label{sec:multimetrictrust}
@@ -1366,7 +1365,7 @@ Given the potential incentives to a selfish attacker and potential threats to tr
 
 A multi-metric approach may be more appropriate to capture and monitor the realities of harsh and sparse communications environments.
 
-\gls{mtfm}\cite{Guo11} uses Grey Theory (see \autoref{apx:grey}) to perform cohort based normalization of metrics at runtime, providing a ``grey relational grade'' of trust compared to other observed nodes in that interval for individual metrics, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
+\gls{mtfm}~\cite{Guo11} uses Grey Theory (see \autoref{apx:grey}) to perform cohort based normalization of metrics at runtime, providing a ``grey relational grade'' of trust compared to other observed nodes in that interval for individual metrics, while maintaining the ability to reduce trust values down to a stable assessment range for decision support without requiring every environment entered into to be characterised.
 This presents a stark difference between the Grey and Probabilistic approaches.
 Grey assessments are relative in both fairly and unfairly operating networks.
 All nodes will receive mid-range trust assessments if there are no malicious actors as there is nothing ``bad'' to compare against, and variations in assessment will be primarily driven by topological and environmental factors.
@@ -1457,7 +1456,7 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 	\end{axis}
 	
 	\end{tikzpicture}
-	\caption{Operation of the Centre-Point Triangular Whitenization used in \gls{mtfm}}
+	\caption{Operation of the Centre-Point Triangular Whitenization used in \gls{mtfm} \autoref{eq:whitenization}}
 	\label{fig:whitenization}
 \end{figure}
 

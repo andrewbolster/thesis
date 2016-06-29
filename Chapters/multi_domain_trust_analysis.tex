@@ -7,8 +7,8 @@
 
 \section{Initial Optimisation of Multi-Domain Trust with Predefined Domains}
 
-A key question in this chapter is to assess the advantages and disadvantages of utilising trust from across domains. 
-This includes a secondary question as to how trust assessments from these domains are most effectively combined. 
+A key question in this chapter is to assess the advantages and disadvantages of utilising trust from across domains for \gls{mtfm}. 
+This includes a secondary question as to how trust assessments from these domains are most effectively combined or synthesised. 
 
 It is important to clarify what is meant by ``effective'' in this case; the ``effectiveness'' of any trust assessment framework is taken as consisting of several parts.
 
@@ -34,7 +34,7 @@ Thus, the metric vector used for communications-trust assessment is;
 
 \subsection{Physical Trust Metrics}
 
-From \autoref{ch:comms_trust}; Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; \gls{indd}, \gls{inhd}, and Node Speed. These metrics encapsulate the relative distributions of position and velocity within the fleet, optimising for the detection of outlying or deviant behaviour within the fleet.
+From \autoref{ch:physical_trust}; Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; \gls{indd}, \gls{inhd}, and Node Speed. These metrics encapsulate the relative distributions of position and velocity within the fleet, optimising for the detection of outlying or deviant behaviour within the fleet.
 
 Conceptually, \gls{indd} is a measure of the average spacing of an observed node with respect to its neighbours. \gls{inhd} is a similar approach with respect to node orientation.
 
@@ -63,7 +63,7 @@ This simplest possible combination is a vector concatenation across domain metri
 
 \subsection{Metric Weight Analysis Scheme}
 
-From \eqref{eq:metric_weighting}, the final trust values arrived at are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
+From \eqref{eq:metric_weighting}, the final trust values arrived at using \gls{mtfm} are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
 
 This permits the assessment of the significance of different metrics in the detection and identification of different behaviours. 
 The primary aspects of a (mis)behaviour can be detected and assessed by comparing a weighted trust assessment against the deviation from a ``fair'' result set using the same weight, i.e.\ we are interested in the weight schemes that create the largest difference between fair and misbehaving cases.
@@ -94,12 +94,12 @@ Using this approach, the results of these simulations can be explored, condensin
 
 \subsection{Significance Analysis}
 
-First the results of the Random Forest regression assessment are discussed; Figs~\ref{fig:comms_feature_extraction} and~\ref{fig:phys_feature_extraction}, show the resultant feature extraction signatures for Comms-only and Physical-only metric selections respectively, and in ~\autoref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
+First the results of the Random Forest regression assessment are discussed; Figs~\ref{fig:comms_feature_extraction} and~\ref{fig:phys_feature_extraction}, show the resultant feature significances for Comms-only and Physical-only metric selections respectively, and in ~\autoref{fig:multi_feature_extraction}, these metric spaces are brought together and reassessed.
 
 In both single-domain cases, there are clear ``signatures'' in misbehaviours that don't directly target that domain ($P_{RX}$ in the Physical Shadow and Slowcoach behaviours in Fig~\ref{fig:comms_feature_extraction} and $INDD$ in the Selfish Target Selection behaviour in Fig~\ref{fig:phys_feature_extraction}).
-This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic for differentiating potential misbehaviours.
+This inter-domain activity is to be expected in \glspl{manet} in general, where the physical reality of the network (i.e.\ distance between nodes) directly impacts the behaviour of the logical communications network (i.e.\ delay between nodes), and is a useful characteristic coupling for differentiating potential misbehaviours.
 
-\autoref{fig:alternate_domain_diag} attempts to lay out the results of Feature Extraction across a spectrum of Communications / Physical domain assessment, matching the assumed domains of the stated misbehaviours.
+\autoref{fig:alternate_domain_diag} attempts to lay out the results of Feature Extraction across a spectrum of Communications / Physical domain assessment, matching the assumed domains of the stated misbehaviours based on the resultant significance in relevant domain misbehaviours.
 From this, two alternative ``domains'' can be constructed; ``Comms. Alt.'' and ``Phys. Alt.'', as artificial constructions of the relevant domains attempting to encapsulate the most responsive features for each misbehaviour-domain.
 The results from this domain grouping are shown along side the Full, Comms, and Phys domains.
 
@@ -158,21 +158,21 @@ The results from this domain grouping are shown along side the Full, Comms, and 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{comms_metric_trust_relevance}
-  \caption{Communications Metric Feature Extraction ($X_{comms}$)}
+  \caption{Communications Metric Features ($X_{comms}$)}
   \label{fig:comms_feature_extraction}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{phys_metric_trust_relevance}
-  \caption{Physical Metric Feature Extraction ($X_{phys}$)}
+  \caption{Physical Metric Features ($X_{phys}$)}
   \label{fig:phys_feature_extraction}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{full_metric_trust_relevance}
-  \caption{Multi Domain  Metric Features Extraction ($X_{merge}$)}
+  \caption{Multi Domain  Metric Features ($X_{merge}$)}
   \label{fig:multi_feature_extraction}
 \end{figure}
 
@@ -187,7 +187,7 @@ The results from this domain grouping are shown along side the Full, Comms, and 
 
 \subsection{Weight Assessment}\label{sec:weight_assessment}
 
-From this significance information, a ``estimated'' signature for each behaviour can be inferred, which can then be fed back into the assessment framework. 
+From this significance information, a ``estimated'' signature for each behaviour can be inferred, which can then be fed back into \gls{mtfm}. 
 The aim of this iteration is to minimise the number of weight permutations required to come to a conclusion about the behaviour under observation. 
 
 However, these approximated signatures have no information regarding the ``sign'' of the  $g$,$b$ comparison vectors from \eqref{eq:metric_weighting}, i.e.\ there is no hint as to whether the relationship is $g(x) \mapsto \max, b(x) \mapsto \min$ or $g(x) \mapsto \min, b(x) \mapsto \max$)  
@@ -195,10 +195,10 @@ However, these approximated signatures have no information regarding the ``sign'
 One option would be to go back to the regression point and expand the combination options to include negative values, signifying inverted $g,b$ relationships, however this is combinatorially explosive.\footnote{The current version of this analysis uses three metric weights; ignored, standard, emphasised, giving $3^9 = 19683$ combinations. Expanding this to include inverted standard and inverted emphasised weights would raise that to $5^9 = 1.9\times 10^6$}
 Instead, the ``significance'' weight is permuted against it's possible combinations of ``flips'', i.e.\ for $X_s=[0.3,0.4,0.01,0.02,0.27]$ could also be $X_s^p=[0.3,-0.4,0.01,0.02,0.27]$ and so on. 
 This sign permutation is filtered based on a threshold value ($0.01$), so for all indices below that threshold will not be permuted on, halving the number of combinations required for each indices eliminated.
-This reduces the number of additional assessments required from $1.9\times 10^6$ to approximately 500 (when applied to all nine metrics).
+This reduces the number of additional assessments required from $1.9\times 10^6$ to approximately 500 (when applied to all nine metrics) for each experimental run.
 
 The best of these permutations is selected to both maximise the (correct) deviation between each nodes trust perspectives and to minimise the trust value reported for the misbehaving nodes; $\Delta T \to \max^+$ (\autoref{eq:delta_t}, results summarised in \autoref{tab:domain_deltas}).
-Additionally, a ``False Positive'' assessment, $\Delta T^-$ \autoref{eq:delta_t_minus} is shown in \autoref{tab:domain_deltas_minus} which encapsulates the average false positive selection rate.
+Additionally, a ``False Positive'' assessment, $\Delta T^-$ (\autoref{eq:delta_t_minus} shown in \autoref{tab:domain_deltas_minus}) which encapsulates the average false positive selection rate.
 
 \begin{align}
   \Delta T_{ix} &= \frac{\sum_{j\neq x}\left( \overline{T_{i,j}}^{\forall t}\right)}{N-1} - \overline{T_{i,x}}^{\forall t} \label{eq:delta_t}\\
@@ -207,7 +207,7 @@ Additionally, a ``False Positive'' assessment, $\Delta T^-$ \autoref{eq:delta_t_
 
 Where $i$ is a given observer, $x$ is the known misbehaving node, $\overline{T_{i,j}}^{\forall t}$ is the average weighted trust assessment of node $j$ observed by node $i$ across time and $N$ is the number of nodes.
 
-Conceptually, $\Delta T_{ix}$ represents the ``Distrust'' of the target node $x$, as the difference in trust value from $0\to1$, the higher the better. 
+Conceptually, $\Delta T_{ix}$ represents the ``Relative Distrust'' of the target node $x$, as the difference in trust value from $0\to1$, the higher the value the larger the ``drop'' in trst of the misbehaviour compared to the cohort. 
 $\Delta T_{ix}^-$ represents the average $\Delta T_{ij}$ for all other nodes, representing the likelihood of another node being as highly distrusted as $x$, where positive values indicate that $x$ is not the obvious outlier, negative values indicate that $x$ is a very clear outlier, and near-zero values indicate a difficulty in selection of any outlier from the cohort.
 
 The ``best'' weight permutations, as shown in \autoref{tab:optimised_weights}, are applied to untrained datasets for these results.
@@ -216,7 +216,7 @@ This is a departure from the Dixons Q-Test applied in \autoref{ch:physical_trust
 The primary motivation to this work is to generate weights that (in the case of a single attacker) induce the largest Trust reduction observable by as many nodes within the network.
 This motivation is encapsulated in the $\Delta T_{ix}$ assessment, and allows increased abstraction so as to assess the variability of metrics in use, and to assess the usefulness of such generated ``Alternate'' or ``Synthetic'' domains.
 
-An exemplar subset of the results is shows in Figs~\ref{fig:comms_time_mpc}-~\ref{fig:full_time_slowcoach}, with the ``misbehaving node'' highlighted with heavier lines, with any observations about the rest of the cohort faded and dashed. For each node assessment, the mean for that assessment over that time period is also included as a solid / dashed line respectively for clarity.
+An exemplar subset of the results is shows in Figs~\ref{fig:comms_time_mpc}-~\ref{fig:full_time_slowcoach}, with the ``misbehaving node'' indicated above its distribution plot.
 
 The most intuitively ``Communications'' behaviour, \gls{mpc}, scores comfortably in the 90th percentile range in both Communications Domain (\autoref{fig:comms_time_mpc}) and Full Domain (\autoref{fig:full_time_mpc})  trust assessments. As seen in \autoref{tab:optimised_weights}, both the ``Full'' and ``Comms'' metric optimisations heavily weigh $P_{TX}$, and as this is the metric directly modified by the misbehaviour, it is expected that this is easily discernible using these domain weights.
 However when this communications information is unavailable, as is the case in the use of Physical Domain metrics alone in \autoref{fig:phys_time_mpc}, the misbehaving node (Alfa) is completely indiscernible compared to the other nodes, with all nodes in the cohort tending to a trust value of $0.5$.
@@ -232,7 +232,7 @@ Referring to Figs~\ref{fig:comms_feature_extraction} and~\autoref{fig:multi_feat
 The massive emphasis placed on load could only be diminished by putting it together in a larger ensemble.
 In Figs~\ref{fig:comms_time_shadow} and~\ref{fig:full_time_shadow}, the misbehaving node is much more obvious than in \gls{sts}, which is moderately surprising for a physically-focused behaviour. Further, there is a roughly 20\% improvement when incorporating the full metric space.
 
-From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistently detectable behaviour across selected metric domains. 
+From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistently detectable behaviour across selected metric domains, which further suggests at the opportunity of correlating metric assessments across multiple domains.
 
 
 %See \autoref{sec:apx_mean_targeting_malicious} for a full collection of graphs showing the comparison of the malicious nodes trust value against the instantaneous mean of the remaining cohort.
@@ -335,14 +335,37 @@ From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistentl
 \begin{table}
 	\centering
 	\caption{$\Delta T$ across domains and ``proposed'' behaviours targeting known misbehaving node}
-	\input{Figures/input/domain_deltas_5.tex}
+	%\input{Figures/input/domain_deltas_5.tex}
+	\begin{tabular}{|l|*{4}{c}|r|}
+		\toprule
+		\diagbox{Domain}{Behaviour} &  MPC &   STS &  Shadow &  SlowCoach &  Avg. \\
+		\midrule
+		Full       & 0.81 & -0.03 &    0.42 &       0.60 &  0.45 \\
+		Comms      & 0.85 &  0.04 &    0.19 &       0.26 &  0.34 \\
+		Phys       & 0.04 &  0.00 &    0.39 &       0.69 &  0.28 \\
+		Comms alt. & 0.85 &  0.03 &    0.38 &       0.45 &  0.43 \\
+		Phys alt.  & 0.48 &  0.03 &    0.42 &       0.63 &  0.39 \\
+		\bottomrule
+	\end{tabular}
 	\label{tab:domain_deltas}
 \end{table}
 
 \begin{table}
 	\centering
 	\caption{$\Delta T^-$ False Positive assessments across domains and ``proposed'' behaviours across non-misbehaving nodes}
-	\input{Figures/input/domain_deltas_minus_5.tex}
+	%	\input{Figures/input/domain_deltas_minus_5.tex}
+	\begin{tabular}{|l|*{4}{c}|r|}
+		\toprule
+		\diagbox{Domain}{Behaviour} &   MPC &   STS &  Shadow &  SlowCoach &  Avg. \\
+		\midrule
+		Full       & -0.16 &  0.01 &   -0.08 &      -0.12 & -0.09 \\
+		Comms      & -0.17 & -0.01 &   -0.04 &      -0.05 & -0.07 \\
+		Phys       & -0.01 & -0.00 &   -0.08 &      -0.14 & -0.06 \\
+		Comms alt. & -0.17 & -0.01 &   -0.08 &      -0.09 & -0.09 \\
+		Phys alt.  & -0.10 & -0.01 &   -0.08 &      -0.13 & -0.08 \\
+		\bottomrule
+	\end{tabular}
+	
 	\label{tab:domain_deltas_minus}
 \end{table}
 %\todo{FIX CODE: These tables need changed from being ``delta T'' to ``Probability of detection by an idiotic classifier}
@@ -359,10 +382,10 @@ From Table~\ref{tab:domain_deltas}, the Shadow behaviour is the most consistentl
 \section{Metric Subset Analysis}
 So far, the ability to generate and test the ``best'' metric weighting schemes across domains has been demonstrated, optimising for the highest levels of selectivity between fair and expected misbehaviours. 
 However, these metric weighting schemes have been constructed into ``domains'' based on natural experience in the operating environment. 
-Through observation of the metric relevancies shown in \autoref{fig:multi_feature_extraction}, potential alternative ``domains'' were generated through simple observation of the visual result.
-In order to remove the human element, and investigate the wider impact and potential optimisation of this ``optimum subdomain'' subset idea, the idea wether these intrinsic  domains (Physical and Communications) can be improved upon by removing the assumption that ``Communications'' behaviours are best identified through the use of Communications metrics is tested.
+Through observation of the metric significances shown in \autoref{fig:multi_feature_extraction}, potential alternative ``domains'' were generated through simple observation of the visual result.
+In order to remove the human element, and investigate the wider impact and potential optimisation of this ``optimum subdomain'' subset idea, the idea whether these intrinsic  domains (Physical and Communications) can be improved upon by removing the assumption that ``Communications'' behaviours are best identified through the use of Communications metrics is tested.
 
-To accomplish this, the above discussed analysis from metric weight relevance regression and generation to $\Delta{T}_{ix}/\Delta{T}_{ix}$ validation is performed for all combinations of the $M=9$ explored metrics with three or more metrics ($k\ge3$). 
+To accomplish this, the discussed analysis from metric weight significance regression and generation to $\Delta{T}_{ix}/\Delta{T}_{ix}^-$ validation is performed for all combinations of the $M=9$ explored metrics with three or more metrics ($k\ge3$). 
 
 From this brute-force approach~\footnote{each ``run'' consisting of ${M\choose{k}}$ individual weight assessments, with the same multiplicity of 8 experimental runs per scenario per target node as before in previous runs}, a small investigation can be made in to both the performance of metric subsets, and the potential redundancies between metrics. 
 For instance, one could expect that $P_{RX}$ would be almost always directly related to the expected positioning between nodes and therefore to \gls{indd}.
@@ -408,7 +431,7 @@ However, a counter hypothesis would be that this redundancy is present in the ``
 The True Positive ($\Delta T_{ix}$) is again used to indicate the overall performance of a particular synthetic domain (i.e. a synthetic domain created by the arbitrary selection of a given set of trust metrics for optimisation and assessment).
 \autoref{fig:top_mean_dt_box} shows the distribution in $\Delta T_{ix}$ for each behaviour for the top 10\% of this simple mean.
 As has been shown before, it's immediately clear that \gls{mpc} and SlowCoach are the more responsive behaviours to detect across the metric space, with Shadow being slightly more difficult and \gls{sts} remaining as challenging to detect as in earlier attempts.
-This is disappointing, as it was hoped that \emph{some} combination of metrics in relative isolation would be capable of detecting this behaviour in a more convincing manner, but it is clear that the Application level nature of the \gls{sts} attack is avoiding significant impacts across all the metrics currently applied.
+This is disappointing, as it was hoped that \emph{some} combination of metrics in relative isolation would be capable of highlighting this behaviour in a more convincing manner, but it is clear that the Application level nature of the \gls{sts} attack is avoiding significant impacts across all the metrics currently applied.
 \todo{FUT: It'd be good to apply this to ``blind'' behaviours, but that's a very complicated issue in terms of anomaly detection etc. Should work though as long as it's not Application-specific like STS}
 
 Across the figures in \autoref{fig:top_dt_boxes}, when behaviours are targeted for this meta-optimisation, naive as it is, the variability in response performance in other, unoptimised, misbehaviours is greatly increased, indicating that, at least in the case of attempting to \emph{identify} misbehaviour, that this is a case of over-optimisation, and that in the majority of cases, optimising for the mean response (\autoref{fig:top_mean_dt_box}) is sufficient to get a strong and consistent performance across misbehaviours.
@@ -419,12 +442,12 @@ The abstractions for the generation of \autoref{fig:focus_ratio} are shown in \a
 Looking at the performance of these targeted synthetic domains with respect to the metrics used, \autoref{fig:top_targeted_dt_heatmap} shows the metric selection correlations across metrics and behaviours.
 From this it is observed that while there is a relatively consistent relationship between ``Physical'' metrics (INDD, INHD and Speed) and ``Physical'' misbehaviours (SlowCoach and Shadow), this is far from consistent across the domain space. 
 
-Looking back at the performance of the previously used Basic and Alternative Domains, \autoref{tab:domain_deltas} can be extended to include results from the ``Best'' synthetic domains for each misbehaviour, shown in \autoref{tab:augmented_domain_deltas}.
+Looking back at the performance of the previously used Native and Alternative Domains, \autoref{tab:domain_deltas} can be extended to include results from the ``Best'' synthetic domains for each misbehaviour, shown in \autoref{tab:augmented_domain_deltas}.
 As stated, it is not surprising that these Behaviour-optimised synthetic domains perform better at maximising $\Delta T_{ix}$ in their targeted behaviours, with an incurred reduction in the average response to other misbehaviours. 
 
 In terms of a comparison between the previously generated ``Alternate'' domains, which were made by visual inspection of the returned relevance from \autoref{fig:multi_feature_extraction}, the ``SlowCoach'' synthetic domain uses almost all the same domains as the ``Phys Alt.'' domain, such that the synthetic domain leaves the Delay metric out, and in all cases except for \gls{sts}, outperforms the Alternate domain.
 A final observation is that none of the synthetic domains use the Offered Load metric ($G$), indicating that in this particular scenario where such load is near-constant that it is not particularly useful for Trust Assessment.
-
+\todo{This is bullshit}
 
 \begin{table}
 	\centering
@@ -513,12 +536,14 @@ A final observation is that none of the synthetic domains use the Offered Load m
 	\end{tabular}
 	\label{tab:augmented_domain_deltas}
 \end{table}
+\todo{Bring mean to the bottom of this table, and do the fucking classifier}
 \section{Conclusion}
+\todo{the guts of this conclusion could be the start of the main conclusion}
 In this chapter we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 
 
 The extension of the methodologies of multi-vector trust into the marine space are already demonstrated, however including information from physical observations of actors in a network enables the detection and identification of a much wider range of behaviours.
 We also demonstrate a method for assessing trust metrics in harsh environments in terms of their relative significance, and a method for establishing classification signatures for misbehaviours.
-Finally, the synthetic generation of abstract metric domains is explored, where it is found that in most cases, optimising for generalised performance prevents response-overfitting, and that in general, but provide the strongest deviations in observed Trust when targeted specifically, further supporting the use of a mixed-domain approach for Trust across domains for identification of misbehaviours.
+Finally, the synthetic generation of abstract metric domains is explored, where it is found that in most cases, optimising for generalised performance prevents response-overfitting, and provide the strongest deviations in observed Trust when targeted specifically, further supporting the use of a mixed-domain approach for Trust across domains for identification of misbehaviours.
 
 It is to be noted that this presented method is significantly more computationally intensive than the relatively simple Hermes / \gls{otmf} algorithms communications only algorithms, and is exponential in complexity as metrics and/or domains are added. The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization. More work needs to be done to characterise how worthwhile this approach is compared to a separate synthesis approach where by \gls{mtfm}-style trust is generated and assessed on a per-domain basis and subsequently fused.
 

@@ -11,11 +11,12 @@ The use of \gls{manet} architectures in the \gls{uan} space requires a fundament
 The strengths of \gls{manet} architectures inherently produce decentralised, self-organised, collaborative networks that strive towards efficiency and performance where all network members perform fairly.
 However, with the increasing introduction of autonomy into the general \gls{manet} space, this assessment of ``fairness'' is simultaneously an assessment of the capability of the network, and of the ``trustworthiness'' of the autonomous nodes within it.
 
-The original \gls{manet} architecture was designed with no in-built defence or security capabilities, and as such, threat mitigation mechanisms been superimposed over time to protect against fundamental vulnerabilities in the architecture due to assumptions of fairness, the use of open, wireless links with ``fuzzy'' operational boundaries, highly mobile nodes inducing dynamic topologies, and constrained power/computation/locomotion/communications resources
-These mechanisms vary, from evidence based cryptographic security such as centralised trusted third parties, a-priori shared secrets or one-time-pads, or fully decentralised \gls{pki} systems.
-However, these classical security measures require significant investments in computational memory and power; communications channel occupancy; and inherently rely on relatively short delays between links and from end-to-end points in the network.
+The original \gls{manet} architecture was designed with no in-built defence or security capabilities, and as such, threat mitigation mechanisms been superimposed over time to protect against fundamental vulnerabilities in the architecture due to assumptions of fairness, the use of open, wireless links with ``fuzzy'' operational boundaries, highly mobile nodes inducing dynamic topologies, and constrained power/computation/locomotion/communications resources.
+These mechanisms vary, from evidence based cryptographic security such as centralised trusted third parties, a-priori shared secrets or one-time-pads, to fully decentralised \gls{pki} systems.
+However, these classical security measures require significant investments in memory and computational power; communications channel occupancy; and inherently rely on relatively short delays between links and from end-to-end points in the network.
 
-While in the terrestrial realm, the increasing computing power of devices such as mobile phones has enabled the creation of pervasive, end to end security, as discussed in \autoref{ch:maritime_background}, these assumptions of channel availability and low-latency do not hold in the underwater acoustic space, which is massively variable in channel capacity and delay-response.
+In the terrestrial realm, the increasing computing power of devices such as mobile phones has enabled the creation of pervasive, end to end security. 
+However, as discussed in \autoref{ch:maritime_background}, these assumptions of channel availability and low-latency do not hold in the underwater acoustic space, which is massively variable in channel capacity and delay-response.
 As such, regardless of on-board computing power, alternative, decentralised methods for ensuring the integrity of the network and its operations is essential for expanding the applications of \gls{manet} architectures in this space. 
 
 These applications vary from defensive patrolling, \gls{asw} and \gls{mcm}, to pervasive environmental monitoring, and in almost all cases, current military and commercial implementations benefit from leveraging individual node autonomy in a distributed architecture to bring down development and operating costs, increase system efficiency, and fundamentally, save humans time and in extreme cases, lives. 
@@ -44,18 +45,43 @@ Having established the operation of Trust in the marine \gls{manet} environment,
 \autoref{ch:multi_domain}, the combination of these domains is assessed.
 The relative significance of metrics in the specific identification of a given behaviour is performed through a full-sight random forest regression by comparing a significant number of simulated mission runs.
 These significances, while simply a statistical measure of the importance of a given metric in discriminating between two behaviour (i.e. a fair behaviour and the misbehaviour) provide actionable information to generate a weighted metric sequence targeting that behaviour.
-The identification and classification methodologies from both \autoref{ch:comms_trust} and \autoref{ch:physical_trust} are combined to generate a classifier with very beneficial performance, \todo{insert numbers here}
+The identification and classification methodologies from both \autoref{ch:comms_trust} and \autoref{ch:physical_trust} are combined to generate a classifier with very beneficial performance.
 
-One disappointing issue with these results is that the \gls{sts} behaviour has been stubbornly avoiding identification, and with the applied methodology 
+
+
 
 \section{Future Work}
-\todo{Future Work}
-From \autoref{ch:comms_trust}:
-One solution to this would be to move from a stepping-window of trust observations to a continuous trust log, updated on packet reception rather than waiting regular periods for packets to be analysed.
-Future work could investigate the improvement of weight-based detection algorithms, the stability of \gls{gra} under multi-node collusion, the development of real-time outlier detection.
+One of the fundamental difficulties in establishing trust in sparse, noisy networks is that it takes a significant amount of time to accumulate enough observational metric data to for actionable opinions.
+This problem is exacerbated by the asynchronous nature of those metrics; this is evident in the multi-domain discussion between communications and physical metrics where overheard location updates for a given node my arrive out-of-sync from other useful information about that particular relationship, but is also the case in the pure communications domain.
+
+If these metrics are not synchronised, for instance if they are interrupt driven such as communications-based observations, generating more abstract measurements requires inherent assumptions about ``how to accumulate the data while you wait''. 
+For instance, \autoref{ch:comms_trust} and \cite{Bolster2015} demonstrated a periodic trust assessment framework for autonomous marine environments, in such an environment, to establish useful, generalised, data, it was necessary to wait for a relatively long time to accumulate enough data to make assessments.
+However, this leads to data being left in-buffer for a time before being used to make decisions, and by the time the data was collated and processed, it could be wildly different from the reality. 
+Further, while some periods could be extremely sparse or even empty, others could be extremely busy with many records having to be averaged down to provide a 'single period' response. 
+One solution to this would be to move from a stepping-window of trust observations as used in this work to a continuous trust log, updated on packet reception rather than waiting regular periods for packets to be analysed.
+Therefore, the implementation of a suitable grey sequence buffer version of the framework would be beneficial.
+
+Such a sequence buffer framework would involve a tracking predictor that would provide best-guess estimates of an interpolated value for a metric between value updates, and a back-propagation algorithm to retroactively update historical assessments of that metrics so as to better inform any abstracted trust value predictor.
+
+Additionally, future work could investigate the improvement of weight-based detection algorithms, the stability of \gls{gra} under multi-node collusion, the development of real-time outlier detection on physical platforms.
 
 From \autoref{ch:physical_trust}, it is recognised that the geometric abstractions used to assess the validity of ``physical trust assessment'' are application-agnostic (assuming collaborative mobility) and the applicability of this assessment and detection method to other areas such as \gls{auv} operations or Autonomous Vehicle Networks, potentially forming a mode of ``body language'' verification for autonomous systems. 
-Equally, the selected metrics are by no means exhaustive, and 
+Equally, the selected metrics are by no means exhaustive, and other application / mobility specific metrics, such as deviation from a planned path rather than deviation from a current-node-centre, would benefit the field.
 
-Overall, the approaches taken throughout this thesis are relatively application agnostic and are indeed domain-agnostic also; it has been demonstrated that the use of trust assessment across communications and physical domains yields beneficial results, but the same approach could be applied to non-physical autonomous agents such as high-frequency trading initiatives, forensic accounting/auditing,  cheat-detection in online gaming, lane-assistance in self-driving cars, and possibly most interesting, having the autonomous agents assess how trust-worthy we are across domains such as vocal tonality, facial expressions, ``body language'', and other biometric factors in addition to just the words or commands we use.
+A similarly enticing area of research is the impact of variable misbehaviour will have on such multi-domain approaches; taking the \gls{mpc} behaviour as an example, a time-variant power emphasis could evade windowed trust assessment.
+
+With respect to the operational performance impacts of physical misbehaviour, this is a very unexplored space and it's possible that the selected misbehaviours were too unambitious; future work will have to investigate the impact of ``heavy-handed'' or destructive behaviours on the operational efficiency of autonomous networks.
+
+One disappointing issue with these results presented in \autoref{ch:multi_domain} is that the \gls{sts} behaviour has been stubbornly avoiding identification in the ``live'' multi-domain space while presenting ostensibly discernible metric significances in the comparison space. 
+However the performance of the remaining targeted synthetic domains indicates that this is a valid result and that the methodology is sound, if in need of some refinement and corroboration.
+It is possible that the outlying results used in the initial training set are simply too noisy to accurately optimise towards \gls{sts} directly and this analysis is victim of over-fitting. 
+On the other hand, the fact that it is the only misbehaviour that is purely application-level indicates that there is potential to further expand this methodology to include some traffic monitoring and route-tracking as an additional ``routing'' level domain to explore in addition to the largely physical-communication-domain metrics used.
+
+\section{Summary}
+
+In this thesis, the operation of trust in the challenging \gls{uan} was explored, demonstrating that without augmentation, current \gls{tmf} approaches do not perform well.
+A novel approach to Trust was demonstrated, using physical metrics as a raw trust assessment metric source.
+Finally, a metric weight optimisation methodology was demonstrated to automatically develop trust weightings that highlight a given misbehaviour, driving its targeted trust low so as to enable detection by even simple classifiers.
+
+Overall, the approaches taken throughout this thesis are largely application agnostic and are indeed domain-agnostic; it has been demonstrated that the use of trust assessment across communications and physical domains yields beneficial results, but the same approach could be applied to non-physical autonomous agents such as high-frequency trading initiatives, forensic accounting/auditing,  cheat-detection in online gaming, lane-assistance in self-driving cars, and possibly most interesting, having the autonomous agents assess how trust-worthy we are across domains such as vocal tonality, facial expressions, ``body language'', and other biometric factors in addition to just the words or commands we use.
 So, should they trust us?

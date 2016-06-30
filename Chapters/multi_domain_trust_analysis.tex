@@ -220,7 +220,7 @@ An exemplar subset of the results is shows in Figs~\ref{fig:comms_time_mpc}-~\re
 
 The most intuitively ``Communications'' behaviour, \gls{mpc}, scores comfortably in the 90th percentile range in both Communications Domain (\autoref{fig:comms_time_mpc}) and Full Domain (\autoref{fig:full_time_mpc})  trust assessments. As seen in \autoref{tab:optimised_weights}, both the ``Full'' and ``Comms'' metric optimisations heavily weigh $P_{TX}$, and as this is the metric directly modified by the misbehaviour, it is expected that this is easily discernible using these domain weights.
 However when this communications information is unavailable, as is the case in the use of Physical Domain metrics alone in \autoref{fig:phys_time_mpc}, the misbehaving node (Alfa) is completely indiscernible compared to the other nodes, with all nodes in the cohort tending to a trust value of $0.5$.
-How this discernibility would fare under varying emphasis of behaviours is an open question\todo{FUT: Answer what happens when you vary MPC power variation}
+How this discernibility would fare under varying emphasis of behaviours is an open question.
 
 Under the most ``subtle'' behaviour; \gls{sts}, where no direct metric is being modified in operation, but where the behaviour is effectively in the ``Application layer'' of the networking stack, the picture is far more murky. 
 Comparing Figs~\ref{fig:comms_time_sts} and~\ref{fig:full_time_sts}, while there is a reasonable dip in the misbehaver’s trust assessment, the high level of variance across the cohort is such that this ``mistrust'' triggering is neither consistent or obvious. 
@@ -516,27 +516,30 @@ In terms of a comparison between the previously generated ``Alternate'' domains,
 
 \begin{table}
 	\centering
-	\caption{$\Delta T_{ix}$ behaviour detection performance across native, alternate, and targeted-synthetic domains, showing the respective constituent metrics}
-	\begin{tabular}{|c|p{2cm}||*{5}{c|}|*{9}{c|}}
+	\caption{$\Delta T_{ix}$ behaviour detection performance across basic, alternate, and targeted-synthetic domains, showing the respective constituent metrics}
+	{\renewcommand{\arraystretch}{1.1} 
+	\begin{tabular}{|c p{2cm}||*{5}{c|}|*{9}{c|}}
 		\toprule
 		\multicolumn{2}{|c||}{\multirow{3}{*}{\parbox{2cm}{Domain}}}&\multicolumn{5}{c||}{Behaviour $\Delta T_{ix}$} & \multicolumn{9}{c|}{Metrics in Domain}\\
 		&&                \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} & \rot{Mean} &                     \rot{$Delay$} & \rot{$P_{RX}$} & \rot{$P_{TX}$} &  \rot{$S$} &  \rot{$G$} & \rot{$PLR$} & \rot{$INDD$} & \rot{$INHD$} & \rot{$Speed$} \\
 		\midrule
-		\multirow{3}{*}{\rot{Basic}} & Full       & 0.81 & -0.03 &    0.42 &       0.60 &  0.45 &\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK\\[0.3em]\hline
+		\multirow{3}{*}{\rot{Basic}} & Full       & 0.81 & -0.03 &    0.42 &       0.60 &  0.45 &\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK\\
 		& Comms      & 0.85 &  0.04 &    0.19 &       0.26 &  0.34 &\OK&\OK&\OK&\OK&\OK&\OK&&&\\
-		& Phys       & 0.04 &  0.00 &    0.39 &       0.69 &  0.28 &&&&&&&\OK&\OK&\OK\\[0.7em]\hline
-		\multirow{2}{*}{\rot{Alternate}}&Comms alt. & 0.85 &  0.03 &    0.38 &       0.45 &  0.43 &&&&\OK&\OK&\OK&\OK&&\\[0.5em]
-		& Phys alt.  & 0.48 &  0.03 &    0.42 &       0.63 &  0.39 &\OK&\OK&&&&&\OK&\OK&\OK\\[0.5em]\hline
+		& Phys       & 0.04 &  0.00 &    0.39 &       0.69 &  0.28 &&&&&&&\OK&\OK&\OK\\\hline
+		\multirow{4}{*}{\rot{Alternate}}&&&&&&&&&&&&&&&\\[-0.5em]
+		& Comms alt. & 0.85 &  0.03 &    0.38 &       0.45 &  0.43 &&&&\OK&\OK&\OK&\OK&&\\[0.2em]
+		& Phys alt.  & 0.48 &  0.03 &    0.42 &       0.63 &  0.39 &\OK&\OK&&&&&\OK&\OK&\OK\\
+		&&&&&&&&&&&&&&&\\[-0.5em]\hline
         \multirow{5}{*}{\rot{Synthetic}}& MPC        & 0.89 &  0.01 &   0.35 &      0.54 & 0.45 &                         \OK &      \OK &      \OK &      &      &       &        &    \OK &         \\
 		& STS        & 0.86 & 0.06 &   0.37 &      0.49 & 0.45 &                         \OK &          &      \OK &  \OK &      &   \OK &    \OK &        &         \\
 		& Shadow     & 0.49 & -0.00 &   0.44 &      0.66 & 0.40 &                             &      \OK &          &     &     &       &    \OK &    \OK &     \OK \\
 		& SlowCoach  & 0.47 &  0.00 &   0.37 &      0.72 & 0.39 &                         \OK &      \OK &          &  \OK &      &       &        &        &     \OK \\
 		& Mean       & 0.88 & 0.03 &   0.42 &      0.69 & 0.50 &                             &      \OK &      \OK &      &  \OK &       &    \OK &        &     \OK \\
 		\bottomrule
-	\end{tabular}
+	\end{tabular}}
 	\label{tab:augmented_domain_deltas}
 \end{table}
-\todo{Bring mean to the bottom of this table, and do the fucking classifier}
+
 \section{Selectivity Performance of Optimised Domains}
 
 Having arrived at a set of Basic, Alternate, and now Synthetic domains, optimised for maximising the induced ``drop'' in trust, (i.e. maximising $\Delta T_{ix}$), an estimate of the actual performance of these assessments must be made.
@@ -544,22 +547,37 @@ This is accomplished using an extension of the Dixon classifier used in \autoref
 
 This is initially tested in what can be considered the ``best case''; using the previously optimised domains above to weight a collection of over 5000 execution runs in each of the four domains, and using this multi-domain trust vector in Dixons' Q-Test. (Again, $Q^{95}$)
 
-It would be expected that with the increased ``noise'' from using a range of executions that this simple identifier should have an accuracy directly related to the previously observed $\Delta T_{ix}$ values which indicated the ``size'' of the gap between a suspected node and the remainder of the cohorts trust assessments.
+The results from this detection test are shown in \autoref{tab:synth_detect}.
+Comparing the synthetic domain results to the existing alternate and basic domains, in all cases except for SlowCoach, the targeted domain performs marginally better than any other domain, but the margin in this is very slim.
+
+\gls{sts} continues to evade direct identification despite having optimistic metric and domain significances identified; across all metric weightings and domains applied, the 7\% detection rate arrived at with its synthetic domain (matching it's false positive rate) may be the best that can be expected from this methodology.
+This is particularly disappointing compared to the ``manual'' classifier developed in \autoref{ch:physical_trust}.\todo{you were here when you went to bed} 
 \begin{table}
-	\begin{tabular}{|l|r|r|}
-		\toprule
-		Targeted Behaviour &        Accuracy &        -+ \\
-		\midrule
-       MPC & 1.000 & 0.000 \\
-       STS & 0.041 & 0.085 \\
-       Shadow & 0.579 & 0.000 \\
-       SlowCoach & 0.902 & 0.000 \\
-		\bottomrule
-	\end{tabular}
+	\centering
+\begin{tabular}{|l|r|r|r|r|r|r|r|r|}
+	\toprule
+	{} &    ++ &       &        &           &    -+ &       &        &           \\
+	target\_var &   MPC &   STS & Shadow & SlowCoach &   MPC &   STS & Shadow & SlowCoach \\
+	target\_domain &       &       &        &           &       &       &        &           \\
+	\midrule
+	Full          &  1.00 &  0.03 &   0.63 &      0.98 &  0.00 &  0.07 &   0.00 &       0.0 \\
+	Comms         &  1.00 &  0.05 &   0.18 &      0.39 &  0.00 &  0.03 &   0.04 &       0.0 \\
+	Phys          &  0.03 &  0.02 &   0.40 &      0.85 &  0.12 &  0.09 &   0.00 &       0.0 \\
+	Comms alt.    &  1.00 &  0.03 &   0.22 &      0.43 &  0.00 &  0.15 &   0.02 &       0.0 \\
+	Phys alt.     &  0.54 &  0.04 &   0.62 &      0.97 &  0.00 &  0.06 &   0.00 &       0.0 \\
+	MPC           &  1.00 &  0.04 &   0.62 &      0.80 &  0.00 &  0.04 &   0.00 &       0.0 \\
+	STS           &  1.00 &  0.07 &   0.24 &      0.45 &  0.00 &  0.07 &   0.00 &       0.0 \\
+	Shadow        &  0.57 &  0.02 &   0.64 &      0.95 &  0.00 &  0.07 &   0.00 &       0.0 \\
+	SlowCoach     &  0.70 &  0.04 &   0.71 &      0.88 &  0.00 &  0.06 &   0.00 &       0.0 \\
+	Mean          &  1.00 &  0.02 &   0.70 &      0.93 &  0.00 &  0.12 &   0.00 &       0.0 \\
+	\bottomrule
+\end{tabular}
 	\caption{Selectivity performance using Domain-Trained weight vectors using a Dixons Q based limit-classifier}
+	\label{tab:synth_detect}
 \end{table}
+
+T
 \section{Conclusion}
-\todo{the guts of this conclusion could be the start of the main conclusion}
 In this chapter we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 
 
 The extension of the methodologies of multi-vector trust into the marine space are already demonstrated, however including information from physical observations of actors in a network enables the detection and identification of a much wider range of behaviours.
@@ -570,7 +588,7 @@ It is to be noted that this presented method is significantly more computational
 
 For greater fidelity and more optimal results, a wider range of weights can be used in the initial regression step; however this is computationally expensive given that weighting is applied to each perspective (i.e.\ observer/target node pair) for each trust assessment time step, presenting 15 perspectives at each time interval in the 6 node case.
 
-Every effort has been made to avoid over-training the dataset, using cross validating sampling for regression and "best weight" generation, however more meta-analysis is required to further demonstrate the functionality of this process.
+Every effort has been made to avoid over-training the dataset, using cross validating sampling for regression and "best weight" generation, however more meta-analysis is required to further demonstrate the optimality of this process.
 
 
 

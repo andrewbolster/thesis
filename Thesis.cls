@@ -52,6 +52,9 @@
 %http://tex.stackexchange.com/questions/7262/diagonally-divided-table-cell
 \usepackage{diagbox}
 
+
+\usepackage{longtable}
+\usepackage{titlesec}
 \usepackage{vmargin}
 \setmarginsrb           { 1.5in}  % left margin
                         { 0.6in}  % top margin
@@ -419,7 +422,7 @@
     
     
 \newcommand\listsymbolname{Abbreviations}
-\usepackage{longtable}
+
 \newcommand\listofsymbols[2]{
 \btypeout{\listsymbolname}
 \addtotoc{\listsymbolname}

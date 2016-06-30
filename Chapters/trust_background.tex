@@ -286,11 +286,12 @@ These factors of network density, link length, centralisation and mobility simul
 
 \section{Routing in \acrlongpl{manet}}\label{sec:manet_routing}
 
+{\titlespacing{\subsubsection}{0pt}{\parskip}{\parskip}
+	
 Given the decentralised nature of \gls{manet} operations, routing protocols have been an active area of research since their inception~\cite{Jubin1987}.
 This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid protocols.
 A summary of the generalised characteristics of these classes is shown in \autoref{tab:routing_categories}.
 Additional, these classes can be further rearranged, combined or augmented based on assumptions made about the structure of the baseline topology, i.e. flat, hierarchical or geographic) or by assumed constraints of the available resources of the nodes within the network i.e. heterogeneity in power, mobility, or communications capabilities where resource-based heuristics are used as well as purely topological considerations\cite{Li2005,Gerla2002}.
-
 
 \subsection{Proactive Routing}
 
@@ -355,6 +356,7 @@ With a similar hierarchical non-overlapping zone structure to \gls{zhls}, \gls{s
 This is further augmented with an adaptive open-loop power control system which both aids in energy consumption and in preventing spurious blocking of the channel.
 \gls{fbr} is particularly well suited to constrained energy mobility networks with high mobility and high retransmission costs~\cite{Noh2012}.
 
+}
 
 \begin{table}[H]\centering
 	\caption[Comparison of Routing Strategy Classes]{Comparison of Routing Strategy Classes (from~\citet{Abolhasan2004})}
@@ -500,6 +502,7 @@ This trust value is incorporated with the risk / reward as assessed by the trust
   \end{tabularx}
 \end{table}
 
+\pagebreak
 \citet{Sun2008} suggests that there are two overarching forms of trust:
 \begin{itemize}
   \item Behavioural: That one entity voluntarily depends on another entity in a specific situation
@@ -546,7 +549,7 @@ Both System and Behavioural trust rely on what Sun calls a ``Belief Formation Pr
 	\label{fig:trust_constructs}
 \end{figure}
 
-
+\pagebreak
 \subsection{Taxonomy and Notations of Trust}\label{sec:trust_taxonomy}
 
 To abstractly discuss Trust and trust modelling,~\citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property possessed by that agent.
@@ -603,7 +606,7 @@ There are five commonly considered characteristics or attributes of Trust relati
 	However there are plenty of counter-examples to this, as from~\cite{Mayer1995}, two of the three listed factors of trust are ``Benevolence'' and ``Integrity'' and these are unrelated to the ability of a trustee to perform a particular action, so it is reasonable to make an initial assumption that if a trustee is being benevolent in one activity or context, that that benevolence \emph{should} extend to other contexts.
 \end{itemize}
 
-\cite{Liu2010} summarises these attributes in a series of axioms 
+\citet{Liu2010} summarises these attributes in a series of axioms 
 
 \subsubsection{Fundamental Axioms of Trust}\label{sec:axioms}
 \citet{Sun2008} demonstrate that by taking an Information Theoretic approach to trust as function of entropy and as such, uncertainty (i.e.\ trust having both a valency and a confidence)~\footnote{Donald Rumsfelds famous 2002 ``Known Knowns'' quote is a perfect example of this}, a series of axioms can be constructed to model the interactions between trusting agents.
@@ -915,13 +918,13 @@ However, this reaction assumes that the identity of such a returning node can be
 
 \subsection{Attacks on Trust}
 
-\citet{Liu2010} identify five types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, Sybil and /Necomer attacks.
+\citet{Liu2010} identify five types of attacks on Trust within networks that generate collaborative trust assessments through the exchange of recommendations; On-Off, Conflicting-behaviour, Badmouthing, Sybil and Newcomer attacks.
 
 \begin{enumerate}
 	\item \emph{Bad Mouthing:} Where a malicious node provides dishonest recommendations of other nodes in the network, to disrupt optimal operation  by making other nodes appear untrustworthy
 	\item \emph{Sybil attack:} Where a malicious node uses multiple pseudonymous entities to diffuse blame for bad behaviour, while maintaining a good reputation using the nodes genuine identity
 	\item \emph{Newcomer Attack:} Similar to the Sybil attack in operation, whereby a malicious node will periodically assume a ``fresh'' identify with the network, shedding an identity that as accumulated an ``untrustworthy'' assessment
-	\item \emph{Conflicting Behaviour attack:} Where a node (or a collaborating collection of malicious nodes) selectively drops messages, or modified recommendation values to or from certain nodes or groups of nodes, implicitly reducing the apparent trustworthiness of those attacked nodes with the rest of the fleet, while reducing the operational efficiency of the fleet overall.  This attack exploits the dynamic properties of trust through taking advantage of the expected dynamism in topology and behaviors such that other nodes ``won't notice'' (Alternatively called the Grey Hole Attack)
+	\item \emph{Conflicting Behaviour attack:} Where a node (or a collaborating collection of malicious nodes) selectively drops messages, or modified recommendation values to or from certain nodes or groups of nodes, implicitly reducing the apparent trustworthiness of those attacked nodes with the rest of the fleet, while reducing the operational efficiency of the fleet overall.  This attack exploits the dynamic properties of trust through taking advantage of the expected dynamism in topology and behaviours such that other nodes ``won't notice'' (Alternatively called the Grey Hole Attack)
 	\item \emph{On-Off attack:} Malicious entities alternate between ``good'' and ``bad'' behaviours, hoping that they can remain undetected while causing damage. This attack exploits the dynamic properties of trust through time-domain inconsistent behaviours.
 \end{enumerate} 
 
@@ -932,7 +935,7 @@ In each case, a different dimension of this assumed statistical normality is exp
 In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. 
 Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted(See \autoref{sec:trust_establishment})
 
-
+\pagebreak
 \section{Trusted Development and Operation of Autonomous Systems}\label{sec:trust_autonomy}
 
 \subsection{Autonomy and Levels of Autonomy}
@@ -955,7 +958,7 @@ These levels can be loosely viewed as a spectrum from across Planning Support, D
 
 While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Google and beyond.
 
-As such, the interactions \emph{between} autonomous agents are becoming increasingly relevant to the operating efficiencies of overall collaborative systems, wether or not a human operator is ``in-the-loop''.
+As such, the interactions \emph{between} autonomous agents are becoming increasingly relevant to the operating efficiencies of overall collaborative systems, whether or not a human operator is ``in-the-loop''.
 
 See \autoref{apx:human_factors} for a more thorough discussion on the Human Psychological Factors related to the planning, use, and integration of trusted autonomous systems in classical command and control contexts.
 
@@ -1422,7 +1425,7 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 
 \begin{figure}
 	\centering
-	\begin{tikzpicture}
+	\begin{tikzpicture}[scale=0.8]
 	
 	\begin{axis}[
 	xlabel={$x$},
@@ -1455,7 +1458,7 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 	\end{axis}
 	
 	\end{tikzpicture}
-	\caption{Operation of the Centre-Point Triangular Whitenization used in \gls{mtfm} \autoref{eq:whitenization}}
+	\caption{Centre-Point Triangular Whitenization used in \gls{mtfm} \autoref{eq:whitenization}}
 	\label{fig:whitenization}
 \end{figure}
 

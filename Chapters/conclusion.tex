@@ -42,7 +42,7 @@ While there is little that can be done to augment Hermes and \gls{otmf} in this 
 
 Having established the operation of Trust in the marine \gls{manet} environment, \autoref{ch:physical_trust} demonstrates through statistical measures of node distribution and velocities, that malicious and faulty misbehaviours can be both detected and identified to a high selectivity using a simple tree-based classifier, using a collaborative Port Protection scenario as a targeted waypoint mobility baseline.
 
-\autoref{ch:multi_domain}, the combination of these domains is assessed.
+In \autoref{ch:multi_domain}, the combination of these domains is assessed.
 The relative significance of metrics in the specific identification of a given behaviour is performed through a full-sight random forest regression by comparing a significant number of simulated mission runs.
 These significances, while simply a statistical measure of the importance of a given metric in discriminating between two behaviour (i.e. a fair behaviour and the misbehaviour) provide actionable information to generate a weighted metric sequence targeting that behaviour.
 The identification and classification methodologies from both \autoref{ch:comms_trust} and \autoref{ch:physical_trust} are combined to generate a classifier with very beneficial performance.
@@ -73,15 +73,14 @@ With respect to the operational performance impacts of physical misbehaviour, th
 One disappointing issue with these results presented in \autoref{ch:multi_domain} is that the \gls{sts} behaviour has been stubbornly avoiding identification in the ``live'' multi-domain space while presenting ostensibly discernible metric significances in the comparison space. 
 However the performance of the remaining targeted synthetic domains indicates that this is a valid result and that the methodology is sound, if in need of some refinement and corroboration.
 It is possible that the outlying results used in the initial training set are simply too noisy to accurately optimise towards \gls{sts} directly and this analysis is victim of over-fitting. 
-On the other hand, the fact that it is the only misbehaviour that is purely application-level indicates that there is potential to further expand this methodology to include some traffic monitoring and route-tracking as an additional ``routing'' level domain to explore in addition to the largely physical-communication-domain metrics used.
+On the other hand, the fact that it is the only misbehaviour that is purely application-level indicates that there is potential to further expand this methodology to include some traffic inspection and logical link tracking as an additional ``routing'' level domain to explore irregularities in traffic patters in addition to the largely physical-communication-domain metrics currently used.
 
 As with any trust framework, the effects of different contexts, misbehaviours, and environments are an interesting area.
 In this case, where we are primarily concerned with the interplay and usefulness of trust between domains, the generation of new/other misbehaviours (particularly attacks on the physical domain or cross-domain attacks) would provide insights and either validation or invalidation to the presented optimisation methodology when applied to ``Blind'' behaviours, or applying the final ``Mean'' synthetic to a range of totally untrained behaviours.
-Either way, engineering wins.
 
 \section{Summary}
 
-In this thesis, the operation of trust in the challenging \gls{uan} was explored, demonstrating that without augmentation, current \gls{tmf} approaches do not perform well.
+In this thesis, the operation of trust in the challenging \gls{uan} environment was explored, demonstrating that without augmentation, current \gls{tmf} approaches do not perform well.
 A novel approach to Trust was demonstrated, using physical metrics as a raw trust assessment metric source.
 Finally, a metric weight optimisation methodology was demonstrated to automatically develop trust weightings that highlight a given misbehaviour, driving its targeted trust low so as to enable detection by even simple classifiers.
 

@@ -52,24 +52,26 @@
 \lhead{}  % Clears the left side page header
 
 \cleardoublepage  % Declaration ended, now start a new page
-
 \onehalfspacing
-{\hypersetup{linkcolor=black}
-\tableofcontents  % Write out the Table of Contents
- \clearpage      
 
-\listoffigures  % Write out the List of Figures
-
-\listoftables  % Write out the List of Tables
-}
-
+\chapter*{Abstract}
+\input{./Chapters/abstract} % Introduction
 \cleardoublepage  %Start a new page
 
-%\listofnomenclature{lll}  % Include a list of Symbols (a three column table)
-\glsaddall
-\printglossaries
-\glsresetall
+{
+	\hypersetup{linkcolor=black}
+	\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
+	\tableofcontents  % Write out the Table of Contents
+	\clearpage      
+	\listoffigures  % Write out the List of Figures
+	\clearpage
+	\listoftables  % Write out the List of Tables
 
+	%\listofnomenclature{lll}  % Include a list of Symbols (a three column table)
+	\glsaddall
+	\printglossary[style=index]
+	\glsresetall
+}
 
 \cleardoublepage  
 \addtotoc{Preface}  
@@ -77,13 +79,6 @@
 \chapter*{Preface}
 \input{./Chapters/preface}
 
-
-
-\cleardoublepage  
-\addtotoc{Abstract}  % Add the "Abstract" page entry to the Contents
-\addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
-\chapter*{Abstract}
-\input{./Chapters/abstract} % Introduction
 \cleardoublepage  % Declaration ended, now start a new page
 
 
@@ -110,7 +105,7 @@
 \input{./Chapters/multi_domain_trust_analysis} % Comparative Analysis of Multi-Comain Trust Assessment in Collaborative Module Networks
 
 \input{./Chapters/conclusion} % Conclusion
-
+\cleardoublepage
 %% ----------------------------------------------------------------
 % Now begin the Appendices, including them as separate files
 

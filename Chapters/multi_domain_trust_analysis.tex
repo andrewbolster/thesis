@@ -553,7 +553,7 @@ Comparing the synthetic domain results to the existing alternate and basic domai
 \gls{sts} continues to evade direct detection despite having promising metric and domain significances; across all metric weightings and domains applied, the 7\% detection rate arrived at with its synthetic domain (matching it's false positive rate) may be the best that can be expected from this methodology.
 
 In the case where there is no misbehaviour, the targeted synthetic domain sets demonstrate a marginally smaller True Negative performance compared to the basic and alternate domains, with the exception of the Mean synthetic case, which is operationally equivalent in performance to the ``Full'' basic domain in terms of detecting the ``absence'' of misbehaviour. 
-Considering that the Mean synthetic domain has just over half the number of engaged metrics of the Full domain (\autoref{tab:augmented_domain_deltas}), this would indicate that the Mean synthetic domain is a prime candidate for a ``general misbehaver detection'' domain with lower computational complexity than either re-running a full metric optimisation as per \autoref{ch:comms_trust} at runtime, or applying a suite of alternate or synthetic domains to perform an ensemble detection.
+Considering that the Mean synthetic domain has just over half the number of engaged metrics of the Full domain (\autoref{tab:augmented_domain_deltas}), this would indicate that the Mean synthetic domain is a prime candidate for a ``general misbehaver detection'' domain with lower computational complexity than either re-running a full metric optimisation as per \autoref{ch:comms_trust} at runtime, or applying a suite of alternate or synthetic domains to perform an ensemble detection\footnote{It is interesting to note that this ``Mean'' synthetic domain does not contain \gls{plr}, which is the primary metric for most standard \gls{manet} \glspl{tmf}}.
 
 \begin{table}
 	\centering
@@ -640,7 +640,8 @@ For greater fidelity and more optimal results, a wider range of weights can be u
 
 For discrete detection of the presence of misbehaviours and identification of a misbehaver, it is shown that optimising for the $\Delta T_{ix}$ mean response across misbehaviours provides a domain with almost identical selectivity, which uses metrics from across both communications and physical domains to provide a general ``canary'' trust assessment, and with further exploration in to scenario and environmental applicability, could prove to be a viable ``first port of call'' synthetic domain.
 
-It is interesting to note that this ``Mean'' synthetic domain does not contain \gls{plr}.
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

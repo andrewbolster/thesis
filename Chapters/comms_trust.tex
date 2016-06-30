@@ -335,7 +335,6 @@ This indicates that there is a subtly different saturation behaviour with respec
 
 
 
-\subsection{Combined Scale Factor Analysis}
 \begin{figure}[h]
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
@@ -510,9 +509,7 @@ This indicates that there is a subtly different saturation behaviour with respec
 
 \clearpage
 
-
-
-
+\subsection{Combined Scale Factor Analysis}
 
 Its clear from the previous results that the relationship between emission rates, separations and mobilities is tightly coupled and not totally clear cut. 
 To arrive at a more optimal operating region, a coupled analysis is performed across both emission rate and initial separation distance.
@@ -689,7 +686,7 @@ As per~\citet{Guo11}, ``fair'' scenarios were also performed with no malicious b
 %
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\textwidth]{trust_beta_otmf_mtfm_boxes}
+	\includegraphics[width=0.8\textwidth]{trust_beta_otmf_mtfm_boxes}
 	\caption{Alternative Visualisation of \gls{tmf} performance comparison across Fair, \gls{mpc}, and \gls{sts} scenarios}
 	\label{fig:otmf_beta_comparison_boxes}
 \end{figure}
@@ -698,7 +695,6 @@ As such, confirmed packet losses are relatively rare and in a delaying network l
 
 The single metric \glspl{tmf} used in conventional \gls{manet}s require regular and constant input to shape and adjust their evaluations, which for a network with significant and irregular delays such as this, is not practical.
 This renders \gls{otmf} and Hermes assessment at best uninformative and at worst misleading; consistently providing nodes a high trust assessment as they have very little information to extract trust from. 
-
 \autoref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of \gls{mtfm} compared to \gls{otmf} and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
 This time-series perspective demonstrates how noisy and variable the assessments from all \glspl{tmf} in this environment.
 For clarity, \autoref{fig:otmf_beta_comparison_boxes} displays a compressed-time perspective, showing the overall trend and sensitivity of the different frameworks in the same scenarios as shown in \autoref{fig:otmf_beta_comparison}.

@@ -1,6 +1,6 @@
-As \acrfullpl{auv} become more technically capable and economically feasible, they are being increasingly used in a great many areas of defence, commercial and environmental applications. 
+As \gls{auv} become more technically capable and economically feasible, they are being increasingly used in a great many areas of defence, commercial and environmental applications. 
 Increasingly, these applications are tending towards using independent, autonomous, ad-hoc, collaborative behaviour of teams or fleets of these \gls{auv} platforms.
-This convergence of research experiences in the \acrfull{uan} and \gls{manet} fields, along with the increasing \gls{loa} of such platforms, creates unique challenges to secure the operation and communication of these networks.
+This convergence of research experiences in the \gls{uan} and \gls{manet} fields, along with the increasing \gls{loa} of such platforms, creates unique challenges to secure the operation and communication of these networks.
 
 The question of security and reliability of operation has usually been resolved by having a centralised coordinating agent to manage shared secrets and monitor for misbehaviour.
 However, in the sparse, noisy and constrained communications environment of \glspl{uan}, the communications overheads and single-point-of-failure risk of this model is challenged (particularly when faced with capable attackers).
@@ -15,10 +15,6 @@ Considering the massive theoretical and practical difference in the communicatio
 We find that current single-metric \glspl{tmf} do not perform well in a best-case scaling of the marine network, due to sparse and noisy observation metrics, and while basic multi-metric communications-only frameworks perform better than their single-metric forms, this performance is still not at a reliable level. 
 We propose, demonstrate (through simulation) and integrate the use of physical observational metrics for trust assessment, in tandem with metrics from the communications realm, to improve the safety, security, reliability and integrity of autonomous \glspl{uan}.
 
-Three main novelties are explored and demonstrated in this work;
-Trust evaluation using metrics from the physical domain (movement/distribution/etc.),
-Demonstration of the failings of Communications-based Trust evaluation in the sparse, noisy, delayful and non-linear \gls{uan} environment, and the opportunity of
-Multi-Domain Trust assessment across physical and communications domains, including the generation and optimisation of ``synthetic domains'' as a performance optimisation method.
-
-The final two elements of this novelty apply a machine learning methodology to establish selection filters for abstract and cross-domain / metric misbehaviours.
-This is demonstrated through a series of simulated experiments modelling the underwater communications and kinematic environments and we hope that these hypotheses, results, and novelties can be tested and proven in practical experimentation in the near future.
+Three main novelties are explored and demonstrated in this work:
+Trust evaluation using metrics from the physical domain (movement/distribution/etc.),demonstration of the failings of Communications-based Trust evaluation in sparse, noisy, delayful and non-linear \gls{uan} environments, and the deployment of trust assessment across multiple domains, e.g.\ the physical and communications domains.
+The latter contribution include the generation and optimisation ``synthetic domains'' as a performance optimisation method.

@@ -4,6 +4,8 @@
 \label{apx:grey}
 \lhead{Appendix \thechapter. \emph{Grey System Theory and Grey Trust Assessment}}
 
+This appendix is simply a short discussion on the origins and use of Grey Theory that did not fit anywhere else in this thesis.
+
 \section{Grey numbers, operators and terminology}
 Grey numbers are used to represent values where their discrete value is unknown, where that number may take its possible value within an interval of potential values, generally written using the symbol $\oplus$.
 Taking $a$ and $b$ as the lower and upper bounds of the grey interval respectively, such that $\oplus \in [a,b] | a < b$ 
@@ -40,15 +42,14 @@ Non-essential grey numbers are those that can be represented by a white number o
 This white value is represented by $\tilde\oplus$ or $\oplus(x)$ to represent grey numbers with $x$ as their whitenization.
 In some cases depending on the context of application, particular grey numbers may temporarily have no reasonable whitenisation value (for instance, a black number).
 Such numbers are said to be Essential grey numbers.
-\begin{comment}
+
 \section{Grey Sequence Buffers and Generators}
-\todo{eqs of sequence buffers and partial derivs}
+
 Given a fully populated value space, sequence buffer operations are used to provide abstractions over the dataspace.
 These abstractions can be \emph{weakening} or \emph{strengthening}.
 In the weakening case, these operations perform a level of smoothing on the volatility of a given input space, and strengthening buffers serve to highlight and 
 A powerful tool in grey system theory is the use of grey incidence factors, comparing the ``likeness'' of one value against a cohort of values.
 This usefulness applies particularly well in the case of multi-agent trust networks, where the aim is to detect and identify malicious or maladaptive behaviour, rather than an absolute assessment of ``trustworthiness''.
-\end{comment}
 
 \section{Application of Grey Relational Grading to Trust}
 Grey Relational Grading performs cohort based normalization of metrics at runtime.
@@ -56,12 +57,12 @@ This creates a more stable contextual assessment, providing a ``grade'' of trust
 Grey assessments are relative in both fairly and unfairly operating cohorts.
 Entities will receive mid-range trust assessments if there are no malicious actors as there is no-one else ``bad'' to compare against.
 
-\citet{Guo11} demonstrated the ability of Grey Relational Analysis (GRA)\cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc.\ into a Grey Relational Coefficient, or a ``trust vector''.
+\citet{Guo11} demonstrated the ability of \gls{gra}\cite{Zuo1995} to normalise and combine disparate traits of a communications link such as instantaneous throughput, received signal strength, etc.\ into a Grey Relational Coefficient, or a ``trust vector''.
 In \cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 The Grey Relational Grade is given as
 %
 \begin{align}
-  %\label{eq:grc}
+  \label{eq:apx_grc}
   \theta_{k,j}^t = \frac{\min_k|a_{k,j}^t - g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|}{|a_{k,j}^t-g_j^t| + \rho \max_k|a_{k,j}^t-g_j^t|} \\
   \phi_{k,j}^t = \frac{\min_k|a_{k,j}^t - b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|}{|a_{k,j}^t-b_j^t| + \rho \max_k|a_{k,j}^t-b_j^t|} \notag 
 \end{align}
@@ -72,15 +73,15 @@ Weighting can be applied before generating a scalar value which allows the ident
 
 %
 \begin{equation}
-  %\label{eq:metric_weighting}
+  \label{eq:apx_metric_weighting}
   [\theta_k^t, \phi_k^t] = \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right]
 \end{equation}
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in the basic case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$ to treat all metrics evenly.
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
 The $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$.
-This trust value minimises the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc}.
+This trust value minimises the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:apx_grc}.
 
-\acrshort{mtfm} combines this \gls{gra} with a topology-aware weighting scheme\eqref{eq:networkeffects} and a fuzzy whitenization model\eqref{eq:whitenization}.
+\acrshort{mtfm} combines this \gls{gra} with a topology-aware weighting scheme\eqref{eq:apx_networkeffects} and a fuzzy whitenization model\eqref{eq:apx_whitenization}.
 There are three classes of topological trust relationship used; Direct, Recommendation, and Indirect.
 Where an observing node, $n_i$, assesses the trust of another, target, node, $n_j$; the Direct relationship is $n_i$'s own observations $n_j$'s behaviour.
 In the Recommendation case, a node $n_k$, which shares Direct relationships with both $n_i$ and $n_j$, gives its assessment of $n_j$ to $n_i$.
@@ -88,13 +89,13 @@ The Indirect case, similar to the Recommendation case, the recommender $n_k$, do
 These relationships give us node sets, $N_R$ and $N_I$ containing the nodes that have recommendation or indirect, relationships to the observing node respectively.
 %
 \begin{align}
-  %\label{eq:networkeffects}
+  \label{eq:apx_networkeffects}
   T_{i,j}^{\acrshort{mtfm}}=\frac{1}{2} \cdot \max_s\{f_s(T_{i,j})\} T_{i,j}+&\frac{1}{2} \frac{2|N_R| }{2|N_R| + |N_I|}\sum_{n \in N_R} \max_s\{f_s(T_{i,n})\} T_{i,n}\\ \notag
   +&\frac{1}{2} \frac{|N_I| }{2|N_R| + |N_I|}\sum_{n \in N_I} \max_s\{f_s(T_{i,n})\} T_{i,n} 
 \end{align}
 Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s = [ f_1,f_2, f_3]$ given as:
 \begin{align}
-  %\label{eq:whitenization}
+  \label{eq:apx_whitenization}
   f_1(x)&= -x+1\notag\\
   f_2(x)&= 
   \begin{cases}
@@ -106,11 +107,5 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 
 Grey System Theory, by it's own authors admission, hasn't taken root in it's originally intended area of system modelling \cite{Liu2011}.
 However, given it's tentative application to \gls{manet} trust, taking a Grey approach on a per metric benefit has qualitative benefits that require investigation; the algebraic approach to uncertainty and the application of ``essential and non essential greyness'', whiteisation, and particularly grey buffer sequencing allow for the opportunity to generate continuous trust assessments from multiple domains asynchronously.
-
-\todo{NORELEASE: Wrap up the grey discussion}
-
-\section{UNEDITED PROSE: Real Time Grey Systems}
-\emph{Incoming Train of Consciousness}
-
 
 

@@ -4,7 +4,7 @@
 %% ---------------------------------------------------------------- 
 
 % Set up the document
-\pdfminorversion=4
+\pdfminorversion=5
 \documentclass[a4paper, 11pt, twoside, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
 
 
@@ -19,8 +19,6 @@
 % Glossaries
 \setacronymstyle{long-short}  
 
-%http://tex.stackexchange.com/questions/89166/centering-in-tabularx-and-x-columns
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 % Graphics
 \DeclareGraphicsExtensions{.pdf,.jpg,.png}
@@ -127,10 +125,10 @@
 %\input{./Appendices/OrphanedSections}	% Appendix Title
 
 %\input{./Appendices/GraphOverflow} % Appendix Title
-
+\begin{comment}
 \todototoc
 \listoftodos
-
+\end{comment}
 \addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
 \backmatter
 

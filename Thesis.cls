@@ -45,7 +45,7 @@
   \space \number\year}
 
 % SPACING AND FORMATTING 
-\usepackage[moderate]{savetrees}
+\usepackage[subtle]{savetrees}
 \usepackage{setspace}
 \doublespacing
 
@@ -237,11 +237,13 @@
 \keywords    {}
 \addresses  {\groupname\\\deptname\\\univname}  
 
+
+
 \hypersetup{
 	bookmarks=true,         % show bookmarks bar?
 	bookmarksopen=true,
-	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-	pdftoolbar=true,        % show Acrobat’s toolbar?
+	unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar=false,        % show Acrobat’s toolbar?
 	pdfmenubar=true,        % show Acrobat’s menu?
 	pdffitwindow=false,     % window fit to page when opened
 	pdfstartview={FitH},    % fits the width of the page to the window
@@ -254,12 +256,14 @@
 	pdfpagemode={UseOutlines},
 	bookmarksopenlevel=0,
 	bookmarksnumbered=true,
-	hypertexnames=false,
+	hypertexnames=true,
 	linkbordercolor={black},
 	%pdfborderstyle={/S/U/W 1},
 	pdfstartview={FitV},
 	breaklinks=true
 }
+
+\usepackage[anythingbreaks]{breakurl}
 
 \renewcommand*{\glstextformat}[1]{\textcolor{Indigo}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
 

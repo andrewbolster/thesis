@@ -9,7 +9,6 @@
   *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
   *{package}{ifpdf}       {2011/01/30 v2.3}
   *{package}{ifluatex}    {2010/03/01 v1.3}
-  *{package}{calc}        {2014/10/28 v4.3}
   *{package}{microtype}   {2013/05/23 v2.5a}
   *{file}   {microtype-pdftex.def}{2013/05/23 v2.5a}
   *{file}   {microtype.cfg}{2013/05/23 v2.5a}
@@ -103,6 +102,7 @@
   *{package}{natbib}      {2010/09/13 v8.31b}
   *{package}{verbatim}    {2014/10/28 v1.5q}
   *{package}{vector}      {1994/09/16 v1.0}
+  *{package}{calc}        {2014/10/28 v4.3}
   *{package}{psfrag}      {1998/04/11 v3.04}
   *{package}{epsf}        {0000/00/00 v0.0}
   *{package}{tabularx}    {2016/02/03 v2.11}
@@ -177,6 +177,8 @@
   *{package}{gettitlestring}{2010/12/03 v1.4}
   *{package}{layouts}     {2009/09/02 v2.6d}
   *{package}{wrapfig}     {2003/01/31 v3.6}
+  *{file}   {puenc.def}   {2012/11/06 v6.83m}
+  *{package}{breakurl}    {2013/04/10 v1.40}
   *{package}{dot2texi}    {2008/05/07 v3.0p1}
   *{package}{moreverb}    {2008/06/03 v2.3a}
   *{file}   {./Chapters/notation.tex}{0000/00/00 v0.0}
@@ -324,6 +326,8 @@
   *{file}   {Figures/input/top_Mean_dt.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/focus_ratio.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/top_targeted_dt_heatmap.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/positive_heat.pdf}{0000/00/00 v0.0}
+  *{file}   {./Figures/negative_heat.pdf}{0000/00/00 v0.0}
   *{file}   {./Chapters/conclusion.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/HumanFactors.tex}{0000/00/00 v0.0}
   *{file}   {./Appendices/Grey.tex}{0000/00/00 v0.0}

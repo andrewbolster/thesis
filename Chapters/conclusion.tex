@@ -48,8 +48,6 @@ These significances, while simply a statistical measure of the importance of a g
 The identification and classification methodologies from both \autoref{ch:comms_trust} and \autoref{ch:physical_trust} are combined to generate a classifier with very beneficial performance.
 
 
-
-
 \section{Future Work}
 One of the fundamental difficulties in establishing trust in sparse, noisy networks is that it takes a significant amount of time to accumulate enough observational metric data to for actionable opinions.
 This problem is exacerbated by the asynchronous nature of those metrics; this is evident in the multi-domain discussion between communications and physical metrics where overheard location updates for a given node my arrive out-of-sync from other useful information about that particular relationship, but is also the case in the pure communications domain.
@@ -76,6 +74,10 @@ One disappointing issue with these results presented in \autoref{ch:multi_domain
 However the performance of the remaining targeted synthetic domains indicates that this is a valid result and that the methodology is sound, if in need of some refinement and corroboration.
 It is possible that the outlying results used in the initial training set are simply too noisy to accurately optimise towards \gls{sts} directly and this analysis is victim of over-fitting. 
 On the other hand, the fact that it is the only misbehaviour that is purely application-level indicates that there is potential to further expand this methodology to include some traffic monitoring and route-tracking as an additional ``routing'' level domain to explore in addition to the largely physical-communication-domain metrics used.
+
+As with any trust framework, the effects of different contexts, misbehaviours, and environments are an interesting area.
+In this case, where we are primarily concerned with the interplay and usefulness of trust between domains, the generation of new/other misbehaviours (particularly attacks on the physical domain or cross-domain attacks) would provide insights and either validation or invalidation to the presented optimisation methodology when applied to ``Blind'' behaviours, or applying the final ``Mean'' synthetic to a range of totally untrained behaviours.
+Either way, engineering wins.
 
 \section{Summary}
 

@@ -118,18 +118,18 @@ This ``Trust'', that we know implicitly in the human space, is particularly diff
 
 \section{Thesis Layout and Contributions}
 
-\subsection{\fullref{ch:trust_background}}
+\subsubsection{\fullref{ch:trust_background}}
 In this chapter the current literature and research on the concepts, theory, and applications concerning Trust and Trust Management are explored, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
 
 In~\autoref{sec:trust_defs}, the abstract quantity of ``trust'' is explored,
 In~\autoref{sec:trust_autonomy}, Autonomy and ``Trusted Operation'' of autonomous systems is investigated from a system architects and a system operators perspective.
 In~\autoref{sec:trust_manets}, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
 
-\subsection{\fullref{ch:maritime_background}}
+\subsubsection{\fullref{ch:maritime_background}}
 In \autoref{ch:maritime_background}, the maritime context is investigated, particularly the mechanisms of maritime acoustic communications, as well as the opportunities and challenges of the marine acoustic channel and its modelling (\autoref{sec:marine_comms}).
 Additionally, the application scope of \glspl{auv}, littoral and sub-marine operations are explored to provide context to the problem (\autoref{sec:marine_ops}).
 
-\subsection{\fullref{ch:comms_trust}}
+\subsubsection{\fullref{ch:comms_trust}}
 In \autoref{ch:comms_trust}, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
 
 The operation of a selection of traditional \gls{manet} \glspl{tmf} is investigated in this environment.
@@ -157,16 +157,18 @@ This approach opens the possibility of bringing information about both the physi
 
 %Key parts of this chapter were published as \bibentry{Bolster2016}.
 
-
-
 \subsubsection{\fullref{ch:multi_domain}}
 
-In this chapter a methodology is demonstrated that applies Grey Sequence operations and Grey Generators to provide trust assessment in a sparse, asynchronous metric space across multiple domains of trust.
+In this chapter a methodology is demonstrated that applies the Grey Relational Grading method used in \gls{mtfm} to assess trust across multiple metrics across multiple domains.
+The question of direct-applicability of domain-metrics to inter-domain behaviours (i.e. physical metrics being used to detect communications misbehaviours and visa versa.) is investigated in two stages; first reassessing relative metric significance on a comparative regression directly comparing ``misbehaving'' results and ``Fair'' results across execution runs to identify what metrics are most important in  differentiating behaviours from an abstract perspective. 
+This significance is then used to generate targeted weighting vectors to maximally distrust nodes observed exhibiting that behaviour, acting as a selection filter.
+Interrogating the arrived-at weights across both basic domains (communications/physical and their full metric union), ``Alternate'' domains are selected by inspection.\
 By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment.
 Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrated, allowing for the elimination of redundant metrics, simplifying the runtime assessment process.
-\todo{NORELEASE: IF CLASSIFICATION GOES SOUTH YOU NEED TO FIX THE INTRO}
 
-Key parts of this chapter are awaiting publication as \bibentry{Bolster2016a}.
+{\sloppy \raggedright
+Key parts of this chapter are awaiting publication as  \bibentry{Bolster2016a}.
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

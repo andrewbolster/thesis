@@ -57,7 +57,7 @@ This simplest possible combination is a vector concatenation across domain metri
 
 \begin{equation}
   X_{merge} =  (X_{comms}|X_{phy}) = \{D, P_{RX}, P_{TX}, S, G, PLR, \text{INDD}, \text{INHD}, V\}
-  \label{eq:phys:vector}
+  \label{eq:merge:vector}
 \end{equation}
 
 
@@ -385,7 +385,7 @@ However, these metric weighting schemes have been constructed into ``domains'' b
 Through observation of the metric significances shown in \autoref{fig:multi_feature_extraction}, potential alternative ``domains'' were generated through simple observation of the visual result.
 In order to remove the human element, and investigate the wider impact and potential optimisation of this ``optimum subdomain'' subset idea, the idea whether these intrinsic  domains (Physical and Communications) can be improved upon by removing the assumption that ``Communications'' behaviours are best identified through the use of Communications metrics is tested.
 
-To accomplish this, the discussed analysis from metric weight significance regression and generation to $\Delta{T}_{ix}/\Delta{T}_{ix}^-$ validation is performed for all combinations of the $M=9$ explored metrics with three or more metrics ($k\ge3$). 
+To accomplish this, the discussed analysis from metric weight significance regression and generation to $\Delta{T}_{ix}$ and $\Delta{T}_{ix}^-$ validation is performed for all combinations of the $M=9$ explored metrics with three or more metrics ($k\ge3$). 
 
 From this brute-force approach~\footnote{each ``run'' consisting of ${M\choose{k}}$ individual weight assessments, with the same multiplicity of 8 experimental runs per scenario per target node as before in previous runs}, a small investigation can be made in to both the performance of metric subsets, and the potential redundancies between metrics. 
 For instance, one could expect that $P_{RX}$ would be almost always directly related to the expected positioning between nodes and therefore to \gls{indd}.
@@ -432,9 +432,8 @@ The True Positive ($\Delta T_{ix}$) is again used to indicate the overall perfor
 \autoref{fig:top_mean_dt_box} shows the distribution in $\Delta T_{ix}$ for each behaviour for the top 10\% of this simple mean.
 As has been shown before, it's immediately clear that \gls{mpc} and SlowCoach are the more responsive behaviours to detect across the metric space, with Shadow being slightly more difficult and \gls{sts} remaining as challenging to detect as in earlier attempts.
 This is disappointing, as it was hoped that \emph{some} combination of metrics in relative isolation would be capable of highlighting this behaviour in a more convincing manner, but it is clear that the Application level nature of the \gls{sts} attack is avoiding significant impacts across all the metrics currently applied.
-\todo{FUT: It'd be good to apply this to ``blind'' behaviours, but that's a very complicated issue in terms of anomaly detection etc. Should work though as long as it's not Application-specific like STS}
 
-Across the figures in \autoref{fig:top_dt_boxes}, when behaviours are targeted for this meta-optimisation, naive as it is, the variability in response performance in other, unoptimised, misbehaviours is greatly increased, indicating that, at least in the case of attempting to \emph{identify} misbehaviour, that this is a case of over-optimisation, and that in the majority of cases, optimising for the mean response (\autoref{fig:top_mean_dt_box}) is sufficient to get a strong and consistent performance across misbehaviours.
+Across the figures in \autoref{fig:top_dt_boxes}, when behaviours are targeted for this meta-optimisation, naive as it is, the variability in response performance in other, unoptimised, misbehaviours is greatly increased, indicating that, at least in the case of attempting to \emph{identify} misbehaviour, that this is a case of over-optimisation, and that in the majority of cases, optimising for the mean response (\autoref{fig:top_mean_dt_box}) will be sufficient to get a strong and consistent performance across misbehaviours.
 
 This is shown explicitly in \autoref{fig:focus_ratio}, where the selective performance ratio between a targeted subset optimisation and the ``mean'' subset optimisation demonstrates that in all cases but \gls{sts}, targeting specific behaviours for this domain synthesis does not meaningfully improve the true-positive behaviour of trust assessment, and in general decreases the detection accuracy.
 The abstractions for the generation of \autoref{fig:focus_ratio} are shown in \autoref{tab:focus_ratio}.
@@ -470,7 +469,7 @@ In terms of a comparison between the previously generated ``Alternate'' domains,
 	\centering
 	\caption{As in \autoref{tab:top_mpc_dt}, but targeting SlowCoach}
 	\centerline{\input{Figures/input/top_SlowCoach_dt.tex}}
-	\label{tab:top_sts_dt}
+	\label{tab:top_slowcoach_dt}
 \end{table}
 \begin{table}
 	\centering
@@ -502,14 +501,14 @@ In terms of a comparison between the previously generated ``Alternate'' domains,
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{focus_ratio}
-	\caption{Mean of all responses}
+	\includegraphics[width=0.8\linewidth]{focus_ratio}
+	\caption{Ratio of relative per-behaviour synthetic domain targeting to Mean targeting}
 	\label{fig:focus_ratio}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{top_targeted_dt_heatmap}
+	\includegraphics[width=0.8\linewidth]{top_targeted_dt_heatmap}
 	\caption{Correlations between highest performing synthetic domain metrics with respect to Targeted misbehaviours}
 	\label{fig:top_targeted_dt_heatmap}
 \end{figure}
@@ -526,11 +525,12 @@ In terms of a comparison between the previously generated ``Alternate'' domains,
 		\multirow{3}{*}{\rot{Basic}} & Full       & 0.81 & -0.03 &    0.42 &       0.60 &  0.45 &\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK&\OK\\
 		& Comms      & 0.85 &  0.04 &    0.19 &       0.26 &  0.34 &\OK&\OK&\OK&\OK&\OK&\OK&&&\\
 		& Phys       & 0.04 &  0.00 &    0.39 &       0.69 &  0.28 &&&&&&&\OK&\OK&\OK\\\hline
-		\multirow{4}{*}{\rot{Alternate}}&&&&&&&&&&&&&&&\\[-0.5em]
+		\multirow{4}{*}{\rot{Alternate}}&&&&&&&&&&&&&&&\\[-0.8em]
 		& Comms alt. & 0.85 &  0.03 &    0.38 &       0.45 &  0.43 &&&&\OK&\OK&\OK&\OK&&\\[0.2em]
 		& Phys alt.  & 0.48 &  0.03 &    0.42 &       0.63 &  0.39 &\OK&\OK&&&&&\OK&\OK&\OK\\
 		&&&&&&&&&&&&&&&\\[-0.5em]\hline
-        \multirow{5}{*}{\rot{Synthetic}}& MPC        & 0.89 &  0.01 &   0.35 &      0.54 & 0.45 &                         \OK &      \OK &      \OK &      &      &       &        &    \OK &         \\
+        \multirow{5}{*}{\rot{Synthetic}}&&&&&&&&&\\[-1em]
+        & MPC        & 0.89 &  0.01 &   0.35 &      0.54 & 0.45 &                         \OK &      \OK &      \OK &      &      &       &        &    \OK &         \\
 		& STS        & 0.86 & 0.06 &   0.37 &      0.49 & 0.45 &                         \OK &          &      \OK &  \OK &      &   \OK &    \OK &        &         \\
 		& Shadow     & 0.49 & -0.00 &   0.44 &      0.66 & 0.40 &                             &      \OK &          &     &     &       &    \OK &    \OK &     \OK \\
 		& SlowCoach  & 0.47 &  0.00 &   0.37 &      0.72 & 0.39 &                         \OK &      \OK &          &  \OK &      &       &        &        &     \OK \\
@@ -545,51 +545,102 @@ In terms of a comparison between the previously generated ``Alternate'' domains,
 Having arrived at a set of Basic, Alternate, and now Synthetic domains, optimised for maximising the induced ``drop'' in trust, (i.e. maximising $\Delta T_{ix}$), an estimate of the actual performance of these assessments must be made.
 This is accomplished using an extension of the Dixon classifier used in \autoref{ch:physical_trust}, such that rather than detecting outliers based on a physical metric, outliers are detected based on the differential trust value given by a given optimised weight.
 
-This is initially tested in what can be considered the ``best case''; using the previously optimised domains above to weight a collection of over 5000 execution runs in each of the four domains, and using this multi-domain trust vector in Dixons' Q-Test. (Again, $Q^{95}$)
+This is initially tested in what can be considered the ``best case''; using the previously optimised domains above to weight a collection of over 5000 execution runs in each of the basic, alternate and synthetic domains, and using this multi-domain trust vector in Dixons' Q-Test. (Again, $Q^{95}$)
 
-The results from this detection test are shown in \autoref{tab:synth_detect}.
+The results from this detection test are shown in \autoref{tab:synth_detect} and \autoref{tab:synth_detect}.
 Comparing the synthetic domain results to the existing alternate and basic domains, in all cases except for SlowCoach, the targeted domain performs marginally better than any other domain, but the margin in this is very slim.
 
-\gls{sts} continues to evade direct identification despite having optimistic metric and domain significances identified; across all metric weightings and domains applied, the 7\% detection rate arrived at with its synthetic domain (matching it's false positive rate) may be the best that can be expected from this methodology.
-This is particularly disappointing compared to the ``manual'' classifier developed in \autoref{ch:physical_trust}.\todo{you were here when you went to bed} 
+\gls{sts} continues to evade direct detection despite having promising metric and domain significances; across all metric weightings and domains applied, the 7\% detection rate arrived at with its synthetic domain (matching it's false positive rate) may be the best that can be expected from this methodology.
+
+In the case where there is no misbehaviour, the targeted synthetic domain sets demonstrate a marginally smaller True Negative performance compared to the basic and alternate domains, with the exception of the Mean synthetic case, which is operationally equivalent in performance to the ``Full'' basic domain in terms of detecting the ``absence'' of misbehaviour. 
+Considering that the Mean synthetic domain has just over half the number of engaged metrics of the Full domain (\autoref{tab:augmented_domain_deltas}), this would indicate that the Mean synthetic domain is a prime candidate for a ``general misbehaver detection'' domain with lower computational complexity than either re-running a full metric optimisation as per \autoref{ch:comms_trust} at runtime, or applying a suite of alternate or synthetic domains to perform an ensemble detection.
+
 \begin{table}
 	\centering
-\begin{tabular}{|l|r|r|r|r|r|r|r|r|}
-	\toprule
-	{} &    ++ &       &        &           &    -+ &       &        &           \\
-	target\_var &   MPC &   STS & Shadow & SlowCoach &   MPC &   STS & Shadow & SlowCoach \\
-	target\_domain &       &       &        &           &       &       &        &           \\
-	\midrule
-	Full          &  1.00 &  0.03 &   0.63 &      0.98 &  0.00 &  0.07 &   0.00 &       0.0 \\
-	Comms         &  1.00 &  0.05 &   0.18 &      0.39 &  0.00 &  0.03 &   0.04 &       0.0 \\
-	Phys          &  0.03 &  0.02 &   0.40 &      0.85 &  0.12 &  0.09 &   0.00 &       0.0 \\
-	Comms alt.    &  1.00 &  0.03 &   0.22 &      0.43 &  0.00 &  0.15 &   0.02 &       0.0 \\
-	Phys alt.     &  0.54 &  0.04 &   0.62 &      0.97 &  0.00 &  0.06 &   0.00 &       0.0 \\
-	MPC           &  1.00 &  0.04 &   0.62 &      0.80 &  0.00 &  0.04 &   0.00 &       0.0 \\
-	STS           &  1.00 &  0.07 &   0.24 &      0.45 &  0.00 &  0.07 &   0.00 &       0.0 \\
-	Shadow        &  0.57 &  0.02 &   0.64 &      0.95 &  0.00 &  0.07 &   0.00 &       0.0 \\
-	SlowCoach     &  0.70 &  0.04 &   0.71 &      0.88 &  0.00 &  0.06 &   0.00 &       0.0 \\
-	Mean          &  1.00 &  0.02 &   0.70 &      0.93 &  0.00 &  0.12 &   0.00 &       0.0 \\
-	\bottomrule
-\end{tabular}
-	\caption{Selectivity performance using Domain-Trained weight vectors using a Dixons Q based limit-classifier}
+	\begin{tabular}{|l p{2cm}||r|r|r|r|r|r|r|r|}
+		\toprule
+		\multicolumn{2}{|c||}{\multirow{3}{*}{\parbox{2cm}{Domain}}} &    \multicolumn{4}{c|}{\parbox{4cm}{\centering True Positive Identification of Misbehaver\vspace{.5\baselineskip}}} &    \multicolumn{4}{c|}{\parbox{4cm}{\centering False Positive Identification of Misbehaver\vspace{.5\baselineskip}}}    \\[0.3em]
+		 &&   \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} &   \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} \\
+		\midrule
+		\multirow{4}{*}{\rot{Basic}}&&&&&&&&&\\[-1em]
+		& Full          &  1.00 &  0.03 &   0.63 &      0.98 &  0.00 &  0.07 &   0.00 &       0.0 \\
+		& Comms         &  1.00 &  0.05 &   0.18 &      0.39 &  0.00 &  0.03 &   0.04 &       0.0 \\
+		& Phys          &  0.03 &  0.02 &   0.40 &      0.85 &  0.12 &  0.09 &   0.00 &       0.0 \\\hline
+		\multirow{4}{*}{\rot{Alternate}}&&&&&&&&&\\[-0.8em]
+		& Comms alt.    &  1.00 &  0.03 &   0.22 &      0.43 &  0.00 &  0.15 &   0.02 &       0.0 \\[0.2em]
+		& Phys alt.     &  0.54 &  0.04 &   0.62 &      0.97 &  0.00 &  0.06 &   0.00 &       0.0 \\
+		&&&&&&&&&\\[-0.5em]\hline
+		\multirow{5}{*}{\rot{Synthetic}}&&&&&&&&&\\[-1em]
+		& MPC           &  1.00 &  0.04 &   0.62 &      0.80 &  0.00 &  0.04 &   0.00 &       0.0 \\
+		& STS           &  1.00 &  0.07 &   0.24 &      0.45 &  0.00 &  0.07 &   0.00 &       0.0 \\
+		& Shadow        &  0.57 &  0.02 &   0.64 &      0.95 &  0.00 &  0.07 &   0.00 &       0.0 \\
+		& SlowCoach     &  0.70 &  0.04 &   0.71 &      0.88 &  0.00 &  0.06 &   0.00 &       0.0 \\
+		& Mean          &  1.00 &  0.02 &   0.70 &      0.93 &  0.00 &  0.12 &   0.00 &       0.0 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
 	\label{tab:synth_detect}
 \end{table}
 
-T
+\begin{table}
+	\centering
+	\begin{tabular}{|l p{2cm}||r|r|r|r|r|r|r|r|}
+		\toprule
+		\multicolumn{2}{|c||}{\multirow{3}{*}{\parbox{2cm}{Domain}}} &    \multicolumn{4}{c|}{\parbox{4cm}{\centering True Negative Identification of Misbehaver\vspace{.5\baselineskip}}} &    \multicolumn{4}{c|}{\parbox{4cm}{\centering False Negative Identification of Misbehaver\vspace{.5\baselineskip}}}    \\[0.3em]
+		&&   \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} &   \rot{MPC} &  \rot{STS} & \rot{Shadow} & \rot{SlowCoach} \\
+		\midrule
+		\multirow{4}{*}{\rot{Basic}}&&&&&&&&&\\[-1em]
+		& Full          &  0.90 &  0.86 &   0.92 &      0.91 &  0.13 &  0.15 &   0.11 &      0.12 \\
+		& Comms         &  0.88 &  0.96 &   0.94 &      0.94 &  0.12 &  0.06 &   0.10 &      0.07 \\
+		& Phys          &  0.90 &  0.93 &   0.90 &      0.87 &  0.12 &  0.07 &   0.10 &      0.18 \\\hline
+		\multirow{4}{*}{\rot{Alternate}}&&&&&&&&&\\[-0.5em]
+		& Comms alt.    &  0.92 &  0.95 &   0.88 &      0.89 &  0.10 &  0.08 &   0.14 &      0.12 \\[0.2em]
+		& Phys alt.     &  0.90 &  0.89 &   0.95 &      0.92 &  0.13 &  0.14 &   0.06 &      0.11 \\
+		&&&&&&&&&\\[-0.5em]\hline
+		\multirow{5}{*}{\rot{Synthetic}}&&&&&&&&&\\[-1em]
+		& MPC           &  0.86 &  0.92 &   0.90 &      0.96 &  0.19 &  0.11 &   0.13 &      0.06 \\
+		& STS           &  0.93 &  0.95 &   0.87 &      0.86 &  0.09 &  0.10 &   0.15 &      0.16 \\
+		& Shadow        &  0.90 &  0.90 &   0.91 &      0.93 &  0.14 &  0.11 &   0.13 &      0.10 \\
+		& SlowCoach     &  0.92 &  0.89 &   0.92 &      0.91 &  0.11 &  0.15 &   0.13 &      0.13 \\
+		& Mean          &  0.90 &  0.93 &   0.92 &      0.91 &  0.13 &  0.09 &   0.12 &      0.10 \\
+		\bottomrule
+		\bottomrule
+	\end{tabular}
+	\caption{Negative-Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
+	\label{tab:synth_detect_false}
+\end{table}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{positive_heat}
+	\caption{Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
+	\label{fig:positive_heat}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{negative_heat}
+	\caption{Negative-Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
+	\label{fig:negative_heat}
+\end{figure}
+
+
 \section{Conclusion}
 In this chapter we demonstrate that in harsh environments, multi-domain trust assessment can perform better on average than single-domain counterparts, both in terms of robustness and sensitivity, but also covering a wider region of the potential behaviour space, 
 
 The extension of the methodologies of multi-vector trust into the marine space are already demonstrated, however including information from physical observations of actors in a network enables the detection and identification of a much wider range of behaviours.
 We also demonstrate a method for assessing trust metrics in harsh environments in terms of their relative significance, and a method for establishing classification signatures for misbehaviours.
-Finally, the synthetic generation of abstract metric domains is explored, where it is found that in most cases, optimising for generalised performance prevents response-overfitting, and provide the strongest deviations in observed Trust when targeted specifically, further supporting the use of a mixed-domain approach for Trust across domains for identification of misbehaviours.
+Finally, the synthetic generation of abstract metric domains is explored, where it is found that in most cases, optimising for generalised performance provides the strongest deviations in observed Trust when targeted specifically, further supporting the use of a mixed-domain approach for Trust across domains for identification of misbehaviours.
 
 It is to be noted that this presented method is significantly more computationally intensive than the relatively simple Hermes / \gls{otmf} algorithms communications only algorithms, and is exponential in complexity as metrics and/or domains are added. The repeated metric re-weighting required for real time behaviour detection is therefore an area that requires optimization. More work needs to be done to characterise how worthwhile this approach is compared to a separate synthesis approach where by \gls{mtfm}-style trust is generated and assessed on a per-domain basis and subsequently fused.
 
-For greater fidelity and more optimal results, a wider range of weights can be used in the initial regression step; however this is computationally expensive given that weighting is applied to each perspective (i.e.\ observer/target node pair) for each trust assessment time step, presenting 15 perspectives at each time interval in the 6 node case.
-
 Every effort has been made to avoid over-training the dataset, using cross validating sampling for regression and "best weight" generation, however more meta-analysis is required to further demonstrate the optimality of this process.
 
+For greater fidelity and more optimal results, a wider range of weights can be used in the initial regression step; however this is computationally expensive given that weighting is applied to each perspective (i.e.\ observer/target node pair) for each trust assessment time step, presenting 15 perspectives at each time interval in the 6 node case.
+
+For discrete detection of the presence of misbehaviours and identification of a misbehaver, it is shown that optimising for the $\Delta T_{ix}$ mean response across misbehaviours provides a domain with almost identical selectivity, which uses metrics from across both communications and physical domains to provide a general ``canary'' trust assessment, and with further exploration in to scenario and environmental applicability, could prove to be a viable ``first port of call'' synthetic domain.
+
+It is interesting to note that this ``Mean'' synthetic domain does not contain \gls{plr}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

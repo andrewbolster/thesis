@@ -220,9 +220,8 @@ Naturally, as the relative transmission range is reduced, the natural density an
 		\end{tikzpicture}
 		\caption{Distributed}
 	\end{subfigure}
-	\label{fig:centralisation}
 	\caption{Example of routing strategies and logical connectivity in a sample network}
-	
+	\label{fig:centralisation}
 \end{figure}
 Another graph theoretic factor that is worth considering in \gls{manet} design is \emph{Centrality}, that is, the measure of importance of individual nodes to the connectivity of the network.
 There are a great many methods for calculating centrality, however the important understanding from a network perspective is that of network-relative centralisation; in \autoref{fig:centralisation}, our previously deployed network layout is used to demonstrate three delineations of network centrality.
@@ -328,7 +327,7 @@ Based on \gls{dsdv} and \gls{dsr}; uses beaconing and sequence numbering (\gls{d
 \gls{lar} incorporates location information (usually from \gls{gps}), and generates a heuristic based on either the distance from the current node \emph{towards} the destination location, or the distance from the current node \emph{away from} the original source, minimising and maximising this distance respectively.These methods limit control overheads and usually accurately determine the shortest path. However, in highly mobile networks this behaviour appears increasingly flood-like (similar to \gls{dsr} and \gls{aodv}), and the general requirement for highly accurate and timely positional information restricts the application of this protocol\\
 \subsubsection{\gls{cbrp}}
 \gls{cbrp} uses a hierarchical clustering topology where each cluster has a cluster-head which coordinates routing within that cluster. As only cluster-heads coordinate routing across clusters, transmission overheads are minimised compared to other route distribution methods. However, the negotiation and maintenance overheads and propagation delays associated with hierarchical clustering make the network susceptible to temporary routing loops as nodes may have inconsistent residual routing information during cluster re-negotiation\\
-\subsection{\gls{geraf}}
+\subsubsection{\gls{geraf}}
 \gls{geraf} is a geographic, on-demand, opportunistically routed protocol that could be considered an edge case of the ``reactive'' definition, in that it relies on additional knowledge about the environment to make routing decisions.
 It's basic operation is that a source node broadcasts a packet to be sent, including it's own location and the estimated location of the intended recipient.
 Intermediate nodes then reactively assess their own optimality in relaying based on maximum distance advancement from source and sink positions, and contend for the channel to receive the packet and rebroadcast it on.

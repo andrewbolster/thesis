@@ -75,7 +75,7 @@
 
 
 % *** MISC UTILITY PACKAGES ***
-%
+\usepackage{balance}
 \usepackage{ifpdf}
 % Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
 % compilation based on whether the output is pdf or dvi.
@@ -343,7 +343,11 @@
 \graphicspath{{../../../Figures/}{./figures/}}
 
 \begin{document}
-%
+\IEEEoverridecommandlockouts
+%\IEEEpubid{978-1-5090-2696-8/16/\$31.00 \copyright 2016 IEEE}
+\IEEEpubid{\makebox[\columnwidth]{\hfill 978-1-5090-2696-8/16/\$31.00~\copyright~2016~IEEE} \hspace{\columnsep}\makebox[\columnwidth]{ }}
+\IEEEpubidadjcol
+
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 \title{Analytical Metric Weight Generation for Multi-Domain Trust in Autonomous Underwater MANETs}
@@ -358,7 +362,7 @@ University of Liverpool\\
 Liverpool, UK\\
 Email: {andrew.bolster,alan.marshall}@liverpool.ac.uk}
 }% use for special paper notices
-\IEEEspecialpapernotice{Invited Paper for Underwater Communications Security session}
+\IEEEspecialpapernotice{(Invited Paper)}
 
 % make the title area
 \maketitle
@@ -388,6 +392,7 @@ In this paper we present a Machine Learning supported methodology for optimising
 
 \section{Introduction}
 % no \IEEEPARstart
+\IEEEpubidadjcol
 
 Trust Management Frameworks (TMFs) in terrestrial MANETs has been an area of active research for many years; with implicitly limited resources in terms of power, mobility, and communications range, the elimination or isolation of malicious nodes within the MANET is an obvious method for maintaining performance and security. 
 TMFs provide information to assist the estimation of future states and actions of nodes within networks. 
@@ -396,13 +401,13 @@ Existing research has demonstrated the advantages of implementing TMFs to 802.11
 However, as these decentralised networks expand beyond the terrestrial arena into aerial and underwater environments, these Trust frameworks must be assessed for their suitability to these new regions of operation.
 
 With respect to the comparatively stable terrestrial RF environment, the underwater acoustic communications environment is unforgiving; generally static or stable assumptions about propagation delay and paths, frequency-based attenuation and minimal refraction simply don't apply to many marine communications channels.
-This, coupled with the highly location, depth, weather, and flora and fauna dependent variability of these fundamental channel parameters make it difficult to make strong assumptions about if instantaneous network performance is the fault of a misbehaving node or of a whale passing between nodes.
+This, coupled with the highly location, depth, weather, and flora and fauna dependent variability of these fundamental channel parameters make it difficult to make assume that instantenous or short-channel fading are the result of a misbehaving node or of a whale passing between nodes.
 
-Having previously established the usefulness of Physical Metrics (those based on the node movements and behaviours) in trust assessment, these metrics present the opportunity to use additional information to establish and maintain trust assessment~\cite{Bolster2016}.
+In this paper we build upon previous work \cite{Bolster2015} that demonstrated the use of  Random Forest regression \cite{Breiman2001} to assess the relative importance of Communications Metrics in a simulated UAN, and extend the presented methodology with novel optimisation target functions and applying these methods of Metric Assessment across both Physical and Communications metric domains against both communications and physical misbehaviours.
+This physical metric assessment uses the motion of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
+This is accomplished by looking specifically at operations within the three dimensions of the underwater space, based on kinematics of industry standard AUVs, the REMUS 100.
 
-In this paper we build upon previous work \cite{Bolster2015} that demonstrated the use of  Random Forest regression \cite{Breiman2001} to assess the relative importance of Communications Metrics in a simulated UAN, and extend the presented methodology with novel optimisation target functions and applying these methods of Metric Assessment across both Physical and Communications metric domains.
-
-This paper is laid out as follows: Sec.~\ref{sec:mtfm} outlines the operation and parameters of MTFM and summarises the comparison of MTFM and other classically terrestrial MANET TMFs in a simulated marine environment.
+This paper is laid out as follows: Sec.~\ref{sec:mtfm} outlines the operation and parameters of the Multi-parameter Trust Framework for MANETs (MTFM) and summarises the comparison of MTFM and other terrestrial MANET TMFs in a simulated marine environment.
 Sec.~\ref{sec:weight_ass} discusses the proposed weight generation and assessment scheme for Multi-Domain MTFM, presents the experimental scenarios used, and the analysis method applied.
 The results of this analysis are discussed in Sec.~\ref{sec:results}.
 
@@ -416,7 +421,7 @@ Single Metric TMFs such as Hermes~\cite{Zouridaki2005}, Objective Trust Manageme
 
 These single metric TMFs provide malicious actors with a significant advantage if their activity does not impact that metric.
 In the case where the attacker can subvert the TMF, the metric under assessment by that TMF does not cover the threat mounted by the attacker.
-An example of such a situation would be in a TMF focused on PLR where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
+An example of such a situation would be in a TMF focused on Packet Loss Rate (PLR) where an attacker selectively delays packets going through it, reducing overall throughput but not dropping any packets.
 Such behaviour would not be detected by the TMF.
 
 \subsubsection{Multi-parameter Trust for MANETs (MTFM)}
@@ -435,7 +440,7 @@ The grey relational vector is given as
 %
 where $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the ``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, i.e. $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g. higher throughput is presumed to be always better. The implications of this are discussed in Sec.~\ref{sec:weight_ass}). 
 
-This Grey Vector is weighted on a per-metric basis\eqref{eq:metric_weighting} to then generate a scalar trust value~\eqref{eq:scalarised}. 
+This Grey Vector is weighted on a per-metric basis~\eqref{eq:metric_weighting} to then generate a scalar trust value~\eqref{eq:scalarised}. 
 %
 \begin{align}
   [\theta_k^t, \phi_k^t] &= \left[\sum_{j=0}^M h_j \theta_{k,j}^t,\sum_{j=0}^M h_j \phi_{k,j}^t \right] \label{eq:metric_weighting}\\
@@ -454,11 +459,9 @@ This was framed against a similar comparison applied to validate the development
 This comparison demonstrated that while the performance of MTFM, Hermes and OTMF were all severely reduced in the marine environment, Unweighted MTFM showed a consistent if small (~10\%) deviation in misbehaviour-cases and no such deviation in the Fair case.
 When the individual metrics in MTFM were preferentially weighted, it was demonstrated that a ``Relevance Signature'' could be generated for detectable behaviours based on a Random Forest regression of multiple weighted assessments, producing weighting vectors to maximally detect and identify the operation of those misbehaviours.
 
-In \cite{Bolster2016}, it was demonstrated that physical metrics and related physical misbehaviours could also be used to establish a simplified misbehaviour detection and identification classifier with a high degree of accuracy and selectivity ($>90\%$ accurate identification of misbehaviours with $>30\%$ false positive rate for control behaviours) based on a simple statistical outlier detection test (Dixons Q-test~\cite{Dean1951})
-
 \section{Weight assessment schemes for MTFM}\label{sec:weight_ass}
 
-From \eqref{eq:metric_weighting}, the final trust values arrived at are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
+From \eqref{eq:metric_weighting}, the final trust assessment value arrived at are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
 The construction of the $g$ and $b$ vectors from~\ref{eq:grc} depends on the trustworthiness-correlations of a particular metric, e.g. Throughput is assumed to be positively correlated to trustworthiness and so follows the basic construction ($g \mapsto \max, b \mapsto \min$).
 However, in the case of a metric such as delay, this relationship is inverted; longer delays indicate less trustworthy activity.
 In complex environments, the relationship between a metrics trustworthiness correlation may not be quite so obvious as the throughput / delay examples.
@@ -474,7 +477,7 @@ We characterise this ``objective function'' as $\Delta T_{ix}$~\eqref{eq:delta_t
   \Delta T_{ix} &= \frac{\sum_{j\neq x}\left( \overline{T_{i,j}}^{\forall t}\right)}{N-1} - \overline{T_{i,x}}^{\forall t} \label{eq:delta_t}\\
 \end{align}
 
-Where $i$ is a given observer, $x$ is the suspected misbehaving node, $\overline{T_{i,j}}^{\forall t}$ is the average weighted trust assessment from~\ref{eq:scalarised} of node $j$ observed by node $i$ across time and $N$ is the number of nodes in the current cohort.
+Where $i$ is a given observer, $x$ is the suspected misbehaving node, $\overline{T_{i,j}}^{\forall t}$ is the average weighted trust assessment from~\eqref{eq:scalarised} of node $j$ observed by node $i$ across time and $N$ is the number of nodes in the current cohort.
 
 Conceptually, $\Delta T_{ix}$ is the ``Distrust'' of the target node $x$, as the difference in trust value from $0\to1$, the higher the better for our purpose. 
 As such, we aim to maximise $\Delta T_{ix}\forall i\neq x$.
@@ -494,7 +497,7 @@ Thus, the metric vector for communications-trust assessment is;
 
 \subsubsection{Physical Metrics}
 
-Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; Inter-Node Distance Deviation (INDD), Inter-Node Heading Deviation (INHD), and Node Speed. These metrics encapsulate the relative distributions of position and velocity within the fleet, optimising for the detection of outlying or deviant behaviour within the fleet~\cite{Bolster2016}
+Three physical metrics are selected to encompass the relative distributions and activities of nodes within the network; Inter-Node Distance Deviation (INDD), Inter-Node Heading Deviation (INHD), and Node Speed. These metrics encapsulate the relative distributions of position and velocity within the fleet, optimising for the detection of outlying or deviant behaviour within the fleet.
 
 Conceptually, INDD is a measure of the average spacing of an observed node with respect to its neighbours. INHD is a similar approach with respect to node orientation.
 
@@ -622,7 +625,8 @@ In this case, we have naively included all possible metrics, and ``arbitrarily''
 It may be the case that there exist more performant subsets of $X_{merge}$ that are significantly better at highlighting particular misbehaviours in isolation, and future work will investigate this very case; optimising subset-selection as we have optimised metric-weighting.
 
 Further investigation is required to take this ``deviance'' and generate a dynamic run-time classifier based on this work. 
-Particularly challenging will be the inclusion of collaborating malicious nodes and periodic misbehaviours; the current construction of $\Delta T_{ix}$ assumes that other nodes are fairly reporting their trust assessments, however if several nodes can sufficiently ``lie'' about how much they trust each other, the cohort based nature of MTFM could be exposed as a weakness.  
+Particularly challenging will be the inclusion of collaborating malicious nodes and periodic misbehaviours; the current construction of $\Delta T_{ix}$ assumes that other nodes are fairly reporting their trust assessments, however if several nodes can sufficiently ``lie'' about how much they trust each other, the cohort based nature of MTFM could be exposed as a weakness.
+Additionally, the scalability \& overhead challenges of applying this methodology to large numbers of small AUVs, such as pervasive sensor networks, is an open problem. 
 
 
 
@@ -635,6 +639,7 @@ Particularly challenging will be the inclusion of collaborating malicious nodes 
 
 The Authors would like to thank the DSTL/DGA UK/FR PhD Programme for their support during this project, as well as NATO CMRE for their advice and assistance.
 
+\balance
 \bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
 \bibliography{IEEEabrv,refs}

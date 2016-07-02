@@ -397,11 +397,11 @@ In this paper we present a Machine Learning supported methodology for optimising
 Trust Management Frameworks (TMFs) in terrestrial MANETs has been an area of active research for many years; with implicitly limited resources in terms of power, mobility, and communications range, the elimination or isolation of malicious nodes within the MANET is an obvious method for maintaining performance and security. 
 TMFs provide information to assist the estimation of future states and actions of nodes within networks. 
 This information is used to optimise the performance of a network against malicious, selfish or defective misbehaviour by one or more nodes. 
-Existing research has demonstrated the advantages of implementing TMFs to 802.11 based MANETs in terms of preventing selfish operation and maintinaing throughput in the presence of malicious nodes \cite{Li2007,Buchegger2002}.
+Existing research has demonstrated the advantages of implementing TMFs to 802.11 based MANETs in terms of preventing selfish operation and maintaining throughput in the presence of malicious nodes \cite{Li2007,Buchegger2002}.
 However, as these decentralised networks expand beyond the terrestrial arena into aerial and underwater environments, these Trust frameworks must be assessed for their suitability to these new regions of operation.
 
 With respect to the comparatively stable terrestrial RF environment, the underwater acoustic communications environment is unforgiving; generally static or stable assumptions about propagation delay and paths, frequency-based attenuation and minimal refraction simply don't apply to many marine communications channels.
-This, coupled with the highly location, depth, weather, and flora and fauna dependent variability of these fundamental channel parameters make it difficult to make assume that instantenous or short-channel fading are the result of a misbehaving node or of a whale passing between nodes.
+This, coupled with the highly location, depth, weather, and flora and fauna dependent variability of these fundamental channel parameters make it difficult to make assume that instantaneous or short-channel fading are the result of a misbehaving node or of a whale passing between nodes.
 
 In this paper we build upon previous work \cite{Bolster2015} that demonstrated the use of  Random Forest regression \cite{Breiman2001} to assess the relative importance of Communications Metrics in a simulated UAN, and extend the presented methodology with novel optimisation target functions and applying these methods of Metric Assessment across both Physical and Communications metric domains against both communications and physical misbehaviours.
 This physical metric assessment uses the motion of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
@@ -453,7 +453,7 @@ To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) s
 MTFM combines this GRC with a topology-aware weighting scheme and a fuzzy whitenization model, however the model parameter we are primarily interested in is the weighting of metrics for MTFM, which enables the detection and identification of misbehaviours.
 
 \subsection{Summary of Previous Work}
-In \cite{Bolster2015}, MTFM was compared against Hermes and OTMF in a series of simulated UANs. 
+In \cite{Bolster2015}, MTFM was compared against Hermes and OTMF in a series of simulated UANs, using Focused Beam Routing (FBR)\cite{Jornet2008}.
 This was framed against a similar comparison applied to validate the development of MTFM~\cite{Guo2012} in terrestrial applications, and as such required rate and range scaling for application to the simulated underwater channel.
 
 This comparison demonstrated that while the performance of MTFM, Hermes and OTMF were all severely reduced in the marine environment, Unweighted MTFM showed a consistent if small (~10\%) deviation in misbehaviour-cases and no such deviation in the Fair case.
@@ -526,7 +526,6 @@ This simplest possible combination is a vector concatenation across domain metri
 
 \subsection{Simulation and Scenario Generation}
 To investigate the operation of a fully mobile network of six nodes, each kinematically modelled on the commonly used REMUS 100 AUV platform \cite{Milgram2001} in the marine environment, simulations were conducted using a Python based framework, SimPy \cite{Mueller2003SimPy}, with a network stack built upon AUVNetSim \cite{Miquel2008}, using transmission parameters taken from and validated against \cite{Stojanovic2007} and \cite{Stefanov2011}.
-
 Four scenarios were developed to assess both communications and physical domains where one node within the fleet was misbehaving ($n_m$, normally designated ``Alfa''). In cases where $n_m$ is specifically targeting another node in the fleet, that node is denoted as $n_t$.
 
 \begin{enumerate}
@@ -546,7 +545,6 @@ We perform 16 randomly seeded repetitions for each of the four misbehaviour case
 
 With the nine selected metrics of $X_{merge}$, we can explore this metric space by varying the weights associated with each metric, and choose to emphasise across three levels; i.e. metrics can be ignored or over-emphasised, resulting in 18661 unique normalised weight combinations.
 These weights are applied to the simulated results, producing a $N\times N$ $\Delta T_{ix}$ matrix for each run for each behaviour for each weight.
-
 We apply a Random Forest regression~\cite{Breiman2001} to assess the relative importance of the selected metrics on increasing $\Delta  T_{ix}$. 
 Random Forest accomplishes this by generating a large number of random regression trees and prunes these to fit incoming data. 
 A major advantage of Random Forest is that we acquire an already normalised ``relevance'' vector mapping to the input weights for the particular behaviour comparison being tested.
@@ -621,12 +619,12 @@ Some behaviours appear to be difficult to detect in any domain; Selfish Target S
 \section{Conclusion}
 We have demonstrated that using metrics from across physical and communications domains to assess trust in UANs, this additional information can meaningfully improve induced ``deviation'' of misbehaviours trust responses to the point where they are more easily detectable and identifiable.
 We have also demonstrated a purely analytical method for generating optimised metric weighting for MTFM using known behaviour training and Random Forest Regression.
-In this case, we have naively included all possible metrics, and ``arbitrarily'' grouped those metrics into the domains they came from, but in interdependent systems such as UANs, these metrics may have significant cross-correlations and redundancies (for instance, Delay could be considered a function of node spacing which is also captured in INDD, which would also impact the received signal strength attained).
-It may be the case that there exist more performant subsets of $X_{merge}$ that are significantly better at highlighting particular misbehaviours in isolation, and future work will investigate this very case; optimising subset-selection as we have optimised metric-weighting.
+In this case, we have naively included all possible metrics, and ``arbitrarily'' grouped those metrics into the domains they came from, but in interdependent systems such as UANs, these metrics may have significant cross-correlations \& redundancies (for instance, Delay could be considered a function of node spacing which is also captured in INDD, which would also impact the received signal strength attained).
+It may be the case that there exist more performant subsets of $X_{merge}$ that are significantly better at highlighting particular misbehaviours in isolation, and future work will investigate this.
 
 Further investigation is required to take this ``deviance'' and generate a dynamic run-time classifier based on this work. 
 Particularly challenging will be the inclusion of collaborating malicious nodes and periodic misbehaviours; the current construction of $\Delta T_{ix}$ assumes that other nodes are fairly reporting their trust assessments, however if several nodes can sufficiently ``lie'' about how much they trust each other, the cohort based nature of MTFM could be exposed as a weakness.
-Additionally, the scalability \& overhead challenges of applying this methodology to large numbers of small AUVs, such as pervasive sensor networks, is an open problem. 
+Additionally, the scalability \& overhead challenges of applying this methodology to large numbers of small AUVs, such as pervasive sensor networks, is an open problem. Finally, investigation into the impact of alternate network stacks and routing protocols is required to validate these findings.
 
 
 

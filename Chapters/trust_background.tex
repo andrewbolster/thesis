@@ -4,9 +4,9 @@
 
 \section{\acrlong{manet} Topologies \& Routing}\label{sec:manet_topologies}
 
-\glspl{manet} are wireless networks consisting of mobile devices acting simultaneously as sensor/processing/effector nodes and routing nodes, acting without a classical \gls{wlan} structured network architecture. 
+\glspl{manet} are wireless networks consisting of mobile devices acting simultaneously as sensor/processing/effector nodes and routing nodes, acting without a classical \gls{wlan} structured architecture. 
 Given constraints on propagation in such wireless networks, it is impractical for nodes to be ``fully connected'' to the rest of the network, and is instead constructed from single-hop ``node-pair'' links, through and across which data is routed to more distant parts of the network.
-This link-wise approach coupled with inherant Node mobility results in a potentially highly dynamic topology, where the instantaneous graph of node-pair connectivity can change dramatically in short intervals, and it may take considerable time for the network to ``re-optimise'' for this new, possibly temporary, topology. 
+This link-wise approach coupled with inherant Node mobility results in a highly dynamic topology, where the instantaneous graph of node-pair connectivity can change dramatically in short intervals, and it may take considerable time for the network to ``re-optimise'' for this new, possibly temporary, topology. 
 
 In order to understand and clarify the challenges to generic \gls{manet} applications, it is beneficial to explore some concepts from Graph Theory that apply to the discussion of \gls{manet} topologies. 
 
@@ -121,7 +121,7 @@ The concepts of graph density and connectivity are demonstrated visually in \aut
 In practical wireless network applications, network connectivity is a product of the physical distribution of nodes within an environment, and the propagation characteristics of the medium.
 
 Taking the same physical configuration as in \autoref{fig:manet_density}, the structure, density and connectivity of the network with different assumed propagation ranges $r$ can be shown (See \autoref{fig:manet_topo_states}).
-Naturally, as the relative transmission range is reduced, the natural density and connectivity of the network reduces down to the point in \autoref{fig:topo_broken_net} where the ``network'' is fundamentally broken.
+Naturally, as the relative transmission range is reduced, the density and connectivity of the network reduces down to the point in \autoref{fig:topo_broken_net} where the ``network'' is fundamentally broken.
 
 \begin{figure}
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -227,12 +227,12 @@ Another graph theoretic factor that is worth considering in \gls{manet} design i
 There are a great many methods for calculating centrality, however the important understanding from a network perspective is that of network-relative centralisation; in \autoref{fig:centralisation}, our previously deployed network layout is used to demonstrate three delineations of network centrality.
 In the first, all nodes are connected to one node, and that one node is totally responsible for communications and routing in the network.
 This is architecturally similar to switch-managed wired networks in a small office or home.
-In the second example, a generally de-centralised layout is set, with a generally hierarchical logical routing setup, where a few nodes take the brunt of the connectivity and bridging, almost creating centralised ``sub graphs'' with single uplinks.
+In the second example, a generally decentralised layout is set, with a generally hierarchical logical routing setup, where a few nodes take the brunt of the connectivity and bridging, almost creating centralised ``sub graphs'' with single uplinks.
 Finally, a truly ``distributed'' topology is shown, where there are no architecturally important nodes and, in general, shorter link distances. 
 
 The last issue to consider directly is that of the impacts of node mobility and temporary absence.
 In \autoref{fig:manet_topo_mobility}, a node leaves the network from one ``side'', and later reappears at another part of the network.
-This is quite possible in cases where node links may be physically interrupted by obstructions (or indeed the planned paths for nodes are obstructed, requiring a course correction and delay).
+This is quite possible in cases where node links may be physically interrupted by obstructions (or indeed, pre-planned paths for nodes are obstructed, requiring a course correction and delay).
 When the node reappears, all routing information that may have been established (i.e. node 5 would send packets destined to node 9 to nodes 6 or 7 rather than nodes 3 or 4) must be renegotiated and re-distributed across the network before efficient operation can continue.
 Secondarily to this, any authentication and validation that may be required to positively identify node 9 as \emph{actually being} node 9 may have to be transited from node 8, which had previously been the only node directly communicating to node 9.
 
@@ -291,7 +291,7 @@ These factors of network density, link length, centralisation and mobility simul
 Given the decentralised nature of \gls{manet} operations, routing protocols have been an active area of research since their inception~\cite{Jubin1987}.
 This research is classified according to the strategies used for discovering, monitoring and updating routes within the network, and are usually grouped into three classes; proactive (or Table Driven), reactive (or On Demand) and hybrid protocols.
 A summary of the generalised characteristics of these classes is shown in \autoref{tab:routing_categories}.
-Additional, these classes can be further rearranged, combined or augmented based on assumptions made about the structure of the baseline topology, i.e. flat, hierarchical or geographic) or by assumed constraints of the available resources of the nodes within the network i.e. heterogeneity in power, mobility, or communications capabilities where resource-based heuristics are used as well as purely topological considerations\cite{Li2005,Gerla2002}.
+Additional, these classes can be further rearranged, combined or augmented based on assumptions made about the structure of the baseline topology, i.e. flat, hierarchical or geographic) or by assumed constraints of the available resources of the nodes within the network i.e. heterogeneity in power, mobility, or communications capabilities where resource-based heuristics are used as well as purely topological considerations~\cite{Li2005,Gerla2002}.
 
 \subsection{Proactive Routing}
 
@@ -301,11 +301,13 @@ When the network topology is significantly modified by a shift in topology, eith
 The decomposition and updating of the node-knowledge of the network state, and the method of updating these state-tables, is the primary differentiator between proactive protocols, a selection of which are summarised below.
 
 \subsubsection{\gls{dsdv}}
-\acrlong{dsdv} is a loop free derivative of the Distributed Bellman-Ford algorithm where each node maintains two tables; one that attempts to maintain a globally accurate next-hop routing table for all destination nodes (the routing table) and a route advertisement table, monitoring routes that the node itself can provide. These tables are updated both periodically and opportunistically. Loop-free status is maintained by monitoring a monotonic ``sequence number'', which guarantees that if a long-loop returned packet is observed, it is discarded in favour of a route with a higher sequence number (i.e.\ newer route)~\cite{Perkins1994}.\
+\acrlong{dsdv} is a loop free derivative of the Distributed Bellman-Ford algorithm where each node maintains two tables; one that attempts to maintain a globally accurate next-hop routing table for all destination nodes (the routing table) and a route advertisement table, monitoring routes that the node itself can provide. These tables are updated both periodically and opportunistically. Loop-free status is maintained by monitoring a monotonic ``sequence number'', which guarantees that if a long-loop returned packet is observed, it is discarded in favour of a route with a higher sequence number (i.e.\ newer route)~\cite{Perkins1994}.
+
 \subsubsection{\gls{olsr}}
-\acrlong{olsr} reduces the traffic-overhead of truly distributed link-state exchange and monitoring by establishing a multipoint replaying strategy (MRP) where nodes select a subset of their one-hop network relay to retransmit their packets, based on the two-hop connectivity of the network, thereby reducing contention and overheads by reducing local re-transmitters. However, \gls{olsr} does not monitor link \emph{quality} beyond binary ``active/failed'' state which can lead to non-optimial MRP and route selection in wireless networks for instance.\\
+\acrlong{olsr} reduces the traffic-overhead of truly distributed link-state exchange and monitoring by establishing a multipoint replaying strategy (MRP) where nodes select a subset of their one-hop network relay to retransmit their packets, based on the two-hop connectivity of the network, thereby reducing contention and overheads by reducing local re-transmitters. However, \gls{olsr} does not monitor link \emph{quality} beyond binary ``active/failed'' state which can lead to non-optimial MRP and route selection in wireless networks for instance.
+
 \subsubsection{\gls{tbrpf}}
-\acrlong{tbrpf} consists of two main modules; the neighbour discovery (TND) module and the routing module; the TND uses differential updates to report only the \emph{changes} in the local topology. Further, instead of flooding the entire network with updates, \gls{tbrpf} selectively updates the relevant route updates to nodes that are on the minimum spanning tree route of of that update. Full topology updates are also used on a periodic, but occasional basis to maintain consistency and visibility. Given the use of differential updating, \gls{tbrpf} is more responsive and resilient in the face of dynamic mobile networks and incurs lower traffic overheads.\cite{Bellur1999}\\
+\acrlong{tbrpf} consists of two main modules; the neighbour discovery module and the routing module; the neighbour discovery module uses differential updates to report only the \emph{changes} in the local topology. Further, instead of flooding the entire network with updates, \gls{tbrpf} selectively updates the relevant route updates to nodes that are on the minimum spanning tree route of of that update. Full topology updates are also used on a periodic, but occasional basis to maintain consistency and visibility. Given the use of differential updating, \gls{tbrpf} is more responsive and resilient in the face of dynamic mobile networks and incurs lower traffic overheads~\cite{Bellur1999}.
 
 \subsection{Reactive Routing}
 
@@ -317,22 +319,28 @@ The on-demand nature of of route discovery can lead to significantly lower traff
 As such, reactive routing lends itself to low-traffic, delay tolerant, dynamic mobile applications as it does not require rediscovery after every \emph{topology} change, but only on transmission along a new or stale route.
 
 \subsubsection{\gls{dsr}}
-On-demand route formation when a transmitting node requests one. However, packets include full routing information instead of relying on the routing tables at each intermediate device\cite{Johnson1996}. Effective for small to medium, minimally mobile networks due to inclusion of route caching which reduces the number of route request discovery phases and associated congestion. Ineffective in large networks due to full-route packet overheads as network scale increases, and less than ideal for mobile networks due to cache-miss delays.\\
+On-demand route formation when a transmitting node requests one. However, packets include full routing information instead of relying on the routing tables at each intermediate device\cite{Johnson1996}. Effective for small to medium, minimally mobile networks due to inclusion of route caching which reduces the number of route request discovery phases and associated congestion. Ineffective in large networks due to full-route packet overheads as network scale increases, and less than ideal for mobile networks due to cache-miss delays.
+
 \subsubsection{\gls{aodv}}
-Based on \gls{dsdv} and \gls{dsr}; uses beaconing and sequence numbering (\gls{dsdv}) as well as shortest path route discovery from \gls{dsr}, except that \gls{aodv} does not use full-path source routing, instead relying on intermediate-routing based only on a destination. This optimisation reduces overhead and is more resilient to highly dynamic deployments at the cost of variable and potentially very long delays due to slow route construction or complete retransmissions due to link failure.\cite{Rai2010a}  \\
+Based on \gls{dsdv} and \gls{dsr}; uses beaconing and sequence numbering (\gls{dsdv}) as well as shortest path route discovery from \gls{dsr}, except that \gls{aodv} does not use full-path source routing, instead relying on intermediate-routing based only on a destination. This optimisation reduces overhead and is more resilient to highly dynamic deployments at the cost of variable and potentially very long delays due to slow route construction or complete retransmissions due to link failure~\cite{Rai2010a}. 
+
 \subsubsection{\gls{roam}}
-\gls{roam} uses inter-nodal coordination along directed acyclic sub-graphs, which is derived from the router’s distance to destination. This operation is referred to as a “diffusing computation”. The advantage of this protocol is that it eliminates the search-to-infinity problem present in some of the on-demand routing protocols by stopping multiple flood searches when the required destination is no longer reachable. Another advantage is that each router maintains entries (in a route table) for destinations, which flow data packets through them (i.e. the router is a node which completes/or connects a router to the destination). This reduces significant amount of storage space and bandwidth needed to maintain an up-to-date routing table. Another novelty of \gls{roam} is that each time the distance of a router to a destination changes by more than a defined threshold, it broadcasts update messages to its neighbouring nodes, as described earlier. Although this has the benefit of increasing the network connectivity, in highly dynamic networks it may prevent nodes entering sleep mode to conserve power.\\ % REWORD THIS ITS DIRECTLY FROM~\cite{Abolhasan2004}
+\gls{roam} uses inter-nodal coordination along directed acyclic sub-graphs, which is derived from the router’s distance to destination. This operation is referred to as a “diffusing computation”. The advantage of this protocol is that it eliminates the search-to-infinity problem present in some of the on-demand routing protocols by stopping multiple flood searches when the required destination is no longer reachable. Another advantage is that each router maintains entries (in a route table) for destinations, which flow data packets through them (i.e. the router is a node which completes/or connects a router to the destination). This reduces significant amount of storage space and bandwidth needed to maintain an up-to-date routing table. Another novelty of \gls{roam} is that each time the distance of a router to a destination changes by more than a defined threshold, it broadcasts update messages to its neighbouring nodes, as described earlier. Although this has the benefit of increasing the network connectivity, in highly dynamic networks it may prevent nodes entering sleep mode to conserve power. % REWORD THIS ITS DIRECTLY FROM~\cite{Abolhasan2004}
+
 \subsubsection{\gls{abr}}
-\gls{abr} extends classical source-routing by including a stability (``associativity'') heuristic of the long-term link state between mobile nodes, ensuring that the least-mobile nodes are preferentially used for routing. Further, this heuristic is applied outward from destination rather than from the source, selecting only the ``best'' route, reducing the likelihood of packet duplication in the mid-network. However this ``associativity'' measure requires periodic beaconing forcing all nodes to remain active. Finally, in the case where the ``best'' route fails through an in-the-air topology change, there is no in-network path recovery mechanism, and link discovery must be restarted\cite{Toh1997}.\\
+\gls{abr} extends classical source-routing by including a stability (``associativity'') heuristic of the long-term link state between mobile nodes, ensuring that the least-mobile nodes are preferentially used for routing. Further, this heuristic is applied outward from destination rather than from the source, selecting only the ``best'' route, reducing the likelihood of packet duplication in the mid-network. However this ``associativity'' measure requires periodic beaconing forcing all nodes to remain active. Finally, in the case where the ``best'' route fails through an in-the-air topology change, there is no in-network path recovery mechanism, and link discovery must be restarted~\cite{Toh1997}.
+
 \subsubsection{\gls{lar}}
-\gls{lar} incorporates location information (usually from \gls{gps}), and generates a heuristic based on either the distance from the current node \emph{towards} the destination location, or the distance from the current node \emph{away from} the original source, minimising and maximising this distance respectively.These methods limit control overheads and usually accurately determine the shortest path. However, in highly mobile networks this behaviour appears increasingly flood-like (similar to \gls{dsr} and \gls{aodv}), and the general requirement for highly accurate and timely positional information restricts the application of this protocol\\
+\gls{lar} incorporates location information (usually from \gls{gps}), and generates a heuristic based on either the distance from the current node \emph{towards} the destination location, or the distance from the current node \emph{away from} the original source, minimising and maximising this distance respectively.These methods limit control overheads and usually accurately determine the shortest path. However, in highly mobile networks this behaviour appears increasingly flood-like (similar to \gls{dsr} and \gls{aodv}), and the general requirement for highly accurate and timely positional information restricts the application of this protocol.
+
 \subsubsection{\gls{cbrp}}
-\gls{cbrp} uses a hierarchical clustering topology where each cluster has a cluster-head which coordinates routing within that cluster. As only cluster-heads coordinate routing across clusters, transmission overheads are minimised compared to other route distribution methods. However, the negotiation and maintenance overheads and propagation delays associated with hierarchical clustering make the network susceptible to temporary routing loops as nodes may have inconsistent residual routing information during cluster re-negotiation\\
+\gls{cbrp} uses a hierarchical clustering topology where each cluster has a cluster-head which coordinates routing within that cluster. As only cluster-heads coordinate routing across clusters, transmission overheads are minimised compared to other route distribution methods. However, the negotiation and maintenance overheads and propagation delays associated with hierarchical clustering make the network susceptible to temporary routing loops as nodes may have inconsistent residual routing information during cluster re-negotiation.
+
 \subsubsection{\gls{geraf}}
 \gls{geraf} is a geographic, on-demand, opportunistically routed protocol that could be considered an edge case of the ``reactive'' definition, in that it relies on additional knowledge about the environment to make routing decisions.
 It's basic operation is that a source node broadcasts a packet to be sent, including it's own location and the estimated location of the intended recipient.
 Intermediate nodes then reactively assess their own optimality in relaying based on maximum distance advancement from source and sink positions, and contend for the channel to receive the packet and rebroadcast it on.
-The core innovation of \gls{geraf} is this intermediate / receiver contention policy\cite{Zorzi2003,Zorzi2003a}.
+The core innovation of \gls{geraf} is this intermediate / receiver contention policy~\cite{Zorzi2003,Zorzi2003a}.
 One downside of this distance-only priority heuristic is that it can induce long, zig-zag paths that can be sensitive to node mobility~\cite{Jornet2008}.
 
 \subsection{Hybrid Routing}
@@ -342,17 +350,22 @@ In many cases, this takes the form of a tiered or bounded choice between proacti
 These in general exhibit ``better'' performance on average, particularly with increasing numbers and expanding distributions of nodes, but the variability in performance may be significant, particularly when sets require updating due to physical mobility of nodes, or where key gateway nodes are removed from the network somehow. 
 
 \subsubsection{\gls{zrp}}
-A true-blend of Proactive and Reactive policies; \gls{zrp} draws ``Routing Zones'' around nodes based on hop-distance, within which routing is made proactively, providing immediate local routes, and reactive, on-demand routes outside this distance. This significantly reduces local overheads and delays by reducing the scope of potential routes as those nodes on the edge of the zone. The control of this boundary point is a significant challenge to optimise with respect to overall network scale. \\
+A true-blend of Proactive and Reactive policies; \gls{zrp} draws ``Routing Zones'' around nodes based on hop-distance, within which routing is made proactively, providing immediate local routes, and reactive, on-demand routes outside this distance. This significantly reduces local overheads and delays by reducing the scope of potential routes as those nodes on the edge of the zone. The control of this boundary point is a significant challenge to optimise with respect to overall network scale.
+
 \subsubsection{\gls{dst}}
-Based on a combination of Hybrid Tree Flooding and Distributed Spanning Tree shuttling on tree based clusters where each cluster has a root node acting as a configuration leader. Routing updates are passed through direct neighbours and ``up'' the spanning trees under the root; this leads to a highly responsive and low over head routing policy in highly dynamic networks.\cite{Radhakrishnan1999}\\
+Based on a combination of Hybrid Tree Flooding and Distributed Spanning Tree shuttling on tree based clusters where each cluster has a root node acting as a configuration leader. Routing updates are passed through direct neighbours and ``up'' the spanning trees under the root; this leads to a highly responsive and low over head routing policy in highly dynamic networks~\cite{Radhakrishnan1999}.
+
 \subsubsection{\gls{ddr}} 
-A tree protocol similar to \gls{dst} except without the need for a root node; trees are constructed and maintained by periodic neighbour beaconing, where each node becomes the potential root of its own tree within the ``forest'' of the wider network. The construction of this forest follows six phases; neighbour election, forest construction, intra-tree clustering, inter-tree clustering, zone naming and zone partitioning. Each of these phases are executed based on information received in the beacon messages. One of the strengths of \gls{dst} is its lack of centralisation or a-priori structure requirement (i.e. root/cluster-heads or static zone maps), however there is no equalisation method to balance the case where a gateway node that is a preferred neighbour to many subtrees becomes congested and represents a significant bottleneck, as the neighbour selection is predicated on graph connectivity alone, without taking maximum throughput into account. In variably connected networks this could potentially cause network-wide delays through mid-network packet drops.\\
+A tree protocol similar to \gls{dst} except without the need for a root node; trees are constructed and maintained by periodic neighbour beaconing, where each node becomes the potential root of its own tree within the ``forest'' of the wider network. The construction of this forest follows six phases; neighbour election, forest construction, intra-tree clustering, inter-tree clustering, zone naming and zone partitioning. Each of these phases are executed based on information received in the beacon messages. One of the strengths of \gls{dst} is its lack of centralisation or a-priori structure requirement (i.e. root/cluster-heads or static zone maps), however there is no equalisation method to balance the case where a gateway node that is a preferred neighbour to many subtrees becomes congested and represents a significant bottleneck, as the neighbour selection is predicated on graph connectivity alone, without taking maximum throughput into account. In variably connected networks this could potentially cause network-wide delays through mid-network packet drops.
+
 \subsubsection{\gls{zhls}}
 Compared to \gls{zrp}, \gls{zhls} extended the zoning concept to include some elements of \gls{lar}, by constructing hierarchical non-overlapping zones based on physical location as well as connectivity. This location management is purely decentralised, with no explicit ``zone-heads'', eliminating single-point-of-failure concerns and significantly reducing invalid-flooding overheads, as topology updates only carry towards zones where the information is relevant. Shifting topologies within zones are tolerated cleanly as the internal zone-map is flat rather than hierarchical, and does not require re-computation or re-location as long as the node stays within a given ``zone''. This static map also leads to a significant disadvantage in that this zone-map must be pre-set, so are inappropriate for fully-mobile applications or applications with dynamic geographic boundaries~\cite{Joa-Ng1999,Hamma2006}.
+
 \subsubsection{\gls{slurp}}
 With a similar hierarchical non-overlapping zone structure to \gls{zhls}, \gls{slurp} does away with global routing through a deterministic mapping of node identifiers to ``Home'' regions, such that any node attempting to communicate with a node, can directly calculate from what ``Home'' zone that node originated.As and when nodes leave their ``Home'' region, they feedback to that region their current location. Subsequently when that node is a destination for a packet, the routing query is automatically directed to the home region which can direct the source node as to the direction of its destination, upon which the source can start sending data towards the destination using a most forward with fixed radius (MFR) geographical forwarding algorithm. Once the data reaches the zone where the destination currently resides, source-routing is used internally to complete the route. This strategy works well for relatively static networks with some mobile nodes, or where node mobility is ``slow'', such as \gls{wsn}, however it still relies on pre-programmes static zone maps as per \gls{zhls}~\cite{Woo2001}
+
 \subsubsection{\gls{fbr}}
-\gls{fbr} is built upon the concepts of \gls{geraf}, which uses straight line distance-from-receiver minimisation, extending with a cone-based prioritisation metric rather than absolute distance, mitigating the zig zag effect of \gls{geraf} and implicitly supporting partially overlapping simultaneous alternate routing, improving system redundancy and (usually) eliminating the need for retransmission~\cite{Jornet2008}.
+\gls{fbr} is built upon the concepts of \gls{geraf}, which uses straight line distance-from-receiver minimisation, extending with a cone-based prioritisation metric rather than absolute distance, mitigating the zig-zag effect of \gls{geraf} and implicitly supporting partially overlapping simultaneous alternate routing, improving system redundancy and (usually) eliminating the need for retransmission~\cite{Jornet2008}.
 This is further augmented with an adaptive open-loop power control system which both aids in energy consumption and in preventing spurious blocking of the channel.
 \gls{fbr} is particularly well suited to constrained energy mobility networks with high mobility and high retransmission costs~\cite{Noh2012}.
 
@@ -416,7 +429,7 @@ As such it is important to explore the following areas of trust definitions, the
 %
 \begin{table}[h]
   \centering
-  \caption{Definitions of Trust}
+  \caption{Selected Definitions of Trust}
   \label{tab:trust_definitions}
   \begin{tabularx}{\textwidth}{X p{3cm}}\toprule
     Definition & Source \\ \midrule
@@ -596,7 +609,7 @@ There are five commonly considered characteristics or attributes of Trust relati
 	\item \emph{Multi-Party} - One-to-one; one-to-many; many-to-one; many-to-many.
 	Trust is not an absolute characteristic of a lone individual.
 	Trust may include multi-agent abstractions (one-to-many), such as a preferential trust/distrust towards a group exhibiting a particular attribute, e.g.\ members of the armed forces / police services.
-	Likewise, there can be trustor/trustee attributes that can generalise relationships between collectives (many-to-many), e.g.\ Jets and Sharks\cite{Robbins1961}.
+	Likewise, there can be trustor/trustee attributes that can generalise relationships between collectives (many-to-many), e.g.\ Jets and Sharks~\cite{Robbins1961}.
 	\item \emph{Transitive} - Trust assessments can be shared (i.e.\ recommendations), where this second order trust assessment incorporates both the observed trustworthiness of the trustee, as well as the trustworthiness of the intermediate trustor.
 	In some models this is further extended to include out-of-network intermediate trustors that have some other defined authority, e.g.\ PKI Certificate Authority
 	\item \emph{Evidential} - Trust must be based on some form of evidence-based observation or assessment, such as historical success rates of performing a certain action, or second-hand observations of trust from a third party.
@@ -946,7 +959,7 @@ Autonomy, coming from the Greek roots \textit{auto-} (self) and \textit{nomos} (
 This autonomy is distinct from \textit{freedom}, where freedom is the \textit{ability} to perform an action, not the \textit{capability to choose} which action to perform.
 That is not to say that autonomy or autonomous action exists in an ideal vacuum with perfect and complete information with no coercive factors or outside influences.
 The ability to recognise, process, weight and filter inputs, knowledge, ``responsibilities'', influences and outside factors and come to an effective decision is a key skill for any self-governing agent, however this is above and beyond the concept of ``basic autonomy''.
-From the implicit variability and complexity of environment and context that classically autonomous entities\footnote{That's \textit{Homo Sapiens}} inhabit, there is little assumption that ``autonomy'' always produces a categorically ``correct''or ``good'' decision, but is instead a case of an agent choosing the action that is \textit{in its own best interests based on available information}\cite{Arpaly2003}.\footnote{Arply discusses a counter example of this ``goodness'' assessment as  Huckleberry Finns' release of Jim against his ``best judgement'', and that rather than this action being an instance of morally justified or self-congratulatory autonomy, it was ``the right thing to do'' from an abstract moralistic perspective rather than a justifiably beneficial action, and it is a case of \textit{akrasia}; the lacking of self-governance and the antonym of autonomy.}
+From the implicit variability and complexity of environment and context that classically autonomous entities\footnote{That's \textit{Homo Sapiens}} inhabit, there is little assumption that ``autonomy'' always produces a categorically ``correct''or ``good'' decision, but is instead a case of an agent choosing the action that is \textit{in its own best interests based on available information}~\cite{Arpaly2003}.\footnote{Arply discusses a counter example of this ``goodness'' assessment as  Huckleberry Finns' release of Jim against his ``best judgement'', and that rather than this action being an instance of morally justified or self-congratulatory autonomy, it was ``the right thing to do'' from an abstract moralistic perspective rather than a justifiably beneficial action, and it is a case of \textit{akrasia}; the lacking of self-governance and the antonym of autonomy.}
 
 This understanding of individual autonomy has been scaled up through social systems and has been studied at length to understand the emergence of post-Marxist proto-anarchistic movements~\cite{Hunter2016} and from a higher perspective, international politics, especially in the cases of quasi-federalised collections of states such as the United States of America~\cite{Halberstam2001} and the European Union/Eurozone/Schengen Area~\cite{Richter2012}
 
@@ -1070,7 +1083,7 @@ To be able to trust that system's ability to continue on a course, survey an are
 
 \subsection{Design Trust}\label{sec:design_trust}
 
-As part of work conducted with DSTL~\cite{Bolster2014a}, five aspects of Design Trust have been identifiedwith respect to Design Trust, with open research questions identified in each aspect emphasised.
+As part of work conducted with DSTL~\cite{Bolster2014a}, five aspects of Design Trust have been identified with respect to Design Trust, with open research questions identified in each aspect emphasised.
 
 \begin{enumerate}
   \item \textbf{Formal Specification of Dynamic Operation}: Autonomous Systems (AS) may be required to operate in complex, uncertain environments and as such their specification may need to reflect an ability to deal with unspecified circumstances.
@@ -1098,7 +1111,7 @@ As part of work conducted with DSTL~\cite{Bolster2014a}, five aspects of Design 
 \end{enumerate}
 
 While this work is primarily concerned with those aspects of \textbf{Trust Modelling and Metrics}, it is useful to consider this Trust assessment in the wider context of the design process, and what best practices are available.
-Design against and Compliance with existing standards can contribute significantly to the demonstrable trustworthiness of any systems’ design.
+Design against and compliance with existing standards can contribute significantly to the demonstrable trustworthiness of any systems’ design.
 If a system has been designed to a Standard then it has known properties that have been accepted as good practice.
 However, current standards do not address the issue of the five areas listed above.
 
@@ -1111,7 +1124,7 @@ There are three main organisations that are developing or have developed assuran
 \end{itemize}
 
 \paragraph{NATO Standardization Office}
-Faced with the growing adoption of similar but disparate \gls{uav} systems within NATO territories and coalition nations, STANAG 4586\cite{STANAG4586} was promulgated in 2005 and defined a logistic and interoperability framework to provide commonality in the command and control architecture and implementations of \gls{uav}/Ground station communications.
+Faced with the growing adoption of similar but disparate \gls{uav} systems within NATO territories and coalition nations, STANAG 4586~\cite{STANAG4586} was promulgated in 2005 and defined a logistic and interoperability framework to provide commonality in the command and control architecture and implementations of \gls{uav}/Ground station communications.
 
 This included a particularly interesting development in the form of \gls{sae} \gls{vsm} interoperability, whereby existing systems could be grandfathered into STANAG 4586 compliance by the addition of a \gls{vsm} to operate as a protocol translator.
 This \gls{vsm} could be mounted on the remote system directly, utilising a compliant \gls{dli}, or mounted on the ground-based controller, retaining the proprietary \gls{dli} to the remote system.
@@ -1139,14 +1152,14 @@ Further, the standard predominantly deals with a one-to-one mapping between oper
 
 The AS-4 steering group is responsible for the development and maintenance of the \gls{jaus} standards, which provide several service sets for Inter-System cooperation and interoperability, either in the form of a specified design language (JSIDL\footnote{\gls{jaus} Service Interface Definition Language}) or as a direct framework implementation, such as the \gls{jaus} Mobility, Mission Spooling, Environment Sensing, or Manipulator Service Sets\footnote{SAE AS6009, AS 6062, AS 6060, and AS 6057 respectively}.
 This provides a stack-like interoperability model akin to the OSI inter-networking standard, providing logical connections between common levels across devices regardless of how subordinate layers are implemented.
-Importantly, \gls{jaus} service models are open-sourced under the BSD-license, and a development toolkit is available for anyone to develop \gls{jaus}-compatible communications and control protocols\cite{JTS}.
+Importantly, \gls{jaus} service models are open-sourced under the BSD-license, and a development toolkit is available for anyone to develop \gls{jaus}-compatible communications and control protocols~\cite{JTS}.
 
-It is also important to note that \gls{jaus} is part funded, and heavily utilised by, US Army and Marine Robotic Systems Joint Project Office (RS-JPO), which manage the development, testing, and fielding of unmanned (ground) systems for those respective forces.\cite{JTS,Huang2004}
+It is also important to note that \gls{jaus} is part funded, and heavily utilised by, US Army and Marine Robotic Systems Joint Project Office (RS-JPO), which manage the development, testing, and fielding of unmanned (ground) systems for those respective forces~\cite{JTS,Huang2004}.
 This includes now legacy M160 mine clearance platform and the highly popular (both with forces and their in-field operators) iRobot Packbot inspection and \gls{eod} family of robotic platforms.
 
 \paragraph{\gls{astm}}
 
-The \gls{astm} F38 committee has developed a \gls{los}, single-asset-single-operator stove-piped framework for Unmanned Air Systems that is too constrained in scope for applicability to a more heterogeneous operating environment\cite{AmericanSocietyofTestingandMaterials2007}.
+The \gls{astm} F38 committee has developed a \gls{los}, single-asset-single-operator stove-piped framework for Unmanned Air Systems that is too constrained in scope for applicability to a more heterogeneous operating environment~\cite{AmericanSocietyofTestingandMaterials2007}.
 However, the F41 Committee, focused on \glspl{umvs} has collectively developed a range of interoperable standards, covering Communications, Autonomy and Control, Sensor Data Formats, and Mission Payload Interfacing.
 Of particular interest is the Autonomy and Control standard which highlighted a requirement on the vehicle system to be able to recognise an authorised client, be that a human operator or an additional collaborating vehicle~\cite{AmericanSocietyofTestingandMaterials2006}.
 Further, the standard states that the responsibility of the safety and integrity of any payload remains with the vehicle.
@@ -1202,7 +1215,7 @@ There are five topics that are important to address in any \glspl{manet} trust m
 \begin{itemize}
   \item The trust model should be without infrastructure.
     Because the network routing infrastructure is formed in an ad-hoc fashion, the trust management can not depend on, e.g., a \acrfull{ttp}.
-    There is no \gls{pki}, where some center nodes monitor the network, and publish illegal nodes periodically.
+    There is no \gls{pki}, where some central nodes monitor the network, and publish illegal nodes periodically.
     In a \gls{manet}, there are no certification authorities (CA) or registration authorities (RA) with elevated privileges etc.
   \item The trust model should be anonymous because of the anonymity of mobile nodes in \glspl{manet}. %\todo{Q: This isn't actually explained or justified in Kamvar so it may have been pulled out of his ass}
   \item The trust model should be robust.
@@ -1272,7 +1285,7 @@ Additionally this assumption of node mobility and ``temporary disconnection'' pr
 
 
 Many classical mitigation strategies focus on selfishness rather than malicious attack, usually including some form of misbehaviour-induced backoff policy to passively punish misbehaviour~\cite{Konorski2002,Cardenas:2004:DPM:1029102.1029107}.
-On the other hand, many  strategies are usually based on some derivative form of hardline-network \gls{ids} frameworks, where such systems passively observe a network for misbehaviour and 
+On the other hand, many  strategies are usually based on some derivative form of hardline-network \gls{ids} frameworks, where such systems passively observe a network for misbehaviour and notify an operator when a threat is detected.
 
 \citet{zhang2003intrusion} first proposed a general \gls{ids} framework for \glspl{manet}; leveraging the distributed and cooperative predicates of the architecture, introducing both per-node and cooperative \gls{ids} submodules such that nodes work independently and cooperatively to identify certain misbehaviours, specifically targeting routing attacks and incongruities.
 Extensions to this framework were also proposed to have a range of these modules operate at each layer of the protocol stack to improve detection response and range~\cite{Parker2006}
@@ -1305,12 +1318,12 @@ Taking some examples; %\todo{TODO:Check for more recent evolutions in Trust/TMFs
   \item \emph{Trust-based Secure Routing} demonstrated an extension to \gls{dsr}, incorporating a Hidden Markov Model of the wider ad-hoc network, reducing the efficacy of Byzantine attacks, particularly black-hole attacks but is limited by focusing on single metric observation (\gls{plr})~\cite{Moe2008a,Cho2011}.
   \item \emph{\gls{confidant}}; presented an approach using a probabilistic estimation of normal observations, similar to \gls{otmf}.
     Also introduced a greedy topology weighting scheme that internally weighted incoming trust assessments based on historical experience of the reporter~\cite{Buchegger2002}.
-  \item \emph{Fuzzy Trust-Based Filtering};presented a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network~\cite{Luo2008}.
+  \item \emph{Fuzzy Trust-Based Filtering} presents a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network~\cite{Luo2008}.
   \item \emph{\acrfull{mtfm}} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust~\cite{Guo11}.
 \end{itemize}
 %
 
-\subsection{Single Metric Trust Frameworks}\label{sec:single_trust}
+\subsection{Selected Single Metric Trust Frameworks}\label{sec:single_trust}
 
 %\todo{ADD:Expand background detail on more frameworks, (Confidant/Fuzzy)}
 The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
@@ -1323,7 +1336,7 @@ The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reas
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
 %\todo{Q:This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
 
-Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function (\eqref{eq:beta}), and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
+Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function \eqref{eq:beta}, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
 
 \begin{align}
   \label{eq:beta}
@@ -1464,7 +1477,7 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 
 In the case of the terrestrial communications network used in~\cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 
-\citet{Guo11} demonstrated that when compared against \gls{otmf} and Hermes trust assessment, \gls{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can.
+\citet{Guo11} demonstrated that when compared against \gls{otmf} and Hermes trust assessment, \gls{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can in the terrestrial RF 80.11 based experimental network used.
 
 \section{Conclusion}
 In this chapter, \gls{manet} implementations, topologies, and applications have been explored. 

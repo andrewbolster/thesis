@@ -6,7 +6,7 @@
 \section{Maritime Communications Environment}\label{sec:marine_comms}
 
 The key challenges of underwater acoustic communications are centred around the impact of slow and differential propagation of energy (RF, Optical, Acoustic) through water, and it's interfaces with the seabed / air.
-The resultant challenges include; long delays due to propagation, significant inter-symbol interference and Doppler spreading, fast and slow fading due to environmental effects (aquatic flora/fauna; surface weather), carrier-frequency dependent signal attenuation, multipath caused by the medium interfaces at the surface and seabed, variations in propagation speed due to depth dependant effects (salinity, temperature, pressure, gaseous concentrations and bubbling), and subsequent refractive spreading and lensing due to that same propagation variation\cite{Partan2006}.
+The resultant challenges include; long delays due to propagation, significant inter-symbol interference and Doppler spreading, fast and slow fading due to environmental effects (aquatic flora/fauna; surface weather), carrier-frequency dependent signal attenuation, multipath caused by the medium interfaces at the surface and seabed, variations in propagation speed due to depth dependant effects (salinity, temperature, pressure, gaseous concentrations and bubbling), and subsequent refractive spreading and lensing due to that same propagation variation~\cite{Partan2006}.
 
 \subsection{Mechanics of Acoustic Transmission}
 
@@ -23,7 +23,7 @@ Useful acoustic signals are generally maintained vibrations rather than instanta
 They are characterised by their frequency $f$ expressed in Hertz ($Hz$) or by their Period ($T$) in seconds.
 In commonly used underwater acoustics, used frequencies range from $\approx 10Hz-100kHz$ depending on application~\cite{Stojanovic2007}.
 
-As with all waves, the relationship between frequency, period and the wavelength is given as in \eqref{eq:wavelength}. 
+As with all waves, the relationship between frequency, period and the wavelength is given as in \eqref{eq:wavelength} where $c$ is the propagation speed in a given medium. 
 As such the generally used upper and lower bounds of wavelength in most applications is from $\SI{1.5}{\meter} @ 10Hz$ to $\SI{0.015}{\meter} @ 100kHz$.
 %
 \begin{equation}
@@ -173,7 +173,7 @@ The attenuation that occurs in an underwater acoustic channel over a distance $d
 
 where $A_0$ is a unit-normalising constant, $k$ is a geometric spreading factor (commonly taken as 1.5 for practical use, but may be 2 for perfect spherical propagation or 1 for perfect plane-wave propagation)), and $a(f)$ is the absorption coefficient, that may be modelled in a variety of ways.
 
-Thorp's formula (\autoref{eq:thorp}) is very simple, only depending on $f$, and is designed to be most accurate about a temperature of 4$^{\circ}$C at a depth of $\approx 1Km$.
+Thorp's formula (\eqref{eq:thorp}) is very simple, only depending on $f$, and is designed to be most accurate about a temperature of 4$^{\circ}$C at a depth of $\approx 1Km$.
 %
 \begin{figure}
   \begin{equation}
@@ -224,7 +224,7 @@ The Fisher-Simmons model (\autoref{fig:fisher}) is significantly more complex, t
 
 
 
-Regardless of the variations of particular attenuation models, comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model~\autoref{eq:fspl}, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
+Regardless of the variations of particular attenuation models, comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model~\eqref{eq:fspl}, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
 While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
 \begin{equation}
   \label{eq:fspl}
@@ -292,7 +292,7 @@ Forward Error Correction coding is used on such channels to minimise packet loss
 \section{Marine Operations, Payloads, Technologies, and Durations}\label{sec:marine_ops}
 
 The use and applications of \glspl{auv} has undergone a great expansion in recent years~\cite{Alam2014}.
-The primary application for \glspl{auv} has long been identified as the environmental monitoring of marine areas, and are actively being researched by a great range of industrial and defence sector applications, with secondary applications in the physical sciences and environmental research, which are summarised below\cite{Bingham2002,Wynn2014}.
+The primary application for \glspl{auv} has long been identified as the environmental monitoring of marine areas, and are actively being researched by a great range of industrial and defence sector applications, with secondary applications in the physical sciences and environmental research, which are summarised below~\cite{Bingham2002,Wynn2014}.
 
 \subsection{\gls{auv} operations and deployments}
 
@@ -304,7 +304,7 @@ This is particularly important when comparing to classical tow-line based measur
 
 Another significant factor is cost; the daily cost of operating a manned vessel can be considerably higher than the costs of deploying, operating and recovering one or more \glspl{auv} with equivalent capabilities~\cite{Nicholson2008}.
 Additionally, the use of low-power ``glider'' \glspl{auv} has lowered the barrier to entry for extended mission types, such as persistent environmental survey, or open-ocean operations. 
-Depth-hardened \glspl{auv} have also opened up the deepest parts of the oceans to exploration, with the onboard autonomy, imagery and Simultaneous Location and Mapping (SLAM) techniques allowing deep-dwelling survey \glspl{auv} to react to bottom-surface features without the need for a tight craft-to-surface control loop.
+Depth-hardened \glspl{auv} have also opened up the deepest parts of the oceans to exploration, with onboard autonomy, imagery and \gls{slam} techniques allowing deep-dwelling survey \glspl{auv} to react to bottom-surface features without the need for a tight craft-to-surface control loop.
 The natural extension of these kind of applications is the use of \glspl{auv} on ice-covered planets such as Europa, where three-dimensional, autonomous navigation without an on-the-loop controller is vital for mission resource efficiency and success.
 
 \subsubsection{Hull and Infrastructure Inspection}
@@ -322,7 +322,7 @@ Additionally, recent advances in \gls{sas} have provided invaluable sub-surface 
 This benefit applies to protection as well as incursion; the ability to rapidly deploy persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as \gls{auv} technology, autonomy and security practices develop, this use is increasing.
 This Port Protection capability is particularly complex;  teams of \glspl{auv} are expected to repeatedly survey an area and remain densely-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
 In the remainder of this work this Port Protection scenario is used as a baseline for our simplified simulation context.
-Additional defence application areas include \gls{asw}, \gls{rea}, Navigational Aid/Force projection, 
+Additional defence application areas include \gls{asw}, \gls{rea}, Navigational Aid and Force projection, 
 
 
 
@@ -337,7 +337,7 @@ However, the initial set-up and deployment required in advance of any \gls{auv} 
 \gls{lbl} systems can also be deployed on mobile surface platforms in the area (ships or buoys for example), but these applications put significant computational pressure on the end-point AUV and have greatly reduced accuracy compared to ideal deployments~\cite{Matos1999}.
 \subsubsection{\gls{dvl}}
 Doppler Velocity Logging involves the emission of directed acoustic ``pings'' that reflect off sea bed/surface interfaces that, when received back on the craft with multi-beam phased array acoustic transducers can measure both the absolute depth/altitude (z-axis) of the craft and through directional Doppler shifting, the relative (xy-translative) motion of the craft since the ping.
-While classical \gls{dvl} was highly sensitive to shifting currents in the water column, advances in the development of Acoustic Doppler Current Profiling has turned that situation on it's head, enabling the compensation-for and measurement-of water currents down to the sub-meter level~\cite{Snyder2010}.
+While classical \gls{dvl} was highly sensitive to shifting currents in the water column, advances in the development of Acoustic Doppler Current Profiling has turned that situation on its head, enabling the compensation-for and measurement-of water currents down to the sub-meter level~\cite{Snyder2010}.
 \subsubsection{\gls{ins}}
 Inertial navigation systems use gyroscopic procession to observe the relative acceleration of a mobile platform.
 This reference-relative monitoring is particularly useful in the underwater environment, as it detects the motion of \glspl{auv} as they are carried by the water itself.
@@ -358,11 +358,11 @@ In summary, current technology reliably enables \glspl{auv} to localise to a sub
 The REMUS range of \gls{auv} platforms have been very popular in research and \gls{uan} application prototypes due to their relatively small size and high level of reconfigurability.
 The basic configurations of the REMUS 100 configuration consist of a single pressure vessel, $\SI{0.2}{\meter}$ in diameter and $\SI{1.6}{\meter}$ long, weighting in at $37kg$, rated to operational depths of $\SI{150}{\meter}$. 
 This package includes \gls{dvl}, \gls{ctd}, Underwater Videography, \gls{lbl} and onboard computing power suitable for low \gls{loa} independence, with onboard Li-on battery packs rated to provide up to 10-hours of cruising operational endurance.
-These capabilities can be extended through the addition of further modular extensions through the REMUS range, such as the REMUS 600, rated for up to $\SI{600}{\meter}$ depth and a cruising endurance of 45 hours, or the REMUS 6000, rated for up to $\SI{6}{\kilo\meter}$ with 22 hours duration.
+These capabilities can be extended through the addition of further modular extensions through the REMUS range, such as the REMUS 600, rated for up to $\SI{600}{\meter}$ depth and a cruising endurance of 45 hours, or the REMUS 6000, rated for up to $\SI{6}{\kilo\meter}$ depth with 22 hours duration.
 
 The HUGIN 1000 is a high-resolution extension to the REMUS range, characterised by it's default payload of a High Definition \gls{sas}, co-designed with the Norwegian Defence Research Establishment (FFI) for \gls{mcm} operations, with a dynamic depth rating up to $\SI{3}{\kilo\meter}$ and 24 hour cruising endurance (17 hours with continuous \gls{sas} engagement)
 
-The Konsburg range also include range specific \gls{lars}
+The Konsburg range also include range specific semi-automated \gls{lars}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.45\textwidth]{hugin.jpg}
@@ -379,7 +379,7 @@ Developed under the UK's National Oceanography Centres Marine Autonomous and Rob
 
 \subsubsection{University of Washington SeaGlider}
 Taking a fundamentally different approach to underwater mobility for targeting depth-variant environmental studies, the SeaGlider eschews classical propulsion to use it's downward-facing structure and fins to use it's weight/buoyancy to propel itself.   
-At \SI{1.8}{\meter} long and weighting only \SI{52}{\kilogram}, this highly portable \gls{auv} can cover ranges up to \SI{4600}{\kilo\meter} with 650 \SI{1}{\kilo\meter} dive segments at a rate of \SI{0.25}{\meter\per\second}.
+At \SI{1.8}{\meter} long and weighing only \SI{52}{\kilogram}, this highly portable \gls{auv} can cover ranges up to \SI{4600}{\kilo\meter} with 650 \SI{1}{\kilo\meter} dive segments at a rate of \SI{0.25}{\meter\per\second}.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.45\textwidth]{seaglider}
@@ -402,12 +402,12 @@ Given the breadth of the threat space in \glspl{manet}, many strategies for miti
 \autoref{tab:manet_risk} summaries some of these general strategies or ``solutions'' for range of threats identified specifically in the context of the deployment of \glspl{manet} in a tactical/defence context, originally based on~\citet{Kidston2010} but with some contextual alterations with modifications discussed below.
 
 In this context of this table, Vulnerability is an assessment of how available a particular threat is to a generic attacker, Impact is an assessment of the in-system affects of a successful attack, and Risk is a qualitative assessment of the likelihood of exploitation of an attack.
-\citet{Kidston2010} originally lowered the assessment of vulnerability of Eavesdropping, citing the tactical use of non-standard \gls{mac} as a barrier to attack, however considering the increasing commoditisation of tactical hardware across the world, and increasing application of \gls{cots} hardware, this is no longer a fair assessment.
+\citet{Kidston2010} originally lowered the assessment of vulnerability of Eavesdropping to ``Low'', citing the tactical use of non-standard \gls{mac} as a barrier to attack, however considering the increasing commoditisation of tactical hardware across the world, and increasing application of \gls{cots} hardware, this is no longer a fair assessment.
 Similarly, the assessment that the Risk of Data Corruption is low is arguable on the basis of simplistic spread spectrum jamming but this assessment is unchanged.
 %Finally,~\citet{Kidston2010} did not take into account the presence of weapons or other actuation methods with \glspl{auv} as the endpoint.
 
 \begin{table}
-	\caption{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from~\cite{Kidston2010}}
+	\caption[Risks and Threat Mitigation Strategies for MANETs]{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from~\citet{Kidston2010}}
 	\label{tab:manet_risk}
 	\begin{tabularx}{\textwidth}{p{3cm} X X X >{\raggedright\arraybackslash}p{4cm}}\toprule
 		Threat & Vulnerability & Impact & Risk & Mitigation	\\\midrule

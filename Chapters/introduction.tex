@@ -8,7 +8,7 @@
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of broadcast/receiver (or server/client) communications has given way to an increasing use of decentralised, ad-hoc networks that take advantage of this network dynamism to improve service efficiency.
 
-Whether these networks are decentralised cellular / \gls{rf} / 802.11 WiFi networks for use in disaster relief areas~\cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring~\cite{Nicholson2008,Selvakennedy2007}, \gls{manet} theory developed over the past 30 years has gone from its first formal definition, emerging from \glspl{darpa} Packet Radio Network research, to being an integral part of modern practical communications\cite{Jubin1987}.
+Whether these networks are decentralised cellular / \gls{rf} / 802.11 WiFi networks for use in disaster relief areas~\cite{Milliken2015} or biologically inspired wireless sensor networks for low-energy, low-maintenance environmental monitoring~\cite{Nicholson2008,Selvakennedy2007}, \gls{manet} theory has gone from its first formal definition, emerging from \glspl{darpa} Packet Radio Network research, to being an integral part of modern practical communications~\cite{Jubin1987}.
 
 Minimally, a \gls{manet} consists of of a collection of mobile physical entities (nodes) that communicate cooperatively to collect, distribute, disseminate, and collate data and/or influence across an area.
 In most cases \gls{manet} nodes incorporate bi-directional transceivers to send and receive data\footnote{However this bi-directionality is not always a requirement; for example in the area of \gls{wsn}~\cite{Akyildiz2002})}
@@ -24,7 +24,7 @@ The characteristics of \gls{manet}s as defined by Corson et al.\ are paraphrased
 
 \begin{table}[h!]
   \hyphenpenalty=10000
-\caption[Summary of Characteristics of \glspl{manet}]{Summary of Characteristics of \glspl{manet}\cite{Corson1999}}
+\caption[Summary of Characteristics of \glspl{manet}]{Summary of Characteristics of \glspl{manet}~\citet{Corson1999}}
 \label{tab:manet_characteristics}
   \begin{tabularx}{\textwidth}{p{2cm}X}\toprule
     Dynamic Topologies & Nodes are free to move arbitrarily; thus, the typically multi-hop network topology may change randomly and rapidly at unpredictable times, and may consist of both bidirectional and unidirectional links.
@@ -58,9 +58,9 @@ As such, \glspl{tmf} can be used to predict and reason on the future interaction
 This information is used to optimize the performance of a network against malicious, selfish, or defective misbehaviour by one or more nodes.
 Previous research has established the advantages of implementing \glspl{tmf} in 802.11 based \glspl{manet}, particularly in terms of preventing selfish operation in collaborative systems, and maintaining throughput in the presence of malicious actors~\cite{Li2007, Buchegger2002}.
 
-These works have focused on operations in the communications domain, usually relying on one type of observation or metric; \gls{plr} or successful forwarding of nodes.
+These works have focused on operations in the communications domain, usually relying on one type of observation or metric; \gls{plr} or successful forwarding of data packets to other nodes in the network.
 Given the increasingly multi-factor nature of \gls{manet} security and integrity concerns, these style of frameworks do not look at information outside of their domain or even their metric. 
-This exposes significant parts of the overall systemic threat surface to unobservable vulnerability, reducing the ability for a system to be ``trusted'' (\autoref{fig:threat_surface}).
+This exposes significant portions of the overall systems' threat surface to unobservable vulnerability, reducing the ability for a system to be ``trusted'' (\autoref{fig:threat_surface}).
 
 \begin{figure}[h!]
 	\centering
@@ -97,22 +97,22 @@ As will be discussed further in \autoref{sec:trust_perspectives}, the ``Trust'' 
 \subsection{Trust Operation Against Capable Attackers}\label{sec:capable_attackers}
 
 In any security situation, the hazards and risks of a systemic vulnerability being identified and exploited by an attacker are tightly coupled to the expectation of capability of that attacker.
-Within the defence context of this work, it is assumed that any attacking agency has the complexity and resources of a nation state.
+Within the context of this work, it is assumed that any attacking agency has the complexity and resources of a nation state.
 
 This is also one of the primary motivators for this particular direction of work; where increasingly complex and subtle evidentiary security measures (passwords, encryption, etc) are applied, with increasing pressures in computation, connectivity, or communication, the assumption that a slightly-higher-technical-investment will protect a system from state-level espionage or infiltration (or the discovery of some technical flaw in the system) is unfounded, with many examples of cryptographic applications being ``disseminated'' through human or technical failings, both internal and external. 
 
 \section{Maritime Autonomy}
 
-Given the physical difficulties and requirements of having humans operate underwater (particularly at depth), and the operational limitations of tethered \glspl{rov}, or even untethered remote controlled surface platforms, there has been a great deal of research and commercial interest in the development of autonomous systems, particularly in the defence and petrochemical sectors, where the lives of human operators are most at risk in normal activity\cite{Pechoucek:2008:DIA:1355335}.
+Given the physical difficulties and requirements of having humans operate underwater (particularly at depth), and the operational limitations of tethered \glspl{rov}, or even untethered remote controlled surface platforms, there has been a great deal of research and commercial interest in the development of autonomous systems, particularly in the defence and petrochemical sectors, where the lives of human operators are most at risk in normal activity~\cite{Pechoucek:2008:DIA:1355335}.
 
-With potential applications ranging from the replacement of human divers in \gls{mcm} activity, to persistent littoral hydrography for environmental flood plain monitoring, many aspects of the proposed efficiencies gained from moving to autonomous agents rely on decentralised, \gls{manet} style collaboration between individual agents, and a level of trust that an operator (or indeed, agents within the system itself) can have in terms of the current activity, readiness, and performance of such autonomous systems\cite{Wynn2014}.
+With potential applications ranging from the replacement of human divers in \gls{mcm} activity, to persistent littoral hydrography for environmental flood plain monitoring, many aspects of the proposed efficiencies gained from moving to autonomous agents rely on decentralised, \gls{manet} style collaboration between individual agents, and a level of trust that an operator (or indeed, agents within the system itself) can have in terms of the current activity, readiness, and performance of such autonomous systems~\cite{Wynn2014}.
 
-This ``Trust'', that we know implicitly in the human space, is particularly difficult to establish and maintain in the underwater environment, and as such, the development of stable, reliable, adaptable trust systems that can operate in this and other challenging environments is a limiting factor on the adoption of generalised distributed autonomous systems in the defence space\cite{Caseley2009}.
+This ``Trust'', that we understand implicitly in the human space, is particularly difficult to establish and maintain in the underwater environment, and as such, the development of stable, reliable, adaptable trust systems that can operate in this and other challenging environments is a limiting factor on the adoption of generalised distributed autonomous systems in the defence space~\cite{Caseley2009}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{oceanfloor}
-	\caption{The AUV maps the seafloor with sonar \copyright MBARI 2009}
+	\caption{An AUV maps the seafloor with sonar \copyright MBARI 2009}
 \end{figure}
 
 
@@ -121,7 +121,7 @@ This ``Trust'', that we know implicitly in the human space, is particularly diff
 \subsubsection{\fullref{ch:trust_background}}
 In this chapter the current literature and research on the concepts, theory, and applications concerning Trust and Trust Management are explored, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
 
-In~\autoref{sec:trust_defs}, the abstract quantity of ``trust'' is explored,
+In~\autoref{sec:trust_defs}, the abstract quantity of ``Trust'' is explored.
 In~\autoref{sec:trust_autonomy}, Autonomy and ``Trusted Operation'' of autonomous systems is investigated from a system architects and a system operators perspective.
 In~\autoref{sec:trust_manets}, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
 
@@ -135,10 +135,10 @@ In \autoref{ch:comms_trust}, the need for multi-metric trust assessment in \gls{
 The operation of a selection of traditional \gls{manet} \glspl{tmf} is investigated in this environment.
 These challenges are characterised and results are presented that demonstrate a multi-metric approach to Trust can greatly enhance the effectiveness of \glspl{tmf} in these environments.
 
-In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in~\citet{Guo11} are reviewed for comparison.
+In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in~\citet{Guo11} are reviewed for comparison, which dealt with terrestrial, 802.11 based RF \glspl{manet}.
 In~\autoref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented, comparing with current single metric \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-metric (vector) approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed using \gls{mtfm}.
 
-The contributions of this chapter are the first study on the comparative operation and performance of \glspl{tmf} in marine acoustic networks, and a discussion of metric suitability for \glspl{tmf} in marine environments, informing future metric selection for experimenters and theorists, and identifying both the opportunity and need to generate trust from additional domains, such as the physical domain.
+The contributions of this chapter are the first study on the comparative operation and performance of \glspl{tmf} in \glspl{uan}, and a discussion of metric suitability for \glspl{tmf} in marine environments, informing future metric selection for experimenters and theorists, and identifying both the opportunity and need to generate trust from additional domains, such as the physical domain.
 Finally, methodology to assess the usefulness of metrics in discriminating against misbehaviours in such constrained, delay-tolerant networks is demonstrated.
 
 Key parts of this chapter were published as \bibentry{Bolster2015}.
@@ -150,8 +150,8 @@ This threat is particularly evident in collaborative autonomous systems where no
 This collaboration opens the opportunity for a physically-misbehaving actor to selfishly conserve it's own resources, or maliciously ``drain'' a given target node.
 Current security / trust systems applied to \glspl{manet} are not concerned with the threat of such physical misbehaviours.
 
-This chapter proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, using the motion of nodes within a team to detect and potentially identify malicious or failing operation within a cohort.
-This is accomplished by looking specifically at operations within the three dimensions of the underwater space, based on kinematics of industry standard \glspl{auv}.
+This chapter proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, using the motion of nodes within a team to detect and identify malicious or failing operation within a cohort.
+This is accomplished by looking at operations within the three dimensions of the underwater space, based on kinematics of industry standard \glspl{auv}.
 A series of composite metrics based on physical movement are presented and applied to the detection and discrimination of sample physical misbehaviours.
 This approach opens the possibility of bringing information about both the physical and communications behaviours of autonomous \glspl{manet} together to strengthen and expand the application of Trust Management Frameworks in sparse and/or resource constrained environments.
 
@@ -162,7 +162,7 @@ This approach opens the possibility of bringing information about both the physi
 In this chapter a methodology is demonstrated that applies the Grey Relational Grading method used in \gls{mtfm} to assess trust across multiple metrics across multiple domains.
 The question of direct-applicability of domain-metrics to inter-domain behaviours (i.e. physical metrics being used to detect communications misbehaviours and visa versa.) is investigated in two stages; first reassessing relative metric significance on a comparative regression directly comparing ``misbehaving'' results and ``Fair'' results across execution runs to identify what metrics are most important in  differentiating behaviours from an abstract perspective. 
 This significance is then used to generate targeted weighting vectors to maximally distrust nodes observed exhibiting that behaviour, acting as a selection filter.
-Interrogating the arrived-at weights across both basic domains (communications/physical and their full metric union), ``Alternate'' domains are selected by inspection.\
+From the resultant metric weighting vectors across both basic domains (communications/physical and their full metric union), potential ``Alternate'' domain groupings are selected by inspection.\
 By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment.
 Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrated, allowing for the elimination of redundant metrics, simplifying the runtime assessment process.
 

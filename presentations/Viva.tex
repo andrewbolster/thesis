@@ -54,20 +54,12 @@
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,shapes.misc,arrows,positioning,calc,fit}
-\usepackage[
-backend=biber,
-autocite=superscript,
-natbib=true,
-style=numeric,
-sorting=none]{biblatex}
-
-\addbibresource{Thesis.bib}
-\addbibresource{Post-Thesis.bib}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.13}
 \usepackage{tikz}
 \usepackage{appendixnumberbeamer}
+\usepackage{csquotes}
 
 
 \usepackage[detect-weight=true, binary-units=true, range-units=single]{siunitx} % Properly Centered numbers in tables
@@ -75,6 +67,16 @@ sorting=none]{biblatex}
 \usetikzlibrary{shapes, graphs, quotes, arrows, backgrounds, positioning, calc}
 \usepackage{calc}
 
+\usepackage[
+backend=biber,
+autocite=superscript,
+natbib=true,
+style=authoryear,
+sorting=none]{biblatex}
+\AtEveryCitekey{\clearfield{url}}
+
+\addbibresource{Thesis.bib}
+\addbibresource{Post-Thesis.bib}
 
 
 \usepackage{pifont}
@@ -97,6 +99,8 @@ sorting=none]{biblatex}
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 \def\scalecheck{\resizebox{\widthof{\checkmark}*\ratio{\widthof{x}}{\widthof{\normalsize x}}}{!}{\checkmark}}
 %that's defined it - now for a test
+
+
 
 \makeatletter
 \newcommand*{\minuscellcolor}{}
@@ -257,82 +261,87 @@ vertical line through={(\tikztotarget)})
 \end{frame}
 
 \frame{\tableofcontents}
-
-\section{Meta}
+\section{Structure}
 
 \begin{frame}{Structure of this presentation}
-  \begin{block}{Structure}
-    \begin{itemize}
-      \item As short a summary of the work as can be managed
-      \item Fundamental Errata (hint: there haven't been any)
-      \item Discussion of new research that has entered the field since submission
-      \item Quick walk through of the main findings of each chapter for review
-      \item Straight into Defence of Work Discussion
-      \item Wealth of supporting slides for discussion
-    \end{itemize}
-  \end{block}
+	\begin{block}{Structure}
+		\begin{itemize}
+			\item Statement of Research Purpose
+			\item Summary of Contributions
+			\item Errata
+			\item Discussion of new research that has entered the field since submission
+			\item Chapter Summaries
+			\item Open for Discussion
+		\end{itemize}
+	\end{block}
+	% TODO
 \end{frame}
 
+\section{Contributions, Errata \& State of the Field}
+
 \begin{frame}{Summary of Contributions}
-  \begin{columns}
-    \begin{column}{0.45\textwidth}
-	  \begin{exampleblock}{Primary}
-	  \begin{itemize}
-	    \item 1st comparative application of Trust in UAN
-	    \item 1st application of direct Physical/Mobility based Trust Metrics in any context
-	    \item 1st automatic, behaviour based optimisation of MTFM weighting
-	  \end{itemize}
-	  \end{exampleblock}
-	  \begin{block}{Secondary}
-	  \begin{itemize}
-	    \item Reactive agent based Simulation system
-	    \item Review of Trust in the marine defence context
-	  \end{itemize}
-	  \end{block}
-    \end{column}
-    \begin{column}{0.55\textwidth}
-      \begin{block}{Publications}
-        \begin{itemize}  
-          \item Single and Multi-metric Trust Management Frameworks for Use in Underwater Autonomous Networks. IEEE TrustCom 2015
-          \item Analytical Metric Weight Generation for Multi-Domain Trust in Autonomous Underwater MANETs. IEEE UComms 2016
-          \item Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations, The Technical Cooperation Program, Portsmouth, UK 2014.
-          \item A Multi-Vector Trust Framework for Autonomous Systems, AAAI 2014.
-        \end{itemize}  
-      \end{block}
-    \end{column}
-  \end{columns}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{exampleblock}{Primary}
+				\begin{itemize}
+					\item Trust in UANs
+					\item Trust assessment based on Physical Behaviours
+					\item Multi-domain Trust assessment 
+				\end{itemize}
+			\end{exampleblock}
+			\begin{block}{Secondary}
+				\begin{itemize}
+					\item Automatic, behaviour based weighting of MTFM
+					\item Agent based UAN Simulation system
+					\item Synthetic Domains based on metrics across multiple domains
+					\item Review of Trust in the marine defence context
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{block}{Publications}
+				\begin{itemize}  
+					\item Analytical Metric Weight Generation for Multi-Domain Trust in Autonomous Underwater MANETs. IEEE UComms 2016
+					\item Single and Multi-metric Trust Management Frameworks for Use in Underwater Autonomous Networks. IEEE TrustCom 2015
+					\item Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations, The Technical Cooperation Program, Portsmouth, UK 2014.
+					\item A Multi-Vector Trust Framework for Autonomous Systems, AAAI 2014.
+				\end{itemize}  
+			\end{block}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Erratta}
 	\begin{alertblock}{Erratta}
 		\begin{itemize}
 			\item Many small typographic issues corrected
-			\item Out-of-order paras in 4.2.5 (Top should be bottom)
+			\item Missing Citation in 3.1.1,5-7 \footfullcite{Urick1983}
+			\item Out-of-order paragraphs in 4.2.5 (Top should be bottom)
 		\end{itemize}
 	\end{alertblock}
 	
 \end{frame}
 
-\begin{frame}{State-of-the-field}
+\begin{frame}{Recent Research Trends}
 	\begin{block}{Trust}
 		\begin{itemize}
-			\item Interesting general move towards decentralised trust\cite{Korzun2015}
-			\item Ditto cohort based relative trust assessment \cite{Singh2016}
-			\item Increasing use of ML techniques to assess contextual trust dynamically \cite{Rishwaraj2017} 
-			\item Human Factors emerging as a increasingly vital area of research \cite{Saeidi2009,Matthews2016,Lahijanian2016}
-			\item Novel/Updated techniques for generalised TMF assessment emerging \cite{Janiszewski2016} 
+			\item Interesting general move towards decentralised trust \footcite{Korzun2015}
+			\item Ditto cohort based relative trust assessment \footcite{Singh2016}
+			\item Increasing use of ML techniques to assess contextual trust dynamically \footcite{Rishwaraj2017} 
+			\item Human Factors emerging as a increasingly vital area of research \footcite{Saeidi2009,Matthews2016,Lahijanian2016}
+			\item Novel/Updated techniques for generalised TMF assessment are emerging \footcite{Janiszewski2016} 
 		\end{itemize}
 	\end{block}
 	
 \end{frame}
 
-\begin{frame}{State-of-the-field}
+\begin{frame}{Recent Research Trends}
 	\begin{block}{Acomms} %most cites from ucomms
 		\begin{itemize}
-			\item Assumptions of Gaussian noise naive for real applications \cite{Mahmood2016, Deane2016}
-			\item The Beaufort Sea has fundamentally changed it's characteristics in 20 years and highlights fundamental flaws in channel modelling assumptions \cite{Schmidt2016}
-			\item Higher-Stack level functionality problems remain open( i.e. MAC+Route+ID+Interop) \cite{Diamant2016 ,Petroccia2016a,Petroccia2016b, Anjangi2016}
-			\item Assumptions on increasing passive localisation proving accurate \cite{Vio2016, Ferreira2016,Das2016}
+			\item Assumptions of Gaussian noise naive for real applications \footcite{Mahmood2016, Deane2016}
+			\item The Beaufort Sea has fundamentally changed it's characteristics in 20 years and highlights fundamental flaws in channel modelling assumptions \footcite{Schmidt2016}
+			\item Higher-Stack level functionality problems remain open( i.e. MAC+Route+ID+Interop) \footcite{Diamant2016,Petroccia2016,Petroccia2016a, Anjangi2016}
+			\item Assumptions on increasing accuracy and timeliness of passive localisation proving accurate \footcite{Vio2016, Ferreira2016,Das2016}
 		\end{itemize}
 	\end{block}
 	
@@ -341,7 +350,7 @@ vertical line through={(\tikztotarget)})
 \section{Chapter Summaries}
 
 \begin{frame}{Chapter 1: Introduction}
-  Expression of terms and context
+
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \begin{block}{Focus On}
@@ -357,6 +366,7 @@ vertical line through={(\tikztotarget)})
       \begin{alertblock}{Stated deficiencies in}
         \begin{itemize}
           \item Single Metric Trust
+          \item Threats from Capable actors
           \item Systemic Trust
           \item Lack of modelling of Trust in Harsh environments
         \end{itemize}
@@ -365,9 +375,7 @@ vertical line through={(\tikztotarget)})
   \end{columns}
 \end{frame}
 
-\begin{frame}{Chapter 2: MANETs and Trust}
-  Deep background
-  
+\begin{frame}{Chapter 2: MANETs and Trust} 
     \begin{columns}
     	\begin{column}{0.5\textwidth}
 			\begin{block}{Focus On}
@@ -387,7 +395,8 @@ vertical line through={(\tikztotarget)})
     		\begin{exampleblock}{Key Outcomes}
     			\begin{itemize}
     				\item Definition of Trust
-    				\item Constraints of Autonomy
+    				\item Levels \& Constraints of Autonomy
+    	            \item Lack Specification and Validation for Autonomous Systems
     				\item Threats to Trust
     				\item Threats to MANETs
     				\item Need for Trust in Autonomous Systems
@@ -400,8 +409,6 @@ vertical line through={(\tikztotarget)})
 \end{frame}
 
 \begin{frame}{Chapter 3: Maritime Communications and Operations}
-  Deep background
-
       \begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{block}{Focus On}
@@ -418,8 +425,8 @@ vertical line through={(\tikztotarget)})
 				\begin{itemize}
 					\item Channel Emulation Models
 					\item Selection of characteristic constraints
-					\item Operational Threat Surface
-					\item Operational / Mechanical constraints
+					\item Threat Surface
+					\item Operational / Kinematic constraints and Scenario selection
 				\end{itemize}
 			\end{exampleblock}
 		\end{column}
@@ -428,14 +435,13 @@ vertical line through={(\tikztotarget)})
 \end{frame}
 
 \begin{frame}{Chapter 4: Assessment of TMF Performance in Marine Environments}
-  Original Work
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \begin{block}{Focus On}
         \begin{itemize}
           \item Comparative factors between UAN/WLAN
-          \item Application of TMF to each environment (terre/aqua)
 	      \item Relevant Metric Selection re AComms
+          \item Comparison of Single \& Multi Metric TMFs in UAN
           \item MTFM weight variation assessment and regression
         \end{itemize}
       \end{block}
@@ -443,9 +449,9 @@ vertical line through={(\tikztotarget)})
     \begin{column}{0.5\textwidth}
       \begin{exampleblock}{Key Findings}
         \begin{itemize}
-          \item Modelled optimal performance range @ $\approx$0.015-0.025pps/100-300m node separations
-          \item MTFM outperforms single metric TMFs for selected misbehaviours
-          \item MTFM dimensional weighting further improves performance and tolerance
+          \item Modelled optimal performance range @ $\approx$0.015-0.025pps/100-300m node separations \hyperlink{fig:2d_normed_product}{\beamergotobutton{Details}}
+          \item MTFM outperforms single metric TMFs for selected misbehaviours \hyperlink{fig:otmf_beta_comparison_boxes}{\beamergotobutton{Details}}
+          \item MTFM vector weighting further improves performance and tolerance \hyperlink{fig:all_mobile_badmouthing}{\beamergotobutton{Details}}
           \item Long collection times due to sparsity can impact trust assessment relevance
 
         \end{itemize}
@@ -455,25 +461,24 @@ vertical line through={(\tikztotarget)})
 
 \end{frame}
 \begin{frame}{Chapter 5: Use of Physical Behaviours for Trust Assessment}
-  Original Work
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \begin{block}{Focus On}
         \begin{itemize}
           \item Physical Misbehaviours and Metrics
-          \item ``Failure'' vs ``Misbehaviour'' vs ``Malice''
+          \item ``Failure'' vs ``Selfish'' vs ``Malice''
           \item AUV Kinematics
           \item Metric variability in collaborative collision avoidance (flocking)
-          \item Metric based classifier (Q-test based, not ``Trust'')
+          \item Metric based classifier
         \end{itemize}
       \end{block}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{exampleblock}{Key Findings}
         \begin{itemize}
-        	\item First physical misbehaviour detection system
-        	\item Identified clear differentiating observations in different composite metrics
-        	\item Highly accurate blind behaviour classifier ($\approx$ 0\% FP, $\gtrapprox$ 90 \% TP)
+        	\item First physical misbehaviour detection system in UAN
+        	\item Demonstrated that different misbehaviours impact different physical metrics differently \hyperlink{fig:metric_values}{\beamergotobutton{Details 1}} \hyperlink{fig:summedsigmabar}{\beamergotobutton{Details 2}}
+        	\item Highly accurate, manually configured, blind behaviour classifier ($\approx$ 0\% FP, $\gtrapprox$ 90 \% TP)
         \end{itemize}
       \end{exampleblock}
     \end{column}
@@ -481,15 +486,14 @@ vertical line through={(\tikztotarget)})
 \end{frame}
 
 \begin{frame}{Chapter 6: Multi-Domain Trust Assessment in Collaborative Marine MANETs}
-	Original Work
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{block}{Focus On}
 				\begin{itemize}
-					\item Combination of Comms. \& Phys. Metrics
-					\item Domain Specific Behaviour in Cross Domain Metric Space
+					\item Combination of comms. \& phys. metrics
 					\item Random Forest based metric significance correlation to build $H$ weighting vector for MTFM
-					\item Relative significance between behaviour domain and metric domain grouping ($\Delta T, \Delta T^-$)
+					\item Domain specific behaviour effects across domain space
+					\item Relative vector weight measurement across cohort ($\Delta T, \Delta T^-$)
 					\item Generation and Appraisal of alternate/targeted ``domains''
 				\end{itemize}
 			\end{block}
@@ -497,10 +501,10 @@ vertical line through={(\tikztotarget)})
 		\begin{column}{0.5\textwidth}
 			\begin{exampleblock}{Key Findings}
 				\begin{itemize}
-					\item Metric Domains and Behaviour Responses not ``naturally'' coupled
-					\item Inherent redundancy (eg INDD/RSSI) allows differential behaviour to be detected
-					\item Application level selfishness (STS) very difficult to identify
-					\item Extended C4 behaviour based optimisation of MTFM to dynamically select relevant metrics inclusion
+					\item Misbehaviours impact across domains (not obvious) \hyperlink{fig:alternate_domain_diag}{\beamergotobutton{Details}}
+					\item Inherent redundancy (eg INDD/$P_{RX}$) allows differential behaviours to be detected \hyperlink{fig:positive_heat}{\beamergotobutton{Details}}
+					\item Application level selfishness (STS) very difficult to automatically 
+					\item Extended Ch4 behaviour based optimisation of MTFM to dynamically select most significant metrics
 				\end{itemize}
 			\end{exampleblock}
 		\end{column}
@@ -511,58 +515,44 @@ vertical line through={(\tikztotarget)})
 
 \section*{Summary of Contributions to the Field}
 
-\begin{frame}{Done}
+\begin{frame}{Summary of Contributions to the Field}
   % Keep the summary *very short*.
 	\begin{block}{$\Sigma$}
 		\begin{itemize}
 			\item UWA Multi Metric/Domain Trust
-			\item Detection of non-comms misbehaviours/fouling \structure{even just using comms metrics}
-			\item Methodology for exploring / training / metric relevance
-			\item Minimal performance specification
 			\item UWA Trust is \alert{Hard} \& it's mostly the channels' fault
+			\item Discrimination of non-comms misbehaviours/failures \structure{even just using comms metrics}
+			\item Methodology for exploring / training / metric relevance
 			\item Single-Metric Trust is \alert{unstable} in such an environments
 			\item Multi-Metric Trust works \& can \alert{discriminate behaviours}
 			\item \alert{Not all metrics} are equally useful
-			\item Simple classifiers \alert{can} be V good in \alert{some} behaviours (MPC)
+			\item Simple classifiers \alert{can} be very good in \alert{some} behaviours (MPC)
 			\item - can be \alert{not so good} for others (STS)
 		\end{itemize}
 	\end{block}
 \end{frame}
 
-\begin{frame}{Left/Next}
+\begin{frame}{Outstanding Research Challenges}
   \begin{alertblock}{$\notin$}
     \begin{itemize}
       \item Smarter Detection Classifier
       \item Cooperative / Periodic / Variable attack profiles
+      \item Further assessment of impact and tolerance of misbehaviours in the network
       \item Commonality of detection filters across Multiple-base scenarios
-      \item Heterogenous Node capabilities
-      \item \alert{Real} experiments and Cross sim-implementations
+      \item \alert{Real} experiments and Cross validation implementations
+      \item Heterogenous Node capabilities / Mixed-mission characteristics
+      \item Extension to logical routing domain
+      \item Application of mixed-domain trust assessment to non-physical systems
+      \item Reflective Trust (i.e. systems trust of the operator)
+
     \end{itemize}
   \end{alertblock}
-
 \end{frame}
 
 \begin{frame}[t,allowframebreaks]
   \frametitle{References}
+  
   \printbibliography[title=References]% [nottype=video]}
-\end{frame}
-
-\begin{frame}{\alert{Thank You / QnA?}}
-          \begin{center}
-          	\begin{minipage}{4cm}
-\begin{exampleblock}{Say Hello!}
-	\begin{itemize}
-		\item[\faEnvelope] \href{mailto:bolster@liv.ac.uk}{bolster@liv.ac.uk}
-		\item[\faEnvelope] \href{mailto:me@bolster.online}{me@bolster.online}
-		\item[\faTwitter] \href{https://twitter.com/bolster}{@bolster}
-		\item[\faSitemap] \href{http://bolster.online}{bolster.online}
-		\item[\faGithub] \href{https://github.com/andrewbolster}{andrewbolster}
-		\item[\faLinkedin] \href{http://www.linkedin.com/in/andrewbolster}{''Andrew Bolster''}
-		\item[\faStackOverflow] \href{http://www.stackoverflow.com/users/252556/bolster}{bolster}
-	\end{itemize}
-\end{exampleblock}
-\end{minipage}
-\end{center}
 \end{frame}
 
 \appendix
@@ -599,6 +589,8 @@ vertical line through={(\tikztotarget)})
 \begin{frame}{Fig 2.5 Model of Trust}
 \begin{figure}[h]
 	\centering
+			\adjustbox{max height=\dimexpr\textheight -2.2cm\relax,
+				max width=\textwidth}{
 	\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
 	\node [block] (ability) {Ability};
 	\node [block, below of = ability] (benevolence) {Benevolence};
@@ -626,7 +618,7 @@ vertical line through={(\tikztotarget)})
 	\draw [->] (riskTaking) |- (outcomes);
 	\draw [->] (outcomes.south) --++ (0cm,-2.5cm) -| (percievedFactors.south);
 	
-	\end{tikzpicture}
+	\end{tikzpicture}}
 	\caption[Model of Trust]{Model of Trust (from~\citet{Mayer1995})}
 	\label{fig:mayer_trust_model}
 \end{figure}
@@ -667,7 +659,7 @@ vertical line through={(\tikztotarget)})
 	\begin{figure}
 		\centering
 		
-		\begin{subfigure}[t]{0.2\textwidth}
+		\begin{subfigure}[t]{0.24\textwidth}
 			\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
 				max width=\textwidth}{
 			\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
@@ -693,10 +685,10 @@ vertical line through={(\tikztotarget)})
 			\cercle{A}{2.25cm}{216}{160}{1.50}{red, opacity=0.5, dashed};
 			\end{pgfinterruptboundingbox}
 			\end{tikzpicture}}
-			\caption{Sample topology showing logical connections between nodes (Range of $A$ shown in red dashed line)}
+			\caption{Topology}
 		\end{subfigure}
 		\hfill
-		\begin{subfigure}[t]{0.2\textwidth}
+		\begin{subfigure}[t]{0.25\textwidth}
 			\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
 				max width=\textwidth}{
 			\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
@@ -722,10 +714,10 @@ vertical line through={(\tikztotarget)})
 			\draw[->, purple, dashed] (a) to[bend left] (c) node [right of=a] {$T_{A,C}$};
 			
 			\end{tikzpicture}}
-			\caption{Direct Relationships, the two possible trust assessments from $A$ to its connected neighbours, $B,C$}
+			\caption{Direct}
 		\end{subfigure}
 		\hfill
-		\begin{subfigure}[t]{0.2\textwidth}
+		\begin{subfigure}[t]{0.24\textwidth}
 			\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
 				max width=\textwidth}{
 			\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
@@ -752,11 +744,11 @@ vertical line through={(\tikztotarget)})
 			\draw[->, teal, dashed] (a) to[bend left] (c.north east) to [bend left](e.west) node [above of=c] {$T_{A,C,E}$};
 			\draw[->, magenta, dashed] (a) to[bend left] (c.north) to [bend left](f.north) node [right of=c] {$T_{A,C,F}$};
 			\end{tikzpicture}}
-			\caption{Indirect Relationships, showing the four possible trust assessments from $A$ or the three disconnected leaf nodes, $D,E,F$}
+			\caption{Indirect}
 			
 		\end{subfigure}
 		\hfill
-		\begin{subfigure}[t]{0.2\textwidth}
+		\begin{subfigure}[t]{0.24\textwidth}
 			\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
 				max width=\textwidth}{
 			\begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
@@ -785,7 +777,7 @@ vertical line through={(\tikztotarget)})
 			\draw[->, purple, dashed] (a) to[bend right] ([yshift=5pt] b.north east) to [bend left](c.west) node [above right of=d, xshift=-2ex, yshift=-3ex] {$T_{A,B,C}$};
 			
 			\end{tikzpicture}}
-			\caption{Recommender Relationship, showing the two discrete paths trust assessments travel to $A$; $T_{A,B}^R = T_{A,C} \cdot T_{C,B}$ and  $T_{A,C}^R = T_{A,B} \cdot T_{B,C}$}
+			\caption{Recommender}
 			
 		\end{subfigure}
 		\hfill
@@ -799,25 +791,26 @@ vertical line through={(\tikztotarget)})
 \begin{frame}{Fig 3.3: Bellhop Model}
 	
 	\begin{figure}
-		\begin{subfigure}[t]{0.28\textwidth}
+		\begin{subfigure}[t]{0.3\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{ssp_linear_increasing}
 			\caption{Linear Increasing}
 			\label{fig:ssp_linear_increasing}
 		\end{subfigure}
-		\begin{subfigure}[t]{0.28\textwidth}
+		\begin{subfigure}[t]{0.3\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{ssp_linear_decreasing}
 			\caption{Linear Decreasing}
 			\label{fig:ssp_linear_decreasing}
 		\end{subfigure}
-		\begin{subfigure}[t]{0.28\textwidth}
+		
+		\begin{subfigure}[t]{0.3\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{ssp_n_squared}
 			\caption{Quadratic}
 			\label{fig:ssp_n_squared}
 		\end{subfigure}
-		\begin{subfigure}[t]{0.28\textwidth}
+		\begin{subfigure}[t]{0.3\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{ssp_isovelocity}
 			\caption{Isovelocity}
@@ -830,8 +823,9 @@ vertical line through={(\tikztotarget)})
 
 
 
+
 \begin{frame}{Communications Channel Considerations}
-  Key Characteristics of the Marine Acoustic Channel \autocite{Urick1983a,Partan2006,Stojanovic2007,Stefanov2011}:
+  Key Characteristics of the Marine Acoustic Channel \cite{Urick1983,Partan2006,Stojanovic2007,Stefanov2011}:
   \begin{itemize}
     \item Slow propagation ($~1400ms^{-1}$) incurring long delays
     \item Inter-symbol interference
@@ -853,7 +847,7 @@ vertical line through={(\tikztotarget)})
     10 \log A_{\text{aco}}(d,f)/A_0 = k \cdot 10 \log d + d \cdot 10 \log a(f)
   \end{equation}
   %
-  where $A_0$ is a normalising constant, $k$ is a spreading factor, and $a(f)$ is the absorption coefficient\autocite{Stefanov2011};
+  where $A_0$ is a normalising constant, $k$ is a spreading factor, and $a(f)$ is the absorption coefficient\cite{Stefanov2011};
   %
   \begin{equation}
     \label{eq:thorp}
@@ -904,7 +898,6 @@ vertical line through={(\tikztotarget)})
     \includegraphics[height=.65\textheight]{node_relationships}
     \label{fig:node_relationships}
   \end{figure}
-  \footnotetext{\hyperlink{eq:networkeffects}{\beamergotobutton{Details}}}
 
 \end{frame}
 
@@ -935,14 +928,12 @@ vertical line through={(\tikztotarget)})
 \end{frame}
 
 
-\begin{frame}[shrink]{System Model Constraints}
+\begin{frame}{System Model Constraints}
   \centering
   \begin{table}[h]
-    \caption{Comparison of system model constraints as applied between Terrestrial and Marine communications
-    \hyperlink{scaling}{\beamergotobutton{Back}}
-    } \label{tab:sysconstraints}
-    \begin{center}
-      \setlength{\tabcolsep}{8pt}
+      \label{tab:sysconstraints}
+	    \adjustbox{max height=\dimexpr\textheight-4.6cm\relax,
+	    	max width=\textwidth}{%
       \begin{tabular}{lccc}
         \toprule
         Parameter & Unit & Terrestrial & Marine \\
@@ -963,11 +954,314 @@ vertical line through={(\tikztotarget)})
         Single Transmission Duration & $s$ & 10 & 32 \\
         Single Transmission Size & bits & $10^7$ & $9600$ \\
         \bottomrule
-      \end{tabular}
-      \setlength{\tabcolsep}{6pt}
-    \end{center}
+      \end{tabular}}
   \end{table}
+\end{frame}
+\section{Chapter 4}
+\begin{frame}{Throughput}
+	\begin{figure}[h]
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{throughput_2d_bella_static}
+			\caption{Static}
+			\label{fig:throughput_2d_bella_static}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{throughput_2d_bella_single_mobile}
+			\caption{Single Mobile}
+			\label{fig:throughput_2d_bella_single_mobile}
+		\end{subfigure}
+		
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{throughput_2d_bella_allbut1_mobile}
+			\caption{All-but-one Mobile}
+			\label{fig:throughput_2d_bella_allbut1_mobile}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{throughput_2d_bella_all_mobile}
+			\caption{All Mobile}
+			\label{fig:throughput_2d_bella_all_mobile}
+		\end{subfigure}
+		\label{fig:2d_throughput}
+	\end{figure}
+\end{frame}
 
+\begin{frame}{Delay}
+	\begin{figure}[h]
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{delay_2d_bella_static}
+			\caption{Static}
+			\label{fig:delay_2d_bella_static}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{delay_2d_bella_single_mobile}
+			\caption{Single Mobile}
+			\label{fig:delay_2d_bella_single_mobile}
+		\end{subfigure}
+		
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{delay_2d_bella_allbut1_mobile}
+			\caption{All-but-one Mobile}
+			\label{fig:delay_2d_bella_allbut1_mobile}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{delay_2d_bella_all_mobile}
+			\caption{All Mobile}
+			\label{fig:delay_2d_bella_all_mobile}
+		\end{subfigure}
+		\label{fig:2d_delay}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Fig 4.12: Normalised Throughput-Delay Product}
+	\begin{figure}[h]
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{2d_normed_product_bella_static}
+			\caption{Static}
+			\label{fig:2d_normed_product_bella_static}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{2d_normed_product_bella_single_mobile}
+			\caption{Single Mobile}
+			\label{fig:2d_normed_product_bella_single_mobile}
+		\end{subfigure}
+		
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{2d_normed_product_bella_allbut1_mobile}
+			\caption{All-but-one Mobile}
+			\label{fig:2d_normed_product_bella_allbut1_mobile}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{2d_normed_product_bella_all_mobile}
+			\caption{All Mobile}
+			\label{fig:2d_normed_product_bella_all_mobile}
+		\end{subfigure}
+		\label{fig:2d_normed_product}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Fig 4.14: Hermes, OTMF, MTFM Trust assessments}
+	\begin{figure}[t]
+		\centering
+
+			\begin{subfigure}{0.3\textwidth}	
+				\includegraphics[width=\linewidth]{trust_beta_otmf_fair}
+				\caption{Fair Scenario}
+				\label{fig:all_mobile_fair_beta}
+			\end{subfigure}
+			\begin{subfigure}{0.3\textwidth}
+				\includegraphics[width=\linewidth]{trust_beta_otmf_malicious} 
+				\caption{Malicious Power Control (MPC) Scenario}
+				\label{fig:all_mobile_badmouthing_beta}
+			\end{subfigure} 
+			\begin{subfigure}{0.3\textwidth}	
+				\includegraphics[width=\linewidth]{trust_beta_otmf_selfish} 
+				\caption{Selfish Target Selection (STS) Scenario}
+				\label{fig:all_mobile_selfish_beta}
+			\end{subfigure}
+
+		\caption{$T_{0,1}$ for Hermes, OTMF, MTFM assessment values for fair and malicious behaviours in the fully mobile scenario}
+		\label{fig:otmf_beta_comparison}
+	\end{figure}
+\end{frame}
+\begin{frame}{Fig. 4.15: Alternate Assessment Visualisation}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{trust_beta_otmf_mtfm_boxes}
+		\caption{Visualisation of TMF performance comparison across Fair, MPC and STS scenarios}
+		\label{fig:otmf_beta_comparison_boxes}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}{0.3\textwidth}
+			\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ADelay_BadMouthingPowerControl} 
+			\caption{$\text{Delay}$ Emphasised}
+			\label{fig:all_mobile_badmouthing_delay}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+			\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_PLR_BadMouthingPowerControl} 
+			\caption{$PLR$ Emphasised}
+			\label{fig:all_mobile_badmouthing_plr}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+			\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ARXP_BadMouthingPowerControl} 
+			\caption{Received Power ($P_{RX}$) Emphasised}
+			\label{fig:all_mobile_badmouthing_rxp}
+		\end{subfigure}	
+		\begin{subfigure}{0.3\textwidth}
+			\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_ATXP_BadMouthingPowerControl} 
+			\caption{Transmit Power ($P_{TX}$) Emphasised}
+			\label{fig:all_mobile_badmouthing_txp}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+			\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_RXThroughput_BadMouthingPowerControl} 
+			\caption{Throughput ($S$) Emphasised}
+			\label{fig:all_mobile_badmouthing_rxthroughput}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+			\includegraphics[width=\linewidth]{trust_bella_all_mobile_emph_TXThroughput_BadMouthingPowerControl} 
+			\caption{Offered Load ($G$) Emphasised}
+			\label{fig:all_mobile_badmouthing_txthroughput}
+		\end{subfigure}
+		\caption{$T_{1,0}^\text{MTFM}$ in the All Mobile case for the Malicious Power Control behaviour}
+		\label{fig:all_mobile_badmouthing}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Fig 4.18: Factor Analysis}
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.78\textheight]{MaliciousSelfishMetricFactors}
+		\caption{Random Forest Factor Analysis of Malicious, Selfish and Fair behaviours compared against each-other}
+		\label{fig:malselfactors}
+	\end{figure}
+\end{frame}
+
+
+\section{Chapter 5}
+
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.9\textheight]{Metric_Values}
+		\caption{Observed Metric Values for one simulation of each behaviour ($x_{i,j}^{m,t}$)}
+		\label{fig:metric_values}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{summedsigmabar}
+		\caption{Per-Node-Per-Run deviance for each metric, normalised in time ($\sum\alpha/T$)}
+		\label{fig:summedsigmabar}
+	\end{figure}
+\end{frame}
+
+
+\section{Chapter 6}
+\begin{frame}{Fig 6.1: Alternate Domain Construction}
+	\begin{figure}[h]
+		\centering
+		  \adjustbox{max height=\dimexpr\textheight -2.2cm\relax,
+		  	max width=\textwidth}{
+		\begin{tikzpicture}[-latex,
+		comms/.style={text=blue, draw=blue, rounded corners=.8ex},
+		phys/.style={text=red, draw=red, rounded corners=.8ex}]
+		% Start off with the line
+		%\draw [<-|][comms, draw=blue, very thick] (0,1) -- (5,1); 
+		%\draw [|->][phys, draw=red, very thick] (5,1) -- (10,1); 
+		\path[left color=blue,right color=red]
+		(0,0.95) rectangle +(10,2.5pt);
+		
+		% Baseline labels
+		\node[comms, fill=blue, fill opacity=0.2, text opacity=1] at (-1,1) {Comms.};
+		\node[phys, fill=red, fill opacity=0.2, text opacity=1] at (11,1) {Physical};
+		
+		% Metric Labels
+		\node[comms] at (7,2.2) {$D$};
+		\node[comms] at (9,2.2) {$P_{RX}$};
+		\node[comms] at (1,1.4) {$P_{TX}$};
+		\node[comms] at (2.5,1.4) {$S$};
+		\node[comms] at (3.3,1.4) {$G$};
+		\node[comms] at (2,2.2) {$PLR$};
+		\node[phys] at (5,2.2) {$INDD$};
+		\node[phys] at (7,1.4) {$INHD$};
+		\node[phys] at (9,1.4) {$Speed$};
+		
+		\node[rotate=90, align=center] at (-1, 3) {Metric\\Clustering};
+		\node[rotate=90, align=center] at (-1, -1.5) {Apparent Domain\\of Misbehaviour};
+		\node[comms] at (1,-1.4) {$MPC$};
+		\node[comms] at (2.5,-0.8) {$STS$};
+		\node[phys] at (6.5,-1.8) {$Shadow$};
+		\node[phys] at (8.7,-1) {$SlowCoach$};
+		
+		% Draw approx subsets
+		\draw[comms] (2.9,1.9) ellipse (3.3 and 1.4);
+		\draw[phys] (7.2,1.9) ellipse (3.3 and 1.4);
+		
+		\node[text=red] at (7.2,3.8) {Phys. Alt.};
+		\node[text=blue] at (2.9,3.8) {Comms. Alt.};
+		
+		% Misc
+		\draw[-|][dotted] (5,5) -- (5,1);
+		\draw[-|][dotted] (5,-3) -- (5,1);
+		
+		
+		\end{tikzpicture}}
+		\caption{Assumptions made about the relevant domains of impact / detectability of misbehaviours, and domain relevance of metrics, may not be optimal}
+		\label{fig:alternate_domain_diag}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Fig 6.2: Communications Metric Features}
+
+\begin{figure}[h!]
+	\centering
+
+	\includegraphics[height=\dimexpr\textheight -2.2cm\relax]{comms_metric_trust_relevance}
+	\caption{Communications Metric Features ($X_{comms}$)}
+	\label{fig:comms_feature_extraction}
+\end{figure}
+\end{frame}
+\begin{frame}{Fig 6.3: Physical Metric Features}
+	
+\begin{figure}[h!]
+	\centering
+	\includegraphics[height=\dimexpr\textheight -2.2cm\relax]{phys_metric_trust_relevance}
+	\caption{Physical Metric Features ($X_{phys}$)}
+	\label{fig:phys_feature_extraction}
+\end{figure}
+\end{frame}
+\begin{frame}{Fig 6.4: Multi Domain  Metric Features}
+	
+\begin{figure}[h!]
+	\centering
+	\includegraphics[height=\dimexpr\textheight -2.2cm\relax]{full_metric_trust_relevance}
+	\caption{Multi Domain  Metric Features ($X_{merge}$)}
+	\label{fig:multi_feature_extraction}
+\end{figure}
+\end{frame}
+\begin{frame}{Multi Domain Metric Feature Correlation}
+	
+\begin{table}
+	\centering
+	\caption{Multi Domain Metric Feature Correlation ($X_{merge}$)}
+	\input{../Figures/input/full_metric_correlations.tex}
+	\label{tab:full_metric_correlations}
+\end{table}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{positive_heat}
+		\caption{Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
+		\label{fig:positive_heat}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{negative_heat}
+		\caption{Negative-Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
+		\label{fig:negative_heat}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Metric Selection/Weighting}
@@ -1000,5 +1294,292 @@ vertical line through={(\tikztotarget)})
     \end{tabular}} %
   \end{table}
 \end{frame}
+
+\begin{frame}{Fig 6.9. Metric-Target Correlations}
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.8\textheight]{top_targeted_dt_heatmap}
+		\caption{Correlations between highest performing synthetic domain metrics with respect to Targeted misbehaviours}
+		\label{fig:top_targeted_dt_heatmap}
+	\end{figure}
+\end{frame}
+
+\section{Extras}
+
+\begin{frame}
+	\begin{figure}
+		\includegraphics[height=\textheight]{ephyra_vis}
+	\end{figure}
+\end{frame}
+
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_instantaneous_MPC}
+	\caption{MPC Comms Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:comms_instantaneous_mpc}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_instantaneous_MPC}
+	\caption{MPC Physical Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:phys_instantaneous_mpc}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_instantaneous_MPC}
+	\caption{MPC Full Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:full_instantaneous_mpc}
+\end{figure}\end{frame}
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_instantaneous_STS}
+	\caption{STS Comms Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:comms_instantaneous_sts}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_instantaneous_STS}
+	\caption{STS Physical Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:phys_instantaneous_sts}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_instantaneous_STS}
+	\caption{STS Full Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:full_instantaneous_sts}
+\end{figure}\end{frame}
+
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_instantaneous_Shadow}
+	\caption{Shadow Comms Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:comms_instantaneous_shadow}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_instantaneous_Shadow}
+	\caption{Shadow Physical Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:phys_instantaneous_shadow}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_instantaneous_Shadow}
+	\caption{Shadow Full Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:full_instantaneous_shadow}
+\end{figure}\end{frame}
+
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_instantaneous_SlowCoach}
+	\caption{SlowCoach Comms Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:comms_instantaneous_slowcoach}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_instantaneous_SlowCoach}
+	\caption{SlowCoach Physical Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:phys_instantaneous_slowcoach}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_instantaneous_SlowCoach}
+	\caption{SlowCoach Full Metric Shadow (showing mean of non-misbehaving nodes)}
+	\label{fig:full_instantaneous_slowcoach}
+\end{figure}\end{frame}
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_time_MPC}
+	\caption{MPC Comms Metric Shadow (targeting non-malicious node)}
+	\label{fig:comms_alt_time_mpc}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_time_MPC}
+	\caption{MPC Physical Metric Shadow (targeting non-malicious node)}
+	\label{fig:phys_alt_time_mpc}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_time_MPC}
+	\caption{MPC Full Metric Shadow (targeting non-malicious node)}
+	\label{fig:full_alt_time_mpc}
+\end{figure}\end{frame}
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_time_STS}
+	\caption{STS Comms Metric Shadow (targeting non-malicious node)}
+	\label{fig:comms_alt_time_sts}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_time_STS}
+	\caption{STS Physical Metric Shadow (targeting non-malicious node)}
+	\label{fig:phys_alt_time_sts}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_time_STS}
+	\caption{STS Full Metric Shadow (targeting non-malicious node)}
+	\label{fig:full_alt_time_sts}
+\end{figure}\end{frame}
+
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_time_Shadow}
+	\caption{Shadow Comms Metric Shadow (targeting non-malicious node)}
+	\label{fig:comms_alt_time_shadow}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_time_Shadow}
+	\caption{Shadow Physical Metric Shadow (targeting non-malicious node)}
+	\label{fig:phys_alt_time_shadow}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_time_Shadow}
+	\caption{Shadow Full Metric Shadow (targeting non-malicious node)}
+	\label{fig:full_alt_time_shadow}
+\end{figure}\end{frame}
+
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_time_SlowCoach}
+	\caption{SlowCoach Comms Metric Shadow (targeting non-malicious node)}
+	\label{fig:comms_alt_time_slowcoach}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_time_SlowCoach}
+	\caption{SlowCoach Physical Metric Shadow (targeting non-malicious node)}
+	\label{fig:phys_alt_time_slowcoach}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_time_SlowCoach}
+	\caption{SlowCoach Full Metric Shadow (targeting non-malicious node)}
+	\label{fig:full_alt_time_slowcoach}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_instantaneous_MPC}
+	\caption{MPC Comms Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:comms_alt_instantaneous_mpc}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_instantaneous_MPC}
+	\caption{MPC Physical Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:phys_alt_instantaneous_mpc}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_instantaneous_MPC}
+	\caption{MPC Full Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:full_alt_instantaneous_mpc}
+\end{figure}\end{frame}
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_instantaneous_STS}
+	\caption{STS Comms Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:comms_alt_instantaneous_sts}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_instantaneous_STS}
+	\caption{STS Physical Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:phys_alt_instantaneous_sts}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_instantaneous_STS}
+	\caption{STS Full Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:full_alt_instantaneous_sts}
+\end{figure}\end{frame}
+
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_instantaneous_Shadow}
+	\caption{Shadow Comms Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:comms_alt_instantaneous_shadow}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_instantaneous_Shadow}
+	\caption{Shadow Physical Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:phys_alt_instantaneous_shadow}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_instantaneous_Shadow}
+	\caption{Shadow Full Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:full_alt_instantaneous_shadow}
+\end{figure}\end{frame}
+
+
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_comms_run_alt_instantaneous_SlowCoach}
+	\caption{SlowCoach Comms Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:comms_alt_instantaneous_slowcoach}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_phys_run_alt_instantaneous_SlowCoach}
+	\caption{SlowCoach Physical Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:phys_alt_instantaneous_slowcoach}
+\end{figure}\end{frame}
+
+\begin{frame}\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.8\textheight]{best_full_run_alt_instantaneous_SlowCoach}
+	\caption{SlowCoach Full Metric Shadow (targeting non-malicious node, showing mean of remaining cohort including malicious node)}
+	\label{fig:full_alt_instantaneous_slowcoach}
+\end{figure}\end{frame}
 
 \end{document}

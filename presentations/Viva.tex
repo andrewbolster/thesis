@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=43]{beamer}
 \usepackage[T1]{fontenc}
 
 %\documentclass[aspectratio=169]{beamer}
@@ -286,24 +286,24 @@ vertical line through={(\tikztotarget)})
 				\begin{itemize}
 					\item Trust in UANs
 					\item Trust assessment based on Physical Behaviours
-					\item Multi-domain Trust assessment 
+					\item Multi-domain Trust 
 				\end{itemize}
 			\end{exampleblock}
 			\begin{block}{Secondary}
 				\begin{itemize}
-					\item Automatic, behaviour based weighting of MTFM
-					\item Agent based UAN Simulation system
-					\item Synthetic Domains based on metrics across multiple domains
+					\item Automatic weighting of MTFM
+					\item Agent based UAN Sim
+					\item Synthetic Domains from metrics over multiple domains
 					\item Review of Trust in the marine defence context
 				\end{itemize}
 			\end{block}
 		\end{column}
-		\begin{column}{0.55\textwidth}
+		\begin{column}{0.56\textwidth}
 			\begin{block}{Publications}
 				\begin{itemize}  
 					\item Analytical Metric Weight Generation for Multi-Domain Trust in Autonomous Underwater MANETs. IEEE UComms 2016
-					\item Single and Multi-metric Trust Management Frameworks for Use in Underwater Autonomous Networks. IEEE TrustCom 2015
-					\item Analysis of Trust Interfaces in Autonomous and Semi-Autonomous Collaborative MHPC Operations, The Technical Cooperation Program, Portsmouth, UK 2014.
+					\item Single \& Multi-metric Trust Management Frameworks for Use in Underwater Autonomous Networks. IEEE TrustCom 2015
+					\item Analysis of Trust Interfaces in Autonomous \& Semi-Autonomous Collaborative MHPC Operations, The Technical Cooperation Program, Portsmouth, UK 2014.
 					\item A Multi-Vector Trust Framework for Autonomous Systems, AAAI 2014.
 				\end{itemize}  
 			\end{block}
@@ -562,7 +562,7 @@ vertical line through={(\tikztotarget)})
 \begin{frame}{Fig 1.1 Multi-Domain Threat Surface}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=\linewidth]{threat_surface_sum}
+		\includegraphics[width=1.1\linewidth]{threat_surface_sum}
 		\caption[Multi-Domain Threat Surface]{Multi-Domain Threat Surface}
 		\label{fig:threat_surface}
 	\end{figure}
@@ -573,16 +573,17 @@ vertical line through={(\tikztotarget)})
 \begin{frame}{Tab 2.3 Definitions of Trust}
 \begin{table}[h]
 	\centering
-	\caption{Selected Definitions of Trust}
 	\label{tab:trust_definitions}
-	\begin{tabularx}{\textwidth}{X p{3cm}}\toprule
+	\adjustbox{max height=\dimexpr\textheight -4.2cm\relax,
+		max width=\textwidth}{
+	\begin{tabularx}{\textwidth}{X p{2.2cm}}\toprule
 		Definition & Source \\ \midrule
 		Assured reliance on the character, ability, strength, or truth of someone or something.
 		& Merriam-Webster\\
 		Firm belief in the reliability, truth, or ability of someone or something & OED\\
 		The willingness of a party to be vulnerable to the actions of another party based on the expectation that the other will perform a articular action important to the trustor, irrespective of the ability to monitor or control that other party &~\citet{Mayer1995} \\
 		An expectancy held by and individual or a group that the word, promise, verbal or written statement of another individual or group can be relied upon &~\citet{Rotter1967}\\\bottomrule
-	\end{tabularx}
+	\end{tabularx}}
 \end{table}
 \end{frame}
 
@@ -928,11 +929,11 @@ vertical line through={(\tikztotarget)})
 \end{frame}
 
 
-\begin{frame}{System Model Constraints}
+\begin{frame}{Tab 4.1: System Model Constraints}
   \centering
   \begin{table}[h]
       \label{tab:sysconstraints}
-	    \adjustbox{max height=\dimexpr\textheight-4.6cm\relax,
+	    \adjustbox{max height=\dimexpr\textheight-5cm\relax,
 	    	max width=\textwidth}{%
       \begin{tabular}{lccc}
         \toprule
@@ -1135,15 +1136,14 @@ vertical line through={(\tikztotarget)})
 
 \section{Chapter 5}
 
-\begin{frame}
+\begin{frame}{Fig 5.3: Observed Metric Values}
 	\begin{figure}
 		\centering
 		\includegraphics[height=0.9\textheight]{Metric_Values}
-		\caption{Observed Metric Values for one simulation of each behaviour ($x_{i,j}^{m,t}$)}
 		\label{fig:metric_values}
 	\end{figure}
 \end{frame}
-\begin{frame}
+\begin{frame}{Fig 5.4: Relative Node Deviance}
 	\begin{figure}
 		\centering
 		\includegraphics[width=\linewidth]{summedsigmabar}
@@ -1237,34 +1237,34 @@ vertical line through={(\tikztotarget)})
 	\label{fig:multi_feature_extraction}
 \end{figure}
 \end{frame}
-\begin{frame}{Multi Domain Metric Feature Correlation}
+\begin{frame}{Tab 6.1: Multi Domain Metric Feature Correlation}
 	
 \begin{table}
 	\centering
 	\caption{Multi Domain Metric Feature Correlation ($X_{merge}$)}
-	\input{../Figures/input/full_metric_correlations.tex}
+			  \adjustbox{max height=\dimexpr\textheight -2.2cm\relax,
+			  	max width=\textwidth}{
+	\input{../Figures/input/full_metric_correlations.tex}}
 	\label{tab:full_metric_correlations}
 \end{table}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Fig 6.10: Accuracy Characteristics}
 	\begin{figure}
 		\centering
 		\includegraphics[width=\linewidth]{positive_heat}
-		\caption{Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
 		\label{fig:positive_heat}
 	\end{figure}
 \end{frame}
-\begin{frame}
+\begin{frame}{Fig 6.11: Selectivity Characteristics}
 	\begin{figure}
 		\centering
 		\includegraphics[width=\linewidth]{negative_heat}
-		\caption{Negative-Accuracy of Correct identification of misbehaver using Domain-Trained weight vectors with a Dixons Q based limit-classifier}
 		\label{fig:negative_heat}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Metric Selection/Weighting}
+\begin{frame}{Tab 6.11: Metric Selection/Weighting}
   \begin{table}
     \centering
 

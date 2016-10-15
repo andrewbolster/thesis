@@ -63,14 +63,14 @@ This simplest possible combination is a vector concatenation across domain metri
 
 \subsection{Metric Weight Analysis Scheme}
 
-From \eqref{eq:metric_weighting}, the final trust values arrived at using \gls{mtfm} are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
+From \autoref{eq:metric_weighting}, the final trust values arrived at using \gls{mtfm} are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
 
 This permits the assessment of the significance of different metrics in the detection and identification of different behaviours. 
 The primary aspects of a (mis)behaviour can be detected and assessed by comparing a weighted trust assessment against the deviation from a ``fair'' result set using the same weight, i.e.\ we are interested in the weight schemes that create the largest difference between fair and misbehaving cases.
 
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, an initial weighting vector $H'=[h_i\cdots h_M]$ is formed such that $h_i = 1 \forall i \ne j; h_j=2$. That vector $H'$ is then scaled such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
 
-The construction of the $g$ and $b$ vectors from~\eqref{eq:grc} depends on the particular metric, e.g. Throughput ($S$) on a link is assumed to be positively correlated to trustworthiness and so follows the default construction ($g(S) \mapsto \max, b(S) \mapsto \min$), whereas in the case of a metric such as delay, this relationship is inverted, i.e.\ longer delays indicate less trustworthy activity ($g(D) \mapsto \min, b(D) \mapsto \max$).
+The construction of the $g$ and $b$ vectors from~\autoref{eq:grc} depends on the particular metric, e.g. Throughput ($S$) on a link is assumed to be positively correlated to trustworthiness and so follows the default construction ($g(S) \mapsto \max, b(S) \mapsto \min$), whereas in the case of a metric such as delay, this relationship is inverted, i.e.\ longer delays indicate less trustworthy activity ($g(D) \mapsto \min, b(D) \mapsto \max$).
 This inversion relationship (i.e.\ those with the construction $g(x) \mapsto \min, b(x) \mapsto \max$) is signified by a negative weight.
 
 In complex environments, the relationship between metrics trustworthiness correlations is not always as obvious as the throughput / delay examples.
@@ -190,7 +190,7 @@ The results from this domain grouping are shown along side the Full, Comms, and 
 From this significance information, a ``estimated'' signature for each behaviour can be inferred, which can then be fed back into \gls{mtfm}. 
 The aim of this iteration is to minimise the number of weight permutations required to come to a conclusion about the behaviour under observation. 
 
-However, these approximated signatures have no information regarding the ``sign'' of the  $g$,$b$ comparison vectors from \eqref{eq:metric_weighting}, i.e.\ there is no hint as to whether the relationship is $g(x) \mapsto \max, b(x) \mapsto \min$ or $g(x) \mapsto \min, b(x) \mapsto \max$)  
+However, these approximated signatures have no information regarding the ``sign'' of the  $g$,$b$ comparison vectors from \autoref{eq:metric_weighting}, i.e.\ there is no hint as to whether the relationship is $g(x) \mapsto \max, b(x) \mapsto \min$ or $g(x) \mapsto \min, b(x) \mapsto \max$)  
 
 One option would be to go back to the regression point and expand the combination options to include negative values, signifying inverted $g,b$ relationships, however this is combinatorially explosive.\footnote{The current version of this analysis uses three metric weights; ignored, standard, emphasised, giving $3^9 = 19683$ combinations. Expanding this to include inverted standard and inverted emphasised weights would raise that to $5^9 = 1.9\times 10^6$}
 Instead, the ``significance'' weight is permuted against it's possible combinations of ``flips'', i.e.\ for $X_s=[0.3,0.4,0.01,0.02,0.27]$ could also be $X_s^p=[0.3,-0.4,0.01,0.02,0.27]$ and so on. 

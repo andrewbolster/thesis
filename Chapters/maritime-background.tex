@@ -23,7 +23,7 @@ Useful acoustic signals are generally maintained vibrations rather than instanta
 They are characterised by their frequency $f$ expressed in Hertz ($Hz$) or by their Period ($T$) in seconds.
 In commonly used underwater acoustics, used frequencies range from $\approx 10Hz-100kHz$ depending on application~\cite{Stojanovic2007}.
 
-As with all waves, the relationship between frequency, period and the wavelength is given as in \eqref{eq:wavelength} where $c$ is the propagation speed in a given medium. 
+As with all waves, the relationship between frequency, period and the wavelength is given as in \autoref{eq:wavelength} where $c$ is the propagation speed in a given medium. 
 As such the generally used upper and lower bounds of wavelength in most applications is from $\SI{1.5}{\meter} @ 10Hz$ to $\SI{0.015}{\meter} @ 100kHz$.
 %
 \begin{equation}
@@ -151,7 +151,7 @@ Even with relatively small variations in sound speed, and with the introduction 
 
 The energy of an acoustic wave is encapsulated into its kinetic and potential parts; where its kinetic energy corresponds to the active motion energy of the particles in the medium, and the potential energy corresponding to the elastic potential of the medium in displacement/compression.
 
-The acoustic intensity ($I$) is the energy flux mean value per unit of surface and time \eqref{eq:acoustic_intensity} in Watts/$m^2$ where $p_0$ is the plane wave amplitude (pressure) and $P_{rms} = p_0/\sqrt{2}$
+The acoustic intensity ($I$) is the energy flux mean value per unit of surface and time \autoref{eq:acoustic_intensity} in Watts/$m^2$ where $p_0$ is the plane wave amplitude (pressure) and $P_{rms} = p_0/\sqrt{2}$
 
 \begin{equation}
   I = \frac{p_0^2}{2\rho c} = \frac{p_{rms}^2}{\rho c}
@@ -160,7 +160,7 @@ The acoustic intensity ($I$) is the energy flux mean value per unit of surface a
 
 \subsection{Attenuation}
 
-The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear \eqref{eq:acoattenuation} and $dB$ forms \eqref{eq:acoattenuationdb} is given as;
+The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear \autoref{eq:acoattenuation} and $dB$ forms \autoref{eq:acoattenuationdb} is given as;
 
 \begin{equation}
   \label{eq:acoattenuation}
@@ -173,7 +173,7 @@ The attenuation that occurs in an underwater acoustic channel over a distance $d
 
 where $A_0$ is a unit-normalising constant, $k$ is a geometric spreading factor (commonly taken as 1.5 for practical use, but may be 2 for perfect spherical propagation or 1 for perfect plane-wave propagation)), and $a(f)$ is the absorption coefficient, that may be modelled in a variety of ways.
 
-Thorp's formula (\eqref{eq:thorp}) is very simple, only depending on $f$, and is designed to be most accurate about a temperature of 4$^{\circ}$C at a depth of $\approx 1Km$.
+Thorp's formula (\autoref{eq:thorp}) is very simple, only depending on $f$, and is designed to be most accurate about a temperature of 4$^{\circ}$C at a depth of $\approx 1Km$.
 %
 \begin{figure}
   \begin{equation}
@@ -224,8 +224,8 @@ The Fisher-Simmons model (\autoref{fig:fisher}) is significantly more complex, t
 
 
 
-Regardless of the variations of particular attenuation models, comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model~\eqref{eq:fspl}, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
-While both frequency dependant factors are quadratic, approximating the factors in \eqref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
+Regardless of the variations of particular attenuation models, comparing $A_{aco}(d,f)$ with the RF Free-Space Path Loss model~\autoref{eq:fspl}, the impact of range on signal power is exponential underwater, rather than quadratic in terrestrial RF ($A_{\text{aco}} \propto f^{2d}$ vs $A_{\text{RF}} \propto (df)^2$). 
+While both frequency dependant factors are quadratic, approximating the factors in \autoref{eq:thorp}, $f\propto A_{\text{aco}}$ is at least 4 orders of magnitude higher than $f\propto A_{\text{RF}}$
 \begin{equation}
   \label{eq:fspl}
   A_{\text{RF}}(d,f) \approx \left( \frac{4\pi d f}{c} \right)^2

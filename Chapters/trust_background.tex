@@ -595,7 +595,7 @@ A special extension is assumed for multi-party trust relationships for the ``act
 %
 Where the action under discussion is implied or there is a single action under debate (for example, packet routing in \glspl{manet}), the action superscript can be left out; $T_{AB} , R_{AB}$.
 
-Trust can be propagated through a number of nodes, forming a chain of assessments and recommendations, expressed as per \eqref{eq:trust_chain}.
+Trust can be propagated through a number of nodes, forming a chain of assessments and recommendations, expressed as per \autoref{eq:trust_chain}.
 While the particular algorithms and methods of combination vary between \glspl{tmf}, the $\cdot$ symbol is used as a generic operator.
 In any case, if a given node $A$ has no knowledge about node $B$, or likewise $B$ having no knowledge of $C$, trust between $A,C$ is zero; $T_{ABC} = 0$
 
@@ -643,7 +643,7 @@ Many of these axioms are mirrored in pure information theory, as discussed in~\c
 \begin{displayquote}
 	When the subject establishes a trust relationship with the agent through the recommendation from a third party, the trust value between the subject and the agent should not be more than the trust value between the subject and the recommender as well as the trust value between the recommender and the agent.
 \end{displayquote}
-This axiom sets up the rules for trust propagation from the perspective of trust as a form of Shannon Entropy and using the notation discussed above, can be expressed as in \eqref{eq:trust_prop} (see~\autoref{fig:trust_chaining} for context)~\cite{Shannon1948}.
+This axiom sets up the rules for trust propagation from the perspective of trust as a form of Shannon Entropy and using the notation discussed above, can be expressed as in \autoref{eq:trust_prop} (see~\autoref{fig:trust_chaining} for context)~\cite{Shannon1948}.
 \begin{equation}
 	\label{eq:trust_prop}
 	T_{AC} \leq \min({R_{AB},T_{BC}})
@@ -710,7 +710,7 @@ This axiom sets up the rules for trust propagation from the perspective of trust
 	If the subject receives \textit{the same} recommendations for the agents from multiple sources, the trust value should be no less than that in the case when the subject receives fewer recommendations.
 \end{displayquote}
 
-In this case, this axiom sets the groundwork for multi-node analysis of trust networks, shown in~\autoref{fig:trust_combination} and described in \eqref{eq:trust_combination}.
+In this case, this axiom sets the groundwork for multi-node analysis of trust networks, shown in~\autoref{fig:trust_combination} and described in \autoref{eq:trust_combination}.
 In essence, adding additional information sources of the same observation should increase the trust value arrived at from a smaller subset of sources.
 
 \begin{align}
@@ -919,7 +919,7 @@ Within sparsely connected networks, there are three primary types of relationshi
 
   \end{subfigure}
   \hfill
-  \caption{Trust Topologies; Direct, Indirect, Recommender, etc.\ from the perspective of Node A}
+  \caption{Direct, Indirect, Recommender Trust relationships from the perspective of Node A}
   \label{fig:trust_topology_relationships}
 \end{figure}
 
@@ -1346,7 +1346,7 @@ Taking some examples; %\todo{TODO:Check for more recent evolutions in Trust/TMFs
 \subsection{Selected Single Metric Trust Frameworks}\label{sec:single_trust}
 
 %\todo{ADD:Expand background detail on more frameworks, (Confidant/Fuzzy)}
-The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\eqref{eq:otmf_pbo}.
+The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reasoning to generate a posterior distribution function of ``belief'', or trust, given a sequence of observations of that behaviour, $p(B|O)$\autoref{eq:otmf_pbo}.
 %
 \begin{equation}
   p(B|O)  = \frac{p(O|B) \times p(B)}{\rho}
@@ -1356,7 +1356,7 @@ The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reas
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
 %\todo{Q:This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
 
-Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function \eqref{eq:beta}, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$, i.e. .
+Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function \autoref{eq:beta}, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \autoref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$, i.e. .
 
 \begin{align}
   \label{eq:beta}
@@ -1368,7 +1368,7 @@ Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta fun
 \end{align}
 %
 
-A secondary measurement of the confidence factor of the trust assessment $t$ is generated as \eqref{eq:otmf_c} and these measurements are combined to form a ``trustworthiness'' value $T$ \eqref{eq:otmf_trust}.
+A secondary measurement of the confidence factor of the trust assessment $t$ is generated as \autoref{eq:otmf_c} and these measurements are combined to form a ``trustworthiness'' value $T$ in \autoref{eq:otmf_trust}.
 %
 \begin{align}
   t_i &\to E\lbrack\text{beta}(p|\alpha,\beta)\rbrack = \frac{\alpha_i}{\alpha_i+\beta_i} \label{eq:otmf_t}\\[5pt]
@@ -1376,7 +1376,7 @@ A secondary measurement of the confidence factor of the trust assessment $t$ is 
   T_i &= 1 - \frac{\sqrt{\frac{(t_i-1)^2}{x^2} + \frac{(c_i-1)^2}{y^2}}}{\sqrt{\frac{1}{x^2}+\frac{1}{y^2}}} \label{eq:otmf_trust}
 \end{align}
 %
-In \eqref{eq:otmf_trust}, $x$ and $y$ are constants to weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$)
+In \autoref{eq:otmf_trust}, $x$ and $y$ are constants to weight the two-dimensional polar mapping of trust and confidence assessments ($t_i,c_i$)
 From~\citet{Zouridaki2005} these are set to $x=\sqrt{2},y=\sqrt{9}$, generating an elliptical mapping $f(t,c) \mapsto T$, effectively weighting the level of confidence heavier than the observed trust behaviour.
 
 Upon this per-node assessment methodology, \gls{otmf} overlays an observation distribution protocol so as to make the measurements $\alpha_i$ and $\beta_i$ representative of the direct and 1-hop networks observations of the target node $i$, as well as expiring old observations from assessment and eliminating observations from ``untrustworthy'' nodes.
@@ -1417,7 +1417,7 @@ The grey relational vector is given as
 %
 where $a_{k,j}^t$ is the value of an observed metric $x_j$ for a given node $k$ at time $t$, $\rho$ is a distinguishing coefficient set to $0.5$, $g$ and $b$ are respectively the ``good'' and ``bad'' reference metric sequences from $\{a_{k,j}^t k=1,2\dots K\}$, i.e.\ $g_j=\max_k({a_{k,j}^t})$,  $b_j=\min_k({a_{k,j}^t})$ (where each metric is selected to be monotonically positive for trust assessment, e.g.\ higher throughput is presumed to be always better).
 
-Weighting can be applied before generating a scalar value \eqref{eq:metric_weighting} allowing the detection and classification of misbehaviours.
+Weighting can be applied before generating a scalar value \autoref{eq:metric_weighting} allowing the detection and classification of misbehaviours.
 
 %
 \begin{equation}
@@ -1427,13 +1427,13 @@ Weighting can be applied before generating a scalar value \eqref{eq:metric_weigh
 %
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
-To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value using ~\autoref{eq:trust_linearisation} from~\cite{Hong2010}.
+To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \autoref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value using ~\autoref{eq:trust_linearisation} from~\cite{Hong2010}.
 
 \begin{equation}
 T_k^t = ({1+\frac{(\phi_k^t)^2}{(\theta_k^t)^2}})^{-1} \label{eq:trust_linearisation}
 \end{equation}
 
-\gls{mtfm} combines this \gls{gra} with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}.
+\gls{mtfm} combines this \gls{gra} with a topology-aware weighting scheme \autoref{eq:networkeffects} and a fuzzy whitenization model \autoref{eq:whitenization}.
 This whitenization model allows the previously grey value to be practically computed on and used to generate the final trust assessment, through fuzzy sequence classification, functionally treating each observation differently if it appear to be Trusted, Untrusted or Ignorant (\autoref{fig:whitenization}) ~\cite{Liu2011}.
 See~\autoref{apx:grey} for a wider discussion of this topic and the operation of Grey numbers.
 

@@ -47,7 +47,7 @@ As a benefit, the decentralized nature of network control in \glspl{manet} provi
 
 As \glspl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
 
-The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain an evidence based ``trust'' system such as \gls{ttp}, \gls{ca} or using \gls{pki}. 
+The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain an evidence based ``trust'' system such as \gls{ttp}, or \gls{ca} or by using \gls{pki}. 
 In both cases, there is the assumption of a run-time canonical source of trust, i.e. a ``Master'' node or Certifying Authority that can objectively coordinate the security and trust of the network.
 This single-point-of-failure is antithetical to \gls{manet} architectures, and given the normally limited transmission, storage, battery and computational power of \gls{manet} nodes, the overheads of true \gls{ttp} or \gls{pki} architectures have been out of the realms of practicality for most applications.
 Therefore, a distributed, collaborative system must be applied to these networks\footnote{\citet{Zouridaki} have demonstrated an intriguing low-power Distributed \gls{ca} based \gls{manet} architecture, however given the soon-to-be-discussed assumptions about capable attackers(\autoref{sec:capable_attackers}), this ``semi-decentralised'' approach is less than ideal}.
@@ -87,12 +87,15 @@ This threat is particularly relevant in resource-constrained networks, where one
 In such networks, where there is a requirement for security and/or integrity monitoring, strong-cryptographic methods present an entirely new opportunity to potential attackers.
 
 One solution to the trade-off between \gls{dos}-protection, and security is the assessment of ``trustworthiness'' of nodes within a local network. 
-``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour.
+``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour. \todo{Node/Metric Capability Matrix}
 Using this Trust to make simple routing decisions is significantly simpler and faster than strong-cryptographic methods, particularly in multi-hop networks or resource constrained networks~\cite{Cordasco2008}.
 With Trust being reliant on the runtime awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits and in practice, some elements of both methodologies will be used in different contexts and applications as those applications dictate.
 
 \subsection{Systemic Trust and Trusted Development}
 As will be discussed further in \autoref{sec:trust_perspectives}, the ``Trust'' in a system is critical well before a system is activated; the incubation, specification, design, development, production and testing of a system (particularly a system with some \gls{loa} or other non-deterministic operation) is critical to the Trust that an end user can put into that system, and particularly, how much Trust can be exhibited within and between that systems individual components.
+
+\subsection{Analytical Trust vs. Game Theoretic/Bio-inspired approaches}
+\todo{Analytical Trust vs. Game Theoretic/Bio-inspired approaches}
 
 \subsection{Trust Operation Against Capable Attackers}\label{sec:capable_attackers}
 
@@ -170,5 +173,9 @@ Further, a methodology for assessing the usefulness of individual metrics in thi
 Key parts of this chapter are awaiting publication as  \bibentry{Bolster2016a}.
 }
 
+
+\section{Problem Statement}
+\todo{Problem Statement, Rationale and Context}
+\todo{Block Diagram of Chapter / Experiment Relationships}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

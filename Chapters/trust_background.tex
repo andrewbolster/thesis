@@ -413,6 +413,17 @@ This is further augmented with an adaptive open-loop power control system which 
 \end{table}
 
 
+\subsection{Routing Selection within Problem Context }
+\todo{Routing Selection within Problem Context}
+\begin{comment}
+Initial comment suggested taking from the above table and somehow ``scoring'' each cell against the problem statement. IMO this would make no sense and we're
+effectively scoring the problem statement against the routing applicability which is massively subjective.
+\end{comment}
+
+
+\subsection{Summary}
+\todo{Summary of Routing}
+
 
 \section{Trust Definitions, Perspectives, and Relationships}\label{sec:trust_defs}
 For a term that is so common in every-day speech, ``Trust''\footnote{As a point of notation, in this work "Trust" and "trust" are used interchangeably to refer to the concept, action, or belief of a specified trusting relationship. Where Trust is capitalised outside of grammatical convention, it is to emphasise ``trust as a concept'' rather than a particular value or relationship} is a challenging discussion area, particularly given the wealth of proposed definitions (Table~\ref{tab:trust_definitions}).
@@ -565,7 +576,8 @@ Both System and Behavioural trust rely on what Sun calls a ``Belief Formation Pr
 \pagebreak
 \subsection{Taxonomy and Notations of Trust}\label{sec:trust_taxonomy}
 
-To abstractly discuss Trust and trust modelling,~\citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property possessed by that agent.
+To abstractly discuss Trust and trust modelling,~\citet{Liu2006} present a $T\{\text{subject}:\text{agent},\text{action}\}$ notation for individual trust relationships, where \emph{Subject} and \emph{Agent} usually representing individuals but may include groups of individuals or the network as a whole, and \emph{Action} may be an action performed by a given agent or a property possessed by that agent. 
+This \emph{trust value} is initially considered to be a continuous real number, representing the uncertainty in that the subject has that the  agent will be observed performing the action; i.e. this value is not absolute and from ~\citet{Sun2008}, ``[is] the opinion of a specific subject. Thus, different subjects can assign different probability values for the same agent and the same action.''
 
 This notation is normally abbreviated such that 
 \begin{equation}
@@ -622,7 +634,7 @@ There are five commonly considered characteristics or attributes of Trust relati
 \citet{Liu2010} summarises these attributes in a series of axioms 
 
 \subsubsection{Fundamental Axioms of Trust}\label{sec:axioms}
-\citet{Sun2008} demonstrate that by taking an Information Theoretic approach to trust as function of entropy and as such, uncertainty (i.e.\ trust having both a valency and a confidence)~\footnote{Donald Rumsfelds famous 2002 ``Known Knowns'' quote is a perfect example of this}, a series of axioms can be constructed to model the interactions between trusting agents.
+\citet{Sun2008} demonstrate that by taking an Information Theoretic approach to trust as function of entropy and as such, uncertainty (i.e.\ trust having both a valency and a confidence)~\footnote{Donald Rumsfelds famous 2002 ``Known Knowns'' quote is a perfect example of this}, a series of axioms can be constructed to model the interactions between trusting agents~\cite{Shannon1948}.
 Many of these axioms are mirrored in pure information theory, as discussed in~\cite{Liu2010}.
 
 \emph{Axioms and their quoted descriptions from~\cite{Liu2010}}
@@ -631,7 +643,7 @@ Many of these axioms are mirrored in pure information theory, as discussed in~\c
 \begin{displayquote}
 	When the subject establishes a trust relationship with the agent through the recommendation from a third party, the trust value between the subject and the agent should not be more than the trust value between the subject and the recommender as well as the trust value between the recommender and the agent.
 \end{displayquote}
-This axiom sets up the rules for trust propagation from an entropic perspective and using the notation discussed above, can be expressed as in \eqref{eq:trust_prop} (see~\autoref{fig:trust_chaining} for context)
+This axiom sets up the rules for trust propagation from the perspective of trust as a form of Shannon Entropy and using the notation discussed above, can be expressed as in \eqref{eq:trust_prop} (see~\autoref{fig:trust_chaining} for context)~\cite{Shannon1948}.
 \begin{equation}
 	\label{eq:trust_prop}
 	T_{AC} \leq \min({R_{AB},T_{BC}})
@@ -911,6 +923,8 @@ Within sparsely connected networks, there are three primary types of relationshi
   \label{fig:trust_topology_relationships}
 \end{figure}
 
+
+
 \subsection{Trust Establishment Strategies and their impact on Trust Frameworks}\label{sec:trust_establishment}
 
 In the majority of cases, the establishment of trust is a purely observational effort, as opposed to providing a pre-initialised ``secure state''~\cite{Liu2006, Li2007, Theodorakopoulos2004}.
@@ -951,6 +965,9 @@ Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed na
 \pagebreak
 \section{Trusted Development and Operation of Autonomous Systems}\label{sec:trust_autonomy}
 
+\subsection{Contextual Need for Autonomy}
+\todo{Link Autonomy to Problem Statement (aka self protection/reliability in harsh environments)}
+
 \subsection{Autonomy and Levels of Autonomy}
 
 Autonomy, like trust, is a nebulous term applied across research, defence and commercial circles that has its origins in human experience and interactions. 
@@ -961,15 +978,12 @@ That is not to say that autonomy or autonomous action exists in an ideal vacuum 
 The ability to recognise, process, weight and filter inputs, knowledge, ``responsibilities'', influences and outside factors and come to an effective decision is a key skill for any self-governing agent, however this is above and beyond the concept of ``basic autonomy''.
 From the implicit variability and complexity of environment and context that classically autonomous entities\footnote{That's \textit{Homo Sapiens}} inhabit, there is little assumption that ``autonomy'' always produces a categorically ``correct''or ``good'' decision, but is instead a case of an agent choosing the action that is \textit{in its own best interests based on available information}~\cite{Arpaly2003}.\footnote{Arply discusses a counter example of this ``goodness'' assessment as  Huckleberry Finns' release of Jim against his ``best judgement'', and that rather than this action being an instance of morally justified or self-congratulatory autonomy, it was ``the right thing to do'' from an abstract moralistic perspective rather than a justifiably beneficial action, and it is a case of \textit{akrasia}; the lacking of self-governance and the antonym of autonomy.}
 
-This understanding of individual autonomy has been scaled up through social systems and has been studied at length to understand the emergence of post-Marxist proto-anarchistic movements~\cite{Hunter2016} and from a higher perspective, international politics, especially in the cases of quasi-federalised collections of states such as the United States of America~\cite{Halberstam2001} and the European Union/Eurozone/Schengen Area~\cite{Richter2012}
-
-
 In the most general case in the world of artificial systems, Autonomy is understood as a graduated spectrum of allocation of functionality between a system (or system of systems) and a human operator assigned with performing a given task. 
 Where a system is more ``autonomous'', more of the sensing, planning, decision and action operations are performed by the system. (See Table~\ref{tab:autonomy_definitions} for a review of current definitions of autonomy and autonomous systems)
 This graduated spectrum of allocated functionality is generally termed the \acrfull{loa}, where an increasing \gls{loa} correlated to increasing control and decision making freedom to the autonomous system from the human operator(\autoref{tab:autonomy_levels_sheridan}).
 These levels can be loosely viewed as a spectrum from across Planning Support, Decision Support, Bounded Execution, and finally, Informed Execution\footnote{In theory there is a further ``Uninformed execution'' level of autonomy, however this is beyond the scope of this work\cite{Cameron1984}}.
 
-While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Google and beyond.
+While Autonomy is largely taken to be a robotics term based in the case of one human operator and one robotic entity, the development of more generalised cyber-physical systems has expanded this definition; from over-the-horizon human operation of \glspl{uav} to global networks of collaborating machines such as Googles' Search infrastructure, and beyond.
 
 As such, the interactions \emph{between} autonomous agents are becoming increasingly relevant to the operating efficiencies of overall collaborative systems, whether or not a human operator is ``in-the-loop''.
 
@@ -988,10 +1002,13 @@ See \autoref{apx:human_factors} for a more thorough discussion on the Human Psyc
     \ldots that the robot can operate self-contained, under all reasonable conditions without requiring recourse to the human operator. Autonomy means that a robot can adapt to change in its environment \ldots or itself \ldots and continue to reach a goal. &~\citet{Murphy2000}\\
     \ldots it should learn what it can to compensate for partial or incorrect prior knowledge &~\citet{Russell2009} \\
     Autonomy refers to a robot's ability to accommodate variations in its environment. Different robots exhibit different degrees of autonomy; the degree of autonomy is often measured by relating the degree at which the environment can be varied to the mean time between failures and other factors indicative of the robots performance. &~\citet{Thrun2004}\\
-    \ldots agents operate without the direct intervention of humans or others, and have some kind of control over their actions and internal states. &~\citet{Wooldridge1995}\\
-    Systems have a set of intelligence based capabilities or learning adaptive capabilities that allow it to respond within a bounded domain to situations that were not pre-programmed or anticipated in the design. &~\citet{Fox2014}\\\bottomrule
+    \ldots agents operate without the direct intervention of humans or others, and have some kind of control over their actions and internal states. &~\citet{Wooldridge1995}\\\bottomrule
   \end{tabularx}
 \end{table}
+
+\begin{comment}
+Fox 64 citation wasn't good or relevant enough
+\end{comment}
 
 \begin{table}\centering
   \caption[Levels of Decision Making Automation]{Levels of Decision Making Automation (Extended from~\citet{Sheridan1978})}
@@ -1044,32 +1061,31 @@ See \autoref{apx:human_factors} for a more thorough discussion on the Human Psyc
 
 For the purposes of this work, two perspectives on trust for autonomous systems are defined: Design Trust and Operational Trust.
 
-\begin{itemize}
-  \item \emph{Design Trust} - When an autonomous system is under development a level of Trust is established in it through the manner in which it has been designed and tested.
+\paragraph{Design Trust} - When an autonomous system is under development, a level of Trust is established in it through the manner in which it has been designed and tested.
     This is the same as conventional systems.
     Given that systems that have high-levels of autonomy are designed to behave adaptively to dynamic environments, it is challenging to fully predict such non-deterministic behaviours prior to operational deployment.
     For example, in a navigation system it is difficult to predict the dynamic environment it will need to adapt to.
-    Trust needs to be developed so that the design and testing of such systems are sufficient to predict that operation will be, if not optimal, at least satisfactory.
+    Trust needs to be developed throughout the design and testing of such systems to predict that operation will be, if not optimal, at least satisfactory.
 
-  \item \emph{Operational Trust} - Trust at runtime or in-situ that both the individual nodes within a system are operating as expected and that the interfaces between the operator and the system are as expected.
+\paragraph{Operational Trust} - Trust at runtime or in-situ that both the individual nodes within a system are operating as expected and that the interfaces between the operator and the system are as expected.
     This latter aspect covers issues such as physical/wireless links and interpretation of data at each end of such a communication link.
     This can be subdivided into two types of perspective;
     \begin{itemize}
       \item \emph{Hard Trust} or technical trust - The quantitative measurement and communication of the expectation of an actor performing a certain task, based on historic performance and through consensus building within a networked system.
     Can be thought of as a de-risking strategy to measure and monitor the ability of a system, or another actor within a system, to perform a task unsupervised.
+    Hard Operational Trust is functionally derived from, but distinct from Design Trust.
   \item \emph{Soft Trust} or common trust - The qualitative assessment of the ability of an actor to perform a task or operation consistently and reliably based on social or experiential factors.
-    This is the ‘human’ form of trust and is the main motivational driver for the human-factors trust discussion in \autoref{apx:human_factors}.
     Can be viewed as the abstract level of confidence an operator has in an actor to perform a task unsupervised.
-    \end{itemize}
-\end{itemize}
+    This is the ``human'' form of trust and is the main motivational driver for the human-factors trust discussion in \autoref{apx:human_factors}, but is not directly relevant to this immediate work.
 
-Hard Operational Trust is functionally derived from, but distinct from Design Trust.
+    \end{itemize}
+
 
 It is already clear that these definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system during design, development, procurement, and deployment.
 
-While the focus of this work is on the operational trust between teams of autonomous systems, there are two disjointed areas that are relevant to discuss.
+While the focus of this work is on the operational trust between teams of autonomous systems, there are two disjointed areas that are relevant to review for context.
 Firstly, it is valuable to briefly discuss the impact and effect of the actions and reactions of human operators in the context of autonomous operational trust; these human factors can have significant impact on the design constraints, operation, and indeed the ease-of-adoption of autonomous systems in the future. 
-Secondly, It is important to understand the wider Design Trust context to understand potential limitations or constraints on future development of such systems across their development lifecycle.
+Secondly, It is important to understand the wider Design Trust context to understand potential limitations or constraints on future development of such systems across their developmental and operational life-cycle.
 
 \subsection{Summary of Human Factors impacting Operational Trust in Defence Contexts}
 
@@ -1147,6 +1163,7 @@ This structure has been criticised as being short sighted and at odds with the r
 \end{table}
 
 Further, the standard predominantly deals with a one-to-one mapping between operators and nodes, when this is quite against the current state of the art; greater focus is being made in collective and collaborative assignment and having a single operating agent managing groups of autonomous nodes in-field, and handing off vehicle management responsibilities to the individual nodes.
+This is exemplified in the so-called ``Sheepdog'' approach, where human operators exhibit a general external emphasis or control vector on a vast number of autonomous systems to ``Shepard'' them rather than individually controlling each entity directly~\cite{Strombom2014}.
 
 \paragraph{\gls{sae}}
 
@@ -1190,6 +1207,9 @@ This standard was withdrawn in 2015 due to \gls{astm} regulations requiring stan
 	\caption[\acrshort{astm} F41 \acrshort{umvs} Architecture]{\acrshort{astm} F41 \acrshort{umvs} Architecture  (with relevant substandards in parenthesis)}
 	\label{fig:astmf41arch}
 \end{figure}
+
+\subsubsection{Legal Considerations in Design Trust}
+\todo{Discuss EOD considerations; fire mode etc, and tie back to problem statement}
 
 
 \subsubsection{Summary of Design Trust}
@@ -1336,14 +1356,15 @@ The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reas
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
 %\todo{Q:This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
 
-Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function \eqref{eq:beta}, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$.
+Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function \eqref{eq:beta}, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \eqref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$, i.e. .
 
 \begin{align}
   \label{eq:beta}
-  \text{beta}(p|\alpha,\beta) &= \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}\\
+  \text{beta}(p|\alpha_i,\beta_i) &= \frac{\Gamma(\alpha_i + \beta_i)}{\Gamma(\alpha_i)\Gamma(\beta_i)}p^{\alpha_i-1}\\
   \label{eq:beta_e}
-  E(p) &= \frac{\alpha}{\alpha + \beta}\\
-  \text{where } &0 \leq p \leq 1; \alpha,\beta > 0 \notag
+  E(p) &= \frac{\alpha_i}{\alpha_i + \beta_i}\\
+  \text{where } &0 \leq p \leq 1; \alpha_i,\beta_i > 0 \notag
+  \text{and }& \alpha_i + \beta_i = \text{total observed actions by $i$} \notag
 \end{align}
 %
 
@@ -1406,7 +1427,12 @@ Weighting can be applied before generating a scalar value \eqref{eq:metric_weigh
 %
 Where $H=[h_0\dots h_M]$ is a metric weighting vector such that $\sum h_j = 1$, and in unweighted case, $H=[\frac{1}{M},\frac{1}{M}\dots\frac{1}{M}]$.
 $\theta$ and $\phi$ are then scaled to $[0,1]$ using the mapping $y = 1.5 x - 0.5$.
-To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value by $T_k^t = ({1+{(\phi_k^t)^2}/{(\theta_k^t)^2}})^{-1}$~\cite{Hong2010}.
+To minimise the uncertainties of belonging to either best ($g$) or worst ($b$) sequences in \eqref{eq:grc} the $[\theta,\phi]$ values are reduced into a scalar trust value using ~\autoref{eq:trust_linearisation} from~\cite{Hong2010}.
+
+\begin{equation}
+T_k^t = ({1+\frac{(\phi_k^t)^2}{(\theta_k^t)^2}})^{-1} \label{eq:trust_linearisation}
+\end{equation}
+
 \gls{mtfm} combines this \gls{gra} with a topology-aware weighting scheme \eqref{eq:networkeffects} and a fuzzy whitenization model \eqref{eq:whitenization}.
 This whitenization model allows the previously grey value to be practically computed on and used to generate the final trust assessment, through fuzzy sequence classification, functionally treating each observation differently if it appear to be Trusted, Untrusted or Ignorant (\autoref{fig:whitenization}) ~\cite{Liu2011}.
 See~\autoref{apx:grey} for a wider discussion of this topic and the operation of Grey numbers.
@@ -1477,7 +1503,7 @@ Where $T_{i,n}$ is the subjective trust assessment of $n_i$ by $n_n$, and $f_s =
 
 In the case of the terrestrial communications network used in~\cite{Guo11}, the observed metric set $X = {x_1,\dots,x_M}$ representing the measurements taken by each node of its neighbours at least interval, is defined as $X=[$packet loss rate, signal strength, data rate, delay, throughput$]$.
 
-\citet{Guo11} demonstrated that when compared against \gls{otmf} and Hermes trust assessment, \gls{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can in the terrestrial RF 80.11 based experimental network used.
+\citet{Guo11} demonstrated that when compared against \gls{otmf} and Hermes trust assessment, \gls{mtfm} provided increased variation in trust assessment over time, providing more information about the nodes' behaviours than packet delivery probability alone can in the terrestrial RF 802.11 based experimental network used.
 
 \section{Conclusion}
 In this chapter, \gls{manet} implementations, topologies, and applications have been explored. 

@@ -30,6 +30,16 @@
 % http://tex.stackexchange.com/questions/98388/how-to-make-table-with-rotated-table-headers-in-latex
 \newcommand*\rot{\rotatebox{90}}
 \newcommand*\OK{\ding{51}} % requires pifont
+% http://tex.stackexchange.com/questions/150492/how-to-use-itemize-in-table-environment
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+% http://tex.stackexchange.com/questions/10684/vertical-space-in-lists
+\newenvironment{tightimize}
+{ \begin{itemize}
+		\setlength{\itemsep}{0pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{0pt}     }
+	{ \end{itemize}                  } 
 
 \makeatother
 %http://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex

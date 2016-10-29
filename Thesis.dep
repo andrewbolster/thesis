@@ -208,6 +208,10 @@
   *{file}   {./Figures/img/oceanfloor.jpg}{0000/00/00 v0.0}
   *{file}   {./Chapters/trust_background.tex}{0000/00/00 v0.0}
   *{file}   {./Chapters/maritime-background.tex}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/hugin.jpg}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/autosub.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/seaglider.png}{0000/00/00 v0.0}
+  *{file}   {./Figures/img/seahunter.jpg}{0000/00/00 v0.0}
   *{file}   {./Figures/temp_globe.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/sal_globe.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/temp_sal_profile.pdf}{0000/00/00 v0.0}
@@ -216,10 +220,6 @@
   *{file}   {./Figures/ssp_n_squared.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/ssp_isovelocity.pdf}{0000/00/00 v0.0}
   *{file}   {ts1cmr.fd}   {2014/09/29 v2.5h}
-  *{file}   {./Figures/img/hugin.jpg}{0000/00/00 v0.0}
-  *{file}   {./Figures/img/autosub.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/img/seaglider.png}{0000/00/00 v0.0}
-  *{file}   {./Figures/img/seahunter.jpg}{0000/00/00 v0.0}
   *{file}   {./Chapters/comms_trust.tex}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_static.pdf}{0000/00/00 v0.0}
   *{file}   {./Figures/emission_throughput_performance_bella_all_mobile.pdf}{0000/00/00 v0.0}

@@ -66,12 +66,15 @@ This simplest possible combination is a vector concatenation across domain metri
 From \autoref{eq:metric_weighting}, the final trust values arrived at using \gls{mtfm} are dependent on metric values, the weights assigned to each metric, and the structure of the $g$, $b$ comparison vectors.
 
 This permits the assessment of the significance of different metrics in the detection and identification of different behaviours. 
-The primary aspects of a (mis)behaviour can be detected and assessed by comparing a weighted trust assessment against the deviation from a ``fair'' result set using the same weight, i.e.\ we are interested in the weight schemes that create the largest difference between fair and misbehaving cases.
+The primary aspects of a (mis)behaviour can be detected and assessed by comparing a weighted trust assessment against the deviation from a control result set (``fair'' node behaviour) using the same weight, i.e.\ we are interested in the weight schemes that create the largest difference between fair and misbehaving cases.
 
-For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, an initial weighting vector $H'=[h_i\cdots h_M]$ is formed such that $h_i = 1 \forall i \ne j; h_j=2$. That vector $H'$ is then scaled such that $\sum H = 1$ by $H= \frac{H'}{\sum H'}$.
+For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, an initial weighting vector $H'=[h_i\cdots h_M]$ is formed such that $h_i = 1 \forall i \ne j; h_j=2$. 
+That vector $H'$ is then scaled such that $\sum H = 1$ by $H= \frac{H'}{\sum |H'|}$.
 
 The construction of the $g$ and $b$ vectors from~\autoref{eq:grc} depends on the particular metric, e.g. Throughput ($S$) on a link is assumed to be positively correlated to trustworthiness and so follows the default construction ($g(S) \mapsto \max, b(S) \mapsto \min$), whereas in the case of a metric such as delay, this relationship is inverted, i.e.\ longer delays indicate less trustworthy activity ($g(D) \mapsto \min, b(D) \mapsto \max$).
-This inversion relationship (i.e.\ those with the construction $g(x) \mapsto \min, b(x) \mapsto \max$) is signified by a negative weight.
+This inversion relationship (i.e.\ those with the construction $g(x) \mapsto \min, b(x) \mapsto \max$) is signified by a negative weights in the $H$ vector.
+
+This signed $H$ vector reflects the search space of this analysis; probing the multi-dimensional metric search space for metric combinations the create the largest deviations in Trust assessment under node misbehaviour.
 
 In complex environments, the relationship between metrics trustworthiness correlations is not always as obvious as the throughput / delay examples.
 This phenomenon was mentioned by~\citet{Guo2012}, but was manually configured for each metric for each behaviour and no analytical method for quantitatively establishing such relationships has been presented since.

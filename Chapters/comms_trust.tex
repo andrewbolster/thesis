@@ -17,8 +17,8 @@ Previous research has established the advantages of implementing \glspl{tmf} in 
 To date this work has been limited to terrestrial, RF based networks, which, as discussed in \autoref{ch:maritime_background}, is a much more favourable communications environment compared to the marine environment of \glspl{uan}, where extreme communications challenges are present (propagation delays, frequency dependent attenuation, fast and slow fading, refractive multipath distortion, etc.).
 As a result of these challenges, in underwater environments, communications is both sparse and noisy.
 That is to say that long delays create high susceptibility to contention blocking, requiring relatively low channel occupancy and significant back-offs and significant retransmission penalties in the face of a multitude of noise sources over inconsistent, non-linear, multi path transmissions.
-Therefore the observations about the communications processes that are used to generate the trust metrics, occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
-Beyond the constraints of the communications environment, knock on pressures in battery capacity, on-board processing, and locomotion simultaneously present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance.
+Therefore, observations about the communications processes that are used to generate the trust metrics occur much less frequently, with much greater error (noise) and delay than is experienced in terrestrial RF \glspl{manet}.
+Beyond the constraints of the communications environment, knock on pressures in battery capacity, on-board processing, and locomotion present opportunities and incentives for malicious or selfish actors to appear to cooperate while not reciprocating, in order to conserve power for instance.
 These multiple aspects of potential incentives, trust, and fairness do not directly fall under the scope of single metric trusts discussed previously in \autoref{sec:tmfs}, and this context indicates that a multi-metric approach may be more appropriate.
 
 As such, the use of trust methods developed in the terrestrial \gls{manet} space must be re-appraised for application within the underwater context~\cite{Pavan2015}.
@@ -35,7 +35,7 @@ For the purposes of this work, from those \glspl{tmf} discussed in~\autoref{sec:
 
 \subsection{Mobility, Topology, and Communications}
 
-Four mobility patterns are initially investigated:
+Four mobility scenarios are initially investigated, as per \cite{Guo11}:
 \begin{enumerate}
 	\item All Nodes Static
 	\item Malicious node mobile
@@ -44,7 +44,7 @@ Four mobility patterns are initially investigated:
 \end{enumerate}
 
 For this case, the mobility model used is a random walk on the nodes modelled kinematic response, i.e.\ the node periodically picks a spherically normalised random direction in the XY plane.
-Maximum node speed (limited by kinematic acceleration/turning constraints) is 1.5$ms^{-1}$\cite{Milgram2001}.
+Maximum node speed (limited by kinematic acceleration/turning constraints) is 1.5$ms^{-1}$~\cite{Milgram2001}.
 
 The six nodes are initially arranged as per Fig.~\ref{fig:s1_layout} with each node on average $\SI{100}{\meter}$ from each other as per~\citet{Guo11}.
 The use of six nodes and the particular layout enables the investigation of the three trust relationships based on minimum path topologies, such that the node generating the trust assessments, $n_0$ has Direct, Recommendation, and Indirect trust assessments of $n_1$ available to it from itself, $[n_2,n_3]$, and $[n_4,n_5]$ respectively. 
@@ -86,7 +86,7 @@ Collaborations with NATO \gls{cmre} in La Spezia, and \glspl{dstl} Naval Systems
 
 \subsubsection{Simulation Background}
 
-Simulations were conducted using a Python based simulation framework, SimPy~\cite{Mueller2003SimPy}, with a network stack built upon \gls{auv}NetSim~\cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against existing studies~\cite{Stojanovic2007,Stefanov2011,Sehgal2010}
+Simulations were conducted using a Python based simulation framework, SimPy~\cite{Mueller2003SimPy}, with a network stack built upon \gls{auv}NetSim~\cite{Miquel2008}, with transmission parameters (\autoref{tab:sysconstraints}) taken from and validated against existing studies~\cite{Stojanovic2007,Stefanov2011,Sehgal2010,Anandalatchoumy2015}
 
 Given the differences in delay and propagation between RF and marine networks, it would not be expected that the same application rates (e.g.\ packet emission rates or throughput) and node separations are equally stable in this environment.
 Therefore, a zone of performance is characterised within which the network has stable operation.
@@ -102,13 +102,13 @@ Therefore, a zone of performance is characterised within which the network has s
 			Simulated Duration & \SI{300}{\second} & \SI{18000}{\second}\\
 			Trust Sampling Period & \SI{1}{\second} & \SI{600}{\second} \\
 			Simulated Area & \SI{0.7}{\kilo\meter\squared} & \SIrange{0.7}{4}{\kilo\meter\squared} \\
-			Transmission Range & \SI{0.25}{\kilo\meter} & \SI{1.5}{\kilo\meter} \\
+			Transmission Range  & up to \SI{0.25}{\kilo\meter} & up to \SI{1.5}{\kilo\meter} \\
 			Physical Layer & RF(802.11) & Acoustic\\
 			Propagation Speed&  \SI{3e8}{\meter\per\second} & \SI{1490}{\meter\per\second}\\
 			Center Frequency & \SI{2.6e9}{\hertz} & \SI{2e4}{\hertz} \\
 			Bandwidth& \SI{22e6}{\hertz} & \SI{1e4}{\hertz}\\
-			MAC Type & CSMA/DCF & CSMA/CA\\
-			Routing Protocol & DSDV & FBR \\
+			MAC Type & \gls{csmadcf} & \gls{csmaca}\\
+			Routing Protocol & \gls{dsdv} & \gls{fbr} \\
 			Max Speed & \SI{5}{\meter\per\second} & \SI{1.5}{\meter\per\second} \\
 			Max Data Rate & \SI{5e6}{\bit\per\second} & $\approx\SI{240}{\bit\per\second}$ \\
 			Packet Size & \SI{4096}{\bit} & \SI{9600}{\bit} \\
@@ -127,6 +127,8 @@ Therefore, a zone of performance is characterised within which the network has s
 In this section the simulated communications environment is characterised to establish an optimal packet emission rate for comparison against~\cite{Guo11}.
 This optimal emission rate is taken to be an emission rate that provides reasonable network stability and protection from network saturation.
 Network saturation is the point at which a network can no longer successfully deliver the offered load\footnote{It will become important to note that Offered Load in this case includes packet retransmissions} presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
+
+\todo{Link back to Problem}
 
 Formally, this saturation rate occurs if
 
@@ -333,7 +335,7 @@ The other mobility cases tell a very different story; as can be seen in~\autoref
 Another aspect of these results to highlight is that the Offered Load presented to the network \emph{increases} beyond the collapse of the throughput curve. 
 This indicates that there is a subtly different saturation behaviour with respect to separation than the simple congestion argument with respect to packet emission rate; packets are simply taking too long to cross the increasingly sparse network and in-transit packet routes are logically disconnected and require retransmission.
 
-
+\todo{Change the purple in these graphs to something less blue}
 
 \begin{figure}[h]
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -505,7 +507,7 @@ This indicates that there is a subtly different saturation behaviour with respec
 		\input{Figures/input/separation_packet_stats_bella_single_mobile}
 	\end{center}
 \end{table}
-
+\todo{Change ``Delivery'' to ``Propogation'' in table generation}
 
 \clearpage
 
@@ -525,9 +527,6 @@ V = |S] \times (1 - |D|)
 \end{equation}
 
 For each scenario, the observed Throughput across the network ($S$ in bytes) is normalised across all observations (i.e.\ each combination of Node Separation and Emission Rate), as is average end-to-end Delay ($D$). The normalised delay is inverted ($1-|D|$) and the product of this and the normalised throughput is used as the basis of a two-dimensional linear interpolation shown in \autoref{fig:2d_normed_product}.
-
-
-
 
 \begin{figure}[h]
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -564,7 +563,7 @@ For each scenario, the observed Throughput across the network ($S$ in bytes) is 
 
 An appropriate safe operating zone for marine communications has been established by investigating the impact of variations of the communications rate and physical distribution across the mobility scenarios.
 
-These findings can be summaries as that when the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
+So far in this chapter it as been established that when the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
 For instance, where all nodes are static, significant drops in throughput are not seen until node separation approaches $\SI{800}{\meter}$, nearly double the initial estimate. 
 However, when all nodes are randomly walking the saturation point collapses from $0.025pps$ at $\SI{300}{\meter}$ to $0.015pps$ at $\SI{400}{\meter}$.
@@ -581,7 +580,7 @@ A future extension to this work could be to look at differential ratios of stati
 
 \section{Operation of \glspl{tmf} in \glspl{uan}}
 
-We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$.
+We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$ (See \autoref{fig:s1_layout}).
 
 \citet{Guo11} introduced a range of misbehaviours, including modification of the packet loss rate of routing nodes and limiting throughput on a per-link basis as well as a selection of combined misbehaviours. 
 Given that the established links are already heavily constrained, such attacks would severely impact the general performance of the network beyond the scope of simple selfishness.
@@ -589,7 +588,7 @@ These direct malicious behaviours effectively trigger saturation collapses in op
 
 Therefore, two more subtle misbehaviours to investigate are; 
 \begin{enumerate}
-	\item \acrfull{mpc}, where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.
+	\item \acrfull{mpc}, where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.\todo{Justify 20\%}
 	\item \acrfull{sts}, where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
 \end{enumerate}
 
@@ -609,8 +608,8 @@ We are also concerned with the opinions of $n_1$ provided to $n_0$ by other node
 
 We also include aggregate assessments; $T_{N,1}^\text{Avg}$, the unweighted mean of direct trust assessments of $n_1$ from all nodes and $T_{0,1}^\text{MTFM}$, the final \gls{mtfm} trust assessment value based on both network topology with respect to $n_0$ and whitenization from \autoref{eq:whitenization}.
 
-The variability in assessment is coupled to mobility; in the static case (Fig.~\ref{fig:trust_static}), the nodes exhibit relatively consistent distributions.
-In the full mobility case, shown in Fig.~\ref{fig:trust_all_mobile}, this subjective variability is greatly increased. 
+The variability in assessment is coupled to mobility; in the static case the nodes exhibit relatively consistent distributions (Fig.~\ref{fig:trust_static}) .
+In the full mobility case, this subjective variability is greatly increased(Fig.~\ref{fig:trust_all_mobile}). 
 As the topology is highly dynamic, delays due to re-establishing routes can be very large, perturbing the trust value.
 The $T_{0,1}^\text{MTFM}$ displays a significantly reduced variation than those of the individual subjective observations in all cases, even when compared to the unweighted average, $T_{N,1}^\text{Avg}$.
 This demonstrates $T_{MTFM}$'s value as an aggregating trust assessment in such sparse and noisy environments.
@@ -806,7 +805,7 @@ In comparison to~\cite{Guo11}, these results are qualitatively similar, however 
 \subsection{Weight Significance Analysis for Behaviour Classification}
 
 For a more quantitative assessment of the viability of multi-metric trust assessment methods, taking the qualitative analysis above and apply a Random Forest regression~\cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
-Random Forest accomplishes this by generating a large number of random regression trees and prunes these trees to fit incoming data.
+Random Forest accomplishes this by generating a large number of random regression trees and prunes these trees to fit incoming data.\todo{More background on regression, Random Forest, and why ML is used in this context}
 The target function for this regression was the area between the target behaviours weighted $T_{MTFM}$ curve and the $\pm\sigma$ envelope of the base behaviour as shaded in Figs.~\ref{fig:all_mobile_badmouthing} and~\ref{fig:all_mobile_selfish}.
 From this training process, the relative importance of each input feature (metric) can be inferred in terms of how good it is to differentiate between the fair case and a given misbehaviour.
 Additionally a cross correlation analysis is performed to establish the correlations between given metric weighting emphasis and the output of the target function.

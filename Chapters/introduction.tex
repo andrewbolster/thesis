@@ -70,7 +70,7 @@ This exposes significant portions of the overall systems' threat surface to unob
 \end{figure}
 
 
-\section{Autonomous Systems Approach to Trust and Trust Engineering}
+\section{Autonomous Systems Trust and Trust Engineering}
 
 \subsection{Autonomous \glspl{manet}}
 Autonomy is the capability of an entity to assess its environment and make informed, un-coerced decisions.
@@ -119,7 +119,7 @@ This ``Trust'', that we understand implicitly in the human space, is particularl
 \end{figure}
 
 
-\section{Thesis Layout and Contributions}
+\section{Thesis Layout}
 
 \subsubsection{\fullref{ch:trust_background}}
 In this chapter the current literature and research on the concepts, theory, and applications concerning Trust and Trust Management are explored, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
@@ -174,8 +174,114 @@ Key parts of this chapter are awaiting publication as  \bibentry{Bolster2016a}.
 }
 
 
+\begin{table}\centering
+	
+	\caption{Summary of Thesis Structure and Outcomes}
+	\label{tab:thesis_map}
+	{\renewcommand{\tabcolsep}{1pt}
+		\begin{tabularx}{\textwidth}{p{1.4cm} X X}\toprule
+			Chapter 
+			& ~~~ Focus 
+			& ~~~ Key Outcomes\\ \midrule
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{4.5cm}{\fullref{ch:trust_background}}}\end{minipage}
+			&\begin{minipage}[t]{\linewidth}
+				\begin{tightimize}
+					\item Network/Graph theory and Routing
+					\item Trust Perspectives, Models and Multi-Party Relationships
+					\item Trusted Threats
+					\item Autonomy \& Design constraints of Autonomous Systems
+					\item Current \glspl{tmf}
+				\end{tightimize}
+			\end{minipage} 
+			&\begin{minipage}[t]{\linewidth}
+				\begin{tightimize}
+					\item Definition of Trust
+					\item Levels \& Constraints of Autonomy
+					\item Recognition of Lack Specification \& Validation for Autonomous Systems
+					\item Threats to Trust in \glspl{manet}
+					\item Need for Trust in Autonomous Systems
+				\end{tightimize}
+			\end{minipage}\\\midrule
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{2.9cm}{\fullref{ch:maritime_background}}}\end{minipage}
+			&\begin{minipage}[t]{\linewidth}
+				\begin{tightimize}
+					\item AUV Operations
+					\item Need for Trust in AUV AComms
+					\item Marine Acoustics
+					\item AComms Modelling 
+				\end{tightimize}
+			\end{minipage}
+			& \begin{minipage}[t]{\linewidth}
+				\begin{tightimize} 
+					\item Threat Surface
+					\item Operational / Kinematic constraints and Scenario selection
+					\item Channel Emulation Models
+					\item Selection of characteristic channel constraints
+				\end{tightimize}
+			\end{minipage}\\\midrule
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{4.5cm}{\fullref{ch:comms_trust}}}\end{minipage}
+			& \begin{minipage}[t]{\linewidth}
+				\begin{tightimize} 
+					\item Comparative factors between \gls{uan}/\gls{wlan}
+					\item Relevant Metric Selection re AComms
+					\item Comparison of Single \& Multi Metric \glspl{tmf} in \gls{uan}
+					\item \gls{mtfm} weight variation assessment and regression
+				\end{tightimize}
+			\end{minipage}
+			& \begin{minipage}[t]{\linewidth}
+				\begin{tightimize} 
+					\item Modelled optimal performance range @ $\approx$0.015-0.025pps/100-300m node separations % (\autoref{fig:2d_normed_product})
+					\item \gls{mtfm} outperforms single metric \glspl{tmf} for selected misbehaviours % \autoref{fig:otmf_beta_comparison_boxes}
+					\item \gls{mtfm} vector weighting further improves performance and tolerance % \autoref{fig:all_mobile_badmouthing}
+					\item Long collection times due to sparsity can impact trust assessment relevance
+				\end{tightimize}
+			\end{minipage}\\\midrule
+			
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{3.3cm}{\fullref{ch:physical_trust}}}\end{minipage}
+			& \begin{minipage}[t]{\linewidth}
+				\begin{tightimize} 
+					\item Physical Misbehaviours and Metrics
+					\item ``Failure'' vs ``Selfish'' vs ``Malice''
+					\item \gls{auv} Kinematics
+					\item Metric variability in collaborative collision avoidance (flocking)
+					\item Metric based classifier
+				\end{tightimize}
+			\end{minipage}
+			& \begin{minipage}[t]{\linewidth}
+				\begin{tightimize} 
+					\item First physical misbehaviour detection system in \label{uan}
+					\item Demonstrate that different misbehaviours impact different physical metrics differently % \autoref{fig:metric_values}
+					\item Highly accurate, manually configured, blind behaviour classifier ($\approx$ 0\% FP, $\gtrapprox$ 90 \% TP)
+				\end{tightimize}
+			\end{minipage}\\\midrule
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{4.1cm}{\fullref{ch:multi_domain}}}\end{minipage}
+			& \begin{minipage}[t]{\linewidth}
+				\begin{tightimize} 
+					\item Combination of comms. \& phys. metrics
+					\item Random Forest based metric significance correlation to build $H$ weighting vector for \gls{mtfm}
+					\item Domain specific behaviour effects across domain space
+					\item Relative vector weight measurement across cohort ($\Delta T, \Delta T^-$)
+					\item Generation and Appraisal of alternate/targeted ``domains''
+				\end{tightimize}
+			\end{minipage}
+			& \begin{minipage}[t]{\linewidth}
+				\begin{tightimize} 
+					\item Misbehaviours impact across domains % (not obvious) % \autoref{fig:alternate_domain_diag}
+					\item Inherent redundancy (eg \gls{indd}/$P_{RX}$) allows differential behaviours to be detected % \autoref{fig:positive_heat}
+					\item Application level selfishness (\gls{sts}) very difficult to automatically detect
+					\item Extend \autoref{ch:comms_trust} behaviour based optimisation of \gls{mtfm} to dynamically select most significant metrics
+				\end{tightimize}
+			\end{minipage}\\
+			\bottomrule
+		\end{tabularx}
+	}
+\end{table}
+
+
 \section{Problem Statement}
 \todo{Problem Statement, Rationale and Context}
 \todo{Block Diagram of Chapter / Experiment Relationships}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

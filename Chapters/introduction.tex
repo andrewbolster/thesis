@@ -4,7 +4,9 @@
 \label{ch:introduction}
 \lhead{Chapter \thechapter. \emph{Introduction}}
 
-\section{\acrfullpl{manet}}\label{manets}
+\section{Context}
+
+\subsection{\acrfullpl{manet}}\label{manets}
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of broadcast/receiver (or server/client) communications has given way to an increasing use of decentralised, ad-hoc networks that take advantage of this network dynamism to improve service efficiency.
 
@@ -43,7 +45,7 @@ As a benefit, the decentralized nature of network control in \glspl{manet} provi
 \end{table}
 
 
-\subsection{\glspl{manet} in Harsh Environments}
+\subsubsection{\glspl{manet} in Harsh Environments}
 
 As \glspl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments, ensuring their continued security, reliability, and performance.
 
@@ -70,16 +72,16 @@ This exposes significant portions of the overall systems' threat surface to unob
 \end{figure}
 
 
-\section{Autonomous Systems Trust and Trust Engineering}
+\subsection{Autonomous Systems Trust and Trust Engineering}
 
-\subsection{Autonomous \glspl{manet}}
+\subsubsection{Autonomous \glspl{manet}}
 Autonomy is the capability of an entity to assess its environment and make informed, un-coerced decisions.
 In the \gls{manet} context, this sliding scale of capability ranges from basic automated collision avoidance systems while under direct operator control\footnote{For example Automated Driver Assistance Systems entering the consumer vehicle market through the likes of the Tesla P85 and Ford Kuga~\cite{Sawade2016}}, through to self-regulating mission guidance and execution, with limited human interaction\footnote{No such systems have been actively deployed, but this form of collaborative autonomy is the centre of much commercial and academic research\cite{Rajesh2015,Autefage2015,Teke2015}}.
 This non-deterministic operation presents significant challenges to security and integrity.
 Fundamentally, previously accepted formal verification methodologies for guaranteeing operation are not currently capable of accurately validating the actions and interactions of a fleet or swarm of autonomous nodes in dynamic, noisy environments with imperfect operators~\cite{Teke2015}. 
 As such an overlapping combination of ``Secure'' and ``Trusted'' approaches is required throughout the lifecycle and operation of an Autonomous \gls{manet} capability to maintain the integrity of such collaborative systems.
 
-\subsection{Trust vs Security vs Integrity}
+\subsubsection{Trust vs Security vs Integrity}
 
 Early attempts to secure and protect the integrity of \glspl{manet} have relied on various forms of strong-cryptography to protect information being transferred from tampering or malicious inspection.
 While such approaches protect the integrity of individual pieces of data, the increased computation, and storage requirements of modern, strong, decentralised cryptographic systems presents a clear avenue for \gls{dos} attacks on \glspl{manet}.
@@ -91,20 +93,20 @@ One solution to the trade-off between \gls{dos}-protection, and security is the 
 Using this Trust to make simple routing decisions is significantly simpler and faster than strong-cryptographic methods, particularly in multi-hop networks or resource constrained networks~\cite{Cordasco2008}.
 With Trust being reliant on the runtime awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits and in practice, some elements of both methodologies will be used in different contexts and applications as those applications dictate.
 
-\subsection{Systemic Trust and Trusted Development}
+\subsubsection{Systemic Trust and Trusted Development}
 As will be discussed further in \autoref{sec:trust_perspectives}, the ``Trust'' in a system is critical well before a system is activated; the incubation, specification, design, development, production and testing of a system (particularly a system with some \gls{loa} or other non-deterministic operation) is critical to the Trust that an end user can put into that system, and particularly, how much Trust can be exhibited within and between that systems individual components.
 
-\subsection{Analytical Trust vs. Game Theoretic/Bio-inspired approaches}
+\subsubsection{Analytical Trust vs. Game Theoretic/Bio-inspired approaches}
 \todo{Analytical Trust vs. Game Theoretic/Bio-inspired approaches}
 
-\subsection{Trust Operation Against Capable Attackers}\label{sec:capable_attackers}
+\subsubsection{Trust Operation Against Capable Attackers}\label{sec:capable_attackers}
 
 In any security situation, the hazards and risks of a systemic vulnerability being identified and exploited by an attacker are tightly coupled to the expectation of capability of that attacker.
 Within the context of this work, it is assumed that any attacking agency has the complexity and resources of a nation state.
 
 This is also one of the primary motivators for this particular direction of work; where increasingly complex and subtle evidentiary security measures (passwords, encryption, etc) are applied, with increasing pressures in computation, connectivity, or communication, the assumption that a slightly-higher-technical-investment will protect a system from state-level espionage or infiltration (or the discovery of some technical flaw in the system) is unfounded, with many examples of cryptographic applications being ``disseminated'' through human or technical failings, both internal and external. 
 
-\section{Maritime Autonomy}
+\subsection{Maritime Autonomy}
 
 Given the physical difficulties and requirements of having humans operate underwater (particularly at depth), and the operational limitations of tethered \glspl{rov}, or even untethered remote controlled surface platforms, there has been a great deal of research and commercial interest in the development of autonomous systems, particularly in the defence and petrochemical sectors, where the lives of human operators are most at risk in normal activity~\cite{Pechoucek:2008:DIA:1355335}.
 
@@ -118,25 +120,49 @@ This ``Trust'', that we understand implicitly in the human space, is particularl
 	\caption{An AUV maps the seafloor with sonar \copyright MBARI 2009}
 \end{figure}
 
+\pagebreak
+\section{Problem Statement}\label{sec:problem}
+
+Within the given context, the primary problem investigated in this work is that of establishing and maintaining trust between a team of mobile autonomous agents (\glspl{auv}) which collaborate over a sparse, noisy, and delayful communications channel (\glspl{uan}) in a distributed fashion to accomplish a specified mission goal (port protection / persistent situational awareness) with the expectation of subversion of one agent within the team by a technically capable actor to exhibit a malicious or selfish behaviour against one or more of the remaining, fairly behaving, agents. 
+
+A secondary problem is that of differentiating between malicious or selfish behaviour and behaviours emerging from damage or misconfiguration of agents (false positive identification).
+
+The proposed solution to these problems is the use of distributed trust assessment across multiple domains of observation (i.e. communications and relative movement), using a weighted grey theoretic grading to synthesise trust observations across metrics and domains to provide a total perspective on the threat surface of agents within a network.
+This would constrain the available undetectable misbehaviours of malicious or selfish actors, enforcing ``fair behaviour'' on the network as a whole.
+Such filters would be trained against machine learning modelled vectors of ``important metrics'' for particular metrics, ideally reducing the computational complexity of identification and detection. 
+
+This proposal relies on several chained ``problem statement questions'' that require testing.
+\begin{enumerate}[label=\textbf{PSQ.\arabic*},ref=\emph{PSQ. \arabic*}]
+	\item Given the difference in operation and performance of terrestrial free-space RF vs \gls{uan}, what is an optimal point of data rate and node separation that simultaneously maximises network performance while matching realistic constraints of application? \label{q:rfuan}
+	\item How much of existing RF Communications based Trust Management best practice and theory can be carried over to the harsh marine acoustic environment? Indeed, given the long delays and sparse communications, will existing \glspl{tmf} be able to operate at all? Are there any differences in the threats to trust in this new environment? \label{q:uantmf}
+	\item Do machine learning and optimisation techniques increase the efficacy of metric weight selection in multi-metric \glspl{tmf} on blind simulations?\label{q:ml}
+	\item Can these same or similar approaches to communications Trust be applied to other metric domains, such as the relative position/movement of agents?\label{q:phys}
+	\item Can these domains of Trust assessment be combined efficiently while improving detection performance? \label{q:joint}
+	\item Is this combined assessment method more effective than domain-only detection? Are there particular classes of misbehaviour that are easy/difficult to identify using these methods? \label{q:perf}
+\end{enumerate}
+
+The exploration, experimentation, validation and resolution is best considered visually;
+\todo{Block Diagram of Chapter / Experiment Relationships}
+
 
 \section{Thesis Layout}
 
 \subsubsection{\fullref{ch:trust_background}}
-In this chapter the current literature and research on the concepts, theory, and applications concerning Trust and Trust Management are explored, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
+In this chapter, current literature and research on concepts, theory, and applications concerning Trust and Trust Management are explored, specifically leaning towards the applications of Trust within Autonomous \glspl{manet}.
 
 In~\autoref{sec:trust_defs}, the abstract quantity of ``Trust'' is explored.
 In~\autoref{sec:trust_autonomy}, Autonomy and ``Trusted Operation'' of autonomous systems is investigated from a system architects and a system operators perspective.
 In~\autoref{sec:trust_manets}, current use and applications of Trusted operation of \glspl{manet} is explored, including current \glspl{tmf}.
 
 \subsubsection{\fullref{ch:maritime_background}}
-In \autoref{ch:maritime_background}, the maritime context is investigated, particularly the mechanisms of maritime acoustic communications, as well as the opportunities and challenges of the marine acoustic channel and its modelling (\autoref{sec:marine_comms}).
-Additionally, the application scope of \glspl{auv}, littoral and sub-marine operations are explored to provide context to the problem (\autoref{sec:marine_ops}).
+In \autoref{ch:maritime_background}, the maritime context is investigated to support the analysis and modelling of \ref{q:rfuan}, particularly the mechanisms of maritime acoustic communications, as well as the opportunities and challenges of the marine acoustic channel and its modelling (\autoref{sec:marine_comms}).
+Additionally, the application scope of \glspl{auv}, littoral and sub-marine operations are explored to provide context to the problems \ref{q:rfuan} and \ref{q:uantmf} (\autoref{sec:marine_ops}).
 
 \subsubsection{\fullref{ch:comms_trust}}
-In \autoref{ch:comms_trust}, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment.
+In \autoref{ch:comms_trust}, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment, supporting \ref{q:rfuan}.
 
 The operation of a selection of traditional \gls{manet} \glspl{tmf} is investigated in this environment.
-These challenges are characterised and results are presented that demonstrate a multi-metric approach to Trust can greatly enhance the effectiveness of \glspl{tmf} in these environments.
+These challenges are characterised and results leveraging a machine learning based optimisation method are presented that demonstrate a multi-metric approach to Trust can greatly enhance the effectiveness of \glspl{tmf} in these environments, supporting \ref{q:uantmf} and \ref{q:ml}.
 
 In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in~\citet{Guo11} are reviewed for comparison, which dealt with terrestrial, 802.11 based RF \glspl{manet}.
 In~\autoref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented, comparing with current single metric \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-metric (vector) approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed using \gls{mtfm}.
@@ -176,7 +202,7 @@ Key parts of this chapter are awaiting publication as  \bibentry{Bolster2016a}.
 
 \begin{table}\centering
 	
-	\caption{Summary of Thesis Structure and Outcomes}
+	\caption{Summary of Thesis Structure and Contributions}
 	\label{tab:thesis_map}
 	{\renewcommand{\tabcolsep}{1pt}
 		\begin{tabularx}{\textwidth}{p{1.4cm} X X}\toprule
@@ -278,9 +304,6 @@ Key parts of this chapter are awaiting publication as  \bibentry{Bolster2016a}.
 \end{table}
 
 
-\section{Problem Statement}
-\todo{Problem Statement, Rationale and Context}
-\todo{Block Diagram of Chapter / Experiment Relationships}
 
 
 

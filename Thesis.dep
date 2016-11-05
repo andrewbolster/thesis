@@ -179,6 +179,7 @@
   *{package}{gettitlestring}{2010/12/03 v1.4}
   *{package}{layouts}     {2009/09/02 v2.6d}
   *{package}{wrapfig}     {2003/01/31 v3.6}
+  *{package}{enumitem}    {2011/09/28 v3.5.2}
   *{file}   {puenc.def}   {2012/11/06 v6.83m}
   *{package}{breakurl}    {2013/04/10 v1.40}
   *{package}{dot2texi}    {2008/05/07 v3.0p1}

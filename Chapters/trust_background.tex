@@ -474,6 +474,8 @@ As shown in \autoref{fig:mayer_trust_model}, Mayer primarily focuses on the Trus
 Three primary factors of perceived trustworthiness; based on previous outcomes, are assessed and synthesised along with the Trustor's own interanalised propensity to Trust with respect to the different factors observed, to generate a given trust value. 
 This trust value is incorporated with the risk / reward as assessed by the trustor to conclude what level of risk taking (Trust) can be assumed in the relationship between this trustor and a given trustee.
 
+\todo{discuss mapping between PSQs and mayer model}
+
 \begin{figure}[h]
   \centering
   \begin{tikzpicture}[auto, node distance=1.5cm and 0.5cm, line width=2pt, >=latex']
@@ -928,7 +930,7 @@ Within sparsely connected networks, there are three primary types of relationshi
 \subsection{Trust Establishment Strategies and their impact on Trust Frameworks}\label{sec:trust_establishment}
 
 In the majority of cases, the establishment of trust is a purely observational effort, as opposed to providing a pre-initialised ``secure state''~\cite{Liu2006, Li2007, Theodorakopoulos2004}.
-The network is initialised, routes are dynamically generated and propogated depending on the routing strategy defined, and as information about the performance of nodes is recorded, Trust is established. 
+The network is initialised, routes are dynamically generated and propagated depending on the routing strategy defined, and as information about the performance of nodes is recorded, Trust is established. 
 This method of ``blind trust establishment'' may initially reduce efficiencies in the early phases of operation, but this is quickly overcome with the establishment of a short ``introduction'' period, where the network is not tasked to perform any tasks where thorough Trust is necessary.
 
 In the course of normal operations, there are two additional ``trust establishment'' cases that must be understood in the development of trust frameworks; newcomer integration and depart-return reintegration. 
@@ -960,7 +962,7 @@ It is to be noted that the Sybil and Newcomer attacks do not exclusively rely on
 All of these attacks can be abstracted as ``non-isotropic attacks'' i.e.\ attacks that attempt to hide malicious / selfish behaviour behind the expected statistical variation in observations within a cohort.
 In each case, a different dimension of this assumed statistical normality is exploited; in On-Off, the attacker attempts to ``hide'' in the time dimension by only occasionally misbehaving, in the Badmouth attack the attacker is relying on it's false recommendation being equitably received as its targets true actions. 
 In the Conflicting behaviour attack, the attacker effectively ``badmouths'' a subset of nodes, hiding itself amid the ``false'' reports coming from the conflicting subsets of nodes. 
-Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted(See \autoref{sec:trust_establishment})
+Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed naivety of the collective by presenting itself as a ``new'', and therefore, zero-history entity that can initially neither be trusted nor untrusted (See \autoref{sec:trust_establishment})
 
 \pagebreak
 \section{Trusted Development and Operation of Autonomous Systems}\label{sec:trust_autonomy}
@@ -1083,7 +1085,7 @@ For the purposes of this work, two perspectives on trust for autonomous systems 
 
 It is already clear that these definitions are extremely close in their construction, but represent fundamentally different approaches to trust, one coming from a sociological perspective of person-to-person and person-to-group relationships from day to day life, and the other coming from a statistical or formal appraisal of an operation by a system during design, development, procurement, and deployment.
 
-While the focus of this work is on the operational trust between teams of autonomous systems, there are two disjointed areas that are relevant to review for context.
+While the focus of this work is on the operational trust between teams of autonomous systems (\autoref{sec:problem}), there are two disjointed areas that are relevant to review for context.
 Firstly, it is valuable to briefly discuss the impact and effect of the actions and reactions of human operators in the context of autonomous operational trust; these human factors can have significant impact on the design constraints, operation, and indeed the ease-of-adoption of autonomous systems in the future. 
 Secondly, It is important to understand the wider Design Trust context to understand potential limitations or constraints on future development of such systems across their developmental and operational life-cycle.
 
@@ -1356,7 +1358,7 @@ The Hermes trust establishment framework~\cite{Zouridaki2005} uses Bayesian reas
 Where $p(B)$ is the prior probability density function for the expected normal behaviour, and $\rho$ is a normalising factor.
 %\todo{Q:This $\rho$ bugs me; it should really be $p(O)$ based on Bayes Theorem}
 
-Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function \autoref{eq:beta}, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \autoref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful interactions respectively for a particular node $i$, i.e. .
+Due to it's flexibility and simplicity, Hermes assumes that $p(B)$ is a Beta function \autoref{eq:beta}, and therefore the evaluation of this trust assessment is based around the expectation value of the distribution \autoref{eq:otmf_t}  where $\alpha$ and $\beta$ represent the number of successful and unsuccessful observed actions respectively for a particular node $i$, i.e. forwarded packets.
 
 \begin{align}
   \label{eq:beta}

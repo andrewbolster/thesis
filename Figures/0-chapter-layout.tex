@@ -1,0 +1,82 @@
+% vim:ft=tex:
+%
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shadows}
+\usepackage{amsmath,bm,times}
+%%%<
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\usepackage{ifthen}
+
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+
+\pgfdeclareshape{roundedNode}{
+  \inheritsavedanchors[from=rectangle] % this is nearly a rectangle
+  \inheritanchorborder[from=rectangle]
+  \inheritanchor[from=rectangle]{center}
+  \inheritanchor[from=rectangle]{north}
+  \inheritanchor[from=rectangle]{south}
+  \inheritanchor[from=rectangle]{west}
+  \inheritanchor[from=rectangle]{east}
+  \backgroundpath{% this is new
+    % store lower right in xa/ya and upper right in xb/yb
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    % construct main path
+    \pgfsetcornersarced{\pgfpoint{5pt}{5pt}}
+    \pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@ya}}
+    \pgfpathlineto{\pgfpoint{\pgf@xa}{\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yb}}
+    \pgfsetcornersarced{\pgfpoint{5pt}{5pt}}
+    \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@ya}}
+    \pgfpathclose
+  }
+}
+\title{
+	0-chapter-layout
+}
+\author{
+	bolster --- \texttt{bolster@milo}
+}
+
+\begin{document}
+\maketitle
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\begin{tikzpicture}
+
+% VARIABLES
+\pgfmathsetmacro{\mywidth}{24}
+\pgfmathsetmacro{\mycols}{6}
+\pgfmathsetmacro{\myrows}{6}
+
+
+\pgfmathsetmacro{\mycolwidth}{\mywidth / \mycols}
+\pgfmathsetmacro{\myheader}{\mywidth / 10 / 3}
+\pgfmathsetmacro{\myphi}{0.62}
+\pgfmathsetmacro{\myheight}{\myphi*\mywidth}
+\pgfmathsetmacro{\mytopbar}{\myheight - \myheader}
+\pgfmathsetmacro{\myrowheight}{\mytopbar / \myrows}
+
+\draw[gray,gray,very thin] (0,0) rectangle (\mywidth, \myheight);
+\draw[gray,gray,very thin] (0, \mytopbar) -- (\mywidth, \mytopbar);
+
+\foreach \i in {1,...,\mycols}
+{
+  \draw (\mycolwidth*\i, 0) -- (\mycolwidth*\i, \myheight);
+  \node[minimum width=\mycolwidth] at (\mycolwidth * \i - \mycolwidth/2, \myheight - \myheader/2) { \ifthenelse{\i > 1}{Chapter \i }{PSQ}};
+} 
+\foreach \i in {1,...,\myrows}
+{
+  \draw [densely dotted] (0, \mytopbar - \myrowheight * \i) -- (\mywidth, \mytopbar - \myrowheight * \i);
+  \node[minimum width=\mycolwidth] at (\mycolwidth/2, \mytopbar + \myrowheight/2 - \myrowheight * \i) { \i };
+
+}
+\end{tikzpicture}
+
+\end{document}

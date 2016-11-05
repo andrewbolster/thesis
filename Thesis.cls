@@ -185,6 +185,8 @@
 \usepackage{layouts}
 \usepackage{wrapfig}
 
+\usepackage{enumitem}
+
 
 \newcommand*{\supervisor}[1]{\def\supname{#1}}
 \newcommand*{\examiner}[1]{\def\examname{#1}}

@@ -25,31 +25,29 @@ Therefore, based on a fuzzy incomplete knowledge of the position and velocities 
 \end{enumerate}
 Using these metrics, appropriate behaviour within a dynamic fleet can be assessed dynamically and in a decentralised fashion.
 %\todo{ADD MAYBE: Do more physical metrics (Theres lots more in bounous.Analyses.Metrics), this might be better chucked in the appendix }
-
-These physical metrics are used to encompass the relative distributions and activities of nodes within the network. 
-As such, these metrics completely encapsulate and abstract the physical behaviour of any node, potentially performing any misbehaviour.
-Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable set of metrics to establish the usefulness of physical metrics of trust assessment.
-
-Additional metric constructions may be more suitable for certain contexts, platforms or operations, however these were selected in collaboration with UK DSTL and NATO CMRE as suitable, generic, assessments, viable on most current platforms in most current deployment schemes\footnote{An additionally prototyped metric was Reported Position Deviation which used a per-node Enhanced Kalman filter based ``god view'' estimator that constructed positional models based on highly accurate timing and time-of-flight modelling for non-linear channel paths to predict the movements of squad members and report discrepancies against their periodic positional updates (assumed to be part of a normal broadcast protocol), however this investigation is outside the scope of this current work}.
-
 \begin{align}
-  INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
-  INHD_{i,j} &= \hat{v} \vert v= V_j - \sum_x{\frac{V_x}{N}}\\
-  V_{i,j} &= |V_j|
+INDD_{i,j} &= \frac{|P_j - \sum_x \frac{P_x}{N}|}{\frac{1}{N}\sum_x \sum_y{|P_x - P_y| (\forall x \neq y)}}\\
+INHD_{i,j} &= \hat{v} \vert v= V_j - \sum_x{\frac{V_x}{N}}\\
+V_{i,j} &= |V_j|
 \end{align}
 
 Where $i$ and $j$ are indices denoting the current observer node and the current observed node respectively; $x$ is a summation index representing other nodes in the observers region of concern; $P_{j}$ is the $[x,y,z]$ absolute position of the observed node (relative to some coordinated origin point agreed upon at launch) and $V_{j}$ is the $[x,y,z]$ velocity of the observed node.
 
-\todo{Walk through each metric and discuss}
 
 Thus, the metric vector used for the physical-trust assessment from one observer node to a given target node is;
 
 \begin{equation}
-  X_{i,j}=\{\text{INDD}_{i,j}, \text{INHD}_{i,j},, V_{i,j}\}
-  \label{eq:phys_vector}
+X_{i,j}=\{\text{INDD}_{i,j}, \text{INHD}_{i,j},, V_{i,j}\}
+\label{eq:phys_vector}
 \end{equation}
 At each time-step, each node will have a separate $X$ assessment vector for each node it has observed in that time. 
 Ergo the fleet or team as a whole will have $N\times N-1$ assessment vectors at each timestep.
+
+These physical metrics are used to encompass the relative distributions and activities of nodes within the network. 
+As such, these metrics completely encapsulate and abstract the physical behaviour of any node.
+Additional metric constructions may be more suitable for certain contexts, platforms or operations, however these were selected in collaboration with UK DSTL and NATO CMRE as suitable, generic, assessments, viable on most current platforms in most current deployment schemes\footnote{An additionally prototyped metric was Reported Position Deviation which used a per-node Enhanced Kalman filter based ``god view'' estimator that constructed positional models based on highly accurate timing and time-of-flight modelling for non-linear channel paths to predict the movements of squad members and report discrepancies against their periodic positional updates (assumed to be part of a normal broadcast protocol), however this investigation is outside the scope of this current work}.
+Given that local nodes within the team are aware of the reported positions and velocities of their neighbours, it is believed that this is a reasonable set of metrics to establish the usefulness of physical metrics of trust assessment and validate \autoref{q:phys}.
+
 
 \subsection{Physical Misbehaviours}
 

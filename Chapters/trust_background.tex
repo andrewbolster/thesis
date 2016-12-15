@@ -413,16 +413,14 @@ This is further augmented with an adaptive open-loop power control system which 
 \end{table}
 
 
-\subsection{Routing Selection within Problem Context }
-\todo{Routing Selection within Problem Context}
-\begin{comment}
-Initial comment suggested taking from the above table and somehow ``scoring'' each cell against the problem statement. IMO this would make no sense and we're
-effectively scoring the problem statement against the routing applicability which is massively subjective.
-\end{comment}
-
 
 \subsection{Summary}
-\todo{Summary of Routing}
+Within the context of this work as discussed in \autoref{sec:problem}, \gls{fbr} is an ideal candidate routing scheme to carry forward throughout this work.
+It's compromise between location accuracy, timeliness of location updates, and capability for multiple backup routes without having to disseminate or collaborate on routing tables, zones, or trees match well with the contented, delayful and noisy \gls{uan} environment.
+Additionally, it's emphasis on energy conservation suite well to already discussed limitations of the current generation of \glspl{auv}, as will be discussed in \autoref{sec:auv_examples}.
+Finally, while early work on \gls{manet} \gls{uan} was built on protocols such as \gls{dsdv}, \gls{aodv} and \gls{dsr}, much current research and testing has demonstrated the usefulness and efficiency of \gls{fbr} in the marine environment~\cite{Miquel2008,Noh2012,Jornet2008}, representing a strong body of work that can be validated against in simulation development.
+
+As such, \gls{fbr} is selected as the routing protocol used in the remainder of this work.
 
 
 \section{Trust Definitions, Perspectives, and Relationships}\label{sec:trust_defs}
@@ -471,10 +469,10 @@ This formulation of trust allowed a wider discussion of the characteristics of t
 \end{table}
 
 As shown in \autoref{fig:mayer_trust_model}, Mayer primarily focuses on the Trustor's perspective and processes with respect to a give trust-based relationship.
-Three primary factors of perceived trustworthiness; based on previous outcomes, are assessed and synthesised along with the Trustor's own interanalised propensity to Trust with respect to the different factors observed, to generate a given trust value. 
+Three primary factors of perceived trustworthiness (Ability, Benevolence and Integrity); based on previous outcomes, are assessed and synthesised along with the Trustor's own internalised propensity to Trust with respect to the different factors observed, to generate a given trust value. 
 This trust value is incorporated with the risk / reward as assessed by the trustor to conclude what level of risk taking (Trust) can be assumed in the relationship between this trustor and a given trustee.
 
-\todo{discuss mapping between PSQs and mayer model}
+Within the context of this work (\autoref{sec:problem}), based on the Outcomes of a given trustor/trustee relationship, the trustor is endeavouring to assess if the Benevolence, Ability or Integrity of a trustee is compromised, however as these cannot be directly observed, the trustor must attempt to use particular outcomes over time to estimate what, if any, factors are compromised.
 
 \begin{figure}[h]
   \centering
@@ -485,28 +483,33 @@ This trust value is incorporated with the risk / reward as assessed by the trust
     %\draw[red,thick,dotted] ($(ability.north west)+(-0.3,0.6)$)  rectangle ($(integrity.south east)+(0.3,-0.6)$);
     \node (percievedFactors) [draw=red, fit= (ability) (benevolence) (integrity), inner sep=0.2cm, dashed, ultra thick, fill opacity=0.2] {};
     \node [yshift=5ex, red, text width=8em, text centered] at (percievedFactors.north) {Factors of Perceived Trustworthiness};
-
+        
     \node [block, right=1.5cm and 1.5cm of percievedFactors] (trust) {Trust};
-
-    \node [block, above=2.5cm of trust, xshift=-6em] (trustorsPropensity) {Trustor's Propensity};
+    
+    \node [block, above=2.5cm of trust, xshift=-2em] (trustorsPropensity) {Trustor's Propensity};
     \node [block, right=of trust] (riskTaking) {Risk Taking in Relationship};
-    \node [block, above=of trust, xshift=5em] (percievedRisk) {Perceived Risk};
+    \node [block, above=2.5cm of trust, xshift=12em] (percievedRisk) {Perceived Risk};
     \node [block, right=of riskTaking] (outcomes) {Outcomes};
+    
+    \node (trustorAssessment) [draw=blue, fit= (trustorsPropensity) (percievedRisk) , inner sep=0.2cm, dashed, ultra thick, fill opacity=0.2] {};
+    \node [yshift=5ex, blue, text width=8em, text centered] at (trustorAssessment.north) {Trustor Assessment};
 
     \draw [->] (ability) --coordinate[near start](mAb)  (trust);
     \draw [->] (benevolence) -- coordinate[midway](mBe) (trust);
     \draw [->] (integrity) -- coordinate[near end](mIn) (trust);
     \draw [->] (trustorsPropensity.south) to[bend right=10] (mAb);
-    \draw [->] (trustorsPropensity.south) to (mBe);
-    \draw [->] (trustorsPropensity.south) to[bend left=5] (mIn);
+    \draw [->] (trustorsPropensity.south) to[bend right=8] (mBe);
+    \draw [->] (trustorsPropensity.south) to[bend right=5] (mIn);
     \draw [->] (trustorsPropensity.south) to[bend left=10] (trust);
     \draw [->] (trust) -- coordinate[midway](mT) (riskTaking);
-    \draw [->] (percievedRisk) -- (mT);
+    \draw [->] (mT) to[bend left=20] (percievedRisk);
     \draw [->] (riskTaking) |- (outcomes);
+    \draw [->] (outcomes.north) |- (percievedRisk.east);
     \draw [->] (outcomes.south) --++ (0cm,-2.5cm) -| (percievedFactors.south);
+    \draw [->] (percievedRisk.west) |- (trustorsPropensity.east);
 
   \end{tikzpicture}
-  \caption[Model of Trust]{Model of Trust (from~\citet{Mayer1995})}
+  \caption[Model of Trust]{Model of Trust, adapted from~\citet{Mayer1995} to clarify the role of the trustor}
   \label{fig:mayer_trust_model}
 \end{figure}
 
@@ -968,7 +971,15 @@ Finally, in Sybil/Newcomer attacks the attacker takes advantage of an assumed na
 \section{Trusted Development and Operation of Autonomous Systems}\label{sec:trust_autonomy}
 
 \subsection{Contextual Need for Autonomy}
-\todo{Link Autonomy to Problem Statement (aka self protection/reliability in harsh environments)}
+Before exploring autonomy, it's origins, constraints, limitations and opportunities, it is valuable to put this investigation into context. 
+Returning to \autoref{sec:problem}, in this work the purpose of autonomy is for a team of \glspl{auv} to perform a given survey task (or other task).
+Due to the heavy communications constraints in \glspl{uan} (as will be discussed in \autoref{sec:marine_comms}), direct, full-loop remote control is not practical as it is simply not currently possible to have real time bidirectional streaming of sensor and control data from one \gls{auv} to one controller, let alone on a multiple-access network.
+This problem is made particularly complex with the impetus to perform dangerous operations such as \gls{mcm} at a distance to preserve human life.
+As such, an element of control and situational awareness must necessarily be delegated onto the \glspl{auv} themselves, with a ``thin'', on-demand, information (rather than ``streaming data'') based control loop.
+
+A significant potential advantage of this move towards on-board control is the localisation of response to adverse events; automated, sonar based collision avoidance can eliminate control-loop delays to manual avoidance manoeuvring, and in a smiilar vein, the ability of nodes to continue operating for a period of time when full-loop control communication is not possible (i.e. local changes in the intermediate water column causing acoustic shadowing, etc.) greatly increased the potential efficiency and reliability of deployed systems.
+
+As the use of \glspl{auv} increases, so will the demands on any control scheme used, and these will only explode as increasing \glspl{auv} are deployed in tandem, as such node autonomy is an essential area of ongoing work and understanding it's applications and limitations is directly relevant to the meaningful establishment of trust between autonomous systems~\cite{Caseley2009}.
 
 \subsection{Autonomy and Levels of Autonomy}
 
@@ -1343,6 +1354,18 @@ Taking some examples; %\todo{TODO:Check for more recent evolutions in Trust/TMFs
   \item \emph{Fuzzy Trust-Based Filtering} presents a method using Fuzzy Inference to cope with imperfect or malicious recommendation based on a probabilistic estimation of performance using conditional similarity to classify performance using overlapping Fuzzy Set Membership functions to collaboratively filter reputations across a network~\cite{Luo2008}.
   \item \emph{\acrfull{mtfm}} uses a number of communications metrics together for form a vector of trust, apply grey information theory to allow a system to detect and identify the tactics being used to undermine or subvert trust~\cite{Guo11}.
 \end{itemize}
+
+
+\subsubsection{Analytical Trust vs. Game Theoretic/Bio-inspired approaches}
+While a quantitative, observation driven and analytical approach to Trust has been used in this work, this is not the only potential approach.
+Two alternative schools of thought are those based on Game Theory~\cite{Jaramillo2010, Mejia2011, Rafsanjani2012, Das2015}, and  those based on emergent behaviour models taken from the world of biology, so called Bio-Inspired approaches~\cite{Marzi2013, DeCastro2012}.
+
+In many cases, both of these approaches arrive at similar styles of implementation and operation in so far as they generally rely on online strategy adaptation and run-time distributed meta-programming optimisations such as \gls{ga}\footnote{The genetic algorithm is a method for solving both constrained and unconstrained optimization problems that is based on natural selection, the process that drives biological evolution. The genetic algorithm repeatedly modifies a population of individual solutions by combining or ``breeding'' solutions that perform well}.
+These approaches have three fundamental drawbacks in the context of optimising for high levels of automation; extremely complex initialisation assumptions (particularly in \gls{ga} where the construction and ``breeding'' of strategies is extremely prone to subjective projection by the implementers~\cite{Goldberg2013}), sensitivity to local minima and saddle points in high-dimensional datasets\footnote{Some theoretical resolutions to this second option have been proposed to the general problem in Deep Learning, but this has thus far not been applied in either the \gls{manet} sphere or the general Trust management domain~\cite{Kawaguchi2016}}, and non-deterministic operation in changing environments / applications.
+
+Given that in the given context (\autoref{sec:problem}), attacks on trust can be expected to be rare in operation, focus should be generating near-static trust assessment strategies that can quickly identify these attacks, rather than continuously optimising against a rare event.
+In addition, a constrained, analytical approach allows the separation of the particular task or level of automation of nodes, and focuses solely on the potential impacts of untrustworthy behaviour, which is particularly important while increasing levels of automation are not totally ``socially trusted'' in many domains yet due to their difficulty in formal validation~\cite{Caseley2009}.
+In effect, adding these highly dynamic Trust approaches atop high levels of autonomy greatly explodes the challenge in validating the autonomy, by coupling two non-deterministic systems together.
 %
 
 \subsection{Selected Single Metric Trust Frameworks}\label{sec:single_trust}

@@ -4,6 +4,14 @@
 \label{ch:comms_trust}
 \lhead{Chapter \thechapter. \emph{\nameref{ch:comms_trust}}}
 
+\section{Introduction}
+
+In this chapter, two primary assumptions are tested; \autoref{q:rfuan} that an efficient zone of performance in terms of data rates and node separations can be found in realistic, multi-node, \gls{manet} in the marine network (as explored in the \autoref{sec:marine_comms}), and following on from that, \autoref{q:uantmf} if \glspl{tmf} can operate at all in \glspl{uan} (\autoref{q:uantmf})
+
+In both cases, this initial work firmly targets the methodology and results from previous work that explored the operation of novel \glspl{tmf} in the 802.11 terrestrial RF communications environment\cite{Guo11}, which once validated against, provides a strong foundation on which to optimise such \glspl{tmf} for the marine environment.
+
+As a final part of this chapter, the use of machine learning for optimising identification and detection filters is explored (\autoref{sec:metric_significance}
+
 \section{\glspl{uan} as \gls{manet} analogue}
 
 
@@ -34,7 +42,7 @@ To validated \ref{q:uantmf}, from those \glspl{tmf} discussed in~\autoref{sec:tm
 
 \subsection{Mobility, Topology, and Communications}
 
-Four mobility scenarios are initially investigated, as per \cite{Guo11}:
+Four mobility scenarios are initially investigated, replicating the mobilities investigated by \citet{Guo11} in the terrestrial RF environment:
 \begin{enumerate}
 	\item All Nodes Static
 	\item Malicious node mobile
@@ -123,16 +131,15 @@ Therefore, a zone of performance is characterised within which the network has s
 
 \subsection{Establishing Scale Factors in Communications Rate}
 
-In this section the simulated communications environment is characterised to establish an optimal packet emission rate for comparison against~\cite{Guo11}.
+The simulated communications environment is characterised to establish an optimal packet emission rate for comparison against~\cite{Guo11} to validate \autoref{q:rfuan}.
 This optimal emission rate is taken to be an emission rate that provides reasonable network stability and protection from network saturation.
 Network saturation is the point at which a network can no longer successfully deliver the offered load\footnote{It will become important to note that Offered Load in this case includes packet retransmissions} presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
 
-\todo{Link back to Problem}
-
-Formally, this saturation rate occurs if
+This saturation rate occurs where the number of users ($N$) emitting packets at a given rate ($\mu$) exceeds the carrying capacity of the medium ($\lambda_s$), as per \autoref{eq:carryfunc}. 
+After which, new transmissions can not be sent, transmission queues grow, and if the emission rate (or number of users) is not greatly reduced, it can be difficult to return the network to an optimial state.
 
 \begin{equation}
-N\lambda_s>\mu_\text{max}
+N\mu>\lambda_s\text{max}\label{eq:carryfunc}
 \end{equation}
 
 %\todo{ADD NEXT: Attempt to Formalise the relationship between separation, offered load, throughput and delay using Bianchi Model~\cite{Manshaei2007}}
@@ -557,6 +564,7 @@ For each scenario, the observed Throughput across the network ($S$ in bytes) is 
 	\label{fig:2d_normed_product}
 \end{figure}
 
+It is worthwhile noting that the above results are largely agnostic to the application zoned or sharded routing protocols (See \autoref{sec:manet_routing}), as the key factor in the above network collapse is not channel constraints on throughput of in-air packet transmission, but local channel acquisition and collision avoidance.
 
 \subsection{Summary}
 
@@ -577,7 +585,7 @@ The results from \autoref{fig:2d_normed_product_bella_single_mobile} and \autore
 The reason for this is that in these single-differential mobility combinations, the node targeted for misbehaviour ($n_1$) will already be behaving differently compared to the rest of the network regardless of the misbehaviour.
 A future extension to this work could be to look at differential ratios of static/mobile nodes in alternative scenarios, such as in data-muling applications or \gls{wsn}.
 
-\section{Operation of \glspl{tmf} in \glspl{uan}}
+\section{Operation of \glspl{tmf} in \glspl{uan}}\label{sec:uantmf}
 
 We are primarily concerned with the direct trust relationship between $n_0$ and $n_1$, i.e. $n_0$'s assessment of the trustworthiness of $n_1$, or $T_{1,0}$ (See \autoref{fig:s1_layout}).
 
@@ -592,7 +600,7 @@ Therefore, two more subtle misbehaviours to investigate are;
 \end{enumerate}
 
 
-\section{Simulation Results and Discussion}\label{sec:trustresultsanddiscussion}
+\subsection{Simulation and Initial Discussion}\label{sec:trustresultsanddiscussion}
 
 Having established a safe operating range for comparison at $\SI{300}{\meter}$ average separation and an emission rate of $0.015pps$, each of the three selected behaviours (Fair, \gls{mpc}, \gls{sts}) are performed in both the static and mobile scenarios. 
 We select a trust assessment period of 10 mins for a five hour mission to scale in comparison to relative bitrates experienced ($1Mbps$ vs $\approx15bps$).
@@ -678,7 +686,7 @@ As per~\citet{Guo11}, ``fair'' scenarios were also performed with no malicious b
 			\label{fig:all_mobile_selfish_beta}
 		\end{subfigure}
 	\end{tabular}
-	\caption{$T_{0,1}$ for Hermes, \gls{otmf} and \gls{mtfm} assessment values for fair and malicious behaviours in the fully mobile scenario}
+	\caption[$T_{0,1}$ for Hermes, \gls{otmf} and \gls{mtfm} assessment]{$T_{0,1}$ for Hermes, \gls{otmf} and \gls{mtfm} assessment values for fair and malicious behaviours in the fully mobile scenario. See \autoref{fig:s1_layout} for initial network topology}
 	\label{fig:otmf_beta_comparison}
 \end{figure*}
 %
@@ -704,12 +712,14 @@ In these cases, particularly since the methods of attack were not directly relat
 The difference between the \gls{mtfm} trust assessments under ``fair'' and ``malicious'' behaviour is lowered by $\approx 10\%$ in both cases, in terms of the mean values returned.
 At run time, similar results could be attained by an \gls{ewma}.
 
-On their own, neither \gls{otmf}, Hermes, or unbiased \gls{mtfm} appear to be effective in detecting or identifying malicious behaviour in this environment, in fact \gls{otmf} and Hermes don't appear to differentiate between fair and selfish scenarios at all.
+With regard to \autoref{q:rfuan}, these results are not initially comforting; on their own, neither \gls{otmf}, Hermes, or unbiased \gls{mtfm} appear to be effective in detecting or identifying malicious behaviour in this environment, in fact \gls{otmf} and Hermes don't appear to differentiate between fair and selfish scenarios at all. 
+However, in the next section, \autoref{q:ml} is validated and will rescue both problem statement questions.
 
 
 
-\subsection{Metric Vector Weighting}\label{sec:metric_weighting}
+\section{Metric Vector Weighting}\label{sec:metric_weighting}
 %
+Building towards the application of machine learning to the metric weighting task, it is worthwhile exploring the approach taken by \cite{Guo11}, in that individual metrics were weighted in turn, increasing the impact of detecting that a given metric is being impacted by a misbehaviour. 
 
 A sequence of vectors that preferentially weight each metric in \autoref{eq:metric_weighting} to each of the three simulation runs.
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, forming an initial weighting vector $H'=[h_i\dots h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$.
@@ -801,10 +811,16 @@ In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) a much lower weighted de
 In comparison to~\cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
 \citet{Guo11} show similar types of behaviour but report a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in $P_{TX}$ in selfish behaviour (Fig.~\ref{fig:all_mobile_selfish_txp}) of $\approx$ 0.3 for an inconsistent interval.
 
-\subsection{Weight Significance Analysis for Behaviour Classification}
+Is it important to highlight that in both these results and those of \citet{Guo11} do not detect or classify based on \emph{behaviour}, but on the \emph{impact on a metric}.
+To suitably resolve both \autoref{q:uantmf} and \autoref{q:ml}, the behaviours must be the focus of analysis, detection and classification.
 
-For a more quantitative assessment of the viability of multi-metric trust assessment methods, taking the qualitative analysis above and apply a Random Forest regression~\cite{Breiman2001} to assess the relative importance of the selected metrics on relative detectability of malicious behaviour. 
-Random Forest accomplishes this by generating a large number of random regression trees and prunes these trees to fit incoming data.\todo{More background on regression, Random Forest, and why ML is used in this context}
+\subsection{Weight Significance Analysis for Behaviour Classification}\label{sec:metric_significance}
+
+For a more quantitative assessment of the viability of multi-metric trust assessment methods, a Random Forest regression~\cite{Breiman2001} is applied to a large training sample set based on the above approach to assess the relative importance of the selected metrics on relative detectability of malicious behaviour.
+
+Random Forest aids in this by generating a large number of random regression trees and prunes these trees to fit incoming data.
+While there are many potential machine learning strategies that could be applied to this problem\footnote{such a Deep Neural Networks, Genetic Algorithms, Support Vector Machines, Singular Value Decomposition, Independent Component Analysis and Generative Adversarial Networks to name but a few}, Random Forests' key strength within this context is that the concept of variable importance naturally emerges from the iterative and randomised construction and assessment of the internal decision trees, rather than a secondary analysis as could be the case in several other learning methods\cite{Altmann2010, Ho2002}. Additional, and also due to their iterative structure, unbiased training data (i.e. perfectly classified) is not necessarily required, allowing for it's importance assessments to be flexible to local minima or saddles. Finally, the ``depth'' of decision trees can be constrained, making it particularly capable at digesting highly dimensional data without suffering a combinatorial explosion (once data has been generated for it to train against)
+
 The target function for this regression was the area between the target behaviours weighted $T_{MTFM}$ curve and the $\pm\sigma$ envelope of the base behaviour as shaded in Figs.~\ref{fig:all_mobile_badmouthing} and~\ref{fig:all_mobile_selfish}.
 From this training process, the relative importance of each input feature (metric) can be inferred in terms of how good it is to differentiate between the fair case and a given misbehaviour.
 Additionally a cross correlation analysis is performed to establish the correlations between given metric weighting emphasis and the output of the target function.
@@ -845,7 +861,11 @@ As such this presents the open opportunity to develop a heuristic weight search 
 This would be accomplished by assessing the impact of differential metric weighting on the mean trust assessment rather than comparing co-weighted valuations across scenarios.
 
 \section{Conclusion}
-It has been demonstrated that existing \gls{manet} Trust Management Frameworks are not directly suitable to the sparse, noisy, and dynamic underwater medium.
+It has been demonstrated that single metric \gls{manet} Trust Management Frameworks are not suitable to the sparse, noisy, and dynamic underwater medium, and that even in conventional analysis of multi-metric \glspl{tmf}, performance is still very low.
+However, through exploring the metric space of \gls{mtfm}, there are significant indications that trained weight vectors can be used to establish dynamic filters and classifiers, greatly improving the performance of \gls{mtfm} against known / observed misbehaviours, and these vectors can be carried across different deployments. 
+
+These findings validate the assumptions of \autoref{q:ml}, and thus \autoref{q:uantmf}.
+ 
 By comparing the operation and performance of trust establishment in \glspl{manet} in a simulated underwater environment has demonstrated that in order to have any reasonable expectation of performance, that throughput and delay responses must be characterised before implementing trust. 
 It is shown that across the tested \glspl{tmf}, Hermes and \gls{otmf} demonstrate a small discriminating factor between normal behaviour and one of the misbehaviours, this discrimination is not very clear and \gls{otmf} does not detect the \gls{sts} behaviour at all, while \gls{mtfm} shows a significant ($\approx 10\%$) mean assessment drop the both misbehaving cases. 
 In terms of behaviour discrimination, the \gls{mtfm} value only displays a small immediate difference between the two misbehaviours, however it has been shown that by exploring the metric space by weight variation, the existence and nature of the malicious behaviour can be discovered.

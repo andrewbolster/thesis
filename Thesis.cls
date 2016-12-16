@@ -510,4 +510,6 @@
 % factor=1100 - add 10% to the protrusion amount (default is 1000)
 % stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
 %%
+% http://tex.stackexchange.com/questions/75449/specifying-the-width-and-height-of-a-tikzpicture/320521#320521
+\usepackage{tikzscale}
 %% End of file `Thesis.cls'.

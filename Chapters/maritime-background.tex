@@ -8,7 +8,8 @@
 The use and applications of \glspl{auv} has undergone a great expansion in recent years~\cite{Alam2014}.
 The primary application for \glspl{auv} has long been identified as the environmental monitoring of marine areas, and are actively being researched by a great range of industrial and defence sector applications, with secondary applications in the physical sciences and environmental research, which are summarised below~\cite{Bingham2002,Wynn2014}.
 
-\subsection{\gls{auv} operations and deployments}
+
+\subsection{\gls{auv} operations and deployments}\label{sec:auv_ops}
 
 \subsubsection{Hydrographic Survey}
 
@@ -18,7 +19,7 @@ This is particularly important when comparing to classical tow-line based measur
 
 Another significant factor is cost; the daily cost of operating a manned vessel can be considerably higher than the costs of deploying, operating and recovering one or more \glspl{auv} with equivalent capabilities~\cite{Nicholson2008}.
 Additionally, the use of low-power ``glider'' \glspl{auv} has lowered the barrier to entry for extended mission types, such as persistent environmental survey, or open-ocean operations. 
-Depth-hardened \glspl{auv} have also opened up the deepest parts of the oceans to exploration, with onboard autonomy, imagery and \gls{slam} techniques allowing deep-dwelling survey \glspl{auv} to react to bottom-surface features without the need for a tight craft-to-surface control loop.
+Depth-hardened \glspl{auv} have also opened up the deepest parts of the oceans to exploration, with on-board autonomy, imagery and \gls{slam} techniques allowing deep-dwelling survey \glspl{auv} to react to bottom-surface features without the need for a tight craft-to-surface control loop.
 The natural extension of these kind of applications is the use of \glspl{auv} on ice-covered planets such as Europa, where three-dimensional, autonomous navigation without an on-the-loop controller is vital for mission resource efficiency and success.
 
 \subsubsection{Hull and Infrastructure Inspection}
@@ -31,14 +32,14 @@ Oil and Gas industry requirements for high quality, low altitude bathymetry of s
 As in Hydrography, the mobility of \glspl{auv} is the biggest single advantage over classical platforms~\cite{Morr2003}.
 Additionally, recent advances in \gls{sas} have provided invaluable sub-surface profile data over much wider areas for multi-spectral mineralogical analysis than previous sonar profilers~\cite{Denny2015}.
 
-\subsubsection{Military}
+\subsubsection{Military}\label{sec:military}
 \gls{mcm} Operations benefit greatly from, and significantly drive, \gls{auv} development; the ability to rapidly explore and covertly survey a potentially dangerous area without risking a human operator is a major benefit both in Dedicated \gls{mcm} (e.g. Large Area Hunting/ \gls{eod} Clearance) and in Organic \gls{mcm} for Expeditionary Forces as well as general applications in  \gls{asw}, \gls{rea}, Navigational Aid and Force projection,
 This benefit applies to protection as well as incursion; the ability to rapidly deploy persistent survey of a valuable area such as a forward-operating harbour is increasingly essential, and as \gls{auv} technology, autonomy and security practices develop, this use is increasing.
 This Port Protection capability is particularly complex;  teams of \glspl{auv} are expected to repeatedly survey an area and remain densely-connected enough to maintain end-to-end communications with all other nodes, in the face of an environment that is possibly not well surveyed initially, and includes dynamically moving obstacles (i.e.\ ships).
 As discussed in \autoref{sec:problem}, this Port Protection scenario is used as a baseline for our simulation context.
 
 
-\subsection{Localisation Technologies}
+\subsection{Localisation Technologies}\label{sec:localisation-technologies}
 
 Given the subsurface nature of most \gls{auv} operations, terrestrial localisation techniques such as \gls{gps} are unavailable (below $\approx 20cm$ depth). 
 However, a range of alternative techniques are used to maintain spacial awareness to a high degree of accuracy in the underwater environment.
@@ -69,7 +70,7 @@ In summary, current technology reliably enables \glspl{auv} to localise to a sub
 
 The REMUS range of \gls{auv} platforms have been very popular in research and \gls{uan} application prototypes due to their relatively small size and high level of reconfigurability.
 The basic configurations of the REMUS 100 configuration consist of a single pressure vessel, $\SI{0.2}{\meter}$ in diameter and $\SI{1.6}{\meter}$ long, weighting in at $37kg$, rated to operational depths of $\SI{150}{\meter}$. 
-This package includes \gls{dvl}, \gls{ctd}, Underwater Videography, \gls{lbl} and onboard computing power suitable for low \gls{loa} independence, with onboard Li-on battery packs rated to provide up to 10-hours of cruising operational endurance.
+This package includes \gls{dvl}, \gls{ctd}, Underwater Videography, \gls{lbl} and on-board computing power suitable for low \gls{loa} independence, with on-board Li-on battery packs rated to provide up to 10-hours of cruising operational endurance.
 These capabilities can be extended through the addition of further modular extensions through the REMUS range, such as the REMUS 600, rated for up to $\SI{600}{\meter}$ depth and a cruising endurance of 45 hours, or the REMUS 6000, rated for up to $\SI{6}{\kilo\meter}$ depth with 22 hours duration.
 
 The HUGIN 1000 is a high-resolution extension to the REMUS range, characterised by it's default payload of a High Definition \gls{sas}, co-designed with the Norwegian Defence Research Establishment (FFI) for \gls{mcm} operations, with a dynamic depth rating up to $\SI{3}{\kilo\meter}$ and 24 hour cruising endurance (17 hours with continuous \gls{sas} engagement)
@@ -116,7 +117,7 @@ Given the breadth of the threat space in \glspl{manet}, many strategies for miti
 In this context of this table, Vulnerability is an assessment of how available a particular threat is to a generic attacker, Impact is an assessment of the in-system affects of a successful attack, and Risk is a qualitative assessment of the likelihood of exploitation of an attack.
 \citet{Kidston2010} originally lowered the assessment of vulnerability of Eavesdropping to ``Low'', citing the tactical use of non-standard \gls{mac} as a barrier to attack, however considering the increasing commoditisation of tactical hardware across the world, and increasing application of \gls{cots} hardware, this is no longer a fair assessment.
 Similarly, the assessment that the Risk of Data Corruption is low is arguable on the basis of simplistic spread spectrum jamming but this assessment is unchanged.
-%Finally,~\citet{Kidston2010} did not take into account the presence of weapons or other actuation methods with \glspl{auv} as the endpoint.
+Finally,~\citet{Kidston2010} did not take into account the presence of weapons, \gls{eod} devices or other actuation methods with \glspl{auv} as the endpoint.
 
 \begin{table}
 	\caption[Risks and Threat Mitigation Strategies for MANETs]{Risks and Threat Mitigation Strategies for \glspl{manet}, extended from~\citet{Kidston2010}}
@@ -195,6 +196,26 @@ Air has a baseline density of approximately $\SI{1.3}{\kilogram\per\meter\cubed}
 In sea water, acoustic wave velocity is close to $c=\SI{1500}{\meter\per\second}$ (generally between $\SIrange{1450}{1550}{\meter\per\second}$ depending on temperature, pressure, salinity etc.).
 Similarly variable is sea water density, which is nominally $\rho = \SI{1027}{\kilogram\per\meter\cubed}$~\cite{Wang2010}.
 
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.8\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{temp_globe}
+		\caption{Surface Temperature}
+		\label{fig:temp_globe}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.8\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{sal_globe}
+		\caption{Surface Salinity}
+		\label{fig:sal_globe}
+	\end{subfigure}
+	\caption{Global Variations in selected Speed of Sound variance factors}
+	\label{fig:globes}
+\end{figure}
+
+
+
 While the sea/air surface is (ideally) a simple refractive interface, the interface between open seawater and marine sediment is graduated, with density ranging between $\SIrange{1200}{2000}{\kilogram\per\meter\cubed}$. 
 This results in refractive and reflective velocities in the sediment interface ranging from $\SIrange{1500}{2000}{\meter\per\second}$~\cite{lurton2010}.
 Additionally, depending on the relative buoyancy of different components of sediment in the water column, particularly fauna and biological/industrial sewage, there can be stratified sedimentary layers beyond the surface of the seabed, particularly in littoral and coastal shallow waters, that further complicate the characterisation of the density, and thus speed of sound, over the water column.
@@ -225,24 +246,6 @@ For comparison, the speed of light in air/water is $\SI{2.99e8}{\meter\per\secon
 
 Where $T$ is the temperature in Celsius, $S$ the salinity in parts per thousand, and $D$ is the depth below the surface in meters.
 
-\begin{figure}
-	\centering
-	\begin{subfigure}[t]{0.8\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{temp_globe}
-		\caption{Surface Temperature}
-		\label{fig:temp_globe}
-	\end{subfigure}
-	\begin{subfigure}[t]{0.8\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{sal_globe}
-		\caption{Surface Salinity}
-		\label{fig:sal_globe}
-	\end{subfigure}
-	\caption{Global Variations in selected Speed of Sound variance factors}
-	\label{fig:globes}
-\end{figure}
-
 These are ``ideal'' assessments, and the parameters of this model are massively varied both across individual water columns, and indeed across bodies of water, across the world. 
 \gls{noaa} regularly publish their \gls{woa}~\cite{Locarnini2013,Zweng2013} that includes these variables and many more, sampled across the world and at a range of depths. 
 Outputs from these surveys are shown for example in \autoref{fig:globes}. 
@@ -251,15 +254,6 @@ Global surface salinity appears almost uniform in comparison (\autoref{fig:sal_g
 However, a few global variants stand out, both due to the extremity of their transition in relatively small areas, and the general research / defence context of those areas. 
 For example the differential between the geographically proximate and politically contentious Black, Caspian, and Mediterranean Seas, as well as the Persian Gulf exhibit variations from less than $6ppt$ to over $40ppt$.
 Similarly, there is a navigable waterway providing access between the Baltic and North seas that across the $\SI{300}{\kilo\meter}$ long run from Malm{\"o} in Sweden to Skagen in Denmark, transitions from less than $5ppt$ to just under $30ppt$. 
-
-Below the surface, the variability increases; \autoref{fig:temp_sal_profile} shows an example of a depth profile of these variations and the modelled impact on the speed of sound with respect to depth in three different regions. 
-The variability of this speed is crucial to the operation of an underwater acoustic network, as it fundamentally changes the propagation paths of compressive energy transfer, and in particular, the fastest ``path''. 
-\autoref{fig:ssps} shows the impact on this fastest received path and it's true path between two nodes in shallow, littoral, waters.
-Even with relatively small variations in sound speed, and with the introduction of sea floor/surface interfaces, the ``fastest'' path deviates significantly from a true ``line of sight'' path where there is any variability in speed of sound profile, making delay-based positioning extremely difficult, and presents significant opportunities for out-of-sync multi-path effects\footnote{\autoref{fig:ssps} shows a staged, iterative approximation method to arrive at the shortest path, where the ``colour intensity'' of the chart shows the stage at which that path was explored, so the ``final'' paths are darkest, and the ``exploitative'' paths are lightest, however in reality these secondary paths are still emitted and arrive, delayed, to the receiver, causing significant inter-symbol interference unless equalised.}.
-
-Recent work by \citet{Schmidt2016} further complicated the ocean-acoustic-comms field by showing that despite being one of the most studies areas of the world's oceans, the actual acoustic properties of the Beaufort Shelf have fundamentally changed in the past 20 years.
-A thermally covalent subsurface acoustic channel has appeared that confounds modelling explanation but can provide a direct reliable acoustic path without surface/bed interfacing at a range of up to $\SI{\pm8}{\kilo\meter}$ away, or a near continuous (but noisy, due to surface ice interactions) to a range of $\SI{\pm80}{\kilo\meter}$.
-
 
 
 \begin{figure}
@@ -298,9 +292,16 @@ A thermally covalent subsurface acoustic channel has appeared that confounds mod
 	\caption{Bellhop Model of Non-Linear Marine Shortest-Path Propagation in various Speed of Sound Profiles}
 	\label{fig:ssps}
 \end{figure}
-\todo{Explain Fig:ssps}
 
-\subsection{Intensity and Power} 
+Below the surface, the variability increases; \autoref{fig:temp_sal_profile} shows an example of a depth profile of these variations and the modelled impact on the speed of sound with respect to depth in three different regions. 
+The variability of this speed is crucial to the operation of an underwater acoustic network, as it fundamentally changes the propagation paths of compressive energy transfer, and in particular, the fastest ``path''. 
+\autoref{fig:ssps} shows the impact on this fastest received path and it's true path between two nodes in shallow, littoral, waters.
+Even with relatively small variations in sound speed, and with the introduction of sea floor/surface interfaces, the ``fastest'' path deviates significantly from a true ``line of sight'' path where there is any variability in speed of sound profile, making delay-based positioning extremely difficult, and presents significant opportunities for out-of-sync multi-path effects\footnote{\autoref{fig:ssps} shows a staged, iterative approximation method to arrive at the shortest path, where the ``colour intensity'' of the chart shows the stage at which that path was explored, so the ``final'' paths are darkest, and the ``exploitative'' paths are lightest, however in reality these secondary paths are still emitted and arrive, delayed, to the receiver, causing significant inter-symbol interference unless equalised.}.
+
+Recent work by \citet{Schmidt2016} further complicated the ocean acoustic communications field by showing that despite being one of the most studies areas of the world's oceans, the actual acoustic properties of the Beaufort Shelf have fundamentally changed in the past 20 years.
+A thermally covalent subsurface acoustic channel has appeared that confounds modelling explanation but can provide a direct reliable acoustic path without surface/bed interfacing at a range of up to $\SI{\pm8}{\kilo\meter}$ away, or a near continuous (but noisy, due to surface ice interactions) to a range of $\SI{\pm80}{\kilo\meter}$.
+
+\subsection{Intensity and Power}\label{sec:intensity-and-power}
 
 The energy of an acoustic wave is encapsulated into its kinetic and potential parts; where its kinetic energy corresponds to the active motion energy of the particles in the medium, and the potential energy corresponding to the elastic potential of the medium in displacement/compression.
 
@@ -311,7 +312,7 @@ The acoustic intensity ($I$) is the energy flux mean value per unit of surface a
   \label{eq:acoustic_intensity}
 \end{equation}
 
-\subsection{Attenuation}
+\subsection{Attenuation}\label{sec:attenuation}
 
 The attenuation that occurs in an underwater acoustic channel over a distance $d$ for a signal about frequency $f$ in linear \autoref{eq:acoattenuation} and $dB$ forms \autoref{eq:acoattenuationdb} is given as;
 
@@ -337,7 +338,7 @@ Thorp's formula (\autoref{eq:thorp}) is very simple, only depending on $f$, and 
     \label{fig:thorp}
 \end{figure}
 %
-The Ainslie \& McColm model is more complex, and incorporates the acidity of the water ($H^+$) as well as temperature ($T$), salinity ($S$ in parts per trillion) but not depth (\autoref{fig:ainslie}).
+The Ainslie \& McColm model is more complex, and incorporates water acidity levels ($H^+$) as well as temperature ($T$), salinity ($S$ in parts per trillion) but not depth (\autoref{fig:ainslie}).
 %
 \begin{figure}
   \begin{align}
@@ -386,7 +387,7 @@ While both frequency dependant factors are quadratic, approximating the factors 
 \end{equation}
 
 
- \subsection{Ambient Noise Model}
+ \subsection{Ambient Noise Model}\label{sec:ambient-noise-model}
 
  Historically, ambient ocean noise has be assumed to be Gaussian with a continuous power spectral density in dB re $\si{\micro\pascal\per\hertz}$, driven by four major factors, shown in \autoref{tab:ocean_noise_factors}, where $s$ is a shipping activity factor bounded from $[0,1]$ and $w$ is the surface wind speed in $\si{\meter\per\second}$~\cite{coates1989}.
 
@@ -419,7 +420,7 @@ Thus, the multi-path channel transfer function can be described by :
 where $d=d_0$ is the minimal path length between the transmitter and receiver, $d_p,p=\{1,\dots P-1\}$ are the secondary path lengths, $\Gamma_p$ models additional losses incurred on each path such as reflection losses at the surface interface, and $\tau_p = d_p/c$ is the delay time.
 
 
-\subsection{Modelling and Simulation of the Acoustic Medium / Channel}
+\subsection{Modelling and Simulation of the Acoustic Medium / Channel}\label{sec:modelling-and-simulation-of-the-acoustic-medium-/-channel}
 
 Several toolkits exist in a that perform communications agent simulation, most notably the NS-2 / 3 family of frameworks and their add-ons.
 Some of these frameworks, such as SUNSET~\cite{Petrioli2012a} and AquaTools~\cite{Sehgal2010}, that are particularly proven in their capability in modelling static network performance, with less in built support for advanced, reactive node mobilities such as those involving collision or object avoidance.
@@ -434,16 +435,26 @@ In order to implement a collaborative, reactive, simulation suite, the SimPy~\ci
 As mentioned in the individual testing cases, transmission parameters for simulation were initially taken from and validated against results from~\citet{Stojanovic2007} and~\citet{Stefanov2011}.
 
 
-\begin{comment}
-\subsection{Routing and Network Design for \glspl{uan}}
+\section{Conclusion}
 
-Forward Error Correction coding is used on such channels to minimise packet losses.
 
-\todo{ADD:Summary of Akyildiz02/05}
+Key Outcomes:
+\begin{itemize}
+	\item Explored the use of \glspl{auv} in commercial, civil and defence applications, selecting a port protection scenario for experimentation (\autoref{sec:auv_ops}) as well as demonstrating that technologies relevant to localisation required for proposed trust assessment using physical mobility relating to \autoref{q:phys} are suitable (\autoref{sec:localisation-technologies})
+	\item Selected the REMUS range of \gls{auv} as an appropriate \gls{auv} class for modelling within this context (\autoref{sec:auv_examples})
+	\item Demonstrated the need for Trust in autonomous \glspl{uan} (\autoref{sec:trust_in_marine})
+	\item Selected Fisher-Simmons as an appropriate Attenuation model for acoustic channel simulation (\autoref{sec:attenuation})
+	\item Characterised a suitable ambient noise model (\autoref{sec:ambient-noise-model})
+	\item Selected the AUVNetSim and SimPy frameworks as suitable baselines for simulation, with suitable validation cases (\autoref{sec:modelling-and-simulation-of-the-acoustic-medium-/-channel})
+\end{itemize}
 
-\todo{FIX:callback to routing discussion in c1 explain why fbr is the best of everything all the time}
-\end{comment}
-\pagebreak
+In this chapter, the opportunities, start-of-the-art and challenges to the use of mobile autonomy in the marine space were investigated.
+The extreme differences in channel characteristics between RF and \gls{uan} put great weight on the need to validate \autoref{q:rfuan}, and suitable models for this channel have been identified.
+Additionally, the particular threat surface exposed to such operations highlight the need for Trust in such networks, reducing communications overhead and accommodating the sparse and noisy nature of the medium\footnote{if it can be demonstrated that existing Trust models can be applied at all in this area}.
+
+Having suitably explored the context around the problem in this work (\autoref{sec:problem}), the following chapters conduct a series of experiments and analyses to demonstrate the usefulness of Trust in the marine environment (\autoref{q:uantmf}), and to extend current communications-based Trust into the Physical domain (\autoref{q:phys}).
+
+But first, the validity of applying these methods to the marine environment must be verified (\autoref{q:rfuan}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

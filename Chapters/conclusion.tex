@@ -35,19 +35,40 @@ As such there is an open opportunity to explore the application of Trust methodo
 
 
 \section{Contributions and Findings}
+Is it useful to return to the original problem statements made in \autoref{sec:problem} and the assumptions that were listed in the same section.
 
-\todo{Expand into a metasummary and return to PS}
+\begin{quotation}
+	
+	Within the given context, the primary problem investigated in this work is that of establishing and maintaining trust between a team of mobile autonomous agents (\glspl{auv}) which collaborate over a sparse, noisy, and delayful communications channel (\glspl{uan}) in a distributed fashion to accomplish a specified mission goal (port protection / persistent situational awareness) with the expectation of subversion of one agent within the team by a technically capable actor to exhibit a malicious or selfish behaviour against one or more of the remaining, fairly behaving, agents. 
+	
+	A secondary problem is that of differentiating between malicious or selfish behaviour and behaviours emerging from damage or misconfiguration of agents (false positive identification).
+	
+\end{quotation}
 
-Within this context, \autoref{ch:comms_trust} initially explores the scaling differences in node distance and communications rates using a simulated agent based environmental and communications model, identifying network saturation rates using a range of mobility, scaling, and offered loads, maximising network performance in terms of a throughput-delay product.
+\begin{enumerate}[label=\textbf{PSQ.\arabic*},ref=\emph{PSQ. \arabic*}]
+	\item Given the difference in operation and performance of terrestrial free-space RF vs \gls{uan}, what is an optimal point of data rate and node separation that simultaneously maximises network performance while matching realistic constraints of application?
+	\item How much of existing RF Communications based Trust Management best practice and theory can be carried over to the harsh marine acoustic environment? Indeed, given the long delays and sparse communications, will existing \glspl{tmf} be able to operate at all? Are there any differences in the threats to trust in this new environment?
+	\item Do machine learning and optimisation techniques increase the efficacy of metric weight selection in multi-metric \glspl{tmf} on blind simulations?
+	\item Can these same or similar approaches to communications Trust be applied to other metric domains, such as the relative position/movement of agents?
+	\item Can these domains of Trust assessment be combined efficiently while improving detection performance?
+	\item Is this combined assessment method more effective than domain-only detection? Are there particular classes of misbehaviour that are easy/difficult to identify using these methods? 
+\end{enumerate}
+
+Within this context, \autoref{ch:comms_trust} initially explores the scaling differences in node distance and communications rates using a simulated agent based environmental and communications model, identifying network saturation rates using a range of mobility, scaling, and offered loads, maximising network performance in terms of a throughput-delay product, providing validation for \autoref{q:rfuan}.
 Existing \glspl{tmf} methods are applied to this established range, demonstrating that these (Hermes, \gls{otmf} and \gls{mtfm}) existing frameworks are not directly suitable to the sparse, noisy, and dynamic underwater environment.
-While there is little that can be done to augment Hermes and \gls{otmf} in this environment, the weighted-metric nature of \gls{mtfm} allows the metric space to be explored for ``better'' weighting vectors to detect and identify misbehaviours that are hidden in the unweighted assessment.
+While there is little that can be done to augment Hermes and \gls{otmf} in this environment, the weighted-metric nature of \gls{mtfm} allows the metric space to be explored using machine learning techniques for ``better'' weighting vectors to detect and identify misbehaviours that are hidden in the unweighted assessment, providing validation for \autoref{q:uantmf} and \autoref{q:ml}.
 
-Having established the operation of Trust in the marine \gls{manet} environment, \autoref{ch:physical_trust} demonstrates through statistical measures of node distribution and velocities, that malicious and faulty misbehaviours can be both detected and identified to a high selectivity using a simple tree-based classifier, using a collaborative Port Protection scenario as a targeted waypoint mobility baseline.
+Having established the operation of Trust in the marine \gls{manet} environment, \autoref{ch:physical_trust} demonstrates through statistical measures of node distribution and velocities, that malicious and faulty misbehaviours can be both detected and identified to a high selectivity using a simple tree-based classifier, using a collaborative Port Protection scenario as a targeted waypoint mobility baseline. 
+These results strongly validated \autoref{q:phys}.
 
 In \autoref{ch:multi_domain}, the combination of these domains is assessed.
-The relative significance of metrics in the specific identification of a given behaviour is performed through a full-sight random forest regression by comparing a significant number of simulated mission runs.
+The relative significance of metrics in the specific identification of a given behaviour is performed through a full-domain random forest regression by comparing a significant number of simulated mission runs.
 These significances, while simply a statistical measure of the importance of a given metric in discriminating between two behaviour (i.e. a fair behaviour and the misbehaviour) provide actionable information to generate a weighted metric sequence targeting that behaviour.
-The identification and classification methodologies from both \autoref{ch:comms_trust} and \autoref{ch:physical_trust} are combined to generate a classifier with very beneficial performance.
+The identification and classification methodologies from both \autoref{ch:comms_trust} and \autoref{ch:physical_trust} are combined to generate a classifier with very beneficial performance, but this classifier encountered severe difficulty in detecting the application-level \gls{sts} behaviour, that had a weighted preference for communicating with nodes closer to it to conserve energy, forcing others in the network to fill in any gaps in the network.
+On the other hand, the \gls{mpc} behaviour was extremely identifiable, with a 100\% detection rate when using a targeted synthetic domain approach, and it may be the case that the $20\%$ power increase that was originally taken from \citet{Guo11} is in fact overplayed and could be reduced.
+Overall, these results strongly support the premise of \autoref{q:joint}, and supports the statement of \autoref{q:perf}, in so far as these multi-domain approaches are at least as good as their ``Basic'' domain counterparts, with the advantage of being capable of identifying many types of misbehaviour to a high degree of accuracy (See \autoref{tab:synth_detect})
+
+
 
 
 \section{Future Work}
@@ -83,8 +104,8 @@ In this case, where we are primarily concerned with the interplay and usefulness
 \section{Summary}
 
 In this thesis, the operation of trust in the challenging \gls{uan} environment was explored, demonstrating that without augmentation, current \gls{tmf} approaches do not perform well.
-A novel approach to Trust was demonstrated, using physical metrics as a raw trust assessment metric source.
-Finally, a metric weight optimisation methodology was demonstrated to automatically develop trust weightings that highlight a given misbehaviour, driving its targeted trust low so as to enable detection by even simple classifiers.
+A novel approach to Trust was demonstrated, using physical metrics as a raw trust assessment metric source in addition to communications metrics previously well studied in the terrestrial RF environment.
+Finally, a metric weight optimisation methodology was demonstrated to automatically develop synthetic metric domains and weightings that highlight a given misbehaviour, driving its targeted trust low so as to enable detection by even simple classifiers.
 
 Overall, the approaches taken throughout this thesis are largely application agnostic and are indeed domain-agnostic; it has been demonstrated that the use of trust assessment across communications and physical domains yields beneficial results, but the same approach could be applied to non-physical autonomous agents such as high-frequency trading initiatives, forensic accounting/auditing,  cheat-detection in online gaming, lane-assistance in self-driving cars, and possibly most interesting, having the autonomous agents assess how trust-worthy we are across domains such as vocal tonality, facial expressions, ``body language'', and other biometric factors in addition to just the words or commands we use.
 So, should they trust us?

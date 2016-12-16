@@ -6,14 +6,13 @@
 
 \section{Introduction}
 
-In this chapter, two primary assumptions are tested; \autoref{q:rfuan} that an efficient zone of performance in terms of data rates and node separations can be found in realistic, multi-node, \gls{manet} in the marine network (as explored in the \autoref{sec:marine_comms}), and following on from that, \autoref{q:uantmf} if \glspl{tmf} can operate at all in \glspl{uan} (\autoref{q:uantmf})
+In this chapter, two primary assumptions are tested; that an efficient zone of performance in terms of data rates and node separations can be found in realistic, multi-node, \gls{manet} in the marine network (as explored in the \autoref{sec:marine_comms}) (\autoref{q:rfuan}), and subsequently, if \glspl{tmf} can operate at all in \glspl{uan} (\autoref{q:uantmf})
 
-In both cases, this initial work firmly targets the methodology and results from previous work that explored the operation of novel \glspl{tmf} in the 802.11 terrestrial RF communications environment\cite{Guo11}, which once validated against, provides a strong foundation on which to optimise such \glspl{tmf} for the marine environment.
+In both cases, this initial work firmly targets the methodology and results from previous work that explored the operation of novel \glspl{tmf} in the 802.11 terrestrial RF communications environment~\cite{Guo11}, which once validated against, provides a strong foundation on which to optimise such \glspl{tmf} for the marine environment.
 
 As a final part of this chapter, the use of machine learning for optimising identification and detection filters is explored (\autoref{sec:metric_significance}
 
-\section{\glspl{uan} as \gls{manet} analogue}
-
+\section{\glspl{uan} as \gls{manet} analogue}\label{sec:rfuan}
 
 As \glspl{manet} grow beyond the terrestrial arena, their operation and the protocols designed around them must be reviewed to assess their suitability to different communications environments to ensure their continued security, reliability, and performance.
 With demand for smaller, more decentralised \gls{manet} systems in a range of domains and applications, as well as a drive towards lower per-unit cost in all areas, \glspl{tmf} are increasingly applied to resource constrained applications, as the benefits and efficiencies these systems present are significant.
@@ -341,8 +340,6 @@ The other mobility cases tell a very different story; as can be seen in~\autoref
 Another aspect of these results to highlight is that the Offered Load presented to the network \emph{increases} beyond the collapse of the throughput curve. 
 This indicates that there is a subtly different saturation behaviour with respect to separation than the simple congestion argument with respect to packet emission rate; packets are simply taking too long to cross the increasingly sparse network and in-transit packet routes are logically disconnected and require retransmission.
 
-\todo{Change the purple in these graphs to something less blue}
-
 \begin{figure}[h]
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
@@ -513,11 +510,10 @@ This indicates that there is a subtly different saturation behaviour with respec
 		\input{Figures/input/separation_packet_stats_bella_single_mobile}
 	\end{center}
 \end{table}
-\todo{Change ``Delivery'' to ``Propogation'' in table generation}
 
 \clearpage
 
-\subsection{Combined Scale Factor Analysis}
+\subsection{Combined Scale Factor Analysis}\label{sec:combined-scale-factor-analysis}
 
 Its clear from the previous results that the relationship between emission rates, separations and mobilities is tightly coupled and not totally clear cut. 
 To arrive at a more optimal operating region, a coupled analysis is performed across both emission rate and initial separation distance.
@@ -565,10 +561,11 @@ For each scenario, the observed Throughput across the network ($S$ in bytes) is 
 \end{figure}
 
 It is worthwhile noting that the above results are largely agnostic to the application zoned or sharded routing protocols (See \autoref{sec:manet_routing}), as the key factor in the above network collapse is not channel constraints on throughput of in-air packet transmission, but local channel acquisition and collision avoidance.
+Future work could explore the compromise between congestion and sharding in \gls{uan}, but from the discussion in \autoref{ch:maritime_background}, it is unlikely that large enough numbers of nodes would be safely deployable in a small enough area to warrant sharding of the acoustic network.
 
 \subsection{Summary}
 
-An appropriate safe operating zone for marine communications has been established by investigating the impact of variations of the communications rate and physical distribution across the mobility scenarios.
+An appropriate safe operating zone for marine communications has been established by investigating the impact of variations of the communications rate and physical distribution across the mobility scenarios, providing initial validation of \autoref{q:rfuan}.
 
 So far in this chapter it as been established that when the separation is increased, the emission rate at which the network becomes saturated decreases, reducing overall throughput. 
 This throughput degradation is tightly coupled with the mobility, as increasing mobility leads to increasing delays as routes are constantly broken, re-advertised and re-established. 
@@ -595,7 +592,7 @@ These direct malicious behaviours effectively trigger saturation collapses in op
 
 Therefore, two more subtle misbehaviours to investigate are; 
 \begin{enumerate}
-	\item \acrfull{mpc}, where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well.\todo{Justify 20\%}
+	\item \acrfull{mpc}, where $n_1$ increases its transmit and forwarding power by 20\% for all nodes \emph{except} communications from $n_0$ in order to make $n_0$ appear to be selfishly conserving energy to the rest of the team, while $n_1$ itself appears to be performing very well\footnote{This 20\% figure is based on a similar power control behaviour used in \cite{Guo11} and has been maintained as such for comparability between RF and \gls{uan} \gls{tmf} operation, however a sensitivity analysis should be performed in future to assess this figure}.
 	\item \acrfull{sts}, where $n_1$ preferentially communicates, forwards and advertises to nodes that are physically close to it in effort to reduce its own power consumption.
 \end{enumerate}
 
@@ -619,7 +616,7 @@ The variability in assessment is coupled to mobility; in the static case the nod
 In the full mobility case, this subjective variability is greatly increased(Fig.~\ref{fig:trust_all_mobile}). 
 As the topology is highly dynamic, delays due to re-establishing routes can be very large, perturbing the trust value.
 The $T_{0,1}^\text{MTFM}$ displays a significantly reduced variation than those of the individual subjective observations in all cases, even when compared to the unweighted average, $T_{N,1}^\text{Avg}$.
-This demonstrates $T_{MTFM}$'s value as an aggregating trust assessment in such sparse and noisy environments.
+This demonstrates $T_{MTFM}$'s value as an aggregating trust assessment in such sparse and noisy environments and suggests initial validation of \autoref{q:uantmf}.
 Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in assessment is observed in $T_{0,1}$, correctly indicating that there is something wrong with the relationship between $n_0$ and $n_1$.
 
 \begin{figure}[h]
@@ -696,6 +693,7 @@ As per~\citet{Guo11}, ``fair'' scenarios were also performed with no malicious b
 	\caption{Alternative Visualisation of \gls{tmf} performance comparison across Fair, \gls{mpc}, and \gls{sts} scenarios}
 	\label{fig:otmf_beta_comparison_boxes}
 \end{figure}
+
 The use of \gls{fbr} and a \gls{csmaca} \gls{mac} scheme from AUVNetSim~\cite{Miquel2008} in our simulation mitigates a significant number of packet losses through collision avoidance and contention handling, leading to the situation that the only genuinely lost packets occur when a node moves completely out of range of any other node and time out occurs in route discovery rather than transmission (See \autoref{sec:manet_routing}).
 As such, confirmed packet losses are relatively rare and in a delaying network like this, it is difficult to set a differentiating time out between packets that are in the network but queued, and packets that are actually ``lost''.
 
@@ -704,10 +702,10 @@ This renders \gls{otmf} and Hermes assessment at best uninformative and at worst
 \autoref{fig:otmf_beta_comparison} shows a comparison between the unweighted response of \gls{mtfm} compared to \gls{otmf} and Hermes assessment functions on the same data for the fair, malicious and selfish behaviours respectively.
 This time-series perspective demonstrates how noisy and variable the assessments from all \glspl{tmf} are in this environment.
 For clarity, \autoref{fig:otmf_beta_comparison_boxes} displays a compressed-time perspective, showing the overall trend and sensitivity of the different frameworks in the same scenarios as shown in \autoref{fig:otmf_beta_comparison}.
+
 It is important to note a distinction between the expectations of \gls{mtfm} compared to other \glspl{tmf}; \gls{mtfm} is primarily concerned with the identification of differences in the behaviours of nodes in a network, and is relative rather than absolute.
 That is to say that under \gls{mtfm}, nodes are compared against the worst current performances across metrics of other observed nodes and graded against them, rather than the absolute (objective) approach taken by many \glspl{tmf}.
 
-In the case of the \gls{mpc}
 In these cases, particularly since the methods of attack were not directly related to \gls{plr}, \gls{otmf} and Hermes have not registered significant activity in either misbehaviour when compared to the fair scenario.
 The difference between the \gls{mtfm} trust assessments under ``fair'' and ``malicious'' behaviour is lowered by $\approx 10\%$ in both cases, in terms of the mean values returned.
 At run time, similar results could be attained by an \gls{ewma}.
@@ -719,7 +717,7 @@ However, in the next section, \autoref{q:ml} is validated and will rescue both p
 
 \section{Metric Vector Weighting}\label{sec:metric_weighting}
 %
-Building towards the application of machine learning to the metric weighting task, it is worthwhile exploring the approach taken by \cite{Guo11}, in that individual metrics were weighted in turn, increasing the impact of detecting that a given metric is being impacted by a misbehaviour. 
+Building towards the application of machine learning to the metric weighting task, it is worthwhile exploring the approach taken by~\cite{Guo11}, in that individual metrics were manually weighted in turn, increasing the impact of detecting that a given metric is being impacted by a misbehaviour\footnote{not necessarily the presence or absence of a particular misbehaviour}. 
 
 A sequence of vectors that preferentially weight each metric in \autoref{eq:metric_weighting} to each of the three simulation runs.
 For a metric weight vector $H$, where the metric $m_j$ is emphasised as being twice as important as the other metrics, forming an initial weighting vector $H'=[h_i\dots h_M]$ such that $h_i = 1 \forall i \ne j; h_j=2$.
@@ -810,9 +808,10 @@ This weighted delta in received throughput is minimal to insignificant compared 
 In the selfish case (Fig.~\ref{fig:all_mobile_selfish}) a much lower weighted delta in \gls{plr} and delay is observed, with greatly increased impact on transmission power.
 In comparison to~\cite{Guo11}, these results are qualitatively similar, however here the differences between the fair case and the misbehaviours are less clear than in the comparable terrestrial space.
 \citet{Guo11} show similar types of behaviour but report a weighted delta from $\approx$ 0.4 to $\approx$ 0.9 across the simulation period, compared to our maximum delta in $P_{TX}$ in selfish behaviour (Fig.~\ref{fig:all_mobile_selfish_txp}) of $\approx$ 0.3 for an inconsistent interval.
+While this does qualitatively validate both \autoref{q:rfuan} and \autoref{q:uantmf}, it is certainly not a resounding quantitative success yet.
 
 Is it important to highlight that in both these results and those of \citet{Guo11} do not detect or classify based on \emph{behaviour}, but on the \emph{impact on a metric}.
-To suitably resolve both \autoref{q:uantmf} and \autoref{q:ml}, the behaviours must be the focus of analysis, detection and classification.
+To suitably resolve both \autoref{q:uantmf} and \autoref{q:ml}, behaviour must be the focus of analysis, detection and classification.
 
 \subsection{Weight Significance Analysis for Behaviour Classification}\label{sec:metric_significance}
 
@@ -826,11 +825,11 @@ From this training process, the relative importance of each input feature (metri
 Additionally a cross correlation analysis is performed to establish the correlations between given metric weighting emphasis and the output of the target function.
 Our intention is to establish the metrics that not only differentiate both misbehaviours from the fair case, but also what metrics differentiate the two misbehaviours from each other.
 
-Applying this target regression to 729 different metric weight vector emphasis combinations reveals that each of the three combinations (i.e.\ comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and PLR, with delay, received power and transmitted throughput playing a lesser role.
+Applying this target regression to 729 different metric weight vector emphasis combinations reveals that each of the three combinations (i.e.\ comparing fair to misbehaviours, and comparing the misbehaviours) present distinct patterns of significance in three primary metrics; received throughput, transmitted power, and \gls{plr}, with delay, received power and transmitted throughput playing a lesser role.
 Practically this means that in order to accurately distinguish between these scenarios, these primary metrics should be higher-weighted in the generation of $T_{1,MTFM}$ in \autoref{eq:networkeffects}.
 
-It may initially appear odd that the relative significance of the received throughput is similar between all three scenario combinations, however a correlation analysis shows that in the MPC attack; the received throughput is positively correlated with successful classification against the fair case ($R=+0.71, p\approx10^{-100}$), while the inverse is the case for the STS attack ($R=-0.70, p\approx10^{-100}$).
-It is expected that Transmitted power should be the defining characteristic of STS ($R=+0.72, p<10^{-100}$) as the node is acting fairly from a protocol perspective but is acting unfairly at a higher (incentive) level; it is performing fairly in terms of it's communications with other nodes, however it is preferring to communicate with nodes that it can expend less energy communicating with.
+It may initially appear odd that the relative significance of the received throughput is similar between all three scenario combinations, however a correlation analysis shows that in the \gls{mpc} attack; the received throughput is positively correlated with successful classification against the fair case ($R=+0.71, p\approx10^{-100}$), while the inverse is the case for the \gls{sts} attack ($R=-0.70, p\approx10^{-100}$).
+It is expected that Transmitted power should be the defining characteristic of \gls{sts} ($R=+0.72, p<10^{-100}$) as the node is acting fairly from a protocol perspective but is acting unfairly at a higher (incentive) level; it is performing fairly in terms of it's communications with other nodes, however it is preferring to communicate with nodes that it can expend less energy communicating with.
 A summary of these correlations is shown in Table.~\ref{tab:correlations}.
 
 Comparing Figs.~\ref{fig:otmf_beta_comparison},~\ref{fig:all_mobile_badmouthing_plr}, and~\ref{fig:all_mobile_selfish_plr}, while it is possible that in a cleaner, less sparse, and less noisy environment, \gls{otmf} would be able to detect the \gls{mpc} behaviour, Fig.~\ref{fig:malselfactors} shows that \gls{plr} plays almost no part at all in detecting the \gls{sts} behaviour, and so \gls{otmf} would not detect the attack.
@@ -861,6 +860,14 @@ As such this presents the open opportunity to develop a heuristic weight search 
 This would be accomplished by assessing the impact of differential metric weighting on the mean trust assessment rather than comparing co-weighted valuations across scenarios.
 
 \section{Conclusion}
+
+Key Outcomes: 
+\begin{itemize}
+	\item \autoref{q:rfuan} - Established a suitable analogue operation range between RF and \gls{uan} at an emission rate of $\approx$0.015-0.025pps and 100-300m average node separation (\autoref{sec:rfuan})
+	\item \autoref{q:uantmf} - Demonstrated that while initial performance of directly transplanted \glspl{tmf} is very poor (particularly single metric varieties), suitably weighted \gls{mtfm} is a good candidate for optimisation (\ref{sec:uantmf})
+	\item \autoref{q:ml} - Shown that the application of a Random Forest machine learning optimisation significantly improves the responsiveness of (dis)trust in misbehaviours (\autoref{sec:metric_weighting})
+\end{itemize}
+
 It has been demonstrated that single metric \gls{manet} Trust Management Frameworks are not suitable to the sparse, noisy, and dynamic underwater medium, and that even in conventional analysis of multi-metric \glspl{tmf}, performance is still very low.
 However, through exploring the metric space of \gls{mtfm}, there are significant indications that trained weight vectors can be used to establish dynamic filters and classifiers, greatly improving the performance of \gls{mtfm} against known / observed misbehaviours, and these vectors can be carried across different deployments. 
 

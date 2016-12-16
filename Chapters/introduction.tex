@@ -85,13 +85,13 @@ As such an overlapping combination of ``Secure'' and ``Trusted'' approaches is r
 
 Early attempts to secure and protect the integrity of \glspl{manet} have relied on various forms of strong-cryptography to protect information being transferred from tampering or malicious inspection.
 While such approaches protect the integrity of individual pieces of data, the increased computation, and storage requirements of modern, strong, decentralised cryptographic systems presents a clear avenue for \gls{dos} attacks on \glspl{manet}.
-This threat is particularly relevant in resource-constrained networks, where one or more aspects of the environment are limited, be it available power, mobility, data storage, onboard processing, bandwidth, and channel resources such as capacity and delay.
+This threat is particularly relevant in resource-constrained networks, where one or more aspects of the environment are limited, be it available power, mobility, data storage, on-board processing, bandwidth, and channel resources such as capacity and delay.
 In such networks, where there is a requirement for security and/or integrity monitoring, strong-cryptographic methods present an entirely new opportunity to potential attackers.
 
 One solution to the trade-off between \gls{dos}-protection, and security is the assessment of ``trustworthiness'' of nodes within a local network. 
-``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour. \todo{Node/Metric Capability Matrix}
+``Trust'' in this case is an assessment of capability of a node based on previously observed behaviour.
 Using this Trust to make simple routing decisions is significantly simpler and faster than strong-cryptographic methods, particularly in multi-hop networks or resource constrained networks~\cite{Cordasco2008}.
-With Trust being reliant on the runtime awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits and in practice, some elements of both methodologies will be used in different contexts and applications as those applications dictate.
+With Trust being reliant on the runtime awareness of some behaviour, and cryptography on the pre-establishment of some entropy store and the repeated reinforcement of that numerical security, they represent two very different approaches to system integrity with very different costs/benefits, and in practice some elements of both methodologies will be used in different contexts and applications as those applications dictate.
 
 \subsubsection{Systemic Trust and Trusted Development}
 As will be discussed further in \autoref{sec:trust_perspectives}, the ``Trust'' in a system is critical well before a system is activated; the incubation, specification, design, development, production and testing of a system (particularly a system with some \gls{loa} or other non-deterministic operation) is critical to the Trust that an end user can put into that system, and particularly, how much Trust can be exhibited within and between that systems individual components.
@@ -109,24 +109,80 @@ This is also one of the primary motivators for this particular direction of work
 
 Given the physical difficulties and requirements of having humans operate underwater (particularly at depth), and the operational limitations of tethered \glspl{rov}, or even untethered remote controlled surface platforms, there has been a great deal of research and commercial interest in the development of autonomous systems, particularly in the defence and petrochemical sectors, where the lives of human operators are most at risk in normal activity~\cite{Pechoucek:2008:DIA:1355335}.
 
-With potential applications ranging from the replacement of human divers in \gls{mcm} activity, to persistent littoral hydrography for environmental flood plain monitoring, many aspects of the proposed efficiencies gained from moving to autonomous agents rely on decentralised, \gls{manet} style collaboration between individual agents, and a level of trust that an operator (or indeed, agents within the system itself) can have in terms of the current activity, readiness, and performance of such autonomous systems~\cite{Wynn2014}.
+\begin{table}\centering
+	
+	\caption{Summary of Generalised AUV capabilities}
+	\label{tab:auv_capabilities}
+	\begin{tabularx}{\textwidth}{p{3cm} X}\toprule
+		Classification & Payloads \\\midrule
+		Sensing &  
+		\begin{minipage}[t]{\linewidth}
+			\begin{tightimize}
+				\item Acoustic Doppler Current Profiling (ADCP)
+				\item Inertial Navigation System (INS)
+				\item Pressure
+				\item Conductivity and Temperature
+				\item Depth
+				\item GPS
+				\item Long Base Line (Underwater Acoustic Localisation)
+				\item Dual/Single Frequency Side Scan Sonar
+				\item Synthetic Aperture Sonar
+				\item Environmental Characterization Optics (ECO) Sensors (fluorometry and turbitity measurement)
+				\item Still and Video Camera
+				\item Acoustic Imaging
+				\item Sub-Bottom Sonar Profiler
+			\end{tightimize}
+		\end{minipage}\\\midrule
+		Communications &  
+		\begin{minipage}[t]{\linewidth}
+			\begin{tightimize}
+				\item Acoustic Modem
+				\item Broad-beam and Tight-beam Optical Transponders
+				\item 802.11 WiFi
+				\item Iridium Satellite Uplink
+			\end{tightimize}
+		\end{minipage}\\\midrule
+		In-Team Activities & 
+		\begin{minipage}[t]{\linewidth}
+			\begin{tightimize}
+				\item Collision Avoidance
+				\item Sensor data broadcast/forwarding
+				\item Location data broadcast
+				\item In-network Sensor fusion/reduction/duplication/synthesis
+				\item Network Bridging (move to location to mend disconnected networks)
+			\end{tightimize}
+		\end{minipage}\\\midrule
+		Additional / Potential Capabilities  &  
+		\begin{minipage}[t]{\linewidth}
+			\begin{tightimize}
+				\item Automated Ship/Shore Launch and Recovery
+				\item End-effector arms/actuators
+				\item Anchoring/Tethering
+				\item \gls{eod}
+			\end{tightimize}
+		\end{minipage}\\ \bottomrule
+	\end{tabularx}
+\end{table}
+
+\glspl{auv} may be designed with a wide range of capabilities and payloads (see \autoref{tab:auv_capabilities}). With potential applications ranging from the replacement of human divers in \gls{mcm} activity, to persistent littoral hydrography for environmental flood plain monitoring, many aspects of the proposed efficiencies gained from moving to autonomous agents rely on decentralised, \gls{manet} style collaboration between individual agents, and a level of trust that an operator (or indeed, agents within the system itself) can have in terms of the current activity, readiness, and performance of such autonomous systems~\cite{Wynn2014}.
 
 This ``Trust'', that we understand implicitly in the human space, is particularly difficult to establish and maintain in the underwater environment, and as such, the development of stable, reliable, adaptable trust systems that can operate in this and other challenging environments is a limiting factor on the adoption of generalised distributed autonomous systems in the defence space~\cite{Caseley2009}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{oceanfloor}
-	\caption{An AUV maps the seafloor with sonar \copyright MBARI 2009}
+	\caption{An AUV maps the sea-floor with sonar~\copyright MBARI 2009}
 \end{figure}
 
 \pagebreak
+
 \section{Problem Statement}\label{sec:problem}
 
 Within the given context, the primary problem investigated in this work is that of establishing and maintaining trust between a team of mobile autonomous agents (\glspl{auv}) which collaborate over a sparse, noisy, and delayful communications channel (\glspl{uan}) in a distributed fashion to accomplish a specified mission goal (port protection / persistent situational awareness) with the expectation of subversion of one agent within the team by a technically capable actor to exhibit a malicious or selfish behaviour against one or more of the remaining, fairly behaving, agents. 
 
 A secondary problem is that of differentiating between malicious or selfish behaviour and behaviours emerging from damage or misconfiguration of agents (false positive identification).
 
-The proposed solution to these problems is the use of distributed trust assessment across multiple domains of observation (i.e. communications and relative movement), using a weighted grey theoretic grading to synthesise trust observations across metrics and domains to provide a total perspective on the threat surface of agents within a network.
+TThe proposed solution to these problems is the use of distributed trust assessment across multiple domains of observation (i.e. communications and relative movement), using a weighted grey theoretic grading to synthesise trust observations across metrics and domains to provide a total perspective on the threat surface of agents within a network.
 This would constrain the available undetectable misbehaviours of malicious or selfish actors, enforcing ``fair behaviour'' on the network as a whole.
 Such filters would be trained against machine learning modelled vectors of ``important metrics'' for particular metrics, ideally reducing the computational complexity of identification and detection. 
 
@@ -188,7 +244,7 @@ This approach opens the possibility of bringing information about both the physi
 \subsubsection{\fullref{ch:multi_domain}}
 
 In this chapter a methodology is demonstrated that applies the Grey Relational Grading method used in \gls{mtfm} to assess trust across multiple metrics across multiple domains.
-The question of direct-applicability of domain-metrics to inter-domain behaviours (i.e. physical metrics being used to detect communications misbehaviours and visa versa.) is investigated in two stages; first reassessing relative metric significance on a comparative regression directly comparing ``misbehaving'' results and ``Fair'' results across execution runs to identify what metrics are most important in  differentiating behaviours from an abstract perspective. 
+The question of direct-applicability of domain-metrics to inter-domain behaviours (i.e. physical metrics being used to detect communications misbehaviours and visa versa.) is investigated in two stages; first reassessing relative metric significance on a comparative regression directly comparing ``misbehaving'' and ``Fair'' results across execution runs to identify what metrics are most important in  differentiating behaviours from an abstract perspective. 
 This significance is then used to generate targeted weighting vectors to maximally distrust nodes observed exhibiting that behaviour, acting as a selection filter.
 From the resultant metric weighting vectors across both basic domains (communications/physical and their full metric union), potential ``Alternate'' domain groupings are selected by inspection.\
 By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment.

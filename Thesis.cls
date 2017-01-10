@@ -271,7 +271,7 @@
 
 \usepackage[anythingbreaks]{breakurl}
 
-\renewcommand*{\glstextformat}[1]{\textcolor{Indigo}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
+%\renewcommand*{\glstextformat}[1]{\textcolor{Indigo}{#1}} % % TO CUSTOMISE GLOSSARY COLOUR
 
 \renewcommand\maketitle{
   \btypeout{Title Page}

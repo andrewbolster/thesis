@@ -1,6 +1,6 @@
 \RequireVersions{
   *{application}{TeX}     {1990/03/25 v3.x}
-  *{format} {LaTeX2e}     {2016/03/31 v2.e}
+  *{format} {LaTeX2e}     {2016/02/01 v2.e}
   *{class}  {Thesis}      {2007/22/02 v1.0}
   *{class}  {book}        {2014/09/29 v1.4h}
   *{file}   {bk11.clo}    {2014/09/29 v1.4h}
@@ -35,14 +35,14 @@
   *{package}{fp-eval}     {1995/04/03 v0.0}
   *{package}{array}       {2014/10/28 v2.4c}
   *{package}{longtable}   {2014/10/28 v4.11}
-  *{package}{titlesec}    {2016/03/21 v2.10.2}
+  *{package}{titlesec}    {2016/03/15 v2.10.1}
   *{package}{vmargin}     {2004/07/15 v2.5}
   *{package}{fancyhdr}    {0000/00/00 v0.0}
-  *{package}{amsmath}     {2016/03/10 v2.15b}
+  *{package}{amsmath}     {2016/03/03 v2.15a}
   *{package}{amstext}     {2000/06/29 v2.01}
   *{package}{amsgen}      {1999/11/30 v2.0}
   *{package}{amsbsy}      {1999/11/29 v1.2d}
-  *{package}{amsopn}      {2016/03/08 v2.02}
+  *{package}{amsopn}      {1999/12/14 v2.01}
   *{package}{amsfonts}    {2013/01/14 v3.01}
   *{package}{amssymb}     {2013/01/14 v3.01}
   *{package}{amscd}       {1999/11/29 v2.0}
@@ -108,7 +108,7 @@
   *{package}{calc}        {2014/10/28 v4.3}
   *{package}{psfrag}      {1998/04/11 v3.04}
   *{package}{epsf}        {0000/00/00 v0.0}
-  *{package}{tabularx}    {2016/02/03 v2.11}
+  *{package}{tabularx}    {2014/10/28 v2.10}
   *{package}{multirow}    {0000/00/00 v0.0}
   *{package}{pdflscape}   {2008/08/11 v0.10}
   *{package}{lscape}      {2000/10/22 v3.01}
@@ -141,11 +141,11 @@
   *{package}{epigraph}    {2009/09/02 v1.5c}
   *{package}{eurosym}     {1998/08/06 v1.1}
   *{package}{siunitx}     {2016/03/01 v2.6q}
-  *{package}{expl3}       {2016/03/28 v6468}
-  *{file}   {expl3-code.tex}{2016/03/28 v6468}
-  *{file}   {l3pdfmode.def}{2016/03/26 v6465}
-  *{package}{xparse}      {2016/03/28 v6468}
-  *{package}{l3keys2e}    {2016/03/28 v6468}
+  *{package}{expl3}       {2016/01/19 v6377}
+  *{file}   {expl3-code.tex}{2016/01/19 v6377}
+  *{file}   {l3pdfmode.def}{2015/11/11 v6250}
+  *{package}{xparse}      {2016/01/19 v6377}
+  *{package}{l3keys2e}    {2016/01/19 v6377}
   *{package}{translator}  {2010/06/12 v1.10}
   *{file}   {translator-language-mappings.tex}{0000/00/00 v0.0}
   *{package}{afterpage}   {2014/10/28 v1.08}

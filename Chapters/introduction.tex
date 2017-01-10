@@ -196,8 +196,7 @@ This proposal relies on several chained ``problem statement questions'' that req
 	\item Is this combined assessment method more effective than domain-only detection? Are there particular classes of misbehaviour that are easy/difficult to identify using these methods? \label{q:perf}
 \end{enumerate}
 
-The exploration, experimentation, validation and resolution is best considered visually;
-\todo{Block Diagram of Chapter / Experiment Relationships}
+The exploration, experimentation, validation and resolution of these questions is summarised in \autoref{tab:thesis_map}.
 
 
 \section{Thesis Layout}
@@ -260,17 +259,17 @@ Key parts of this chapter are published as \bibentry{Bolster2016a}.
 	\caption{Summary of Thesis Structure and Contributions}
 	\label{tab:thesis_map}
 	{\renewcommand{\tabcolsep}{1pt}
-		\begin{tabularx}{\textwidth}{p{1.4cm} X X}\toprule
+		\begin{tabularx}{\textwidth}{p{1.4cm} p{5.8cm} X}\toprule
 			Chapter 
 			& ~~~ Focus 
 			& ~~~ Key Outcomes\\ \midrule
-			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{4.5cm}{\fullref{ch:trust_background}}}\end{minipage}
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{3.7cm}{\fullref{ch:trust_background}}}\end{minipage}
 			&\begin{minipage}[t]{\linewidth}
 				\begin{tightimize}
 					\item Network/Graph theory and Routing
 					\item Trust Perspectives, Models and Multi-Party Relationships
 					\item Trusted Threats
-					\item Autonomy \& Design constraints of Autonomous Systems
+					\item Autonomy \& Constraints of Autonomous Systems
 					\item Current \glspl{tmf}
 				\end{tightimize}
 			\end{minipage} 
@@ -283,7 +282,7 @@ Key parts of this chapter are published as \bibentry{Bolster2016a}.
 					\item Need for Trust in Autonomous Systems
 				\end{tightimize}
 			\end{minipage}\\\midrule
-			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{2.9cm}{\fullref{ch:maritime_background}}}\end{minipage}
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{2.7cm}{\fullref{ch:maritime_background}}}\end{minipage}
 			&\begin{minipage}[t]{\linewidth}
 				\begin{tightimize}
 					\item AUV Operations
@@ -311,9 +310,9 @@ Key parts of this chapter are published as \bibentry{Bolster2016a}.
 			\end{minipage}
 			& \begin{minipage}[t]{\linewidth}
 				\begin{tightimize} 
-					\item Modelled optimal performance range @ $\approx$0.015-0.025pps/100-300m node separations % (\autoref{fig:2d_normed_product})
-					\item \gls{mtfm} outperforms single metric \glspl{tmf} for selected misbehaviours % \autoref{fig:otmf_beta_comparison_boxes}
-					\item \gls{mtfm} vector weighting further improves performance and tolerance % \autoref{fig:all_mobile_badmouthing}
+					\item Modelled optimal performance range @ $\approx$0.015-0.025pps/100-300m node separations  (\autoref{q:rfuan})
+					\item \gls{mtfm} outperforms single metric \glspl{tmf} for selected misbehaviours \autoref{q:uantmf}
+					\item Machine Learning driven \gls{mtfm} vector weighting further improves performance and tolerance \autoref{q:ml}
 					\item Long collection times due to sparsity can impact trust assessment relevance
 				\end{tightimize}
 			\end{minipage}\\\midrule
@@ -330,12 +329,12 @@ Key parts of this chapter are published as \bibentry{Bolster2016a}.
 			\end{minipage}
 			& \begin{minipage}[t]{\linewidth}
 				\begin{tightimize} 
-					\item First physical misbehaviour detection system in \label{uan}
+					\item First physical misbehaviour detection system in \label{uan} (\autoref{q:phys})
 					\item Demonstrate that different misbehaviours impact different physical metrics differently % \autoref{fig:metric_values}
 					\item Highly accurate, manually configured, blind behaviour classifier ($\approx$ 0\% FP, $\gtrapprox$ 90 \% TP)
 				\end{tightimize}
 			\end{minipage}\\\midrule
-			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{4.1cm}{\fullref{ch:multi_domain}}}\end{minipage}
+			\begin{minipage}[t][][b]{\linewidth}\rot{\parbox{4.5cm}{\fullref{ch:multi_domain}}}\end{minipage}
 			& \begin{minipage}[t]{\linewidth}
 				\begin{tightimize} 
 					\item Combination of comms. \& phys. metrics
@@ -347,10 +346,11 @@ Key parts of this chapter are published as \bibentry{Bolster2016a}.
 			\end{minipage}
 			& \begin{minipage}[t]{\linewidth}
 				\begin{tightimize} 
+					\item First cross domain \gls{tmf} \autoref{q:joint}
 					\item Misbehaviours impact across domains % (not obvious) % \autoref{fig:alternate_domain_diag}
 					\item Inherent redundancy (eg \gls{indd}/$P_{RX}$) allows differential behaviours to be detected % \autoref{fig:positive_heat}
 					\item Application level selfishness (\gls{sts}) very difficult to automatically detect
-					\item Extend \autoref{ch:comms_trust} behaviour based optimisation of \gls{mtfm} to dynamically select most significant metrics
+					\item Extend \autoref{ch:comms_trust} behaviour based optimisation of \gls{mtfm} to dynamically select most significant metrics, leading to higher performance \autoref{q:perf}
 				\end{tightimize}
 			\end{minipage}\\
 			\bottomrule

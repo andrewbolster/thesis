@@ -6,7 +6,7 @@
 
 \section{Context}
 
-\subsection{\acrfullpl{manet}}\label{manets}
+\subsection[Mobile Ad-Hoc Networks]{\acrfullpl{manet}}\label{manets}
 
 With the explosive growth in the use of mobile telephony and the increasing miniaturisation and efficiency gains of portable communications devices, the classical paradigm of broadcast/receiver (or server/client) communications has given way to an increasing use of decentralised, ad-hoc networks that take advantage of this network dynamism to improve service efficiency.
 
@@ -52,7 +52,7 @@ As \glspl{manet} grow beyond the terrestrial arena, their operation and the prot
 The distributed and dynamic nature of \glspl{manet} mean that it is difficult to maintain an evidence based ``trust'' system such as \gls{ttp}, or \gls{ca} or by using \gls{pki}. 
 In both cases, there is the assumption of a run-time canonical source of trust, i.e. a ``Master'' node or Certifying Authority that can objectively coordinate the security and trust of the network.
 This single-point-of-failure is antithetical to \gls{manet} architectures, and given the normally limited transmission, storage, battery and computational power of \gls{manet} nodes, the overheads of true \gls{ttp} or \gls{pki} architectures have been out of the realms of practicality for most applications.
-Therefore, a distributed, collaborative system must be applied to these networks\footnote{\citet{Zouridaki} have demonstrated an intriguing low-power Distributed \gls{ca} based \gls{manet} architecture, however given the soon-to-be-discussed assumptions about capable attackers(\autoref{sec:capable_attackers}), this ``semi-decentralised'' approach is less than ideal}.
+Therefore, a distributed, collaborative system must be applied to these networks\footnote{\citet{Zouridaki} have demonstrated an intriguing low-power Distributed \gls{ca} based \gls{manet} architecture, however given the soon-to-be-discussed assumptions about capable attackers(~\autoref{sec:capable_attackers}), this ``semi-decentralised'' approach is less than ideal}.
 Such distributed \glspl{tmf} aim to detect, identify, and mitigate the impacts of malicious actors by distributing per-node assessments and opinions to collectively self-police behaviour.
 As such, \glspl{tmf} can be used to predict and reason on the future interactions between entities in a system.
 
@@ -148,7 +148,7 @@ Given the physical difficulties and requirements of having humans operate underw
 				\item Collision Avoidance
 				\item Sensor data broadcast/forwarding
 				\item Location data broadcast
-				\item In-network Sensor fusion/reduction/duplication/synthesis
+				\item In-network Sensor fusion/reduction/de-duplication/synthesis
 				\item Network Bridging (move to location to mend disconnected networks)
 			\end{tightimize}
 		\end{minipage}\\\midrule
@@ -158,7 +158,7 @@ Given the physical difficulties and requirements of having humans operate underw
 				\item Automated Ship/Shore Launch and Recovery
 				\item End-effector arms/actuators
 				\item Anchoring/Tethering
-				\item \gls{eod}
+				\item \acrfull{eod}
 			\end{tightimize}
 		\end{minipage}\\ \bottomrule
 	\end{tabularx}
@@ -211,13 +211,13 @@ In~\autoref{sec:trust_manets}, current use and applications of Trusted operation
 
 \subsubsection{\fullref{ch:maritime_background}}
 In \autoref{ch:maritime_background}, the maritime context is investigated to support the analysis and modelling of \ref{q:rfuan}, particularly the mechanisms of maritime acoustic communications, as well as the opportunities and challenges of the marine acoustic channel and its modelling (\autoref{sec:marine_comms}).
-Additionally, the application scope of \glspl{auv}, littoral and sub-marine operations are explored to provide context to the problems \ref{q:rfuan} and \ref{q:uantmf} (\autoref{sec:marine_ops}).
+Additionally, the application scope of \glspl{auv}, littoral and sub-marine operations are explored to provide context to the problems \autoref{q:rfuan} and \autoref{q:uantmf} (\autoref{sec:marine_ops}).
 
 \subsubsection{\fullref{ch:comms_trust}}
 In \autoref{ch:comms_trust}, the need for multi-metric trust assessment in \gls{uan} is demonstrated as an example of a harsh network environment, supporting \ref{q:rfuan}.
 
 The operation of a selection of traditional \gls{manet} \glspl{tmf} is investigated in this environment.
-These challenges are characterised and results leveraging a machine learning based optimisation method are presented that demonstrate a multi-metric approach to Trust can greatly enhance the effectiveness of \glspl{tmf} in these environments, supporting \ref{q:uantmf} and \ref{q:ml}.
+These challenges are characterised and results leveraging a machine learning based optimisation method are presented that demonstrate a multi-metric approach to Trust can greatly enhance the effectiveness of \glspl{tmf} in these environments, supporting \autoref{q:uantmf} and \autoref{q:ml}.
 
 In~\autoref{sec:initialsystemcharacterization} an experimental configuration for the marine space is established, and the scenarios and results presented in~\citet{Guo11} are reviewed for comparison, which dealt with terrestrial, 802.11 based RF \glspl{manet}.
 In~\autoref{sec:trustresultsanddiscussion} findings in trust establishment and malicious behaviour detection are presented, comparing with current single metric \glspl{tmf} (Hermes and \gls{otmf}) and the use of this multi-metric (vector) approach to detecting malicious and selfish behaviour in autonomous marine networks is analysed using \gls{mtfm}.
@@ -234,7 +234,7 @@ This threat is particularly evident in collaborative autonomous systems where no
 This collaboration opens the opportunity for a physically-misbehaving actor to selfishly conserve it's own resources, or maliciously ``drain'' a given target node.
 Current security / trust systems applied to \glspl{manet} are not concerned with the threat of such physical misbehaviours.
 
-This chapter proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, using the motion of nodes within a team to detect and identify malicious or failing operation within a cohort.
+To investigate~\ref{q:phys}, this chapter proposes a new approach to trust in resource-constrained networks of autonomous systems based on their physical behaviour, using the motion of nodes within a team to detect and identify malicious or failing operation within a cohort.
 This is accomplished by looking at operations within the three dimensions of the underwater space, based on kinematics of industry standard \glspl{auv}.
 A series of composite metrics based on physical movement are presented and applied to the detection and discrimination of sample physical misbehaviours.
 This approach opens the possibility of bringing information about both the physical and communications behaviours of autonomous \glspl{manet} together to strengthen and expand the application of Trust Management Frameworks in sparse and/or resource constrained environments.
@@ -247,11 +247,11 @@ In this chapter a methodology is demonstrated that applies the Grey Relational G
 The question of direct-applicability of domain-metrics to inter-domain behaviours (i.e. physical metrics being used to detect communications misbehaviours and visa versa.) is investigated in two stages; first reassessing relative metric significance on a comparative regression directly comparing ``misbehaving'' and ``Fair'' results across execution runs to identify what metrics are most important in  differentiating behaviours from an abstract perspective. 
 This significance is then used to generate targeted weighting vectors to maximally distrust nodes observed exhibiting that behaviour, acting as a selection filter.
 From the resultant metric weighting vectors across both basic domains (communications/physical and their full metric union), potential ``Alternate'' domain groupings are selected by inspection.\
-By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment.
-Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrated, allowing for the elimination of redundant metrics, simplifying the runtime assessment process.
+By utilising information from multiple domains, it is demonstrated that trust assessment can be more accurate and consistent in identifying misbehaviour than in single-domain assessment (~\autoref{q:joint}).
+Further, a methodology for assessing the usefulness of individual metrics in this cross-domain space is demonstrated, allowing for the elimination of redundant metrics, simplifying the runtime assessment process (\autoref{q:perf}).
 
 {\sloppy \raggedright
-Key parts of this chapter are awaiting publication as  \bibentry{Bolster2016a}.
+Key parts of this chapter are published as \bibentry{Bolster2016a}.
 }
 
 

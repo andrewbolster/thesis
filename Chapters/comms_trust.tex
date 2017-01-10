@@ -113,7 +113,7 @@ Therefore, a zone of performance is characterised within which the network has s
 			Propagation Speed&  \SI{3e8}{\meter\per\second} & \SI{1490}{\meter\per\second}\\
 			Center Frequency & \SI{2.6e9}{\hertz} & \SI{2e4}{\hertz} \\
 			Bandwidth& \SI{22e6}{\hertz} & \SI{1e4}{\hertz}\\
-			MAC Type & \gls{csmadcf} & \gls{csmaca}\\
+			MAC Type & \acrshort{csmadcf} & \acrshort{csmaca}\\
 			Routing Protocol & \gls{dsdv} & \gls{fbr} \\
 			Max Speed & \SI{5}{\meter\per\second} & \SI{1.5}{\meter\per\second} \\
 			Max Data Rate & \SI{5e6}{\bit\per\second} & $\approx\SI{240}{\bit\per\second}$ \\
@@ -127,7 +127,6 @@ Therefore, a zone of performance is characterised within which the network has s
 \end{table}
 %
 
-
 \subsection{Establishing Scale Factors in Communications Rate}
 
 The simulated communications environment is characterised to establish an optimal packet emission rate for comparison against~\cite{Guo11} to validate \autoref{q:rfuan}.
@@ -135,7 +134,7 @@ This optimal emission rate is taken to be an emission rate that provides reasona
 Network saturation is the point at which a network can no longer successfully deliver the offered load\footnote{It will become important to note that Offered Load in this case includes packet retransmissions} presented to it to the relevant destinations (throughput), and is characterised by a peak and a subsequent decline in the throughput of the network when varying the packet emission rate. 
 
 This saturation rate occurs where the number of users ($N$) emitting packets at a given rate ($\mu$) exceeds the carrying capacity of the medium ($\lambda_s$), as per \autoref{eq:carryfunc}. 
-After which, new transmissions can not be sent, transmission queues grow, and if the emission rate (or number of users) is not greatly reduced, it can be difficult to return the network to an optimial state.
+After which, new transmissions can not be sent, transmission queues grow, and if the emission rate (or number of users) is not greatly reduced, it can be difficult to return the network to an optimal state.
 
 \begin{equation}
 N\mu>\lambda_s\text{max}\label{eq:carryfunc}
@@ -147,8 +146,8 @@ In order to establish the point at which the network becomes saturated, a range 
 Initial node separation was set as per~\citet{Guo11} at $\SI{100}{\meter}$, and each simulation is run 16 times, with each instance modelling a 8 hour mission time.
 This configuration and duration are specified to correlate to previously discussed mobile collaborative port protection scenarios from \autoref{sec:marine_ops}.
 
-Looking first at the Static mobility case, where all nodes are stationary; from~\autoref{fig:emission_throughput_performance_bella_static} it is already clear that the throughput curve, exhibits a saturation point close to 0.025 pps.
-Similarly in~\autoref{fig:emission_prod_breakdown_bella_static}, the precipitous drop in packet delivery probability beyond 0.025 pps, indicating that this is a strong candidate value for an upper-limit to the safe operating zone in terms of packet emission in the small static case.
+Looking first at the Static mobility case, where all nodes are stationary; from~\autoref{fig:emission_throughput_performance_bella_static} it is already clear that the throughput curve, exhibits a saturation point close to $0.025pps$.
+Similarly in~\autoref{fig:emission_prod_breakdown_bella_static}, the precipitous drop in packet delivery probability beyond $0.025pps$, indicating that this is a strong candidate value for an upper-limit to the safe operating zone in terms of packet emission in the small static case.
 From~\autoref{fig:emission_delay_variation_bella_static}, raising packet emissions above $0.025pps$ results in a significant increase in end-to-end delay.
 As per~\autoref{tab:sysconstraints}, the \gls{csma} based \gls{mac} incurs a certain amount of control overhead in the form of \gls{rts} packets, when a node attempts to acquire time in its neighbourhood.
 In~\autoref{fig:emission_rts_ratio_bella_static}, the ratio of Control/Data packets increases linearly up to 1.5 until just before $0.025pps$, and then accelerates to almost 2.5, further demonstrating that the network has become critically congested.
@@ -658,7 +657,7 @@ Further, in Fig.~\ref{fig:trust_all_mobile_mal} a much higher variability in ass
 \end{figure}
 %
 
-\subsection{Comparison between \gls{mtfm}, Hermes and \gls{otmf}}
+\subsection[Comparison between MTFM, Hermes and OTMF]{Comparison between \gls{mtfm}, Hermes and \gls{otmf}}
 As per~\citet{Guo11}, ``fair'' scenarios were also performed with no malicious behaviour, applying \gls{otmf} and Hermes assessment as well as \gls{mtfm}, providing like-for-like comparison of assessment.
 
 \begin{figure*}[t]
